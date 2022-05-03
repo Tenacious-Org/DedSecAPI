@@ -1,4 +1,6 @@
 using A5.Data.Base;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace A5.Models
 {
@@ -10,6 +12,13 @@ namespace A5.Models
 
         //Relation
         public int OrganisationId{ get; set; }
-        public Organisation Organisation{ get; set; } = default!;
+
+        [ForeignKey("OrganisationId")][NotMapped]
+        public virtual Organisation ? Organisation{ get; set; }
+
+        public ICollection<Designation> Designations {get;set;}
+
+        
+ 
     }
 }

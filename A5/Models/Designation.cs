@@ -1,5 +1,6 @@
 using A5.Data.Base;
-
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 namespace A5.Models
 {
     public class Designation : IEntityBase
@@ -10,6 +11,9 @@ namespace A5.Models
 
         //Relation
         public int DepartmentId{ get; set; }
-        public Department Department{ get; set; } = default!;
+
+        [ForeignKey("DepartmentID")][NotMapped]
+        public virtual Department ? Department{ get; set; }
+    
     }
 }

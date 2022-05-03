@@ -22,6 +22,13 @@ namespace A5.Controller
             return Ok(data);
         }
 
+        [HttpGet("GetDesignationsByDepartmentId")]
+        public ActionResult GetDesignationsByDepartmentId(int id)
+        {
+            var data = _designationService.GetDesignationsByDepartmentId(id);
+            return Ok(data);
+        }
+
         [HttpGet("GetById")]
         public ActionResult GetByDesignationId([FromQuery] int id)
         {
@@ -49,7 +56,7 @@ namespace A5.Controller
             return BadRequest();
         }
 
-        [HttpDelete("Disable")]
+        [HttpPut("Disable")]
         public ActionResult Disable(Designation designation, int id)
         {
             var data = _designationService.Disable(designation, id);

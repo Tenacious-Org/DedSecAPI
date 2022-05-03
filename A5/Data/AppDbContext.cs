@@ -10,6 +10,8 @@ namespace A5.Data
 
         }
 
+        public DbSet<AwardType> AwardTypes{ get; set; }
+
         public DbSet<Organisation> Organisations{ get; set; }
         public DbSet<Department> Departments{ get; set; }
         public DbSet<Designation> Designations{ get; set; }

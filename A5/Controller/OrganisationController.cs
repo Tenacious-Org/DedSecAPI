@@ -22,6 +22,7 @@ namespace A5.Controller
             return Ok(data);
         }
 
+
         [HttpGet("GetById")]
         public ActionResult GetByOrganisationId([FromQuery] int id)
         {
@@ -49,7 +50,7 @@ namespace A5.Controller
             return BadRequest();
         }
 
-        [HttpDelete("Disable")]
+        [HttpPut("Disable")]
         public ActionResult Disable(Organisation organisation, int id)
         {
             var data = _organisationService.Disable(organisation, id);

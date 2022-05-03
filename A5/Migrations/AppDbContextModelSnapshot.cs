@@ -21,6 +21,28 @@ namespace A5.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("A5.Models.AwardType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AwardDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AwardName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AwardTypes");
+                });
+
             modelBuilder.Entity("A5.Models.Department", b =>
                 {
                     b.Property<int>("Id")
@@ -90,24 +112,30 @@ namespace A5.Migrations
 
             modelBuilder.Entity("A5.Models.Department", b =>
                 {
-                    b.HasOne("A5.Models.Organisation", "Organisation")
-                        .WithMany()
+                    b.HasOne("A5.Models.Organisation", null)
+                        .WithMany("Departments")
                         .HasForeignKey("OrganisationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Organisation");
                 });
 
             modelBuilder.Entity("A5.Models.Designation", b =>
                 {
-                    b.HasOne("A5.Models.Department", "Department")
-                        .WithMany()
+                    b.HasOne("A5.Models.Department", null)
+                        .WithMany("Designations")
                         .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
 
-                    b.Navigation("Department");
+            modelBuilder.Entity("A5.Models.Department", b =>
+                {
+                    b.Navigation("Designations");
+                });
+
+            modelBuilder.Entity("A5.Models.Organisation", b =>
+                {
+                    b.Navigation("Departments");
                 });
 #pragma warning restore 612, 618
         }

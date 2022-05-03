@@ -15,11 +15,20 @@ namespace A5.Controller
             _departmentService = departmentService;
         }
 
+       
+
 
         [HttpGet("GetAll")]
         public ActionResult GetAllDepartment()
         {
             var data = _departmentService.GetAll();
+            return Ok(data);
+        }
+
+        [HttpGet("GetDepartmentsByOrganisationId")]
+        public ActionResult GetDepartmentsByOrganisationId(int id)
+        {
+            var data = _departmentService.GetDepartmentsByOrganisationId(id);
             return Ok(data);
         }
 
@@ -50,7 +59,7 @@ namespace A5.Controller
             return BadRequest();
         }
 
-        [HttpDelete("Disable")]
+        [HttpPut("Disable")]
         public ActionResult Disable(Department department, int id)
         {
             var data = _departmentService.Disable(department, id);
@@ -58,7 +67,7 @@ namespace A5.Controller
             {
                 return Ok("Disabled.");
             }
-            return BadRequest();
+            return Ok();
         }
     }
 }
