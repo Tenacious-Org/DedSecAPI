@@ -15,6 +15,8 @@ builder.Services.AddDbContext<AppDbContext>(options=>
 builder.Services.AddTransient<OrganisationService>();
 builder.Services.AddTransient<DepartmentService>();
 builder.Services.AddTransient<DesignationService>();
+builder.Services.AddTransient<AwardTypeService>();
+builder.Services.AddTransient<StatusService>();
 
 
 

@@ -9,15 +9,11 @@ namespace A5.Data.Service
     public class DepartmentService : EntityBaseRepository<Department>, IDepartmentService
     {
         private readonly AppDbContext _context;
-        public DepartmentService(AppDbContext context) : base(context) {
+        public DepartmentService(AppDbContext context) : base(context) 
+        {
             _context=context;
-         }
-        /*public IEnumerable<Department> GetDepartmentsByOrganisationId(Department department, int id){
-            
-            var data = _context.Set<Department>().Where(nameof =>nameof.OrganisationId == id).ToList();
-            
-            return data;
-        }*/
+        }
+        
 
          public IEnumerable<Department> GetDepartmentsByOrganisationId(int id) => _context.Set<Department>().Where(nameof =>nameof.OrganisationId == id).ToList();
 
