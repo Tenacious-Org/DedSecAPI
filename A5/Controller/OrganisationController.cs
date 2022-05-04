@@ -36,13 +36,15 @@ namespace A5.Controller
         {
             try
             {
+                
                 var data = _organisationService.Create(organisation);
                 return Ok(data);
             }
             catch(ValidationException e){
-                throw e;
+                return BadRequest(e.Message);
+            }catch(Exception exception){
+                return BadRequest();
             }
-            return BadRequest();
         }
 
         [HttpPut("Update")]
