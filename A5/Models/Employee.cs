@@ -7,10 +7,10 @@ namespace A5.Models
     {
     
         public int Id {get;set;}
-        public string ? ACEID {get;set;}
-        public string ? FirstName {get;set;}
-        public string ? LastName {get;set;}
-        public string ? Email {get;set;}
+        public string  ACEID {get;set;}
+        public string  FirstName {get;set;}
+        public string  LastName {get;set;}
+        public string  Email {get;set;}
         public DateTime DOB { get; set; }
         public int OrganisationId {get;set;}
         [ForeignKey("OrganisationId")]
@@ -21,7 +21,7 @@ namespace A5.Models
         public Employee ReportingPerson{ get; set; }
         public int HRId {get;set;}
         public Employee HR{ get; set; }
-        public string ? Password {get;set;}
+        public string  Password {get;set;}
         public bool IsActive {get;set;}
          public int AddedBy {get; set;}
         public DateTime AddedOn{get; set;}
@@ -30,6 +30,15 @@ namespace A5.Models
         
         public ICollection<Employee> Reportingperson {get;set;}
         public ICollection<Employee> Hr {get;set;}
+
+
+        public bool Validation(Organisation organisation)
+        {
+            if(organisation == null) throw new NullReferenceException("Organisation should not be null.");
+            
+
+            else return true;
+        }
 
     }
 }

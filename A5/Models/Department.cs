@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace A5.Models
 {
-    public class Department : IEntityBase, IAudit
+    public class Department : IEntityBase, IAudit, IValidation<Department>
     {
         public int Id{ get; set; }
         public string? DepartmentName{ get; set; }
@@ -23,6 +23,15 @@ namespace A5.Models
         public virtual Organisation ? Organisation{ get; set; }
 
         public ICollection<Designation> Designations {get;set;}
+
+
+        public bool Validation(Department department)
+        {
+            if(department == null) throw new NullReferenceException("Organisation should not be null.");
+            
+
+            else return true;
+        }
 
         
  

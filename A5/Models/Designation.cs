@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 namespace A5.Models
 {
-    public class Designation : IEntityBase, IAudit
+    public class Designation : IEntityBase, IAudit, IValidation<Designation>
     {
         public int Id{ get; set; }
         public string?  DesignationName{ get; set; }
@@ -18,6 +18,15 @@ namespace A5.Models
 
         [ForeignKey("DepartmentID")][NotMapped]
         public virtual Department ? Department{ get; set; }
+
+
+        public bool Validation(Designation designation)
+        {
+            if(designation == null) throw new NullReferenceException("Designation should not be null.");
+            
+
+            else return true;
+        }
     
     }
 }

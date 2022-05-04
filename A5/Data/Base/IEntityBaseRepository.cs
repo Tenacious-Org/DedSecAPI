@@ -10,5 +10,6 @@ namespace A5.Data.Base
         public bool Update(T entity, int id);
         public T GetById(int id);
         public IEnumerable<T> GetAll();
+
     }
 }

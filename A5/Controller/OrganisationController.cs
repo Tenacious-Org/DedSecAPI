@@ -2,6 +2,7 @@ using System;
 using Microsoft.AspNetCore.Mvc;
 using A5.Models;
 using A5.Data.Service;
+using System.ComponentModel.DataAnnotations;
 
 namespace A5.Controller
 {
@@ -33,9 +34,13 @@ namespace A5.Controller
         [HttpPost("Create")]
         public ActionResult Create(Organisation organisation)
         {
-            var data = _organisationService.Create(organisation);
-            if(data){
-                return Ok("Created.");
+            try
+            {
+                var data = _organisationService.Create(organisation);
+                return Ok(data);
+            }
+            catch(ValidationException e){
+                throw e;
             }
             return BadRequest();
         }

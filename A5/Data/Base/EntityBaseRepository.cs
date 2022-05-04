@@ -1,10 +1,11 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using A5.Models;
 
 namespace A5.Data.Base
 {
-    public class EntityBaseRepository<T> : IEntityBaseRepository<T> where T : class,IAudit,IEntityBase, new()
+    public class EntityBaseRepository<T> : IEntityBaseRepository<T> where T : class, IAudit,IEntityBase,IValidation<T>, new()
     {
         private readonly AppDbContext _context;
         public EntityBaseRepository(AppDbContext context)
@@ -15,14 +16,21 @@ namespace A5.Data.Base
         //Methods
         public bool Create(T entity)
         {
-            bool result = false;
-            if(entity != null)
-            {
-                _context.Set<T>().Add(entity);
+           bool result = false;
+           var a = new T();
+           a.Validation(entity);
+           try
+           {
+               _context.Set<T>().Add(entity);
                 _context.SaveChanges();
                 result = true;
-            }
-            return result;
+                return result;
+           }
+           catch(Exception e)
+           {
+               throw e;
+           }
+
         }
 
         public bool Disable(T entity, int id)
@@ -52,6 +60,7 @@ namespace A5.Data.Base
 
         public T GetById(int id) => _context.Set<T>().FirstOrDefault(nameof =>nameof.Id == id);
         public IEnumerable<T> GetAll() => _context.Set<T>().ToList();
+
 
 
     }

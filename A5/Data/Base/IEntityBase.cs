@@ -4,5 +4,6 @@ namespace A5.Data.Base
     {
         int Id{ get; set;}
         bool IsActive{ get; set; }
+
     }
 }
