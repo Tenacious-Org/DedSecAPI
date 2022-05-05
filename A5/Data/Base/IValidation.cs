@@ -5,6 +5,6 @@ namespace A5.Data.Base
         bool CreateValidation(T entity);
         bool ValidateGetById(int id);
         bool UpdateValidation(T entity,int id);
-        
+        bool GetAllValidtion();
     }
 }

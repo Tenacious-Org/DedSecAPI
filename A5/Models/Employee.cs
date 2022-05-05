@@ -59,5 +59,10 @@ namespace A5.Models
             else if(employee.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
+        public bool GetAllValidation()
+        {
+            if(Employee==null) throw new ValidationException("Organisation list is empty");
+            else return true;
+        } 
     }
 }

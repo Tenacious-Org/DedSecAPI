@@ -51,6 +51,8 @@ namespace A5.Data.Base
         public bool Update(T entity, int id)
         {
             bool result = false;
+            var a =new T();
+            a.UpdateValidation(entity,id);
             try{
                 if(entity != null && entity.Id == id)
                 {
@@ -84,6 +86,8 @@ namespace A5.Data.Base
         }
         public IEnumerable<T> GetAll()
         {
+            var a =new T();
+            a.GetAllValidtion();
             try
             {
                 return _context.Set<T>().ToList();
