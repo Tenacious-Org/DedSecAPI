@@ -21,7 +21,7 @@ namespace A5.Data.Service
             department.GetByOrganisationIdValidation(id);
             try
             {
-                return _context.Set<Department>().Where(nameof =>nameof.OrganisationId == id).ToList();
+                return _context.Set<Department>().Where(nameof => nameof.OrganisationId == id && nameof.IsActive == true).ToList();
             }
             catch(Exception exception)
             {
