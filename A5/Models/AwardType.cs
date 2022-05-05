@@ -44,7 +44,7 @@ namespace A5.Models
             if(!(id==null)) throw new ValidationException("Award Id should not be null.");
             else if(id!=Id) throw new ValidationException("Award Id not found");
             else if(awardType==null) throw new ValidationException("Award types should not be null");
-            else if(string.IsNullOrEmpty(awardType.AwardType)) throw new ValidationException("Organisation name should not be null or empty");
+            else if(string.IsNullOrEmpty(awardType.AwardName)) throw new ValidationException("Organisation name should not be null or empty");
              else if(awardType.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else if(awardType.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
