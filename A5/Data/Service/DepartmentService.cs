@@ -17,7 +17,8 @@ namespace A5.Data.Service
 
          public IEnumerable<Department> GetDepartmentsByOrganisationId(int id)
          { 
-            Department.GetByOrganisationIdValidation(id);
+             Department department = new Department();
+            department.GetByOrganisationIdValidation(id);
             try
             {
                 return _context.Set<Department>().Where(nameof =>nameof.OrganisationId == id).ToList();
