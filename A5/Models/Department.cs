@@ -30,7 +30,8 @@ namespace A5.Models
             if(department == null) throw new ValidationException("Department should not be null.");
             else if(String.IsNullOrEmpty(department.DepartmentName)) throw new ValidationException("Department Name should not be null or Empty.");
             else if(department.IsActive == false) throw new ValidationException("Department should be Active when it is created.");
-            else if(!(department.AddedBy <= 0 && department.UpdatedBy <= 0)) throw new ValidationException("User Id Should not be Zero.");
+            else if(department.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            else if(department.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
         public bool ValidateGetById(int id)
@@ -45,8 +46,8 @@ namespace A5.Models
             else if(id!=Id) throw new ValidationException("Department Id not found");
             else if(department==null) throw new ValidationException("Department should not be null");
             else if(string.IsNullOrEmpty(department.DepartmentName)) throw new ValidationException("Department name should not be null or empty");
-             else if(department.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero.");
-            else if(department.UpdatedBy >= 0) throw new ValidationException("User Id Should not be Zero.");
+             else if(department.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            else if(department.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
 

@@ -25,7 +25,8 @@ namespace A5.Models
             if(designation == null) throw new ValidationException("Designation should not be null.");
             else if(String.IsNullOrEmpty(designation.DesignationName)) throw new ValidationException("Designation Name should not be null or Empty.");
             else if(designation.IsActive == false) throw new ValidationException("Designation should be Active when it is created.");
-            else if(!(designation.AddedBy <= 0 && designation.UpdatedBy <= 0)) throw new ValidationException("User Id Should not be Zero.");
+            else if(designation.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            else if(designation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
          public bool ValidateGetById(int id)
@@ -40,8 +41,8 @@ namespace A5.Models
             else if(id!=Id) throw new ValidationException("Designation Id not found");
             else if(designation==null) throw new ValidationException("Designation should not be null");
             else if(string.IsNullOrEmpty(designation.DesignationName)) throw new ValidationException("Designation name should not be null or empty");
-             else if(designation.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero.");
-            else if(designation.UpdatedBy >= 0) throw new ValidationException("User Id Should not be Zero.");
+             else if(designation.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            else if(designation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
     }

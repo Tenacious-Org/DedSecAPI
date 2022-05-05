@@ -29,7 +29,8 @@ namespace A5.Models
             if(awardType == null) throw new ValidationException("Award Type shoulfd not be null.");
             else if(String.IsNullOrEmpty(awardType.AwardName)) throw new ValidationException("Award Name should not be null or Empty.");
             else if(awardType.IsActive == false) throw new ValidationException("Award should be Active when it is created.");
-            else if(!(awardType.AddedBy <= 0 && awardType.UpdatedBy <= 0)) throw new ValidationException("User Id Should not be Zero.");
+            else if(awardType.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero."); 
+            else if(awardType.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
         public bool ValidateGetById(int id)
@@ -44,8 +45,8 @@ namespace A5.Models
             else if(id!=Id) throw new ValidationException("Award Id not found");
             else if(awardType==null) throw new ValidationException("Award types should not be null");
             else if(string.IsNullOrEmpty(awardType.AwardType)) throw new ValidationException("Organisation name should not be null or empty");
-             else if(awardType.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero.");
-            else if(awardType.UpdatedBy >= 0) throw new ValidationException("User Id Should not be Zero.");
+             else if(awardType.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            else if(awardType.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
     }

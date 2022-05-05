@@ -35,7 +35,9 @@ namespace A5.Models
         public bool CreateValidation(Employee employee)
         {
             if(employee == null) throw new NullReferenceException("Employee should not be null.");
-            
+             else if(string.IsNullOrEmpty(employee.EmployeeName)) throw new ValidationException("Employee name should not be null or empty");
+             else if(employee.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            else if(employee.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
 
             else return true;
         }
@@ -50,9 +52,9 @@ namespace A5.Models
             if(!(id==null)) throw new ValidationException("Employee Id should not be null.");
             else if(id!=Id) throw new ValidationException("Employee Id not found");
             else if(employee==null) throw new ValidationException("Employee should not be null");
-            else if(string.IsNullOrEmpty(employee.EmployeeName)) throw new ValidationException("Organisation name should not be null or empty");
-             else if(employee.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero.");
-            else if(employee.UpdatedBy >= 0) throw new ValidationException("User Id Should not be Zero.");
+            else if(string.IsNullOrEmpty(employee.EmployeeName)) throw new ValidationException("Employee name should not be null or empty");
+             else if(employee.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            else if(employee.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
     }
