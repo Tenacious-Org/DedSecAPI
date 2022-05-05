@@ -59,7 +59,12 @@ namespace A5.Models
             else if(department.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
-        
+        public bool GetByOrganisationIdValidation(int id)
+        {
+            if(!(id!=null)) throw new ValidationException("Organisation Id should not be null.");
+            else if(id!=OrganisationId) throw new ValidationException("Organisation Id not found");
+            else return true;
+        }
  
     }
 }
