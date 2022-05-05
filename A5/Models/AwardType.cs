@@ -49,10 +49,16 @@ namespace A5.Models
             else if(awardType.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
-        public bool GetAllValidation()
+        public bool DisableValidation(AwardType awardType,int id)
         {
-            if(AwardType==null) throw new ValidationException("Organisation list is empty");
+            if(!(id==null)) throw new ValidationException("AwardType Id should not be null.");
+            else if(id!=Id) throw new ValidationException("AwardType Id not found");
+            else if(awardType==null) throw new ValidationException("AwardType should not be null");
+            else if(awardType.IsActive==false) throw new ValidationException("AwardType is already disabled");
+            else if(awardType.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
-        } 
+        }
+        
+       
     }
 }

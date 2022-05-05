@@ -45,10 +45,15 @@ namespace A5.Models
             else if(designation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
-        public bool GetAllValidation()
+       public bool DisableValidation(Designation designation,int id)
         {
-            if(Designation==null) throw new ValidationException("Organisation list is empty");
+            if(!(id==null)) throw new ValidationException("Designation Id should not be null.");
+            else if(id!=Id) throw new ValidationException("Designation Id not found");
+            else if(designation==null) throw new ValidationException("Designation should not be null");
+            else if(designation.IsActive==false) throw new ValidationException("Designation is already disabled");
+            else if(designation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
-        } 
+        }
+        
     }
 }

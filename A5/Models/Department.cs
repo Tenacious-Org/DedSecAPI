@@ -50,12 +50,15 @@ namespace A5.Models
             else if(department.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
-        public bool GetAllValidation()
+        public bool DisableValidation(Department department,int id)
         {
-            if(Department==null) throw new ValidationException("Organisation list is empty");
+            if(!(id==null)) throw new ValidationException("Department Id should not be null.");
+            else if(id!=Id) throw new ValidationException("Department Id not found");
+            else if(department==null) throw new ValidationException("Department should not be null");
+            else if(department.IsActive==false) throw new ValidationException("Department is already disabled");
+            else if(department.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
-        } 
-
+        }
         
  
     }
