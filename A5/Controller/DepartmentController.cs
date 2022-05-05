@@ -16,8 +16,6 @@ namespace A5.Controller
         }
 
        
-
-
         [HttpGet("GetAll")]
         public ActionResult GetAllDepartment()
         {

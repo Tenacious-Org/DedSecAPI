@@ -58,7 +58,18 @@ namespace A5.Data.Base
             return result;
         }
 
-        public T GetById(int id) => _context.Set<T>().FirstOrDefault(nameof =>nameof.Id == id);
+        public T GetById(int id)
+        {
+            try
+            {
+                return _context.Set<T>().FirstOrDefault(nameof =>nameof.Id == id);
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+            
+        }
         public IEnumerable<T> GetAll() => _context.Set<T>().ToList();
 
 

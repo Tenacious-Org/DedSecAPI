@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace A5.Models
 {
-    public class Employee : IEntityBase, IAudit
+    public class Employee : IEntityBase, IAudit, IValidation<Employee>
     {
     
         public int Id {get;set;}
@@ -32,7 +32,7 @@ namespace A5.Models
         public ICollection<Employee> Hr {get;set;}
 
 
-        public bool Validation(Employee employee)
+        public bool CreateValidation(Employee employee)
         {
             if(employee == null) throw new NullReferenceException("Employee should not be null.");
             
