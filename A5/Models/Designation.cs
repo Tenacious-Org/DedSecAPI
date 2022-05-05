@@ -22,9 +22,10 @@ namespace A5.Models
 
         public bool Validation(Designation designation)
         {
-            if(designation == null) throw new NullReferenceException("Designation should not be null.");
-            
-
+            if(designation == null) throw new ValidationException("Designation should not be null.");
+            else if(String.IsNullOrEmpty(designation.DesignationName)) throw new ValidationException("Designation Name should not be null or Empty.");
+            else if(designation.IsActive == false) throw new ValidationException("Designation should be Active when it is created.");
+            else if((designation.AddedBy <= 0) && (designation.UpdatedBy <= 0)) throw new ValidationException("User Id Should not be Zero.");
             else return true;
         }
     

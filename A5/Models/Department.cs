@@ -27,9 +27,10 @@ namespace A5.Models
 
         public bool Validation(Department department)
         {
-            if(department == null) throw new NullReferenceException("Organisation should not be null.");
-            
-
+            if(department == null) throw new ValidationException("Department should not be null.");
+            else if(String.IsNullOrEmpty(department.DepartmentName)) throw new ValidationException("Department Name should not be null or Empty.");
+            else if(department.IsActive == false) throw new ValidationException("Department should be Active when it is created.");
+            else if((department.AddedBy <= 0) && (department.UpdatedBy <= 0)) throw new ValidationException("User Id Should not be Zero.");
             else return true;
         }
 

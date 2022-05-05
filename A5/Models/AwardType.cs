@@ -26,9 +26,10 @@ namespace A5.Models
 
         public bool Validation(AwardType awardType)
         {
-            if(awardType == null) throw new NullReferenceException("Organisation should not be null.");
-            
-
+            if(awardType == null) throw new ValidationException("Award Type should not be null.");
+            else if(String.IsNullOrEmpty(awardType.AwardName)) throw new ValidationException("Award Name should not be null or Empty.");
+            else if(awardType.IsActive == false) throw new ValidationException("Award should be Active when it is created.");
+            else if((awardType.AddedBy <= 0) && (awardType.UpdatedBy <= 0)) throw new ValidationException("User Id Should not be Zero.");
             else return true;
         }
     }
