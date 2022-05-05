@@ -29,10 +29,21 @@ namespace A5.Models
             else if(organisation.UpdatedBy >= 0) throw new ValidationException("User Id Should not be Zero.");
             else return true;
         }
-         public vool ValidateGetById(int id)
+         public bool ValidateGetById(int id)
         {
-            if(id==null) throw new NullReferenceException("Organisation Id should not be null.");
+            if(!(id==null)) throw new ValidationException("Organisation Id should not be null.");
             else if(id!=Id) throw new ValidationException("Organisation Id not found.");
+            else return true;
+        }
+        public bool UpdateValidation(Organisation organisation,int id)
+        {
+            if(!(id==null)) throw new ValidationException("Organisation Id should not be null.");
+            else if(id!=Id) throw new ValidationException("Organisation Id not found");
+            else if(organisation==null) throw new ValidationException("Organisation should not be null");
+            else if(string.IsNullOrEmpty(organisation.OrganisationName)) throw new ValidationException("Organisation name should not be null or empty");
+             else if(organisation.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero.");
+            else if(organisation.UpdatedBy >= 0) throw new ValidationException("User Id Should not be Zero.");
+            else return true;
         }
 
     }

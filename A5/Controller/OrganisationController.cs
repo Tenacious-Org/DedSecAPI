@@ -33,7 +33,7 @@ namespace A5.Controller
             }
             catch(ValidationException exception)
             {
-                return BadRequest(exception.Mesaage);
+                return BadRequest(exception.Message);
             }
             catch(Exception exception)
             {

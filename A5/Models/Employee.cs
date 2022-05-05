@@ -39,6 +39,21 @@ namespace A5.Models
 
             else return true;
         }
-
+         public bool ValidateGetById(int id)
+        {
+            if(!(id==null)) throw new ValidationException("Employee Id should not be null.");
+            else if(id!=Id) throw new ValidationException("Employee Id not found.");
+            else return true;
+        }
+         public bool UpdateValidation(Employee employee,int id)
+        {
+            if(!(id==null)) throw new ValidationException("Employee Id should not be null.");
+            else if(id!=Id) throw new ValidationException("Employee Id not found");
+            else if(employee==null) throw new ValidationException("Employee should not be null");
+            else if(string.IsNullOrEmpty(employee.EmployeeName)) throw new ValidationException("Organisation name should not be null or empty");
+             else if(employee.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero.");
+            else if(employee.UpdatedBy >= 0) throw new ValidationException("User Id Should not be Zero.");
+            else return true;
+        }
     }
 }
