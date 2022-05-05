@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "e:\\Github\\DedSecAPI\\A5\\A5.csproj": {}
+    "E:\\Github\\DedSecAPI\\A5\\A5.csproj": {}
   },
   "projects": {
-    "e:\\Github\\DedSecAPI\\A5\\A5.csproj": {
+    "E:\\Github\\DedSecAPI\\A5\\A5.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\Github\\DedSecAPI\\A5\\A5.csproj",
+        "projectUniqueName": "E:\\Github\\DedSecAPI\\A5\\A5.csproj",
         "projectName": "A5",
-        "projectPath": "e:\\Github\\DedSecAPI\\A5\\A5.csproj",
+        "projectPath": "E:\\Github\\DedSecAPI\\A5\\A5.csproj",
         "packagesPath": "C:\\Users\\dinesh.boopathy\\.nuget\\packages\\",
-        "outputPath": "e:\\Github\\DedSecAPI\\A5\\obj\\",
+        "outputPath": "E:\\Github\\DedSecAPI\\A5\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dinesh.boopathy\\AppData\\Roaming\\NuGet\\NuGet.Config"

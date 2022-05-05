@@ -7,9 +7,11 @@ namespace A5.Data.Base
 {
     public class EntityBaseRepository<T> : IEntityBaseRepository<T> where T : class, IAudit,IEntityBase,IValidation<T>, new()
     {
+        private readonly ILogger<EntityBaseRepository<T>> _logger;
         private readonly AppDbContext _context;
-        public EntityBaseRepository(AppDbContext context)
+        public EntityBaseRepository(ILogger<EntityBaseRepository<T>> logger, AppDbContext context)
         {
+            _logger = logger;
             _context = context;
         }
 
@@ -26,9 +28,9 @@ namespace A5.Data.Base
                 result = true;
                 return result;
            }
-           catch(Exception e)
+           catch(Exception exception)
            {
-               throw e;
+               throw exception;
            }
 
         }
@@ -49,13 +51,19 @@ namespace A5.Data.Base
         public bool Update(T entity, int id)
         {
             bool result = false;
-            if(entity != null && entity.Id == id)
-            {
-                _context.Set<T>().Update(entity);
-                _context.SaveChanges();
-                result = true;
+            try{
+                if(entity != null && entity.Id == id)
+                {
+                    _context.Set<T>().Update(entity);
+                    _context.SaveChanges();
+                    result = true;
+                }
+                return result;               
             }
-            return result;
+            catch(Exception exception){
+                throw exception;
+            }
+            
         }
 
         public T GetById(int id)
@@ -74,7 +82,18 @@ namespace A5.Data.Base
             }
             
         }
-        public IEnumerable<T> GetAll() => _context.Set<T>().ToList();
+        public IEnumerable<T> GetAll()
+        {
+            try
+            {
+                return _context.Set<T>().ToList();
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+            
+        }
 
 
 
