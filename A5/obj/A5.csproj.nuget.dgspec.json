@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Github\\DedSecAPI\\A5\\A5.csproj": {}
+    "e:\\Github\\DedSecAPI\\A5\\A5.csproj": {}
   },
   "projects": {
-    "E:\\Github\\DedSecAPI\\A5\\A5.csproj": {
+    "e:\\Github\\DedSecAPI\\A5\\A5.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Github\\DedSecAPI\\A5\\A5.csproj",
+        "projectUniqueName": "e:\\Github\\DedSecAPI\\A5\\A5.csproj",
         "projectName": "A5",
-        "projectPath": "E:\\Github\\DedSecAPI\\A5\\A5.csproj",
+        "projectPath": "e:\\Github\\DedSecAPI\\A5\\A5.csproj",
         "packagesPath": "C:\\Users\\dinesh.boopathy\\.nuget\\packages\\",
-        "outputPath": "E:\\Github\\DedSecAPI\\A5\\obj\\",
+        "outputPath": "e:\\Github\\DedSecAPI\\A5\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dinesh.boopathy\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -61,6 +61,18 @@
             "Microsoft.EntityFrameworkCore.Tools.DotNet": {
               "target": "Package",
               "version": "[2.0.3, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Serilog.Expressions": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
+            "Serilog.Sinks.Seq": {
+              "target": "Package",
+              "version": "[5.1.1, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

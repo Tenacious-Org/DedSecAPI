@@ -10,17 +10,31 @@ namespace A5.Controller
     [ApiController]
     public class OrganisationController : ControllerBase
     {
+        private readonly ILogger<OrganisationController> _logger;
         private readonly OrganisationService _organisationService;
-        public OrganisationController(OrganisationService organisationService)
+        public OrganisationController(ILogger<OrganisationController> logger,OrganisationService organisationService)
         {
+            _logger = logger;
             _organisationService = organisationService;
         } 
 
         [HttpGet("GetAll")]
         public ActionResult GetAllOrganisation()
         {
-            var data = _organisationService.GetAll();
-            return Ok(data);
+            try{
+                var data = _organisationService.GetAll();
+                return Ok(data);
+            }
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
+            
         }
 
 
@@ -33,11 +47,12 @@ namespace A5.Controller
             }
             catch(ValidationException exception)
             {
-                return BadRequest(exception.Message);
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
             {
-                return BadRequest(exception.Message);
+                return BadRequest($"Error : {exception.Message}");
             }
             
         }
@@ -52,33 +67,49 @@ namespace A5.Controller
             }
             catch(ValidationException exception)
             {
-                return BadRequest(exception.Message);
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
             {
-                return BadRequest(exception.Message);
+                return BadRequest($"Error : {exception.Message}");
             }
         }
 
         [HttpPut("Update")]
         public ActionResult Update(Organisation organisation, int id)
         {
-            var data = _organisationService.Update(organisation, id);
-            if(data){
-                return Ok("Updated.");
+            try{
+                var data = _organisationService.Update(organisation, id);           
+                return Ok("Updated.");          
+            }        
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
             }
-            return BadRequest();
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
         }
 
         [HttpPut("Disable")]
         public ActionResult Disable(Organisation organisation, int id)
         {
-            var data = _organisationService.Disable(organisation, id);
-            if(data)
-            {
+            try{
+                var data = _organisationService.Disable(organisation, id);          
                 return Ok("Disabled.");
+            }           
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
             }
-            return BadRequest();
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
         }
     }
 }

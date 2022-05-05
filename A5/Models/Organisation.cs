@@ -1,6 +1,8 @@
 using A5.Data.Base;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.RegularExpressions;
+
 namespace A5.Models
 {
     public class Organisation : IEntityBase, IAudit, IValidation<Organisation>
@@ -24,7 +26,7 @@ namespace A5.Models
         {
             if(organisation == null) throw new ValidationException("Organisation should not be null.");
             else if(String.IsNullOrEmpty(organisation.OrganisationName)) throw new ValidationException("Organisation Name should not be null or Empty.");
-            else if(!( Regex.IsMatch(organisaion.OrganisationName, @"^[a-zA-Z]+$"))) throw new ValiationException("Namse should have only alphabets.No special Characters or numbers are allowed");
+            else if(!( Regex.IsMatch(organisation.OrganisationName, @"^[a-zA-Z]+$"))) throw new ValidationException("Namse should have only alphabets.No special Characters or numbers are allowed");
             else if(organisation.IsActive == false) throw new ValidationException("Organisation should be Active when it is created.");
             else if(organisation.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else if(organisation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");

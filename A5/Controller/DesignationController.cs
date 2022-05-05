@@ -2,6 +2,7 @@ using System;
 using Microsoft.AspNetCore.Mvc;
 using A5.Models;
 using A5.Data.Service;
+using System.ComponentModel.DataAnnotations;
 
 namespace A5.Controller
 {
@@ -9,62 +10,124 @@ namespace A5.Controller
     [ApiController]
     public class DesignationController : ControllerBase
     {
+        private readonly ILogger<DesignationController> _logger;
         private readonly DesignationService _designationService;
-        public DesignationController(DesignationService designationService)
+        public DesignationController( ILogger<DesignationController> logger, DesignationService designationService)
         {
+            _logger = logger;
             _designationService = designationService;
         }
 
         [HttpGet("GetAll")]
         public ActionResult GetAllDesignation()
         {
-            var data = _designationService.GetAll();
-            return Ok(data);
+            try{
+                var data = _designationService.GetAll();
+                return Ok(data);
+            }
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
+            
         }
 
         [HttpGet("GetDesignationsByDepartmentId")]
         public ActionResult GetDesignationsByDepartmentId(int id)
         {
-            var data = _designationService.GetDesignationsByDepartmentId(id);
-            return Ok(data);
+            try{
+                var data = _designationService.GetDesignationsByDepartmentId(id);
+                return Ok(data);
+            }
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
         }
 
         [HttpGet("GetById")]
         public ActionResult GetByDesignationId([FromQuery] int id)
         {
-            var data = _designationService.GetById(id);
-            return Ok(data);
+            try{
+                var data = _designationService.GetById(id);
+                return Ok(data);
+            }           
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
         }
 
         [HttpPost("Create")]
         public ActionResult Create(Designation designation)
         {
-            var data = _designationService.Create(designation);
-            if(data){
+            try{
+                var data = _designationService.Create(designation);           
                 return Ok("Created.");
+            }         
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
             }
-            return BadRequest();
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
         }
 
         [HttpPut("Update")]
         public ActionResult Update(Designation designation, int id)
         {
-            var data = _designationService.Update(designation, id);
-            if(data){
+            try{
+                var data = _designationService.Update(designation, id);
                 return Ok("Updated.");
             }
-            return BadRequest();
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
         }
 
         [HttpPut("Disable")]
         public ActionResult Disable(Designation designation, int id)
         {
-            var data = _designationService.Disable(designation, id);
-            if(data)
+
+
+            try
             {
+                var data = _designationService.Disable(designation, id);
                 return Ok("Disabled.");
+            }           
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
             }
-            return BadRequest();
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
         }
     }
 }

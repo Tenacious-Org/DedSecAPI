@@ -1,8 +1,13 @@
 using A5.Data;
 using Microsoft.EntityFrameworkCore;
 using A5.Data.Service;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//Serilog
+var logger = new LoggerConfiguration().ReadFrom.Configuration(builder.Configuration).Enrich.FromLogContext().CreateLogger();
+builder.Logging.AddSerilog(logger);
 
 // Add services to the container.
 
