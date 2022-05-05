@@ -18,7 +18,7 @@ namespace A5.Data.Service
          {
             try
             {
-                return _context.Set<Designation>().Where(nameof =>nameof.DepartmentId == id).ToList();
+                return _context.Set<Designation>().Where(nameof =>nameof.DepartmentId == id && nameof.IsActive == true).ToList();
             }
             catch(Exception exception)
             {
