@@ -32,9 +32,9 @@ namespace A5.Models
         public ICollection<Employee> Hr {get;set;}
 
 
-        public bool Validation(Organisation organisation)
+        public bool Validation(Employee employee)
         {
-            if(organisation == null) throw new NullReferenceException("Organisation should not be null.");
+            if(employee == null) throw new NullReferenceException("Employee should not be null.");
             
 
             else return true;
