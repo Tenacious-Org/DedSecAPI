@@ -18,7 +18,7 @@ namespace A5.Data.Base
         {
            bool result = false;
            var a = new T();
-           a.Validation(entity);
+           a.CreateValidation(entity);
            try
            {
                _context.Set<T>().Add(entity);

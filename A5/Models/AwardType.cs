@@ -24,7 +24,7 @@ namespace A5.Models
         public DateTime UpdatedOn {get;set;}
 
 
-        public bool Validation(AwardType awardType)
+        public bool CreateValidation(AwardType awardType)
         {
             if(awardType == null) throw new ValidationException("Award Type should not be null.");
             else if(String.IsNullOrEmpty(awardType.AwardName)) throw new ValidationException("Award Name should not be null or Empty.");

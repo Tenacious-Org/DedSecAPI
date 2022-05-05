@@ -20,7 +20,7 @@ namespace A5.Models
         public virtual Department ? Department{ get; set; }
 
 
-        public bool Validation(Designation designation)
+        public bool CreateValidation(Designation designation)
         {
             if(designation == null) throw new ValidationException("Designation should not be null.");
             else if(String.IsNullOrEmpty(designation.DesignationName)) throw new ValidationException("Designation Name should not be null or Empty.");

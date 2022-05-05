@@ -25,7 +25,7 @@ namespace A5.Models
         public ICollection<Designation> Designations {get;set;}
 
 
-        public bool Validation(Department department)
+        public bool CreateValidation(Department department)
         {
             if(department == null) throw new ValidationException("Department should not be null.");
             else if(String.IsNullOrEmpty(department.DepartmentName)) throw new ValidationException("Department Name should not be null or Empty.");

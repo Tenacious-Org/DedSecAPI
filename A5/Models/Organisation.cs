@@ -20,7 +20,7 @@ namespace A5.Models
 
 
 
-        public bool Validation(Organisation organisation)
+        public bool CreateValidation(Organisation organisation)
         {
             if(organisation == null) throw new ValidationException("Organisation should not be null.");
             else if(String.IsNullOrEmpty(organisation.OrganisationName)) throw new ValidationException("Organisation Name should not be null or Empty.");
