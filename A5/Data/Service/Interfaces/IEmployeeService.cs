@@ -7,6 +7,7 @@ namespace A5.Data.Service.Interfaces
 {
     public interface IEmployeeService : IEntityBaseRepository<Employee>
     {
-         
+         public IEnumerable<Employee> GetByHR(int id);
+         public IEnumerable<Employee> GetByReportingPerson(int id);
     }
 }
