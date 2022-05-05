@@ -5880,11 +5880,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\DedSec\\A5\\A5.csproj",
+      "projectUniqueName": "E:\\Github\\DedSecAPI\\A5\\A5.csproj",
       "projectName": "A5",
-      "projectPath": "E:\\DedSec\\A5\\A5.csproj",
+      "projectPath": "E:\\Github\\DedSecAPI\\A5\\A5.csproj",
       "packagesPath": "C:\\Users\\dinesh.boopathy\\.nuget\\packages\\",
-      "outputPath": "E:\\DedSec\\A5\\obj\\",
+      "outputPath": "E:\\Github\\DedSecAPI\\A5\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dinesh.boopathy\\AppData\\Roaming\\NuGet\\NuGet.Config"
