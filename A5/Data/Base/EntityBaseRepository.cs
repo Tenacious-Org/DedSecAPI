@@ -60,9 +60,13 @@ namespace A5.Data.Base
 
         public T GetById(int id)
         {
+            bool result=false;
+            var a=new T();
+            a.ValidateGetById(id);
             try
             {
                 return _context.Set<T>().FirstOrDefault(nameof =>nameof.Id == id);
+                result=true;
             }
             catch(Exception exception)
             {

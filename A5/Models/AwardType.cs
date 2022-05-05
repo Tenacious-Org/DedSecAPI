@@ -32,5 +32,10 @@ namespace A5.Models
             else if(!(awardType.AddedBy <= 0 && awardType.UpdatedBy <= 0)) throw new ValidationException("User Id Should not be Zero.");
             else return true;
         }
+        public vool ValidateGetById(int id)
+        {
+            if(id==null) throw new NullReferenceException("Award Id should not be null.");
+            else if(id!=Id) throw new ValidationException("Award Id not found.");
+        }
     }
 }

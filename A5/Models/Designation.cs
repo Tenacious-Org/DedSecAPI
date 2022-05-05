@@ -28,6 +28,11 @@ namespace A5.Models
             else if(!(designation.AddedBy <= 0 && designation.UpdatedBy <= 0)) throw new ValidationException("User Id Should not be Zero.");
             else return true;
         }
+         public vool ValidateGetById(int id)
+        {
+            if(id==null) throw new NullReferenceException("Designation Id should not be null.");
+            else if(id!=Id) throw new ValidationException("Designation Id not found.");
+        }
     
     }
 }

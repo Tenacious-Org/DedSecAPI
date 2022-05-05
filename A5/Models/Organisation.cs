@@ -29,6 +29,11 @@ namespace A5.Models
             else if(organisation.UpdatedBy >= 0) throw new ValidationException("User Id Should not be Zero.");
             else return true;
         }
+         public vool ValidateGetById(int id)
+        {
+            if(id==null) throw new NullReferenceException("Organisation Id should not be null.");
+            else if(id!=Id) throw new ValidationException("Organisation Id not found.");
+        }
 
     }
 }

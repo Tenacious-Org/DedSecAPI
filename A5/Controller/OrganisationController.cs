@@ -24,11 +24,22 @@ namespace A5.Controller
         }
 
 
-        [HttpGet("GetById")]
+         [HttpGet("GetById")]
         public ActionResult GetByOrganisationId([FromQuery] int id)
         {
-            var data = _organisationService.GetById(id);
-            return Ok(data);
+            try{
+                var data = _organisationService.GetById(id);
+                 return Ok(data);
+            }
+            catch(ValidationException exception)
+            {
+                return BadRequest(exception.Mesaage);
+            }
+            catch(Exception exception)
+            {
+                return BadRequest(exception.Message);
+            }
+            
         }
 
         [HttpPost("Create")]
