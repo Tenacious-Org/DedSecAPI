@@ -16,12 +16,28 @@ namespace A5.Data.Service
 
         public IEnumerable<Employee> GetByHR(int id)
         {
-            return _context.Set<Employee>().Where(nameof => nameof.HRId == id).ToList();
+            try
+            {
+                return _context.Set<Employee>().Where(nameof => nameof.HRId == id).ToList();
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+            
         }
 
         public IEnumerable<Employee> GetByReportingPerson(int id)
         {
-            return _context.Set<Employee>().Where(nameof => nameof.ReportingPersonId == id).ToList();
+            try
+            {
+                return _context.Set<Employee>().Where(nameof => nameof.ReportingPersonId == id).ToList();
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+            
         }
     }
 }

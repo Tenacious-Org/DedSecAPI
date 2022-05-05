@@ -9,9 +9,8 @@ namespace A5.Data.Base
     {
         private readonly ILogger<EntityBaseRepository<T>> _logger;
         private readonly AppDbContext _context;
-        public EntityBaseRepository(ILogger<EntityBaseRepository<T>> logger, AppDbContext context)
+        public EntityBaseRepository( AppDbContext context)
         {
-            _logger = logger;
             _context = context;
         }
 

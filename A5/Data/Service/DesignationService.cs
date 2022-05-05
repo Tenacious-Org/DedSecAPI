@@ -9,12 +9,23 @@ namespace A5.Data.Service
     public class DesignationService : EntityBaseRepository<Designation>, IDesignationService
     {
         private readonly AppDbContext _context;
-        public DesignationService(AppDbContext context) : base(context) {
+        public DesignationService(AppDbContext context) : base(context)
+        {
             _context = context;
-         }
+        }
 
-         public IEnumerable<Designation> GetDesignationsByDepartmentId(int id)=> _context.Set<Designation>().Where(nameof =>nameof.DepartmentId == id).ToList();
-        
+         public IEnumerable<Designation> GetDesignationsByDepartmentId(int id)
+         {
+            try
+            {
+                return _context.Set<Designation>().Where(nameof =>nameof.DepartmentId == id).ToList();
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+             
+         }
     }
     
 }

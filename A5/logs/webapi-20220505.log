@@ -48,3 +48,46 @@
 [2022-05-05 16:08:16.799 +05:30 INF] Executed action A5.Controller.OrganisationController.Create (A5) in 31.7232ms
 [2022-05-05 16:08:16.799 +05:30 INF] Executed endpoint 'A5.Controller.OrganisationController.Create (A5)'
 [2022-05-05 16:08:16.799 +05:30 INF] Request finished HTTP/2 POST https://localhost:7275/api/Organisation/Create application/json 279 - 400 - text/plain;+charset=utf-8 34.4463ms
+[2022-05-05 16:38:02.669 +05:30 INF] Now listening on: https://localhost:7275
+[2022-05-05 16:38:02.694 +05:30 INF] Now listening on: http://localhost:5050
+[2022-05-05 16:38:02.700 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-05 16:38:02.700 +05:30 INF] Hosting environment: Development
+[2022-05-05 16:38:02.700 +05:30 INF] Content root path: E:\Github\DedSecAPI\A5\
+[2022-05-05 16:38:02.897 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/ - -
+[2022-05-05 16:38:02.959 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/ - - - 404 0 - 69.9818ms
+[2022-05-05 16:38:06.345 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger - -
+[2022-05-05 16:38:06.346 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger - - - 301 0 - 0.7872ms
+[2022-05-05 16:38:06.348 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/index.html - -
+[2022-05-05 16:38:06.394 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/index.html - - - 200 - text/html;charset=utf-8 45.3316ms
+[2022-05-05 16:38:06.411 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui.css - -
+[2022-05-05 16:38:06.412 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui-bundle.js - -
+[2022-05-05 16:38:06.432 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-05 16:38:06.433 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-05 16:38:06.435 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui.css - - - 200 143632 text/css 23.2778ms
+[2022-05-05 16:38:06.435 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-05 16:38:06.435 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 23.6169ms
+[2022-05-05 16:38:06.437 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-05 16:38:06.437 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 4.4014ms
+[2022-05-05 16:38:08.321 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger - -
+[2022-05-05 16:38:08.321 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger - - - 301 0 - 0.2733ms
+[2022-05-05 16:38:08.325 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/index.html - -
+[2022-05-05 16:38:08.326 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/index.html - - - 200 - text/html;charset=utf-8 1.1228ms
+[2022-05-05 16:38:08.345 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui.css - -
+[2022-05-05 16:38:08.345 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui-bundle.js - -
+[2022-05-05 16:38:08.346 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-05 16:38:08.347 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-05 16:38:08.348 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui.css - - - 200 143632 text/css 2.8540ms
+[2022-05-05 16:38:08.350 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-05 16:38:08.350 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 4.2309ms
+[2022-05-05 16:38:08.353 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-05 16:38:08.353 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 8.3866ms
+[2022-05-05 16:38:08.541 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - -
+[2022-05-05 16:38:08.635 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 93.7174ms
+[2022-05-05 16:38:39.741 +05:30 INF] Request starting HTTP/2 POST https://localhost:7275/api/Organisation/Create application/json 291
+[2022-05-05 16:38:39.747 +05:30 INF] Executing endpoint 'A5.Controller.OrganisationController.Create (A5)'
+[2022-05-05 16:38:39.766 +05:30 INF] Route matched with {action = "Create", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Create(A5.Models.Organisation) on controller A5.Controller.OrganisationController (A5).
+[2022-05-05 16:38:39.900 +05:30 ERR] log: (Error: Namse should have only alphabets.No special Characters or numbers are allowed)
+[2022-05-05 16:38:39.902 +05:30 INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+[2022-05-05 16:38:39.908 +05:30 INF] Executed action A5.Controller.OrganisationController.Create (A5) in 135.4388ms
+[2022-05-05 16:38:39.909 +05:30 INF] Executed endpoint 'A5.Controller.OrganisationController.Create (A5)'
+[2022-05-05 16:38:39.910 +05:30 INF] Request finished HTTP/2 POST https://localhost:7275/api/Organisation/Create application/json 291 - 400 - text/plain;+charset=utf-8 169.2288ms
