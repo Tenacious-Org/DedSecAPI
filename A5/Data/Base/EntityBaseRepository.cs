@@ -7,7 +7,6 @@ namespace A5.Data.Base
 {
     public class EntityBaseRepository<T> : IEntityBaseRepository<T> where T : class, IAudit,IEntityBase,IValidation<T>, new()
     {
-        private readonly ILogger<EntityBaseRepository<T>> _logger;
         private readonly AppDbContext _context;
         public EntityBaseRepository( AppDbContext context)
         {
@@ -87,7 +86,7 @@ namespace A5.Data.Base
         {
             try
             {
-                return _context.Set<T>().ToList();
+                return _context.Set<T>().Where(nameof =>nameof.IsActive == true).ToList();
             }
             catch(Exception exception)
             {
