@@ -26,7 +26,7 @@ namespace A5.Models
             else if(String.IsNullOrEmpty(organisation.OrganisationName)) throw new ValidationException("Organisation Name should not be null or Empty.");
             else if(organisation.IsActive == false) throw new ValidationException("Organisation should be Active when it is created.");
             else if(organisation.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero.");
-            else if(organisation.UpdatedBy >= 0) throw new ValidationException("User Id Should not be Zero.");
+            else if(organisation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero.");
             else return true;
         }
          public bool ValidateGetById(int id)
