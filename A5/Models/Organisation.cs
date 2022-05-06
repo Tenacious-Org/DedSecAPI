@@ -36,7 +36,7 @@ namespace A5.Models
         {
             Organisation organisation = new Organisation();
             if((id==null)) throw new ValidationException("Organisation Id should not be null.");
-            else if(id!=organisation.Id) throw new ValidationException("Organisation Id not found.");
+            else if(id!=Id) throw new ValidationException("Organisation Id not found.");
             else return true;
         }
         public bool UpdateValidation(Organisation organisation,int id)

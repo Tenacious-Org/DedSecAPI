@@ -1006,3 +1006,186 @@ WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
 [2022-05-06 09:13:16.522 +05:30 INF] Executed action A5.Controller.OrganisationController.Update (A5) in 1308.7104ms
 [2022-05-06 09:13:16.523 +05:30 INF] Executed endpoint 'A5.Controller.OrganisationController.Update (A5)'
 [2022-05-06 09:13:16.526 +05:30 INF] Request finished HTTP/2 PUT https://localhost:7275/api/Organisation/Update?id=14 application/json 289 - 200 - text/plain;+charset=utf-8 1343.1445ms
+[2022-05-06 10:05:20.252 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - -
+[2022-05-06 10:05:20.255 +05:30 INF] Executing endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-06 10:05:20.257 +05:30 INF] Route matched with {action = "GetAllOrganisation", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllOrganisation() on controller A5.Controller.OrganisationController (A5).
+[2022-05-06 10:05:20.301 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-06 10:05:20.532 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[AddedBy], [o].[AddedOn], [o].[IsActive], [o].[OrganisationName], [o].[UpdatedBy], [o].[UpdatedOn]
+FROM [Organisations] AS [o]
+WHERE [o].[IsActive] = CAST(1 AS bit)
+[2022-05-06 10:05:20.539 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Organisation, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-06 10:05:20.542 +05:30 INF] Executed action A5.Controller.OrganisationController.GetAllOrganisation (A5) in 285.3011ms
+[2022-05-06 10:05:20.543 +05:30 INF] Executed endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-06 10:05:20.543 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - - - 200 - application/json;+charset=utf-8 291.2486ms
+[2022-05-06 10:08:52.027 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Employee/GetAll - -
+[2022-05-06 10:08:52.028 +05:30 INF] Executing endpoint 'A5.Controller.EmployeeController.GetAllEmployees (A5)'
+[2022-05-06 10:08:52.028 +05:30 INF] Route matched with {action = "GetAllEmployees", controller = "Employee"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllEmployees() on controller A5.Controller.EmployeeController (A5).
+[2022-05-06 10:08:52.040 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-06 10:08:52.051 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[ACEID], [e].[AddedBy], [e].[AddedOn], [e].[DOB], [e].[DepartmentId], [e].[DesignationId], [e].[Email], [e].[FirstName], [e].[HRId], [e].[IsActive], [e].[LastName], [e].[OrganisationId], [e].[Password], [e].[ReportingPersonId], [e].[UpdatedBy], [e].[UpdatedOn]
+FROM [Employees] AS [e]
+WHERE [e].[IsActive] = CAST(1 AS bit)
+[2022-05-06 10:08:52.052 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Employee, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-06 10:08:52.055 +05:30 INF] Executed action A5.Controller.EmployeeController.GetAllEmployees (A5) in 26.3003ms
+[2022-05-06 10:08:52.055 +05:30 INF] Executed endpoint 'A5.Controller.EmployeeController.GetAllEmployees (A5)'
+[2022-05-06 10:08:52.081 +05:30 ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The JSON property name for 'A5.Models.Employee.Reportingperson' collides with another property.
+   at System.Text.Json.ThrowHelper.ThrowInvalidOperationException_SerializerPropertyNameConflict(Type type, JsonPropertyInfo jsonPropertyInfo)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo.CacheMember(JsonPropertyInfo jsonPropertyInfo, JsonPropertyDictionary`1 propertyCache, Dictionary`2& ignoredMembers)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo.CacheMember(Type declaringType, Type memberType, MemberInfo memberInfo, Boolean isVirtual, Nullable`1 typeNumberHandling, Boolean& propertyOrderSpecified, Dictionary`2& ignoredMembers)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo..ctor(Type type, JsonConverter converter, Type runtimeType, JsonSerializerOptions options)
+   at System.Text.Json.JsonSerializerOptions.<InitializeForReflectionSerializer>g__CreateJsonTypeInfo|112_0(Type type, JsonSerializerOptions options)
+   at System.Text.Json.JsonSerializerOptions.GetClassFromContextOrCreate(Type type)
+   at System.Text.Json.JsonSerializerOptions.GetOrAddClass(Type type)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo.get_ElementTypeInfo()
+   at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryWrite(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.WriteCore(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.WriteCoreAsObject(Utf8JsonWriter writer, Object value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.JsonSerializer.WriteCore[TValue](JsonConverter jsonConverter, Utf8JsonWriter writer, TValue& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.JsonSerializer.WriteStreamAsync[TValue](Stream utf8Json, TValue value, JsonTypeInfo jsonTypeInfo, CancellationToken cancellationToken)
+   at System.Text.Json.JsonSerializer.WriteStreamAsync[TValue](Stream utf8Json, TValue value, JsonTypeInfo jsonTypeInfo, CancellationToken cancellationToken)
+   at System.Text.Json.JsonSerializer.WriteStreamAsync[TValue](Stream utf8Json, TValue value, JsonTypeInfo jsonTypeInfo, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+[2022-05-06 10:08:52.086 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Employee/GetAll - - - 500 - text/plain;+charset=utf-8 58.0420ms
+[2022-05-06 10:12:15.344 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Organisation/GetById?id=16 - -
+[2022-05-06 10:12:15.344 +05:30 INF] Executing endpoint 'A5.Controller.OrganisationController.GetByOrganisationId (A5)'
+[2022-05-06 10:12:15.345 +05:30 INF] Route matched with {action = "GetByOrganisationId", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetByOrganisationId(Int32) on controller A5.Controller.OrganisationController (A5).
+[2022-05-06 10:12:15.351 +05:30 ERR] log: (Error: Organisation Id not found.)
+[2022-05-06 10:12:15.352 +05:30 INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+[2022-05-06 10:12:15.352 +05:30 INF] Executed action A5.Controller.OrganisationController.GetByOrganisationId (A5) in 6.5967ms
+[2022-05-06 10:12:15.352 +05:30 INF] Executed endpoint 'A5.Controller.OrganisationController.GetByOrganisationId (A5)'
+[2022-05-06 10:12:15.352 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Organisation/GetById?id=16 - - - 400 - text/plain;+charset=utf-8 8.3620ms
+[2022-05-06 10:13:49.165 +05:30 INF] Now listening on: https://localhost:7275
+[2022-05-06 10:13:49.198 +05:30 INF] Now listening on: http://localhost:5050
+[2022-05-06 10:13:49.206 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-06 10:13:49.208 +05:30 INF] Hosting environment: Development
+[2022-05-06 10:13:49.210 +05:30 INF] Content root path: E:\Github\DedSecAPI\A5\
+[2022-05-06 10:13:49.531 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/ - -
+[2022-05-06 10:13:49.599 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/ - - - 404 0 - 72.3813ms
+[2022-05-06 10:13:53.228 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger - -
+[2022-05-06 10:13:53.233 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger - - - 301 0 - 5.0917ms
+[2022-05-06 10:13:53.241 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/index.html - -
+[2022-05-06 10:13:53.295 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/index.html - - - 200 - text/html;charset=utf-8 54.1533ms
+[2022-05-06 10:13:53.314 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui.css - -
+[2022-05-06 10:13:53.315 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui-bundle.js - -
+[2022-05-06 10:13:53.319 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-06 10:13:53.345 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-06 10:13:53.345 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-06 10:13:53.346 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-06 10:13:53.347 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 28.2027ms
+[2022-05-06 10:13:53.347 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui.css - - - 200 143632 text/css 33.3404ms
+[2022-05-06 10:13:53.347 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 31.9770ms
+[2022-05-06 10:13:54.871 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger - -
+[2022-05-06 10:13:54.871 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger - - - 301 0 - 0.2869ms
+[2022-05-06 10:13:54.877 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/index.html - -
+[2022-05-06 10:13:54.878 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/index.html - - - 200 - text/html;charset=utf-8 1.2434ms
+[2022-05-06 10:13:54.897 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui.css - -
+[2022-05-06 10:13:54.898 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui-bundle.js - -
+[2022-05-06 10:13:54.898 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-06 10:13:54.903 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-06 10:13:54.908 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui.css - - - 200 143632 text/css 10.6281ms
+[2022-05-06 10:13:54.916 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-06 10:13:54.916 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 18.3571ms
+[2022-05-06 10:13:54.929 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-06 10:13:54.929 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 31.1875ms
+[2022-05-06 10:13:55.102 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - -
+[2022-05-06 10:13:55.200 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 98.1925ms
+[2022-05-06 10:14:03.283 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Organisation/GetById?id=16 - -
+[2022-05-06 10:14:03.291 +05:30 INF] Executing endpoint 'A5.Controller.OrganisationController.GetByOrganisationId (A5)'
+[2022-05-06 10:14:03.312 +05:30 INF] Route matched with {action = "GetByOrganisationId", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetByOrganisationId(Int32) on controller A5.Controller.OrganisationController (A5).
+[2022-05-06 10:15:30.728 +05:30 ERR] log: (Error: Organisation Id not found.)
+[2022-05-06 10:15:30.730 +05:30 INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+[2022-05-06 10:15:30.737 +05:30 INF] Executed action A5.Controller.OrganisationController.GetByOrganisationId (A5) in 87417.3194ms
+[2022-05-06 10:15:30.745 +05:30 INF] Executed endpoint 'A5.Controller.OrganisationController.GetByOrganisationId (A5)'
+[2022-05-06 10:15:30.747 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Organisation/GetById?id=16 - - - 400 - text/plain;+charset=utf-8 87461.6629ms
+[2022-05-06 10:16:13.522 +05:30 INF] Request starting HTTP/2 PUT https://localhost:7275/api/Organisation/Update?id=16 application/json 293
+[2022-05-06 10:16:13.526 +05:30 INF] Executing endpoint 'A5.Controller.OrganisationController.Update (A5)'
+[2022-05-06 10:16:13.528 +05:30 INF] Route matched with {action = "Update", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Update(A5.Models.Organisation, Int32) on controller A5.Controller.OrganisationController (A5).
+[2022-05-06 10:16:46.162 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-06 10:16:46.840 +05:30 ERR] Failed executing DbCommand (41ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Departments] ([AddedBy], [AddedOn], [DepartmentName], [IsActive], [OrganisationId], [UpdatedBy], [UpdatedOn])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT [Id]
+FROM [Departments]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+[2022-05-06 10:16:46.893 +05:30 ERR] An exception occurred in the database while saving changes for context type 'A5.Data.AppDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Departments_Organisations_OrganisationId". The conflict occurred in database "tenacious", table "dbo.Organisations", column 'Id'.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:3d92186b-df40-4dba-bb92-997e2d1f9f23
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<>c.<SaveChanges>b__104_0(DbContext _, ValueTuple`2 t)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Departments_Organisations_OrganisationId". The conflict occurred in database "tenacious", table "dbo.Organisations", column 'Id'.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+ClientConnectionId:3d92186b-df40-4dba-bb92-997e2d1f9f23
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<>c.<SaveChanges>b__104_0(DbContext _, ValueTuple`2 t)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+[2022-05-06 10:16:46.984 +05:30 INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+[2022-05-06 10:16:46.984 +05:30 INF] Executed action A5.Controller.OrganisationController.Update (A5) in 33454.8196ms
+[2022-05-06 10:16:46.984 +05:30 INF] Executed endpoint 'A5.Controller.OrganisationController.Update (A5)'
+[2022-05-06 10:16:46.992 +05:30 INF] Request finished HTTP/2 PUT https://localhost:7275/api/Organisation/Update?id=16 application/json 293 - 400 - text/plain;+charset=utf-8 33468.7966ms
