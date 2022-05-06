@@ -17,7 +17,7 @@ namespace A5.Data.Service
 
          public IEnumerable<Department> GetDepartmentsByOrganisationId(int id)
          { 
-             Department department = new Department();
+            Department department = new Department();
             department.GetByOrganisationIdValidation(id);
             try
             {

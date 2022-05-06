@@ -53,7 +53,7 @@ namespace A5.Models
         public bool DisableValidation(Organisation organisation,int id)
         {
             if(!(id==null)) throw new ValidationException("Organisation Id should not be null.");
-            else if(id!=Id) throw new ValidationException("Organisation Id not found");
+            else if(id!=organisation.Id) throw new ValidationException("Organisation Id not found");
             else if(organisation==null) throw new ValidationException("Organisation should not be null");
             else if(organisation.IsActive==false) throw new ValidationException("Organisation is already disabled");
             else if(organisation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
