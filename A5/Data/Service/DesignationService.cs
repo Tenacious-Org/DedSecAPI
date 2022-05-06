@@ -16,6 +16,8 @@ namespace A5.Data.Service
 
          public IEnumerable<Designation> GetDesignationsByDepartmentId(int id)
          {
+             Designation designation = new Designation();
+             designation.GetByDepartmentIdValidation(id);
             try
             {
                 return _context.Set<Designation>().Where(nameof =>nameof.DepartmentId == id && nameof.IsActive == true).ToList();

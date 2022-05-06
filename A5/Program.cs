@@ -22,6 +22,7 @@ builder.Services.AddTransient<DepartmentService>();
 builder.Services.AddTransient<DesignationService>();
 builder.Services.AddTransient<AwardTypeService>();
 builder.Services.AddTransient<StatusService>();
+builder.Services.AddTransient<EmployeeService>();
 
 
 

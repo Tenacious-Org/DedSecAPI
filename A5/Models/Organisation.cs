@@ -34,14 +34,15 @@ namespace A5.Models
         }
          public bool ValidateGetById(int id)
         {
-            if(!(id==null)) throw new ValidationException("Organisation Id should not be null.");
-            else if(id!=Id) throw new ValidationException("Organisation Id not found.");
+            Organisation organisation = new Organisation();
+            if((id==null)) throw new ValidationException("Organisation Id should not be null.");
+            else if(id!=organisation.Id) throw new ValidationException("Organisation Id not found.");
             else return true;
         }
         public bool UpdateValidation(Organisation organisation,int id)
         {
-            if(!(id==null)) throw new ValidationException("Organisation Id should not be null.");
-            else if(id!=Id) throw new ValidationException("Organisation Id not found");
+            if((id==null)) throw new ValidationException("Organisation Id should not be null.");
+            else if(id!=organisation.Id) throw new ValidationException("Organisation Id not found");
             else if(organisation==null) throw new ValidationException("Organisation should not be null");
             else if(string.IsNullOrEmpty(organisation.OrganisationName)) throw new ValidationException("Organisation name should not be null or empty");
             else if(!( Regex.IsMatch(organisation.OrganisationName, @"^[a-zA-Z]+$"))) throw new ValidationException("Namse should have only alphabets.No special Characters or numbers are allowed");

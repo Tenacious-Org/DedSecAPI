@@ -5,7 +5,7 @@ using A5.Models;
 
 namespace A5.Data.Base
 {
-    public class EntityBaseRepository<T> : IEntityBaseRepository<T> where T : class, IAudit,IEntityBase,IValidation<T>, new()
+    public class EntityBaseRepository<T> : IEntityBaseRepository<T> where T : class, IAudit, IEntityBase, IValidation<T>, new()
     {
         private readonly AppDbContext _context;
         public EntityBaseRepository( AppDbContext context)

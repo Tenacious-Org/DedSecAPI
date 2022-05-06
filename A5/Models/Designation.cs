@@ -31,14 +31,15 @@ namespace A5.Models
         }
          public bool ValidateGetById(int id)
         {
-            if(!(id==null)) throw new ValidationException("Designation Id should not be null.");
-            else if(id!=Id) throw new ValidationException("Designation Id not found.");
+            Designation designation = new Designation();
+            if((id == null)) throw new ValidationException("Designation Id should not be null.");
+            else if(id!=designation.Id) throw new ValidationException("Designation Id not found.");
             else return true;
         }
          public bool UpdateValidation(Designation designation,int id)
         {
-            if(!(id==null)) throw new ValidationException("Designation Id should not be null.");
-            else if(id!=Id) throw new ValidationException("Designation Id not found");
+            if((id == null)) throw new ValidationException("Designation Id should not be null.");
+            else if(id != designation.Id) throw new ValidationException("Designation Id not found");
             else if(designation==null) throw new ValidationException("Designation should not be null");
             else if(string.IsNullOrEmpty(designation.DesignationName)) throw new ValidationException("Designation name should not be null or empty");
              else if(designation.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
@@ -47,11 +48,17 @@ namespace A5.Models
         }
        public bool DisableValidation(Designation designation,int id)
         {
-            if(!(id==null)) throw new ValidationException("Designation Id should not be null.");
-            else if(id!=Id) throw new ValidationException("Designation Id not found");
+            if(!(id == null)) throw new ValidationException("Designation Id should not be null.");
+            else if(id!=designation.Id) throw new ValidationException("Designation Id not found");
             else if(designation==null) throw new ValidationException("Designation should not be null");
             else if(designation.IsActive==false) throw new ValidationException("Designation is already disabled");
             else if(designation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            else return true;
+        }
+        public bool GetByDepartmentIdValidation(int id)
+        {
+            if(!(id == null)) throw new ValidationException("Department Id should not be null.");
+            else if(id != DepartmentId) throw new ValidationException("Department Id not found");
             else return true;
         }
         
