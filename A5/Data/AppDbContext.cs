@@ -10,14 +10,14 @@ namespace A5.Data
 
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        /*protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Employee>().HasOne<Employee>(r => r.ReportingPerson)
-            .WithMany(e => e.Reportingperson).HasForeignKey(r => r.ReportingPersonId);
+            .WithMany(e => e.Reportingpersons).HasForeignKey(r => r.ReportingPersonId);
 
             modelBuilder.Entity<Employee>().HasOne<Employee>(h => h.HR)
-            .WithMany(e => e.Hr).HasForeignKey(h => h.HRId);
-        }
+            .WithMany(e => e.Hrs).HasForeignKey(h => h.HRId);
+        }*/
 
         public DbSet<AwardType> AwardTypes{ get; set; }
         public DbSet<Employee> Employees {get;set;}

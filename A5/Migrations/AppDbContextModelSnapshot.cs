@@ -52,6 +52,9 @@ namespace A5.Migrations
                     b.Property<int>("HRId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Reason")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -104,6 +107,10 @@ namespace A5.Migrations
                     b.Property<string>("AwardName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("Image")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -279,11 +286,7 @@ namespace A5.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("HRId");
-
                     b.HasIndex("OrganisationId");
-
-                    b.HasIndex("ReportingPersonId");
 
                     b.ToTable("Employees");
                 });
@@ -397,41 +400,18 @@ namespace A5.Migrations
 
             modelBuilder.Entity("A5.Models.Employee", b =>
                 {
-                    b.HasOne("A5.Models.Employee", "HR")
-                        .WithMany("Hr")
-                        .HasForeignKey("HRId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("A5.Models.Organisation", "Organisation")
                         .WithMany()
                         .HasForeignKey("OrganisationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("A5.Models.Employee", "ReportingPerson")
-                        .WithMany("Reportingperson")
-                        .HasForeignKey("ReportingPersonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("HR");
-
                     b.Navigation("Organisation");
-
-                    b.Navigation("ReportingPerson");
                 });
 
             modelBuilder.Entity("A5.Models.Department", b =>
                 {
                     b.Navigation("Designations");
-                });
-
-            modelBuilder.Entity("A5.Models.Employee", b =>
-                {
-                    b.Navigation("Hr");
-
-                    b.Navigation("Reportingperson");
                 });
 
             modelBuilder.Entity("A5.Models.Organisation", b =>

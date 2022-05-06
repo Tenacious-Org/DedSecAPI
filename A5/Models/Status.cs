@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace A5.Models
 {
-    public class Status : IEntityBase
+    public class Status
     {
         public int Id {get; set;}
         public string StatusName {get;set;}

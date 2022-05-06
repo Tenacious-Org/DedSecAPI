@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace A5.Models
 {
-    public class Award : IAudit
+    public class Award
     {
         public int Id {get; set;}
         public int RequesterId {get; set;}
@@ -14,6 +14,7 @@ namespace A5.Models
         public string RejectedReason {get;set;}
         public int HRId {get;set;}
         public string CouponCode {get; set;}
+        public bool IsActive{ get; set; } = true;
         public int StatusId {get;set;}
         public int AddedBy {get; set;}
         public DateTime AddedOn{get; set;}

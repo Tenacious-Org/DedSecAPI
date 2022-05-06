@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using A5.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace A5.Data.Base
 {
@@ -68,13 +69,11 @@ namespace A5.Data.Base
 
         public T GetById(int id)
         {
-            bool result=false;
             var a=new T();
             a.ValidateGetById(id);
             try
             {
-                return _context.Set<T>().FirstOrDefault(nameof =>nameof.Id == id);
-                result=true;
+                return _context.Set<T>().FirstOrDefault(nameof =>nameof.Id == id);              
             }
             catch(Exception exception)
             {

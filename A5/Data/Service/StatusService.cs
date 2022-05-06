@@ -6,9 +6,25 @@ using A5.Data.Service.Interfaces;
 
 namespace A5.Data.Service
 {
-    public class StatusService : IStatusService
-    {
-        
-        
+    public class StatusService {
+        private readonly AppDbContext _context;
+        public StatusService(AppDbContext context) { 
+            _context=context;
+        }
+        public Status GetById(int id)
+        {
+            try
+            {
+                return _context.Set<Status>().FirstOrDefault(nameof =>nameof.Id == id);              
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+            
+        }
     }
+        
+        
+    
 }

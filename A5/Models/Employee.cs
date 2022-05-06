@@ -19,11 +19,11 @@ namespace A5.Models
         public int DepartmentId {get;set;}
         public int DesignationId {get;set;}
         public int ReportingPersonId {get;set;}
-        [ForeignKey("ReportingPersonId"),NotMapped]
-        public Employee ReportingPerson{ get; set; }
+        //[ForeignKey("ReportingPersonId"),NotMapped]
+        //public Employee ReportingPerson{ get; set; }
         public int HRId {get;set;}
-        [ForeignKey("HRId"),NotMapped]
-        public Employee HR{ get; set; }
+        //[ForeignKey("HRId"),NotMapped]
+        //public Employee HR{ get; set; }
         public string  Password {get;set;}
         public bool IsActive {get;set;}
          public int AddedBy {get; set;}
@@ -31,8 +31,8 @@ namespace A5.Models
         public int UpdatedBy {get; set;}
         public DateTime UpdatedOn {get;set;}
         
-        public ICollection<Employee> Reportingperson {get;set;}
-        public ICollection<Employee> Hr {get;set;}
+        //public ICollection<Employee> Reportingpersons {get;set;}
+        //public ICollection<Employee> Hrs {get;set;}
 
 
         public bool CreateValidation(Employee employee)

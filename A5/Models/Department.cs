@@ -21,7 +21,6 @@ namespace A5.Models
 
         [ForeignKey("OrganisationId")][NotMapped]
         public virtual Organisation ? Organisation{ get; set; }
-
         public ICollection<Designation> Designations {get;set;}
 
 

@@ -23,6 +23,7 @@ builder.Services.AddTransient<DesignationService>();
 builder.Services.AddTransient<AwardTypeService>();
 builder.Services.AddTransient<StatusService>();
 builder.Services.AddTransient<EmployeeService>();
+builder.Services.AddTransient<AwardService>();
 
 
 
@@ -39,10 +40,19 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors(builder =>
+{
+    builder
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader();
+});
 
 app.Run();
