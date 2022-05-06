@@ -49,7 +49,7 @@ namespace A5.Models
         {
             Employee employee = new Employee();
             if(!(id==null)) throw new ValidationException("Employee Id should not be null.");
-            else if(id != Id) throw new ValidationException("Employee Id not found.");
+            else if(id != employee.Id) throw new ValidationException("Employee Id not found.");
             else return true;
         }
          public bool UpdateValidation(Employee employee,int id)
