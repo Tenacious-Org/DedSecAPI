@@ -9,7 +9,7 @@ namespace A5.Controller
     public class AwardTypeController : ControllerBase
     {
         private readonly AwardTypeService _awardTypeService;
-
+        private readonly ILogger<AwardTypeController> _logger;
         public AwardTypeController(AwardTypeService awardTypeService)
         {
             _awardTypeService = awardTypeService;
@@ -18,48 +18,91 @@ namespace A5.Controller
         [HttpGet("GetAll")]
         public ActionResult GetAll()
         {
-            var data = _awardTypeService.GetAll();
-            return Ok(data);
+            try{
+                var data = _awardTypeService.GetById(id);
+                 return Ok(data);
+            }
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
         }
 
         [HttpGet("GetById")]
         public ActionResult GetById(int id)
         {
-            var data = _awardTypeService.GetById(id);
-            return Ok(data);
+            try{
+                var data = _awardTypeService.GetById(id);
+                 return Ok(data);
+            }
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
         }
 
         [HttpPost("Create")]
         public ActionResult Create(AwardType awardType)
         {
-            var data = _awardTypeService.Create(awardType);
-            if(data)
-            {
-                return Ok("Created.");
+            try{
+                var data = _awardTypeService.GetById(id);
+                 return Ok(data);
             }
-            return BadRequest();
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
         }
 
         [HttpPut("Update")]
         public ActionResult Update(AwardType awardType,int id)
         {
-            var data =_awardTypeService.Update(awardType,id);
-            if(data)
-            {
-                return Ok("Updated.");
+            try{
+                var data = _awardTypeService.GetById(id);
+                 return Ok(data);
             }
-            return BadRequest();
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
         }
 
         [HttpPut("Disable")]
         public ActionResult Disable(AwardType awardType,int id)
         {
-            var data = _awardTypeService.Disable(awardType,id);
-            if(data)
-            {
-                return Ok("Disabled.");
+            try{
+                var data = _awardTypeService.GetById(id);
+                 return Ok(data);
             }
-            return BadRequest();
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
         }
 
     }
