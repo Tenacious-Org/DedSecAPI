@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using A5.Models;
 using A5.Data.Service;
+using System.ComponentModel.DataAnnotations;
 
 namespace A5.Controller
 {
@@ -19,7 +20,7 @@ namespace A5.Controller
         public ActionResult GetAll()
         {
             try{
-                var data = _awardTypeService.GetById(id);
+                var data = _awardTypeService.GetAll();
                  return Ok(data);
             }
             catch(ValidationException exception)
@@ -55,7 +56,7 @@ namespace A5.Controller
         public ActionResult Create(AwardType awardType)
         {
             try{
-                var data = _awardTypeService.GetById(id);
+                var data = _awardTypeService.Create(awardType);
                  return Ok(data);
             }
             catch(ValidationException exception)
@@ -73,7 +74,7 @@ namespace A5.Controller
         public ActionResult Update(AwardType awardType,int id)
         {
             try{
-                var data = _awardTypeService.GetById(id);
+                var data = _awardTypeService.Update(awardType,id);
                  return Ok(data);
             }
             catch(ValidationException exception)
@@ -91,7 +92,7 @@ namespace A5.Controller
         public ActionResult Disable(AwardType awardType,int id)
         {
             try{
-                var data = _awardTypeService.GetById(id);
+                var data = _awardTypeService.Disable(awardType,id);
                  return Ok(data);
             }
             catch(ValidationException exception)
