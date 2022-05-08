@@ -28,8 +28,8 @@ namespace A5.Models
         public bool IsActive {get;set;}
          public int AddedBy {get; set;}
         public DateTime AddedOn{get; set;}
-        public int UpdatedBy {get; set;}
-        public DateTime UpdatedOn {get;set;}
+        public int ? UpdatedBy {get; set;}
+        public DateTime ? UpdatedOn {get;set;}
         
         //public ICollection<Employee> Reportingpersons {get;set;}
         //public ICollection<Employee> Hrs {get;set;}

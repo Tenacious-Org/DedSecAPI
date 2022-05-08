@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace A5.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220506104905_Dedsec")]
-    partial class Dedsec
+    [Migration("20220508134505_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

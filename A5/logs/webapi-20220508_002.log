@@ -1,0 +1,171 @@
+[2022-05-08 19:14:15.719 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-08 19:14:16.906 +05:30 INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-08 19:14:20.107 +05:30 INF] Executed DbCommand (3,053ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [tenacious] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+END;
+[2022-05-08 19:14:20.344 +05:30 INF] Executed DbCommand (237ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+DROP DATABASE [tenacious];
+[2022-05-08 19:14:49.649 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-08 19:15:04.944 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-08 19:17:13.821 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-08 19:17:15.533 +05:30 INF] Executed DbCommand (1,276ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [tenacious];
+[2022-05-08 19:17:15.733 +05:30 INF] Executed DbCommand (186ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [tenacious] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+[2022-05-08 19:17:15.779 +05:30 INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-08 19:17:16.257 +05:30 INF] Executed DbCommand (220ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+[2022-05-08 19:17:16.268 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-08 19:17:16.342 +05:30 INF] Executed DbCommand (57ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+[2022-05-08 19:17:16.360 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+[2022-05-08 19:17:16.406 +05:30 INF] Applying migration '20220508134505_initial'.
+[2022-05-08 19:17:16.556 +05:30 INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AwardTypes] (
+    [Id] int NOT NULL IDENTITY,
+    [AwardName] nvarchar(max) NOT NULL,
+    [AwardDescription] nvarchar(max) NOT NULL,
+    [Image] varbinary(max) NOT NULL,
+    [IsActive] bit NOT NULL,
+    [AddedBy] int NOT NULL,
+    [AddedOn] datetime2 NOT NULL,
+    [UpdatedBy] int NULL,
+    [UpdatedOn] datetime2 NULL,
+    CONSTRAINT [PK_AwardTypes] PRIMARY KEY ([Id])
+);
+[2022-05-08 19:17:16.561 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Organisations] (
+    [Id] int NOT NULL IDENTITY,
+    [OrganisationName] nvarchar(max) NULL,
+    [IsActive] bit NOT NULL,
+    [AddedBy] int NOT NULL,
+    [AddedOn] datetime2 NOT NULL,
+    [UpdatedBy] int NULL,
+    [UpdatedOn] datetime2 NULL,
+    CONSTRAINT [PK_Organisations] PRIMARY KEY ([Id])
+);
+[2022-05-08 19:17:16.567 +05:30 INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Statuses] (
+    [Id] int NOT NULL IDENTITY,
+    [StatusName] nvarchar(max) NOT NULL,
+    [IsActive] bit NOT NULL,
+    CONSTRAINT [PK_Statuses] PRIMARY KEY ([Id])
+);
+[2022-05-08 19:17:16.574 +05:30 INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Departments] (
+    [Id] int NOT NULL IDENTITY,
+    [DepartmentName] nvarchar(max) NULL,
+    [OrganisationId] int NOT NULL,
+    [IsActive] bit NOT NULL,
+    [AddedBy] int NOT NULL,
+    [AddedOn] datetime2 NOT NULL,
+    [UpdatedBy] int NULL,
+    [UpdatedOn] datetime2 NULL,
+    CONSTRAINT [PK_Departments] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Departments_Organisations_OrganisationId] FOREIGN KEY ([OrganisationId]) REFERENCES [Organisations] ([Id]) ON DELETE CASCADE
+);
+[2022-05-08 19:17:16.583 +05:30 INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Employees] (
+    [Id] int NOT NULL IDENTITY,
+    [ACEID] nvarchar(max) NOT NULL,
+    [FirstName] nvarchar(max) NOT NULL,
+    [LastName] nvarchar(max) NOT NULL,
+    [Email] nvarchar(max) NOT NULL,
+    [DOB] datetime2 NOT NULL,
+    [OrganisationId] int NOT NULL,
+    [DepartmentId] int NOT NULL,
+    [DesignationId] int NOT NULL,
+    [ReportingPersonId] int NOT NULL,
+    [HRId] int NOT NULL,
+    [Password] nvarchar(max) NOT NULL,
+    [IsActive] bit NOT NULL,
+    [AddedBy] int NOT NULL,
+    [AddedOn] datetime2 NOT NULL,
+    [UpdatedBy] int NULL,
+    [UpdatedOn] datetime2 NULL,
+    CONSTRAINT [PK_Employees] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Employees_Organisations_OrganisationId] FOREIGN KEY ([OrganisationId]) REFERENCES [Organisations] ([Id]) ON DELETE CASCADE
+);
+[2022-05-08 19:17:16.591 +05:30 INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Designations] (
+    [Id] int NOT NULL IDENTITY,
+    [DesignationName] nvarchar(max) NULL,
+    [DepartmentId] int NOT NULL,
+    [IsActive] bit NOT NULL,
+    [AddedBy] int NOT NULL,
+    [AddedOn] datetime2 NOT NULL,
+    [UpdatedBy] int NULL,
+    [UpdatedOn] datetime2 NULL,
+    CONSTRAINT [PK_Designations] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Designations_Departments_DepartmentId] FOREIGN KEY ([DepartmentId]) REFERENCES [Departments] ([Id]) ON DELETE CASCADE
+);
+[2022-05-08 19:17:16.600 +05:30 INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Awards] (
+    [Id] int NOT NULL IDENTITY,
+    [RequesterId] int NOT NULL,
+    [AwardeeId] int NOT NULL,
+    [AwardTypeId] int NOT NULL,
+    [ApproverId] int NOT NULL,
+    [Reason] nvarchar(max) NOT NULL,
+    [RejectedReason] nvarchar(max) NULL,
+    [HRId] int NOT NULL,
+    [CouponCode] nvarchar(max) NULL,
+    [IsActive] bit NOT NULL,
+    [StatusId] int NOT NULL,
+    [AddedBy] int NOT NULL,
+    [AddedOn] datetime2 NOT NULL,
+    [UpdatedBy] int NULL,
+    [UpdatedOn] datetime2 NULL,
+    CONSTRAINT [PK_Awards] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Awards_AwardTypes_AwardTypeId] FOREIGN KEY ([AwardTypeId]) REFERENCES [AwardTypes] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Awards_Employees_AwardeeId] FOREIGN KEY ([AwardeeId]) REFERENCES [Employees] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Awards_Statuses_StatusId] FOREIGN KEY ([StatusId]) REFERENCES [Statuses] ([Id]) ON DELETE CASCADE
+);
+[2022-05-08 19:17:16.608 +05:30 INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Comments] (
+    [Id] int NOT NULL IDENTITY,
+    [EmployeeId] int NOT NULL,
+    [AwardId] int NOT NULL,
+    [Comments] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_Comments] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Comments_Awards_AwardId] FOREIGN KEY ([AwardId]) REFERENCES [Awards] ([Id]) ON DELETE CASCADE
+);
+[2022-05-08 19:17:16.613 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Awards_AwardeeId] ON [Awards] ([AwardeeId]);
+[2022-05-08 19:17:16.615 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Awards_AwardTypeId] ON [Awards] ([AwardTypeId]);
+[2022-05-08 19:17:16.617 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Awards_StatusId] ON [Awards] ([StatusId]);
+[2022-05-08 19:17:16.621 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Comments_AwardId] ON [Comments] ([AwardId]);
+[2022-05-08 19:17:16.623 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Departments_OrganisationId] ON [Departments] ([OrganisationId]);
+[2022-05-08 19:17:16.626 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Designations_DepartmentId] ON [Designations] ([DepartmentId]);
+[2022-05-08 19:17:16.628 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Employees_OrganisationId] ON [Employees] ([OrganisationId]);
+[2022-05-08 19:17:16.633 +05:30 INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20220508134505_initial', N'6.0.4');
+[2022-05-08 19:20:34.468 +05:30 INF] Now listening on: https://localhost:7275
+[2022-05-08 19:20:34.532 +05:30 INF] Now listening on: http://localhost:5050
+[2022-05-08 19:20:34.545 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-08 19:20:34.546 +05:30 INF] Hosting environment: Development
+[2022-05-08 19:20:34.546 +05:30 INF] Content root path: D:\Aspire\DedSecAPI\A5\
+[2022-05-08 19:20:35.462 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/ - -
+[2022-05-08 19:20:35.769 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/ - - - 404 0 - 317.1567ms
