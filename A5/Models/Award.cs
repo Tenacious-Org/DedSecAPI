@@ -11,15 +11,15 @@ namespace A5.Models
         public int AwardTypeId {get; set;}
         public int ApproverId {get; set;}
         public string Reason {get;set;}
-        public string RejectedReason {get;set;}
+        public string ? RejectedReason {get;set;}
         public int HRId {get;set;}
-        public string CouponCode {get; set;}
+        public string  ? CouponCode {get; set;}
         public bool IsActive{ get; set; } = true;
         public int StatusId {get;set;}
         public int AddedBy {get; set;}
         public DateTime AddedOn{get; set;}
-        public int UpdatedBy {get; set;}
-        public DateTime UpdatedOn {get;set;}
+        public int ? UpdatedBy {get; set;}
+        public DateTime ?  UpdatedOn {get;set;}
 
         [ForeignKey("AwardeeId")]
         public Employee Employee {get;set;}

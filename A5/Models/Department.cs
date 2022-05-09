@@ -13,8 +13,8 @@ namespace A5.Models
 
         public int AddedBy {get; set;}
         public DateTime AddedOn{get; set;}
-        public int UpdatedBy {get; set;}
-        public DateTime UpdatedOn {get;set;}
+        public int ? UpdatedBy {get; set;}
+        public DateTime ? UpdatedOn {get;set;}
 
         //Relation
         

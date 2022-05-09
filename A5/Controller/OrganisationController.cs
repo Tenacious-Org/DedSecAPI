@@ -67,7 +67,7 @@ namespace A5.Controller
             }
             catch(ValidationException exception)
             {
-                _logger.LogError($"log:{RepositoryName}:{MethodName}",exception,organisation);
+                _logger.LogError($"log: (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)

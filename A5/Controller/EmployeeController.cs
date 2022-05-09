@@ -10,52 +10,84 @@ namespace A5.Controller
     public class EmployeeController : ControllerBase
     {
         private readonly EmployeeService _employeeService;
+        private readonly ILogger<EmployeeController> _logger;
         public EmployeeController(EmployeeService employeeService)
         {
+            _logger = _logger;
             _employeeService = employeeService;
         }
 
          [HttpGet("GetAll")]
         public ActionResult GetAllEmployees()
         {
-            var data = _employeeService.GetAll();
-            return Ok(data);
+            try{
+                var data = _employeeService.GetAll();
+                return Ok(data);
+            }
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
         }
 
 
         [HttpGet("GetById")]
         public ActionResult GetByOrganisationId([FromQuery] int id)
         {
-            var data = _employeeService.GetById(id);
-            return Ok(data);
+            try{
+                var data = _employeeService.GetAll();
+                return Ok(data);
+            }
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
         }
 
         [HttpPost("Create")]
         public ActionResult Create(Employee employee)
         {
-            try
-            {    
-                var data = _employeeService.Create(employee);
+            try{
+                var data = _employeeService.GetAll();
                 return Ok(data);
             }
             catch(ValidationException exception)
             {
-                return BadRequest(exception.Message);
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
             {
-                return BadRequest(exception.Message);
+                return BadRequest($"Error : {exception.Message}");
             }
         }
 
         [HttpPut("Update")]
         public ActionResult Update(Employee employee, int id)
         {
-            var data = _employeeService.Update(employee, id);
-            if(data){
-                return Ok("Updated.");
+            try{
+                var data = _employeeService.GetAll();
+                return Ok(data);
             }
-            return BadRequest();
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
         }
 
         
