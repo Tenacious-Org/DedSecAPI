@@ -26,37 +26,36 @@ namespace A5.Models
 
         public bool CreateValidation(Department department)
         {
-            if(department == null) throw new ValidationException("Department should not be null.");
-            else if(String.IsNullOrEmpty(department.DepartmentName)) throw new ValidationException("Department Name should not be null or Empty.");
-            else if(department.IsActive == false) throw new ValidationException("Department should be Active when it is created.");
-            else if(department.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
-            else if(department.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            if(String.IsNullOrEmpty(DepartmentName)) throw new ValidationException("Department Name should not be null or Empty.");
+            else if(IsActive == false) throw new ValidationException("Department should be Active when it is created.");
+            else if(AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            else if(UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
         public bool ValidateGetById(int id)
         {
             Department department=new Department();
             if(id == null) throw new ValidationException("Department Id should not be null.");
-            else if(id!=department.Id) throw new ValidationException("Department Id not found.");
+            else if(id!=Id) throw new ValidationException("Department Id not found.");
             else return true;
         }
          public bool UpdateValidation(Department department,int id)
         {
             if(id == null) throw new ValidationException("Department Id should not be null.");
-            else if(id != department.Id) throw new ValidationException("Department Id not found");
+            else if(id != Id) throw new ValidationException("Department Id not found");
             else if(department == null) throw new ValidationException("Department should not be null");
-            else if(string.IsNullOrEmpty(department.DepartmentName)) throw new ValidationException("Department name should not be null or empty");
-             else if(department.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
-            else if(department.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            else if(string.IsNullOrEmpty(DepartmentName)) throw new ValidationException("Department name should not be null or empty");
+             else if(AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            else if(UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
         public bool DisableValidation(Department department,int id)
         {
             if(!(id == null)) throw new ValidationException("Department Id should not be null.");
-            else if(id != department.Id) throw new ValidationException("Department Id not found");
+            else if(id !=Id) throw new ValidationException("Department Id not found");
             else if(department==null) throw new ValidationException("Department should not be null");
-            else if(department.IsActive==false) throw new ValidationException("Department is already disabled");
-            else if(department.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            else if(IsActive==false) throw new ValidationException("Department is already disabled");
+            else if(UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
         public bool GetByOrganisationIdValidation(int id)

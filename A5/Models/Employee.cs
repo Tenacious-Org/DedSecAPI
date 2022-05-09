@@ -37,11 +37,10 @@ namespace A5.Models
 
         public bool CreateValidation(Employee employee)
         {
-            if(employee == null) throw new NullReferenceException("Employee should not be null.");
-             else if(string.IsNullOrEmpty(employee.FirstName)) throw new ValidationException("Employee name should not be null or empty");
-            else if(string.IsNullOrEmpty(employee.LastName)) throw new ValidationException("Employee name should not be null or empty");
-             else if(employee.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
-            else if(employee.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+             if(string.IsNullOrEmpty(FirstName)) throw new ValidationException("Employee name should not be null or empty");
+            else if(string.IsNullOrEmpty(LastName)) throw new ValidationException("Employee name should not be null or empty");
+             else if(AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            else if(UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
 
             else return true;
         }
@@ -49,26 +48,24 @@ namespace A5.Models
         {
             Employee employee = new Employee();
             if(!(id==null)) throw new ValidationException("Employee Id should not be null.");
-            else if(id != employee.Id) throw new ValidationException("Employee Id not found.");
+            else if(id != Id) throw new ValidationException("Employee Id not found.");
             else return true;
         }
          public bool UpdateValidation(Employee employee,int id)
         {
             if(id == null) throw new ValidationException("Employee Id should not be null.");
-            else if(id!=employee.Id) throw new ValidationException("Employee Id not found");
-            else if(employee == null) throw new ValidationException("Employee should not be null");
-            else if(string.IsNullOrEmpty(employee.LastName)) throw new ValidationException("Employee name should not be null or empty");
-            else if(employee.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
-            else if(employee.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            else if(id!=Id) throw new ValidationException("Employee Id not found");
+            else if(string.IsNullOrEmpty(LastName)) throw new ValidationException("Employee name should not be null or empty");
+            else if(AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            else if(UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
         public bool DisableValidation(Employee employee,int id)
         {
             if(id == null) throw new ValidationException("Employee Id should not be null.");
-            else if(id != employee.Id) throw new ValidationException("Employee Id not found");
-            else if(employee == null) throw new ValidationException("Employee should not be null");
-            else if(employee.IsActive == false) throw new ValidationException("Employee is already disabled");
-            else if(employee.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            else if(id != Id) throw new ValidationException("Employee Id not found");
+            else if(IsActive == false) throw new ValidationException("Employee is already disabled");
+            else if(UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
         

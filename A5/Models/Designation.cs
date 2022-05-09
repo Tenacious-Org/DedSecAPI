@@ -21,38 +21,35 @@ namespace A5.Models
 
 
         public bool CreateValidation(Designation designation)
-        {
-            if(designation == null) throw new ValidationException("Designation should not be null.");
-            else if(String.IsNullOrEmpty(designation.DesignationName)) throw new ValidationException("Designation Name should not be null or Empty.");
-            else if(designation.IsActive == false) throw new ValidationException("Designation should be Active when it is created.");
-            else if(designation.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
-            else if(designation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+        {           
+            if(String.IsNullOrEmpty(DesignationName)) throw new ValidationException("Designation Name should not be null or Empty.");
+            else if(IsActive == false) throw new ValidationException("Designation should be Active when it is created.");
+            else if(AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            else if(UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
          public bool ValidateGetById(int id)
         {
             Designation designation = new Designation();
             if((id == null)) throw new ValidationException("Designation Id should not be null.");
-            else if(id!=designation.Id) throw new ValidationException("Designation Id not found.");
+            else if(id!=Id) throw new ValidationException("Designation Id not found.");
             else return true;
         }
          public bool UpdateValidation(Designation designation,int id)
         {
             if((id == null)) throw new ValidationException("Designation Id should not be null.");
-            else if(id != designation.Id) throw new ValidationException("Designation Id not found");
-            else if(designation==null) throw new ValidationException("Designation should not be null");
-            else if(string.IsNullOrEmpty(designation.DesignationName)) throw new ValidationException("Designation name should not be null or empty");
-             else if(designation.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
-            else if(designation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            else if(id != Id) throw new ValidationException("Designation Id not found");
+            else if(string.IsNullOrEmpty(DesignationName)) throw new ValidationException("Designation name should not be null or empty");
+             else if(AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            else if(UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
        public bool DisableValidation(Designation designation,int id)
         {
             if(!(id == null)) throw new ValidationException("Designation Id should not be null.");
-            else if(id!=designation.Id) throw new ValidationException("Designation Id not found");
-            else if(designation==null) throw new ValidationException("Designation should not be null");
-            else if(designation.IsActive==false) throw new ValidationException("Designation is already disabled");
-            else if(designation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            else if(id!=Id) throw new ValidationException("Designation Id not found");
+            else if(IsActive==false) throw new ValidationException("Designation is already disabled");
+            else if(UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
         public bool GetByDepartmentIdValidation(int id)
