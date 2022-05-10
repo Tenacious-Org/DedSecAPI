@@ -75,7 +75,7 @@ namespace A5.Controller
         public ActionResult Update(AwardType awardType, int id)
         {
             try{
-                var data = _awardTypeService.Update(awardType,id);
+                var data = _awardTypeService.Update(awardType, id);
                  return Ok(data);
             }
             catch(ValidationException exception)

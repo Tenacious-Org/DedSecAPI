@@ -23,7 +23,7 @@ namespace A5.Models
         
         [InverseProperty("Reportingpersons")]
         public Employee? ReportingPerson{ get; set; }
-        public int ?HRId {get;set;}
+        public int? HRId {get;set;}
         [ForeignKey("HRId"),NotMapped]
         
         [InverseProperty("Hrs")]
@@ -36,10 +36,10 @@ namespace A5.Models
         public DateTime ? UpdatedOn {get;set;}
         
         [InverseProperty("ReportingPerson")]
-        public ICollection<Employee>  Reportingpersons {get;set;}
+        public ICollection<Employee> ? Reportingpersons {get;set;}
         
         [InverseProperty("HR")]
-        public ICollection<Employee>  Hrs {get;set;}
+        public ICollection<Employee> ? Hrs {get;set;}
 
 
         public bool CreateValidation(Employee employee)
