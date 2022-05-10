@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace A5.Migrations
 {
-    public partial class initial : Migration
+    public partial class final : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,7 +17,7 @@ namespace A5.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AwardName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AwardDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Image = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
+                    Image = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     AddedBy = table.Column<int>(type: "int", nullable: false),
                     AddedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -35,7 +35,7 @@ namespace A5.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    OrganisationName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OrganisationName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     AddedBy = table.Column<int>(type: "int", nullable: false),
                     AddedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -67,7 +67,7 @@ namespace A5.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DepartmentName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DepartmentName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     OrganisationId = table.Column<int>(type: "int", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     AddedBy = table.Column<int>(type: "int", nullable: false),
@@ -100,8 +100,8 @@ namespace A5.Migrations
                     OrganisationId = table.Column<int>(type: "int", nullable: false),
                     DepartmentId = table.Column<int>(type: "int", nullable: false),
                     DesignationId = table.Column<int>(type: "int", nullable: false),
-                    ReportingPersonId = table.Column<int>(type: "int", nullable: false),
-                    HRId = table.Column<int>(type: "int", nullable: false),
+                    ReportingPersonId = table.Column<int>(type: "int", nullable: true),
+                    HRId = table.Column<int>(type: "int", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     AddedBy = table.Column<int>(type: "int", nullable: false),
@@ -112,6 +112,16 @@ namespace A5.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Employees", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Employees_Employees_HRId",
+                        column: x => x.HRId,
+                        principalTable: "Employees",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Employees_Employees_ReportingPersonId",
+                        column: x => x.ReportingPersonId,
+                        principalTable: "Employees",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Employees_Organisations_OrganisationId",
                         column: x => x.OrganisationId,
@@ -127,13 +137,12 @@ namespace A5.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DesignationName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DepartmentId = table.Column<int>(type: "int", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     AddedBy = table.Column<int>(type: "int", nullable: false),
                     AddedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedBy = table.Column<int>(type: "int", nullable: true),
-                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
-                    
+                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DepartmentId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -160,7 +169,6 @@ namespace A5.Migrations
                     RejectedReason = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     HRId = table.Column<int>(type: "int", nullable: false),
                     CouponCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     StatusId = table.Column<int>(type: "int", nullable: false),
                     AddedBy = table.Column<int>(type: "int", nullable: false),
                     AddedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -242,9 +250,19 @@ namespace A5.Migrations
                 column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Employees_HRId",
+                table: "Employees",
+                column: "HRId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Employees_OrganisationId",
                 table: "Employees",
                 column: "OrganisationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Employees_ReportingPersonId",
+                table: "Employees",
+                column: "ReportingPersonId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

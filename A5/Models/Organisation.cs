@@ -8,7 +8,7 @@ namespace A5.Models
     public class Organisation : IEntityBase, IAudit, IValidation<Organisation>
     {
         public int Id{ get; set; }
-        public string? OrganisationName{ get; set; }
+        public string OrganisationName{ get; set; }
         public bool IsActive{ get; set; } = true;
 
         public int AddedBy {get; set;}
@@ -24,11 +24,10 @@ namespace A5.Models
 
         public bool CreateValidation(Organisation organisation)
         {
-            if(String.IsNullOrEmpty(OrganisationName)) throw new ValidationException("Organisation Name should not be null or Empty.");
-            else if(!( Regex.IsMatch(OrganisationName, @"^[a-zA-Z]+$"))) throw new ValidationException("Name should have only alphabets.No special Characters or numbers are allowed");
-            else if(IsActive == false) throw new ValidationException("Organisation should be Active when it is created.");
-            else if(AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
-            else if(UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            if(String.IsNullOrEmpty(organisation.OrganisationName)) throw new ValidationException("Organisation Name should not be null or Empty.");
+            else if(!( Regex.IsMatch(organisation.OrganisationName, @"^[a-zA-Z]+$"))) throw new ValidationException("Name should have only alphabets.No special Characters or numbers are allowed");
+            else if(organisation.IsActive == false) throw new ValidationException("Organisation should be Active when it is created.");
+            else if(organisation.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
          public bool ValidateGetById(int id)

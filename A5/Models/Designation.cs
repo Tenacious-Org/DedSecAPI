@@ -6,7 +6,7 @@ namespace A5.Models
     public class Designation : IEntityBase, IAudit, IValidation<Designation>
     {
         public int Id{ get; set; }
-        public string?  DesignationName{ get; set; }
+        public string  DesignationName{ get; set; }
         public bool IsActive{ get; set; } = true;
         public int AddedBy {get; set;}
         public DateTime AddedOn{get; set;}
@@ -25,7 +25,6 @@ namespace A5.Models
             if(String.IsNullOrEmpty(DesignationName)) throw new ValidationException("Designation Name should not be null or Empty.");
             else if(IsActive == false) throw new ValidationException("Designation should be Active when it is created.");
             else if(AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
-            else if(UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
          public bool ValidateGetById(int id)

@@ -24,7 +24,11 @@ builder.Services.AddTransient<AwardTypeService>();
 builder.Services.AddTransient<StatusService>();
 builder.Services.AddTransient<EmployeeService>();
 builder.Services.AddTransient<AwardService>();
-
+builder.Services.AddControllersWithViews()
+    .AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling =
+Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -54,5 +58,7 @@ app.UseCors(builder =>
     .AllowAnyMethod()
     .AllowAnyHeader();
 });
+
+AppDbInitializer.Seed(app);
 
 app.Run();

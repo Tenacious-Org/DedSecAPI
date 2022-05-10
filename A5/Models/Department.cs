@@ -7,7 +7,7 @@ namespace A5.Models
     public class Department : IEntityBase, IAudit, IValidation<Department>
     {
         public int Id{ get; set; }
-        public string? DepartmentName{ get; set; }
+        public string DepartmentName{ get; set; }
         public int OrganisationId{ get; set; }
         public bool IsActive{ get; set; } = true;
 
@@ -26,10 +26,9 @@ namespace A5.Models
 
         public bool CreateValidation(Department department)
         {
-            if(String.IsNullOrEmpty(DepartmentName)) throw new ValidationException("Department Name should not be null or Empty.");
-            else if(IsActive == false) throw new ValidationException("Department should be Active when it is created.");
-            else if(AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
-            else if(UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            if(String.IsNullOrEmpty(department.DepartmentName)) throw new ValidationException("Department Name should not be null or Empty.");
+            else if(department.IsActive == false) throw new ValidationException("Department should be Active when it is created.");
+            else if(department.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
         public bool ValidateGetById(int id)
@@ -61,7 +60,7 @@ namespace A5.Models
         public bool GetByOrganisationIdValidation(int id)
         {
             if(!(id == null)) throw new ValidationException("Organisation Id should not be null.");
-            else if(id != OrganisationId) throw new ValidationException("Organisation Id not found");
+            
             else return true;
         }
  

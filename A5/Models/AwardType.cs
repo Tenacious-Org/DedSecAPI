@@ -14,10 +14,10 @@ namespace A5.Models
         public string AwardName {get;set;}
         [Required]
         public string AwardDescription {get;set;}
-        public byte[] Image { get ; set; }
+        public byte[] ? Image { get ; set; }
        
         [Required]
-        public bool IsActive {get;set;}
+        public bool IsActive {get;set;} = true;
         [Required]
         public int AddedBy {get; set;}
         public DateTime AddedOn{get; set;}
@@ -31,7 +31,6 @@ namespace A5.Models
            if(String.IsNullOrEmpty(AwardName)) throw new ValidationException("Award Name should not be null or Empty.");
             else if(IsActive == false) throw new ValidationException("Award should be Active when it is created.");
             else if(AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero."); 
-            else if(UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
         public bool ValidateGetById(int id)

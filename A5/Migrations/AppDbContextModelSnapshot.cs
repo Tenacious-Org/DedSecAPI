@@ -46,21 +46,16 @@ namespace A5.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CouponCode")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("HRId")
                         .HasColumnType("int");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Reason")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RejectedReason")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("RequesterId")
@@ -69,10 +64,10 @@ namespace A5.Migrations
                     b.Property<int>("StatusId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UpdatedBy")
+                    b.Property<int?>("UpdatedBy")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("UpdatedOn")
+                    b.Property<DateTime?>("UpdatedOn")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -109,16 +104,16 @@ namespace A5.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("Image")
-                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<int>("UpdatedBy")
+                    b.Property<int?>("UpdatedBy")
+                        .IsRequired()
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("UpdatedOn")
+                    b.Property<DateTime?>("UpdatedOn")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -174,10 +169,10 @@ namespace A5.Migrations
                     b.Property<int>("OrganisationId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UpdatedBy")
+                    b.Property<int?>("UpdatedBy")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("UpdatedOn")
+                    b.Property<DateTime?>("UpdatedOn")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -210,10 +205,10 @@ namespace A5.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<int>("UpdatedBy")
+                    b.Property<int?>("UpdatedBy")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("UpdatedOn")
+                    b.Property<DateTime?>("UpdatedOn")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -258,7 +253,7 @@ namespace A5.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("HRId")
+                    b.Property<int?>("HRId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsActive")
@@ -275,18 +270,22 @@ namespace A5.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ReportingPersonId")
+                    b.Property<int?>("ReportingPersonId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UpdatedBy")
+                    b.Property<int?>("UpdatedBy")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("UpdatedOn")
+                    b.Property<DateTime?>("UpdatedOn")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("HRId");
+
                     b.HasIndex("OrganisationId");
+
+                    b.HasIndex("ReportingPersonId");
 
                     b.ToTable("Employees");
                 });
@@ -311,10 +310,10 @@ namespace A5.Migrations
                     b.Property<string>("OrganisationName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UpdatedBy")
+                    b.Property<int?>("UpdatedBy")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("UpdatedOn")
+                    b.Property<DateTime?>("UpdatedOn")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -400,18 +399,37 @@ namespace A5.Migrations
 
             modelBuilder.Entity("A5.Models.Employee", b =>
                 {
+                    b.HasOne("A5.Models.Employee", "HR")
+                        .WithMany("Hrs")
+                        .HasForeignKey("HRId");
+
                     b.HasOne("A5.Models.Organisation", "Organisation")
                         .WithMany()
                         .HasForeignKey("OrganisationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("A5.Models.Employee", "ReportingPerson")
+                        .WithMany("Reportingpersons")
+                        .HasForeignKey("ReportingPersonId");
+
+                    b.Navigation("HR");
+
                     b.Navigation("Organisation");
+
+                    b.Navigation("ReportingPerson");
                 });
 
             modelBuilder.Entity("A5.Models.Department", b =>
                 {
                     b.Navigation("Designations");
+                });
+
+            modelBuilder.Entity("A5.Models.Employee", b =>
+                {
+                    b.Navigation("Hrs");
+
+                    b.Navigation("Reportingpersons");
                 });
 
             modelBuilder.Entity("A5.Models.Organisation", b =>

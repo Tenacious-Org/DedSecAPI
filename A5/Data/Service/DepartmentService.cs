@@ -3,6 +3,7 @@ using System.Linq;
 using A5.Models;
 using A5.Data.Base;
 using A5.Data.Service.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace A5.Data.Service
 {
@@ -17,11 +18,11 @@ namespace A5.Data.Service
 
          public IEnumerable<Department> GetDepartmentsByOrganisationId(int id)
          { 
-            Department department = new Department();
-            department.GetByOrganisationIdValidation(id);
+        
             try
             {
-                return _context.Set<Department>().Where(nameof => nameof.OrganisationId == id && nameof.IsActive == true).ToList();
+                var organisationDetails= _context.Set<Department>().Include(d=>d.Organisation).Where(nameof => nameof.OrganisationId == id && nameof.IsActive == true).ToList();
+                return organisationDetails;
             }
             catch(Exception exception)
             {

@@ -40,7 +40,7 @@ namespace A5.Controller
         public ActionResult GetByOrganisationId([FromQuery] int id)
         {
             try{
-                var data = _employeeService.GetAll();
+                var data = _employeeService.GetById(id);
                 return Ok(data);
             }
             catch(ValidationException exception)
@@ -58,7 +58,7 @@ namespace A5.Controller
         public ActionResult Create(Employee employee)
         {
             try{
-                var data = _employeeService.GetAll();
+                var data = _employeeService.Create(employee);
                 return Ok(data);
             }
             catch(ValidationException exception)
@@ -76,7 +76,7 @@ namespace A5.Controller
         public ActionResult Update(Employee employee, int id)
         {
             try{
-                var data = _employeeService.GetAll();
+                var data = _employeeService.Update(employee, id);
                 return Ok(data);
             }
             catch(ValidationException exception)

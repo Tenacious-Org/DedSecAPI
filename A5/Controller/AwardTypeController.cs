@@ -37,7 +37,8 @@ namespace A5.Controller
         [HttpGet("GetById")]
         public ActionResult GetById(int id)
         {
-            try{
+            try
+            {
                 var data = _awardTypeService.GetById(id);
                  return Ok(data);
             }
@@ -71,7 +72,7 @@ namespace A5.Controller
         }
 
         [HttpPut("Update")]
-        public ActionResult Update(AwardType awardType,int id)
+        public ActionResult Update(AwardType awardType, int id)
         {
             try{
                 var data = _awardTypeService.Update(awardType,id);
@@ -89,7 +90,7 @@ namespace A5.Controller
         }
 
         [HttpPut("Disable")]
-        public ActionResult Disable(AwardType awardType,int id)
+        public ActionResult Disable(AwardType awardType, int id)
         {
             try{
                 var data = _awardTypeService.Disable(awardType,id);
