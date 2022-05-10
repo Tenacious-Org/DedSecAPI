@@ -14,20 +14,20 @@ namespace A5.Models
         public string ? RejectedReason {get;set;}
         public int HRId {get;set;}
         public string  ? CouponCode {get; set;}
-        public int StatusId {get;set;}
+        public int StatusId {get;set;}= 1;
         public int AddedBy {get; set;}
         public DateTime AddedOn{get; set;}
         public int ? UpdatedBy {get; set;}
         public DateTime ?  UpdatedOn {get;set;}
 
         [ForeignKey("AwardeeId")]
-        public Employee Employee {get;set;}
+        public virtual Employee? Employee {get;set;}
 
         [ForeignKey("AwardTypeId")]
-        public AwardType AwardType {get;set;}
+        public virtual AwardType? AwardType {get;set;}
 
         [ForeignKey("StatusId")]
-        public Status Status {get;set;}
+        public virtual Status? Status {get;set;} 
 
     }
 }

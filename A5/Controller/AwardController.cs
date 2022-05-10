@@ -22,13 +22,13 @@ namespace A5.Controller
             var data=_awardService.RaiseRequest(award);
             return Ok(data);
         }
-        [HttpPost("ApproveOrReject")]
+        [HttpPut("ApproveOrReject")]
         public ActionResult ApproveOrReject(Award award,int id,bool result)
         {
-            var data=_awardService.ApproveOrReject(award,id);
+            var data=_awardService.ApproveOrReject(award,id,result);
             return Ok(data);
         }
-        [HttpPost("Publish")]
+        [HttpPut("Publish")]
         public ActionResult Publish(Award award,int id,string couponCode)
         {
             var data=_awardService.Publish(award,id,couponCode);

@@ -30,6 +30,7 @@ namespace A5.Data.Service
         }
         public bool ApproveOrReject(Award award,int id,bool result)
         {
+            
             try{
                 if(id==award.Id)
                 {
@@ -40,7 +41,7 @@ namespace A5.Data.Service
                         return result;
                     }
                     else{
-                         Reject(award,id,reason);
+                         Reject(award,id);
                          result=false;
                          return result;
 
@@ -48,10 +49,11 @@ namespace A5.Data.Service
                   
                 }                         
             }
-            catch(exception exception)
+            catch(Exception exception)
             {
                 throw exception;
             }
+            return result;
         }
         public bool Approve(Award award,int id)
         {
@@ -67,15 +69,15 @@ namespace A5.Data.Service
             {
                 throw exception;
             }
-            return result;
         }
-        public bool Reject(Award award,int id,string reason)
+        
+        public bool Reject(Award award,int id)
         {
              bool result=false;
             try{
                 var reject = _context.Set<Award>().FirstOrDefault(nameof =>nameof.Id == id); 
                 reject.StatusId=3;
-                reject.RejectedReason=reason;
+            
                 _context.SaveChanges();
                  result=true;
                     return result;
