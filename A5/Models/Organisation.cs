@@ -17,7 +17,7 @@ namespace A5.Models
         public DateTime ? UpdatedOn {get;set;}
          
         //navigation 
-        public ICollection<Department> Departments {get;set;}
+        public ICollection<Department> ? Departments {get;set;}
 
 
 

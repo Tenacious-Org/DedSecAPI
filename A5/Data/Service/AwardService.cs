@@ -70,7 +70,7 @@ namespace A5.Data.Service
                 throw exception;
             }
         }
-        
+
         public bool Reject(Award award,int id)
         {
              bool result=false;
@@ -87,8 +87,8 @@ namespace A5.Data.Service
             {
                 throw exception;
             }
-            return result;
         }
+        
         public bool Publish(Award award,int id,string couponCode)
         {
             bool result=false;
