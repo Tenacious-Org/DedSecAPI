@@ -40,21 +40,15 @@ namespace A5.Models
         }
          public bool UpdateValidation(Department department,int id)
         {
-            if(id == null) throw new ValidationException("Department Id should not be null.");
-            else if(id != Id) throw new ValidationException("Department Id not found");
-            else if(department == null) throw new ValidationException("Department should not be null");
-            else if(string.IsNullOrEmpty(DepartmentName)) throw new ValidationException("Department name should not be null or empty");
-             else if(AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
-            else if(UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+             if(string.IsNullOrEmpty(department.DepartmentName)) throw new ValidationException("Department name should not be null or empty");
+             else if(department.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            else if(department.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
         public bool DisableValidation(Department department,int id)
         {
-            if(!(id == null)) throw new ValidationException("Department Id should not be null.");
-            else if(id !=Id) throw new ValidationException("Department Id not found");
-            else if(department==null) throw new ValidationException("Department should not be null");
-            else if(IsActive==false) throw new ValidationException("Department is already disabled");
-            else if(UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            if(department.IsActive==false) throw new ValidationException("Department is already disabled");
+            else if(department.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
         public bool GetByOrganisationIdValidation(int id)
