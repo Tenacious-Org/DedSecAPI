@@ -110,6 +110,32 @@ namespace A5.Data.Service
             }
             return result;
         }
+        public IEnumerable<Award> GetAwardsByStatus(int statusId)
+        {
+          
+            try{
+                return _context.Set<Award>().Where(nameof =>nameof.StatusId == statusId).ToList();
+                
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
+        public IEnumerable<Award> GetMyAwards(int employeeId,int statusId,Employee employee)
+        {
+            try{
+                if(employeeId==employee.EmployeeId)
+                {
+                    return _context.Set<Award>().Where(nameof =>nameof.StatusId == 5).ToList();  
+                }
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
+    
       
     }
 }
