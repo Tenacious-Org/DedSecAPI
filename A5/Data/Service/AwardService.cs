@@ -59,7 +59,7 @@ namespace A5.Data.Service
         {
             bool result = false;
             try{
-                var approve=_context.Set<Award>().FirstOrDefault(nameof=>nameof.Id==id);
+                var approve=_context.Set<Award>().FirstOrDefault(nameof=>nameof.RequesterId==id);
                   approve.StatusId=2;
                   _context.SaveChanges();
                    result=true;
@@ -75,7 +75,7 @@ namespace A5.Data.Service
         {
              bool result=false;
             try{
-                var reject = _context.Set<Award>().FirstOrDefault(nameof =>nameof.Id == id); 
+                var reject = _context.Set<Award>().FirstOrDefault(nameof =>nameof.RequesterId == id); 
                 reject.StatusId=3;
             
                 _context.SaveChanges();
@@ -125,10 +125,10 @@ namespace A5.Data.Service
         public IEnumerable<Award> GetMyAwards(int employeeId,int statusId,Employee employee)
         {
             try{
-                if(employeeId==employee.EmployeeId)
-                {
-                    return _context.Set<Award>().Where(nameof =>nameof.StatusId == 5).ToList();  
-                }
+            
+        
+                    return _context.Set<Award>().Where(nameof =>nameof.StatusId == 5 && employeeId==employee.Id).ToList();  
+                
             }
             catch(Exception exception)
             {
