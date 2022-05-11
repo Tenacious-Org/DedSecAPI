@@ -21,7 +21,7 @@ namespace A5.Models
         [Required]
         public int AddedBy {get; set;}
         public DateTime AddedOn{get; set;}
-        [Required]
+
         public int ? UpdatedBy {get; set;}
         public DateTime ? UpdatedOn {get;set;}
 

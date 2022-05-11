@@ -28,39 +28,12 @@ namespace A5.Data.Service
                 throw exception;
             }
         }
-        public bool ApproveOrReject(Award award,int id,bool result)
-        {
-            
-            try{
-                if(id==award.Id)
-                {
-                    if(result==true)
-                    {
-                        Approve(award,id);
-                        result=true;
-                        return result;
-                    }
-                    else{
-                         Reject(award,id);
-                         result=false;
-                         return result;
-
-                    }
-                  
-                }                         
-            }
-            catch(Exception exception)
-            {
-                throw exception;
-            }
-            return result;
-        }
         public bool Approve(Award award,int id)
         {
             bool result = false;
             try{
-                var approve=_context.Set<Award>().FirstOrDefault(nameof=>nameof.RequesterId==id);
-                  approve.StatusId=2;
+                var approve = _context.Set<Award>().FirstOrDefault(nameof=>nameof.Id==id);
+                  approve.StatusId = 2;
                   _context.SaveChanges();
                    result=true;
                     return result;
@@ -73,14 +46,14 @@ namespace A5.Data.Service
 
         public bool Reject(Award award,int id)
         {
-             bool result=false;
+             bool result = false;
             try{
-                var reject = _context.Set<Award>().FirstOrDefault(nameof =>nameof.RequesterId == id); 
-                reject.StatusId=3;
-            
+                _context.Set<Award>().Update(award);
+                var reject = _context.Set<Award>().FirstOrDefault(nameof=>nameof.Id==id);
+                reject.StatusId = 3;
                 _context.SaveChanges();
-                 result=true;
-                    return result;
+                result=true;
+                return result;
                
             }
             catch(Exception exception)
@@ -89,14 +62,14 @@ namespace A5.Data.Service
             }
         }
         
-        public bool Publish(Award award,int id,string couponCode)
+        public bool Publish(Award award,int id)
         {
             bool result=false;
             try{
-                if(id==award.Id)
+                if(id == award.Id)
                 {
-                    var coupon=_context.Set<Award>().FirstOrDefault(nameof=>nameof.Id==id);
-                    coupon.CouponCode=couponCode;
+                    _context.Set<Award>().Update(award);
+                    var coupon = _context.Set<Award>().FirstOrDefault(nameof=>nameof.Id==id);
                     coupon.StatusId=4;
                     _context.SaveChanges();
                     result=true;
@@ -110,11 +83,11 @@ namespace A5.Data.Service
             }
             return result;
         }
-        public IEnumerable<Award> GetAwardsByStatus(int statusId)
+        public IEnumerable<Award> GetAwardsByStatus(int id)
         {
           
             try{
-                return _context.Set<Award>().Where(nameof =>nameof.StatusId == statusId).ToList();
+                return _context.Set<Award>().Where(nameof =>nameof.StatusId == id).ToList();
                 
             }
             catch(Exception exception)
@@ -122,12 +95,12 @@ namespace A5.Data.Service
                 throw exception;
             }
         }
-        public IEnumerable<Award> GetMyAwards(int employeeId,int statusId,Employee employee)
+        public IEnumerable<Award> GetMyAwards(int employeeId)
         {
             try{
             
         
-                    return _context.Set<Award>().Where(nameof =>nameof.StatusId == 5 && employeeId==employee.Id).ToList();  
+                    return _context.Set<Award>().Where(nameof =>nameof.StatusId == 4 && nameof.AwardeeId==employeeId).ToList();  
                 
             }
             catch(Exception exception)

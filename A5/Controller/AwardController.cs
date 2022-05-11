@@ -22,28 +22,36 @@ namespace A5.Controller
             var data=_awardService.RaiseRequest(award);
             return Ok(data);
         }
-        [HttpPut("ApproveOrReject")]
-        public ActionResult ApproveOrReject(Award award,int id,bool result)
-        {
-            var data=_awardService.ApproveOrReject(award,id,result);
+        [HttpPut("Approve")]
+        public ActionResult Approve(Award award,int id){
+        
+            var data=_awardService.Approve(award,id);
             return Ok(data);
         }
+         [HttpPut("Reject")]
+        public ActionResult Reject(Award award,int id){
+        
+            var data=_awardService.Reject(award,id);
+            return Ok(data);
+        }
+       
+       
         [HttpPut("Publish")]
-        public ActionResult Publish(Award award,int id,string couponCode)
+        public ActionResult Publish(Award award,int id)
         {
-            var data=_awardService.Publish(award,id,couponCode);
+            var data=_awardService.Publish(award,id);
             return Ok(data);
         }
         [HttpGet("GetAwardsByStatus")]
-        public ActionResult GetAwardsByStatus(Award award,int statusId,string couponCode)
+        public ActionResult GetAwardsByStatus(Award award,int statusId)
         {
-            var data=_awardService.Publish(award,statusId,couponCode);
+            var data=_awardService.Publish(award,statusId);
             return Ok(data);
         }
         [HttpGet("GetMyAwards")]
-        public ActionResult GetMyAwards(int employeeId,int statusId,Employee employee)
+        public ActionResult GetMyAwards(int employeeId)
         {
-            var data=_awardService.GetMyAwards(employeeId,statusId,employee);
+            var data=_awardService.GetMyAwards(employeeId);
             return Ok(data);
         }
        
