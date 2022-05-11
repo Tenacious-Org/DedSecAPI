@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Github\\DedSecAPI\\A5\\A5.csproj": {}
+    "D:\\Github\\DedSecAPI\\A5\\A5.csproj": {}
   },
   "projects": {
-    "E:\\Github\\DedSecAPI\\A5\\A5.csproj": {
+    "D:\\Github\\DedSecAPI\\A5\\A5.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Github\\DedSecAPI\\A5\\A5.csproj",
+        "projectUniqueName": "D:\\Github\\DedSecAPI\\A5\\A5.csproj",
         "projectName": "A5",
-        "projectPath": "E:\\Github\\DedSecAPI\\A5\\A5.csproj",
-        "packagesPath": "C:\\Users\\dinesh.boopathy\\.nuget\\packages\\",
-        "outputPath": "E:\\Github\\DedSecAPI\\A5\\obj\\",
+        "projectPath": "D:\\Github\\DedSecAPI\\A5\\A5.csproj",
+        "packagesPath": "C:\\Users\\atsaya.arivunidhi\\.nuget\\packages\\",
+        "outputPath": "D:\\Github\\DedSecAPI\\A5\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\dinesh.boopathy\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\atsaya.arivunidhi\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
