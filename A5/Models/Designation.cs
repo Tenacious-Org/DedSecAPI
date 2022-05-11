@@ -52,7 +52,7 @@ namespace A5.Models
         public bool GetByDepartmentIdValidation(int id)
         {
         
-            if(id != DepartmentId) throw new ValidationException("Department Id not found");
+             if(id != DepartmentId) throw new ValidationException("Department Id not found");
             else return true;
         }
         

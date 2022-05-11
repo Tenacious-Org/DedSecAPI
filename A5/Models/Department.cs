@@ -38,7 +38,7 @@ namespace A5.Models
             else if(id!=Id) throw new ValidationException("Department Id not found.");
             else return true;
         }
-         public bool UpdateValidation(Department department,int id)
+        public bool UpdateValidation(Department department,int id)
         {
              if(string.IsNullOrEmpty(department.DepartmentName)) throw new ValidationException("Department name should not be null or empty");
              else if(department.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
