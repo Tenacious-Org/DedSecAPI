@@ -138,12 +138,14 @@ namespace A5.Data.Service
                     _context.Set<Comment>().Add(comment);
                     _context.SaveChanges();
                     result=true;
+                    return result;
                 }
-                return result;
+              
             }
             catch(Exception exception){
                 throw exception;
             }
+            return result;
         }
     }
 }

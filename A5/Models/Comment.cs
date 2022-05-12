@@ -10,7 +10,7 @@ namespace A5.Models
         public string Comments {get;set;}
 
         [ForeignKey("AwardId")]
-        public virtual Award Award {get;set;}
+        public virtual Award ? Award {get;set;}
 
     }
 }

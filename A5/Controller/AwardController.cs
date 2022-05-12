@@ -70,7 +70,7 @@ namespace A5.Controller
        public ActionResult AddComment(Comment comment,int awardId,int currentUserId)
        {
            var data=_awardService.AddComment(comment,awardId,currentUserId);
-           return Ok();
+           return Ok(data);
        }
     }
 }
