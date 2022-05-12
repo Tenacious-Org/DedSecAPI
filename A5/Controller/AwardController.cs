@@ -43,9 +43,9 @@ namespace A5.Controller
             return Ok(data);
         }
         [HttpGet("GetAwardsByStatus")]
-        public ActionResult GetAwardsByStatus(Award award,int statusId)
+        public ActionResult GetAwardsByStatus(int statusId)
         {
-            var data=_awardService.Publish(award,statusId);
+            var data=_awardService.GetAwardsByStatus(statusId);
             return Ok(data);
         }
         [HttpGet("GetMyAwards")]
@@ -54,6 +54,23 @@ namespace A5.Controller
             var data=_awardService.GetMyAwards(employeeId);
             return Ok(data);
         }
-       
+       [HttpGet("GetRequestedAward")]
+       public ActionResult GetRequestedAward(int employeeId)
+       {
+            var data=_awardService.GetRequestedAward(employeeId);
+            return Ok(data);
+       }
+       [HttpGet("GetAward")]
+       public ActionResult GetAward(int id)
+       {
+           var data=_awardService.GetAward(id);
+           return Ok(data);
+       }
+       [HttpPost("AddComment")]
+       public ActionResult AddComment(Comment comment,int awardId,int currentUserId)
+       {
+           var data=_awardService.AddComment(comment,awardId,currentUserId);
+           return Ok();
+       }
     }
 }

@@ -108,7 +108,42 @@ namespace A5.Data.Service
                 throw exception;
             }
         }
-    
-      
+        public IEnumerable<Award> GetRequestedAward(int employeeId)
+        {
+            try{
+                return _context.Set<Award>().Where(nameof=>nameof.Employee.Id==employeeId && nameof.StatusId==3).ToList();
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
+        public Award GetAward(int id)
+        {
+            try{
+                return _context.Set<Award>().FirstOrDefault(nameof=>nameof.Id==id && nameof.StatusId==2);
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
+        public bool AddComment(Comment comment,int awardId,int currentUserId)
+        {
+            bool result=false;
+            try{
+                Award award=new Award();
+                if(awardId==award.Id)
+                {
+                    _context.Set<Comment>().Add(comment);
+                    _context.SaveChanges();
+                    result=true;
+                }
+                return result;
+            }
+            catch(Exception exception){
+                throw exception;
+            }
+        }
     }
 }
