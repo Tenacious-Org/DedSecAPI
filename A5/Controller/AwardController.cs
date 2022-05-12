@@ -67,9 +67,9 @@ namespace A5.Controller
            return Ok(data);
        }
        [HttpPost("AddComment")]
-       public ActionResult AddComment(Comment comment,int awardId,int currentUserId)
+       public ActionResult AddComment(Comment comment)
        {
-           var data=_awardService.AddComment(comment,awardId,currentUserId);
+           var data=_awardService.AddComment(comment);
            return Ok(data);
        }
     }

@@ -128,12 +128,12 @@ namespace A5.Data.Service
                 throw exception;
             }
         }
-        public bool AddComment(Comment comment,int awardId,int currentUserId)
+        public bool AddComment(Comment comment)
         {
-            bool result=false;
+            bool result = false;
             try{
                 Award award=new Award();
-                if(awardId==award.Id)
+                if(comment.AwardId == award.Id)
                 {
                     _context.Set<Comment>().Add(comment);
                     _context.SaveChanges();
