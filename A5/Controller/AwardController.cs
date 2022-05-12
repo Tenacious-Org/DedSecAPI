@@ -35,15 +35,15 @@ namespace A5.Controller
             return Ok(data);
         }
         [HttpGet("GetAwardsByStatus")]
-        public ActionResult GetAwardsByStatus(Award award,int statusId)
+        public ActionResult GetAwardsByStatus(int statusId)
         {
-            var data=_awardService.Publish(award,statusId);
+            var data=_awardService.GetAwardsByStatus(statusId);
             return Ok(data);
         }
         [HttpGet("GetMyAwards")]
-        public ActionResult GetMyAwards(int employeeId,int statusId)
+        public ActionResult GetMyAwards(int employeeId, Employee employee)
         {
-            var data=_awardService.GetMyAwards(employeeId,statusID);
+            var data=_awardService.GetMyAwards(employeeId, employee);
             return Ok(data);
         }
        

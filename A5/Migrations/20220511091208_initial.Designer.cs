@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace A5.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220510081503_final")]
-    partial class final
+    [Migration("20220511091208_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -112,7 +112,6 @@ namespace A5.Migrations
                         .HasColumnType("bit");
 
                     b.Property<int?>("UpdatedBy")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedOn")
@@ -163,6 +162,7 @@ namespace A5.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DepartmentName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
@@ -202,6 +202,7 @@ namespace A5.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("DesignationName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
@@ -310,6 +311,7 @@ namespace A5.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("OrganisationName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("UpdatedBy")

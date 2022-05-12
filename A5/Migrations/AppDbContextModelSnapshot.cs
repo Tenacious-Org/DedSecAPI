@@ -110,7 +110,6 @@ namespace A5.Migrations
                         .HasColumnType("bit");
 
                     b.Property<int?>("UpdatedBy")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedOn")
@@ -161,6 +160,7 @@ namespace A5.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DepartmentName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
@@ -200,6 +200,7 @@ namespace A5.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("DesignationName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
@@ -308,6 +309,7 @@ namespace A5.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("OrganisationName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("UpdatedBy")

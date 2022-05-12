@@ -13,7 +13,7 @@ namespace A5.Data.Service.Interfaces
         public bool Publish(Award award,int id,string couponCode);
         public bool Reject(Award award, int id);
         public bool Approve(Award award, int id);  
-        public IEnumerable<Award> GetawardsByStatus(int statusId);
-        public IEnumerable<Award> GetMyAwards(int employeeId,int statusId,Employee employee);
+        public IEnumerable<Award> GetAwardsByStatus(int statusId);
+        public IEnumerable<Award> GetMyAwards(int employeeId,Employee employee);
     }
 }

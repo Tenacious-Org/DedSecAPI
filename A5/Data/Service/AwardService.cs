@@ -16,11 +16,11 @@ namespace A5.Data.Service
         }
         public bool RaiseRequest(Award award)
         {
-            bool result=false;
+            bool result = false;
             try{
                 _context.Set<Award>().Add(award);
                 _context.SaveChanges();
-                result=true;
+                result = true;
                 return result;
             }
             catch(Exception exception)
@@ -122,13 +122,12 @@ namespace A5.Data.Service
                 throw exception;
             }
         }
-        public IEnumerable<Award> GetMyAwards(int employeeId,int statusId,Employee employee)
+        public IEnumerable<Award> GetMyAwards(int employeeId, Employee employee)
         {
             try{
-                if(employeeId==employee.EmployeeId)
-                {
-                    return _context.Set<Award>().Where(nameof =>nameof.StatusId == 5).ToList();  
-                }
+                
+                    return _context.Set<Award>().Where(nameof =>nameof.StatusId == 5 && employeeId == employee.Id).ToList();  
+                
             }
             catch(Exception exception)
             {

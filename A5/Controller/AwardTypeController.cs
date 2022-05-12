@@ -71,6 +71,7 @@ namespace A5.Controller
             }
         }
 
+        
         [HttpPut("Update")]
         public ActionResult Update(AwardType awardType, int id)
         {
