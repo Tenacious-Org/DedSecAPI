@@ -49,12 +49,6 @@ namespace A5.Models
             else if(designation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
-        public bool GetByDepartmentIdValidation(int id)
-        {
-        
-             if(id != DepartmentId) throw new ValidationException("Department Id not found");
-            else return true;
-        }
         
     }
 }

@@ -142,6 +142,8 @@ namespace A5.Migrations
 
                     b.HasIndex("AwardId");
 
+                    b.HasIndex("EmployeeId");
+
                     b.ToTable("Comments");
                 });
 
@@ -372,13 +374,21 @@ namespace A5.Migrations
 
             modelBuilder.Entity("A5.Models.Comment", b =>
                 {
-                    b.HasOne("A5.Models.Award", "Award")
+                    b.HasOne("A5.Models.Award", "Awards")
                         .WithMany()
                         .HasForeignKey("AwardId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Award");
+                    b.HasOne("A5.Models.Employee", "Employees")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Awards");
+
+                    b.Navigation("Employees");
                 });
 
             modelBuilder.Entity("A5.Models.Department", b =>

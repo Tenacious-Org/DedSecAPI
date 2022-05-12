@@ -72,5 +72,11 @@ namespace A5.Controller
            var data=_awardService.AddComment(comment);
            return Ok(data);
        }
+       [HttpGet("GetComments")]
+       public ActionResult GetComments(int awardId)
+       {
+           var data=_awardService.GetComments(awardId);
+           return Ok(data);
+       }
     }
 }

@@ -131,15 +131,12 @@ namespace A5.Data.Service
         public bool AddComment(Comment comment)
         {
             bool result = false;
-            try{
-                Award award=new Award();
-                if(comment.AwardId == award.Id)
-                {
+            try{                
                     _context.Set<Comment>().Add(comment);
                     _context.SaveChanges();
                     result=true;
                     return result;
-                }
+                
               
             }
             catch(Exception exception){
@@ -147,5 +144,18 @@ namespace A5.Data.Service
             }
             return result;
         }
+        public IEnumerable<Comment> GetComments(int awardId)
+        {
+           try
+           {
+               return _context.Set<Comment>().Where(nameof=>nameof.AwardId==awardId).ToList();
+           }
+           catch(Exception exception){
+               throw exception;
+           }
+        }
+
+        
+
     }
 }

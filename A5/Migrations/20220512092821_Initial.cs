@@ -204,9 +204,9 @@ namespace A5.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Comments = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EmployeeId = table.Column<int>(type: "int", nullable: false),
-                    AwardId = table.Column<int>(type: "int", nullable: false),
-                    Comments = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    AwardId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -216,7 +216,13 @@ namespace A5.Migrations
                         column: x => x.AwardId,
                         principalTable: "Awards",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
+                    table.ForeignKey(
+                        name: "FK_Comments_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "Employees",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(
@@ -238,6 +244,11 @@ namespace A5.Migrations
                 name: "IX_Comments_AwardId",
                 table: "Comments",
                 column: "AwardId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_EmployeeId",
+                table: "Comments",
+                column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Departments_OrganisationId",

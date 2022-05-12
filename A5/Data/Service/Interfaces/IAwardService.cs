@@ -18,5 +18,6 @@ namespace A5.Data.Service.Interfaces
         public IEnumerable<Award> GetRequestedAward(int employeeId);
         public Award GetAward(int id);
         public bool AddComment(Comment comment);
+        public IEnumerable<Comment> GetComments(int awardId);
     }
 }

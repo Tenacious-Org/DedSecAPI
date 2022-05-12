@@ -37,7 +37,10 @@ namespace A5.Data.Base
         public bool Disable(T entity, int id)
         {
             bool result = false;
-            if(entity != null && entity.Id == id)
+            var a=new T();
+            a.DisableValidation(entity,id);
+            try{
+                if(entity != null && entity.Id == id)
             {
                 var disable = _context.Set<T>().FirstOrDefault(nameof =>nameof.Id == id);
                 disable.IsActive = false;
@@ -45,6 +48,13 @@ namespace A5.Data.Base
                 result = true;
             }
             return result;
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+           
+            
         }
 
         public bool Update(T entity, int id)

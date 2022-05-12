@@ -10,11 +10,11 @@ namespace A5.Models
         public int EmployeeId {get;set;}
 
         [ForeignKey("EmployeeId")]
-        public virtual Employee ? Employee{ get; set; }
+        public virtual Employee ? Employees{ get; set; }
 
         public int AwardId {get; set;}
         [ForeignKey("AwardId")]
-        public virtual Award ? Award {get;set;}
+        public virtual Award ? Awards {get;set;}
 
     }
 }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace A5.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220512083611_Updated")]
-    partial class Updated
+    [Migration("20220512092821_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -143,6 +143,8 @@ namespace A5.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AwardId");
+
+                    b.HasIndex("EmployeeId");
 
                     b.ToTable("Comments");
                 });
@@ -374,13 +376,21 @@ namespace A5.Migrations
 
             modelBuilder.Entity("A5.Models.Comment", b =>
                 {
-                    b.HasOne("A5.Models.Award", "Award")
+                    b.HasOne("A5.Models.Award", "Awards")
                         .WithMany()
                         .HasForeignKey("AwardId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Award");
+                    b.HasOne("A5.Models.Employee", "Employees")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Awards");
+
+                    b.Navigation("Employees");
                 });
 
             modelBuilder.Entity("A5.Models.Department", b =>

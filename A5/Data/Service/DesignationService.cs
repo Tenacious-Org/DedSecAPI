@@ -3,6 +3,7 @@ using System.Linq;
 using A5.Models;
 using A5.Data.Base;
 using A5.Data.Service.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace A5.Data.Service
 {
@@ -16,11 +17,19 @@ namespace A5.Data.Service
 
          public IEnumerable<Designation> GetDesignationsByDepartmentId(int id)
          {
-             Designation designation = new Designation();
-             designation.GetByDepartmentIdValidation(id);
+             
             try
             {
-                return _context.Set<Designation>().Where(nameof =>nameof.DepartmentId == id && nameof.IsActive == true).ToList();
+                var data =  _context.Set<Designation>().Where(nameof =>nameof.DepartmentId == id && nameof.IsActive == true).ToList();
+                var count = data.Count();
+                if(count != 0)
+                {
+                    return data;
+                }
+                else
+                {
+                    throw new ValidationException(" Department not Found!! ");
+                }
             }
             catch(Exception exception)
             {
