@@ -11,9 +11,10 @@ namespace A5.Controller
     {
         private readonly AwardTypeService _awardTypeService;
         private readonly ILogger<AwardTypeController> _logger;
-        public AwardTypeController(AwardTypeService awardTypeService)
+        public AwardTypeController( ILogger<AwardTypeController> logger,AwardTypeService awardTypeService)
         {
             _awardTypeService = awardTypeService;
+            _logger=logger;
         }
 
         [HttpGet("GetAll")]

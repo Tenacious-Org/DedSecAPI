@@ -83,31 +83,21 @@ namespace A5.Data.Service
             }
             return result;
         }
-        public IEnumerable<Award> GetAwardsByStatus(int id)
+        public IEnumerable<Award> GetAwards(int id ,int ? employeeId)
         {
           
             try{
+                if(employeeId==null)
                 return _context.Set<Award>().Where(nameof =>nameof.StatusId == id).ToList();
-                
+                else 
+                return _context.Set<Award>().Where(nameof =>nameof.StatusId == id && nameof.AwardeeId==employeeId).ToList();  
             }
             catch(Exception exception)
             {
                 throw exception;
             }
         }
-        public IEnumerable<Award> GetMyAwards(int employeeId)
-        {
-            try{
-            
         
-                    return _context.Set<Award>().Where(nameof =>nameof.StatusId == 4 && nameof.AwardeeId==employeeId).ToList();  
-                
-            }
-            catch(Exception exception)
-            {
-                throw exception;
-            }
-        }
         public IEnumerable<Award> GetRequestedAward(int employeeId)
         {
             try{
@@ -142,7 +132,7 @@ namespace A5.Data.Service
             catch(Exception exception){
                 throw exception;
             }
-            return result;
+           
         }
         public IEnumerable<Comment> GetComments(int awardId)
         {

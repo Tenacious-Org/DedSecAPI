@@ -9,74 +9,200 @@ namespace A5.Controller
     [ApiController]
     public class AwardController : ControllerBase
     {
-        
+        private readonly ILogger<AwardService> _logger;
         private readonly AwardService _awardService;
 
-        public AwardController(AwardService awardService)
+        public AwardController(ILogger<AwardService> logger,AwardService awardService)
         {
             _awardService=awardService;
+            _logger=logger;
         }
         [HttpPost("RaiseRequest")]
         public ActionResult RaiseRequest(Award award)
         {
-            var data=_awardService.RaiseRequest(award);
-            return Ok(data);
+            try{
+                var data=_awardService.RaiseRequest(award);
+                return Ok(data);
+            }           
+             catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            
         }
         [HttpPut("Approve")]
         public ActionResult Approve(Award award,int id){
         
-            var data=_awardService.Approve(award,id);
-            return Ok(data);
+            
+            try{
+                var data=_awardService.Approve(award,id);
+                return Ok(data);
+            }
+             catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+
         }
          [HttpPut("Reject")]
         public ActionResult Reject(Award award,int id){
         
-            var data=_awardService.Reject(award,id);
-            return Ok(data);
+            
+            try{
+                var data=_awardService.Reject(award,id);
+                return Ok(data);
+            }
+             catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+
         }
        
        
         [HttpPut("Publish")]
         public ActionResult Publish(Award award,int id)
         {
-            var data=_awardService.Publish(award,id);
-            return Ok(data);
+            
+            try{
+                var data=_awardService.Publish(award,id);
+                return Ok(data);
+            }
+             catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+
         }
-        [HttpGet("GetAwardsByStatus")]
-        public ActionResult GetAwardsByStatus(int statusId)
-        {
-            var data=_awardService.GetAwardsByStatus(statusId);
-            return Ok(data);
-        }
-        [HttpGet("GetMyAwards")]
-        public ActionResult GetMyAwards(int employeeId)
-        {
-            var data=_awardService.GetMyAwards(employeeId);
-            return Ok(data);
-        }
+        
        [HttpGet("GetRequestedAward")]
        public ActionResult GetRequestedAward(int employeeId)
        {
-            var data=_awardService.GetRequestedAward(employeeId);
-            return Ok(data);
+            
+            try{
+                var data=_awardService.GetRequestedAward(employeeId);
+                return Ok(data);
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+
        }
+        [HttpGet("GetAwards")]
+       public ActionResult GetAwards(int statusId,int employeeId)
+       {
+           
+           try{
+                var data=_awardService.GetAwards(statusId,employeeId);
+                return Ok(data);
+            }
+             catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
+
+       }
+
        [HttpGet("GetAward")]
        public ActionResult GetAward(int id)
        {
-           var data=_awardService.GetAward(id);
-           return Ok(data);
+           
+           try{
+                var data=_awardService.GetAward(id);
+                return Ok(data);
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+
        }
        [HttpPost("AddComment")]
        public ActionResult AddComment(Comment comment)
        {
-           var data=_awardService.AddComment(comment);
-           return Ok(data);
+           
+           try{
+               var data=_awardService.AddComment(comment);
+                return Ok(data);               
+            }
+             catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+
        }
        [HttpGet("GetComments")]
        public ActionResult GetComments(int awardId)
        {
-           var data=_awardService.GetComments(awardId);
-           return Ok(data);
+           
+           try{
+                var data=_awardService.GetComments(awardId);
+                return Ok(data);
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+
        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

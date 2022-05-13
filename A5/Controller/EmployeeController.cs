@@ -11,9 +11,9 @@ namespace A5.Controller
     {
         private readonly EmployeeService _employeeService;
         private readonly ILogger<EmployeeController> _logger;
-        public EmployeeController(EmployeeService employeeService)
+        public EmployeeController(ILogger<EmployeeController> logger,EmployeeService employeeService)
         {
-            _logger = _logger;
+            _logger = logger;
             _employeeService = employeeService;
         }
 
