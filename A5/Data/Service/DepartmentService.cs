@@ -21,7 +21,7 @@ namespace A5.Data.Service
         
             try
             {
-                var organisationDetails= _context.Set<Department>().Where(nameof => nameof.OrganisationId == id && nameof.IsActive == true).ToList();
+                var organisationDetails = _context.Set<Department>().Where(nameof => nameof.OrganisationId == id && nameof.IsActive == true).ToList();
                 return organisationDetails;
             }
             catch(Exception exception)

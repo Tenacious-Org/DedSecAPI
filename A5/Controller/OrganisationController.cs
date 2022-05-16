@@ -63,7 +63,7 @@ namespace A5.Controller
             try
             {    
                 var data = _organisationService.Create(organisation);
-                return Ok(data);
+                return Ok("Organisation Created.");
             }
             catch(ValidationException exception)
             {
@@ -81,7 +81,7 @@ namespace A5.Controller
         {
             try{
                 var data = _organisationService.Update(organisation, id);           
-                return Ok("Updated.");          
+                return Ok("Organisation Updated.");          
             }        
             catch(ValidationException exception)
             {
@@ -99,7 +99,7 @@ namespace A5.Controller
         {
             try{
                 var data = _organisationService.Disable(organisation, id);          
-                return Ok("Disabled.");
+                return Ok("Organisation Disabled.");
             }           
             catch(ValidationException exception)
             {
