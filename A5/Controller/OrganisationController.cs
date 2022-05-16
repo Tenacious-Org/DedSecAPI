@@ -97,7 +97,8 @@ namespace A5.Controller
         [HttpPut("Disable")]
         public ActionResult Disable(Organisation organisation, int id)
         {
-            try{
+            try
+            {
                 var data = _organisationService.Disable(organisation, id);          
                 return Ok("Organisation Disabled.");
             }           
