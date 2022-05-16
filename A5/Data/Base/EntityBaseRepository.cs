@@ -9,7 +9,7 @@ namespace A5.Data.Base
     public class EntityBaseRepository<T> : IEntityBaseRepository<T> where T : class, IAudit, IEntityBase, IValidation<T>, new()
     {
         private readonly AppDbContext _context;
-        public EntityBaseRepository( AppDbContext context)
+        public EntityBaseRepository( AppDbContext context )
         {
             _context = context;
         }
