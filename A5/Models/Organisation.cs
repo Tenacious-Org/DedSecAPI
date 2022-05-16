@@ -33,8 +33,7 @@ namespace A5.Models
          public bool ValidateGetById(int id)
         {
             Organisation organisation = new Organisation();
-            if((id==null)) throw new ValidationException("Organisation Id should not be null.");
-            else if(id!=Id) throw new ValidationException("Organisation Id not found.");
+            if((id == null)) throw new ValidationException("Organisation Id should not be null.");
             else return true;
         }
         public bool UpdateValidation(Organisation organisation,int id)
@@ -47,7 +46,8 @@ namespace A5.Models
 
         public bool DisableValidation(Organisation organisation,int id)
         {
-            if(organisation.IsActive==false) throw new ValidationException("Organisation is already disabled");
+            if(id <= 0) throw new ValidationException("Organisation Id must be greater than Zero.");
+            else if(organisation.IsActive == false) throw new ValidationException("Organisation is already disabled");
             else if(organisation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
