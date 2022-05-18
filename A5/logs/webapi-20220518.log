@@ -18,3 +18,131 @@ ALTER TABLE [Employees] ADD [Image] varbinary(max) NULL;
 [2022-05-18 09:06:28.946 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
 VALUES (N'20220518033545_EmployeeImage', N'6.0.4');
+[2022-05-18 10:49:19.245 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-18 10:49:21.722 +05:30 INF] Executed DbCommand (38ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-18 10:49:22.353 +05:30 INF] Executed DbCommand (583ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+[2022-05-18 10:49:27.191 +05:30 INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Organisations] AS [o]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-18 10:49:27.215 +05:30 INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Departments] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-18 10:49:27.235 +05:30 INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Designations] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-18 10:49:27.254 +05:30 INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Employees] AS [e]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-18 10:49:27.286 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AwardTypes] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-18 10:49:27.447 +05:30 INF] Executed DbCommand (51ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Statuses] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-18 10:49:27.517 +05:30 INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Awards] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-18 10:49:27.735 +05:30 INF] User profile is available. Using 'C:\Users\jeeva\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-05-18 10:49:28.835 +05:30 INF] Now listening on: https://localhost:7275
+[2022-05-18 10:49:28.839 +05:30 INF] Now listening on: http://localhost:5050
+[2022-05-18 10:49:28.850 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-18 10:49:28.852 +05:30 INF] Hosting environment: Development
+[2022-05-18 10:49:28.855 +05:30 INF] Content root path: D:\Github\DedSecAPI\A5\
+[2022-05-18 10:49:29.564 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/ - -
+[2022-05-18 10:49:29.648 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/ - - - 404 0 - 94.5629ms
+[2022-05-18 10:49:35.490 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Employee/GetAll - -
+[2022-05-18 10:49:35.501 +05:30 INF] CORS policy execution successful.
+[2022-05-18 10:49:35.511 +05:30 INF] Executing endpoint 'A5.Controller.EmployeeController.GetAllEmployees (A5)'
+[2022-05-18 10:49:35.545 +05:30 INF] Route matched with {action = "GetAllEmployees", controller = "Employee"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllEmployees() on controller A5.Controller.EmployeeController (A5).
+[2022-05-18 10:49:35.562 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-18 10:49:36.213 +05:30 INF] Executed DbCommand (457ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[ACEID], [e].[AddedBy], [e].[AddedOn], [e].[DOB], [e].[DepartmentId], [e].[DesignationId], [e].[Email], [e].[FirstName], [e].[HRId], [e].[Image], [e].[IsActive], [e].[LastName], [e].[OrganisationId], [e].[Password], [e].[ReportingPersonId], [e].[UpdatedBy], [e].[UpdatedOn]
+FROM [Employees] AS [e]
+WHERE [e].[IsActive] = CAST(1 AS bit)
+[2022-05-18 10:49:36.573 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Employee, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-18 10:49:37.440 +05:30 INF] Executed action A5.Controller.EmployeeController.GetAllEmployees (A5) in 1878.6082ms
+[2022-05-18 10:49:37.441 +05:30 INF] Executed endpoint 'A5.Controller.EmployeeController.GetAllEmployees (A5)'
+[2022-05-18 10:49:37.457 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Employee/GetAll - - - 200 75213 application/json;+charset=utf-8 1966.8794ms
+[2022-05-18 10:50:18.330 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Employee/GetAll - -
+[2022-05-18 10:50:18.338 +05:30 INF] CORS policy execution successful.
+[2022-05-18 10:50:18.338 +05:30 INF] Executing endpoint 'A5.Controller.EmployeeController.GetAllEmployees (A5)'
+[2022-05-18 10:50:18.339 +05:30 INF] Route matched with {action = "GetAllEmployees", controller = "Employee"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllEmployees() on controller A5.Controller.EmployeeController (A5).
+[2022-05-18 10:50:18.467 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-18 10:50:18.482 +05:30 INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[ACEID], [e].[AddedBy], [e].[AddedOn], [e].[DOB], [e].[DepartmentId], [e].[DesignationId], [e].[Email], [e].[FirstName], [e].[HRId], [e].[Image], [e].[IsActive], [e].[LastName], [e].[OrganisationId], [e].[Password], [e].[ReportingPersonId], [e].[UpdatedBy], [e].[UpdatedOn]
+FROM [Employees] AS [e]
+WHERE [e].[IsActive] = CAST(1 AS bit)
+[2022-05-18 10:50:18.484 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Employee, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-18 10:50:18.499 +05:30 INF] Executed action A5.Controller.EmployeeController.GetAllEmployees (A5) in 159.8857ms
+[2022-05-18 10:50:18.499 +05:30 INF] Executed endpoint 'A5.Controller.EmployeeController.GetAllEmployees (A5)'
+[2022-05-18 10:50:18.500 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Employee/GetAll - - - 200 75213 application/json;+charset=utf-8 170.7627ms
+[2022-05-18 10:51:27.041 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/index.html - -
+[2022-05-18 10:51:27.092 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/index.html - - - 200 - text/html;charset=utf-8 50.6104ms
+[2022-05-18 10:51:27.107 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-18 10:51:27.107 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui-bundle.js - -
+[2022-05-18 10:51:27.107 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui.css - -
+[2022-05-18 10:51:27.116 +05:30 INF] The file /swagger-ui.css was not modified
+[2022-05-18 10:51:27.116 +05:30 INF] The file /swagger-ui-standalone-preset.js was not modified
+[2022-05-18 10:51:27.116 +05:30 INF] The file /swagger-ui-bundle.js was not modified
+[2022-05-18 10:51:27.117 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui-standalone-preset.js - - - 304 - application/javascript 9.4534ms
+[2022-05-18 10:51:27.117 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui-bundle.js - - - 304 - application/javascript 9.4090ms
+[2022-05-18 10:51:27.117 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui.css - - - 304 - text/css 9.3562ms
+[2022-05-18 10:51:27.807 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - -
+[2022-05-18 10:51:27.900 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 92.5054ms
+[2022-05-18 11:10:57.509 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Employee/GetAll - -
+[2022-05-18 11:10:57.511 +05:30 INF] CORS policy execution successful.
+[2022-05-18 11:10:57.512 +05:30 INF] Executing endpoint 'A5.Controller.EmployeeController.GetAllEmployees (A5)'
+[2022-05-18 11:10:57.513 +05:30 INF] Route matched with {action = "GetAllEmployees", controller = "Employee"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllEmployees() on controller A5.Controller.EmployeeController (A5).
+[2022-05-18 11:10:57.525 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-18 11:10:57.540 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[ACEID], [e].[AddedBy], [e].[AddedOn], [e].[DOB], [e].[DepartmentId], [e].[DesignationId], [e].[Email], [e].[FirstName], [e].[HRId], [e].[Image], [e].[IsActive], [e].[LastName], [e].[OrganisationId], [e].[Password], [e].[ReportingPersonId], [e].[UpdatedBy], [e].[UpdatedOn]
+FROM [Employees] AS [e]
+WHERE [e].[IsActive] = CAST(1 AS bit)
+[2022-05-18 11:10:57.543 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Employee, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-18 11:10:57.558 +05:30 INF] Executed action A5.Controller.EmployeeController.GetAllEmployees (A5) in 45.5151ms
+[2022-05-18 11:10:57.558 +05:30 INF] Executed endpoint 'A5.Controller.EmployeeController.GetAllEmployees (A5)'
+[2022-05-18 11:10:57.559 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Employee/GetAll - - - 200 75213 application/json;+charset=utf-8 51.2279ms
