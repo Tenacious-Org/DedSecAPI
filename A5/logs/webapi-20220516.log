@@ -189,3 +189,37 @@ SELECT @@ROWCOUNT;
 [2022-05-16 22:08:31.074 +05:30 INF] Executed action A5.Controller.OrganisationController.Update (A5) in 25.4293ms
 [2022-05-16 22:08:31.074 +05:30 INF] Executed endpoint 'A5.Controller.OrganisationController.Update (A5)'
 [2022-05-16 22:08:31.074 +05:30 INF] Request finished HTTP/2 PUT https://localhost:7275/api/Organisation/Update?id=4 application/json-patch+json 189 - 200 - text/plain;+charset=utf-8 25.9272ms
+[2022-05-16 22:25:27.896 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/index.html - -
+[2022-05-16 22:25:27.897 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/index.html - - - 200 - text/html;charset=utf-8 0.6591ms
+[2022-05-16 22:25:28.173 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - -
+[2022-05-16 22:25:28.185 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 12.6371ms
+[2022-05-16 22:26:23.851 +05:30 INF] Request starting HTTP/2 PUT https://localhost:7275/api/Organisation/Disable?id=4 application/json-patch+json 189
+[2022-05-16 22:26:23.851 +05:30 INF] CORS policy execution successful.
+[2022-05-16 22:26:23.852 +05:30 INF] Executing endpoint 'A5.Controller.OrganisationController.Disable (A5)'
+[2022-05-16 22:26:23.853 +05:30 INF] Route matched with {action = "Disable", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Disable(A5.Models.Organisation, Int32) on controller A5.Controller.OrganisationController (A5).
+[2022-05-16 22:26:23.857 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-16 22:26:23.863 +05:30 INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [o].[Id], [o].[AddedBy], [o].[AddedOn], [o].[IsActive], [o].[OrganisationName], [o].[UpdatedBy], [o].[UpdatedOn]
+FROM [Organisations] AS [o]
+WHERE [o].[Id] = @__id_0
+[2022-05-16 22:26:24.085 +05:30 INF] Executed DbCommand (216ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Organisations] SET [IsActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;
+[2022-05-16 22:26:24.086 +05:30 INF] Executing OkObjectResult, writing value of type 'System.String'.
+[2022-05-16 22:26:24.086 +05:30 INF] Executed action A5.Controller.OrganisationController.Disable (A5) in 232.9817ms
+[2022-05-16 22:26:24.086 +05:30 INF] Executed endpoint 'A5.Controller.OrganisationController.Disable (A5)'
+[2022-05-16 22:26:24.086 +05:30 INF] Request finished HTTP/2 PUT https://localhost:7275/api/Organisation/Disable?id=4 application/json-patch+json 189 - 200 - text/plain;+charset=utf-8 234.7901ms
+[2022-05-16 22:26:32.380 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - -
+[2022-05-16 22:26:32.380 +05:30 INF] Executing endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-16 22:26:32.380 +05:30 INF] Route matched with {action = "GetAllOrganisation", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllOrganisation() on controller A5.Controller.OrganisationController (A5).
+[2022-05-16 22:26:32.381 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-16 22:26:32.392 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[AddedBy], [o].[AddedOn], [o].[IsActive], [o].[OrganisationName], [o].[UpdatedBy], [o].[UpdatedOn]
+FROM [Organisations] AS [o]
+WHERE [o].[IsActive] = CAST(1 AS bit)
+[2022-05-16 22:26:32.392 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Organisation, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-16 22:26:32.393 +05:30 INF] Executed action A5.Controller.OrganisationController.GetAllOrganisation (A5) in 12.1589ms
+[2022-05-16 22:26:32.393 +05:30 INF] Executed endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-16 22:26:32.393 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - - - 200 549 application/json;+charset=utf-8 12.5901ms
