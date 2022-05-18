@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Github\\DedSecAPI\\A5\\A5.csproj": {}
+    "D:\\GitHub\\DedSecAPI\\A5\\A5.csproj": {}
   },
   "projects": {
-    "D:\\Github\\DedSecAPI\\A5\\A5.csproj": {
+    "D:\\GitHub\\DedSecAPI\\A5\\A5.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Github\\DedSecAPI\\A5\\A5.csproj",
+        "projectUniqueName": "D:\\GitHub\\DedSecAPI\\A5\\A5.csproj",
         "projectName": "A5",
-        "projectPath": "D:\\Github\\DedSecAPI\\A5\\A5.csproj",
-        "packagesPath": "C:\\Users\\atsaya.arivunidhi\\.nuget\\packages\\",
-        "outputPath": "D:\\Github\\DedSecAPI\\A5\\obj\\",
+        "projectPath": "D:\\GitHub\\DedSecAPI\\A5\\A5.csproj",
+        "packagesPath": "C:\\Users\\ELCOT\\.nuget\\packages\\",
+        "outputPath": "D:\\GitHub\\DedSecAPI\\A5\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\atsaya.arivunidhi\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\ELCOT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -105,7 +107,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }
