@@ -4949,19 +4949,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\atsaya.arivunidhi\\.nuget\\packages\\": {}
+    "C:\\Users\\VIDHYAPRIYA\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Github\\DedSecAPI\\A5\\A5.csproj",
+      "projectUniqueName": "F:\\Github\\DedSecAPI\\A5\\A5.csproj",
       "projectName": "A5",
-      "projectPath": "D:\\Github\\DedSecAPI\\A5\\A5.csproj",
-      "packagesPath": "C:\\Users\\atsaya.arivunidhi\\.nuget\\packages\\",
-      "outputPath": "D:\\Github\\DedSecAPI\\A5\\obj\\",
+      "projectPath": "F:\\Github\\DedSecAPI\\A5\\A5.csproj",
+      "packagesPath": "C:\\Users\\VIDHYAPRIYA\\.nuget\\packages\\",
+      "outputPath": "F:\\Github\\DedSecAPI\\A5\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\atsaya.arivunidhi\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\VIDHYAPRIYA\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -5052,7 +5052,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

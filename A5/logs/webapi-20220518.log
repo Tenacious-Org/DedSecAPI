@@ -1,0 +1,1 @@
+[2022-05-18 16:49:42.222 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
