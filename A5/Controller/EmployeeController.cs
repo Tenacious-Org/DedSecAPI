@@ -90,7 +90,24 @@ namespace A5.Controller
             }
         }
 
-        
+        [HttpPut("Disable")]
+        public ActionResult Disable(Employee employee, int id)
+        {
+            try
+            {
+                var data = _employeeService.Disable(employee, id);
+                return Ok(data);
+            }
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
+        }
 
 
 

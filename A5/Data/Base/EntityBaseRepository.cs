@@ -39,15 +39,16 @@ namespace A5.Data.Base
             bool result = false;
             var a=new T();
             a.DisableValidation(entity,id);
-            try{
-                if(entity != null && entity.Id == id)
+            try
             {
-                var disable = _context.Set<T>().FirstOrDefault(nameof =>nameof.Id == id);
-                disable.IsActive = false;
-                _context.SaveChanges();
-                result = true;
-            }
-            return result;
+                if(entity != null && entity.Id == id)
+                {
+                    var disable = _context.Set<T>().FirstOrDefault(nameof =>nameof.Id == id);
+                    disable.IsActive = false;
+                    _context.SaveChanges();
+                    result = true;
+                }
+                return result;
             }
             catch(Exception exception)
             {
