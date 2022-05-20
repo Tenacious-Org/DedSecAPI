@@ -144,7 +144,19 @@ namespace A5.Data.Service
                throw exception;
            }
         }
-
+        
+        public IEnumerable<Award> GetRequestedAwardsList(int employeeId)
+        {
+            try
+            {
+                return  _context.Set<Award>().Where(nameof => nameof.ApproverId == employeeId).ToList().OrderBy(nameof => nameof.StatusId);
+                
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
         
 
     }

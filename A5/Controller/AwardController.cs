@@ -182,8 +182,21 @@ namespace A5.Controller
                 _logger.LogError($"log: (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
-
+       }    
+       [HttpGet("GetRequestedAwardsList")]
+       public ActionResult GetRequestedAwardsList(int id)
+       {
+           try{
+                var data=_awardService.GetRequestedAwardsList(id);
+                return Ok(data);
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
        }
+       
     }
 }
 

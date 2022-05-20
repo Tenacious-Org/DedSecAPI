@@ -1,0 +1,600 @@
+[2022-05-20 18:56:55.968 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-20 18:56:56.254 +05:30 INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-20 18:56:56.356 +05:30 INF] Executed DbCommand (88ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+[2022-05-20 18:56:56.559 +05:30 INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Organisations] AS [o]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 18:56:56.578 +05:30 INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Departments] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 18:56:56.589 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Designations] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 18:56:56.601 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Employees] AS [e]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 18:56:56.613 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AwardTypes] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 18:56:56.626 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Statuses] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 18:56:56.637 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Awards] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 18:56:56.660 +05:30 INF] User profile is available. Using 'C:\Users\gokul\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-05-20 18:58:28.120 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-20 18:58:28.502 +05:30 INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-20 18:58:28.563 +05:30 INF] Executed DbCommand (51ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+[2022-05-20 18:58:28.789 +05:30 INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Organisations] AS [o]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 18:58:28.805 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Departments] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 18:58:28.819 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Designations] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 18:58:28.833 +05:30 INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Employees] AS [e]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 18:58:28.847 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AwardTypes] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 18:58:28.861 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Statuses] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 18:58:28.877 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Awards] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 18:58:28.912 +05:30 INF] User profile is available. Using 'C:\Users\gokul\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-05-20 18:59:47.235 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-20 18:59:47.595 +05:30 INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-20 18:59:47.673 +05:30 INF] Executed DbCommand (59ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+[2022-05-20 18:59:47.864 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Organisations] AS [o]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 18:59:47.876 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Departments] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 18:59:47.889 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Designations] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 18:59:47.903 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Employees] AS [e]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 18:59:47.915 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AwardTypes] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 18:59:47.928 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Statuses] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 18:59:47.940 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Awards] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 18:59:47.965 +05:30 INF] User profile is available. Using 'C:\Users\gokul\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-05-20 19:00:38.342 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-20 19:00:39.020 +05:30 INF] Executed DbCommand (60ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-20 19:00:39.050 +05:30 INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+[2022-05-20 19:00:39.245 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Organisations] AS [o]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 19:00:39.258 +05:30 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Departments] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 19:00:39.267 +05:30 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Designations] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 19:00:39.279 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Employees] AS [e]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 19:00:39.292 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AwardTypes] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 19:00:39.306 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Statuses] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 19:00:39.320 +05:30 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Awards] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 19:00:39.371 +05:30 INF] User profile is available. Using 'C:\Users\gokul\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-05-20 19:01:23.146 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-20 19:01:23.638 +05:30 INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-20 19:01:23.720 +05:30 INF] Executed DbCommand (61ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+[2022-05-20 19:01:23.998 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Organisations] AS [o]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 19:01:24.013 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Departments] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 19:01:24.025 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Designations] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 19:01:24.036 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Employees] AS [e]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 19:01:24.048 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AwardTypes] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 19:01:24.061 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Statuses] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 19:01:24.073 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Awards] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 19:01:24.119 +05:30 INF] User profile is available. Using 'C:\Users\gokul\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-05-20 19:01:24.396 +05:30 INF] Now listening on: https://localhost:7275
+[2022-05-20 19:01:24.398 +05:30 INF] Now listening on: http://localhost:5050
+[2022-05-20 19:01:24.409 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-20 19:01:24.413 +05:30 INF] Hosting environment: Development
+[2022-05-20 19:01:24.416 +05:30 INF] Content root path: D:\Ini\DedSecAPI\A5\
+[2022-05-20 19:01:24.966 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/ - -
+[2022-05-20 19:01:25.035 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/ - - - 404 0 - 73.9559ms
+[2022-05-20 19:01:28.618 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger - -
+[2022-05-20 19:01:28.620 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger - - - 301 0 - 2.3557ms
+[2022-05-20 19:01:28.628 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/index.html - -
+[2022-05-20 19:01:28.693 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/index.html - - - 200 - text/html;charset=utf-8 65.8856ms
+[2022-05-20 19:01:28.731 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui.css - -
+[2022-05-20 19:01:28.732 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui-bundle.js - -
+[2022-05-20 19:01:28.733 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-20 19:01:28.750 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-20 19:01:28.768 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui.css - - - 200 143632 text/css 37.5143ms
+[2022-05-20 19:01:28.771 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-20 19:01:28.772 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 39.1639ms
+[2022-05-20 19:01:28.776 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-20 19:01:28.776 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 44.2574ms
+[2022-05-20 19:01:30.907 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger - -
+[2022-05-20 19:01:30.908 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger - - - 301 0 - 1.6527ms
+[2022-05-20 19:01:30.915 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/index.html - -
+[2022-05-20 19:01:30.916 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/index.html - - - 200 - text/html;charset=utf-8 1.9004ms
+[2022-05-20 19:01:30.947 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui.css - -
+[2022-05-20 19:01:30.948 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui-bundle.js - -
+[2022-05-20 19:01:30.948 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-20 19:01:30.952 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-20 19:01:30.952 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui.css - - - 200 143632 text/css 5.0474ms
+[2022-05-20 19:01:30.953 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-20 19:01:30.953 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 4.5808ms
+[2022-05-20 19:01:30.956 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-20 19:01:30.956 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 8.2739ms
+[2022-05-20 19:01:31.175 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - -
+[2022-05-20 19:01:31.423 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 247.2757ms
+[2022-05-20 19:18:20.025 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-20 19:18:20.601 +05:30 INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-20 19:18:20.685 +05:30 INF] Executed DbCommand (60ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+[2022-05-20 19:18:20.953 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Organisations] AS [o]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 19:18:20.973 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Departments] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 19:18:20.992 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Designations] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 19:18:21.012 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Employees] AS [e]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 19:18:21.030 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AwardTypes] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 19:18:21.048 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Statuses] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 19:18:21.068 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Awards] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-20 19:18:21.142 +05:30 INF] User profile is available. Using 'C:\Users\gokul\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-05-20 19:18:21.477 +05:30 INF] Now listening on: https://localhost:7275
+[2022-05-20 19:18:21.481 +05:30 INF] Now listening on: http://localhost:5050
+[2022-05-20 19:18:21.495 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-20 19:18:21.497 +05:30 INF] Hosting environment: Development
+[2022-05-20 19:18:21.501 +05:30 INF] Content root path: D:\Ini\DedSecAPI\A5\
+[2022-05-20 19:18:21.750 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/ - -
+[2022-05-20 19:18:21.848 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/ - - - 404 0 - 106.8751ms
+[2022-05-20 19:18:27.496 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/index.html - -
+[2022-05-20 19:18:27.661 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/index.html - - - 200 - text/html;charset=utf-8 164.8976ms
+[2022-05-20 19:18:27.690 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui.css - -
+[2022-05-20 19:18:27.721 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-20 19:18:27.721 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui.css - - - 200 143632 text/css 31.1114ms
+[2022-05-20 19:18:27.781 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - -
+[2022-05-20 19:18:27.782 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/favicon-32x32.png - -
+[2022-05-20 19:18:27.783 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-05-20 19:18:27.784 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/favicon-32x32.png - - - 200 628 image/png 1.3559ms
+[2022-05-20 19:18:28.034 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 252.9595ms
+[2022-05-20 19:19:03.410 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Award/GetRequestedAwardsList - -
+[2022-05-20 19:19:03.435 +05:30 INF] Executing endpoint 'A5.Controller.AwardController.GetRequestedAwardsList (A5)'
+[2022-05-20 19:19:03.512 +05:30 INF] Route matched with {action = "GetRequestedAwardsList", controller = "Award"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetRequestedAwardsList(Int32) on controller A5.Controller.AwardController (A5).
+[2022-05-20 19:19:03.586 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-20 19:19:03.908 +05:30 INF] Executed DbCommand (82ms) [Parameters=[@__employeeId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[AddedBy], [a].[AddedOn], [a].[ApproverId], [a].[AwardTypeId], [a].[AwardeeId], [a].[CouponCode], [a].[HRId], [a].[Reason], [a].[RejectedReason], [a].[RequesterId], [a].[StatusId], [a].[UpdatedBy], [a].[UpdatedOn]
+FROM [Awards] AS [a]
+WHERE [a].[ApproverId] = @__employeeId_0
+[2022-05-20 19:19:03.923 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Linq.OrderedEnumerable`2[[A5.Models.Award, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2022-05-20 19:19:04.202 +05:30 INF] Executed action A5.Controller.AwardController.GetRequestedAwardsList (A5) in 674.4163ms
+[2022-05-20 19:19:04.203 +05:30 INF] Executed endpoint 'A5.Controller.AwardController.GetRequestedAwardsList (A5)'
+[2022-05-20 19:19:04.211 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Award/GetRequestedAwardsList - - - 200 2 application/json;+charset=utf-8 801.0925ms
+[2022-05-20 19:22:49.845 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - -
+[2022-05-20 19:22:49.855 +05:30 INF] CORS policy execution successful.
+[2022-05-20 19:22:49.857 +05:30 INF] Executing endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-20 19:22:49.859 +05:30 INF] Route matched with {action = "GetAllOrganisation", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllOrganisation() on controller A5.Controller.OrganisationController (A5).
+[2022-05-20 19:22:49.949 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-20 19:22:49.985 +05:30 INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[AddedBy], [o].[AddedOn], [o].[IsActive], [o].[OrganisationName], [o].[UpdatedBy], [o].[UpdatedOn]
+FROM [Organisations] AS [o]
+WHERE [o].[IsActive] = CAST(1 AS bit)
+[2022-05-20 19:22:50.105 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Organisation, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-20 19:22:50.144 +05:30 INF] Executed action A5.Controller.OrganisationController.GetAllOrganisation (A5) in 285.4516ms
+[2022-05-20 19:22:50.144 +05:30 INF] Executed endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-20 19:22:50.145 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - - - 200 550 application/json;+charset=utf-8 299.4618ms
+[2022-05-20 19:35:47.999 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetAll - -
+[2022-05-20 19:35:47.999 +05:30 INF] CORS policy execution successful.
+[2022-05-20 19:35:48.000 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetAll - - - 404 0 - 1.1219ms
+[2022-05-20 19:35:54.510 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - -
+[2022-05-20 19:35:54.510 +05:30 INF] CORS policy execution successful.
+[2022-05-20 19:35:54.510 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - - - 404 0 - 0.6072ms
+[2022-05-20 19:41:20.608 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - -
+[2022-05-20 19:41:20.608 +05:30 INF] CORS policy execution successful.
+[2022-05-20 19:41:20.609 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - - - 404 0 - 0.5205ms
+[2022-05-20 19:41:21.370 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - -
+[2022-05-20 19:41:21.370 +05:30 INF] CORS policy execution successful.
+[2022-05-20 19:41:21.371 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - - - 404 0 - 0.4674ms
+[2022-05-20 19:41:23.488 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - -
+[2022-05-20 19:41:23.488 +05:30 INF] CORS policy execution successful.
+[2022-05-20 19:41:23.488 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - - - 404 0 - 0.4378ms
+[2022-05-20 19:41:27.837 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - -
+[2022-05-20 19:41:27.837 +05:30 INF] CORS policy execution successful.
+[2022-05-20 19:41:27.837 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - - - 404 0 - 0.5430ms
+[2022-05-20 19:41:33.082 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - -
+[2022-05-20 19:41:33.082 +05:30 INF] CORS policy execution successful.
+[2022-05-20 19:41:33.082 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - - - 404 0 - 0.7048ms
+[2022-05-20 19:41:56.005 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - -
+[2022-05-20 19:41:56.005 +05:30 INF] CORS policy execution successful.
+[2022-05-20 19:41:56.005 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - - - 404 0 - 0.4903ms
+[2022-05-20 19:42:00.243 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - -
+[2022-05-20 19:42:00.243 +05:30 INF] CORS policy execution successful.
+[2022-05-20 19:42:00.243 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - - - 404 0 - 0.4329ms
+[2022-05-20 19:42:03.473 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - -
+[2022-05-20 19:42:03.474 +05:30 INF] CORS policy execution successful.
+[2022-05-20 19:42:03.474 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - - - 404 0 - 0.4482ms
+[2022-05-20 19:42:24.911 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - -
+[2022-05-20 19:42:24.913 +05:30 INF] CORS policy execution successful.
+[2022-05-20 19:42:24.913 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - - - 404 0 - 1.8276ms
+[2022-05-20 19:42:57.074 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - -
+[2022-05-20 19:42:57.074 +05:30 INF] CORS policy execution successful.
+[2022-05-20 19:42:57.074 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - - - 404 0 - 0.3014ms
+[2022-05-20 19:43:01.138 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - -
+[2022-05-20 19:43:01.138 +05:30 INF] CORS policy execution successful.
+[2022-05-20 19:43:01.139 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - - - 404 0 - 1.0468ms
+[2022-05-20 19:43:50.428 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - -
+[2022-05-20 19:43:50.430 +05:30 INF] CORS policy execution successful.
+[2022-05-20 19:43:50.444 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList/GetAll - - - 404 0 - 14.7438ms
+[2022-05-20 19:43:57.588 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetAll - -
+[2022-05-20 19:43:57.589 +05:30 INF] CORS policy execution successful.
+[2022-05-20 19:43:57.589 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetAll - - - 404 0 - 0.4659ms
+[2022-05-20 20:05:35.260 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetAll - -
+[2022-05-20 20:05:35.261 +05:30 INF] CORS policy execution successful.
+[2022-05-20 20:05:35.261 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetAll - - - 404 0 - 2.0328ms
+[2022-05-20 20:05:40.983 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetAll - -
+[2022-05-20 20:05:40.983 +05:30 INF] CORS policy execution successful.
+[2022-05-20 20:05:40.983 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetAll - - - 404 0 - 0.6524ms
+[2022-05-20 20:05:42.253 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetAll - -
+[2022-05-20 20:05:42.254 +05:30 INF] CORS policy execution successful.
+[2022-05-20 20:05:42.254 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetAll - - - 404 0 - 0.5575ms
+[2022-05-20 20:06:29.229 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetAll - -
+[2022-05-20 20:06:29.229 +05:30 INF] CORS policy execution successful.
+[2022-05-20 20:06:29.231 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetAll - - - 404 0 - 2.0963ms
+[2022-05-20 20:06:38.962 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetAll - -
+[2022-05-20 20:06:38.963 +05:30 INF] CORS policy execution successful.
+[2022-05-20 20:06:38.963 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetAll - - - 404 0 - 1.3226ms
+[2022-05-20 20:06:41.982 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetAll - -
+[2022-05-20 20:06:41.982 +05:30 INF] CORS policy execution successful.
+[2022-05-20 20:06:41.983 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetAll - - - 404 0 - 0.4856ms
+[2022-05-20 20:06:43.176 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetAll - -
+[2022-05-20 20:06:43.177 +05:30 INF] CORS policy execution successful.
+[2022-05-20 20:06:43.177 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetAll - - - 404 0 - 0.5846ms
+[2022-05-20 20:06:43.608 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetAll - -
+[2022-05-20 20:06:43.608 +05:30 INF] CORS policy execution successful.
+[2022-05-20 20:06:43.609 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetAll - - - 404 0 - 0.2602ms
+[2022-05-20 20:07:04.406 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetAll - -
+[2022-05-20 20:07:04.410 +05:30 INF] CORS policy execution successful.
+[2022-05-20 20:07:04.410 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetAll - - - 404 0 - 3.8527ms
+[2022-05-20 20:09:33.974 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - -
+[2022-05-20 20:09:33.986 +05:30 INF] CORS policy execution successful.
+[2022-05-20 20:09:33.987 +05:30 INF] Executing endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-20 20:09:33.989 +05:30 INF] Route matched with {action = "GetAllOrganisation", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllOrganisation() on controller A5.Controller.OrganisationController (A5).
+[2022-05-20 20:09:34.009 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-20 20:09:34.047 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[AddedBy], [o].[AddedOn], [o].[IsActive], [o].[OrganisationName], [o].[UpdatedBy], [o].[UpdatedOn]
+FROM [Organisations] AS [o]
+WHERE [o].[IsActive] = CAST(1 AS bit)
+[2022-05-20 20:09:34.053 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Organisation, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-20 20:09:34.055 +05:30 INF] Executed action A5.Controller.OrganisationController.GetAllOrganisation (A5) in 65.0652ms
+[2022-05-20 20:09:34.055 +05:30 INF] Executed endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-20 20:09:34.056 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - - - 200 550 application/json;+charset=utf-8 81.6529ms
+[2022-05-20 20:11:04.376 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetAll - -
+[2022-05-20 20:11:04.383 +05:30 INF] CORS policy execution successful.
+[2022-05-20 20:11:04.384 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetAll - - - 404 0 - 7.6484ms
+[2022-05-20 20:13:36.649 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList - -
+[2022-05-20 20:13:36.650 +05:30 INF] CORS policy execution successful.
+[2022-05-20 20:13:36.650 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList - - - 404 0 - 1.6697ms
+[2022-05-20 20:13:39.756 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList - -
+[2022-05-20 20:13:39.756 +05:30 INF] CORS policy execution successful.
+[2022-05-20 20:13:39.757 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList - - - 404 0 - 0.3544ms
+[2022-05-20 20:13:40.980 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList - -
+[2022-05-20 20:13:40.980 +05:30 INF] CORS policy execution successful.
+[2022-05-20 20:13:40.980 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Awards/GetRequestedAwardsList - - - 404 0 - 0.5026ms
+[2022-05-20 20:17:15.533 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Award/GetRequestedAwardsList?id=1 - -
+[2022-05-20 20:17:15.539 +05:30 INF] Executing endpoint 'A5.Controller.AwardController.GetRequestedAwardsList (A5)'
+[2022-05-20 20:17:15.539 +05:30 INF] Route matched with {action = "GetRequestedAwardsList", controller = "Award"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetRequestedAwardsList(Int32) on controller A5.Controller.AwardController (A5).
+[2022-05-20 20:17:15.571 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-20 20:17:15.592 +05:30 INF] Executed DbCommand (5ms) [Parameters=[@__employeeId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[AddedBy], [a].[AddedOn], [a].[ApproverId], [a].[AwardTypeId], [a].[AwardeeId], [a].[CouponCode], [a].[HRId], [a].[Reason], [a].[RejectedReason], [a].[RequesterId], [a].[StatusId], [a].[UpdatedBy], [a].[UpdatedOn]
+FROM [Awards] AS [a]
+WHERE [a].[ApproverId] = @__employeeId_0
+[2022-05-20 20:17:15.593 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Linq.OrderedEnumerable`2[[A5.Models.Award, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2022-05-20 20:17:15.594 +05:30 INF] Executed action A5.Controller.AwardController.GetRequestedAwardsList (A5) in 54.527ms
+[2022-05-20 20:17:15.594 +05:30 INF] Executed endpoint 'A5.Controller.AwardController.GetRequestedAwardsList (A5)'
+[2022-05-20 20:17:15.594 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Award/GetRequestedAwardsList?id=1 - - - 200 2 application/json;+charset=utf-8 61.6874ms
