@@ -1,0 +1,554 @@
+[2022-05-17 11:31:18.797 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-17 11:31:19.092 +05:30 INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-17 11:31:19.120 +05:30 INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+[2022-05-17 11:31:19.309 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Organisations] AS [o]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:31:19.318 +05:30 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Departments] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:31:19.327 +05:30 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Designations] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:31:19.334 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Employees] AS [e]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:31:19.343 +05:30 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AwardTypes] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:31:19.353 +05:30 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Statuses] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:31:19.360 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Awards] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:31:19.386 +05:30 INF] User profile is available. Using 'C:\Users\gokul\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-05-17 11:33:19.424 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-17 11:33:19.951 +05:30 INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-17 11:33:20.024 +05:30 INF] Executed DbCommand (58ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+[2022-05-17 11:33:20.216 +05:30 INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Organisations] AS [o]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:33:20.233 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Departments] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:33:20.245 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Designations] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:33:20.257 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Employees] AS [e]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:33:20.269 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AwardTypes] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:33:20.281 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Statuses] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:33:20.294 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Awards] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:33:20.349 +05:30 INF] User profile is available. Using 'C:\Users\gokul\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-05-17 11:34:03.561 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-17 11:34:03.841 +05:30 INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-17 11:34:03.926 +05:30 INF] Executed DbCommand (73ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+[2022-05-17 11:34:04.207 +05:30 INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Organisations] AS [o]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:34:04.222 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Departments] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:34:04.234 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Designations] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:34:04.247 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Employees] AS [e]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:34:04.259 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AwardTypes] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:34:04.273 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Statuses] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:34:04.288 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Awards] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:34:04.322 +05:30 INF] User profile is available. Using 'C:\Users\gokul\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-05-17 11:34:53.037 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-17 11:34:53.610 +05:30 INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-17 11:34:53.686 +05:30 INF] Executed DbCommand (53ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+[2022-05-17 11:34:53.920 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Organisations] AS [o]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:34:53.941 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Departments] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:34:53.953 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Designations] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:34:53.965 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Employees] AS [e]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:34:53.978 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AwardTypes] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:34:53.990 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Statuses] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:34:54.002 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Awards] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:34:54.051 +05:30 INF] User profile is available. Using 'C:\Users\gokul\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-05-17 11:35:05.841 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-17 11:35:07.070 +05:30 INF] Executed DbCommand (67ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-17 11:35:07.212 +05:30 INF] Executed DbCommand (101ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+[2022-05-17 11:35:07.933 +05:30 INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Organisations] AS [o]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:35:07.959 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Departments] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:35:07.974 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Designations] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:35:07.985 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Employees] AS [e]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:35:07.997 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AwardTypes] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:35:08.008 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Statuses] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:35:08.023 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Awards] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:35:08.080 +05:30 INF] User profile is available. Using 'C:\Users\gokul\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-05-17 11:35:58.681 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-17 11:35:58.978 +05:30 INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-17 11:35:59.046 +05:30 INF] Executed DbCommand (51ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+[2022-05-17 11:35:59.297 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Organisations] AS [o]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:35:59.307 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Departments] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:35:59.319 +05:30 INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Designations] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:35:59.327 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Employees] AS [e]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:35:59.339 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AwardTypes] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:35:59.348 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Statuses] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:35:59.359 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Awards] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:35:59.387 +05:30 INF] User profile is available. Using 'C:\Users\gokul\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-05-17 11:35:59.532 +05:30 INF] Now listening on: https://localhost:7275
+[2022-05-17 11:35:59.532 +05:30 INF] Now listening on: http://localhost:5050
+[2022-05-17 11:35:59.541 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-17 11:35:59.541 +05:30 INF] Hosting environment: Development
+[2022-05-17 11:35:59.541 +05:30 INF] Content root path: D:\Ini\DedSecAPI\A5\
+[2022-05-17 11:37:17.281 +05:30 INF] Application is shutting down...
+[2022-05-17 11:37:31.608 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-17 11:37:32.222 +05:30 INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-17 11:37:32.303 +05:30 INF] Executed DbCommand (60ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+[2022-05-17 11:37:32.519 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Organisations] AS [o]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:37:32.535 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Departments] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:37:32.547 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Designations] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:37:32.561 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Employees] AS [e]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:37:32.576 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AwardTypes] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:37:32.591 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Statuses] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:37:32.608 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Awards] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-17 11:37:32.668 +05:30 INF] User profile is available. Using 'C:\Users\gokul\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-05-17 11:37:32.858 +05:30 INF] Now listening on: https://localhost:7275
+[2022-05-17 11:37:32.860 +05:30 INF] Now listening on: http://localhost:5050
+[2022-05-17 11:37:32.869 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-17 11:37:32.873 +05:30 INF] Hosting environment: Development
+[2022-05-17 11:37:32.875 +05:30 INF] Content root path: D:\Ini\DedSecAPI\A5\
+[2022-05-17 11:37:33.237 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/ - -
+[2022-05-17 11:37:33.303 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/ - - - 404 0 - 75.6515ms
+[2022-05-17 11:37:43.152 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger - -
+[2022-05-17 11:37:43.155 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger - - - 301 0 - 2.2627ms
+[2022-05-17 11:37:43.170 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/index.html - -
+[2022-05-17 11:37:43.355 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/index.html - - - 200 - text/html;charset=utf-8 184.7835ms
+[2022-05-17 11:37:43.382 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui.css - -
+[2022-05-17 11:37:43.383 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui-bundle.js - -
+[2022-05-17 11:37:43.383 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-17 11:37:43.416 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-17 11:37:43.450 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui.css - - - 200 143632 text/css 68.0715ms
+[2022-05-17 11:37:43.456 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-17 11:37:43.460 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 76.6585ms
+[2022-05-17 11:37:43.468 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-17 11:37:43.469 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 85.9304ms
+[2022-05-17 11:37:43.781 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - -
+[2022-05-17 11:37:44.018 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 237.7009ms
+[2022-05-17 11:42:14.788 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - -
+[2022-05-17 11:42:14.795 +05:30 INF] CORS policy execution successful.
+[2022-05-17 11:42:14.801 +05:30 INF] Executing endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-17 11:42:14.820 +05:30 INF] Route matched with {action = "GetAllOrganisation", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllOrganisation() on controller A5.Controller.OrganisationController (A5).
+[2022-05-17 11:42:14.841 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-17 11:42:14.950 +05:30 INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[AddedBy], [o].[AddedOn], [o].[IsActive], [o].[OrganisationName], [o].[UpdatedBy], [o].[UpdatedOn]
+FROM [Organisations] AS [o]
+WHERE [o].[IsActive] = CAST(1 AS bit)
+[2022-05-17 11:42:15.014 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Organisation, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-17 11:42:15.294 +05:30 INF] Executed action A5.Controller.OrganisationController.GetAllOrganisation (A5) in 463.2574ms
+[2022-05-17 11:42:15.295 +05:30 INF] Executed endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-17 11:42:15.300 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - - - 200 550 application/json;+charset=utf-8 512.1292ms
+[2022-05-17 11:42:32.295 +05:30 INF] Request starting HTTP/2 OPTIONS https://localhost:7275/api/Department/Create - -
+[2022-05-17 11:42:32.300 +05:30 INF] CORS policy execution successful.
+[2022-05-17 11:42:32.302 +05:30 INF] Request finished HTTP/2 OPTIONS https://localhost:7275/api/Department/Create - - - 204 - - 7.0761ms
+[2022-05-17 11:42:32.310 +05:30 INF] Request starting HTTP/2 POST https://localhost:7275/api/Department/Create application/json 65
+[2022-05-17 11:42:32.313 +05:30 INF] CORS policy execution successful.
+[2022-05-17 11:42:32.314 +05:30 INF] Executing endpoint 'A5.Controller.DepartmentController.Create (A5)'
+[2022-05-17 11:42:32.337 +05:30 INF] Route matched with {action = "Create", controller = "Department"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Create(A5.Models.Department) on controller A5.Controller.DepartmentController (A5).
+[2022-05-17 11:42:32.425 +05:30 INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+[2022-05-17 11:42:32.461 +05:30 INF] Executed action A5.Controller.DepartmentController.Create (A5) in 123.6333ms
+[2022-05-17 11:42:32.461 +05:30 INF] Executed endpoint 'A5.Controller.DepartmentController.Create (A5)'
+[2022-05-17 11:42:32.461 +05:30 INF] Request finished HTTP/2 POST https://localhost:7275/api/Department/Create application/json 65 - 400 257 application/problem+json;+charset=utf-8 151.1981ms
+[2022-05-17 11:42:34.293 +05:30 INF] Request starting HTTP/2 POST https://localhost:7275/api/Department/Create application/json 65
+[2022-05-17 11:42:34.293 +05:30 INF] CORS policy execution successful.
+[2022-05-17 11:42:34.293 +05:30 INF] Executing endpoint 'A5.Controller.DepartmentController.Create (A5)'
+[2022-05-17 11:42:34.294 +05:30 INF] Route matched with {action = "Create", controller = "Department"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Create(A5.Models.Department) on controller A5.Controller.DepartmentController (A5).
+[2022-05-17 11:42:34.295 +05:30 INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+[2022-05-17 11:42:34.296 +05:30 INF] Executed action A5.Controller.DepartmentController.Create (A5) in 1.9801ms
+[2022-05-17 11:42:34.296 +05:30 INF] Executed endpoint 'A5.Controller.DepartmentController.Create (A5)'
+[2022-05-17 11:42:34.296 +05:30 INF] Request finished HTTP/2 POST https://localhost:7275/api/Department/Create application/json 65 - 400 257 application/problem+json;+charset=utf-8 2.7908ms
+[2022-05-17 11:42:39.341 +05:30 INF] Request starting HTTP/2 OPTIONS https://localhost:7275/api/Department/Create - -
+[2022-05-17 11:42:39.341 +05:30 INF] CORS policy execution successful.
+[2022-05-17 11:42:39.342 +05:30 INF] Request finished HTTP/2 OPTIONS https://localhost:7275/api/Department/Create - - - 204 - - 0.6927ms
+[2022-05-17 11:42:39.344 +05:30 INF] Request starting HTTP/2 POST https://localhost:7275/api/Department/Create application/json 65
+[2022-05-17 11:42:39.344 +05:30 INF] CORS policy execution successful.
+[2022-05-17 11:42:39.344 +05:30 INF] Executing endpoint 'A5.Controller.DepartmentController.Create (A5)'
+[2022-05-17 11:42:39.344 +05:30 INF] Route matched with {action = "Create", controller = "Department"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Create(A5.Models.Department) on controller A5.Controller.DepartmentController (A5).
+[2022-05-17 11:42:39.348 +05:30 INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+[2022-05-17 11:42:39.348 +05:30 INF] Executed action A5.Controller.DepartmentController.Create (A5) in 3.9016ms
+[2022-05-17 11:42:39.348 +05:30 INF] Executed endpoint 'A5.Controller.DepartmentController.Create (A5)'
+[2022-05-17 11:42:39.348 +05:30 INF] Request finished HTTP/2 POST https://localhost:7275/api/Department/Create application/json 65 - 400 257 application/problem+json;+charset=utf-8 4.6313ms
