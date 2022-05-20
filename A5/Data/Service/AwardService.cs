@@ -87,10 +87,10 @@ namespace A5.Data.Service
         {
           
             try{
-                if(employeeId==null)
-                return _context.Set<Award>().Where(nameof =>nameof.StatusId == id).ToList();
+                if(employeeId == null)
+                    return _context.Set<Award>().Where(nameof =>nameof.StatusId == id).ToList();
                 else 
-                return _context.Set<Award>().Where(nameof =>nameof.StatusId == id && nameof.AwardeeId==employeeId).ToList();  
+                    return _context.Set<Award>().Where(nameof =>nameof.StatusId == id && nameof.AwardeeId==employeeId).ToList();  
             }
             catch(Exception exception)
             {
@@ -101,7 +101,7 @@ namespace A5.Data.Service
         public IEnumerable<Award> GetRequestedAward(int employeeId)
         {
             try{
-                return _context.Set<Award>().Where(nameof=>nameof.Employee.Id==employeeId && nameof.StatusId==3).ToList();
+                return _context.Set<Award>().Where(nameof=> nameof.Employee.Id == employeeId && nameof.StatusId == 3).ToList();
             }
             catch(Exception exception)
             {
@@ -111,13 +111,15 @@ namespace A5.Data.Service
         public Award GetAward(int id)
         {
             try{
-                return _context.Set<Award>().FirstOrDefault(nameof=>nameof.Id==id && nameof.StatusId==2);
+                return _context.Set<Award>().FirstOrDefault(nameof=> nameof.Id == id && nameof.StatusId == 2);
             }
             catch(Exception exception)
             {
                 throw exception;
             }
         }
+
+
         public bool AddComment(Comment comment)
         {
             bool result = false;
@@ -143,6 +145,19 @@ namespace A5.Data.Service
            catch(Exception exception){
                throw exception;
            }
+        }
+
+        public IEnumerable<Award> GetRequestedAwardsList(int employeeId)
+        {
+            try
+            {
+                return  _context.Set<Award>().Where(nameof => nameof.ApproverId == employeeId).ToList().OrderBy(nameof => nameof.StatusId);
+                
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
         }
 
         
