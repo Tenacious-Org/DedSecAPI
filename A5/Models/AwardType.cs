@@ -1,5 +1,6 @@
 using A5.Data.Base;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using A5.Models;
@@ -24,6 +25,8 @@ namespace A5.Models
 
         public int ? UpdatedBy {get; set;}
         public DateTime ? UpdatedOn {get;set;}
+        [NotMapped]
+        public string ImageString{get;set;}
 
 
         public bool CreateValidation(AwardType awardType)

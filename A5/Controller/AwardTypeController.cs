@@ -58,8 +58,9 @@ namespace A5.Controller
         public ActionResult Create(AwardType awardType)
         {
             try{
+                awardType.Image = System.Convert.FromBase64String(awardType.ImageString);
                 var data = _awardTypeService.Create(awardType);
-                 return Ok(data);
+                return Ok(data);
             }
             catch(ValidationException exception)
             {
@@ -70,14 +71,14 @@ namespace A5.Controller
             {
                 return BadRequest($"Error : {exception.Message}");
             }
-        }
+        }   
 
-        [HttpPut("Update")]
-        public ActionResult Update(AwardType awardType, int id)
+         [HttpPut("Update")]
+        public ActionResult Update(AwardType awardType)
         {
             try{
-                var data = _awardTypeService.Update(awardType, id);
-                 return Ok(data);
+                var data = _awardTypeService.Update(awardType);
+                return Ok("Updated.");
             }
             catch(ValidationException exception)
             {
@@ -88,7 +89,8 @@ namespace A5.Controller
             {
                 return BadRequest($"Error : {exception.Message}");
             }
-        }
+        }          
+        
 
         [HttpPut("Disable")]
         public ActionResult Disable(AwardType awardType, int id)
