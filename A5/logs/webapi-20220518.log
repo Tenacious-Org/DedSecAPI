@@ -1,0 +1,94 @@
+[2022-05-18 16:03:18.687 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-18 16:03:24.620 +05:30 INF] Executed DbCommand (81ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-18 16:03:26.585 +05:30 INF] Executed DbCommand (1,879ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+[2022-05-18 16:03:27.868 +05:30 INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Organisations] AS [o]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-18 16:03:27.935 +05:30 INF] Executed DbCommand (31ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Departments] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-18 16:03:28.036 +05:30 INF] Executed DbCommand (83ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Designations] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-18 16:03:28.063 +05:30 INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Employees] AS [e]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-18 16:03:28.129 +05:30 INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AwardTypes] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-18 16:03:28.207 +05:30 INF] Executed DbCommand (63ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Statuses] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-18 16:03:28.227 +05:30 INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Awards] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-18 16:03:28.267 +05:30 INF] User profile is available. Using 'C:\Users\admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-05-18 16:03:30.078 +05:30 INF] Now listening on: https://localhost:7275
+[2022-05-18 16:03:30.078 +05:30 INF] Now listening on: http://localhost:5050
+[2022-05-18 16:03:30.108 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-18 16:03:30.108 +05:30 INF] Hosting environment: Development
+[2022-05-18 16:03:30.109 +05:30 INF] Content root path: E:\DedSecAPI\A5\
+[2022-05-18 16:03:38.662 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/ - -
+[2022-05-18 16:03:39.002 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/ - - - 404 0 - 357.8259ms
+[2022-05-18 16:04:16.581 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger - -
+[2022-05-18 16:04:16.582 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger - - - 301 0 - 1.2320ms
+[2022-05-18 16:04:16.618 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/index.html - -
+[2022-05-18 16:04:16.940 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/index.html - - - 200 - text/html;charset=utf-8 321.5150ms
+[2022-05-18 16:04:17.086 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui.css - -
+[2022-05-18 16:04:17.093 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-18 16:04:17.093 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui-bundle.js - -
+[2022-05-18 16:04:17.202 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-18 16:04:17.204 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui.css - - - 200 143632 text/css 118.3926ms
+[2022-05-18 16:04:17.205 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-18 16:04:17.205 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 111.8767ms
+[2022-05-18 16:04:18.523 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-18 16:04:18.523 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 1429.7408ms
+[2022-05-18 16:04:19.020 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - -
+[2022-05-18 16:04:19.244 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/favicon-32x32.png - -
+[2022-05-18 16:04:19.244 +05:30 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2022-05-18 16:04:19.244 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/favicon-32x32.png - - - 200 628 image/png 0.5065ms
+[2022-05-18 16:04:19.302 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 281.5041ms

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Github\\DedSecAPI\\A5\\A5.csproj": {}
+    "E:\\DedSecAPI\\A5\\A5.csproj": {}
   },
   "projects": {
-    "D:\\Github\\DedSecAPI\\A5\\A5.csproj": {
+    "E:\\DedSecAPI\\A5\\A5.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Github\\DedSecAPI\\A5\\A5.csproj",
+        "projectUniqueName": "E:\\DedSecAPI\\A5\\A5.csproj",
         "projectName": "A5",
-        "projectPath": "D:\\Github\\DedSecAPI\\A5\\A5.csproj",
-        "packagesPath": "C:\\Users\\jeeva\\.nuget\\packages\\",
-        "outputPath": "D:\\Github\\DedSecAPI\\A5\\obj\\",
+        "projectPath": "E:\\DedSecAPI\\A5\\A5.csproj",
+        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+        "outputPath": "E:\\DedSecAPI\\A5\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jeeva\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -107,7 +107,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }
