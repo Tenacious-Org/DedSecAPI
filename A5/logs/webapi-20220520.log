@@ -1600,3 +1600,7 @@ WHERE [a].[ApproverId] = @__employeeId_0
 [2022-05-20 17:22:22.895 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/index.html - - - 200 - text/html;charset=utf-8 0.8700ms
 [2022-05-20 17:22:23.113 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - -
 [2022-05-20 17:22:23.122 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 9.2903ms
+[2022-05-20 17:23:10.848 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - -
+[2022-05-20 17:23:10.858 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 9.6302ms
+[2022-05-20 17:23:10.995 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/favicon.ico - -
+[2022-05-20 17:23:10.998 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/favicon.ico - - - 404 0 - 3.0978ms
