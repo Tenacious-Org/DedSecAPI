@@ -259,6 +259,9 @@ namespace A5.Migrations
                     b.Property<int?>("HRId")
                         .HasColumnType("int");
 
+                    b.Property<byte[]>("Image")
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 

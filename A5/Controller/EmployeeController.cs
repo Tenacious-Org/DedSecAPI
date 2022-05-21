@@ -71,6 +71,25 @@ namespace A5.Controller
                 return BadRequest($"Error : {exception.Message}");
             }
         }
+        
+        [HttpGet("GetEmloyeeByDepartment")]
+        public ActionResult GetEmployeeByDeprtmentId(int id)
+        {
+            try
+            {
+                var data = _employeeService.GetEmployeeByDepartmentId(id);
+                return Ok(data);
+            }
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
+        }
 
         [HttpPut("Update")]
         public ActionResult Update(Employee employee)

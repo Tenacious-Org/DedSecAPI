@@ -27,6 +27,18 @@ namespace A5.Data.Service
             
         }
 
+        public IEnumerable<Employee> GetEmployeeByDepartmentId(int id)
+        {
+            try
+            {
+                return _context.Set<Employee>().Where(nameof => nameof.DepartmentId == id).ToList();
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
+
         public IEnumerable<Employee> GetByReportingPerson(int id)
         {
             try

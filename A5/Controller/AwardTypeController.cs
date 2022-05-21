@@ -77,6 +77,7 @@ namespace A5.Controller
         public ActionResult Update(AwardType awardType)
         {
             try{
+                awardType.Image = System.Convert.FromBase64String(awardType.ImageString);
                 var data = _awardTypeService.Update(awardType);
                 return Ok("Updated.");
             }

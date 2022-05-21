@@ -12,6 +12,7 @@ namespace A5.Models
         public string  FirstName {get;set;}
         public string  LastName {get;set;}
         public string  Email {get;set;}
+        public byte[] ? Image{ get; set; }
         public DateTime DOB { get; set; }
         public int OrganisationId {get;set;}
         [ForeignKey("OrganisationId")]
@@ -29,7 +30,7 @@ namespace A5.Models
         [InverseProperty("Hrs")]
         public Employee? HR{ get; set; }
         public string  Password {get;set;}
-        public bool IsActive {get;set;}
+        public bool IsActive {get;set;}=true;
          public int AddedBy {get; set;}
         public DateTime AddedOn{get; set;}
         public int ? UpdatedBy {get; set;}
@@ -40,6 +41,9 @@ namespace A5.Models
         
         [InverseProperty("HR")]
         public ICollection<Employee> ? Hrs {get;set;}
+
+        [NotMapped]
+        public string ImageString{get;set;}
 
 
         public bool CreateValidation(Employee employee)

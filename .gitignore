@@ -12,3 +12,10 @@ A5/logs/webapi-20220520.log
 A5/obj/A5.csproj.nuget.g.props
 A5/obj/A5.csproj.nuget.dgspec.json
 *.dll
+*.dll
+A5/bin/Debug/net6.0/A5.pdb
+A5/logs/webapi-20220521.log
+A5/logs/webapi-20220521_001.log
+A5/obj/Debug/net6.0/A5.csproj.CoreCompileInputs.cache
+*.dll
+A5/obj/staticwebassets.pack.sentinel
