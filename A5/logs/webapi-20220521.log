@@ -1422,3 +1422,27 @@ END
 [2022-05-21 23:51:40.406 +05:30 INF] Content root path: D:\Github\DedSecAPI\A5\
 [2022-05-21 23:51:41.108 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/ - -
 [2022-05-21 23:51:41.197 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/ - - - 404 0 - 93.9748ms
+[2022-05-21 23:53:28.146 +05:30 INF] User profile is available. Using 'C:\Users\jeeva\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-05-21 23:53:28.570 +05:30 INF] Now listening on: https://localhost:7275
+[2022-05-21 23:53:28.574 +05:30 INF] Now listening on: http://localhost:5050
+[2022-05-21 23:53:28.582 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-21 23:53:28.585 +05:30 INF] Hosting environment: Development
+[2022-05-21 23:53:28.587 +05:30 INF] Content root path: D:\Github\DedSecAPI\A5\
+[2022-05-21 23:53:28.866 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/ - -
+[2022-05-21 23:53:28.990 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/ - - - 404 0 - 128.1040ms
+[2022-05-21 23:53:32.965 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/index.html - -
+[2022-05-21 23:53:33.056 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/index.html - - - 200 - text/html;charset=utf-8 90.5928ms
+[2022-05-21 23:53:33.198 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - -
+[2022-05-21 23:53:33.321 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 122.5427ms
+[2022-05-21 23:53:39.214 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Department/GetAll - -
+[2022-05-21 23:53:39.284 +05:30 INF] Executing endpoint 'A5.Controller.DepartmentController.GetAllDepartment (A5)'
+[2022-05-21 23:53:39.303 +05:30 INF] Route matched with {action = "GetAllDepartment", controller = "Department"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllDepartment() on controller A5.Controller.DepartmentController (A5).
+[2022-05-21 23:53:40.681 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-21 23:53:41.590 +05:30 INF] Executed DbCommand (31ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[DepartmentName], [o].[OrganisationName], [d].[IsActive], [d].[AddedBy], [d].[AddedOn], [d].[UpdatedBy], [d].[UpdatedOn]
+FROM [Organisations] AS [o]
+INNER JOIN [Departments] AS [d] ON [o].[Id] = [d].[OrganisationId]
+[2022-05-21 23:53:41.632 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType0`8[[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-21 23:53:41.841 +05:30 INF] Executed action A5.Controller.DepartmentController.GetAllDepartment (A5) in 2531.5433ms
+[2022-05-21 23:53:41.841 +05:30 INF] Executed endpoint 'A5.Controller.DepartmentController.GetAllDepartment (A5)'
+[2022-05-21 23:53:41.846 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Department/GetAll - - - 200 915 application/json;+charset=utf-8 2631.9150ms
