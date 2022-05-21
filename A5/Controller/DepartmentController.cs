@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using A5.Models;
 using A5.Data.Service;
 using System.ComponentModel.DataAnnotations;
+using A5.Data;
 
 namespace A5.Controller
 {
@@ -11,10 +12,12 @@ namespace A5.Controller
     public class DepartmentController : ControllerBase
     {
         private readonly ILogger<DepartmentController> _logger;
+        private readonly AppDbContext _context;
         private readonly DepartmentService _departmentService;
-        public DepartmentController(ILogger<DepartmentController> logger,DepartmentService departmentService)
+        public DepartmentController(ILogger<DepartmentController> logger, AppDbContext context,DepartmentService departmentService)
         {
             _logger= logger;
+            _context = context;
             _departmentService = departmentService;
         }
 
@@ -23,8 +26,17 @@ namespace A5.Controller
         public ActionResult GetAllDepartment()
         {
             try{
-                var data = _departmentService.GetAll();
-                return Ok(data);
+                var result = (from o in _context.Organisations join d in _context.Departments on o.Id equals d.OrganisationId select new{
+                 d.Id,
+                 d.DepartmentName,
+                 o.OrganisationName,
+                 d.IsActive,
+                 d.AddedBy,
+                 d.AddedOn,
+                 d.UpdatedBy,
+                 d.UpdatedOn
+             }).ToList();
+             return Ok(result);
             }           
             catch(ValidationException exception)
             {
