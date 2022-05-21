@@ -57,13 +57,13 @@ namespace A5.Data.Base
             
         }
 
-        public bool Update(T entity, int id)
+        public bool Update(T entity)
         {
             bool result = false;
-            var a =new T();
-            a.UpdateValidation(entity,id);
+            // var a =new T();
+            // a.UpdateValidation(entity,id);
             try{
-                if(entity != null && entity.Id == id)
+                if(entity != null)
                 {
                     _context.Set<T>().Update(entity);
                     _context.SaveChanges();
