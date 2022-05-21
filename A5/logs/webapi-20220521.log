@@ -337,3 +337,317 @@ WHERE [a].[ApproverId] = @__employeeId_0
 [2022-05-21 11:15:12.847 +05:30 INF] Executed action A5.Controller.AwardController.GetRequestedAwardsList (A5) in 127.4173ms
 [2022-05-21 11:15:12.847 +05:30 INF] Executed endpoint 'A5.Controller.AwardController.GetRequestedAwardsList (A5)'
 [2022-05-21 11:15:12.847 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Award/GetRequestedAwardsList?id=5 - - - 200 616 application/json;+charset=utf-8 149.7897ms
+[2022-05-21 11:20:47.535 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - -
+[2022-05-21 11:20:47.536 +05:30 INF] CORS policy execution successful.
+[2022-05-21 11:20:47.536 +05:30 INF] Executing endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-21 11:20:47.543 +05:30 INF] Route matched with {action = "GetAllOrganisation", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllOrganisation() on controller A5.Controller.OrganisationController (A5).
+[2022-05-21 11:20:47.602 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-21 11:20:47.675 +05:30 INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[AddedBy], [o].[AddedOn], [o].[IsActive], [o].[OrganisationName], [o].[UpdatedBy], [o].[UpdatedOn]
+FROM [Organisations] AS [o]
+WHERE [o].[IsActive] = CAST(1 AS bit)
+[2022-05-21 11:20:47.694 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Organisation, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-21 11:20:47.699 +05:30 INF] Executed action A5.Controller.OrganisationController.GetAllOrganisation (A5) in 155.8117ms
+[2022-05-21 11:20:47.699 +05:30 INF] Executed endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-21 11:20:47.699 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - - - 200 549 application/json;+charset=utf-8 164.2420ms
+[2022-05-21 11:20:51.250 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Department/GetDepartmentsByOrganisationId?id=2 - -
+[2022-05-21 11:20:51.250 +05:30 INF] CORS policy execution successful.
+[2022-05-21 11:20:51.250 +05:30 INF] Executing endpoint 'A5.Controller.DepartmentController.GetDepartmentsByOrganisationId (A5)'
+[2022-05-21 11:20:51.252 +05:30 INF] Route matched with {action = "GetDepartmentsByOrganisationId", controller = "Department"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetDepartmentsByOrganisationId(Int32) on controller A5.Controller.DepartmentController (A5).
+[2022-05-21 11:20:51.255 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-21 11:20:51.267 +05:30 INF] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[AddedBy], [d].[AddedOn], [d].[DepartmentName], [d].[IsActive], [d].[OrganisationId], [d].[UpdatedBy], [d].[UpdatedOn]
+FROM [Departments] AS [d]
+WHERE ([d].[OrganisationId] = @__id_0) AND ([d].[IsActive] = CAST(1 AS bit))
+[2022-05-21 11:20:51.278 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Department, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-21 11:20:51.282 +05:30 INF] Executed action A5.Controller.DepartmentController.GetDepartmentsByOrganisationId (A5) in 30.4537ms
+[2022-05-21 11:20:51.282 +05:30 INF] Executed endpoint 'A5.Controller.DepartmentController.GetDepartmentsByOrganisationId (A5)'
+[2022-05-21 11:20:51.282 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Department/GetDepartmentsByOrganisationId?id=2 - - - 200 435 application/json;+charset=utf-8 32.2443ms
+[2022-05-21 11:20:52.492 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Designation/GetDesignationsByDepartmentId?id=2 - -
+[2022-05-21 11:20:52.493 +05:30 INF] CORS policy execution successful.
+[2022-05-21 11:20:52.493 +05:30 INF] Executing endpoint 'A5.Controller.DesignationController.GetDesignationsByDepartmentId (A5)'
+[2022-05-21 11:20:52.495 +05:30 INF] Route matched with {action = "GetDesignationsByDepartmentId", controller = "Designation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetDesignationsByDepartmentId(Int32) on controller A5.Controller.DesignationController (A5).
+[2022-05-21 11:20:52.502 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-21 11:20:52.519 +05:30 INF] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[AddedBy], [d].[AddedOn], [d].[DepartmentId], [d].[DesignationName], [d].[IsActive], [d].[UpdatedBy], [d].[UpdatedOn]
+FROM [Designations] AS [d]
+WHERE ([d].[DepartmentId] = @__id_0) AND ([d].[IsActive] = CAST(1 AS bit))
+[2022-05-21 11:20:52.534 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Designation, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-21 11:20:52.538 +05:30 INF] Executed action A5.Controller.DesignationController.GetDesignationsByDepartmentId (A5) in 43.1628ms
+[2022-05-21 11:20:52.538 +05:30 INF] Executed endpoint 'A5.Controller.DesignationController.GetDesignationsByDepartmentId (A5)'
+[2022-05-21 11:20:52.538 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Designation/GetDesignationsByDepartmentId?id=2 - - - 200 971 application/json;+charset=utf-8 45.9523ms
+[2022-05-21 19:09:01.773 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-21 19:09:03.509 +05:30 INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-21 19:09:03.585 +05:30 INF] Executed DbCommand (59ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+[2022-05-21 19:09:03.963 +05:30 INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Organisations] AS [o]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-21 19:09:03.974 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Departments] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-21 19:09:03.983 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Designations] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-21 19:09:03.989 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Employees] AS [e]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-21 19:09:03.996 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AwardTypes] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-21 19:09:04.004 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Statuses] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-21 19:09:04.012 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Awards] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-21 19:09:04.105 +05:30 INF] User profile is available. Using 'C:\Users\jeeva\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-05-21 19:09:04.922 +05:30 INF] Now listening on: https://localhost:7275
+[2022-05-21 19:09:04.946 +05:30 INF] Now listening on: http://localhost:5050
+[2022-05-21 19:09:04.952 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-21 19:09:04.954 +05:30 INF] Hosting environment: Development
+[2022-05-21 19:09:04.955 +05:30 INF] Content root path: D:\Github\DedSecAPI\A5\
+[2022-05-21 19:09:06.239 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/ - -
+[2022-05-21 19:09:06.344 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/ - - - 404 0 - 110.6674ms
+[2022-05-21 19:09:09.136 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/index.html - -
+[2022-05-21 19:09:09.229 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/index.html - - - 200 - text/html;charset=utf-8 93.4115ms
+[2022-05-21 19:09:10.423 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - -
+[2022-05-21 19:09:10.569 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 146.1424ms
+[2022-05-21 19:10:01.882 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - -
+[2022-05-21 19:10:01.904 +05:30 INF] CORS policy execution successful.
+[2022-05-21 19:10:01.910 +05:30 INF] Executing endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-21 19:10:01.936 +05:30 INF] Route matched with {action = "GetAllOrganisation", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllOrganisation() on controller A5.Controller.OrganisationController (A5).
+[2022-05-21 19:10:02.001 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-21 19:10:02.190 +05:30 INF] Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[AddedBy], [o].[AddedOn], [o].[IsActive], [o].[OrganisationName], [o].[UpdatedBy], [o].[UpdatedOn]
+FROM [Organisations] AS [o]
+WHERE [o].[IsActive] = CAST(1 AS bit)
+[2022-05-21 19:10:02.303 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Organisation, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-21 19:10:03.048 +05:30 INF] Executed action A5.Controller.OrganisationController.GetAllOrganisation (A5) in 1084.9735ms
+[2022-05-21 19:10:03.048 +05:30 INF] Executed endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-21 19:10:03.052 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - - - 200 549 application/json;+charset=utf-8 1170.0726ms
+[2022-05-21 19:12:20.779 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - -
+[2022-05-21 19:12:20.790 +05:30 INF] CORS policy execution successful.
+[2022-05-21 19:12:20.790 +05:30 INF] Executing endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-21 19:12:20.790 +05:30 INF] Route matched with {action = "GetAllOrganisation", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllOrganisation() on controller A5.Controller.OrganisationController (A5).
+[2022-05-21 19:12:20.852 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-21 19:12:20.861 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[AddedBy], [o].[AddedOn], [o].[IsActive], [o].[OrganisationName], [o].[UpdatedBy], [o].[UpdatedOn]
+FROM [Organisations] AS [o]
+WHERE [o].[IsActive] = CAST(1 AS bit)
+[2022-05-21 19:12:20.862 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Organisation, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-21 19:12:20.862 +05:30 INF] Executed action A5.Controller.OrganisationController.GetAllOrganisation (A5) in 72.1685ms
+[2022-05-21 19:12:20.862 +05:30 INF] Executed endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-21 19:12:20.863 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - - - 200 549 application/json;+charset=utf-8 83.6989ms
+[2022-05-21 19:12:31.712 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Department/GetAll - -
+[2022-05-21 19:12:31.712 +05:30 INF] CORS policy execution successful.
+[2022-05-21 19:12:31.712 +05:30 INF] Executing endpoint 'A5.Controller.DepartmentController.GetAllDepartment (A5)'
+[2022-05-21 19:12:31.715 +05:30 INF] Route matched with {action = "GetAllDepartment", controller = "Department"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllDepartment() on controller A5.Controller.DepartmentController (A5).
+[2022-05-21 19:12:31.719 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-21 19:12:31.762 +05:30 INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[AddedBy], [d].[AddedOn], [d].[DepartmentName], [d].[IsActive], [d].[OrganisationId], [d].[UpdatedBy], [d].[UpdatedOn]
+FROM [Departments] AS [d]
+WHERE [d].[IsActive] = CAST(1 AS bit)
+[2022-05-21 19:12:31.777 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Department, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-21 19:12:31.780 +05:30 INF] Executed action A5.Controller.DepartmentController.GetAllDepartment (A5) in 64.611ms
+[2022-05-21 19:12:31.780 +05:30 INF] Executed endpoint 'A5.Controller.DepartmentController.GetAllDepartment (A5)'
+[2022-05-21 19:12:31.780 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Department/GetAll - - - 200 1055 application/json;+charset=utf-8 68.1841ms
+[2022-05-21 19:15:18.195 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Department/GetAll - -
+[2022-05-21 19:15:18.239 +05:30 INF] CORS policy execution successful.
+[2022-05-21 19:15:18.239 +05:30 INF] Executing endpoint 'A5.Controller.DepartmentController.GetAllDepartment (A5)'
+[2022-05-21 19:15:18.239 +05:30 INF] Route matched with {action = "GetAllDepartment", controller = "Department"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllDepartment() on controller A5.Controller.DepartmentController (A5).
+[2022-05-21 19:15:18.266 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-21 19:15:18.267 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - -
+[2022-05-21 19:15:18.270 +05:30 INF] CORS policy execution successful.
+[2022-05-21 19:15:18.270 +05:30 INF] Executing endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-21 19:15:18.270 +05:30 INF] Route matched with {action = "GetAllOrganisation", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllOrganisation() on controller A5.Controller.OrganisationController (A5).
+[2022-05-21 19:15:18.281 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-21 19:15:18.283 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[AddedBy], [d].[AddedOn], [d].[DepartmentName], [d].[IsActive], [d].[OrganisationId], [d].[UpdatedBy], [d].[UpdatedOn]
+FROM [Departments] AS [d]
+WHERE [d].[IsActive] = CAST(1 AS bit)
+[2022-05-21 19:15:18.283 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Department, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-21 19:15:18.284 +05:30 INF] Executed action A5.Controller.DepartmentController.GetAllDepartment (A5) in 44.6503ms
+[2022-05-21 19:15:18.284 +05:30 INF] Executed endpoint 'A5.Controller.DepartmentController.GetAllDepartment (A5)'
+[2022-05-21 19:15:18.284 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Department/GetAll - - - 200 1055 application/json;+charset=utf-8 89.3398ms
+[2022-05-21 19:15:18.293 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[AddedBy], [o].[AddedOn], [o].[IsActive], [o].[OrganisationName], [o].[UpdatedBy], [o].[UpdatedOn]
+FROM [Organisations] AS [o]
+WHERE [o].[IsActive] = CAST(1 AS bit)
+[2022-05-21 19:15:18.294 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Organisation, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-21 19:15:18.294 +05:30 INF] Executed action A5.Controller.OrganisationController.GetAllOrganisation (A5) in 24.491ms
+[2022-05-21 19:15:18.294 +05:30 INF] Executed endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-21 19:15:18.294 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - - - 200 549 application/json;+charset=utf-8 27.2670ms
+[2022-05-21 19:15:46.327 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Department/GetAll - -
+[2022-05-21 19:15:46.327 +05:30 INF] CORS policy execution successful.
+[2022-05-21 19:15:46.327 +05:30 INF] Executing endpoint 'A5.Controller.DepartmentController.GetAllDepartment (A5)'
+[2022-05-21 19:15:46.327 +05:30 INF] Route matched with {action = "GetAllDepartment", controller = "Department"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllDepartment() on controller A5.Controller.DepartmentController (A5).
+[2022-05-21 19:15:46.365 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-21 19:15:46.366 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - -
+[2022-05-21 19:15:46.366 +05:30 INF] CORS policy execution successful.
+[2022-05-21 19:15:46.366 +05:30 INF] Executing endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-21 19:15:46.366 +05:30 INF] Route matched with {action = "GetAllOrganisation", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllOrganisation() on controller A5.Controller.OrganisationController (A5).
+[2022-05-21 19:15:46.384 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-21 19:15:46.392 +05:30 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[AddedBy], [d].[AddedOn], [d].[DepartmentName], [d].[IsActive], [d].[OrganisationId], [d].[UpdatedBy], [d].[UpdatedOn]
+FROM [Departments] AS [d]
+WHERE [d].[IsActive] = CAST(1 AS bit)
+[2022-05-21 19:15:46.392 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Department, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-21 19:15:46.393 +05:30 INF] Executed action A5.Controller.DepartmentController.GetAllDepartment (A5) in 65.3271ms
+[2022-05-21 19:15:46.393 +05:30 INF] Executed endpoint 'A5.Controller.DepartmentController.GetAllDepartment (A5)'
+[2022-05-21 19:15:46.393 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Department/GetAll - - - 200 1055 application/json;+charset=utf-8 65.8885ms
+[2022-05-21 19:15:46.432 +05:30 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[AddedBy], [o].[AddedOn], [o].[IsActive], [o].[OrganisationName], [o].[UpdatedBy], [o].[UpdatedOn]
+FROM [Organisations] AS [o]
+WHERE [o].[IsActive] = CAST(1 AS bit)
+[2022-05-21 19:15:46.433 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Organisation, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-21 19:15:46.450 +05:30 INF] Executed action A5.Controller.OrganisationController.GetAllOrganisation (A5) in 84.1899ms
+[2022-05-21 19:15:46.451 +05:30 INF] Executed endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-21 19:15:46.451 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - - - 200 549 application/json;+charset=utf-8 84.8410ms
+[2022-05-21 19:15:50.514 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Department/GetAll - -
+[2022-05-21 19:15:50.514 +05:30 INF] CORS policy execution successful.
+[2022-05-21 19:15:50.514 +05:30 INF] Executing endpoint 'A5.Controller.DepartmentController.GetAllDepartment (A5)'
+[2022-05-21 19:15:50.514 +05:30 INF] Route matched with {action = "GetAllDepartment", controller = "Department"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllDepartment() on controller A5.Controller.DepartmentController (A5).
+[2022-05-21 19:15:50.517 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - -
+[2022-05-21 19:15:50.517 +05:30 INF] CORS policy execution successful.
+[2022-05-21 19:15:50.517 +05:30 INF] Executing endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-21 19:15:50.517 +05:30 INF] Route matched with {action = "GetAllOrganisation", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllOrganisation() on controller A5.Controller.OrganisationController (A5).
+[2022-05-21 19:15:50.518 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-21 19:15:50.524 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-21 19:15:50.530 +05:30 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[AddedBy], [d].[AddedOn], [d].[DepartmentName], [d].[IsActive], [d].[OrganisationId], [d].[UpdatedBy], [d].[UpdatedOn]
+FROM [Departments] AS [d]
+WHERE [d].[IsActive] = CAST(1 AS bit)
+[2022-05-21 19:15:50.531 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Department, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-21 19:15:50.531 +05:30 INF] Executed action A5.Controller.DepartmentController.GetAllDepartment (A5) in 16.9337ms
+[2022-05-21 19:15:50.532 +05:30 INF] Executed endpoint 'A5.Controller.DepartmentController.GetAllDepartment (A5)'
+[2022-05-21 19:15:50.534 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Department/GetAll - - - 200 1055 application/json;+charset=utf-8 19.2923ms
+[2022-05-21 19:15:50.535 +05:30 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[AddedBy], [o].[AddedOn], [o].[IsActive], [o].[OrganisationName], [o].[UpdatedBy], [o].[UpdatedOn]
+FROM [Organisations] AS [o]
+WHERE [o].[IsActive] = CAST(1 AS bit)
+[2022-05-21 19:15:50.536 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Organisation, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-21 19:15:50.536 +05:30 INF] Executed action A5.Controller.OrganisationController.GetAllOrganisation (A5) in 19.1801ms
+[2022-05-21 19:15:50.536 +05:30 INF] Executed endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-21 19:15:50.536 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - - - 200 549 application/json;+charset=utf-8 19.8029ms
+[2022-05-21 19:16:28.762 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Department/GetAll - -
+[2022-05-21 19:16:28.762 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - -
+[2022-05-21 19:16:28.762 +05:30 INF] CORS policy execution successful.
+[2022-05-21 19:16:28.762 +05:30 INF] Executing endpoint 'A5.Controller.DepartmentController.GetAllDepartment (A5)'
+[2022-05-21 19:16:28.762 +05:30 INF] CORS policy execution successful.
+[2022-05-21 19:16:28.762 +05:30 INF] Route matched with {action = "GetAllDepartment", controller = "Department"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllDepartment() on controller A5.Controller.DepartmentController (A5).
+[2022-05-21 19:16:28.762 +05:30 INF] Executing endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-21 19:16:28.762 +05:30 INF] Route matched with {action = "GetAllOrganisation", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllOrganisation() on controller A5.Controller.OrganisationController (A5).
+[2022-05-21 19:16:28.770 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-21 19:16:28.774 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-21 19:16:28.781 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[AddedBy], [o].[AddedOn], [o].[IsActive], [o].[OrganisationName], [o].[UpdatedBy], [o].[UpdatedOn]
+FROM [Organisations] AS [o]
+WHERE [o].[IsActive] = CAST(1 AS bit)
+[2022-05-21 19:16:28.783 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[AddedBy], [d].[AddedOn], [d].[DepartmentName], [d].[IsActive], [d].[OrganisationId], [d].[UpdatedBy], [d].[UpdatedOn]
+FROM [Departments] AS [d]
+WHERE [d].[IsActive] = CAST(1 AS bit)
+[2022-05-21 19:16:28.783 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Organisation, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-21 19:16:28.783 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Department, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-21 19:16:28.784 +05:30 INF] Executed action A5.Controller.OrganisationController.GetAllOrganisation (A5) in 21.396ms
+[2022-05-21 19:16:28.784 +05:30 INF] Executed action A5.Controller.DepartmentController.GetAllDepartment (A5) in 21.5081ms
+[2022-05-21 19:16:28.784 +05:30 INF] Executed endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-21 19:16:28.784 +05:30 INF] Executed endpoint 'A5.Controller.DepartmentController.GetAllDepartment (A5)'
+[2022-05-21 19:16:28.784 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - - - 200 549 application/json;+charset=utf-8 21.9001ms
+[2022-05-21 19:16:28.784 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Department/GetAll - - - 200 1055 application/json;+charset=utf-8 22.1575ms
+[2022-05-21 19:16:40.282 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Department/GetAll - -
+[2022-05-21 19:16:40.282 +05:30 INF] CORS policy execution successful.
+[2022-05-21 19:16:40.282 +05:30 INF] Executing endpoint 'A5.Controller.DepartmentController.GetAllDepartment (A5)'
+[2022-05-21 19:16:40.282 +05:30 INF] Route matched with {action = "GetAllDepartment", controller = "Department"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllDepartment() on controller A5.Controller.DepartmentController (A5).
+[2022-05-21 19:16:40.465 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-21 19:16:40.526 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - -
+[2022-05-21 19:16:40.526 +05:30 INF] CORS policy execution successful.
+[2022-05-21 19:16:40.526 +05:30 INF] Executing endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-21 19:16:40.526 +05:30 INF] Route matched with {action = "GetAllOrganisation", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllOrganisation() on controller A5.Controller.OrganisationController (A5).
+[2022-05-21 19:16:40.562 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-21 19:16:40.580 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[AddedBy], [d].[AddedOn], [d].[DepartmentName], [d].[IsActive], [d].[OrganisationId], [d].[UpdatedBy], [d].[UpdatedOn]
+FROM [Departments] AS [d]
+WHERE [d].[IsActive] = CAST(1 AS bit)
+[2022-05-21 19:16:40.580 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Department, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-21 19:16:40.582 +05:30 INF] Executed action A5.Controller.DepartmentController.GetAllDepartment (A5) in 298.7456ms
+[2022-05-21 19:16:40.582 +05:30 INF] Executed endpoint 'A5.Controller.DepartmentController.GetAllDepartment (A5)'
+[2022-05-21 19:16:40.582 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Department/GetAll - - - 200 1055 application/json;+charset=utf-8 300.3617ms
+[2022-05-21 19:16:40.584 +05:30 INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[AddedBy], [o].[AddedOn], [o].[IsActive], [o].[OrganisationName], [o].[UpdatedBy], [o].[UpdatedOn]
+FROM [Organisations] AS [o]
+WHERE [o].[IsActive] = CAST(1 AS bit)
+[2022-05-21 19:16:40.585 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Organisation, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-21 19:16:40.585 +05:30 INF] Executed action A5.Controller.OrganisationController.GetAllOrganisation (A5) in 58.4221ms
+[2022-05-21 19:16:40.585 +05:30 INF] Executed endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-21 19:16:40.585 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - - - 200 549 application/json;+charset=utf-8 58.8474ms
+[2022-05-21 19:17:42.162 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Department/GetAll - -
+[2022-05-21 19:17:42.162 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - -
+[2022-05-21 19:17:42.162 +05:30 INF] CORS policy execution successful.
+[2022-05-21 19:17:42.163 +05:30 INF] CORS policy execution successful.
+[2022-05-21 19:17:42.163 +05:30 INF] Executing endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-21 19:17:42.163 +05:30 INF] Executing endpoint 'A5.Controller.DepartmentController.GetAllDepartment (A5)'
+[2022-05-21 19:17:42.163 +05:30 INF] Route matched with {action = "GetAllOrganisation", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllOrganisation() on controller A5.Controller.OrganisationController (A5).
+[2022-05-21 19:17:42.163 +05:30 INF] Route matched with {action = "GetAllDepartment", controller = "Department"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllDepartment() on controller A5.Controller.DepartmentController (A5).
+[2022-05-21 19:17:42.177 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-21 19:17:42.198 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-21 19:17:42.214 +05:30 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[AddedBy], [d].[AddedOn], [d].[DepartmentName], [d].[IsActive], [d].[OrganisationId], [d].[UpdatedBy], [d].[UpdatedOn]
+FROM [Departments] AS [d]
+WHERE [d].[IsActive] = CAST(1 AS bit)
+[2022-05-21 19:17:42.216 +05:30 INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[AddedBy], [o].[AddedOn], [o].[IsActive], [o].[OrganisationName], [o].[UpdatedBy], [o].[UpdatedOn]
+FROM [Organisations] AS [o]
+WHERE [o].[IsActive] = CAST(1 AS bit)
+[2022-05-21 19:17:42.216 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Department, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-21 19:17:42.216 +05:30 INF] Executed action A5.Controller.DepartmentController.GetAllDepartment (A5) in 53.3466ms
+[2022-05-21 19:17:42.216 +05:30 INF] Executed endpoint 'A5.Controller.DepartmentController.GetAllDepartment (A5)'
+[2022-05-21 19:17:42.216 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Organisation, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-21 19:17:42.216 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Department/GetAll - - - 200 1055 application/json;+charset=utf-8 54.6267ms
+[2022-05-21 19:17:42.216 +05:30 INF] Executed action A5.Controller.OrganisationController.GetAllOrganisation (A5) in 53.626ms
+[2022-05-21 19:17:42.216 +05:30 INF] Executed endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-21 19:17:42.216 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - - - 200 549 application/json;+charset=utf-8 54.0123ms
