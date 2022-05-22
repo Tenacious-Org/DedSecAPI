@@ -197,6 +197,20 @@ namespace A5.Controller
                 return BadRequest($"Error : {exception.Message}");
             }
        }
+
+       [HttpGet("GetApprovedAwardsList")]
+       public ActionResult GetApprovedAwardsList(int id)
+       {
+           try{
+                var data=_awardService.GetApprovedAwardsList(id);
+                return Ok(data);
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+       }
     }
 }
 

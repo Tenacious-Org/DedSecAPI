@@ -44,7 +44,18 @@ namespace A5.Data.Service
         //          d.UpdatedBy,
         //          d.UpdatedOn
         //      }).ToList();
-        //      return (IEnumerable<Department>)result;
+        //      return _context.Set<Department>().Include(Organisation).(from o in _context.Organisations
+        //       join d in _context.Departments on o.Id equals d.OrganisationId 
+        //       select new{
+        //          d.Id,
+        //          d.DepartmentName,
+        //          o.OrganisationName,
+        //          d.IsActive,
+        //          d.AddedBy,
+        //          d.AddedOn,
+        //          d.UpdatedBy,
+        //          d.UpdatedOn
+        //      }).ToList();
         //  }
     }
 }

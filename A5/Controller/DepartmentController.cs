@@ -25,8 +25,11 @@ namespace A5.Controller
         [HttpGet("GetAll")]
         public ActionResult GetAllDepartment()
         {
-            try{
-                var result = (from o in _context.Organisations join d in _context.Departments on o.Id equals d.OrganisationId select new{
+            try
+            {
+                var result = (from o in _context.Organisations
+              join d in _context.Departments on o.Id equals d.OrganisationId
+              select new{
                  d.Id,
                  d.DepartmentName,
                  o.OrganisationName,
@@ -36,7 +39,7 @@ namespace A5.Controller
                  d.UpdatedBy,
                  d.UpdatedOn
              }).ToList();
-             return Ok(result);
+                return Ok(result);
             }           
             catch(ValidationException exception)
             {
