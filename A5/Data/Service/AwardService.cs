@@ -28,33 +28,15 @@ namespace A5.Data.Service
                 throw exception;
             }
         }
-        public bool Approve(Award award)
-        {
-            bool result = false;
-            try{
-                var approve = _context.Set<Award>().FirstOrDefault(nameof=>nameof.Id==award.Id);
-                  approve.StatusId = 2;
-                  _context.SaveChanges();
-                   result=true;
-                    return result;
-            }
-            catch(Exception exception)
-            {
-                throw exception;
-            }
-        }
 
-        public bool Reject(Award award)
+        public bool Approval(Award award)
         {
              bool result = false;
             try{
                 _context.Set<Award>().Update(award);
-                var reject = _context.Set<Award>().FirstOrDefault(nameof=>nameof.Id==award.Id);
-                reject.StatusId = 3;
                 _context.SaveChanges();
                 result=true;
-                return result;
-               
+                return result;              
             }
             catch(Exception exception)
             {
@@ -62,25 +44,7 @@ namespace A5.Data.Service
             }
         }
         
-        public bool Publish(Award award)
-        {
-            bool result=false;
-            try{
-                
-                    _context.Set<Award>().Update(award);
-                    var coupon = _context.Set<Award>().FirstOrDefault(nameof=>nameof.Id==award.Id);
-                    coupon.StatusId=4;
-                    _context.SaveChanges();
-                    result=true;
-                    return result;
-
-            }
-            catch(Exception exception)
-            {
-                throw exception;
-            }
-            return result;
-        }
+       
         public IEnumerable<Award> GetAwards(int ? pageId ,int ? employeeId)
         {
           

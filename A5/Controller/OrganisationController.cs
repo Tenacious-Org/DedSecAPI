@@ -77,10 +77,10 @@ namespace A5.Controller
         }
 
         [HttpPut("Update")]
-        public ActionResult Update(Organisation organisation, int id)
+        public ActionResult Update(Organisation organisation)
         {
             try{
-                var data = _organisationService.Update(organisation, id);           
+                var data = _organisationService.Update(organisation);           
                 return Ok("Organisation Updated.");          
             }        
             catch(ValidationException exception)

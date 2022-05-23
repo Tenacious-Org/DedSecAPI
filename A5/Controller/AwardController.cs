@@ -36,32 +36,13 @@ namespace A5.Controller
             }
             
         }
-        [HttpPut("Approve")]
-        public ActionResult Approve(Award award){
+        
+         [HttpPut("Approval")]
+        public ActionResult Approval(Award award){
         
             
             try{
-                var data=_awardService.Approve(award);
-                return Ok(data);
-            }
-             catch(ValidationException exception)
-            {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
-            }
-            catch(Exception exception)
-            {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
-            }
-
-        }
-         [HttpPut("Reject")]
-        public ActionResult Reject(Award award){
-        
-            
-            try{
-                var data=_awardService.Reject(award);
+                var data=_awardService.Approval(award);
                 return Ok(data);
             }
              catch(ValidationException exception)
@@ -77,27 +58,6 @@ namespace A5.Controller
 
         }
        
-       
-        [HttpPut("Publish")]
-        public ActionResult Publish(Award award)
-        {
-            
-            try{
-                var data=_awardService.Publish(award);
-                return Ok(data);
-            }
-             catch(ValidationException exception)
-            {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
-            }
-            catch(Exception exception)
-            {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
-            }
-
-        }
         
        [HttpGet("GetRequestedAward")]
        public ActionResult GetRequestedAward(int employeeId)
