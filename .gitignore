@@ -16,3 +16,4 @@ A5/Migrations/20220518033545_EmployeeImage.cs
 A5/Migrations/20220518033545_EmployeeImage.Designer.cs
 *.cs
 A5/Migrations/AppDbContextModelSnapshot.cs
+A5/Migrations/

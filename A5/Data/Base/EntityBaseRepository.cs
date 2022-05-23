@@ -18,8 +18,7 @@ namespace A5.Data.Base
         public bool Create(T entity)
         {
            bool result = false;
-           var a = new T();
-           a.CreateValidation(entity);
+          
            try
            {
                _context.Set<T>().Add(entity);
@@ -37,8 +36,6 @@ namespace A5.Data.Base
         public bool Disable(T entity, int id)
         {
             bool result = false;
-            var a=new T();
-            a.DisableValidation(entity,id);
             try
             {
                 if(entity != null && entity.Id == id)
@@ -61,8 +58,7 @@ namespace A5.Data.Base
         public bool Update(T entity, int id)
         {
             bool result = false;
-            var a =new T();
-            a.UpdateValidation(entity,id);
+            
             try{
                 if(entity != null && entity.Id == id)
                 {
