@@ -95,12 +95,12 @@ namespace A5.Controller
         }
 
         [HttpPut("Disable")]
-        public ActionResult Disable(Organisation organisation, int id)
+        public ActionResult Disable(int id)
         {
             try
             {
-                var data = _organisationService.Disable(organisation, id);          
-                return Ok("Organisation Disabled.");
+                var data = _organisationService.DisableOrganisation(id);
+                return Ok(data);
             }           
             catch(ValidationException exception)
             {

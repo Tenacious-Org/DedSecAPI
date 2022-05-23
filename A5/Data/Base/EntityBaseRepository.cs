@@ -33,19 +33,15 @@ namespace A5.Data.Base
 
         }
 
-        public bool Disable(T entity, int id)
+        public bool Disable(int id)
         {
-            bool result = false;
+            
             try
             {
-                if(entity != null && entity.Id == id)
-                {
-                    var disable = _context.Set<T>().FirstOrDefault(nameof =>nameof.Id == id);
-                    disable.IsActive = false;
-                    _context.SaveChanges();
-                    result = true;
-                }
-                return result;
+                var disable = _context.Set<T>().FirstOrDefault(nameof =>nameof.Id == id);
+                disable.IsActive = false;
+                _context.SaveChanges();
+                return true;
             }
             catch(Exception exception)
             {
@@ -79,7 +75,7 @@ namespace A5.Data.Base
             
             try
             {
-                return _context.Set<T>().FirstOrDefault(nameof =>nameof.Id == id) ;              
+                return _context.Set<T>().FirstOrDefault(nameof =>nameof.Id == id);              
             }
             catch(Exception exception)
             {

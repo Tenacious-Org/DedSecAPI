@@ -125,10 +125,10 @@ namespace A5.Controller
         }
 
         [HttpPut("Disable")]
-        public ActionResult Disable(Department department, int id)
+        public ActionResult Disable(int id)
         {
             try{
-                var data = _departmentService.Disable(department, id);
+                var data = _departmentService.Disable(id);
                 return Ok("Disabled.");
             }           
             catch(ValidationException exception)
