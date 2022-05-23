@@ -51,6 +51,17 @@ namespace A5.Data.Service
                 throw exception;
             }
         }
+         public IEnumerable<Employee> GetEmployeeByRequesterId(int id)
+        {
+            try
+            {
+                return _context.Set<Employee>().Where(nameof => nameof.ReportingPersonId == id).ToList();
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
 
     }
 }
