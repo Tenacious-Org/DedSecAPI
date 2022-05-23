@@ -9,10 +9,7 @@ namespace A5.Data.Service.Interfaces
     public interface IAwardService
     {
         public bool RaiseRequest(Award award);
-    
-        public bool Publish(Award award);
-         public bool Approve(Award award);
-        public bool Reject(Award award);
+        public bool Approval(Award award);
         public IEnumerable<Award> GetAwards(int ? pageId,int?employeeId);
         public IEnumerable<Award> GetRequestedAward(int employeeId);
         public Award GetAwardById(int id);

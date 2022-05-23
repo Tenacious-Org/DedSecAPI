@@ -7,7 +7,7 @@ namespace A5.Data.Base
     {
         public bool Create(T entity);
         public bool Disable(T entity, int id);
-        public bool Update(T entity, int id);
+        public bool Update(T entity);
         public T GetById(int id);
         public IEnumerable<T> GetAll();
 

@@ -73,10 +73,10 @@ namespace A5.Controller
         }
 
         [HttpPut("Update")]
-        public ActionResult Update(AwardType awardType, int id)
+        public ActionResult Update(AwardType awardType)
         {
             try{
-                var data = _awardTypeService.Update(awardType, id);
+                var data = _awardTypeService.Update(awardType);
                  return Ok(data);
             }
             catch(ValidationException exception)
