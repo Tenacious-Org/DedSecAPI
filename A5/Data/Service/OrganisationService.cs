@@ -8,7 +8,14 @@ namespace A5.Data.Service
 {
     public class OrganisationService : EntityBaseRepository<Organisation>, IOrganisationService
     {
-        public OrganisationService(AppDbContext context) : base(context) { }
-        
+        private readonly AppDbContext _context;
+        public OrganisationService(AppDbContext context) : base(context) 
+        {
+             _context = context;
+        }
+        public void DisableOrganisation()
+        {
+            
+        }
     }
 }
