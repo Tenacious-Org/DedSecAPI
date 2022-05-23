@@ -3,3 +3,9 @@ A5/logs/
 A5/bin/
 A5/.vs
 A5/.vscode
+A5/obj/Debug/net6.0/A5.assets.cache
+A5/obj/Debug/net6.0/A5.csproj.AssemblyReference.cache
+A5/obj/Debug/net6.0/A5.GeneratedMSBuildEditorConfig.editorconfig
+*.cache
+*.cache
+*.editorconfig
