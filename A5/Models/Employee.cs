@@ -13,6 +13,8 @@ namespace A5.Models
         public string  LastName { get; set; }
         public string  Email { get; set; }
         public byte[] ? Image{ get; set; }
+
+        public string Gender {get;set;}
         public DateTime DOB { get; set; }
         public int OrganisationId { get; set;}
         [ForeignKey("OrganisationId")]
@@ -35,6 +37,9 @@ namespace A5.Models
         public DateTime AddedOn{ get; set; }
         public int ? UpdatedBy { get; set; }
         public DateTime ? UpdatedOn { get; set; }
+
+        [NotMapped]
+        public string ImageString {get;set;}
         
         [InverseProperty("ReportingPerson")]
         public ICollection<Employee> ? Reportingpersons { get; set; }

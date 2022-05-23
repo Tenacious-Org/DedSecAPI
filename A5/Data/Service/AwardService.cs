@@ -28,11 +28,11 @@ namespace A5.Data.Service
                 throw exception;
             }
         }
-        public bool Approve(Award award,int id)
+        public bool Approve(Award award)
         {
             bool result = false;
             try{
-                var approve = _context.Set<Award>().FirstOrDefault(nameof=>nameof.Id==id);
+                var approve = _context.Set<Award>().FirstOrDefault(nameof=>nameof.Id==award.Id);
                   approve.StatusId = 2;
                   _context.SaveChanges();
                    result=true;
@@ -44,12 +44,12 @@ namespace A5.Data.Service
             }
         }
 
-        public bool Reject(Award award,int id)
+        public bool Reject(Award award)
         {
              bool result = false;
             try{
                 _context.Set<Award>().Update(award);
-                var reject = _context.Set<Award>().FirstOrDefault(nameof=>nameof.Id==id);
+                var reject = _context.Set<Award>().FirstOrDefault(nameof=>nameof.Id==award.Id);
                 reject.StatusId = 3;
                 _context.SaveChanges();
                 result=true;
@@ -62,20 +62,18 @@ namespace A5.Data.Service
             }
         }
         
-        public bool Publish(Award award,int id)
+        public bool Publish(Award award)
         {
             bool result=false;
             try{
-                if(id == award.Id)
-                {
+                
                     _context.Set<Award>().Update(award);
-                    var coupon = _context.Set<Award>().FirstOrDefault(nameof=>nameof.Id==id);
+                    var coupon = _context.Set<Award>().FirstOrDefault(nameof=>nameof.Id==award.Id);
                     coupon.StatusId=4;
                     _context.SaveChanges();
                     result=true;
                     return result;
 
-                }
             }
             catch(Exception exception)
             {
@@ -83,15 +81,22 @@ namespace A5.Data.Service
             }
             return result;
         }
-        public IEnumerable<Award> GetAwards(int id ,int ? employeeId)
+        public IEnumerable<Award> GetAwards(int ? pageId ,int ? employeeId)
         {
           
             try{
-                if(employeeId == null)
-                    return _context.Set<Award>().Where(nameof =>nameof.StatusId == id).ToList();
-                else 
-                    return _context.Set<Award>().Where(nameof =>nameof.StatusId == id && nameof.AwardeeId==employeeId).ToList();  
-            }
+                
+                if(pageId==1) 
+                    return _context.Set<Award>().Where(nameof =>nameof.StatusId == 4 && nameof.AwardeeId==employeeId).ToList();
+                else if(pageId==2) 
+                    return  _context.Set<Award>().Where(nameof => nameof.RequesterId == employeeId).ToList().OrderBy(nameof => nameof.StatusId);                
+                else if(pageId==3) 
+                    return  _context.Set<Award>().Where(nameof => nameof.ApproverId == employeeId).ToList().OrderBy(nameof => nameof.StatusId);
+                else if(pageId==4) 
+                    return  _context.Set<Award>().Where(nameof => nameof.HRId == employeeId && (nameof.StatusId == 2 || nameof.StatusId == 4)).ToList().OrderBy(nameof => nameof.StatusId);
+                else
+                    return _context.Set<Award>().Where(nameof =>nameof.StatusId == 4).ToList();  
+                }
             catch(Exception exception)
             {
                 throw exception;
@@ -108,10 +113,10 @@ namespace A5.Data.Service
                 throw exception;
             }
         }
-        public Award GetAward(int id)
+        public Award GetAwardById(int id)
         {
             try{
-                return _context.Set<Award>().FirstOrDefault(nameof=> nameof.Id == id && nameof.StatusId == 2);
+                return _context.Set<Award>().FirstOrDefault(nameof=> nameof.Id == id);
             }
             catch(Exception exception)
             {
@@ -147,31 +152,31 @@ namespace A5.Data.Service
            }
         }
 
-        public IEnumerable<Award> GetRequestedAwardsList(int employeeId)
-        {
-            try
-            {
-                return  _context.Set<Award>().Where(nameof => nameof.ApproverId == employeeId).ToList().OrderBy(nameof => nameof.StatusId);
+        // public IEnumerable<Award> GetRequestedAwardsList(int employeeId)
+        // {
+        //     try
+        //     {
+        //         return  _context.Set<Award>().Where(nameof => nameof.ApproverId == employeeId).ToList().OrderBy(nameof => nameof.StatusId);
                 
-            }
-            catch(Exception exception)
-            {
-                throw exception;
-            }
-        }
+        //     }
+        //     catch(Exception exception)
+        //     {
+        //         throw exception;
+        //     }
+        // }
 
-        public IEnumerable<Award> GetApprovedAwardsList(int employeeId)
-        {
-            try
-            {
-                return  _context.Set<Award>().Where(nameof => nameof.HRId == employeeId && (nameof.StatusId == 2 || nameof.StatusId == 4)).ToList().OrderBy(nameof => nameof.StatusId);
+        // public IEnumerable<Award> GetApprovedAwardsList(int employeeId)
+        // {
+        //     try
+        //     {
+        //         return  _context.Set<Award>().Where(nameof => nameof.HRId == employeeId && (nameof.StatusId == 2 || nameof.StatusId == 4)).ToList().OrderBy(nameof => nameof.StatusId);
                 
-            }
-            catch(Exception exception)
-            {
-                throw exception;
-            }
-        }
+        //     }
+        //     catch(Exception exception)
+        //     {
+        //         throw exception;
+        //     }
+        // }
 
         
 

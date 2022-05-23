@@ -10,9 +10,7 @@ namespace A5.Data
             {
                 var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
                 context.Database.EnsureCreated();
-
                 
-
                 if(!context.Organisations.Any())
                 {
                     context.Organisations.AddRange(new List<Organisation>() {
@@ -165,6 +163,8 @@ namespace A5.Data
                            FirstName = "Admin",
                            LastName = "Tenacious",
                            Email = "admin@tenacious.com",
+                           Image=null,
+                           Gender="Male",
                            DOB = DateTime.Now.AddDays(-9000),
                            OrganisationId = 1,
                            DepartmentId = 1,
@@ -184,6 +184,8 @@ namespace A5.Data
                            FirstName = "Ajay",
                            LastName = "Bharathi",
                            Email = "ajay@tenacious.com",
+                           Image=null,
+                           Gender="Male",
                            DOB = DateTime.Now.AddDays(-10000),
                            OrganisationId = 1,
                            DepartmentId = 1,
@@ -203,6 +205,8 @@ namespace A5.Data
                            FirstName = "Jeevanantham",
                            LastName = "N",
                            Email = "jeeva@tenacious.com",
+                           Image=null,
+                           Gender="Male",
                            DOB = DateTime.Now.AddDays(-9000),
                            OrganisationId = 1,
                            DepartmentId = 1,
@@ -222,6 +226,8 @@ namespace A5.Data
                            FirstName = "Madhu",
                            LastName = "Jith",
                            Email = "jith@tenacious.com",
+                           Image=null,
+                           Gender="Male",
                            DOB = DateTime.Now.AddDays(-11000),
                            OrganisationId = 2,
                            DepartmentId = 2,
@@ -241,6 +247,8 @@ namespace A5.Data
                            FirstName = "Aakash",
                            LastName = "Aakaash",
                            Email = "aakaash@tenacious.com",
+                           Image=null,
+                           Gender="Male",
                            DOB = DateTime.Now.AddDays(-13000),
                            OrganisationId = 2,
                            DepartmentId = 2,
@@ -260,6 +268,8 @@ namespace A5.Data
                            FirstName = "Vidhya",
                            LastName = "Priya",
                            Email = "priya@tenacious.com",
+                           Image=null,
+                           Gender="Female",
                            DOB = DateTime.Now.AddDays(-15000),
                            OrganisationId = 2,
                            DepartmentId = 2,
@@ -279,6 +289,8 @@ namespace A5.Data
                            FirstName = "Atsaya",
                            LastName = "A",
                            Email = "atsaya@tenacious.com",
+                           Image=null,
+                           Gender="Female",
                            DOB = DateTime.Now.AddDays(-14000),
                            OrganisationId = 2,
                            DepartmentId = 2,
@@ -303,8 +315,8 @@ namespace A5.Data
                         {
                             AwardName = "Role Star",
                             AwardDescription = "Best Performer.",
-                            IsActive = true,
                             Image = null,
+                            IsActive = true,
                             AddedBy = 1,
                             AddedOn = DateTime.Now,
                             UpdatedBy = null,
@@ -313,9 +325,9 @@ namespace A5.Data
                         new AwardType()
                         {
                             AwardName = "Gladiator",
-                            AwardDescription = "Hard Worker.",
-                            IsActive = true,
+                            AwardDescription = "Hard Worker.",                            
                             Image = null,
+                            IsActive = true,
                             AddedBy = 1,
                             AddedOn = DateTime.Now,
                             UpdatedBy = null,
@@ -325,8 +337,8 @@ namespace A5.Data
                         {
                             AwardName = "First Victor",
                             AwardDescription = "Inpirationsal Acheiver.",
-                            IsActive = true,
                             Image = null,
+                            IsActive = true,
                             AddedBy = 1,
                             AddedOn = DateTime.Now,
                             UpdatedBy = null,
@@ -375,6 +387,38 @@ namespace A5.Data
                             Reason = "Best Performer in Team",
                             RejectedReason = null,
                             CouponCode = "KJ7JH876HBH",
+                            AddedBy = 6,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 4,
+                            UpdatedOn = DateTime.Now
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 2,
+                            AwardeeId = 7,
+                            RequesterId = 6,
+                            ApproverId = 5,
+                            HRId = 4,
+                            StatusId = 1,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = null,
+                            AddedBy = 6,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 4,
+                            UpdatedOn = DateTime.Now
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 7,
+                            RequesterId = 6,
+                            ApproverId = 5,
+                            HRId = 4,
+                            StatusId = 1,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = null,
                             AddedBy = 6,
                             AddedOn = DateTime.Now,
                             UpdatedBy = 4,
