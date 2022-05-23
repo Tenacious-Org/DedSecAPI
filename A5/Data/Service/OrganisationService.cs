@@ -9,26 +9,22 @@ namespace A5.Data.Service
     public class OrganisationService : EntityBaseRepository<Organisation>, IOrganisationService
     {
         private readonly AppDbContext _context;
-        private readonly EmployeeService _employeeService;
-        private readonly OrganisationService _organisationService;
         public OrganisationService(AppDbContext context) : base(context)
         {
-             _context = context;
+            _context = context;
         }
-        public string DisableOrganisation(int id)
+        public IEnumerable<Employee> GetEmployeeByOrganisation(int id)
         {
-            var result = "Organisation can't be disabled.";
-            var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.OrganisationId == id).ToList().Count();
-            if(checkEmployee == 0)
+            try
             {
-                _organisationService.Disable(id);
-                result = "Organisation Disabled Successfully.";
+                var result = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.OrganisationId == id).ToList();
+                return result;
             }
-            else
+            catch(Exception exception)
             {
-                result = "There are Certain Employees in that Organisation. You're gonna change their Organisation to disable this Organisation.";
+                throw exception;
             }
-            return result;
+            
         }
     }
 }

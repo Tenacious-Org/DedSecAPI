@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using A5.Models;
 using A5.Data.Service;
 using System.ComponentModel.DataAnnotations;
+using A5.Data;
 
 namespace A5.Controller
 {
@@ -11,10 +12,12 @@ namespace A5.Controller
     public class OrganisationController : ControllerBase
     {
         private readonly ILogger<OrganisationController> _logger;
+        private readonly AppDbContext _context;
         private readonly OrganisationService _organisationService;
-        public OrganisationController(ILogger<OrganisationController> logger,OrganisationService organisationService)
+        public OrganisationController(ILogger<OrganisationController> logger, AppDbContext context, OrganisationService organisationService)
         {
             _logger = logger;
+            _context = context;
             _organisationService = organisationService;
         } 
 
@@ -99,9 +102,15 @@ namespace A5.Controller
         {
             try
             {
-                var data = _organisationService.DisableOrganisation(id);
+                var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.OrganisationId == id).ToList().Count();
+                if(checkEmployee > 0)
+                {
+                    var result = _organisationService.GetEmployeeByOrganisation(id);
+                    return Ok(result);
+                }
+                var data = _organisationService.Disable(id);
                 return Ok(data);
-            }           
+            }
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
