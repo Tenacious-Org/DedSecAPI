@@ -114,35 +114,7 @@ namespace A5.Data.Service
            catch(Exception exception){
                throw exception;
            }
-        }
-
-        // public IEnumerable<Award> GetRequestedAwardsList(int employeeId)
-        // {
-        //     try
-        //     {
-        //         return  _context.Set<Award>().Where(nameof => nameof.ApproverId == employeeId).ToList().OrderBy(nameof => nameof.StatusId);
-                
-        //     }
-        //     catch(Exception exception)
-        //     {
-        //         throw exception;
-        //     }
-        // }
-
-        // public IEnumerable<Award> GetApprovedAwardsList(int employeeId)
-        // {
-        //     try
-        //     {
-        //         return  _context.Set<Award>().Where(nameof => nameof.HRId == employeeId && (nameof.StatusId == 2 || nameof.StatusId == 4)).ToList().OrderBy(nameof => nameof.StatusId);
-                
-        //     }
-        //     catch(Exception exception)
-        //     {
-        //         throw exception;
-        //     }
-        // }
-
-        
+        }        
 
     }
 }
