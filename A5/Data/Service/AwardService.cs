@@ -53,11 +53,11 @@ namespace A5.Data.Service
                 if(pageId==1) 
                     return _context.Set<Award>().Where(nameof =>nameof.StatusId == 4 && nameof.AwardeeId==employeeId).ToList();
                 else if(pageId==2) 
-                    return  _context.Set<Award>().Where(nameof => nameof.RequesterId == employeeId).ToList().OrderBy(nameof => nameof.StatusId);
+                    return _context.Set<Award>().Where(nameof => nameof.RequesterId == employeeId).ToList().OrderBy(nameof => nameof.StatusId);
                 else if(pageId==3) 
-                    return  _context.Set<Award>().Where(nameof => nameof.ApproverId == employeeId).ToList().OrderBy(nameof => nameof.StatusId);
+                    return _context.Set<Award>().Where(nameof => nameof.ApproverId == employeeId).ToList().OrderBy(nameof => nameof.StatusId);
                 else if(pageId==4) 
-                    return  _context.Set<Award>().Where(nameof => nameof.HRId == employeeId && (nameof.StatusId == 2 || nameof.StatusId == 4)).ToList().OrderBy(nameof => nameof.StatusId);
+                    return _context.Set<Award>().Where(nameof => nameof.HRId == employeeId && (nameof.StatusId == 2 || nameof.StatusId == 4)).ToList().OrderBy(nameof => nameof.StatusId);
                 else
                     return _context.Set<Award>().Where(nameof =>nameof.StatusId == 4).ToList();
             }
