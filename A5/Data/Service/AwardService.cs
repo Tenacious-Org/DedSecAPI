@@ -43,8 +43,6 @@ namespace A5.Data.Service
                 throw exception;
             }
         }
-        
-       
         public IEnumerable<Award> GetAwards(int ? pageId ,int ? employeeId)
         {
           
