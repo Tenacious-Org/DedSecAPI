@@ -127,6 +127,24 @@ namespace A5.Controller
                 return BadRequest($"Error : {exception.Message}");
             }
         }
+        [HttpGet("GetEmloyeeByOrganisation")]
+        public ActionResult GetEmployeeByOrganisation(int id)
+        {
+            try
+            {
+                var data = _employeeService.GetEmployeeByOrganisation(id);
+                return Ok(data);
+            }
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
+        }
         
         [HttpGet("GetEmloyeeByRequesterId")]
         public ActionResult GetEmployeeByRequesterId(int id)

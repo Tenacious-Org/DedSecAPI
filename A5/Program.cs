@@ -2,7 +2,6 @@ using A5.Data;
 using Microsoft.EntityFrameworkCore;
 using A5.Data.Service;
 using Serilog;
-using A5.Controller;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,7 +24,6 @@ builder.Services.AddTransient<AwardTypeService>();
 builder.Services.AddTransient<StatusService>();
 builder.Services.AddTransient<EmployeeService>();
 builder.Services.AddTransient<AwardService>();
-builder.Services.AddTransient<EmployeeController>();
 builder.Services.AddControllersWithViews()
     .AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling =

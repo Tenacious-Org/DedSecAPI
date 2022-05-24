@@ -30,32 +30,21 @@ namespace A5.Data.Service
             }
              
          }
-        //  public IEnumerable<Department> GetDepartments()
-        //  {
-        //      var result = (from o in _context.Organisations
-        //       join d in _context.Departments on o.Id equals d.OrganisationId 
-        //       select new{
-        //          d.Id,
-        //          d.DepartmentName,
-        //          o.OrganisationName,
-        //          d.IsActive,
-        //          d.AddedBy,
-        //          d.AddedOn,
-        //          d.UpdatedBy,
-        //          d.UpdatedOn
-        //      }).ToList();
-        //      return _context.Set<Department>().Include(Organisation).(from o in _context.Organisations
-        //       join d in _context.Departments on o.Id equals d.OrganisationId 
-        //       select new{
-        //          d.Id,
-        //          d.DepartmentName,
-        //          o.OrganisationName,
-        //          d.IsActive,
-        //          d.AddedBy,
-        //          d.AddedOn,
-        //          d.UpdatedBy,
-        //          d.UpdatedOn
-        //      }).ToList();
-        //  }
+         public object GetAllDepartments()
+         {
+            var result = (from d in _context.Departments
+              join o in _context.Organisations on d.OrganisationId equals o.Id
+              select new{
+                 d.Id,
+                 d.DepartmentName,
+                 o.OrganisationName,
+                 d.IsActive,
+                 d.AddedBy,
+                 d.AddedOn,
+                 d.UpdatedBy,
+                 d.UpdatedOn
+             }).ToList();
+             return result;
+         }
     }
 }

@@ -105,10 +105,13 @@ namespace A5.Controller
                 var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.OrganisationId == id).ToList().Count();
                 if(checkEmployee > 0)
                 {
-                    return RedirectToAction("EmployeeController","GetEmployeeByOrganisation",new {id});
+                    return Ok("There are certain Employees in that Organisation. You're gonna change their Organisation to disable this Organisation.");
                 }
-                var data = _organisationService.Disable(id);
-                return Ok(data);
+                else
+                {
+                    var data = _organisationService.Disable(id);
+                    return Ok(data);
+                }
             }
             catch(ValidationException exception)
             {
