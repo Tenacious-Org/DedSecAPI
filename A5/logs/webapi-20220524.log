@@ -1,0 +1,351 @@
+[2022-05-24 11:08:47.727 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-24 11:08:58.629 +05:30 INF] Executed DbCommand (109ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2022-05-24 11:09:01.023 +05:30 INF] Executed DbCommand (2,318ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+[2022-05-24 11:09:02.184 +05:30 INF] Executed DbCommand (110ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Organisations] AS [o]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-24 11:09:02.528 +05:30 INF] Executed DbCommand (147ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Departments] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-24 11:09:02.721 +05:30 INF] Executed DbCommand (91ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Designations] AS [d]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-24 11:09:03.024 +05:30 INF] Executed DbCommand (117ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Employees] AS [e]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-24 11:09:03.137 +05:30 INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AwardTypes] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-24 11:09:03.261 +05:30 INF] Executed DbCommand (31ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Statuses] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-24 11:09:03.488 +05:30 INF] Executed DbCommand (195ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Awards] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-05-24 11:09:04.094 +05:30 INF] User profile is available. Using 'C:\Users\ELCOT\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-05-24 11:09:07.333 +05:30 INF] Now listening on: https://localhost:7275
+[2022-05-24 11:09:07.333 +05:30 INF] Now listening on: http://localhost:5050
+[2022-05-24 11:09:07.345 +05:30 INF] Application started. Press Ctrl+C to shut down.
+[2022-05-24 11:09:07.345 +05:30 INF] Hosting environment: Development
+[2022-05-24 11:09:07.345 +05:30 INF] Content root path: D:\GitHub\DedSecAPI\A5\
+[2022-05-24 11:09:31.860 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/ - -
+[2022-05-24 11:09:32.242 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/ - - - 404 0 - 400.8075ms
+[2022-05-24 11:09:47.322 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger - -
+[2022-05-24 11:09:47.324 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger - - - 301 0 - 2.0213ms
+[2022-05-24 11:09:47.420 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/index.html - -
+[2022-05-24 11:09:47.720 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/index.html - - - 200 - text/html;charset=utf-8 300.2527ms
+[2022-05-24 11:09:47.811 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui.css - -
+[2022-05-24 11:09:47.858 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui-bundle.js - -
+[2022-05-24 11:09:48.020 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-24 11:09:48.063 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-24 11:09:48.065 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-24 11:09:48.067 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui.css - - - 200 143632 text/css 255.6427ms
+[2022-05-24 11:09:48.067 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 47.0819ms
+[2022-05-24 11:09:48.083 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-24 11:09:48.084 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 225.9742ms
+[2022-05-24 11:09:48.611 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger - -
+[2022-05-24 11:09:48.612 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger - - - 301 0 - 0.4820ms
+[2022-05-24 11:09:48.623 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/index.html - -
+[2022-05-24 11:09:48.624 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/index.html - - - 200 - text/html;charset=utf-8 1.2906ms
+[2022-05-24 11:09:48.978 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui.css - -
+[2022-05-24 11:09:48.979 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui-bundle.js - -
+[2022-05-24 11:09:48.979 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/swagger-ui-standalone-preset.js - -
+[2022-05-24 11:09:49.008 +05:30 INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+[2022-05-24 11:09:49.008 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui.css - - - 200 143632 text/css 30.3173ms
+[2022-05-24 11:09:49.110 +05:30 INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+[2022-05-24 11:09:49.110 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 131.1259ms
+[2022-05-24 11:09:49.142 +05:30 INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+[2022-05-24 11:09:49.173 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 163.9219ms
+[2022-05-24 11:09:50.391 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - -
+[2022-05-24 11:09:51.106 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 715.3781ms
+[2022-05-24 11:10:03.339 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - -
+[2022-05-24 11:10:03.359 +05:30 INF] CORS policy execution successful.
+[2022-05-24 11:10:03.401 +05:30 INF] Executing endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-24 11:10:03.616 +05:30 INF] Route matched with {action = "GetAllOrganisation", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllOrganisation() on controller A5.Controller.OrganisationController (A5).
+[2022-05-24 11:10:03.706 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-24 11:10:04.331 +05:30 INF] Executed DbCommand (196ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[AddedBy], [o].[AddedOn], [o].[IsActive], [o].[OrganisationName], [o].[UpdatedBy], [o].[UpdatedOn]
+FROM [Organisations] AS [o]
+WHERE [o].[IsActive] = CAST(1 AS bit)
+[2022-05-24 11:10:04.562 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Organisation, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-24 11:10:05.810 +05:30 INF] Executed action A5.Controller.OrganisationController.GetAllOrganisation (A5) in 2181.0803ms
+[2022-05-24 11:10:05.811 +05:30 INF] Executed endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-24 11:10:05.823 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - - - 200 998 application/json;+charset=utf-8 2483.6308ms
+[2022-05-24 11:10:58.841 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Employee/GetAll - -
+[2022-05-24 11:10:58.893 +05:30 INF] CORS policy execution successful.
+[2022-05-24 11:10:58.894 +05:30 INF] Executing endpoint 'A5.Controller.EmployeeController.GetAllEmployees (A5)'
+[2022-05-24 11:10:58.916 +05:30 INF] Route matched with {action = "GetAllEmployees", controller = "Employee"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllEmployees() on controller A5.Controller.EmployeeController (A5).
+[2022-05-24 11:10:59.133 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-24 11:10:59.604 +05:30 INF] Executed DbCommand (444ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[ACEID], [e].[AddedBy], [e].[AddedOn], [e].[DOB], [e].[DepartmentId], [e].[DesignationId], [e].[Email], [e].[FirstName], [e].[HRId], [e].[IsActive], [e].[LastName], [e].[OrganisationId], [e].[Password], [e].[ReportingPersonId], [e].[UpdatedBy], [e].[UpdatedOn]
+FROM [Employees] AS [e]
+WHERE [e].[IsActive] = CAST(1 AS bit)
+[2022-05-24 11:10:59.835 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Employee, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-24 11:11:00.434 +05:30 INF] Executed action A5.Controller.EmployeeController.GetAllEmployees (A5) in 1517.7272ms
+[2022-05-24 11:11:00.434 +05:30 INF] Executed endpoint 'A5.Controller.EmployeeController.GetAllEmployees (A5)'
+[2022-05-24 11:11:00.435 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Employee/GetAll - - - 200 72954 application/json;+charset=utf-8 1593.1398ms
+[2022-05-24 11:12:21.386 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - -
+[2022-05-24 11:12:21.430 +05:30 INF] CORS policy execution successful.
+[2022-05-24 11:12:21.431 +05:30 INF] Executing endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-24 11:12:21.431 +05:30 INF] Route matched with {action = "GetAllOrganisation", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllOrganisation() on controller A5.Controller.OrganisationController (A5).
+[2022-05-24 11:12:21.487 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-24 11:12:21.629 +05:30 INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[AddedBy], [o].[AddedOn], [o].[IsActive], [o].[OrganisationName], [o].[UpdatedBy], [o].[UpdatedOn]
+FROM [Organisations] AS [o]
+WHERE [o].[IsActive] = CAST(1 AS bit)
+[2022-05-24 11:12:21.630 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Organisation, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-24 11:12:21.630 +05:30 INF] Executed action A5.Controller.OrganisationController.GetAllOrganisation (A5) in 199.5758ms
+[2022-05-24 11:12:21.631 +05:30 INF] Executed endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-24 11:12:21.631 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - - - 200 998 application/json;+charset=utf-8 245.1630ms
+[2022-05-24 11:12:26.479 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Employee/GetAll - -
+[2022-05-24 11:12:26.481 +05:30 INF] CORS policy execution successful.
+[2022-05-24 11:12:26.481 +05:30 INF] Executing endpoint 'A5.Controller.EmployeeController.GetAllEmployees (A5)'
+[2022-05-24 11:12:26.481 +05:30 INF] Route matched with {action = "GetAllEmployees", controller = "Employee"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllEmployees() on controller A5.Controller.EmployeeController (A5).
+[2022-05-24 11:12:26.482 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-24 11:12:26.691 +05:30 INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[ACEID], [e].[AddedBy], [e].[AddedOn], [e].[DOB], [e].[DepartmentId], [e].[DesignationId], [e].[Email], [e].[FirstName], [e].[HRId], [e].[IsActive], [e].[LastName], [e].[OrganisationId], [e].[Password], [e].[ReportingPersonId], [e].[UpdatedBy], [e].[UpdatedOn]
+FROM [Employees] AS [e]
+WHERE [e].[IsActive] = CAST(1 AS bit)
+[2022-05-24 11:12:26.693 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Employee, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-24 11:12:26.758 +05:30 INF] Executed action A5.Controller.EmployeeController.GetAllEmployees (A5) in 276.1755ms
+[2022-05-24 11:12:26.760 +05:30 INF] Executed endpoint 'A5.Controller.EmployeeController.GetAllEmployees (A5)'
+[2022-05-24 11:12:26.761 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Employee/GetAll - - - 200 72954 application/json;+charset=utf-8 282.5390ms
+[2022-05-24 11:12:34.179 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Employee/GetById?id=1 - -
+[2022-05-24 11:12:34.180 +05:30 INF] CORS policy execution successful.
+[2022-05-24 11:12:34.180 +05:30 INF] Executing endpoint 'A5.Controller.EmployeeController.GetByOrganisationId (A5)'
+[2022-05-24 11:12:34.244 +05:30 INF] Route matched with {action = "GetByOrganisationId", controller = "Employee"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetByOrganisationId(Int32) on controller A5.Controller.EmployeeController (A5).
+[2022-05-24 11:12:34.363 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-24 11:12:34.629 +05:30 INF] Executed DbCommand (192ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[ACEID], [e].[AddedBy], [e].[AddedOn], [e].[DOB], [e].[DepartmentId], [e].[DesignationId], [e].[Email], [e].[FirstName], [e].[HRId], [e].[IsActive], [e].[LastName], [e].[OrganisationId], [e].[Password], [e].[ReportingPersonId], [e].[UpdatedBy], [e].[UpdatedOn]
+FROM [Employees] AS [e]
+WHERE [e].[Id] = @__id_0
+[2022-05-24 11:12:34.638 +05:30 INF] Executing OkObjectResult, writing value of type 'A5.Models.Employee'.
+[2022-05-24 11:12:34.639 +05:30 INF] Executed action A5.Controller.EmployeeController.GetByOrganisationId (A5) in 394.8996ms
+[2022-05-24 11:12:34.639 +05:30 INF] Executed endpoint 'A5.Controller.EmployeeController.GetByOrganisationId (A5)'
+[2022-05-24 11:12:34.639 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Employee/GetById?id=1 - - - 200 459 application/json;+charset=utf-8 459.6627ms
+[2022-05-24 11:12:45.232 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Employee/GetAll - -
+[2022-05-24 11:12:45.232 +05:30 INF] CORS policy execution successful.
+[2022-05-24 11:12:45.232 +05:30 INF] Executing endpoint 'A5.Controller.EmployeeController.GetAllEmployees (A5)'
+[2022-05-24 11:12:45.232 +05:30 INF] Route matched with {action = "GetAllEmployees", controller = "Employee"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllEmployees() on controller A5.Controller.EmployeeController (A5).
+[2022-05-24 11:12:45.234 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-24 11:12:45.286 +05:30 INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[ACEID], [e].[AddedBy], [e].[AddedOn], [e].[DOB], [e].[DepartmentId], [e].[DesignationId], [e].[Email], [e].[FirstName], [e].[HRId], [e].[IsActive], [e].[LastName], [e].[OrganisationId], [e].[Password], [e].[ReportingPersonId], [e].[UpdatedBy], [e].[UpdatedOn]
+FROM [Employees] AS [e]
+WHERE [e].[IsActive] = CAST(1 AS bit)
+[2022-05-24 11:12:45.287 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Employee, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-24 11:12:45.314 +05:30 INF] Executed action A5.Controller.EmployeeController.GetAllEmployees (A5) in 81.9888ms
+[2022-05-24 11:12:45.315 +05:30 INF] Executed endpoint 'A5.Controller.EmployeeController.GetAllEmployees (A5)'
+[2022-05-24 11:12:45.315 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Employee/GetAll - - - 200 72954 application/json;+charset=utf-8 83.3409ms
+[2022-05-24 11:16:32.275 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - -
+[2022-05-24 11:16:32.278 +05:30 INF] CORS policy execution successful.
+[2022-05-24 11:16:32.278 +05:30 INF] Executing endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-24 11:16:32.279 +05:30 INF] Route matched with {action = "GetAllOrganisation", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAllOrganisation() on controller A5.Controller.OrganisationController (A5).
+[2022-05-24 11:16:32.282 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-24 11:16:32.599 +05:30 INF] Executed DbCommand (49ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[AddedBy], [o].[AddedOn], [o].[IsActive], [o].[OrganisationName], [o].[UpdatedBy], [o].[UpdatedOn]
+FROM [Organisations] AS [o]
+WHERE [o].[IsActive] = CAST(1 AS bit)
+[2022-05-24 11:16:32.601 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.Organisation, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-24 11:16:32.603 +05:30 INF] Executed action A5.Controller.OrganisationController.GetAllOrganisation (A5) in 323.6788ms
+[2022-05-24 11:16:32.603 +05:30 INF] Executed endpoint 'A5.Controller.OrganisationController.GetAllOrganisation (A5)'
+[2022-05-24 11:16:32.603 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/Organisation/GetAll - - - 200 998 application/json;+charset=utf-8 328.6858ms
+[2022-05-24 11:18:02.658 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/AwardType/GetAll - -
+[2022-05-24 11:18:02.658 +05:30 INF] CORS policy execution successful.
+[2022-05-24 11:18:02.658 +05:30 INF] Executing endpoint 'A5.Controller.AwardTypeController.GetAll (A5)'
+[2022-05-24 11:18:02.661 +05:30 INF] Route matched with {action = "GetAll", controller = "AwardType"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAll() on controller A5.Controller.AwardTypeController (A5).
+[2022-05-24 11:18:02.664 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-24 11:18:03.208 +05:30 INF] Executed DbCommand (289ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[AddedBy], [a].[AddedOn], [a].[AwardDescription], [a].[AwardName], [a].[Image], [a].[IsActive], [a].[UpdatedBy], [a].[UpdatedOn]
+FROM [AwardTypes] AS [a]
+WHERE [a].[IsActive] = CAST(1 AS bit)
+[2022-05-24 11:18:03.373 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.AwardType, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-24 11:18:03.388 +05:30 INF] Executed action A5.Controller.AwardTypeController.GetAll (A5) in 727.1257ms
+[2022-05-24 11:18:03.388 +05:30 INF] Executed endpoint 'A5.Controller.AwardTypeController.GetAll (A5)'
+[2022-05-24 11:18:03.389 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/AwardType/GetAll - - - 200 562 application/json;+charset=utf-8 730.7600ms
+[2022-05-24 11:18:08.142 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/AwardType/GetAll - -
+[2022-05-24 11:18:08.145 +05:30 INF] CORS policy execution successful.
+[2022-05-24 11:18:08.145 +05:30 INF] Executing endpoint 'A5.Controller.AwardTypeController.GetAll (A5)'
+[2022-05-24 11:18:08.145 +05:30 INF] Route matched with {action = "GetAll", controller = "AwardType"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAll() on controller A5.Controller.AwardTypeController (A5).
+[2022-05-24 11:18:08.147 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-24 11:18:08.488 +05:30 INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[AddedBy], [a].[AddedOn], [a].[AwardDescription], [a].[AwardName], [a].[Image], [a].[IsActive], [a].[UpdatedBy], [a].[UpdatedOn]
+FROM [AwardTypes] AS [a]
+WHERE [a].[IsActive] = CAST(1 AS bit)
+[2022-05-24 11:18:08.490 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.AwardType, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-24 11:18:08.490 +05:30 INF] Executed action A5.Controller.AwardTypeController.GetAll (A5) in 344.4875ms
+[2022-05-24 11:18:08.490 +05:30 INF] Executed endpoint 'A5.Controller.AwardTypeController.GetAll (A5)'
+[2022-05-24 11:18:08.490 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/AwardType/GetAll - - - 200 562 application/json;+charset=utf-8 348.0087ms
+[2022-05-24 11:18:10.640 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/AwardType/GetById?id=1 - -
+[2022-05-24 11:18:10.640 +05:30 INF] CORS policy execution successful.
+[2022-05-24 11:18:10.641 +05:30 INF] Executing endpoint 'A5.Controller.AwardTypeController.GetById (A5)'
+[2022-05-24 11:18:10.643 +05:30 INF] Route matched with {action = "GetById", controller = "AwardType"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetById(Int32) on controller A5.Controller.AwardTypeController (A5).
+[2022-05-24 11:18:10.647 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-24 11:18:10.764 +05:30 INF] Executed DbCommand (32ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AddedBy], [a].[AddedOn], [a].[AwardDescription], [a].[AwardName], [a].[Image], [a].[IsActive], [a].[UpdatedBy], [a].[UpdatedOn]
+FROM [AwardTypes] AS [a]
+WHERE [a].[Id] = @__id_0
+[2022-05-24 11:18:10.765 +05:30 INF] Executing OkObjectResult, writing value of type 'A5.Models.AwardType'.
+[2022-05-24 11:18:10.766 +05:30 INF] Executed action A5.Controller.AwardTypeController.GetById (A5) in 122.1324ms
+[2022-05-24 11:18:10.766 +05:30 INF] Executed endpoint 'A5.Controller.AwardTypeController.GetById (A5)'
+[2022-05-24 11:18:10.767 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/AwardType/GetById?id=1 - - - 200 184 application/json;+charset=utf-8 125.8904ms
+[2022-05-24 11:18:37.366 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/AwardType/GetAll - -
+[2022-05-24 11:18:37.367 +05:30 INF] CORS policy execution successful.
+[2022-05-24 11:18:37.367 +05:30 INF] Executing endpoint 'A5.Controller.AwardTypeController.GetAll (A5)'
+[2022-05-24 11:18:37.367 +05:30 INF] Route matched with {action = "GetAll", controller = "AwardType"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAll() on controller A5.Controller.AwardTypeController (A5).
+[2022-05-24 11:18:37.368 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-24 11:18:37.879 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[AddedBy], [a].[AddedOn], [a].[AwardDescription], [a].[AwardName], [a].[Image], [a].[IsActive], [a].[UpdatedBy], [a].[UpdatedOn]
+FROM [AwardTypes] AS [a]
+WHERE [a].[IsActive] = CAST(1 AS bit)
+[2022-05-24 11:18:37.880 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.AwardType, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-24 11:18:37.880 +05:30 INF] Executed action A5.Controller.AwardTypeController.GetAll (A5) in 513.1762ms
+[2022-05-24 11:18:37.880 +05:30 INF] Executed endpoint 'A5.Controller.AwardTypeController.GetAll (A5)'
+[2022-05-24 11:18:37.881 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/AwardType/GetAll - - - 200 562 application/json;+charset=utf-8 514.2972ms
+[2022-05-24 11:18:40.112 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/AwardType/GetById?id=2 - -
+[2022-05-24 11:18:40.113 +05:30 INF] CORS policy execution successful.
+[2022-05-24 11:18:40.113 +05:30 INF] Executing endpoint 'A5.Controller.AwardTypeController.GetById (A5)'
+[2022-05-24 11:18:40.113 +05:30 INF] Route matched with {action = "GetById", controller = "AwardType"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetById(Int32) on controller A5.Controller.AwardTypeController (A5).
+[2022-05-24 11:18:40.115 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-24 11:18:40.236 +05:30 INF] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AddedBy], [a].[AddedOn], [a].[AwardDescription], [a].[AwardName], [a].[Image], [a].[IsActive], [a].[UpdatedBy], [a].[UpdatedOn]
+FROM [AwardTypes] AS [a]
+WHERE [a].[Id] = @__id_0
+[2022-05-24 11:18:40.237 +05:30 INF] Executing OkObjectResult, writing value of type 'A5.Models.AwardType'.
+[2022-05-24 11:18:40.238 +05:30 INF] Executed action A5.Controller.AwardTypeController.GetById (A5) in 125.081ms
+[2022-05-24 11:18:40.238 +05:30 INF] Executed endpoint 'A5.Controller.AwardTypeController.GetById (A5)'
+[2022-05-24 11:18:40.238 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/AwardType/GetById?id=2 - - - 200 180 application/json;+charset=utf-8 125.7755ms
+[2022-05-24 11:18:42.917 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/AwardType/GetAll - -
+[2022-05-24 11:18:42.917 +05:30 INF] CORS policy execution successful.
+[2022-05-24 11:18:42.917 +05:30 INF] Executing endpoint 'A5.Controller.AwardTypeController.GetAll (A5)'
+[2022-05-24 11:18:42.917 +05:30 INF] Route matched with {action = "GetAll", controller = "AwardType"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAll() on controller A5.Controller.AwardTypeController (A5).
+[2022-05-24 11:18:42.920 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-24 11:18:42.943 +05:30 INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[AddedBy], [a].[AddedOn], [a].[AwardDescription], [a].[AwardName], [a].[Image], [a].[IsActive], [a].[UpdatedBy], [a].[UpdatedOn]
+FROM [AwardTypes] AS [a]
+WHERE [a].[IsActive] = CAST(1 AS bit)
+[2022-05-24 11:18:42.944 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.AwardType, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-24 11:18:42.944 +05:30 INF] Executed action A5.Controller.AwardTypeController.GetAll (A5) in 26.4939ms
+[2022-05-24 11:18:42.944 +05:30 INF] Executed endpoint 'A5.Controller.AwardTypeController.GetAll (A5)'
+[2022-05-24 11:18:42.944 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/AwardType/GetAll - - - 200 562 application/json;+charset=utf-8 27.2072ms
+[2022-05-24 11:20:57.921 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/AwardType/GetById?id=1 - -
+[2022-05-24 11:20:57.921 +05:30 INF] CORS policy execution successful.
+[2022-05-24 11:20:57.921 +05:30 INF] Executing endpoint 'A5.Controller.AwardTypeController.GetById (A5)'
+[2022-05-24 11:20:57.922 +05:30 INF] Route matched with {action = "GetById", controller = "AwardType"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetById(Int32) on controller A5.Controller.AwardTypeController (A5).
+[2022-05-24 11:20:57.923 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-24 11:20:58.064 +05:30 INF] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AddedBy], [a].[AddedOn], [a].[AwardDescription], [a].[AwardName], [a].[Image], [a].[IsActive], [a].[UpdatedBy], [a].[UpdatedOn]
+FROM [AwardTypes] AS [a]
+WHERE [a].[Id] = @__id_0
+[2022-05-24 11:20:58.065 +05:30 INF] Executing OkObjectResult, writing value of type 'A5.Models.AwardType'.
+[2022-05-24 11:20:58.066 +05:30 INF] Executed action A5.Controller.AwardTypeController.GetById (A5) in 144.0542ms
+[2022-05-24 11:20:58.066 +05:30 INF] Executed endpoint 'A5.Controller.AwardTypeController.GetById (A5)'
+[2022-05-24 11:20:58.066 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/AwardType/GetById?id=1 - - - 200 184 application/json;+charset=utf-8 144.8681ms
+[2022-05-24 11:21:03.403 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/AwardType/GetAll - -
+[2022-05-24 11:21:03.403 +05:30 INF] CORS policy execution successful.
+[2022-05-24 11:21:03.403 +05:30 INF] Executing endpoint 'A5.Controller.AwardTypeController.GetAll (A5)'
+[2022-05-24 11:21:03.404 +05:30 INF] Route matched with {action = "GetAll", controller = "AwardType"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAll() on controller A5.Controller.AwardTypeController (A5).
+[2022-05-24 11:21:03.405 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-24 11:21:03.544 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[AddedBy], [a].[AddedOn], [a].[AwardDescription], [a].[AwardName], [a].[Image], [a].[IsActive], [a].[UpdatedBy], [a].[UpdatedOn]
+FROM [AwardTypes] AS [a]
+WHERE [a].[IsActive] = CAST(1 AS bit)
+[2022-05-24 11:21:03.547 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.AwardType, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-24 11:21:03.548 +05:30 INF] Executed action A5.Controller.AwardTypeController.GetAll (A5) in 143.935ms
+[2022-05-24 11:21:03.548 +05:30 INF] Executed endpoint 'A5.Controller.AwardTypeController.GetAll (A5)'
+[2022-05-24 11:21:03.548 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/AwardType/GetAll - - - 200 562 application/json;+charset=utf-8 144.9280ms
+[2022-05-24 11:21:05.449 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/AwardType/GetById?id=1 - -
+[2022-05-24 11:21:05.450 +05:30 INF] CORS policy execution successful.
+[2022-05-24 11:21:05.450 +05:30 INF] Executing endpoint 'A5.Controller.AwardTypeController.GetById (A5)'
+[2022-05-24 11:21:05.450 +05:30 INF] Route matched with {action = "GetById", controller = "AwardType"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetById(Int32) on controller A5.Controller.AwardTypeController (A5).
+[2022-05-24 11:21:05.452 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-24 11:21:05.500 +05:30 INF] Executed DbCommand (8ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AddedBy], [a].[AddedOn], [a].[AwardDescription], [a].[AwardName], [a].[Image], [a].[IsActive], [a].[UpdatedBy], [a].[UpdatedOn]
+FROM [AwardTypes] AS [a]
+WHERE [a].[Id] = @__id_0
+[2022-05-24 11:21:05.501 +05:30 INF] Executing OkObjectResult, writing value of type 'A5.Models.AwardType'.
+[2022-05-24 11:21:05.502 +05:30 INF] Executed action A5.Controller.AwardTypeController.GetById (A5) in 51.661ms
+[2022-05-24 11:21:05.502 +05:30 INF] Executed endpoint 'A5.Controller.AwardTypeController.GetById (A5)'
+[2022-05-24 11:21:05.502 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/AwardType/GetById?id=1 - - - 200 184 application/json;+charset=utf-8 52.5310ms
+[2022-05-24 11:21:07.638 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/AwardType/GetAll - -
+[2022-05-24 11:21:07.638 +05:30 INF] CORS policy execution successful.
+[2022-05-24 11:21:07.638 +05:30 INF] Executing endpoint 'A5.Controller.AwardTypeController.GetAll (A5)'
+[2022-05-24 11:21:07.638 +05:30 INF] Route matched with {action = "GetAll", controller = "AwardType"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAll() on controller A5.Controller.AwardTypeController (A5).
+[2022-05-24 11:21:07.639 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-24 11:21:07.665 +05:30 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[AddedBy], [a].[AddedOn], [a].[AwardDescription], [a].[AwardName], [a].[Image], [a].[IsActive], [a].[UpdatedBy], [a].[UpdatedOn]
+FROM [AwardTypes] AS [a]
+WHERE [a].[IsActive] = CAST(1 AS bit)
+[2022-05-24 11:21:07.666 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.AwardType, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-24 11:21:07.667 +05:30 INF] Executed action A5.Controller.AwardTypeController.GetAll (A5) in 28.5974ms
+[2022-05-24 11:21:07.667 +05:30 INF] Executed endpoint 'A5.Controller.AwardTypeController.GetAll (A5)'
+[2022-05-24 11:21:07.667 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/AwardType/GetAll - - - 200 562 application/json;+charset=utf-8 29.5735ms
+[2022-05-24 11:34:02.066 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/AwardType/GetAll - -
+[2022-05-24 11:34:02.655 +05:30 INF] CORS policy execution successful.
+[2022-05-24 11:34:02.716 +05:30 INF] Executing endpoint 'A5.Controller.AwardTypeController.GetAll (A5)'
+[2022-05-24 11:34:03.175 +05:30 INF] Route matched with {action = "GetAll", controller = "AwardType"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAll() on controller A5.Controller.AwardTypeController (A5).
+[2022-05-24 11:34:04.224 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-24 11:34:05.321 +05:30 INF] Executed DbCommand (121ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[AddedBy], [a].[AddedOn], [a].[AwardDescription], [a].[AwardName], [a].[Image], [a].[IsActive], [a].[UpdatedBy], [a].[UpdatedOn]
+FROM [AwardTypes] AS [a]
+WHERE [a].[IsActive] = CAST(1 AS bit)
+[2022-05-24 11:34:05.338 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.AwardType, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-24 11:34:05.363 +05:30 INF] Executed action A5.Controller.AwardTypeController.GetAll (A5) in 2187.753ms
+[2022-05-24 11:34:05.363 +05:30 INF] Executed endpoint 'A5.Controller.AwardTypeController.GetAll (A5)'
+[2022-05-24 11:34:05.363 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/AwardType/GetAll - - - 200 562 application/json;+charset=utf-8 3459.2156ms
+[2022-05-24 11:38:23.618 +05:30 INF] Request starting HTTP/2 GET https://localhost:7275/api/AwardType/GetAll - -
+[2022-05-24 11:38:23.733 +05:30 INF] CORS policy execution successful.
+[2022-05-24 11:38:23.733 +05:30 INF] Executing endpoint 'A5.Controller.AwardTypeController.GetAll (A5)'
+[2022-05-24 11:38:23.733 +05:30 INF] Route matched with {action = "GetAll", controller = "AwardType"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAll() on controller A5.Controller.AwardTypeController (A5).
+[2022-05-24 11:38:23.741 +05:30 INF] Entity Framework Core 6.0.4 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+[2022-05-24 11:38:23.971 +05:30 INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[AddedBy], [a].[AddedOn], [a].[AwardDescription], [a].[AwardName], [a].[Image], [a].[IsActive], [a].[UpdatedBy], [a].[UpdatedOn]
+FROM [AwardTypes] AS [a]
+WHERE [a].[IsActive] = CAST(1 AS bit)
+[2022-05-24 11:38:23.976 +05:30 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[A5.Models.AwardType, A5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-05-24 11:38:24.077 +05:30 INF] Executed action A5.Controller.AwardTypeController.GetAll (A5) in 343.7228ms
+[2022-05-24 11:38:24.077 +05:30 INF] Executed endpoint 'A5.Controller.AwardTypeController.GetAll (A5)'
+[2022-05-24 11:38:24.078 +05:30 INF] Request finished HTTP/2 GET https://localhost:7275/api/AwardType/GetAll - - - 200 562 application/json;+charset=utf-8 459.9737ms
