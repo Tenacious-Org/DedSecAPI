@@ -22,7 +22,7 @@ namespace A5.Controller
         public ActionResult GetAllDesignation()
         {
             try{
-                var data = _designationService.GetAll();
+                var data = _designationService.GetAllDesignations();
                 return Ok(data);
             }
             catch(ValidationException exception)
