@@ -37,6 +37,22 @@ namespace A5.Data.Service
             }
              
          }
+         public object GetAllDesignations()
+         {
+            var result = (from des in _context.Designations
+              join dep in _context.Departments on des.DepartmentId equals dep.Id
+              select new{
+                 des.Id,
+                 des.DesignationName,
+                 dep.DepartmentName,
+                 des.IsActive,
+                 des.AddedBy,
+                 des.AddedOn,
+                 des.UpdatedBy,
+                 des.UpdatedOn
+             }).ToList();
+             return result;
+         }
     }
     
 }
