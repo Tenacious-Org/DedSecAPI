@@ -48,8 +48,8 @@ namespace A5.Data.Service
         public IEnumerable<Award> GetAwards(int ? pageId ,int ? employeeId)
         {
           
-            try{
-                
+            try
+            {
                 if(pageId==1) 
                     return _context.Set<Award>().Where(nameof =>nameof.StatusId == 4 && nameof.AwardeeId==employeeId).ToList();
                 else if(pageId==2) 
@@ -59,8 +59,8 @@ namespace A5.Data.Service
                 else if(pageId==4) 
                     return  _context.Set<Award>().Where(nameof => nameof.HRId == employeeId && (nameof.StatusId == 2 || nameof.StatusId == 4)).ToList().OrderBy(nameof => nameof.StatusId);
                 else
-                    return _context.Set<Award>().Where(nameof =>nameof.StatusId == 4).ToList();  
-                }
+                    return _context.Set<Award>().Where(nameof =>nameof.StatusId == 4).ToList();
+            }
             catch(Exception exception)
             {
                 throw exception;
