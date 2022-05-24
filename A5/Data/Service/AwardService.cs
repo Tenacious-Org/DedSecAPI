@@ -53,7 +53,7 @@ namespace A5.Data.Service
                 if(pageId==1) 
                     return _context.Set<Award>().Where(nameof =>nameof.StatusId == 4 && nameof.AwardeeId==employeeId).ToList();
                 else if(pageId==2) 
-                    return  _context.Set<Award>().Where(nameof => nameof.RequesterId == employeeId).ToList().OrderBy(nameof => nameof.StatusId);                
+                    return  _context.Set<Award>().Where(nameof => nameof.RequesterId == employeeId).ToList().OrderBy(nameof => nameof.StatusId);
                 else if(pageId==3) 
                     return  _context.Set<Award>().Where(nameof => nameof.ApproverId == employeeId).ToList().OrderBy(nameof => nameof.StatusId);
                 else if(pageId==4) 
@@ -92,13 +92,11 @@ namespace A5.Data.Service
         public bool AddComment(Comment comment)
         {
             bool result = false;
-            try{                
+            try{
                     _context.Set<Comment>().Add(comment);
                     _context.SaveChanges();
                     result=true;
                     return result;
-                
-              
             }
             catch(Exception exception){
                 throw exception;
