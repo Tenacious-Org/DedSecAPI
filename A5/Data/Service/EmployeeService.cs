@@ -3,15 +3,18 @@ using System.Linq;
 using A5.Models;
 using A5.Data.Base;
 using A5.Data.Service.Interfaces;
+using A5.Data.Repository;
 
 namespace A5.Data.Service
 {
     public class EmployeeService : EntityBaseRepository<Employee>, IEmployeeService
     {
         private readonly AppDbContext _context;
-        public EmployeeService(AppDbContext context) : base(context)
+        private readonly MasterRepository _master;
+        public EmployeeService(AppDbContext context, MasterRepository master) : base(context)
         {
             _context = context;
+            _master = master;
         }
 
         public IEnumerable<Employee> GetByHR(int id)
@@ -75,6 +78,30 @@ namespace A5.Data.Service
             }
             
         }
+        // public IEnumerable<object> GetAllEmployees()
+        //  {
+        //     var employee = _master.GetAllEmployees();
+        //     return employee.Select( Employee => new{
+        //         id = Employee.Id,
+        //         aCEId = Employee.ACEID,
+        //         firstName = Employee.FirstName,
+        //         lastName = Employee.LastName,
+        //         email = Employee.Email,
+        //         image = Employee.Image,
+        //         gender = Employee.Gender,
+        //         organisationName = Employee.Organisation.OrganisationName,
+        //         departmentName = Employee.Department.DepartmentName,
+        //         designationName = Employee.Designation.DesignationName,
+        //         reportingPersonName = Employee.ReportingPerson.FirstName,
+        //         hRName = Employee.HR.FirstName,
+        //         password = Employee.Password,
+        //         isActive = Employee.IsActive,
+        //         addedBy = Employee.AddedBy,
+        //         addedOn = Employee.AddedOn,
+        //         updatedBy = Employee.UpdatedBy,
+        //         updatedOn = Employee.UpdatedOn
+        //     });
+        //  }
 
     }
 }

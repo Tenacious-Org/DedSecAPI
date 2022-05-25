@@ -16,8 +16,9 @@ namespace A5.Models
         //Relation
         public int DepartmentId{ get; set; }
 
-        [ForeignKey("DepartmentID")][NotMapped]
+        [ForeignKey("DepartmentID")]
         public virtual Department ? Department{ get; set; }
+        public virtual ICollection<Employee> ? Employees { get; set; }
 
 
         public bool CreateValidation(Designation designation)

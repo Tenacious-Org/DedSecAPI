@@ -146,7 +146,7 @@ namespace A5.Controller
             }
         }
         
-        [HttpGet("GetEmloyeeByRequesterId")]
+        [HttpGet("GetEmployeeByRequesterId")]
         public ActionResult GetEmployeeByRequesterId(int id)
         {
             try

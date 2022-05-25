@@ -4,15 +4,18 @@ using A5.Models;
 using A5.Data.Base;
 using A5.Data.Service.Interfaces;
 using System.ComponentModel.DataAnnotations;
+using A5.Data.Repository;
 
 namespace A5.Data.Service
 {
     public class DesignationService : EntityBaseRepository<Designation>, IDesignationService
     {
         private readonly AppDbContext _context;
-        public DesignationService(AppDbContext context) : base(context)
+        private readonly MasterRepository _master;
+        public DesignationService(AppDbContext context, MasterRepository master) : base(context)
         {
             _context = context;
+            _master = master;
         }
 
          public IEnumerable<Designation> GetDesignationsByDepartmentId(int id)
@@ -37,21 +40,19 @@ namespace A5.Data.Service
             }
              
          }
-         public object GetAllDesignations()
+         public IEnumerable<object> GetAllDesignations()
          {
-            var result = (from des in _context.Designations
-              join dep in _context.Departments on des.DepartmentId equals dep.Id
-              select new{
-                 des.Id,
-                 des.DesignationName,
-                 dep.DepartmentName,
-                 des.IsActive,
-                 des.AddedBy,
-                 des.AddedOn,
-                 des.UpdatedBy,
-                 des.UpdatedOn
-             }).ToList();
-             return result;
+            var designation = _master.GetAllDesignation();
+            return designation.Select( Designation => new{
+                id = Designation.Id,
+                designationName = Designation.DesignationName,
+                departmentName = Designation.Department.DepartmentName,
+                isActive = Designation.IsActive,
+                addedBy = Designation.AddedBy,
+                addedOn = Designation.AddedOn,
+                updatedBy = Designation.UpdatedBy,
+                updatedOn = Designation.UpdatedOn
+            });
          }
     }
     

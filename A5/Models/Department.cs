@@ -22,6 +22,7 @@ namespace A5.Models
         [ForeignKey("OrganisationId")]
         public virtual Organisation ? Organisation{ get; set; }
         public virtual ICollection<Designation> ? Designations { get; set; }
+        public virtual ICollection<Employee> ? Employees { get; set; }
 
 
         public bool CreateValidation(Department department)
