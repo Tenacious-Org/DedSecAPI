@@ -21,7 +21,7 @@ namespace A5.Controller
         public ActionResult GetAllEmployees()
         {
             try{
-                var data = _employeeService.GetAll();
+                var data = _employeeService.GetAllEmployees();
                 return Ok(data);
             }
             catch(ValidationException exception)

@@ -78,30 +78,36 @@ namespace A5.Data.Service
             }
             
         }
-        // public IEnumerable<object> GetAllEmployees()
-        //  {
-        //     var employee = _master.GetAllEmployees();
-        //     return employee.Select( Employee => new{
-        //         id = Employee.Id,
-        //         aCEId = Employee.ACEID,
-        //         firstName = Employee.FirstName,
-        //         lastName = Employee.LastName,
-        //         email = Employee.Email,
-        //         image = Employee.Image,
-        //         gender = Employee.Gender,
-        //         organisationName = Employee.Organisation.OrganisationName,
-        //         departmentName = Employee.Department.DepartmentName,
-        //         designationName = Employee.Designation.DesignationName,
-        //         reportingPersonName = Employee.ReportingPerson.FirstName,
-        //         hRName = Employee.HR.FirstName,
-        //         password = Employee.Password,
-        //         isActive = Employee.IsActive,
-        //         addedBy = Employee.AddedBy,
-        //         addedOn = Employee.AddedOn,
-        //         updatedBy = Employee.UpdatedBy,
-        //         updatedOn = Employee.UpdatedOn
-        //     });
-        //  }
+        public IEnumerable<object> GetAllEmployees()
+         {
+             try
+             {
+                 var employee = _master.GetAllEmployees();
+                    return employee.Select( Employee => new{
+                            id = Employee.Id,
+                            aCEId = Employee.ACEID,
+                            firstName = Employee.FirstName,
+                            lastName = Employee.LastName,
+                            email = Employee.Email,
+                            image = Employee.Image,
+                            gender = Employee.Gender,
+                            organisationName = Employee.Organisation.OrganisationName,
+                            departmentName = Employee.Department.DepartmentName,
+                            
+                            password = Employee.Password,
+                            isActive = Employee.IsActive,
+                            addedBy = Employee.AddedBy,
+                            addedOn = Employee.AddedOn,
+                            updatedBy = Employee.UpdatedBy,
+                            updatedOn = Employee.UpdatedOn
+                    });
+             }
+             catch(Exception exception)
+             {
+                 throw exception;
+             }
+            
+         }
 
     }
 }

@@ -13,38 +13,43 @@ namespace A5.Models
         public string  LastName { get; set; }
         public string  Email { get; set; }
         public byte[] ? Image{ get; set; }
-
         public string Gender {get;set;}
         public DateTime DOB { get; set; }
-        public int OrganisationId { get; set;}
-        [ForeignKey("OrganisationId")]
-        public virtual Organisation? Organisation{ get; set; }
-        public int DepartmentId { get; set;}
-        public int DesignationId { get; set;}
-        public int ? ReportingPersonId { get; set;}
-        [ForeignKey("ReportingPersonId"),NotMapped]
-        
-        [InverseProperty("Reportingpersons")]
-        public Employee? ReportingPerson{ get; set; }
-        public int? HRId { get; set; }
-        [ForeignKey("HRId"),NotMapped]
-        
-        [InverseProperty("Hrs")]
-        public Employee? HR{ get; set; }
         public string  Password { get; set; }
         public bool IsActive { get; set; }
          public int AddedBy { get; set; }
         public DateTime AddedOn{ get; set; }
         public int ? UpdatedBy { get; set; }
         public DateTime ? UpdatedOn { get; set; }
-
         [NotMapped]
         public string ImageString {get;set;}
+
+
+        public int OrganisationId { get; set;}
+        public int DepartmentId { get; set;}
+        public int DesignationId { get; set;}
+
+
+        [ForeignKey("OrganisationId")]
+        public virtual Organisation? Organisation{ get; set; }
+
+        [ForeignKey("DepartmentId")]
+        public virtual Department? Department{ get; set;}
+
+        [ForeignKey("DesignationId")]
+        public virtual Designation? Designation{ get; set; }
+
+        public int ? ReportingPersonId { get; set;}
+        [ForeignKey("ReportingPersonId")]
+        public virtual Employee? ReportingPerson{ get; set; }
+
+        public int? HRId { get; set; }
+        [ForeignKey("HRId")]
+        public virtual Employee? HR{ get; set; }
         
-        [InverseProperty("ReportingPerson")]
+        
+
         public ICollection<Employee> ? Reportingpersons { get; set; }
-        
-        [InverseProperty("HR")]
         public ICollection<Employee> ? Hrs { get; set; }
 
 

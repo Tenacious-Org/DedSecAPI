@@ -78,7 +78,7 @@ namespace A5.Migrations
 
                     b.HasIndex("StatusId");
 
-                    b.ToTable("Awards", (string)null);
+                    b.ToTable("Awards");
                 });
 
             modelBuilder.Entity("A5.Models.AwardType", b =>
@@ -117,7 +117,7 @@ namespace A5.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AwardTypes", (string)null);
+                    b.ToTable("AwardTypes");
                 });
 
             modelBuilder.Entity("A5.Models.Comment", b =>
@@ -144,7 +144,7 @@ namespace A5.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("Comments", (string)null);
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("A5.Models.Department", b =>
@@ -181,7 +181,7 @@ namespace A5.Migrations
 
                     b.HasIndex("OrganisationId");
 
-                    b.ToTable("Departments", (string)null);
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("A5.Models.Designation", b =>
@@ -218,7 +218,7 @@ namespace A5.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Designations", (string)null);
+                    b.ToTable("Designations");
                 });
 
             modelBuilder.Entity("A5.Models.Employee", b =>
@@ -291,13 +291,17 @@ namespace A5.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DepartmentId");
+
+                    b.HasIndex("DesignationId");
+
                     b.HasIndex("HRId");
 
                     b.HasIndex("OrganisationId");
 
                     b.HasIndex("ReportingPersonId");
 
-                    b.ToTable("Employees", (string)null);
+                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("A5.Models.Organisation", b =>
@@ -329,7 +333,7 @@ namespace A5.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Organisations", (string)null);
+                    b.ToTable("Organisations");
                 });
 
             modelBuilder.Entity("A5.Models.Status", b =>
@@ -349,7 +353,7 @@ namespace A5.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Statuses", (string)null);
+                    b.ToTable("Statuses");
                 });
 
             modelBuilder.Entity("A5.Models.Award", b =>
@@ -400,11 +404,13 @@ namespace A5.Migrations
 
             modelBuilder.Entity("A5.Models.Department", b =>
                 {
-                    b.HasOne("A5.Models.Organisation", null)
+                    b.HasOne("A5.Models.Organisation", "Organisation")
                         .WithMany("Departments")
                         .HasForeignKey("OrganisationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Organisation");
                 });
 
             modelBuilder.Entity("A5.Models.Designation", b =>
@@ -418,12 +424,24 @@ namespace A5.Migrations
 
             modelBuilder.Entity("A5.Models.Employee", b =>
                 {
+                    b.HasOne("A5.Models.Department", "Department")
+                        .WithMany("Employees")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("A5.Models.Designation", "Designation")
+                        .WithMany("Employees")
+                        .HasForeignKey("DesignationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("A5.Models.Employee", "HR")
                         .WithMany("Hrs")
                         .HasForeignKey("HRId");
 
                     b.HasOne("A5.Models.Organisation", "Organisation")
-                        .WithMany()
+                        .WithMany("Employees")
                         .HasForeignKey("OrganisationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -431,6 +449,10 @@ namespace A5.Migrations
                     b.HasOne("A5.Models.Employee", "ReportingPerson")
                         .WithMany("Reportingpersons")
                         .HasForeignKey("ReportingPersonId");
+
+                    b.Navigation("Department");
+
+                    b.Navigation("Designation");
 
                     b.Navigation("HR");
 
@@ -442,6 +464,13 @@ namespace A5.Migrations
             modelBuilder.Entity("A5.Models.Department", b =>
                 {
                     b.Navigation("Designations");
+
+                    b.Navigation("Employees");
+                });
+
+            modelBuilder.Entity("A5.Models.Designation", b =>
+                {
+                    b.Navigation("Employees");
                 });
 
             modelBuilder.Entity("A5.Models.Employee", b =>
@@ -454,6 +483,8 @@ namespace A5.Migrations
             modelBuilder.Entity("A5.Models.Organisation", b =>
                 {
                     b.Navigation("Departments");
+
+                    b.Navigation("Employees");
                 });
 #pragma warning restore 612, 618
         }
