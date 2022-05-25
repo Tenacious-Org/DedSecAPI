@@ -20,21 +20,17 @@ namespace A5.Models
         [ForeignKey("OrganisationId")]
         public virtual Organisation? Organisation{ get; set; }
         public int DepartmentId { get; set;}
-        [ForeignKey("DepartmentId")]
-         public virtual Department? Department{ get; set; }
         public int DesignationId { get; set;}
-        [ForeignKey("DesignationId")]
-         public virtual Designation? Designation{ get; set; }
         public int ? ReportingPersonId { get; set;}
         [ForeignKey("ReportingPersonId"),NotMapped]
         
         [InverseProperty("Reportingpersons")]
-        public virtual Employee? ReportingPerson{ get; set; }
+        public Employee? ReportingPerson{ get; set; }
         public int? HRId { get; set; }
         [ForeignKey("HRId"),NotMapped]
         
         [InverseProperty("Hrs")]
-        public virtual Employee? HR{ get; set; }
+        public Employee? HR{ get; set; }
         public string  Password { get; set; }
         public bool IsActive { get; set; }
          public int AddedBy { get; set; }
