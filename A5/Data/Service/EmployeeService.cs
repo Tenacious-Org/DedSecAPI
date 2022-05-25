@@ -93,7 +93,8 @@ namespace A5.Data.Service
                             gender = Employee.Gender,
                             organisationName = Employee.Organisation.OrganisationName,
                             departmentName = Employee.Department.DepartmentName,
-                            
+                            reportingPersonName = Employee.ReportingPerson.FirstName,
+                            hRName = Employee.HR.FirstName,
                             password = Employee.Password,
                             isActive = Employee.IsActive,
                             addedBy = Employee.AddedBy,

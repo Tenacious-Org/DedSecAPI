@@ -27,7 +27,8 @@ namespace A5.Models
 
         public int OrganisationId { get; set;}
         public int DepartmentId { get; set;}
-        public int DesignationId { get; set;}
+
+        public int DesignationId { get; set; }
 
 
         [ForeignKey("OrganisationId")]
@@ -37,7 +38,7 @@ namespace A5.Models
         public virtual Department? Department{ get; set;}
 
         [ForeignKey("DesignationId")]
-        public virtual Designation? Designation{ get; set; }
+        public virtual Designation? Designation{ get; set;}
 
         public int ? ReportingPersonId { get; set;}
         [ForeignKey("ReportingPersonId")]
