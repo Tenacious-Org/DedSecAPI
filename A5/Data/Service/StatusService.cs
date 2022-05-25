@@ -8,7 +8,8 @@ namespace A5.Data.Service
 {
     public class StatusService {
         private readonly AppDbContext _context;
-        public StatusService(AppDbContext context) { 
+        public StatusService(AppDbContext context) 
+        { 
             _context=context;
         }
         public Status GetById(int id)
