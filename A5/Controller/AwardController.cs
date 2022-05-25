@@ -109,6 +109,21 @@ namespace A5.Controller
             }
 
        }
+       [HttpGet("GetAwardsList")]
+       public ActionResult GetAwardsList()
+       {
+           
+           try{
+                var data=_awardService.GetAwardsList();
+                return Ok(data);
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+
+       }
        [HttpPost("AddComment")]
        public ActionResult AddComment(Comment comment)
        {

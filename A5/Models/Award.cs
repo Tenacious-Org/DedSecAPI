@@ -21,7 +21,7 @@ namespace A5.Models
         public DateTime ?  UpdatedOn {get;set;}
 
         [ForeignKey("AwardeeId")]
-        public virtual Employee? Employee {get;set;}
+        public virtual Employee? Awardee {get;set;}
 
         [ForeignKey("AwardTypeId")]
         public virtual AwardType? AwardType {get;set;}

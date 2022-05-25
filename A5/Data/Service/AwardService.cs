@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using A5.Data.Repository;
 using A5.Data.Service.Interfaces;
 using A5.Models;
 
@@ -10,9 +11,11 @@ namespace A5.Data.Service
     public class AwardService:IAwardService
     {
         private readonly AppDbContext _context;
-        public AwardService(AppDbContext context)
+        private readonly MasterRepository _master;
+        public AwardService(AppDbContext context, MasterRepository master)
         {
             _context=context;
+            _master = master;
         }
         public bool RaiseRequest(Award award)
         {
@@ -68,7 +71,7 @@ namespace A5.Data.Service
         public IEnumerable<Award> GetRequestedAward(int employeeId)
         {
             try{
-                return _context.Set<Award>().Where(nameof=> nameof.Employee.Id == employeeId && nameof.StatusId == 3).ToList();
+                return _context.Set<Award>().Where(nameof=> nameof.Awardee.Id == employeeId && nameof.StatusId == 3).ToList();
             }
             catch(Exception exception)
             {
@@ -110,7 +113,25 @@ namespace A5.Data.Service
            catch(Exception exception){
                throw exception;
            }
-        }        
+        }
+
+        public IEnumerable<object> GetAwardsList()
+        {
+            try
+            {
+                var award = _master.GetAllAwardsList();
+                return award.Select( Award => new{
+                    id = Award.Id,
+                    awardeeName = Award.Awardee.FirstName,
+                    awardName = Award.AwardType.AwardName,
+                    award = Award.Status.StatusName
+                });
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
 
     }
 }
