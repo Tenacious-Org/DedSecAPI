@@ -78,7 +78,7 @@ namespace A5.Migrations
 
                     b.HasIndex("StatusId");
 
-                    b.ToTable("Awards");
+                    b.ToTable("Awards", (string)null);
                 });
 
             modelBuilder.Entity("A5.Models.AwardType", b =>
@@ -117,7 +117,7 @@ namespace A5.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AwardTypes");
+                    b.ToTable("AwardTypes", (string)null);
                 });
 
             modelBuilder.Entity("A5.Models.Comment", b =>
@@ -144,7 +144,7 @@ namespace A5.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("Comments");
+                    b.ToTable("Comments", (string)null);
                 });
 
             modelBuilder.Entity("A5.Models.Department", b =>
@@ -181,7 +181,7 @@ namespace A5.Migrations
 
                     b.HasIndex("OrganisationId");
 
-                    b.ToTable("Departments");
+                    b.ToTable("Departments", (string)null);
                 });
 
             modelBuilder.Entity("A5.Models.Designation", b =>
@@ -218,7 +218,7 @@ namespace A5.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Designations");
+                    b.ToTable("Designations", (string)null);
                 });
 
             modelBuilder.Entity("A5.Models.Employee", b =>
@@ -297,7 +297,7 @@ namespace A5.Migrations
 
                     b.HasIndex("ReportingPersonId");
 
-                    b.ToTable("Employees");
+                    b.ToTable("Employees", (string)null);
                 });
 
             modelBuilder.Entity("A5.Models.Organisation", b =>
@@ -329,7 +329,7 @@ namespace A5.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Organisations");
+                    b.ToTable("Organisations", (string)null);
                 });
 
             modelBuilder.Entity("A5.Models.Status", b =>
@@ -349,7 +349,7 @@ namespace A5.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Statuses");
+                    b.ToTable("Statuses", (string)null);
                 });
 
             modelBuilder.Entity("A5.Models.Award", b =>

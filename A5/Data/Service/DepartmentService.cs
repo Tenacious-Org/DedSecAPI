@@ -4,15 +4,18 @@ using A5.Models;
 using A5.Data.Base;
 using A5.Data.Service.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using A5.Data.Repository;
 
 namespace A5.Data.Service
 {
     public class DepartmentService : EntityBaseRepository<Department>, IDepartmentService
     {
         private readonly AppDbContext _context;
-        public DepartmentService(AppDbContext context) : base(context) 
+        private readonly MasterRepository _master;
+        public DepartmentService(AppDbContext context, MasterRepository master) : base(context) 
         {
             _context = context;
+            _master = master;
         }
         
 
@@ -30,21 +33,20 @@ namespace A5.Data.Service
             }
              
          }
-         public object GetAllDepartments()
+         public IEnumerable<object> GetAllDepartments()
          {
-            var result = (from d in _context.Departments
-              join o in _context.Organisations on d.OrganisationId equals o.Id
-              select new{
-                 d.Id,
-                 d.DepartmentName,
-                 o.OrganisationName,
-                 d.IsActive,
-                 d.AddedBy,
-                 d.AddedOn,
-                 d.UpdatedBy,
-                 d.UpdatedOn
-             }).ToList();
-             return result;
+            var department = _master.GetAllDepartments();
+            return department.Select( Department => new{
+                id = Department.Id,
+                departmentName = Department.DepartmentName,
+                Organisation = Department.Organisation.OrganisationName,
+                isActive = Department.IsActive,
+                addedBy = Department.AddedBy,
+                addedOn = Department.AddedOn,
+                updatedBy = Department.UpdatedBy,
+                updatedOn = Department.UpdatedOn
+            });
+             
          }
     }
 }

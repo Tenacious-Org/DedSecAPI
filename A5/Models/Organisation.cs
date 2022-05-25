@@ -7,6 +7,10 @@ namespace A5.Models
 {
     public class Organisation : IEntityBase, IAudit, IValidation<Organisation>
     {
+        public Organisation()
+        {
+            this.Departments = new HashSet<Department>();
+        }
         public int Id{ get; set; }
         public string OrganisationName{ get; set; }
         public bool IsActive{ get; set; } = true;
@@ -17,7 +21,7 @@ namespace A5.Models
         public DateTime ? UpdatedOn {get;set;}
          
         //navigation 
-        public ICollection<Department> ? Departments {get;set;}
+        public virtual ICollection<Department> ? Departments {get;set;}
 
 
 

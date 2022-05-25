@@ -4,6 +4,7 @@ using A5.Models;
 using A5.Data.Service;
 using System.ComponentModel.DataAnnotations;
 using A5.Data;
+using A5.Data.Repository;
 
 namespace A5.Controller
 {
@@ -13,10 +14,12 @@ namespace A5.Controller
     {
         private readonly ILogger<DepartmentController> _logger;
         private readonly AppDbContext _context;
+        private readonly MasterRepository _master;
         private readonly DepartmentService _departmentService;
-        public DepartmentController(ILogger<DepartmentController> logger, AppDbContext context,DepartmentService departmentService)
+        public DepartmentController(ILogger<DepartmentController> logger, MasterRepository master, AppDbContext context,DepartmentService departmentService)
         {
             _logger= logger;
+            _master = master;
             _context = context;
             _departmentService = departmentService;
         }
