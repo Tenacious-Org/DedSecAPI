@@ -7,16 +7,17 @@ namespace A5.Models
     {
         public int Id{ get; set; }
         public string  DesignationName{ get; set; }
+        public int DepartmentId{ get; set; }
         public bool IsActive{ get; set; } = true;
+
+        //Audit
         public int AddedBy {get; set;}
         public DateTime AddedOn{get; set;}
         public int ? UpdatedBy {get; set;}
         public DateTime ? UpdatedOn {get;set;}
 
-        //Relation
-        public int DepartmentId{ get; set; }
-
-        [ForeignKey("DepartmentID")][NotMapped]
+        //Navigation
+        [ForeignKey("DepartmentId")]
         public virtual Department ? Department{ get; set; }
         public virtual ICollection<Employee> ? Employees { get; set; }
 

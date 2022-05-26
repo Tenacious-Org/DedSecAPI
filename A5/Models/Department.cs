@@ -11,18 +11,16 @@ namespace A5.Models
         public int OrganisationId{ get; set; }
         public bool IsActive{ get; set; } = true;
 
+        //Audit
         public int AddedBy {get; set;}
         public DateTime AddedOn{get; set;}
         public int ? UpdatedBy {get; set;}
         public DateTime ? UpdatedOn {get;set;}
 
-        //Relation
-        
-
+        //Navigation
         [ForeignKey("OrganisationId")]
         public virtual Organisation ? Organisation{ get; set; }
         public virtual ICollection<Designation> ? Designations { get; set; }
-        public virtual ICollection<Employee> ? Employees { get; set; }
 
 
         public bool CreateValidation(Department department)
