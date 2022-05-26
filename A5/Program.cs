@@ -61,6 +61,6 @@ app.UseCors(builder =>
     .AllowAnyHeader();
 });
 
-//AppDbInitializer.Seed(app);
+AppDbInitializer.Seed(app);
 
 app.Run();
