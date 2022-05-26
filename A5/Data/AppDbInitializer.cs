@@ -84,7 +84,9 @@ namespace A5.Data
                 }
                 if(!context.Designations.Any())
                 {
-                    context.Designations.AddRange(new List<Designation>() {
+                    try
+                    {
+                        context.Designations.AddRange(new List<Designation>() {
                         new Designation()
                         {
                             DesignationName = "Admin",
@@ -151,8 +153,25 @@ namespace A5.Data
                             UpdatedOn = DateTime.Now
 
                         },
+                        new Designation()
+                        {
+                            DesignationName = "Trainee",
+                            DepartmentId = 2,
+                            IsActive = true,
+                            AddedBy = 1,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 1,
+                            UpdatedOn = DateTime.Now
+
+                        },
                     });
                     context.SaveChanges();
+                    }
+                    catch(Exception exception)
+                    {
+                        var result = exception;
+                        Console.WriteLine(result);
+                    }
                 }
                 if (!context.Employees.Any())
                 {
@@ -304,6 +323,90 @@ namespace A5.Data
                            UpdatedBy = 1,
                            UpdatedOn = DateTime.Now
                        },
+                       new Employee()
+                       {
+                           ACEID = "ACE008",
+                           FirstName = "Archana",
+                           LastName = "M",
+                           Email = "archana@tenacious.com",
+                           Image=null,
+                           Gender="Female",
+                           DOB = DateTime.Now.AddDays(-13000),
+                           OrganisationId = 2,
+                           DepartmentId = 2,
+                           DesignationId = 7,
+                           ReportingPersonId = 6,
+                           HRId = 4,
+                           Password = "Admin@123",
+                           IsActive = true,
+                           AddedBy = 1,
+                           AddedOn = DateTime.Now,
+                           UpdatedBy = 1,
+                           UpdatedOn = DateTime.Now
+                       },
+                       new Employee()
+                       {
+                           ACEID = "ACE009",
+                           FirstName = "Karthikraja",
+                           LastName = "S",
+                           Email = "karthi@tenacious.com",
+                           Image=null,
+                           Gender="Male",
+                           DOB = DateTime.Now.AddDays(-14000),
+                           OrganisationId = 2,
+                           DepartmentId = 2,
+                           DesignationId = 7,
+                           ReportingPersonId = 6,
+                           HRId = 4,
+                           Password = "Admin@123",
+                           IsActive = true,
+                           AddedBy = 1,
+                           AddedOn = DateTime.Now,
+                           UpdatedBy = 1,
+                           UpdatedOn = DateTime.Now
+                       },
+                       new Employee()
+                       {
+                           ACEID = "ACE010",
+                           FirstName = "Lokesh",
+                           LastName = "Kaithi",
+                           Email = "loki@tenacious.com",
+                           Image=null,
+                           Gender="Male",
+                           DOB = DateTime.Now.AddDays(-14700),
+                           OrganisationId = 2,
+                           DepartmentId = 2,
+                           DesignationId = 7,
+                           ReportingPersonId = 6,
+                           HRId = 4,
+                           Password = "Admin@123",
+                           IsActive = true,
+                           AddedBy = 1,
+                           AddedOn = DateTime.Now,
+                           UpdatedBy = 1,
+                           UpdatedOn = DateTime.Now
+                       },
+                       new Employee()
+                       {
+                           ACEID = "ACE011",
+                           FirstName = "Aravinth",
+                           LastName = "S",
+                           Email = "aravinth@tenacious.com",
+                           Image=null,
+                           Gender="Male",
+                           DOB = DateTime.Now.AddDays(-14700),
+                           OrganisationId = 2,
+                           DepartmentId = 2,
+                           DesignationId = 7,
+                           ReportingPersonId = 6,
+                           HRId = 4,
+                           Password = "Admin@123",
+                           IsActive = true,
+                           AddedBy = 1,
+                           AddedOn = DateTime.Now,
+                           UpdatedBy = 1,
+                           UpdatedOn = DateTime.Now
+                       },
 
                     });
                     context.SaveChanges();
@@ -395,11 +498,11 @@ namespace A5.Data
                          new Award()
                         {
                             AwardTypeId = 2,
-                            AwardeeId = 7,
+                            AwardeeId = 8,
                             RequesterId = 6,
                             ApproverId = 5,
                             HRId = 4,
-                            StatusId = 1,
+                            StatusId = 2,
                             Reason = "Best Performer in Team",
                             RejectedReason = null,
                             CouponCode = null,
@@ -411,7 +514,23 @@ namespace A5.Data
                          new Award()
                         {
                             AwardTypeId = 3,
-                            AwardeeId = 7,
+                            AwardeeId = 9,
+                            RequesterId = 6,
+                            ApproverId = 5,
+                            HRId = 4,
+                            StatusId = 3,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = null,
+                            AddedBy = 6,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 4,
+                            UpdatedOn = DateTime.Now
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 10,
                             RequesterId = 6,
                             ApproverId = 5,
                             HRId = 4,
