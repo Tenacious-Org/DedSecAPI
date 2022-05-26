@@ -42,7 +42,7 @@ namespace A5.Data.Repository
         {
             try
             {
-                var employee = _context.Set<Employee>().Include("Designation").Include("ReportingPerson").Include("HR").Where(nameof => nameof.ReportingPersonId != null && nameof.HRId != null).ToList();
+                var employee = _context.Set<Employee>().Include("Designation.Department.Organisation").Include("Designation.Department").Include("Designation").Include("ReportingPerson").Include("HR").Where(nameof => nameof.ReportingPersonId != null && nameof.HRId != null).ToList();
                 return employee;
             }
             catch(Exception exception)
