@@ -84,9 +84,7 @@ namespace A5.Data
                 }
                 if(!context.Designations.Any())
                 {
-                    try
-                    {
-                        context.Designations.AddRange(new List<Designation>() {
+                    context.Designations.AddRange(new List<Designation>() {
                         new Designation()
                         {
                             DesignationName = "Admin",
@@ -166,12 +164,6 @@ namespace A5.Data
                         },
                     });
                     context.SaveChanges();
-                    }
-                    catch(Exception exception)
-                    {
-                        var result = exception;
-                        Console.WriteLine(result);
-                    }
                 }
                 if (!context.Employees.Any())
                 {
