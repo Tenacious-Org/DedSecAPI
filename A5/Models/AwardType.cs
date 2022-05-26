@@ -25,6 +25,7 @@ namespace A5.Models
 
         public int ? UpdatedBy {get; set;}
         public DateTime ? UpdatedOn {get;set;}
+
         [NotMapped]
         public string ImageString {get;set;}
 
