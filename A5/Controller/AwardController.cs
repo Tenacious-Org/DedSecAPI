@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using A5.Models;
 using A5.Data.Service;
 using System.ComponentModel.DataAnnotations;
+using System.Net;
 
 namespace A5.Controller
 {
@@ -17,6 +18,26 @@ namespace A5.Controller
             _awardService=awardService;
             _logger=logger;
         }
+
+        /// <summary>
+        ///  This Method is used to
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST / RaiseRequest
+        ///     {
+        ///        sample i/p o/p have to write here
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Returns </response>
+        /// <response code="400">If the item is null</response> 
+        /// <param name="award">String</param>
+        /// <returns>
+        ///Return 
+        /// </returns>
+        
         [HttpPost("RaiseRequest")]
         public ActionResult RaiseRequest(Award award)
         {
@@ -36,8 +57,27 @@ namespace A5.Controller
             }
             
         }
+
+        /// <summary>
+        ///  This Method is used to
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     PUT /
+        ///     {
+        ///        sample i/p o/p have to write here
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Returns </response>
+        /// <response code="400">If the item is null</response> 
+        /// <param name="award">String</param>
+        /// <returns>
+        ///Return 
+        /// </returns>
         
-         [HttpPut("Approval")]
+        [HttpPut("Approval")]
         public ActionResult Approval(Award award){
         
             
@@ -57,8 +97,26 @@ namespace A5.Controller
             }
 
         }
-       
         
+       /// <summary>
+        ///  This Method is used to
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET /
+        ///     {
+        ///        sample i/p o/p have to write here
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Returns </response>
+        /// <response code="400">If the item is null</response> 
+        /// <param name="employeeId">String</param>
+        /// <returns>
+        ///Return 
+        /// </returns>
+
        [HttpGet("GetRequestedAward")]
        public ActionResult GetRequestedAward(int employeeId)
        {
@@ -74,7 +132,27 @@ namespace A5.Controller
             }
 
        }
-        [HttpGet("GetAwards")]
+       
+        /// <summary>
+        ///  This Method is used to
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET /
+        ///     {
+        ///        sample i/p o/p have to write here
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Returns </response>
+        /// <response code="400">If the item is null</response> 
+        /// <param name="pageId,employeeId">String</param>
+        /// <returns>
+        ///Return 
+        /// </returns>
+
+       [HttpGet("GetAwards")]
        public ActionResult GetAwards(int ? pageId,int ? employeeId)
        {
            
@@ -94,6 +172,25 @@ namespace A5.Controller
 
        }
 
+       /// <summary>
+        ///  This Method is used to
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET /
+        ///     {
+        ///        sample i/p o/p have to write here
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Returns </response>
+        /// <response code="400">If the item is null</response> 
+        /// <param name="id">String</param>
+        /// <returns>
+        ///Return 
+        /// </returns>
+
        [HttpGet("GetAwardById")]
        public ActionResult GetAwardById(int id)
        {
@@ -109,6 +206,26 @@ namespace A5.Controller
             }
 
        }
+
+       /// <summary>
+        ///  This Method is used to
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET /
+        ///     {
+        ///        sample i/p o/p have to write here
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Returns </response>
+        /// <response code="400">If the item is null</response> 
+        /// <param>String</param>
+        /// <returns>
+        ///Return 
+        /// </returns>
+
        [HttpGet("GetAwardsList")]
        public ActionResult GetAwardsList()
        {
@@ -124,6 +241,26 @@ namespace A5.Controller
             }
 
        }
+
+        /// <summary>
+        ///  This Method is used to 
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /
+        ///     {
+        ///        sample i/p o/p have to write here
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Returns </response>
+        /// <response code="400">If the item is null</response> 
+        /// <param name="comment">String</param>
+        /// <returns>
+        ///Return 
+        /// </returns>
+
        [HttpPost("AddComment")]
        public ActionResult AddComment(Comment comment)
        {
@@ -144,6 +281,26 @@ namespace A5.Controller
             }
 
        }
+
+        /// <summary>
+        ///  This Method is used to
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET /
+        ///     {
+        ///        sample i/p o/p have to write here
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Returns </response>
+        /// <response code="400">If the item is null</response> 
+        /// <param name="awardId">String</param>
+        /// <returns>
+        ///Return 
+        /// </returns>
+
        [HttpGet("GetComments")]
        public ActionResult GetComments(int awardId)
        {

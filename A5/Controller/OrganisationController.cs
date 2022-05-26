@@ -21,6 +21,22 @@ namespace A5.Controller
             _organisationService = organisationService;
         } 
 
+        /// <summary>
+        ///  This Method is used to view all organisation
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET / ViewOrganisation
+        ///
+        /// </remarks>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response> 
+        /// <param>String</param>
+        /// <returns>
+        ///Return List of Organisation.
+        /// </returns>
+
         [HttpGet("GetAll")]
         public ActionResult GetAllOrganisation()
         {
@@ -39,7 +55,25 @@ namespace A5.Controller
             }
             
         }
-
+        
+        /// <summary>
+        ///  This Method is used to view single Organisation by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET / ViewSingleOrganisation
+        ///     {
+        ///        "OrganisationId" = "1",
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response> 
+        /// <param name="id">String</param>
+        /// <returns>
+        ///Returns signle organisation by id
+        /// </returns>
 
          [HttpGet("GetById")]
         public ActionResult GetByOrganisationId([FromQuery] int id)
@@ -59,6 +93,25 @@ namespace A5.Controller
             }
             
         }
+        
+        /// <summary>
+        ///  This Method is used to create new organisation
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST / CreateOrganisation
+        ///     {
+        ///        "OrganisationName" = "Development",
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response> 
+        /// <param name="organisation">String</param>
+        /// <returns>
+        ///Return "Organisation Added Successfully" when the Organisation is added in the database otherwise return "Sorry internal error occured".
+        /// </returns>
 
         [HttpPost("Create")]
         public ActionResult Create(Organisation organisation)
@@ -79,6 +132,25 @@ namespace A5.Controller
             }
         }
 
+        /// <summary>
+        ///  This Method is used to view single Organisation by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET / ViewSingleOrganisation
+        ///     {
+        ///        "OrganisationId" = "1",
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response> 
+        /// <param name="organisation">String</param>
+        /// <returns>
+        ///Returns signle organisation by id
+        /// </returns>
+
         [HttpPut("Update")]
         public ActionResult Update(Organisation organisation)
         {
@@ -96,6 +168,25 @@ namespace A5.Controller
                 return BadRequest($"Error : {exception.Message}");
             }
         }
+
+        /// <summary>
+        ///  This Method is used to disable the organisation by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     PUT / DisableOrganisation
+        ///     {
+        ///        "OrganisationId" = "1",
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response> 
+        /// <param name="id">String</param>
+        /// <returns>
+        ///Return "Organisation Disabled Successfully" message when the isactive filed is set to 0 otherwise return "Sorry internal error occured".
+        /// </returns>
 
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
