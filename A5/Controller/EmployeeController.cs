@@ -17,6 +17,22 @@ namespace A5.Controller
             _employeeService = employeeService;
         }
 
+        /// <summary>
+        ///  This Method is used to view all Employees
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET / ViewEmployees
+        ///
+        /// </remarks>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response> 
+        /// <param>String</param>
+        /// <returns>
+        ///Return List of Employees.
+        /// </returns>
+
          [HttpGet("GetAll")]
         public ActionResult GetAllEmployees()
         {
@@ -35,6 +51,24 @@ namespace A5.Controller
             }
         }
 
+        /// <summary>
+        ///  This Method is used to view single Employee by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET / ViewSingleEmployee
+        ///     {
+        ///        "EmployeeId" = "1",
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response> 
+        /// <param name="id">String</param>
+        /// <returns>
+        ///Returns signle Employee by id
+        /// </returns>
 
         [HttpGet("GetById")]
         public ActionResult GetByOrganisationId([FromQuery] int id)
@@ -54,6 +88,36 @@ namespace A5.Controller
             }
         }
 
+        /// <summary>
+        ///  This Method is used to create new employee
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST / CreateEmployee
+        ///     {
+        ///        "ACEID" = "INT0987",
+        ///        "FirstName" = "Sanajy",
+        ///        "LastName" = "Subramani",
+        ///        "Email" = "sanjay@gmail.com",
+        ///        "Gender" = "Male",
+        ///        "DOB" = "28-03-2002",
+        ///        "OrganisationId" = "1",
+        ///        "DepartmentId" = "3",
+        ///        "DesignationId" = "6",
+        ///        "ReportingPersonId" = "2",
+        ///        "HRId" = "4",
+        ///        "Password" = "SANJAY_SUBRAMANI0987",
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response> 
+        /// <param name="employee">String</param>
+        /// <returns>
+        ///Return "Employee Added Successfully" when the Employee is added in the database otherwise return "Sorry internal error occured".
+        /// </returns>
+
         [HttpPost("Create")]
         public ActionResult Create(Employee employee)
         {
@@ -72,6 +136,25 @@ namespace A5.Controller
             }
         }
 
+        /// <summary>
+        ///  This Method is used to view single Organisation by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET / ViewSingleOrganisation
+        ///     {
+        ///        "OrganisationId" = "1",
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response> 
+        /// <param name="employee">String</param>
+        /// <returns>
+        ///Returns signle organisation by id
+        /// </returns>
+
         [HttpPut("Update")]
         public ActionResult Update(Employee employee)
         {
@@ -89,6 +172,25 @@ namespace A5.Controller
                 return BadRequest($"Error : {exception.Message}");
             }
         }
+
+        /// <summary>
+        ///  This Method is used to disable the Employee by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     PUT / DisableEmployee
+        ///     {
+        ///        "EmployeeId" = "1",
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response> 
+        /// <param name="id">String</param>
+        /// <returns>
+        ///Return "Employee Disabled Successfully" message when the isactive filed is set to 0 otherwise return "Sorry internal error occured".
+        /// </returns>
 
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
@@ -109,6 +211,27 @@ namespace A5.Controller
             }
         }
 
+        /// <summary>
+        ///  This Method is used to view All Employees whose comes under one Department.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET / ViewEmployeeByDepartmentId
+        ///     {
+        ///        "DepartmentId" = "1",    
+        ///        "EmployeeId" = "3",
+        ///        "EmployeeId" = "4",
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response> 
+        /// <param name="id">String</param>
+        /// <returns>
+        ///Returns List of Employees from DepartmentId
+        /// </returns>
+
         [HttpGet("GetEmloyeeByDepartment")]
         public ActionResult GetEmployeeByDeprtmentId(int id)
         {
@@ -127,6 +250,28 @@ namespace A5.Controller
                 return BadRequest($"Error : {exception.Message}");
             }
         }
+
+        /// <summary>
+        ///  This Method is used to view All Employees whose comes under one Organisation.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET / ViewEmployeeByOrganisationId
+        ///     {
+        ///        "OrganisationId" = "1",    
+        ///        "EmployeeId" = "3",
+        ///        "EmployeeId" = "4",
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response> 
+        /// <param name="id">String</param>
+        /// <returns>
+        ///Returns List of Employees from OrganisationId
+        /// </returns>
+
         [HttpGet("GetEmloyeeByOrganisation")]
         public ActionResult GetEmployeeByOrganisation(int id)
         {
@@ -145,6 +290,27 @@ namespace A5.Controller
                 return BadRequest($"Error : {exception.Message}");
             }
         }
+
+        /// <summary>
+        ///  This Method is used to view All Employees whose comes under one Requester.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET / ViewEmployeeByRequesterId
+        ///     {
+        ///        "OrganisationId" = "1",    
+        ///        "EmployeeId" = "3",
+        ///        "EmployeeId" = "4",
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response> 
+        /// <param name="id">String</param>
+        /// <returns>
+        ///Returns List of Employees from RequesterId
+        /// </returns>
         
         [HttpGet("GetEmployeeByRequesterId")]
         public ActionResult GetEmployeeByRequesterId(int id)

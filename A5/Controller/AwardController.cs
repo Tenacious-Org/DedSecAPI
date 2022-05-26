@@ -20,19 +20,19 @@ namespace A5.Controller
         }
 
         /// <summary>
-        ///  This Method Will Implement 
+        ///  This Method is used to
         /// </summary>
         /// <remarks>
         /// Sample request:
         ///
-        ///     POST /
+        ///     POST / RaiseRequest
         ///     {
         ///        sample i/p o/p have to write here
         ///     }
         ///
         /// </remarks>
         /// <response code="201">Returns </response>
-        /// <response code="400">If the raise is null</response> 
+        /// <response code="400">If the item is null</response> 
         /// <param name="award">String</param>
         /// <returns>
         ///Return 
@@ -59,19 +59,19 @@ namespace A5.Controller
         }
 
         /// <summary>
-        ///  This Method Will Implement 
+        ///  This Method is used to
         /// </summary>
         /// <remarks>
         /// Sample request:
         ///
-        ///     POST /
+        ///     PUT /
         ///     {
         ///        sample i/p o/p have to write here
         ///     }
         ///
         /// </remarks>
         /// <response code="201">Returns </response>
-        /// <response code="400">If the raise is null</response> 
+        /// <response code="400">If the item is null</response> 
         /// <param name="award">String</param>
         /// <returns>
         ///Return 
@@ -99,19 +99,19 @@ namespace A5.Controller
         }
         
        /// <summary>
-        ///  This Method Will Implement 
+        ///  This Method is used to
         /// </summary>
         /// <remarks>
         /// Sample request:
         ///
-        ///     POST /
+        ///     GET /
         ///     {
         ///        sample i/p o/p have to write here
         ///     }
         ///
         /// </remarks>
         /// <response code="201">Returns </response>
-        /// <response code="400">If the raise is null</response> 
+        /// <response code="400">If the item is null</response> 
         /// <param name="employeeId">String</param>
         /// <returns>
         ///Return 
@@ -133,20 +133,20 @@ namespace A5.Controller
 
        }
        
-       /// <summary>
-        ///  This Method Will Implement 
+        /// <summary>
+        ///  This Method is used to
         /// </summary>
         /// <remarks>
         /// Sample request:
         ///
-        ///     POST /
+        ///     GET /
         ///     {
         ///        sample i/p o/p have to write here
         ///     }
         ///
         /// </remarks>
         /// <response code="201">Returns </response>
-        /// <response code="400">If the raise is null</response> 
+        /// <response code="400">If the item is null</response> 
         /// <param name="pageId,employeeId">String</param>
         /// <returns>
         ///Return 
@@ -173,19 +173,19 @@ namespace A5.Controller
        }
 
        /// <summary>
-        ///  This Method Will Implement 
+        ///  This Method is used to
         /// </summary>
         /// <remarks>
         /// Sample request:
         ///
-        ///     POST /
+        ///     GET /
         ///     {
         ///        sample i/p o/p have to write here
         ///     }
         ///
         /// </remarks>
         /// <response code="201">Returns </response>
-        /// <response code="400">If the raise is null</response> 
+        /// <response code="400">If the item is null</response> 
         /// <param name="id">String</param>
         /// <returns>
         ///Return 
@@ -208,19 +208,19 @@ namespace A5.Controller
        }
 
        /// <summary>
-        ///  This Method Will Implement 
+        ///  This Method is used to
         /// </summary>
         /// <remarks>
         /// Sample request:
         ///
-        ///     POST /
+        ///     GET /
         ///     {
         ///        sample i/p o/p have to write here
         ///     }
         ///
         /// </remarks>
         /// <response code="201">Returns </response>
-        /// <response code="400">If the raise is null</response> 
+        /// <response code="400">If the item is null</response> 
         /// <param>String</param>
         /// <returns>
         ///Return 
@@ -242,8 +242,8 @@ namespace A5.Controller
 
        }
 
-       /// <summary>
-        ///  This Method Will Implement 
+        /// <summary>
+        ///  This Method is used to 
         /// </summary>
         /// <remarks>
         /// Sample request:
@@ -255,7 +255,7 @@ namespace A5.Controller
         ///
         /// </remarks>
         /// <response code="201">Returns </response>
-        /// <response code="400">If the raise is null</response> 
+        /// <response code="400">If the item is null</response> 
         /// <param name="comment">String</param>
         /// <returns>
         ///Return 
@@ -282,20 +282,20 @@ namespace A5.Controller
 
        }
 
-       /// <summary>
-        ///  This Method Will Implement 
+        /// <summary>
+        ///  This Method is used to
         /// </summary>
         /// <remarks>
         /// Sample request:
         ///
-        ///     POST /
+        ///     GET /
         ///     {
         ///        sample i/p o/p have to write here
         ///     }
         ///
         /// </remarks>
         /// <response code="201">Returns </response>
-        /// <response code="400">If the raise is null</response> 
+        /// <response code="400">If the item is null</response> 
         /// <param name="awardId">String</param>
         /// <returns>
         ///Return 
