@@ -302,7 +302,7 @@ namespace A5.Data
                            Email = "atsaya@tenacious.com",
                            Image=null,
                            Gender="Female",
-                           DOB = DateTime.Now.AddDays(-14000),
+                           DOB = DateTime.Now.AddDays(-13600),
                            OrganisationId = 2,
                            DepartmentId = 2,
                            DesignationId = 7,
