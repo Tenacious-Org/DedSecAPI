@@ -6,17 +6,5 @@ A5/.vscode
 A5/obj/Debug/net6.0/A5.assets.cache
 A5/obj/Debug/net6.0/A5.csproj.AssemblyReference.cache
 A5/obj/Debug/net6.0/A5.GeneratedMSBuildEditorConfig.editorconfig
-*.cache
-*.cache
-*.editorconfig
-A5/appsettings.json
-A5/Migrations/20220516134353_Initial.cs
-A5/Migrations/20220516134353_Initial.Designer.cs
-A5/Migrations/20220518033545_EmployeeImage.cs
-A5/Migrations/20220518033545_EmployeeImage.Designer.cs
-*.cs
-A5/Migrations/AppDbContextModelSnapshot.cs
 A5/Migrations/
-A5/appsettings.json
-A5/appsettings.json
 A5/appsettings.json
