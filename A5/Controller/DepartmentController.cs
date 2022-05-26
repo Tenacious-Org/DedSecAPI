@@ -1,10 +1,8 @@
-using System;
 using Microsoft.AspNetCore.Mvc;
 using A5.Models;
 using A5.Data.Service;
 using System.ComponentModel.DataAnnotations;
 using A5.Data;
-using A5.Data.Repository;
 
 namespace A5.Controller
 {

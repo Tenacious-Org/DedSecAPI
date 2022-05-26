@@ -123,8 +123,11 @@ namespace A5.Data.Service
                 return award.Select( Award => new{
                     id = Award.Id,
                     awardeeName = Award.Awardee.FirstName,
-                    awardName = Award.AwardType.AwardName,
-                    award = Award.Status.StatusName
+                    requesterName = Award.Awardee.ReportingPerson.FirstName,
+                    approverName = Award.Awardee.ReportingPerson.ReportingPerson.FirstName,
+                    hRName = Award.Awardee.HR.FirstName
+                    
+                    
                 });
             }
             catch(Exception exception)
