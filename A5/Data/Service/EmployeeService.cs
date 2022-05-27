@@ -85,7 +85,7 @@ namespace A5.Data.Service
                  var employee = _master.GetAllEmployees();
                     return employee.Select( Employee => new{
                             id = Employee.Id,
-                            aCEId = Employee.ACEID,
+                            aceid = Employee.ACEID,
                             firstName = Employee.FirstName,
                             lastName = Employee.LastName,
                             email = Employee.Email,
