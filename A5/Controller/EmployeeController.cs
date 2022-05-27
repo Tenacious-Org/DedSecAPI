@@ -74,7 +74,7 @@ namespace A5.Controller
         public ActionResult GetByOrganisationId([FromQuery] int id)
         {
             try{
-                var data = _employeeService.GetById(id);
+                var data = _employeeService.GetEmployeeById(id);
                 return Ok(data);
             }
             catch(ValidationException exception)

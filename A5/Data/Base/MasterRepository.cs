@@ -63,5 +63,18 @@ namespace A5.Data.Repository
                 throw exception;
             }
         }
+
+        public Employee GetById(int id)
+        {
+            try
+            {
+                var employee = _context.Set<Employee>().Include("Designation.Department.Organisation").Include("Designation.Department").Include("Designation").Include("ReportingPerson").Include("HR").Where(nameof => nameof.ReportingPersonId != null && nameof.HRId != null).FirstOrDefault(nameof =>nameof.Id == id);
+                return employee;
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
     }
 }
