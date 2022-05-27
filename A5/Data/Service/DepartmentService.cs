@@ -39,7 +39,7 @@ namespace A5.Data.Service
             return department.Select( Department => new{
                 id = Department.Id,
                 departmentName = Department.DepartmentName,
-                Organisation = Department.Organisation.OrganisationName,
+                organisationName = Department.Organisation.OrganisationName,
                 isActive = Department.IsActive,
                 addedBy = Department.AddedBy,
                 addedOn = Department.AddedOn,
