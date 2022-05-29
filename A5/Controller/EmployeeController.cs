@@ -122,6 +122,7 @@ namespace A5.Controller
         public ActionResult Create(Employee employee)
         {
             try{
+                employee.Image = System.Convert.FromBase64String(employee.ImageString);
                 var data = _employeeService.Create(employee);
                 return Ok(data);
             }
@@ -159,6 +160,7 @@ namespace A5.Controller
         public ActionResult Update(Employee employee)
         {
             try{
+                employee.Image = System.Convert.FromBase64String(employee.ImageString);
                 var data = _employeeService.Update(employee);
                 return Ok(data);
             }

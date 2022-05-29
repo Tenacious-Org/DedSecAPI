@@ -78,10 +78,26 @@ namespace A5.Data.Service
                 throw exception;
             }
         }
-        public Award GetAwardById(int id)
+        public object GetAwardById(int id)
         {
             try{
-                return _context.Set<Award>().FirstOrDefault(nameof=> nameof.Id == id);
+                var award= _master.GetAwardById(id);
+                return  new{
+                    id = award.Id,
+                    awardeeName = award.Awardee.FirstName,
+                    requesterName = award.Awardee.ReportingPerson.FirstName,
+                    approverName = award.Awardee.ReportingPerson.ReportingPerson.FirstName,
+                    hRName = award.Awardee.HR.FirstName,
+                    status=award.Status.StatusName,
+                    award=award.AwardType.AwardName,
+                    awardImage=award.AwardType.Image,
+                    reason=award.Reason,
+                    rejectedReason=award.RejectedReason,
+                    designation=award.Awardee.Designation.DesignationName,
+                    department=award.Awardee.Designation.Department.DepartmentName,
+                    organisation=award.Awardee.Designation.Department.Organisation.OrganisationName
+
+                };
             }
             catch(Exception exception)
             {
@@ -104,11 +120,16 @@ namespace A5.Data.Service
             }
            
         }
-        public IEnumerable<Comment> GetComments(int awardId)
+        public IEnumerable<object> GetComments(int awardId)
         {
            try
            {
-               return _context.Set<Comment>().Where(nameof=>nameof.AwardId==awardId).ToList();
+               var comments=_master.GetComments(awardId);
+               return comments.Select( Comment =>  new{
+                   id=Comment.Id,
+                   employeeName=Comment.Employees.FirstName,
+                   employeeImage=Comment.Employees.Image
+               });
            }
            catch(Exception exception){
                throw exception;
@@ -120,27 +141,31 @@ namespace A5.Data.Service
             
             try
             {
-                var award = _master.GetAllAwardsList();
+                var awards = _master.GetAllAwardsList();
                 if(pageId==1) 
-                    award =award.Where(nameof =>nameof.StatusId == 4 && nameof.AwardeeId==employeeId).ToList();
+                    awards =awards.Where(nameof =>nameof.StatusId == 4 && nameof.AwardeeId==employeeId).ToList();
                 else if(pageId==2) 
-                    award =award.Where(nameof => nameof.RequesterId == employeeId).ToList().OrderBy(nameof => nameof.StatusId);
+                    awards =awards.Where(nameof => nameof.RequesterId == employeeId).ToList().OrderBy(nameof => nameof.StatusId);
                 else if(pageId==3) 
-                    award =award.Where(nameof => nameof.ApproverId == employeeId).ToList().OrderBy(nameof => nameof.StatusId);
+                    awards =awards.Where(nameof => nameof.ApproverId == employeeId).ToList().OrderBy(nameof => nameof.StatusId);
                 else if(pageId==4) 
-                    award =award.Where(nameof => nameof.HRId == employeeId && (nameof.StatusId == 2 || nameof.StatusId == 4)).ToList().OrderBy(nameof => nameof.StatusId);
+                    awards =awards.Where(nameof => nameof.HRId == employeeId && (nameof.StatusId == 2 || nameof.StatusId == 4)).ToList().OrderBy(nameof => nameof.StatusId);
                 else
-                    award =award.Where(nameof =>nameof.StatusId == 4).ToList();
-                return award.Select( Award => new{
+                    awards =awards.Where(nameof =>nameof.StatusId == 4).ToList();
+                return awards.Select( Award => new{
                     id = Award.Id,
                     awardeeName = Award.Awardee.FirstName,
                     requesterName = Award.Awardee.ReportingPerson.FirstName,
                     approverName = Award.Awardee.ReportingPerson.ReportingPerson.FirstName,
                     hRName = Award.Awardee.HR.FirstName,
                     status=Award.Status.StatusName,
-                    award=Award.AwardType.AwardName,
+                    awardName=Award.AwardType.AwardName,
+                    awardImage=Award.AwardType.Image,
                     reason=Award.Reason,
-                    rejectedReason=Award.RejectedReason                   
+                    rejectedReason=Award.RejectedReason,
+                    designation=Award.Awardee.Designation.DesignationName,
+                    department=Award.Awardee.Designation.Department.DepartmentName,
+                    organisation=Award.Awardee.Designation.Department.Organisation.OrganisationName                 
                 });
             }
             catch(Exception exception)
