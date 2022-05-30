@@ -39,10 +39,10 @@ namespace A5.Controller
         /// </returns>
         
         [HttpPost("RaiseRequest")]
-        public ActionResult RaiseRequest(Award award)
+        public ActionResult RaiseRequest(Award award,int id)
         {
             try{
-                var data=_awardService.RaiseRequest(award);
+                var data=_awardService.RaiseRequest(award,id);
                 return Ok(data);
             }           
              catch(ValidationException exception)

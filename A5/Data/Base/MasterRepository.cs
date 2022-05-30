@@ -76,5 +76,18 @@ namespace A5.Data.Repository
                 throw exception;
             }
         }
+        public IEnumerable<Employee> GetReportingPersonDetails(int id)
+        {
+            try{
+                var reportingPersonDetails=_context.Set<Employee>().Where(nameof=>nameof.Id==id).ToList();
+                var approverId=_context.Set<Employee>().Include("Employee.ReportingPersonId").Where(nameof=>nameof.Id==id).FirstOrDefault();
+                return reportingPersonDetails;
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
+        
     }
 }
