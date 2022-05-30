@@ -114,7 +114,7 @@ namespace A5.Data.Service
          {
              try
              {
-                 var employee = _master.GetById(id);
+                 var employee = _master.GetEmployeeById(id);
                  return  new{
                             id = employee.Id,
                             aceid = employee.ACEID,

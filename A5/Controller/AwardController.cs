@@ -78,11 +78,11 @@ namespace A5.Controller
         /// </returns>
         
         [HttpPut("Approval")]
-        public ActionResult Approval(Award award){
+        public ActionResult Approval(Award award,int id){
         
             
             try{
-                var data=_awardService.Approval(award);
+                var data=_awardService.Approval(award,id);
                 return Ok(data);
             }
              catch(ValidationException exception)

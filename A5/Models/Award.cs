@@ -13,8 +13,8 @@ namespace A5.Models
         public string Reason {get;set;}
         public string ? RejectedReason {get;set;}
         public int HRId {get;set;}
-        public string  ? CouponCode {get; set;}
-        public int StatusId {get;set;}= 1;
+        public string ? CouponCode {get; set;}
+        public int StatusId {get;set;}
         public int AddedBy {get; set;}
         public DateTime AddedOn{get; set;}
         public int ? UpdatedBy {get; set;}

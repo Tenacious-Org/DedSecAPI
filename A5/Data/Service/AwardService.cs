@@ -23,8 +23,14 @@ namespace A5.Data.Service
         {
             bool result=false;
             try{
-               // GetApproverDetails(id);
+                var employee = _master.GetEmployeeById(id);
                 _context.Set<Award>().Add(award);
+                award.RequesterId=employee.Id;
+                award.ApproverId= (int)employee.ReportingPersonId;
+                award.HRId= (int)employee.HRId;
+                award.StatusId=1;
+                award.AddedBy=employee.Id;
+                award.AddedOn=DateTime.Now;
                 _context.SaveChanges();
                 result=true;
                 return result;
@@ -48,11 +54,14 @@ namespace A5.Data.Service
         //     }
         // }
 
-        public bool Approval(Award award)
+        public bool Approval(Award award,int id)
         {
              bool result = false;
             try{
+                var employee = _master.GetEmployeeById(id);
                 _context.Set<Award>().Update(award);
+                award.UpdatedBy=employee.Id;
+                award.UpdatedOn=DateTime.Now;
                 _context.SaveChanges();
                 result=true;
                 return result;              
@@ -98,8 +107,21 @@ namespace A5.Data.Service
         {
             try{
                 var award= _master.GetAwardById(id);
-                return  new{
+                return new{
                     id = award.Id,
+                    requesterId=award.RequesterId,
+                    awardeeId=award.AwardeeId,
+                    awardTypeId=award.AwardTypeId,
+                    approverId=award.ApproverId,
+                    hRId=award.HRId,
+                    reason=award.Reason,
+                    rejectedReason=award.RejectedReason,
+                    couponCode=award.CouponCode,
+                    statusId=award.StatusId,
+                    addedBy=award.AddedBy,
+                    addedOn=award.AddedOn,
+                    updatedBy=award.UpdatedBy,
+                    updatedOn=award.UpdatedOn,
                     awardeeName = award.Awardee.FirstName,
                     requesterName = award.Awardee.ReportingPerson.FirstName,
                     approverName = award.Awardee.ReportingPerson.ReportingPerson.FirstName,
@@ -107,8 +129,6 @@ namespace A5.Data.Service
                     status=award.Status.StatusName,
                     award=award.AwardType.AwardName,
                     awardImage=award.AwardType.Image,
-                    reason=award.Reason,
-                    rejectedReason=award.RejectedReason,
                     designation=award.Awardee.Designation.DesignationName,
                     department=award.Awardee.Designation.Department.DepartmentName,
                     organisation=award.Awardee.Designation.Department.Organisation.OrganisationName
