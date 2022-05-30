@@ -5,22 +5,25 @@ using System.Threading.Tasks;
 using A5.Data.Repository;
 using A5.Data.Service.Interfaces;
 using A5.Models;
-
+using A5.Data.Service;
 namespace A5.Data.Service
 {
     public class AwardService:IAwardService
     {
         private readonly AppDbContext _context;
         private readonly MasterRepository _master;
-        public AwardService(AppDbContext context, MasterRepository master)
+        private readonly EmployeeService _employeeService;
+        public AwardService(AppDbContext context, MasterRepository master,EmployeeService employeeService)
         {
             _context=context;
             _master = master;
+            _employeeService=employeeService;
         }
-        public bool RaiseRequest(Award award)
+        public bool RaiseRequest(Award award,int id)
         {
             bool result=false;
             try{
+               // GetApproverDetails(id);
                 _context.Set<Award>().Add(award);
                 _context.SaveChanges();
                 result=true;
@@ -31,6 +34,19 @@ namespace A5.Data.Service
                 throw exception;
             }
         }
+        // public IEnumerable<Employee> GetApproverDetails(int id)
+        // {
+        //      try{
+        //         if(id==Employee.Id)
+        //         {
+
+        //         }
+        //     }
+        //     catch(Exception exception)
+        //     {
+        //         throw exception;
+        //     }
+        // }
 
         public bool Approval(Award award)
         {
