@@ -42,7 +42,14 @@ namespace A5.Data.Repository
         {
             try
             {
-                var employee = _context.Set<Employee>().Include("Designation.Department.Organisation").Include("Designation.Department").Include("Designation").Include("ReportingPerson").Include("HR").Where(nameof => nameof.ReportingPersonId != null && nameof.HRId != null).ToList();
+                var employee = _context.Set<Employee>()
+                    .Include("Designation.Department.Organisation")
+                    .Include("Designation.Department")
+                    .Include("Designation")
+                    .Include("ReportingPerson")
+                    .Include("HR")
+                    .Where(nameof => nameof.ReportingPersonId != null && nameof.HRId != null)
+                    .ToList();
                 return employee;
             }
             catch(Exception exception)
@@ -99,7 +106,14 @@ namespace A5.Data.Repository
         {
             try
             {
-                var employee = _context.Set<Employee>().Include("Designation.Department.Organisation").Include("Designation.Department").Include("Designation").Include("ReportingPerson").Include("HR").Where(nameof => nameof.ReportingPersonId != null && nameof.HRId != null).FirstOrDefault(nameof =>nameof.Id == id);
+                var employee = _context.Set<Employee>()
+                    .Include("Designation.Department.Organisation")
+                    .Include("Designation.Department")
+                    .Include("Designation")
+                    .Include("ReportingPerson")
+                    .Include("HR")
+                    .Where(nameof => nameof.ReportingPersonId != null && nameof.HRId != null)
+                    .FirstOrDefault(nameof =>nameof.Id == id);
                 return employee;
             }
             catch(Exception exception)
@@ -112,7 +126,11 @@ namespace A5.Data.Repository
         {
            try
            {
-               var comments= _context.Set<Comment>().Include("Employees").Include("Awards").Where(nameof=>nameof.AwardId==awardId).ToList();
+               var comments= _context.Set<Comment>()
+                    .Include("Employees")
+                    .Include("Awards")
+                    .Where(nameof=>nameof.AwardId==awardId)
+                    .ToList();
                return comments;
            }
            catch(Exception exception){
