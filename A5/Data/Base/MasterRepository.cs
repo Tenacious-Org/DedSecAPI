@@ -54,8 +54,17 @@ namespace A5.Data.Repository
         {
             try
             {
-                var award = _context.Set<Award>().Include("Awardee").Include("Awardee.Designation").Include("Awardee.Designation.Department").Include("Awardee.Designation.Department.Organisation").Include("Awardee.ReportingPerson").Include("Awardee.ReportingPerson.ReportingPerson")
-                .Include("Awardee.HR").Include("AwardType").Include("Status").ToList();
+                var award = _context.Set<Award>()
+                    .Include("Awardee")
+                    .Include("Awardee.Designation")
+                    .Include("Awardee.Designation.Department")
+                    .Include("Awardee.Designation.Department.Organisation")
+                    .Include("Awardee.ReportingPerson")
+                    .Include("Awardee.ReportingPerson.ReportingPerson")
+                    .Include("Awardee.HR")
+                    .Include("AwardType")
+                    .Include("Status")
+                    .ToList();
                 return award;
             }
             catch(Exception exception)
