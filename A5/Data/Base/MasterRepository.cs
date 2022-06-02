@@ -64,7 +64,7 @@ namespace A5.Data.Repository
             }
         }
 
-        public Employee GetById(int id)
+        public Employee GetEmployeeById(int id)
         {
             try
             {
