@@ -112,6 +112,7 @@ namespace A5.Controller
         public ActionResult Create(AwardType awardType)
         {
             try{
+                awardType.Image = System.Convert.FromBase64String(awardType.ImageString);
                 var data = _awardTypeService.Create(awardType);
                  return Ok(data);
             }
@@ -149,6 +150,7 @@ namespace A5.Controller
         public ActionResult Update(AwardType awardType)
         {
             try{
+                awardType.Image = System.Convert.FromBase64String(awardType.ImageString);
                 var data = _awardTypeService.Update(awardType);
                  return Ok(data);
             }

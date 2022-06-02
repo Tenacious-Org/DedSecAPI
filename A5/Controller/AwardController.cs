@@ -39,10 +39,10 @@ namespace A5.Controller
         /// </returns>
         
         [HttpPost("RaiseRequest")]
-        public ActionResult RaiseRequest(Award award)
+        public ActionResult RaiseRequest(Award award,int id)
         {
             try{
-                var data=_awardService.RaiseRequest(award);
+                var data=_awardService.RaiseRequest(award,id);
                 return Ok(data);
             }           
              catch(ValidationException exception)
@@ -78,11 +78,11 @@ namespace A5.Controller
         /// </returns>
         
         [HttpPut("Approval")]
-        public ActionResult Approval(Award award){
+        public ActionResult Approval(Award award,int id){
         
             
             try{
-                var data=_awardService.Approval(award);
+                var data=_awardService.Approval(award,id);
                 return Ok(data);
             }
              catch(ValidationException exception)
@@ -152,25 +152,25 @@ namespace A5.Controller
         ///Return 
         /// </returns>
 
-       [HttpGet("GetAwards")]
-       public ActionResult GetAwards(int ? pageId,int ? employeeId)
-       {
+    //    [HttpGet("GetAwards")]
+    //    public ActionResult GetAwards(int ? pageId,int ? employeeId)
+    //    {
            
-           try{
-                var data=_awardService.GetAwards(pageId,employeeId);
-                return Ok(data);
-            }
-             catch(ValidationException exception)
-            {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
-            }
-            catch(Exception exception)
-            {
-                return BadRequest($"Error : {exception.Message}");
-            }
+    //        try{
+    //             var data=_awardService.GetAwards(pageId,employeeId);
+    //             return Ok(data);
+    //         }
+    //          catch(ValidationException exception)
+    //         {
+    //             _logger.LogError($"log: (Error: {exception.Message})");
+    //             return BadRequest($"Error : {exception.Message}");
+    //         }
+    //         catch(Exception exception)
+    //         {
+    //             return BadRequest($"Error : {exception.Message}");
+    //         }
 
-       }
+    //    }
 
        /// <summary>
         ///  This Method is used to
@@ -227,11 +227,11 @@ namespace A5.Controller
         /// </returns>
 
        [HttpGet("GetAwardsList")]
-       public ActionResult GetAwardsList()
+       public ActionResult GetAwardsList(int ? pageId,int ? employeeId)
        {
            
            try{
-                var data=_awardService.GetAwardsList();
+                var data=_awardService.GetAwardsList(pageId,employeeId);
                 return Ok(data);
             }
             catch(Exception exception)
