@@ -71,5 +71,6 @@ app.UseCors(builder =>
 });
 
 //AppDbInitializer.Seed(app);
+//AppDbInitializer.SeedRolesAsync(app).Wait();
 
 app.Run();
