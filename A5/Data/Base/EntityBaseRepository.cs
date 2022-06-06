@@ -21,7 +21,7 @@ namespace A5.Data.Base
           
            try
            {
-               _context.Set<T>().Add(entity);
+                _context.Set<T>().Add(entity);
                 _context.SaveChanges();
                 result = true;
                 return result;
