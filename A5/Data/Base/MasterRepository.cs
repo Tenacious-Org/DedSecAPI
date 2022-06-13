@@ -18,7 +18,7 @@ namespace A5.Data.Repository
         {
             try
             {
-                var departments = _context.Set<Department>().Include("Organisation").ToList();
+                var departments = _context.Set<Department>().Where(nameof =>nameof.IsActive == true).Include("Organisation").ToList();
                 return departments;
             }
             catch(Exception exception)
@@ -30,7 +30,7 @@ namespace A5.Data.Repository
         {
             try
             {
-                var designations = _context.Set<Designation>().Include("Department").ToList();
+                var designations = _context.Set<Designation>().Where(nameof =>nameof.IsActive == true).Include("Department").ToList();
                 return designations;
             }
             catch(Exception exception)
@@ -48,7 +48,7 @@ namespace A5.Data.Repository
                     .Include("Designation")
                     .Include("ReportingPerson")
                     .Include("HR")
-                    .Where(nameof => nameof.ReportingPersonId != null && nameof.HRId != null)
+                    .Where(nameof => nameof.ReportingPersonId != null && nameof.HRId != null && nameof.IsActive == true)
                     .ToList();
                 return employee;
             }
@@ -112,7 +112,7 @@ namespace A5.Data.Repository
                     .Include("Designation")
                     .Include("ReportingPerson")
                     .Include("HR")
-                    .Where(nameof => nameof.ReportingPersonId != null && nameof.HRId != null)
+                    .Where(nameof => nameof.ReportingPersonId != null && nameof.HRId != null && nameof.IsActive == true)
                     .FirstOrDefault(nameof =>nameof.Id == id);
                 return employee;
             }

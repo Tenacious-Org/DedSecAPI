@@ -16,7 +16,9 @@ namespace A5.Models
         [Required]
         public string AwardDescription {get;set;}
         public byte[] ? Image { get ; set; }
-       
+
+        public string ? ImageName { get ; set; }
+    
         [Required]
         public bool IsActive {get;set;} = true;
         [Required]

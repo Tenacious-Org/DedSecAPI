@@ -2,6 +2,7 @@ using System;
 using Microsoft.AspNetCore.Mvc;
 using A5.Models;
 using A5.Data.Service;
+using A5.Data;
 using System.ComponentModel.DataAnnotations;
 
 namespace A5.Controller
@@ -12,10 +13,13 @@ namespace A5.Controller
     {
         private readonly ILogger<DesignationController> _logger;
         private readonly DesignationService _designationService;
-        public DesignationController( ILogger<DesignationController> logger, DesignationService designationService)
+        private readonly AppDbContext _context;
+
+        public DesignationController( ILogger<DesignationController> logger, DesignationService designationService,AppDbContext context)
         {
             _logger = logger;
             _designationService = designationService;
+            _context=context;
         }
 
         /// <summary>
@@ -226,10 +230,17 @@ namespace A5.Controller
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
         {
+
             try
             {
-                var data = _designationService.Disable(id);
-                return Ok("Disabled.");
+                var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.DesignationId== id).ToList().Count();
+                if(checkEmployee>0){
+                    return Ok(checkEmployee);
+                }else{
+                    var data = _designationService.Disable(id);
+                    return Ok(data);
+                }
+                
             }           
             catch(ValidationException exception)
             {

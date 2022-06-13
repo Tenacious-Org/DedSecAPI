@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using A5.Models;
 using A5.Data.Service;
+using A5.Data;
 using System.ComponentModel.DataAnnotations;
 
 namespace A5.Controller
@@ -11,10 +12,12 @@ namespace A5.Controller
     {
         private readonly EmployeeService _employeeService;
         private readonly ILogger<EmployeeController> _logger;
-        public EmployeeController(ILogger<EmployeeController> logger,EmployeeService employeeService)
+        private readonly AppDbContext _context;
+        public EmployeeController(ILogger<EmployeeController> logger,EmployeeService employeeService,AppDbContext context)
         {
             _logger = logger;
             _employeeService = employeeService;
+            _context=context;
         }
 
         /// <summary>
@@ -71,7 +74,7 @@ namespace A5.Controller
         /// </returns>
 
         [HttpGet("GetById")]
-        public ActionResult GetByOrganisationId([FromQuery] int id)
+        public ActionResult GetEmployeeById([FromQuery] int id)
         {
             try{
                 var data = _employeeService.GetEmployeeById(id);
@@ -199,8 +202,13 @@ namespace A5.Controller
         {
             try
             {
-                var data = _employeeService.Disable(id);
-                return Ok(data);
+                var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.ReportingPersonId== id || nameof.HRId== id ).ToList().Count();
+                if(checkEmployee>0){
+                    return Ok(checkEmployee);
+                }else{
+                    var data = _employeeService.Disable(id);
+                    return Ok(data);
+                }
             }
             catch(ValidationException exception)
             {
@@ -234,12 +242,30 @@ namespace A5.Controller
         ///Returns List of Employees from DepartmentId
         /// </returns>
 
-        [HttpGet("GetEmloyeeByDepartment")]
+        [HttpGet("GetEmployeeByDepartment")]
         public ActionResult GetEmployeeByDeprtmentId(int id)
         {
             try
             {
                 var data = _employeeService.GetEmployeeByDepartmentId(id);
+                return Ok(data);
+            }
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
+        }
+        [HttpGet("GetReportingPersonByDepartment")]
+        public ActionResult GetReportingPersonByDepartment(int id)
+        {
+            try
+            {
+                var data = _employeeService.GetReportingPersonByDepartmentId(id);
                 return Ok(data);
             }
             catch(ValidationException exception)

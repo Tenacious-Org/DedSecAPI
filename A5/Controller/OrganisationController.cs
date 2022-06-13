@@ -195,8 +195,9 @@ namespace A5.Controller
             {
                 var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.OrganisationId == id).ToList().Count();
                 if(checkEmployee > 0)
-                {
-                    return Ok("There are certain Employees in that Organisation. You're gonna change their Organisation to disable this Organisation.");
+                {             
+                    return Ok(checkEmployee);
+                    // return Ok ( new{Message= "There are certain Employees in that Organisation. You're gonna change their Organisation to disable this Organisation." } );
                 }
                 else
                 {

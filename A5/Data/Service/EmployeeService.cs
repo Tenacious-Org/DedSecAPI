@@ -54,6 +54,29 @@ namespace A5.Data.Service
                 throw exception;
             }
         }
+        public IEnumerable<Employee> GetReportingPersonByDepartmentId(int id)
+        {
+            try
+            {
+                
+                return _context.Set<Employee>().Where(nameof => nameof.DepartmentId == id && nameof.Designation.DesignationName!="Trainee" ).ToList();
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
+        public IEnumerable<Employee> GetHrByDepartmentId(int id)
+        {
+            try
+            {
+                return _context.Set<Employee>().Where(nameof => nameof.DepartmentId == id && nameof.Designation.DesignationName=="hr").ToList();
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
          public IEnumerable<Employee> GetEmployeeByRequesterId(int id)
         {
             try

@@ -61,6 +61,7 @@ namespace A5.Data.Service
         {
              bool result = false;
             try{
+                var exist=_master.GetAllAwardsList().ToList().Find(nameof=>nameof.Id==award.Id);
                 var employee = _master.GetEmployeeById(id);
                 _context.Set<Award>().Update(award);
                 award.UpdatedBy=employee.Id;

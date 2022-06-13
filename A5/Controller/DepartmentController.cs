@@ -229,8 +229,14 @@ namespace A5.Controller
         public ActionResult Disable(int id)
         {
             try{
-                var data = _departmentService.Disable(id);
-                return Ok("Disabled.");
+                 var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.DepartmentId== id).ToList().Count();
+                if(checkEmployee>0){
+                    return Ok(checkEmployee);
+                }else{
+                    var data = _departmentService.Disable(id);
+                    return Ok(data);
+                }
+                
             }           
             catch(ValidationException exception)
             {

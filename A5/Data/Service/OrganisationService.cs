@@ -8,8 +8,13 @@ namespace A5.Data.Service
 {
     public class OrganisationService : EntityBaseRepository<Organisation>, IOrganisationService
     {
-        
-        public OrganisationService(AppDbContext context) : base(context) { }
-        
+        public OrganisationService(AppDbContext context) : base(context) {
+                
+         }       
     }
+
+   
 }
+
+
+

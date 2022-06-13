@@ -13,6 +13,7 @@ namespace A5.Models
         public string  LastName { get; set; }
         public string  Email { get; set; }
         public byte[] ? Image{ get; set; }
+        public string ? ImageName { get ; set; }
         public string Gender {get;set;}
         public DateTime DOB { get; set; }
         public int OrganisationId { get; set;}
