@@ -6,6 +6,7 @@ using A5.Data.Repository;
 using A5.Data.Service.Interfaces;
 using A5.Models;
 using A5.Data.Service;
+using A5.Validations;
 namespace A5.Data.Service
 {
     public class AwardService:IAwardService
@@ -21,6 +22,8 @@ namespace A5.Data.Service
         }
         public bool RaiseRequest(Award award,int id)
         {
+            RaiseRequestValidation raiseRequest=new RaiseRequestValidation();
+            raiseRequest.RequestValidation(award,id);
             bool result=false;
             try{
                 var employee = _master.GetEmployeeById(id);

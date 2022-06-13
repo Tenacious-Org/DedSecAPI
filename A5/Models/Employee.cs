@@ -49,7 +49,7 @@ namespace A5.Models
         public bool CreateValidation(Employee employee)
         {
              if(string.IsNullOrEmpty(employee.FirstName)) throw new ValidationException("Employee name should not be null or empty");
-            else if(string.IsNullOrEmpty(employee.LastName)) throw new ValidationException("Employee name should not be null or empty");
+             else if(string.IsNullOrEmpty(employee.LastName)) throw new ValidationException("Employee name should not be null or empty");
              else if(employee.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             return true;
         }
