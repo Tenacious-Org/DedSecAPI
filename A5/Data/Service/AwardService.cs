@@ -93,6 +93,7 @@ namespace A5.Data.Service
         
         public IEnumerable<Award> GetRequestedAward(int employeeId)
         {
+            AwardServiceValidations.ValidateRequestedAward(employeeId);
             try{
                 return _context.Set<Award>().Where(nameof=> nameof.Awardee.Id == employeeId && nameof.StatusId == 3).ToList();
             }
@@ -103,6 +104,7 @@ namespace A5.Data.Service
         }
         public object GetAwardById(int id)
         {
+            AwardServiceValidations.ValidateGetAwardById(id);
             try{
                 var award= _master.GetAwardById(id);
                 return new{

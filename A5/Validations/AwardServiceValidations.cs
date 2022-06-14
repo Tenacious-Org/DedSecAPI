@@ -13,5 +13,13 @@ namespace A5.Validations
             if(award.Reason==null) throw new ValidationException("Reason for award should not be null");
            
         }
+        public static void ValidateRequestedAward(int employeeId)
+        {
+            if(employeeId==null) throw new ValidationException("Id is null.Login to get the List of Requested Awards");
+        }
+        public static void ValidateGetAwardById(int id)
+        {
+            if(id==null) throw new ValidationException("No Award exists in that ID.Enter the correct id");
+        }
     }
 }
