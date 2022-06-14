@@ -18,7 +18,7 @@ namespace A5.Data.Service
         public bool RaiseRequest(Award award,int id)
         {
              
-            RaiseRequestValidation.RequestValidation(award,id);
+            AwardServiceValidations.RequestValidation(award,id);
             bool result=false;
             try{
                 var employee = _master.GetEmployeeById(id);
