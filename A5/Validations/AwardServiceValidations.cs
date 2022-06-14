@@ -8,18 +8,22 @@ namespace A5.Validations
     {
         public static void RequestValidation(Award award,int id)
         {
-            if(award.AwardeeId==null) throw new ValidationException("Awardee should not be null");
-            if(award.AwardTypeId==null) throw new ValidationException("Award Type Should not be null");
+            if(award.AwardeeId==0) throw new ValidationException("Awardee should not be null");
+            if(award.AwardTypeId==0) throw new ValidationException("Award Type Should not be null");
             if(award.Reason==null) throw new ValidationException("Reason for award should not be null");
            
         }
         public static void ValidateRequestedAward(int employeeId)
         {
-            if(employeeId==null) throw new ValidationException("Id is null.Login to get the List of Requested Awards");
+            if(employeeId==0) throw new ValidationException("Id is null.Login to get the List of Requested Awards");
         }
         public static void ValidateGetAwardById(int id)
         {
-            if(id==null) throw new ValidationException("No Award exists in that ID.Enter the correct id");
+            if(id==0) throw new ValidationException("No Award exists in that ID.Enter the correct id");
+        }
+        public static void ValidateAddComment(Comment comment)
+        {
+            if(comment.Comments==null) throw new ValidationException("Comments should not be null");
         }
     }
 }
