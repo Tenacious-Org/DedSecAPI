@@ -23,7 +23,7 @@ namespace A5.Validations
         }
         public static void ValidateAddComment(Comment comment)
         {
-            if(comment.Comments==null) throw new ValidationException("Comments should not be null");
+            if(String.IsNullOrEmpty(comment.Comments)) throw new ValidationException("Comments should not be null");
         }
     }
 }
