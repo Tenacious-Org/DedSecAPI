@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using A5.Data.Repository;
 using A5.Data.Service.Interfaces;
 using A5.Models;
-using A5.Data.Service;
 using A5.Validations;
 namespace A5.Data.Service
 {
@@ -22,8 +17,8 @@ namespace A5.Data.Service
         }
         public bool RaiseRequest(Award award,int id)
         {
-            RaiseRequestValidation raiseRequest=new RaiseRequestValidation();
-            raiseRequest.RequestValidation(award,id);
+             
+            RaiseRequestValidation.RequestValidation(award,id);
             bool result=false;
             try{
                 var employee = _master.GetEmployeeById(id);
@@ -61,7 +56,6 @@ namespace A5.Data.Service
         {
              bool result = false;
             try{
-                var exist=_master.GetAllAwardsList().ToList().Find(nameof=>nameof.Id==award.Id);
                 var employee = _master.GetEmployeeById(id);
                 _context.Set<Award>().Update(award);
                 award.UpdatedBy=employee.Id;

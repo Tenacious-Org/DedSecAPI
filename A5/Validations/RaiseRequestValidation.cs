@@ -6,12 +6,12 @@ namespace A5.Validations
 {
     public class RaiseRequestValidation
     {
-        public bool RequestValidation(Award award,int id)
+        public static void RequestValidation(Award award,int id)
         {
             if(award.AwardeeId==null) throw new ValidationException("Awardee should not be null");
             if(award.AwardTypeId==null) throw new ValidationException("Award Type Should not be null");
             if(award.Reason==null) throw new ValidationException("Reason for award should not be null");
-            else return true;
+           
         }
     }
 }
