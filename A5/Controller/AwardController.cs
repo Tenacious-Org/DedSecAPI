@@ -152,25 +152,7 @@ namespace A5.Controller
         ///Return 
         /// </returns>
 
-    //    [HttpGet("GetAwards")]
-    //    public ActionResult GetAwards(int ? pageId,int ? employeeId)
-    //    {
-           
-    //        try{
-    //             var data=_awardService.GetAwards(pageId,employeeId);
-    //             return Ok(data);
-    //         }
-    //          catch(ValidationException exception)
-    //         {
-    //             _logger.LogError($"log: (Error: {exception.Message})");
-    //             return BadRequest($"Error : {exception.Message}");
-    //         }
-    //         catch(Exception exception)
-    //         {
-    //             return BadRequest($"Error : {exception.Message}");
-    //         }
-
-    //    }
+       
 
        /// <summary>
         ///  This Method is used to
@@ -228,8 +210,7 @@ namespace A5.Controller
 
        [HttpGet("GetAwardsList")]
        public ActionResult GetAwardsList(int ? pageId,int ? employeeId)
-       {
-           
+       {          
            try{
                 var data=_awardService.GetAwardsList(pageId,employeeId);
                 return Ok(data);
@@ -239,7 +220,6 @@ namespace A5.Controller
                 _logger.LogError($"log: (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
-
        }
 
         /// <summary>

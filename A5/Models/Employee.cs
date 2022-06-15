@@ -22,7 +22,7 @@ namespace A5.Models
         public int ? ReportingPersonId { get; set;}
         public int? HRId { get; set; }
         public string  Password { get; set; }
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; }= true;
         
         [NotMapped]
         public string ImageString {get;set;}

@@ -202,7 +202,7 @@ namespace A5.Controller
         {
             try
             {
-                var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.ReportingPersonId== id || nameof.HRId== id ).ToList().Count();
+                var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.HRId== id || nameof.ReportingPersonId== id  ).ToList().Count();
                 if(checkEmployee>0){
                     return Ok(checkEmployee);
                 }else{
@@ -266,6 +266,24 @@ namespace A5.Controller
             try
             {
                 var data = _employeeService.GetReportingPersonByDepartmentId(id);
+                return Ok(data);
+            }
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
+        }
+        [HttpGet("GetHrByDepartment")]
+        public ActionResult GetHrByDepartment(int id)
+        {
+            try
+            {
+                var data = _employeeService.GetHrByDepartmentId(id);
                 return Ok(data);
             }
             catch(ValidationException exception)
