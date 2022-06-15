@@ -21,9 +21,6 @@ namespace A5.Models
         //Navigation 
         public virtual ICollection<Department> ? Departments {get;set;}
 
-
-
-
         public bool CreateValidation(Organisation organisation)
         {
             if(String.IsNullOrEmpty(organisation.OrganisationName)) throw new ValidationException("Organisation Name should not be null or Empty.");

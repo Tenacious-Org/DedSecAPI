@@ -147,7 +147,7 @@ namespace A5.Data.Service
 
         public bool AddComment(Comment comment)
         {
-            //AwardServiceValidations.ValidateAddComment(comment);
+            AwardServiceValidations.ValidateAddComment(comment);
             bool result = false;
             try{
                     _context.Set<Comment>().Add(comment);
@@ -162,6 +162,7 @@ namespace A5.Data.Service
         }
         public IEnumerable<object> GetComments(int awardId)
         {
+            AwardServiceValidations.ValidateGetComments(awardId);
            try
            {
                var comments=_master.GetComments(awardId);

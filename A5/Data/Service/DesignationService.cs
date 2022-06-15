@@ -5,7 +5,7 @@ using A5.Data.Base;
 using A5.Data.Service.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using A5.Data.Repository;
-
+using A5.Validations;
 namespace A5.Data.Service
 {
     public class DesignationService : EntityBaseRepository<Designation>, IDesignationService
@@ -20,7 +20,7 @@ namespace A5.Data.Service
 
          public IEnumerable<Designation> GetDesignationsByDepartmentId(int id)
          {
-             
+             DesignationServiceValidations.ValidateGetByDepartment(id);
             try
             {
                 var data =  _context.Set<Designation>().Where(nameof =>nameof.DepartmentId == id && nameof.IsActive == true).ToList();

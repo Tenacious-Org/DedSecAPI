@@ -10,7 +10,7 @@ namespace A5.Validations
         {
             if(award.AwardeeId==0) throw new ValidationException("Awardee should not be null");
             if(award.AwardTypeId==0) throw new ValidationException("Award Type Should not be null");
-            if(award.Reason==null) throw new ValidationException("Reason for award should not be null");
+            if(string.IsNullOrEmpty(award.Reason)) throw new ValidationException("Reason for award should not be null");
            
         }
         public static void ValidateRequestedAward(int employeeId)
@@ -23,7 +23,11 @@ namespace A5.Validations
         }
         public static void ValidateAddComment(Comment comment)
         {
-            if(String.IsNullOrEmpty(comment.Comments)) throw new ValidationException("Comments should not be null");
+            if(string.IsNullOrEmpty(comment.Comments)) throw new ValidationException("Comments should not be null");
+        }
+        public static void ValidateGetComments(int awardId)
+        {
+            if(awardId==0) throw new ValidationException ("No such awards!!");
         }
     }
 }

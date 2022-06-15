@@ -5,6 +5,7 @@ using A5.Data.Base;
 using A5.Data.Service.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using A5.Data.Repository;
+using A5.Validations;
 
 namespace A5.Data.Service
 {
@@ -21,7 +22,7 @@ namespace A5.Data.Service
 
          public IEnumerable<Department> GetDepartmentsByOrganisationId(int id)
          { 
-        
+            DepartmentServiceValidations.ValidateGetByOrganisation(id);
             try
             {
                 var organisationDetails = _context.Set<Department>().Where(nameof => nameof.OrganisationId == id && nameof.IsActive == true).ToList();
