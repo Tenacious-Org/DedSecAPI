@@ -123,7 +123,7 @@ namespace A5.Data.Service
                     updatedBy=award.UpdatedBy,
                     updatedOn=award.UpdatedOn,
                     aceId=award.Awardee.ACEID,
-                    awardeeName = award.Awardee.FirstName,
+                    awardeeName = award.Awardee.FirstName + " "+ award.Awardee.LastName  ,
                     awardeeImage=award.Awardee.Image,
                     gender=award.Awardee.Gender,
                     requesterName = award.Awardee.ReportingPerson.FirstName,
