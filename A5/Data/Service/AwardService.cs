@@ -168,6 +168,8 @@ namespace A5.Data.Service
                var comments=_master.GetComments(awardId);
                return comments.Select( Comment =>  new{
                    id=Comment.Id,
+                   comments=Comment.Comments,
+                   gender=Comment.Employees.Gender,
                    employeeName=Comment.Employees.FirstName,
                    employeeImage=Comment.Employees.Image
                });
