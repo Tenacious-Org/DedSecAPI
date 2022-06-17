@@ -23,6 +23,8 @@ namespace A5.Data.Base
            {
             if(entity!=null){
                  _context.Set<T>().Add(entity);
+                entity.AddedBy=1;
+                entity.AddedOn=DateTime.Now;
                 _context.SaveChanges();
                 result = true;
             }
@@ -65,6 +67,8 @@ namespace A5.Data.Base
                 if(entity != null )
                 {
                     _context.Set<T>().Update(entity);
+                    entity.UpdatedBy=1;
+                    entity.UpdatedOn=DateTime.Now;
                     _context.SaveChanges();
                     result = true;
                 }
