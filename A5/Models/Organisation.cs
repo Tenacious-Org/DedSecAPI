@@ -2,12 +2,15 @@ using A5.Data.Base;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.RegularExpressions;
+using A5.Data.Service;
+using A5.Data;
 
 namespace A5.Models
 {
-    public class Organisation : IEntityBase, IAudit, IValidation<Organisation>
+    public class Organisation : IEntityBase, IAudit
     {
-        
+        private readonly AppDbContext context;
+
         public int Id{ get; set; }
         public string OrganisationName{ get; set; }
         public bool IsActive{ get; set; } = true;
@@ -21,14 +24,7 @@ namespace A5.Models
         //Navigation 
         public virtual ICollection<Department> ? Departments {get;set;}
 
-        public bool CreateValidation(Organisation organisation)
-        {
-            if(String.IsNullOrEmpty(organisation.OrganisationName)) throw new ValidationException("Organisation Name should not be null or Empty.");
-            else if(!( Regex.IsMatch(organisation.OrganisationName, @"^[a-zA-Z ]+$"))) throw new ValidationException("Name should have only alphabets.No special Characters or numbers are allowed");
-            else if(organisation.IsActive == false) throw new ValidationException("Organisation should be Active when it is created.");
-            else if(organisation.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
-            else return true;
-        }
+        
          public bool ValidateGetById(int id)
         {
             Organisation organisation = new Organisation();

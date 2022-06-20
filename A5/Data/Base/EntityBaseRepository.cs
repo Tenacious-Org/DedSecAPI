@@ -2,13 +2,16 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using A5.Models;
+using A5.Data.Service;
 using Microsoft.EntityFrameworkCore;
 
 namespace A5.Data.Base
 {
-    public class EntityBaseRepository<T> : IEntityBaseRepository<T> where T : class, IAudit, IEntityBase, IValidation<T>, new()
+    public class EntityBaseRepository<T> : IEntityBaseRepository<T> where T : class, IAudit, IEntityBase,  new()
     {
         private readonly AppDbContext _context;
+
+
         public EntityBaseRepository( AppDbContext context )
         {
             _context = context;
@@ -17,6 +20,8 @@ namespace A5.Data.Base
         //Methods
         public bool Create(T entity)
         {
+        //    IValidation<T> obj;
+        //   obj.CreateValidation(entity);
            bool result = false;
           
            try
@@ -37,6 +42,7 @@ namespace A5.Data.Base
            }
 
         }
+
 
         public bool Disable(int id)
         {
