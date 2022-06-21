@@ -20,7 +20,7 @@ namespace A5.Data.Base
         //Methods
         public bool Create(T entity)
         {
-           DepartmentServiceValidations.CreateValidation(department);
+          
            bool result = false;
           
            try
@@ -28,6 +28,8 @@ namespace A5.Data.Base
               _context.Set<T>().Add(entity);
                 entity.AddedBy=1;
                 entity.AddedOn=DateTime.Now;
+                entity.UpdatedBy=1;
+                entity.UpdatedOn=DateTime.Now;
                 _context.SaveChanges();
                 result = true;
             // if(entity!=null){
