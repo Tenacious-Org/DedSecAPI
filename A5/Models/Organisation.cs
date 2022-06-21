@@ -25,29 +25,6 @@ namespace A5.Models
         public virtual ICollection<Department> ? Departments {get;set;}
 
         
-         public bool ValidateGetById(int id)
-        {
-            Organisation organisation = new Organisation();
-            if((id == null)) throw new ValidationException("Organisation Id should not be null.");
-            else return true;
-        }
-        public bool UpdateValidation(Organisation organisation,int id)
-        {
-            if(string.IsNullOrEmpty(organisation.OrganisationName)) throw new ValidationException("Organisation name should not be null or empty");
-            else if(!( Regex.IsMatch(organisation.OrganisationName, @"^[a-zA-Z]+$"))) throw new ValidationException("Namse should have only alphabets.No special Characters or numbers are allowed");
-            else if(organisation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
-            else return true;
-        }
-
-        public bool DisableValidation(Organisation organisation,int id)
-        {
-            if(id <= 0) throw new ValidationException("Organisation Id must be greater than Zero.");
-            else if(organisation.IsActive == false) throw new ValidationException("Organisation is already disabled");
-            else if(organisation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
-            else return true;
-        }
-        
-
         
     }
 }

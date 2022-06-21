@@ -4,7 +4,7 @@ using A5.Models;
 using A5.Data.Service;
 using System.ComponentModel.DataAnnotations;
 using A5.Data;
-
+using A5.Validations;
 namespace A5.Controller
 {
     [Route("api/[controller]")]
@@ -78,6 +78,8 @@ namespace A5.Controller
          [HttpGet("GetById")]
         public ActionResult GetByOrganisationId([FromQuery] int id)
         {
+            OrganisationServiceValidations organisatonValidations=new OrganisationServiceValidations(_context);
+            organisatonValidations.ValidateGetById(id);
             try{
                 var data = _organisationService.GetById(id);
                  return Ok(data);
@@ -116,6 +118,8 @@ namespace A5.Controller
         [HttpPost("Create")]
         public ActionResult Create(Organisation organisation)
         {
+            OrganisationServiceValidations organisationValidations=new OrganisationServiceValidations(_context);
+            organisationValidations.CreateValidation(organisation);
             try
             {    
                 var data = _organisationService.Create(organisation);
@@ -152,8 +156,10 @@ namespace A5.Controller
         /// </returns>
 
         [HttpPut("Update")]
-        public ActionResult Update(Organisation organisation)
+        public ActionResult Update(Organisation organisation,int id)
         {
+            OrganisationServiceValidations organisationValidations=new OrganisationServiceValidations(_context);
+            organisationValidations.UpdateValidation(organisation,id);
             try{
                 var data = _organisationService.Update(organisation);           
                 return Ok("Organisation Updated.");          
@@ -191,6 +197,8 @@ namespace A5.Controller
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
         {
+            OrganisationServiceValidations organisationValidations=new OrganisationServiceValidations(_context);
+            organisationValidations.DisableValidation(id);
             try
             {
                 var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.OrganisationId == id).ToList().Count();

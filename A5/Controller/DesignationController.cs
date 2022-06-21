@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using A5.Models;
 using A5.Data.Service;
 using A5.Data;
+using A5.Validations;
 using System.ComponentModel.DataAnnotations;
 
 namespace A5.Controller
@@ -118,6 +119,8 @@ namespace A5.Controller
         [HttpGet("GetById")]
         public ActionResult GetByDesignationId([FromQuery] int id)
         {
+            DesignationServiceValidations designationServiceValidations=new DesignationServiceValidations(_context);
+            designationServiceValidations.ValidateGetById(id);
             try{
                 var data = _designationService.GetById(id);
                 return Ok(data);
@@ -156,6 +159,8 @@ namespace A5.Controller
         [HttpPost("Create")]
         public ActionResult Create(Designation designation)
         {
+            DesignationServiceValidations designationValidations=new DesignationServiceValidations(_context);
+            designationValidations.CreateValidation(designation);
             try{
                 var data = _designationService.Create(designation);           
                 return Ok("Created.");
@@ -191,8 +196,10 @@ namespace A5.Controller
         /// </returns>
 
         [HttpPut("Update")]
-        public ActionResult Update(Designation designation)
+        public ActionResult Update(Designation designation,int id)
         {
+            DesignationServiceValidations designationServiceValidations=new DesignationServiceValidations(_context);
+            designationServiceValidations.UpdateValidation(designation,id);
             try{
                 var data = _designationService.Update(designation);
                 return Ok("Updated.");
@@ -230,7 +237,8 @@ namespace A5.Controller
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
         {
-
+            DesignationServiceValidations designationServiceValidations=new DesignationServiceValidations(_context);
+            designationServiceValidations.DisableValidation(id);
             try
             {
                 var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.DesignationId== id).ToList().Count();
