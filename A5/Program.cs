@@ -32,7 +32,10 @@ builder.Services.AddControllersWithViews()
     options.SerializerSettings.ReferenceLoopHandling =
 Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );
-
+builder.Services.AddHttpLogging(httpLogging=>
+{
+    httpLogging.LoggingFields=Microsoft.AspNetCore.HttpLogging.HttpLoggingFields.All;
+});
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -61,6 +64,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseHttpLogging();
 
 app.UseCors(builder =>
 {
