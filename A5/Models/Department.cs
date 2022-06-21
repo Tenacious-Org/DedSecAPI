@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace A5.Models
 {
-    public class Department : IEntityBase, IAudit, IValidation<Department>
+    public class Department : IEntityBase, IAudit
     {
         public int Id{ get; set; }
         public string DepartmentName{ get; set; }
@@ -23,13 +23,7 @@ namespace A5.Models
         public virtual ICollection<Designation> ? Designations { get; set; }
 
 
-        public bool CreateValidation(Department department)
-        {
-            if(String.IsNullOrEmpty(department.DepartmentName)) throw new ValidationException("Department Name should not be null or Empty.");
-            else if(department.IsActive == false) throw new ValidationException("Department should be Active when it is created.");
-            else if(department.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
-            else return true;
-        }
+        
         public bool ValidateGetById(int id)
         {
             Department department=new Department();

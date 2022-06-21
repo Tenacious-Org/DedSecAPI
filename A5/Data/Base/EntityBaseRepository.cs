@@ -4,13 +4,13 @@ using System.Linq;
 using A5.Models;
 using A5.Data.Service;
 using Microsoft.EntityFrameworkCore;
-
+using A5.Validations;
 namespace A5.Data.Base
 {
     public class EntityBaseRepository<T> : IEntityBaseRepository<T> where T : class, IAudit, IEntityBase,  new()
     {
         private readonly AppDbContext _context;
-
+        private readonly Department department;
 
         public EntityBaseRepository( AppDbContext context )
         {
@@ -20,23 +20,23 @@ namespace A5.Data.Base
         //Methods
         public bool Create(T entity)
         {
-        //    IValidation<T> obj;
-        //   obj.CreateValidation(entity);
+           DepartmentServiceValidations.CreateValidation(department);
            bool result = false;
           
            try
            {
-            if(entity!=null){
-                 _context.Set<T>().Add(entity);
+              _context.Set<T>().Add(entity);
                 entity.AddedBy=1;
                 entity.AddedOn=DateTime.Now;
                 _context.SaveChanges();
                 result = true;
-            }
+            // if(entity!=null){
+               
+            // }
             return result; 
                 
            }
-           catch(Exception exception)
+           catch(ValidationException exception)
            {
                throw exception;
            }
