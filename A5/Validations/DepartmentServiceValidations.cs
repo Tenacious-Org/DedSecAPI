@@ -30,6 +30,8 @@ namespace A5.Validations
 
          public bool UpdateValidation(Department department,int id)
         {
+             if(id == 0) throw new ValidationException("Department Id should not be null.");
+             if(id!=department.Id) throw new ValidationException("Department Id not found.");
              if(string.IsNullOrEmpty(department.DepartmentName)) throw new ValidationException("Department name should not be null or empty");
              if(_context.Departments.Any(nameof=>nameof.DepartmentName==department.DepartmentName)) throw new ValidationException("Department name already exists");
              if(!( Regex.IsMatch(department.DepartmentName, @"^[a-zA-Z]+$"))) throw new ValidationException("Department Name should have only alphabets.No special Characters or numbers are allowed");
@@ -42,14 +44,16 @@ namespace A5.Validations
         {
             Department department=new Department();
             if(id == 0) throw new ValidationException("Department Id should not be null.");
-            else if(id!=department.Id) throw new ValidationException("Department Id not found.");
+            if(id!=department.Id) throw new ValidationException("Department Id not found.");
             else return true;
         }
         public bool DisableValidation(int id)
         {
              Department department=new Department();
+            if(id == 0) throw new ValidationException("Department Id should not be null.");
+            if(id!=department.Id) throw new ValidationException("Department Id not found.");
             if(department.IsActive==false) throw new ValidationException("Department is already disabled");
-            else if(department.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            if(department.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
 

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace A5.Models
 {
-    public class Employee : IEntityBase, IAudit, IValidation<Employee>
+    public class Employee : IEntityBase, IAudit
     {
     
         public int Id { get; set; }
@@ -47,35 +47,9 @@ namespace A5.Models
         public virtual ICollection<Employee> ? Hrs { get; set; }
 
 
-        public bool CreateValidation(Employee employee)
-        {
-             if(string.IsNullOrEmpty(employee.FirstName)) throw new ValidationException("Employee name should not be null or empty");
-             else if(string.IsNullOrEmpty(employee.LastName)) throw new ValidationException("Employee name should not be null or empty");
-             else if(employee.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
-            return true;
-        }
-         public bool ValidateGetById(int id)
-        {
-            Employee employee = new Employee();
-            if(!(id==null)) throw new ValidationException("Employee Id should not be null.");
-            else if(id != Id) throw new ValidationException("Employee Id not found.");
-            return true;
-        }
-         public bool UpdateValidation(Employee employee,int id)
-        {
-            if(string.IsNullOrEmpty(employee.FirstName)) throw new ValidationException("Employee name should not be null or empty");
-            else if(string.IsNullOrEmpty(employee.LastName)) throw new ValidationException("Employee name should not be null or empty");
-            else if(employee.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
-            else if(employee.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
-            else return true;
-        }
-        public bool DisableValidation(Employee employee,int id)
-        {
-            
-            if(employee.IsActive == false) throw new ValidationException("Employee is already disabled");
-            else if(employee.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
-            else return true;
-        }
-        
+       
+         
+       
+   
     }
 }

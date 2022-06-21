@@ -27,7 +27,8 @@ namespace A5.Validations
         }
         public bool UpdateValidation(Designation designation,int id)
         {
-           
+            if((id == null)) throw new ValidationException("Designation Id should not be null.");
+            if(id!=designation.Id) throw new ValidationException("Designation Id not found.");
             if(string.IsNullOrEmpty(designation.DesignationName)) throw new ValidationException("Designation name should not be null or empty");
             if(_context.Designations.Any(nameof=>nameof.DesignationName==designation.DesignationName)) throw new ValidationException("Designation name already exists");           
             if(!( Regex.IsMatch(designation.DesignationName, @"^[a-zA-Z]+$"))) throw new ValidationException("Designation Name should have only alphabets.No special Characters or numbers are allowed");
@@ -39,6 +40,8 @@ namespace A5.Validations
          public bool DisableValidation(int id)
         {
             Designation designation = new Designation();
+            if((id == null)) throw new ValidationException("Designation Id should not be null.");
+            if(id!=designation.Id) throw new ValidationException("Designation Id not found.");
             if(designation.IsActive==false) throw new ValidationException("Designation is already disabled");
             if(designation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
@@ -47,7 +50,7 @@ namespace A5.Validations
         {
             Designation designation = new Designation();
             if((id == null)) throw new ValidationException("Designation Id should not be null.");
-            else if(id!=designation.Id) throw new ValidationException("Designation Id not found.");
+            if(id!=designation.Id) throw new ValidationException("Designation Id not found.");
             else return true;
         }
          
