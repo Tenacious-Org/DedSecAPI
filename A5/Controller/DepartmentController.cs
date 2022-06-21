@@ -48,6 +48,7 @@ namespace A5.Controller
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                _logger.LogInformation($"Department Controller : GetAllDepartment() : (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -89,6 +90,7 @@ namespace A5.Controller
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                 _logger.LogInformation($"Department Controller : GetDepartmentByOrganisationId(int id) : (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -129,6 +131,7 @@ namespace A5.Controller
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                 _logger.LogInformation($"Department Controller : GetByDepartmentId(int id) : (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -169,6 +172,7 @@ namespace A5.Controller
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                 _logger.LogInformation($"Department Controller : Create(Department department) : (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -208,6 +212,7 @@ namespace A5.Controller
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                 _logger.LogInformation($"Department Controller : Update(Department department,int id) : (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -254,6 +259,7 @@ namespace A5.Controller
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                 _logger.LogInformation($"Department Controller : Disable(int id) : (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)

@@ -26,6 +26,7 @@ namespace A5.Controller
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                 _logger.LogInformation($"Status Controller : GetByStatusId(int id) : (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
