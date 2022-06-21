@@ -78,9 +78,10 @@ namespace A5.Controller
          [HttpGet("GetById")]
         public ActionResult GetByOrganisationId([FromQuery] int id)
         {
-            OrganisationServiceValidations organisatonValidations=new OrganisationServiceValidations(_context);
-            organisatonValidations.ValidateGetById(id);
+           
             try{
+                 OrganisationServiceValidations organisatonValidations=new OrganisationServiceValidations(_context);
+                 organisatonValidations.ValidateGetById(id);
                 var data = _organisationService.GetById(id);
                  return Ok(data);
             }
@@ -118,10 +119,11 @@ namespace A5.Controller
         [HttpPost("Create")]
         public ActionResult Create(Organisation organisation)
         {
-            OrganisationServiceValidations organisationValidations=new OrganisationServiceValidations(_context);
-            organisationValidations.CreateValidation(organisation);
+            
             try
-            {    
+            {   
+                OrganisationServiceValidations organisationValidations=new OrganisationServiceValidations(_context);
+                organisationValidations.CreateValidation(organisation);
                 var data = _organisationService.Create(organisation);
                 return Ok("Organisation Created.");
             }
@@ -158,9 +160,10 @@ namespace A5.Controller
         [HttpPut("Update")]
         public ActionResult Update(Organisation organisation,int id)
         {
-            OrganisationServiceValidations organisationValidations=new OrganisationServiceValidations(_context);
-            organisationValidations.UpdateValidation(organisation,id);
+            
             try{
+                OrganisationServiceValidations organisationValidations=new OrganisationServiceValidations(_context);
+                organisationValidations.UpdateValidation(organisation,id);
                 var data = _organisationService.Update(organisation);           
                 return Ok("Organisation Updated.");          
             }        
@@ -197,10 +200,11 @@ namespace A5.Controller
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
         {
-            OrganisationServiceValidations organisationValidations=new OrganisationServiceValidations(_context);
-            organisationValidations.DisableValidation(id);
+            
             try
             {
+                OrganisationServiceValidations organisationValidations=new OrganisationServiceValidations(_context);
+                organisationValidations.DisableValidation(id);
                 var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.OrganisationId == id).ToList().Count();
                 if(checkEmployee > 0)
                 {             

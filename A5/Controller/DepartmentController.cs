@@ -80,8 +80,9 @@ namespace A5.Controller
         [HttpGet("GetDepartmentsByOrganisationId")]
         public ActionResult GetDepartmentsByOrganisationId(int id)
         {
-            DepartmentServiceValidations.ValidateGetByOrganisation(id);
+           
             try{
+                DepartmentServiceValidations.ValidateGetByOrganisation(id);
                 var data = _departmentService.GetDepartmentsByOrganisationId(id);
                 return Ok(data);
             }          
@@ -118,9 +119,10 @@ namespace A5.Controller
         [HttpGet("GetById")]
         public ActionResult GetByDepartmentId([FromQuery] int id)
         {
-            DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
-            departmentValidations.ValidateGetById(id);
+            
             try{
+                DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
+                departmentValidations.ValidateGetById(id);
                 var data = _departmentService.GetById(id);
                 return Ok(data);
             }           
@@ -236,9 +238,10 @@ namespace A5.Controller
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
         {
-             DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
-            departmentValidations.DisableValidation(id);
+             
             try{
+                DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
+                departmentValidations.DisableValidation(id);
                  var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.DepartmentId== id).ToList().Count();
                 if(checkEmployee>0){
                     return Ok(checkEmployee);
