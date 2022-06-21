@@ -20,11 +20,7 @@ namespace A5.Data.Base
         //Methods
         public bool Create(T entity)
         {
-<<<<<<< HEAD
-           
-=======
-          
->>>>>>> 05f28e3a5639b4ac19bfcd531eefc96dd5b9962c
+
            bool result = false;
           
            try
