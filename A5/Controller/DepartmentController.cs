@@ -3,6 +3,7 @@ using A5.Models;
 using A5.Data.Service;
 using System.ComponentModel.DataAnnotations;
 using A5.Data;
+using A5.Validations;
 
 namespace A5.Controller
 {
@@ -79,6 +80,7 @@ namespace A5.Controller
         [HttpGet("GetDepartmentsByOrganisationId")]
         public ActionResult GetDepartmentsByOrganisationId(int id)
         {
+            DepartmentServiceValidations.ValidateGetByOrganisation(id);
             try{
                 var data = _departmentService.GetDepartmentsByOrganisationId(id);
                 return Ok(data);
@@ -116,6 +118,8 @@ namespace A5.Controller
         [HttpGet("GetById")]
         public ActionResult GetByDepartmentId([FromQuery] int id)
         {
+            DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
+            departmentValidations.ValidateGetById(id);
             try{
                 var data = _departmentService.GetById(id);
                 return Ok(data);
@@ -155,6 +159,8 @@ namespace A5.Controller
         public ActionResult Create(Department department)
         {
             try{
+                DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
+                departmentValidations.CreateValidation(department);
                 var data = _departmentService.Create(department);
                 return Ok("Created.");
             }           
@@ -189,9 +195,11 @@ namespace A5.Controller
         /// </returns>
 
         [HttpPut("Update")]
-        public ActionResult Update(Department department)
+        public ActionResult Update(Department department,int id)
         {
             try{
+                DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
+                departmentValidations.UpdateValidation(department,id);
                 var data = _departmentService.Update(department);
                 return Ok("Updated.");
             }
@@ -228,6 +236,8 @@ namespace A5.Controller
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
         {
+             DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
+            departmentValidations.DisableValidation(id);
             try{
                  var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.DepartmentId== id).ToList().Count();
                 if(checkEmployee>0){

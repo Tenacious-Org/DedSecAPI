@@ -25,7 +25,7 @@ namespace A5.Models
         public bool IsActive { get; set; }= true;
         
         [NotMapped]
-        public string ImageString {get;set;}
+        public string ? ImageString {get;set;}
 
         //Audit
         public int AddedBy { get; set; }
