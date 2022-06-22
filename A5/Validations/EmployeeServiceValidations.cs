@@ -15,8 +15,10 @@ namespace A5.Validations
         {
              if(string.IsNullOrEmpty(employee.FirstName)) throw new ValidationException("Employee's first name should not be null or empty");
              if(string.IsNullOrEmpty(employee.LastName)) throw new ValidationException("Employee's last name should not be null or empty");
-             if(_context.Employees.Any(nameof=>nameof.FirstName==employee.FirstName)) throw new ValidationException("First name already exists");           
+             if(_context.Employees.Any(nameof=>nameof.FirstName==employee.FirstName)) throw new ValidationException("First name already exists");                   
              if(!( Regex.IsMatch(employee.FirstName, @"^[a-zA-Z]+$"))) throw new ValidationException("First Name should have only alphabets.No special Characters or numbers are allowed");
+             if(!( Regex.IsMatch(employee.LastName, @"^[a-zA-Z]+$"))) throw new ValidationException("Last Name should have only alphabets.No special Characters or numbers are allowed");   
+             if(ValidateDOB(employee.DOB)) throw new ValidationException("Invalid Date Of Birth!");
              if(employee.IsActive==false) throw new ValidationException("Employee should be active when it is created");
              if(employee.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
              else return true;
@@ -79,6 +81,11 @@ namespace A5.Validations
         if(!(_context.Employees.Any(nameof=>nameof.Email==employee.Email))) throw new ValidationException("Email not found");
         if(string.IsNullOrEmpty(employee.Password)) throw new ValidationException("Password should not be null");
         if (!Regex.IsMatch(employee.Password,@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$")) throw new ValidationException ("Password must be between 8 and 15 characters and atleast contain one uppercase letter, one lowercase letter, one digit and one special character.");
+        else return true;
+      }
+      public bool ValidateDOB(DateTime DOB)
+      {
+        if(DOB>=DateTime.Now) return false;
         else return true;
       }
     }
