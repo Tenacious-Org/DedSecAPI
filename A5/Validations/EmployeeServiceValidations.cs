@@ -18,7 +18,7 @@ namespace A5.Validations
              if(_context.Employees.Any(nameof=>nameof.FirstName==employee.FirstName)) throw new ValidationException("First name already exists");           
              if(!( Regex.IsMatch(employee.FirstName, @"^[a-zA-Z]+$"))) throw new ValidationException("First Name should have only alphabets.No special Characters or numbers are allowed");
              if(employee.IsActive==false) throw new ValidationException("Employee should be active when it is created");
-             if(employee.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            //  if(employee.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
              else return true;
         }
         public bool UpdateValidation(Employee employee,int id)
