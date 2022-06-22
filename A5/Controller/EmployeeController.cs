@@ -132,9 +132,9 @@ namespace A5.Controller
             try{
                 EmployeeServiceValidations employeeServiceValidations = new EmployeeServiceValidations(_context);
                 employeeServiceValidations.CreateValidation(employee);
-                employee.Image = System.Convert.FromBase64String(employee.ImageString);              
+                employee.Image = System.Convert.FromBase64String(employee.ImageString);
+                employee.Password = _employeeService.GeneratePassword();              
                 var data = _employeeService.Create(employee);
-                employee.Password = _employeeService.GeneratePassword();
                 return Ok(data);
             }
             catch(ValidationException exception)
