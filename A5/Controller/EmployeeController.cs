@@ -417,11 +417,11 @@ namespace A5.Controller
         }
         
         [HttpPut("ChangePassword")]
-        public ActionResult ChangePassword(Employee employee,int id)
+        public ActionResult ChangePassword(Employee employee,int id,string Email)
         {
            try
             {
-                var data = _employeeService.ChangePassword(employee,id);
+                var data = _employeeService.ChangePassword(employee,id,Email);
                 return Ok(data);
             }
             catch(ValidationException exception)

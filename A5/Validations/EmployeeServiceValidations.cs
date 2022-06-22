@@ -74,11 +74,12 @@ namespace A5.Validations
        }
                   
 
-      public static void PasswordValidation(Employee employee,int id)
+      public bool  PasswordValidation(Employee employee,int id,string Email)
       {
+        if(!(_context.Employees.Any(nameof=>nameof.Email==employee.Email))) throw new ValidationException("Email not found");
         if(string.IsNullOrEmpty(employee.Password)) throw new ValidationException("Password should not be null");
         if (!Regex.IsMatch(employee.Password,@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$")) throw new ValidationException ("Password must be between 8 and 15 characters and atleast contain one uppercase letter, one lowercase letter, one digit and one special character.");
-        
+        else return true;
       }
     }
 }

@@ -213,15 +213,17 @@ namespace A5.Data.Service
                   throw exception;
                 }
             }
-            public bool ChangePassword(Employee employee,int id)
+            public bool ChangePassword(Employee employee,int id,String Email)
             {
                 bool result=false;
                 try{
-                    EmployeeServiceValidations.PasswordValidation(employee,id);
-                    _context.Set<Employee>().Update(employee);
-                    _context.SaveChanges();
-                    result=true;
-                    return result;
+                    
+                      EmployeeServiceValidations employeeServiceValidations=new EmployeeServiceValidations(_context);
+                      employeeServiceValidations.PasswordValidation(employee,id,Email);
+                      _context.Set<Employee>().Update(employee);
+                      _context.SaveChanges();
+                      result=true;
+                       return result;
                 }
                 catch(Exception exception)
                 {
