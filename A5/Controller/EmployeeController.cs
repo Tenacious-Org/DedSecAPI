@@ -132,8 +132,9 @@ namespace A5.Controller
             try{
                 EmployeeServiceValidations employeeServiceValidations=new EmployeeServiceValidations(_context);
                 employeeServiceValidations.CreateValidation(employee);
-                employee.Image = System.Convert.FromBase64String(employee.ImageString);
+                employee.Image = System.Convert.FromBase64String(employee.ImageString);              
                 var data = _employeeService.Create(employee);
+                employee.Password=_employeeService.GeneratePassword();
                 return Ok(data);
             }
             catch(ValidationException exception)
@@ -395,11 +396,5 @@ namespace A5.Controller
                 return BadRequest($"Error : {exception.Message}");
             }
         }
-        
-
-
-
-
-
     }
 }
