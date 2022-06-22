@@ -134,7 +134,7 @@ namespace A5.Controller
                 employeeServiceValidations.CreateValidation(employee);
                 employee.Image = System.Convert.FromBase64String(employee.ImageString);              
                 var data = _employeeService.Create(employee);
-                employee.Password=_employeeService.GeneratePassword();
+               // employee.Password=_employeeService.GeneratePassword(employee.Id);
                 return Ok(data);
             }
             catch(ValidationException exception)
@@ -396,5 +396,45 @@ namespace A5.Controller
                 return BadRequest($"Error : {exception.Message}");
             }
         }
+        [HttpPut("GeneratePassword")]
+        public ActionResult GeneratePassword(Employee employee,int id)
+        {
+            try
+            {
+                var data = _employeeService.GeneratePassword(employee,id);
+                return Ok(data);
+            }
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                 _logger.LogInformation($"Employee Controller : GetEmployeeByRequesterId(int id) : (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
+        }
+        
+        [HttpPut("ChangePassword")]
+        public ActionResult ChangePassword(Employee employee,int id)
+        {
+           try
+            {
+                var data = _employeeService.ChangePassword(employee,id);
+                return Ok(data);
+            }
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                 _logger.LogInformation($"Employee Controller : GetEmployeeByRequesterId(int id) : (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
+        }
+        
     }
 }

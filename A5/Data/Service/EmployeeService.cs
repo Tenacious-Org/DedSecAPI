@@ -182,10 +182,12 @@ namespace A5.Data.Service
              }
             
          }
-         public string GeneratePassword()
+         public bool GeneratePassword(Employee employee,int id)
          {
-            string Password;
+         
+           bool result=false;
             try{
+                _context.Set<Employee>().Update(employee);
                  string allowedChars = "";
                  allowedChars = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,";
                  allowedChars += "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,";
@@ -200,14 +202,31 @@ namespace A5.Data.Service
                    temp = arr[rand.Next(0, arr.Length)];
                    passwordString += temp;
                  }
-                 Password = passwordString;
+                 //employee.Id=id;
+                 employee.Password = passwordString;
                  _context.SaveChanges();
-                 return Password;            
+                 result=true;
+                 return result;            
                 }
                 catch(Exception exception)
                 {
                   throw exception;
                 }
+            }
+            public bool ChangePassword(Employee employee,int id)
+            {
+                bool result=false;
+                try{
+                    EmployeeServiceValidations.PasswordValidation(employee,id);
+                    _context.Set<Employee>().Update(employee);
+                    _context.SaveChanges();
+                    result=true;
+                    return result;
                 }
+                catch(Exception exception)
+                {
+                    throw exception;
+                }
+            }
     }
 }

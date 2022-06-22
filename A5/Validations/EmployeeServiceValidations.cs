@@ -24,7 +24,6 @@ namespace A5.Validations
         public bool UpdateValidation(Employee employee,int id)
         {
             if(!(id==0)) throw new ValidationException("Employee Id should not be null.");
-            if(id != employee.Id) throw new ValidationException("Employee Id not found.");
             if(string.IsNullOrEmpty(employee.FirstName)) throw new ValidationException("Employee name should not be null or empty");
             if(string.IsNullOrEmpty(employee.LastName)) throw new ValidationException("Employee name should not be null or empty");
             if(_context.Employees.Any(nameof=>nameof.FirstName==employee.FirstName)) throw new ValidationException("First name already exists");           
@@ -38,14 +37,12 @@ namespace A5.Validations
         {
             Employee employee = new Employee();
             if(id==0) throw new ValidationException("Employee Id should not be null.");
-            if(id != employee.Id) throw new ValidationException("Employee Id not found.");
             return true;
         }
         public bool DisableValidation(int id)
         {
             Employee employee = new Employee();
             if(id==0) throw new ValidationException("Employee Id should not be null.");
-            if(id != employee.Id) throw new ValidationException("Employee Id not found.");
             if(employee.IsActive == false) throw new ValidationException("Employee is already disabled");
             if(employee.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
@@ -75,5 +72,13 @@ namespace A5.Validations
        {
         if(id==0) throw new ValidationException("Employee id should not be null");
        }
+                  
+
+      public static void PasswordValidation(Employee employee,int id)
+      {
+        if(string.IsNullOrEmpty(employee.Password)) throw new ValidationException("Password should not be null");
+        if (!Regex.IsMatch(employee.Password,@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$")) throw new ValidationException ("Password must be between 8 and 15 characters and atleast contain one uppercase letter, one lowercase letter, one digit and one special character.");
+        
+      }
     }
 }

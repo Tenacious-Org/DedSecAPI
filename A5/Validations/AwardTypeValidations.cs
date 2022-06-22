@@ -23,7 +23,6 @@ namespace A5.Validations
          public bool UpdateValidation(AwardType awardType,int id)
         {
             if(id==0) throw new ValidationException ("Enter the id to update");
-            if(id!=awardType.Id) throw new ValidationException("Id not found");
             if(string.IsNullOrEmpty(awardType.AwardName)) throw new ValidationException("Award name should not be null or empty");
             if(_context.AwardTypes.Any(nameof=>nameof.AwardName==awardType.AwardName)) throw new ValidationException("Award name already exists");         
             if(!( Regex.IsMatch(awardType.AwardName, @"^[a-zA-Z]+$"))) throw new ValidationException("Award Name should have only alphabets.No special Characters or numbers are allowed");
@@ -35,8 +34,7 @@ namespace A5.Validations
         public bool DisableValidation(int id)
         {
             AwardType awardType=new AwardType();
-            if(id==0) throw new ValidationException ("Enter the id to update");
-            if(id!=awardType.Id) throw new ValidationException("Id not found");         
+            if(id==0) throw new ValidationException ("Enter the id to update");         
             if(awardType.IsActive==false) throw new ValidationException("AwardType is already disabled");
             else if(awardType.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
@@ -45,7 +43,6 @@ namespace A5.Validations
         {
             AwardType awardType=new AwardType();
             if(id==0) throw new ValidationException("Award Id should not be null.");
-            if(id!=awardType.Id) throw new ValidationException("Award Id not found.");
             else return true;
         }
         
