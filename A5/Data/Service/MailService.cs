@@ -1,4 +1,3 @@
-using Mailkit;
 using MimeKit;
 using A5.Models;
 using A5.DataAccessLayer.Interfaces;
@@ -6,7 +5,8 @@ using Microsoft.Extensions.Options;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 
-namespace A5.Service{
+namespace A5.Service
+{
 
     public class MailService : IEmailService
 {

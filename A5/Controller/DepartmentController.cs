@@ -3,6 +3,7 @@ using A5.Models;
 using A5.Data.Service;
 using System.ComponentModel.DataAnnotations;
 using A5.Data;
+using A5.Validations;
 
 namespace A5.Controller
 {
@@ -47,6 +48,7 @@ namespace A5.Controller
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                _logger.LogInformation($"Department Controller : GetAllDepartment() : (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -79,13 +81,16 @@ namespace A5.Controller
         [HttpGet("GetDepartmentsByOrganisationId")]
         public ActionResult GetDepartmentsByOrganisationId(int id)
         {
+           
             try{
+                DepartmentServiceValidations.ValidateGetByOrganisation(id);
                 var data = _departmentService.GetDepartmentsByOrganisationId(id);
                 return Ok(data);
             }          
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                 _logger.LogInformation($"Department Controller : GetDepartmentByOrganisationId(int id) : (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -116,13 +121,17 @@ namespace A5.Controller
         [HttpGet("GetById")]
         public ActionResult GetByDepartmentId([FromQuery] int id)
         {
+            
             try{
+                DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
+                departmentValidations.ValidateGetById(id);
                 var data = _departmentService.GetById(id);
                 return Ok(data);
             }           
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                 _logger.LogInformation($"Department Controller : GetByDepartmentId(int id) : (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -155,12 +164,15 @@ namespace A5.Controller
         public ActionResult Create(Department department)
         {
             try{
+                DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
+                departmentValidations.CreateValidation(department);
                 var data = _departmentService.Create(department);
                 return Ok("Created.");
             }           
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                 _logger.LogInformation($"Department Controller : Create(Department department) : (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -189,15 +201,18 @@ namespace A5.Controller
         /// </returns>
 
         [HttpPut("Update")]
-        public ActionResult Update(Department department)
+        public ActionResult Update(Department department,int id)
         {
             try{
+                DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
+                departmentValidations.UpdateValidation(department,id);
                 var data = _departmentService.Update(department);
                 return Ok("Updated.");
             }
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                 _logger.LogInformation($"Department Controller : Update(Department department,int id) : (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -228,7 +243,10 @@ namespace A5.Controller
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
         {
+             
             try{
+                DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
+                departmentValidations.DisableValidation(id);
                  var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.DepartmentId== id).ToList().Count();
                 if(checkEmployee>0){
                     return Ok(checkEmployee);
@@ -241,6 +259,7 @@ namespace A5.Controller
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                 _logger.LogInformation($"Department Controller : Disable(int id) : (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)

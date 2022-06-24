@@ -119,6 +119,7 @@ namespace A5.Data.Service
                             aceid = Employee.ACEID,
                             firstName = Employee.FirstName,
                             lastName = Employee.LastName,
+                            fullName= Employee.FirstName+" "+Employee.LastName,
                             email = Employee.Email,
                             image = Employee.Image,
                             gender = Employee.Gender,
@@ -163,6 +164,8 @@ namespace A5.Data.Service
                             organisationName = employee.Designation.Department.Organisation.OrganisationName,
                             departmentName = employee.Designation.Department.DepartmentName,
                             designationName = employee.Designation.DesignationName,
+                            reportingPersonId=employee.ReportingPersonId,
+                            hrId=employee.HRId,
                             reportingPersonName = employee.ReportingPerson.FirstName,
                             hRName = employee.HR.FirstName,
                             password = employee.Password,
@@ -179,6 +182,53 @@ namespace A5.Data.Service
              }
             
          }
-
+         public bool GeneratePassword(Employee employee,int id)
+         {
+         
+           bool result=false;
+            try{
+                _context.Set<Employee>().Update(employee);
+                 string allowedChars = "";
+                 allowedChars = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,";
+                 allowedChars += "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,";
+                 allowedChars += "1,2,3,4,5,6,7,8,9,0,!,@,#,$,%,&,?";
+                 char[] sep = { ',' };
+                 string[] arr = allowedChars.Split(sep);
+                 string passwordString = "";
+                 string temp = "";
+                 Random rand = new Random();
+                 for (int i = 0; i < 8; i++)
+                 {
+                   temp = arr[rand.Next(0, arr.Length)];
+                   passwordString += temp;
+                 }
+                 //employee.Id=id;
+                 employee.Password = passwordString;
+                 _context.SaveChanges();
+                 result=true;
+                 return result;            
+                }
+                catch(Exception exception)
+                {
+                  throw exception;
+                }
+            }
+            public bool ChangePassword(Employee employee,int id,String Email)
+            {
+                bool result=false;
+                try{
+                    
+                      EmployeeServiceValidations employeeServiceValidations=new EmployeeServiceValidations(_context);
+                      employeeServiceValidations.PasswordValidation(employee,id,Email);
+                      _context.Set<Employee>().Update(employee);
+                      _context.SaveChanges();
+                      result=true;
+                       return result;
+                }
+                catch(Exception exception)
+                {
+                    throw exception;
+                }
+            }
     }
 }

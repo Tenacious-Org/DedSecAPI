@@ -48,6 +48,7 @@ namespace A5.Controller
              catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                _logger.LogInformation($"Award Controller : RaiseRequest(Award award,int id) : (Error:{exception.Message}");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -88,6 +89,7 @@ namespace A5.Controller
              catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                _logger.LogInformation($"Award Controller : Approval(Award award,int id) : (Error:{exception.Message}");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -181,6 +183,12 @@ namespace A5.Controller
                 var data=_awardService.GetAwardById(id);
                 return Ok(data);
             }
+             catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                _logger.LogInformation($"Award Controller :GetAwardById(int id) : (Error:{exception.Message}");
+                return BadRequest($"Error : {exception.Message}");
+            }
             catch(Exception exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
@@ -214,6 +222,12 @@ namespace A5.Controller
            try{
                 var data=_awardService.GetAwardsList(pageId,employeeId);
                 return Ok(data);
+            }
+             catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                _logger.LogInformation($"Award Controller : GetAwardsList(int pageId,int employeeId) : (Error:{exception.Message}");
+                return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
             {
@@ -252,6 +266,7 @@ namespace A5.Controller
              catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                _logger.LogInformation($"Award Controller : AddComment(Comment comment) : (Error:{exception.Message}");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -288,6 +303,12 @@ namespace A5.Controller
            try{
                 var data=_awardService.GetComments(awardId);
                 return Ok(data);
+            }
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                _logger.LogInformation($"Award Controller : GetComments(int awardId) : (Error:{exception.Message}");
+                return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
             {

@@ -4,7 +4,7 @@ using A5.Models;
 using A5.Data.Service;
 using System.ComponentModel.DataAnnotations;
 using A5.Data;
-
+using A5.Validations;
 namespace A5.Controller
 {
     [Route("api/[controller]")]
@@ -47,6 +47,7 @@ namespace A5.Controller
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                _logger.LogInformation($"Organisation Controller : GetAllOrganisation() : (Error:{exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -78,13 +79,17 @@ namespace A5.Controller
          [HttpGet("GetById")]
         public ActionResult GetByOrganisationId([FromQuery] int id)
         {
+           
             try{
+                 OrganisationServiceValidations organisatonValidations=new OrganisationServiceValidations(_context);
+                 organisatonValidations.ValidateGetById(id);
                 var data = _organisationService.GetById(id);
                  return Ok(data);
             }
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                _logger.LogInformation($"Organisation Controller : GetByOrganisationId(int id) : (Error : {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -116,14 +121,18 @@ namespace A5.Controller
         [HttpPost("Create")]
         public ActionResult Create(Organisation organisation)
         {
+            
             try
-            {    
+            {   
+                OrganisationServiceValidations organisationValidations=new OrganisationServiceValidations(_context);
+                organisationValidations.CreateValidation(organisation);
                 var data = _organisationService.Create(organisation);
                 return Ok("Organisation Created.");
             }
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                _logger.LogInformation($"Organisation Controller : Create(Organisation organisation) : (Error:{exception.Message}");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -152,15 +161,19 @@ namespace A5.Controller
         /// </returns>
 
         [HttpPut("Update")]
-        public ActionResult Update(Organisation organisation)
+        public ActionResult Update(Organisation organisation,int id)
         {
+            
             try{
+                OrganisationServiceValidations organisationValidations=new OrganisationServiceValidations(_context);
+                organisationValidations.UpdateValidation(organisation,id);
                 var data = _organisationService.Update(organisation);           
                 return Ok("Organisation Updated.");          
             }        
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                _logger.LogInformation($"Organisation Controller : Update(Organisation organisation,int id) : (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -191,8 +204,11 @@ namespace A5.Controller
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
         {
+            
             try
             {
+                OrganisationServiceValidations organisationValidations=new OrganisationServiceValidations(_context);
+                organisationValidations.DisableValidation(id);
                 var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.OrganisationId == id).ToList().Count();
                 if(checkEmployee > 0)
                 {             
@@ -208,6 +224,7 @@ namespace A5.Controller
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                _logger.LogInformation($"Organisation Controller : Disable(int id) : (Error : {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)

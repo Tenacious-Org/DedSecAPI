@@ -3,6 +3,7 @@ using A5.Models;
 using A5.Data.Service;
 using A5.Data;
 using System.ComponentModel.DataAnnotations;
+using A5.Validations;
 
 namespace A5.Controller
 {
@@ -46,6 +47,7 @@ namespace A5.Controller
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                _logger.LogInformation($"Employee Controller : GetAllEmployees() : (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -77,12 +79,15 @@ namespace A5.Controller
         public ActionResult GetEmployeeById([FromQuery] int id)
         {
             try{
+                EmployeeServiceValidations employeeServiceValidations=new EmployeeServiceValidations(_context);
+                employeeServiceValidations.ValidateGetById(id);
                 var data = _employeeService.GetEmployeeById(id);
                 return Ok(data);
             }
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                 _logger.LogInformation($"Employee Controller : GetEmployeeById(int id) : (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -125,13 +130,17 @@ namespace A5.Controller
         public ActionResult Create(Employee employee)
         {
             try{
-                employee.Image = System.Convert.FromBase64String(employee.ImageString);
+                EmployeeServiceValidations employeeServiceValidations=new EmployeeServiceValidations(_context);
+                employeeServiceValidations.CreateValidation(employee);
+                employee.Image = System.Convert.FromBase64String(employee.ImageString);              
                 var data = _employeeService.Create(employee);
+               // employee.Password=_employeeService.GeneratePassword(employee.Id);
                 return Ok(data);
             }
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                 _logger.LogInformation($"Employee Controller : Create(Employee employee) : (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -160,9 +169,11 @@ namespace A5.Controller
         /// </returns>
 
         [HttpPut("Update")]
-        public ActionResult Update(Employee employee)
+        public ActionResult Update(Employee employee,int id)
         {
             try{
+                EmployeeServiceValidations employeeServiceValidations=new EmployeeServiceValidations(_context);
+                employeeServiceValidations.UpdateValidation(employee,id);
                 employee.Image = System.Convert.FromBase64String(employee.ImageString);
                 var data = _employeeService.Update(employee);
                 return Ok(data);
@@ -170,6 +181,7 @@ namespace A5.Controller
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                 _logger.LogInformation($"Employee Controller : Update(Employee employee,int id) : (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -202,6 +214,8 @@ namespace A5.Controller
         {
             try
             {
+                EmployeeServiceValidations employeeServiceValidations=new EmployeeServiceValidations(_context);
+                employeeServiceValidations.DisableValidation(id);
                 var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.HRId== id || nameof.ReportingPersonId== id  ).ToList().Count();
                 if(checkEmployee>0){
                     return Ok(checkEmployee);
@@ -213,6 +227,7 @@ namespace A5.Controller
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                 _logger.LogInformation($"Employee Controller : Disable(int id) : (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -253,6 +268,7 @@ namespace A5.Controller
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                 _logger.LogInformation($"Employee Controller : GetEmployeeByDepartmentId(int id) : (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -271,6 +287,7 @@ namespace A5.Controller
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                 _logger.LogInformation($"Employee Controller : GetReportingPersonbyDepartment(int id) : (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -289,6 +306,7 @@ namespace A5.Controller
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                 _logger.LogInformation($"Employee Controller : GetHrByDepartment(int id) : (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -329,6 +347,7 @@ namespace A5.Controller
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                _logger.LogInformation($"Employee Controller : GetEmployeebyOrganisation(int id) : (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -369,6 +388,26 @@ namespace A5.Controller
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
+                 _logger.LogInformation($"Employee Controller : GetEmployeeByRequesterId(int id) : (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
+        }
+        [HttpPut("GeneratePassword")]
+        public ActionResult GeneratePassword(Employee employee,int id)
+        {
+            try
+            {
+                var data = _employeeService.GeneratePassword(employee,id);
+                return Ok(data);
+            }
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                 _logger.LogInformation($"Employee Controller : GeneratePassword(Employee employee,int id) : (Error: {exception.Message})");
                 return BadRequest($"Error : {exception.Message}");
             }
             catch(Exception exception)
@@ -377,10 +416,25 @@ namespace A5.Controller
             }
         }
         
-
-
-
-
-
+        [HttpPut("ChangePassword")]
+        public ActionResult ChangePassword(Employee employee,int id,string Email)
+        {
+           try
+            {
+                var data = _employeeService.ChangePassword(employee,id,Email);
+                return Ok(data);
+            }
+            catch(ValidationException exception)
+            {
+                _logger.LogError($"log: (Error: {exception.Message})");
+                 _logger.LogInformation($"Employee Controller : ChangePassword(Employee employee,int id) : (Error: {exception.Message})");
+                return BadRequest($"Error : {exception.Message}");
+            }
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
+        }
+        
     }
 }

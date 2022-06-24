@@ -123,7 +123,7 @@ namespace A5.Data.Service
                     updatedBy=award.UpdatedBy,
                     updatedOn=award.UpdatedOn,
                     aceId=award.Awardee.ACEID,
-                    awardeeName = award.Awardee.FirstName,
+                    awardeeName = award.Awardee.FirstName + " "+ award.Awardee.LastName  ,
                     awardeeImage=award.Awardee.Image,
                     gender=award.Awardee.Gender,
                     requesterName = award.Awardee.ReportingPerson.FirstName,
@@ -168,6 +168,8 @@ namespace A5.Data.Service
                var comments=_master.GetComments(awardId);
                return comments.Select( Comment =>  new{
                    id=Comment.Id,
+                   comments=Comment.Comments,
+                   gender=Comment.Employees.Gender,
                    employeeName=Comment.Employees.FirstName,
                    employeeImage=Comment.Employees.Image
                });
