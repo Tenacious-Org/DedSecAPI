@@ -91,6 +91,7 @@ namespace A5.Data
                         {
                             DesignationName = "Admin",
                             DepartmentId = 1,
+                            RoleID = 1,
                             IsActive = true,
                             AddedBy = 1,
                             AddedOn = DateTime.Now,
@@ -102,6 +103,7 @@ namespace A5.Data
                         {
                             DesignationName = "CEO",
                             DepartmentId = 1,
+                            RoleID = 2,
                             IsActive = true,
                             AddedBy = 1,
                             AddedOn = DateTime.Now,
@@ -113,6 +115,7 @@ namespace A5.Data
                         {
                             DesignationName = "VP",
                             DepartmentId = 1,
+                            RoleID = 2,
                             IsActive = true,
                             AddedBy = 1,
                             AddedOn = DateTime.Now,
@@ -124,6 +127,7 @@ namespace A5.Data
                         {
                             DesignationName = "HR",
                             DepartmentId = 2,
+                            RoleID = 2,
                             IsActive = true,
                             AddedBy = 1,
                             AddedOn = DateTime.Now,
@@ -135,6 +139,7 @@ namespace A5.Data
                         {
                             DesignationName = "Project Manager",
                             DepartmentId = 2,
+                            RoleID = 3,
                             IsActive = true,
                             AddedBy = 1,
                             AddedOn = DateTime.Now,
@@ -146,6 +151,7 @@ namespace A5.Data
                         {
                             DesignationName = "Team Leader",
                             DepartmentId = 2,
+                            RoleID = 4,
                             IsActive = true,
                             AddedBy = 1,
                             AddedOn = DateTime.Now,
@@ -157,6 +163,7 @@ namespace A5.Data
                         {
                             DesignationName = "Trainee",
                             DepartmentId = 2,
+                            RoleID = 5,
                             IsActive = true,
                             AddedBy = 1,
                             AddedOn = DateTime.Now,
