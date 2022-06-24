@@ -7,7 +7,7 @@ namespace A5.Models
 {
     public class Roles
     {
-        public int RoleID{ get; set; }
+        public int ID{ get; set; }
         public string RoleName{ get; set; }
     }
 }
