@@ -84,6 +84,32 @@ namespace A5.Data
                     });
                     context.SaveChanges();
                 }
+                if(!context.Roles.Any())
+                {
+                    context.Roles.AddRange(new List<Roles>(){
+                        new Roles()
+                        {
+                            RoleName = "Admin"
+                        },
+                        new Roles()
+                        {
+                            RoleName = "Publisher"
+                        },
+                        new Roles()
+                        {
+                            RoleName = "Approver"
+                        },
+                        new Roles()
+                        {
+                            RoleName = "Requester"
+                        },
+                        new Roles()
+                        {
+                            RoleName = "User"
+                        },
+                    });
+                    context.SaveChanges();
+                }
                 if(!context.Designations.Any())
                 {
                     context.Designations.AddRange(new List<Designation>() {
@@ -91,7 +117,7 @@ namespace A5.Data
                         {
                             DesignationName = "Admin",
                             DepartmentId = 1,
-                            RoleID = 1,
+                            RoleID = 6,
                             IsActive = true,
                             AddedBy = 1,
                             AddedOn = DateTime.Now,
@@ -103,7 +129,7 @@ namespace A5.Data
                         {
                             DesignationName = "CEO",
                             DepartmentId = 1,
-                            RoleID = 2,
+                            RoleID = 7,
                             IsActive = true,
                             AddedBy = 1,
                             AddedOn = DateTime.Now,
@@ -115,7 +141,7 @@ namespace A5.Data
                         {
                             DesignationName = "VP",
                             DepartmentId = 1,
-                            RoleID = 2,
+                            RoleID = 7,
                             IsActive = true,
                             AddedBy = 1,
                             AddedOn = DateTime.Now,
@@ -127,7 +153,7 @@ namespace A5.Data
                         {
                             DesignationName = "HR",
                             DepartmentId = 2,
-                            RoleID = 2,
+                            RoleID = 7,
                             IsActive = true,
                             AddedBy = 1,
                             AddedOn = DateTime.Now,
@@ -139,7 +165,7 @@ namespace A5.Data
                         {
                             DesignationName = "Project Manager",
                             DepartmentId = 2,
-                            RoleID = 3,
+                            RoleID = 8,
                             IsActive = true,
                             AddedBy = 1,
                             AddedOn = DateTime.Now,
@@ -151,7 +177,7 @@ namespace A5.Data
                         {
                             DesignationName = "Team Leader",
                             DepartmentId = 2,
-                            RoleID = 4,
+                            RoleID = 9,
                             IsActive = true,
                             AddedBy = 1,
                             AddedOn = DateTime.Now,
@@ -163,7 +189,7 @@ namespace A5.Data
                         {
                             DesignationName = "Trainee",
                             DepartmentId = 2,
-                            RoleID = 5,
+                            RoleID = 10,
                             IsActive = true,
                             AddedBy = 1,
                             AddedOn = DateTime.Now,
@@ -242,31 +268,7 @@ namespace A5.Data
                     });
                     context.SaveChanges();
                 }
-                if(!context.Roles.Any())
-                {
-                    context.Roles.AddRange(new List<Roles>(){
-                        new Roles()
-                        {
-                            RoleName = "Admin"
-                        },
-                        new Roles()
-                        {
-                            RoleName = "Publisher"
-                        },
-                        new Roles()
-                        {
-                            RoleName = "Approver"
-                        },
-                        new Roles()
-                        {
-                            RoleName = "Requester"
-                        },
-                        new Roles()
-                        {
-                            RoleName = "User"
-                        },
-                    });
-                }
+                
 
             }
         }
