@@ -134,7 +134,7 @@ namespace A5.Controller
                 employeeServiceValidations.CreateValidation(employee);
                 employee.Image = System.Convert.FromBase64String(employee.ImageString);              
                 var data = _employeeService.Create(employee);
-               // employee.Password=_employeeService.GeneratePassword(employee.Id);
+                //employee.Password=_employeeService.GeneratePassword(employee.Id);
                 return Ok(data);
             }
             catch(ValidationException exception)
