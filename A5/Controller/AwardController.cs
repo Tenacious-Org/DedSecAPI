@@ -179,6 +179,8 @@ namespace A5.Controller
        [HttpGet("GetAwardById")]
        public ActionResult GetAwardById(int id)
        {
+        if(id<=0)
+            return BadRequest("Id cannot be null or negative");
            
            try{
                 var data=_awardService.GetAwardById(id);
