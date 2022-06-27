@@ -10,14 +10,14 @@ namespace A5.Data
 
         }
 
-        // protected override void OnModelCreating(ModelBuilder modelBuilder)
-        // {
-        //     modelBuilder.Entity<Employee>().HasOne<Employee>(r => r.ReportingPerson)
-        //     .WithMany(e => e.Reportingpersons).HasForeignKey(r => r.ReportingPersonId);
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Employee>().HasOne<Employee>(r => r.ReportingPerson)
+            .WithMany(e => e.Reportingpersons).HasForeignKey(r => r.ReportingPersonId);
 
-        //     modelBuilder.Entity<Employee>().HasOne<Employee>(h => h.HR)
-        //     .WithMany(e => e.Hrs).HasForeignKey(h => h.HRId);
-        // }
+            modelBuilder.Entity<Employee>().HasOne<Employee>(h => h.HR)
+            .WithMany(e => e.Hrs).HasForeignKey(h => h.HRId);
+        }
 
         public DbSet<AwardType> AwardTypes{ get; set; }
         public DbSet<Employee> Employees {get;set;}
@@ -27,7 +27,6 @@ namespace A5.Data
         public DbSet<Organisation> Organisations{ get; set; }
         public DbSet<Department> Departments{ get; set; }
         public DbSet<Designation> Designations{ get; set; }
-        public DbSet<Roles> Roles{ get; set; }
         
     }
 }
