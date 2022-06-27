@@ -2,18 +2,19 @@ using A5.Data.Repository;
 using A5.Data.Service.Interfaces;
 using A5.Models;
 using A5.Validations;
+using System.ComponentModel.DataAnnotations;
 namespace A5.Data.Service
 {
     public class AwardService:IAwardService
     {
         private readonly AppDbContext _context;
         private readonly MasterRepository _master;
-        private readonly EmployeeService _employeeService;
-        public AwardService(AppDbContext context, MasterRepository master,EmployeeService employeeService)
+
+        public AwardService(AppDbContext context, MasterRepository master)
         {
             _context=context;
             _master = master;
-            _employeeService=employeeService;
+           
         }
         public bool RaiseRequest(Award award,int id)
         {
@@ -138,6 +139,7 @@ namespace A5.Data.Service
 
                 };
             }
+           
             catch(Exception exception)
             {
                 throw exception;
@@ -185,6 +187,7 @@ namespace A5.Data.Service
             try
             {
                 var awards = _master.GetAllAwardsList();
+                //AwardServiceValidations.ValidateGetAwardsList(pageId,employeeId);
                 if(pageId==1) 
                     awards =awards.Where(nameof =>nameof.StatusId == 4 && nameof.AwardeeId==employeeId).ToList();
                 else if(pageId==2) 

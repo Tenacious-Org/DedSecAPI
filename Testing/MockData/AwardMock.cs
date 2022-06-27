@@ -38,6 +38,24 @@ namespace Testing.MockData
                 new Award(){ Id=5,RequesterId= 6, AwardeeId =7, AwardTypeId= 1,ApproverId= 5, HRId= 4,Reason= "Best Performer in Team",RejectedReason= null,CouponCode= "KJ7JH876HBH",StatusId= 4, AddedBy= 6,UpdatedBy= 4,}
             };
         }
+        public static Award GetAwardsById(int Id)
+        {
+            return new Award()
+            {
+                Id=1,
+                RequesterId= 6,
+                AwardeeId =7,
+                AwardTypeId= 1,
+                ApproverId= 5,
+                HRId= 4,
+                Reason= "Best Performer in Team",
+                RejectedReason= null,
+                CouponCode= "KJ7JH876HBH",
+                StatusId= 4,
+                AddedBy= 6,
+                UpdatedBy= 4,
+            };
+        }
     }
 }
  

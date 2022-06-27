@@ -42,6 +42,7 @@ namespace A5.Controller
         [HttpPost("RaiseRequest")]
         public ActionResult RaiseRequest(Award award,int id)
         {
+            if(id<=0) return BadRequest("Id cannot be null or negative");
             try{
                 var data=_awardService.RaiseRequest(award,id);
                 return Ok(data);
@@ -82,7 +83,7 @@ namespace A5.Controller
         [HttpPut("Approval")]
         public ActionResult Approval(Award award,int id){
         
-            
+            if(id<=0) return BadRequest("Id should not be null or negative");
             try{
                 var data=_awardService.Approval(award,id);
                 return Ok(data);

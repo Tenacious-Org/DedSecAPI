@@ -7,6 +7,8 @@ using A5.Data.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.ComponentModel.DataAnnotations;
+using A5.Models;
+using Testing.MockData;
 namespace Testing.Controller
 {
     public class AwardControllerTest
@@ -22,7 +24,7 @@ namespace Testing.Controller
          [Theory]
          [InlineData(0)]
         
-        public void GetAwardById_ShouldReturnStatusCode400_WhereAwardIdIsNull(int Id)
+        public void GetAwardById_ShouldReturnStatusCode400_WhenAwardIdIsNull(int Id)
         {         
              var Result=_awardController.GetAwardById(Id) as ObjectResult;
              Assert.Equal(400, Result?.StatusCode);
@@ -31,7 +33,7 @@ namespace Testing.Controller
         [Theory]
          [InlineData(1)]
         
-        public void GetAwardById_ShouldReturnStatusCode200_WhereAwardIdIsValid(int Id)
+        public void GetAwardById_ShouldReturnStatusCode200_WhenAwardIdIsValid(int Id)
         {         
              var Result=_awardController.GetAwardById(Id) as ObjectResult;
              Assert.Equal(200, Result?.StatusCode);
@@ -52,5 +54,77 @@ namespace Testing.Controller
             var Result=_awardController.GetAwardById(Id) as ObjectResult;
             Assert.Equal(400,Result?.StatusCode);
         }
+        [Fact]
+        public void RaiseRequest_ShouldReturnStatusCode400_WhenIdIsNull()
+        {
+            Award award=new Award();
+            int id=0;
+            var Result=_awardController.RaiseRequest(award,0) as ObjectResult;
+            Assert.Equal(400,Result?.StatusCode);
+        }
+        [Fact]
+        public void RaiseRequest_ShouldReturnStatusCode200_WhenIdIsValid()
+        {
+           Award award=AwardMock.GetValidAward();
+            int id=1;
+            _awardService.Setup(obj=>obj.RaiseRequest(award,id)).Returns(true) ;
+            var Result=_awardController.RaiseRequest(award,id) as ObjectResult;
+            Assert.Equal(200,Result?.StatusCode);
+
+        }
+        [Fact]
+        public void RaiseRequest_ShouldReturnStatusCode400_WhenIdThrowsValidationException()
+        {
+            Award award=AwardMock.GetValidAward();
+            int id=1;
+            _awardService.Setup(obj=>obj.RaiseRequest(award,id)).Throws<ValidationException>();
+            var Result=_awardController.RaiseRequest(award,id) as ObjectResult;
+            Assert.Equal(400,Result?.StatusCode);
+        }
+        [Fact]
+        public void RaiseRequest_ShouldReturnStatusCode400_WhenIdThrowsException()
+        {
+            Award award=AwardMock.GetValidAward();
+            int id=1;
+            _awardService.Setup(obj=>obj.RaiseRequest(award,id)).Throws<Exception>();
+            var Result=_awardController.RaiseRequest(award,id) as ObjectResult;
+            Assert.Equal(400,Result?.StatusCode);
+        }
+        [Fact]
+        public void Approval_ShouldReturnStatusCode400_WhenIdIsNull()
+        {
+            Award award=new Award();
+            int id=0;
+            var Result=_awardController.Approval(award,0) as ObjectResult;
+            Assert.Equal(400,Result?.StatusCode);
+        }
+        [Fact]
+        public void Approval_ShouldReturnStatusCode200_WhenIdIsValid()
+        {
+            Award award=AwardMock.GetValidAward();
+            int id=1;
+            _awardService.Setup(obj=>obj.Approval(award,id)).Returns(true);
+            var Result=_awardController.Approval(award,id) as ObjectResult;
+            Assert.Equal(200,Result?.StatusCode);
+        }
+        [Fact]
+        public void Approval_ShouldReturnStatusCode400_WhenIdThrowsValidationException()
+        {
+            Award award=AwardMock.GetValidAward();
+            int id=1;
+           _awardService.Setup(obj=>obj.Approval(award,id)).Throws<ValidationException>();
+            var Result=_awardController.Approval(award,id) as ObjectResult;
+            Assert.Equal(400,Result?.StatusCode);
+        }
+        [Fact]
+        public void Approval_ShouldReturnStatusCode400_WhenIdThrowsException()
+        {
+            Award award=AwardMock.GetValidAward();
+            int id=1;
+              _awardService.Setup(obj=>obj.Approval(award,id)).Throws<Exception>();
+            var Result=_awardController.Approval(award,id) as ObjectResult;
+            Assert.Equal(400,Result?.StatusCode);
+        }
+        
     }
 }
