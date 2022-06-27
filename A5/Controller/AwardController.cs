@@ -3,6 +3,7 @@ using A5.Models;
 using A5.Data.Service;
 using System.ComponentModel.DataAnnotations;
 using System.Net;
+using A5.Data.Service.Interfaces;
 
 namespace A5.Controller
 {
@@ -10,10 +11,10 @@ namespace A5.Controller
     [ApiController]
     public class AwardController : ControllerBase
     {
-        private readonly ILogger<AwardService> _logger;
-        private readonly AwardService _awardService;
+        private readonly ILogger<IAwardService> _logger;
+        private readonly IAwardService _awardService;
 
-        public AwardController(ILogger<AwardService> logger,AwardService awardService)
+        public AwardController(ILogger<IAwardService> logger,IAwardService awardService)
         {
             _awardService=awardService;
             _logger=logger;
@@ -178,6 +179,8 @@ namespace A5.Controller
        [HttpGet("GetAwardById")]
        public ActionResult GetAwardById(int id)
        {
+        if(id<=0)
+            return BadRequest("Id cannot be null or negative");
            
            try{
                 var data=_awardService.GetAwardById(id);

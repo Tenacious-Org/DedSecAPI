@@ -28,8 +28,6 @@ namespace A5.Data.Base
               _context.Set<T>().Add(entity);
                 entity.AddedBy=1;
                 entity.AddedOn=DateTime.Now;
-                entity.UpdatedBy=1;
-                entity.UpdatedOn=DateTime.Now;
                 _context.SaveChanges();
                 result = true;
             // if(entity!=null){
