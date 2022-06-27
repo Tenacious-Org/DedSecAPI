@@ -12,7 +12,8 @@ namespace A5.Validations
             _context=context;
         }
         public bool CreateValidation(Organisation organisation)
-        {           
+        {        
+            if(organisation==null) throw new ValidationException("Organisation should not be null");   
             if(String.IsNullOrEmpty(organisation.OrganisationName)) throw new ValidationException("Organisation Name should not be null or Empty.");
             if(_context.Organisations.Any(nameof=>nameof.OrganisationName==organisation.OrganisationName)) throw new ValidationException("organisation name already exists");           
             if(!( Regex.IsMatch(organisation.OrganisationName, @"^[a-zA-Z]+$"))) throw new ValidationException("Organisation Name should have only alphabets.No special Characters or numbers are allowed");

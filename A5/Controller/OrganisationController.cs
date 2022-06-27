@@ -2,6 +2,7 @@ using System;
 using Microsoft.AspNetCore.Mvc;
 using A5.Models;
 using A5.Data.Service;
+using A5.Data.Service.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using A5.Data;
 using A5.Validations;
@@ -12,9 +13,9 @@ namespace A5.Controller
     public class OrganisationController : ControllerBase
     {
         private readonly ILogger<OrganisationController> _logger;
-        private readonly AppDbContext _context;
+         private readonly AppDbContext _context;
         private readonly OrganisationService _organisationService;
-        public OrganisationController(ILogger<OrganisationController> logger, AppDbContext context, OrganisationService organisationService)
+        public OrganisationController(ILogger<OrganisationController> logger,AppDbContext context,  OrganisationService organisationService)
         {
             _logger = logger;
             _context = context;
