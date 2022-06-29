@@ -11,8 +11,8 @@ namespace A5.Controller
     [ApiController]
     public class AwardController : ControllerBase
     {
-        private readonly ILogger<IAwardService> _logger;
-        private readonly IAwardService _awardService;
+        private  ILogger<IAwardService> _logger;
+        private IAwardService _awardService;
 
         public AwardController(ILogger<IAwardService> logger,IAwardService awardService)
         {
@@ -262,7 +262,7 @@ namespace A5.Controller
        [HttpPost("AddComment")]
        public ActionResult AddComment(Comment comment)
        {
-           
+           if(comment==null) return BadRequest("comment should not be null"); 
            try{
                var data=_awardService.AddComment(comment);
                 return Ok(data);               

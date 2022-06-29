@@ -4,6 +4,7 @@ using A5.Data.Service;
 using Serilog;
 using A5.Data.Repository;
 using System.Reflection;
+using A5.Data.Service.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,7 +26,7 @@ builder.Services.AddTransient<DesignationService>();
 builder.Services.AddTransient<AwardTypeService>();
 builder.Services.AddTransient<StatusService>();
 builder.Services.AddTransient<EmployeeService>();
-builder.Services.AddTransient<AwardService>();
+builder.Services.AddTransient<IAwardService,AwardService>();
 builder.Services.AddTransient<MasterRepository>();
 builder.Services.AddControllersWithViews()
     .AddNewtonsoftJson(options =>
