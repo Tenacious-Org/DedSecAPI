@@ -303,7 +303,7 @@ namespace A5.Controller
        [HttpGet("GetComments")]
        public ActionResult GetComments(int awardId)
        {
-           
+           if(awardId<=0) return BadRequest("Award Id should not be negative or zero");
            try{
                 var data=_awardService.GetComments(awardId);
                 return Ok(data);

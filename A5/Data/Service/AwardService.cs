@@ -1,7 +1,7 @@
 using A5.Data.Repository;
 using A5.Data.Service.Interfaces;
 using A5.Models;
-using A5.Validations;
+using A5.Data.Service.Validations;
 using System.ComponentModel.DataAnnotations;
 namespace A5.Data.Service
 {
@@ -187,7 +187,7 @@ namespace A5.Data.Service
             try
             {
                 var awards = _master.GetAllAwardsList();
-                //AwardServiceValidations.ValidateGetAwardsList(pageId,employeeId);
+                AwardServiceValidations.ValidateGetAwardsList(pageId,employeeId);
                 if(pageId==1) 
                     awards =awards.Where(nameof =>nameof.StatusId == 4 && nameof.AwardeeId==employeeId).ToList();
                 else if(pageId==2) 

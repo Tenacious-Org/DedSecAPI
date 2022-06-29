@@ -339,7 +339,7 @@
             Return "Department Added Successfully" when the Department is added in the database otherwise return "Sorry internal error occured".
              </returns>
         </member>
-        <member name="M:A5.Controller.DepartmentController.Update(A5.Models.Department,System.Int32)">
+        <member name="M:A5.Controller.DepartmentController.Update(A5.Models.Department)">
              <summary>
               This Method is used to view single Organisation by id
              </summary>
@@ -730,7 +730,7 @@
             Return "Organisation Added Successfully" when the Organisation is added in the database otherwise return "Sorry internal error occured".
              </returns>
         </member>
-        <member name="M:A5.Controller.OrganisationController.Update(A5.Models.Organisation,System.Int32)">
+        <member name="M:A5.Controller.OrganisationController.Update(A5.Models.Organisation)">
              <summary>
               This Method is used to view single Organisation by id
              </summary>

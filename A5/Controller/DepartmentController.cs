@@ -3,7 +3,6 @@ using A5.Models;
 using A5.Data.Service;
 using System.ComponentModel.DataAnnotations;
 using A5.Data;
-using A5.Validations;
 
 namespace A5.Controller
 {
@@ -83,7 +82,7 @@ namespace A5.Controller
         {
            
             try{
-                DepartmentServiceValidations.ValidateGetByOrganisation(id);
+                //DepartmentServiceValidations.ValidateGetByOrganisation(id);
                 var data = _departmentService.GetDepartmentsByOrganisationId(id);
                 return Ok(data);
             }          
@@ -123,8 +122,8 @@ namespace A5.Controller
         {
             
             try{
-                DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
-                departmentValidations.ValidateGetById(id);
+                // DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
+                // departmentValidations.ValidateGetById(id);
                 var data = _departmentService.GetById(id);
                 return Ok(data);
             }           
@@ -164,8 +163,8 @@ namespace A5.Controller
         public ActionResult Create(Department department)
         {
             try{
-                DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
-                departmentValidations.CreateValidation(department);
+                // DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
+                // departmentValidations.CreateValidation(department);
                 var data = _departmentService.Create(department);
                 return Ok("Created.");
             }           
@@ -201,11 +200,9 @@ namespace A5.Controller
         /// </returns>
 
         [HttpPut("Update")]
-        public ActionResult Update(Department department,int id)
+        public ActionResult Update(Department department)
         {
             try{
-                DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
-                departmentValidations.UpdateValidation(department,id);
                 var data = _departmentService.Update(department);
                 return Ok("Updated.");
             }
@@ -245,8 +242,8 @@ namespace A5.Controller
         {
              
             try{
-                DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
-                departmentValidations.DisableValidation(id);
+                // DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
+                // departmentValidations.DisableValidation(id);
                  var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.DepartmentId== id).ToList().Count();
                 if(checkEmployee>0){
                     return Ok(checkEmployee);

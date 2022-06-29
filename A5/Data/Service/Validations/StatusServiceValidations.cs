@@ -1,7 +1,7 @@
 using A5.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace A5.Validations
+namespace A5.Data.Service.Validations
 {
     public class StatusServiceValidations
     {

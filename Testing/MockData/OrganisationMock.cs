@@ -13,7 +13,7 @@ namespace Testing.MockData
             return new Organisation()
             {
                 Id=1,
-                OrganisationName="null",
+                OrganisationName="Tenacious",
                 IsActive=true,
                 AddedBy=1,
                 UpdatedBy=1

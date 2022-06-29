@@ -2,7 +2,7 @@ using A5.Models;
 using System.ComponentModel.DataAnnotations;
 using A5.Data;
 using System.Text.RegularExpressions;
-namespace A5.Validations
+namespace A5.Data.Service.Validations
 {
     public class EmployeeServiceValidations
     {

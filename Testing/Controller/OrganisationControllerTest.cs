@@ -1,39 +1,66 @@
+using A5.Controller;
+using A5.Data.Service.Interfaces;
+using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
-using Microsoft.Extensions.Logging;
-using A5.Controller;
-using A5.Data.Service;
-using A5.Data.Service.Interfaces;
-using A5.Models;
 using Testing.DB;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using A5.Models;
 using Testing.MockData;
-
+using System.ComponentModel.DataAnnotations;
+using System;
 namespace Testing.Controller
 {
     public class OrganisationControllerTest
     {
         private readonly OrganisationController _organisationController;
-        private readonly Mock<ILogger<OrganisationController>> _logger = new Mock<ILogger<OrganisationController>>();
-        private readonly Mock<OrganisationService> _organisationService=new Mock<OrganisationService>();
-        private readonly Mock<MockAppDBContext> _context=new Mock<MockAppDBContext>();
+        private readonly Mock<ILogger<IOrganisationService>> _logger=new Mock<ILogger<IOrganisationService>>();
+        private readonly Mock<IOrganisationService> _organisationService=new Mock<IOrganisationService>();
         public OrganisationControllerTest()
         {
-            _organisationController=new OrganisationController(_logger.Object,MockAppDBContext.GetInMemoryDbContext(),_organisationService.Object);
+            _organisationController=new OrganisationController(_logger.Object,_organisationService.Object);
         }
-       
+        [Theory]
+        [InlineData(null)]
+        public void CreateOrganisation_ShouldReturnStatusCode400_whenOrganisationIsNUll(Organisation organisation)
+        {
+            var Result=_organisationController.Create(organisation) as ObjectResult;
+            Assert.Equal(400,Result?.StatusCode);
+        }
         [Fact]
-        
-        public void CreateOrganisation_ShouldReturnStatusCode400_WhereOrganisationObjectIsNull()
+        public void CreateOrganisation_ShouldReturnStatusCode200_WhenOrganisationIsValid()
         {
             Organisation organisation=OrganisationMock.GetValidOrganisation();
-            _organisationService.Setup(obj=>obj.Create(organisation)).Returns(true);
-
-
-             var Result=_organisationController.Create(organisation) as ObjectResult;
-             Assert.Equal(400, Result?.StatusCode);
+            _organisationService.Setup(obj=>obj.CreateOrganisation(organisation)).Returns(true);
+            var Result=_organisationController.Create(organisation) as ObjectResult;
+            Assert.Equal(200,Result?.StatusCode);
         }
+        [Fact]
+        public void CreateOrganisation_ShouldReturnStatusCode400_WhenCreateThrowsValidationException()
+        {
+            Organisation organisation=new Organisation();
+            _organisationService.Setup(obj=>obj.CreateOrganisation(organisation)).Throws<ValidationException>();
+            var Result=_organisationController.Create(organisation) as ObjectResult;
+            Assert.Equal(400,Result?.StatusCode);
+        }
+        [Fact]
+        public void CreateOrganisation_ShouldReturnStatusCode400_WhenCreateThrowsException()
+        {
+            Organisation organisation=new Organisation();
+            _organisationService.Setup(obj=>obj.CreateOrganisation(organisation)).Throws<Exception>();
+            var Result=_organisationController.Create(organisation) as ObjectResult;
+            Assert.Equal(400,Result?.StatusCode);
+        }
+        [Theory]
+        [InlineData(null)]
+        public void UpdateOrganisation_ShouldReturnStatusCode400_WhenUpdateOrganisationIsNull(Organisation organisation)
+        {
+            var Result=_organisationController.Update(organisation) as ObjectResult;
+            Assert.Equal(400,Result?.StatusCode);
+
+
+        }
+        // [Fact]
+        // public void UpdateOrganisation_Should
     }
 }

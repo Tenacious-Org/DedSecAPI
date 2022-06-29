@@ -56,6 +56,17 @@ namespace Testing.MockData
                 UpdatedBy= 4,
             };
         }
+       public static IEnumerable<object> GetComment()
+       {
+            yield return new Comment
+            {
+                Id=1,
+                Comments="Congradulations",
+                EmployeeId=8,
+                AwardId=2,
+
+            };
+        }
     }
 }
  

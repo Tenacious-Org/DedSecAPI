@@ -2,7 +2,7 @@ using A5.Data.Service;
 using A5.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-namespace A5.Validations
+namespace A5.Data.Service.Validations
 {
     public class AwardServiceValidations
     {
@@ -32,7 +32,7 @@ namespace A5.Validations
         }
         public static void ValidateGetAwardsList(int ? pageId,int ? employeeId)
         {
-            if(!(pageId==1 || pageId==2 || pageId==3 || pageId==4)) throw new ValidationException("Page Id should be 1 or 2 0r 3 0r 4");
+            if(!(pageId==1 || pageId==2 || pageId==3 || pageId==4)) throw new ValidationException("Page Id should be 1 or 2 or 3 or 4");
         }
     }
 }

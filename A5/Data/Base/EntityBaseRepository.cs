@@ -4,7 +4,7 @@ using System.Linq;
 using A5.Models;
 using A5.Data.Service;
 using Microsoft.EntityFrameworkCore;
-using A5.Validations;
+using A5.Data.Service.Validations;
 namespace A5.Data.Base
 {
     public class EntityBaseRepository<T> : IEntityBaseRepository<T> where T : class, IAudit, IEntityBase,  new()

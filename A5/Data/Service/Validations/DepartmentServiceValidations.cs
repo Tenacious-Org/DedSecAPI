@@ -3,13 +3,9 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using A5.Data.Base;
-using A5.Validations;
-using A5.Data;
-using A5.Data.Service.Interfaces;
 using System.Text.RegularExpressions;
 
-namespace A5.Validations
+namespace A5.Data.Service.Validations
 {
     public class DepartmentServiceValidations
     {

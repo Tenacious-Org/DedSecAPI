@@ -3,7 +3,6 @@ using A5.Models;
 using A5.Data.Service;
 using A5.Data;
 using System.ComponentModel.DataAnnotations;
-using A5.Validations;
 
 namespace A5.Controller
 {
@@ -79,8 +78,8 @@ namespace A5.Controller
         public ActionResult GetEmployeeById([FromQuery] int id)
         {
             try{
-                EmployeeServiceValidations employeeServiceValidations=new EmployeeServiceValidations(_context);
-                employeeServiceValidations.ValidateGetById(id);
+                // EmployeeServiceValidations employeeServiceValidations=new EmployeeServiceValidations(_context);
+                // employeeServiceValidations.ValidateGetById(id);
                 var data = _employeeService.GetEmployeeById(id);
                 return Ok(data);
             }
@@ -130,8 +129,8 @@ namespace A5.Controller
         public ActionResult Create(Employee employee)
         {
             try{
-                EmployeeServiceValidations employeeServiceValidations=new EmployeeServiceValidations(_context);
-                employeeServiceValidations.CreateValidation(employee);
+                // EmployeeServiceValidations employeeServiceValidations=new EmployeeServiceValidations(_context);
+                // employeeServiceValidations.CreateValidation(employee);
                 employee.Image = System.Convert.FromBase64String(employee.ImageString);              
                 var data = _employeeService.Create(employee);
                 //employee.Password=_employeeService.GeneratePassword(employee.Id);
@@ -172,8 +171,8 @@ namespace A5.Controller
         public ActionResult Update(Employee employee,int id)
         {
             try{
-                EmployeeServiceValidations employeeServiceValidations=new EmployeeServiceValidations(_context);
-                employeeServiceValidations.UpdateValidation(employee,id);
+                // EmployeeServiceValidations employeeServiceValidations=new EmployeeServiceValidations(_context);
+                // employeeServiceValidations.UpdateValidation(employee,id);
                 employee.Image = System.Convert.FromBase64String(employee.ImageString);
                 var data = _employeeService.Update(employee);
                 return Ok(data);
@@ -214,8 +213,8 @@ namespace A5.Controller
         {
             try
             {
-                EmployeeServiceValidations employeeServiceValidations=new EmployeeServiceValidations(_context);
-                employeeServiceValidations.DisableValidation(id);
+                // EmployeeServiceValidations employeeServiceValidations=new EmployeeServiceValidations(_context);
+                // employeeServiceValidations.DisableValidation(id);
                 var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.HRId== id || nameof.ReportingPersonId== id  ).ToList().Count();
                 if(checkEmployee>0){
                     return Ok(checkEmployee);

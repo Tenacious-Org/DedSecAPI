@@ -3,7 +3,7 @@ using System.Linq;
 using A5.Models;
 using A5.Data.Base;
 using A5.Data.Service.Interfaces;
-using A5.Validations;
+using A5.Data.Service.Validations;
 
 namespace A5.Data.Service
 {

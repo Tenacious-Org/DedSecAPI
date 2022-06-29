@@ -5,7 +5,7 @@ using A5.Data.Base;
 using A5.Data.Service.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using A5.Data.Repository;
-using A5.Validations;
+using A5.Data.Service.Validations;
 namespace A5.Data.Service
 {
     public class DesignationService : EntityBaseRepository<Designation>, IDesignationService

@@ -5,20 +5,17 @@ using A5.Data.Service;
 using A5.Data.Service.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using A5.Data;
-using A5.Validations;
 namespace A5.Controller
 {
     [Route("api/[controller]")]
     [ApiController]
     public class OrganisationController : ControllerBase
     {
-        private readonly ILogger<OrganisationController> _logger;
-         private readonly AppDbContext _context;
-        private readonly OrganisationService _organisationService;
-        public OrganisationController(ILogger<OrganisationController> logger,AppDbContext context,  OrganisationService organisationService)
+        private  ILogger<IOrganisationService> _logger;
+        private  IOrganisationService _organisationService;
+        public OrganisationController(ILogger<IOrganisationService> logger,  IOrganisationService organisationService)
         {
             _logger = logger;
-            _context = context;
             _organisationService = organisationService;
         } 
 
@@ -82,9 +79,8 @@ namespace A5.Controller
         {
            
             try{
-                 OrganisationServiceValidations organisatonValidations=new OrganisationServiceValidations(_context);
-                 organisatonValidations.ValidateGetById(id);
-                var data = _organisationService.GetById(id);
+               
+                var data = _organisationService.GetByOrganisation(id);
                  return Ok(data);
             }
             catch(ValidationException exception)
@@ -122,13 +118,11 @@ namespace A5.Controller
         [HttpPost("Create")]
         public ActionResult Create(Organisation organisation)
         {
-            
+            if(organisation==null) return BadRequest("Organisation should not be null");
             try
             {   
-                OrganisationServiceValidations organisationValidations=new OrganisationServiceValidations(_context);
-                organisationValidations.CreateValidation(organisation);
-                var data = _organisationService.Create(organisation);
-                return Ok("Organisation Created.");
+                return _organisationService.CreateOrganisation(organisation) ? Ok("Organisation Created.") : Problem("Error occured while creating organisation");
+                
             }
             catch(ValidationException exception)
             {
@@ -162,13 +156,12 @@ namespace A5.Controller
         /// </returns>
 
         [HttpPut("Update")]
-        public ActionResult Update(Organisation organisation,int id)
+        public ActionResult Update(Organisation organisation)
         {
-            
+           if(organisation==null) return BadRequest("Organisation should not be null");
             try{
-                OrganisationServiceValidations organisationValidations=new OrganisationServiceValidations(_context);
-                organisationValidations.UpdateValidation(organisation,id);
-                var data = _organisationService.Update(organisation);           
+               
+                var data = _organisationService.UpdateOrganisation(organisation);           
                 return Ok("Organisation Updated.");          
             }        
             catch(ValidationException exception)
@@ -208,9 +201,7 @@ namespace A5.Controller
             
             try
             {
-                OrganisationServiceValidations organisationValidations=new OrganisationServiceValidations(_context);
-                organisationValidations.DisableValidation(id);
-                var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.OrganisationId == id).ToList().Count();
+                var checkEmployee=_organisationService.GetCount(id);
                 if(checkEmployee > 0)
                 {             
                     return Ok(checkEmployee);
@@ -218,7 +209,7 @@ namespace A5.Controller
                 }
                 else
                 {
-                    var data = _organisationService.Disable(id);
+                    var data = _organisationService.DisableOrganisation(id);
                     return Ok(data);
                 }
             }

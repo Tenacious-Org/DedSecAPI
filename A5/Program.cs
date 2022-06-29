@@ -20,7 +20,7 @@ builder.Services.AddDbContext<AppDbContext>(options=>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
 });
-builder.Services.AddTransient<OrganisationService>();
+builder.Services.AddTransient<IOrganisationService,OrganisationService>();
 builder.Services.AddTransient<DepartmentService>();
 builder.Services.AddTransient<DesignationService>();
 builder.Services.AddTransient<AwardTypeService>();

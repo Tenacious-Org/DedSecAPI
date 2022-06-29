@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using A5.Models;
 using A5.Data.Service;
 using System.ComponentModel.DataAnnotations;
-using A5.Validations;
 using A5.Data;
 
 namespace A5.Controller
@@ -81,8 +80,8 @@ namespace A5.Controller
         {
             try
             {
-                AwardTypeValidations awardTypeValidations=new AwardTypeValidations(_context);
-                awardTypeValidations.ValidateGetById(id);
+                //AwardTypeValidations awardTypeValidations=new AwardTypeValidations(_context);
+                //awardTypeValidations.ValidateGetById(id);
                 var data = _awardTypeService.GetById(id);
                  return Ok(data);
             }
@@ -121,8 +120,8 @@ namespace A5.Controller
         public ActionResult Create(AwardType awardType)
         {
             try{
-                AwardTypeValidations awardTypeValidations=new AwardTypeValidations(_context);
-                awardTypeValidations.CreateValidation(awardType);
+                //AwardTypeValidations awardTypeValidations=new AwardTypeValidations(_context);
+                //awardTypeValidations.CreateValidation(awardType);
                 awardType.Image = System.Convert.FromBase64String(awardType.ImageString);
                 var data = _awardTypeService.Create(awardType);
                  return Ok(data);
@@ -162,8 +161,8 @@ namespace A5.Controller
         public ActionResult Update(AwardType awardType,int id)
         {
             try{
-                AwardTypeValidations awardTypeValidations=new AwardTypeValidations(_context);
-                awardTypeValidations.UpdateValidation(awardType,id);
+                // AwardTypeValidations awardTypeValidations=new AwardTypeValidations(_context);
+                // awardTypeValidations.UpdateValidation(awardType,id);
                 awardType.Image = System.Convert.FromBase64String(awardType.ImageString);
                 var data = _awardTypeService.Update(awardType);
                  return Ok(data);
@@ -203,8 +202,8 @@ namespace A5.Controller
         public ActionResult Disable(int id)
         {
             try{
-                AwardTypeValidations awardTypeValidations=new AwardTypeValidations(_context);
-                awardTypeValidations.DisableValidation(id);
+                // AwardTypeValidations awardTypeValidations=new AwardTypeValidations(_context);
+                // awardTypeValidations.DisableValidation(id);
                 var data = _awardTypeService.Disable(id);
                  return Ok(data);
             }
