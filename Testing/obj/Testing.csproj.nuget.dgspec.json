@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\atsaya.arivu\\Documents\\GitHub\\DedSecAPI\\Testing\\Testing.csproj": {}
+    "c:\\Users\\aakaash.mani\\Documents\\GitHub\\DedSecAPI\\Testing\\Testing.csproj": {}
   },
   "projects": {
-    "C:\\Users\\atsaya.arivu\\Documents\\GitHub\\DedSecAPI\\A5\\A5.csproj": {
+    "c:\\Users\\aakaash.mani\\Documents\\GitHub\\DedSecAPI\\A5\\A5.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\atsaya.arivu\\Documents\\GitHub\\DedSecAPI\\A5\\A5.csproj",
+        "projectUniqueName": "c:\\Users\\aakaash.mani\\Documents\\GitHub\\DedSecAPI\\A5\\A5.csproj",
         "projectName": "A5",
-        "projectPath": "C:\\Users\\atsaya.arivu\\Documents\\GitHub\\DedSecAPI\\A5\\A5.csproj",
-        "packagesPath": "C:\\Users\\atsaya.arivu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\atsaya.arivu\\Documents\\GitHub\\DedSecAPI\\A5\\obj\\",
+        "projectPath": "c:\\Users\\aakaash.mani\\Documents\\GitHub\\DedSecAPI\\A5\\A5.csproj",
+        "packagesPath": "C:\\Users\\aakaash.mani\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\aakaash.mani\\Documents\\GitHub\\DedSecAPI\\A5\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\atsaya.arivu\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\aakaash.mani\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -41,6 +41,10 @@
             "MailKit": {
               "target": "Package",
               "version": "[3.3.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.6, )"
             },
             "Microsoft.AspNetCore.Cors": {
               "target": "Package",
@@ -74,9 +78,17 @@
               "target": "Package",
               "version": "[2.0.3, )"
             },
+            "Microsoft.Extensions.Identity.Core": {
+              "target": "Package",
+              "version": "[6.0.4, )"
+            },
             "MimeKit": {
               "target": "Package",
               "version": "[3.3.0, )"
+            },
+            "ScottBrady91.AspNetCore.Identity.BCryptPasswordHasher": {
+              "target": "Package",
+              "version": "[1.3.0, )"
             },
             "Serilog.AspNetCore": {
               "target": "Package",
@@ -117,17 +129,17 @@
         }
       }
     },
-    "c:\\Users\\atsaya.arivu\\Documents\\GitHub\\DedSecAPI\\Testing\\Testing.csproj": {
+    "c:\\Users\\aakaash.mani\\Documents\\GitHub\\DedSecAPI\\Testing\\Testing.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\atsaya.arivu\\Documents\\GitHub\\DedSecAPI\\Testing\\Testing.csproj",
+        "projectUniqueName": "c:\\Users\\aakaash.mani\\Documents\\GitHub\\DedSecAPI\\Testing\\Testing.csproj",
         "projectName": "Testing",
-        "projectPath": "c:\\Users\\atsaya.arivu\\Documents\\GitHub\\DedSecAPI\\Testing\\Testing.csproj",
-        "packagesPath": "C:\\Users\\atsaya.arivu\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\atsaya.arivu\\Documents\\GitHub\\DedSecAPI\\Testing\\obj\\",
+        "projectPath": "c:\\Users\\aakaash.mani\\Documents\\GitHub\\DedSecAPI\\Testing\\Testing.csproj",
+        "packagesPath": "C:\\Users\\aakaash.mani\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\aakaash.mani\\Documents\\GitHub\\DedSecAPI\\Testing\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\atsaya.arivu\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\aakaash.mani\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -139,8 +151,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\atsaya.arivu\\Documents\\GitHub\\DedSecAPI\\A5\\A5.csproj": {
-                "projectPath": "C:\\Users\\atsaya.arivu\\Documents\\GitHub\\DedSecAPI\\A5\\A5.csproj"
+              "c:\\Users\\aakaash.mani\\Documents\\GitHub\\DedSecAPI\\A5\\A5.csproj": {
+                "projectPath": "c:\\Users\\aakaash.mani\\Documents\\GitHub\\DedSecAPI\\A5\\A5.csproj"
               }
             }
           }

@@ -35,6 +35,12 @@ namespace A5.Data.Service.Validations
              if(department.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
              else return true;
         }
+
+        internal static bool UpdateValidation(Department department)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool ValidateGetById(int id)
         {
             Department department=new Department();

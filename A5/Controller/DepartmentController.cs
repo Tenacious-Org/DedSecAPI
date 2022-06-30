@@ -4,6 +4,7 @@ using A5.Data.Service;
 using System.ComponentModel.DataAnnotations;
 using A5.Data;
 using Microsoft.AspNetCore.Authorization;
+using A5.Data.Service.Interfaces;
 
 namespace A5.Controller
 {
@@ -12,13 +13,12 @@ namespace A5.Controller
     [ApiController]
     public class DepartmentController : ControllerBase
     {
-        private readonly ILogger<DepartmentController> _logger;
-        private readonly AppDbContext _context;
-        private readonly DepartmentService _departmentService;
-        public DepartmentController(ILogger<DepartmentController> logger, AppDbContext context,DepartmentService departmentService)
+        private readonly ILogger<IDepartmentService> _logger;
+        private readonly IDepartmentService _departmentService;
+        public DepartmentController(ILogger<IDepartmentService> logger, IDepartmentService departmentService)
         {
             _logger= logger;
-            _context = context;
+           
             _departmentService = departmentService;
         }
 
@@ -43,7 +43,7 @@ namespace A5.Controller
         {
             try
             {
-                var result = _departmentService.GetAllDepartments();
+                var result = _departmentService.GetAll();
                 return Ok(result);
             }           
             catch(ValidationException exception)
@@ -85,7 +85,7 @@ namespace A5.Controller
            
             try{
                 //DepartmentServiceValidations.ValidateGetByOrganisation(id);
-                var data = _departmentService.GetDepartmentsByOrganisationId(id);
+                var data = _departmentService.GetByDepartment(id);
                 return Ok(data);
             }          
             catch(ValidationException exception)
@@ -246,7 +246,7 @@ namespace A5.Controller
             try{
                 // DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
                 // departmentValidations.DisableValidation(id);
-                 var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.DepartmentId== id).ToList().Count();
+                 var checkEmployee = _departmentService.GetCount(id);
                 if(checkEmployee>0){
                     return Ok(checkEmployee);
                 }else{

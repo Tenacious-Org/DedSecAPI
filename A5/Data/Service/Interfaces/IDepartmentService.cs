@@ -7,6 +7,10 @@ namespace A5.Data.Service.Interfaces
 {
     public interface IDepartmentService : IEntityBaseRepository<Department>
     {
-        public IEnumerable<Department> GetDepartmentsByOrganisationId(int id);
+        bool CreateDepartment(Department department);
+        bool UpdateDepartment(Department department);
+        Department GetByDepartment(int id);
+        bool DisableDepartment(int id);
+        int GetCount(int id);
     }
 }
