@@ -26,6 +26,19 @@ namespace A5.Data.Service
             }
             
         }
+
+        public IEnumerable<Status> GetAll()
+        {
+            try
+            {
+                return _context.Set<Status>().Where(nameof =>nameof.IsActive == true).ToList();
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+            
+        }
     }
         
         

@@ -84,13 +84,42 @@ namespace A5.Data
                     });
                     context.SaveChanges();
                 }
-                if(!context.Designations.Any())
+
+                if(!context.Roles.Any())
+                {
+                    context.Roles.AddRange(new List<Role>() {
+                        new Role()
+                        {
+                            RoleName = "Public",
+                        },
+                        new Role()
+                        {
+                            RoleName = "Requester",
+                        },
+                        new Role()
+                        {
+                            RoleName = "Approver",
+                        },
+                        new Role()
+                        {
+                            RoleName = "Publisher",
+                        },
+                         new Role()
+                        {
+                            RoleName = "Admin",
+                        },
+                    });
+                    context.SaveChanges();
+                }
+
+                 if(!context.Designations.Any())
                 {
                     context.Designations.AddRange(new List<Designation>() {
                         new Designation()
                         {
                             DesignationName = "Admin",
                             DepartmentId = 1,
+                            RoleId=5,
                             IsActive = true,
                             AddedBy = 1,
                             AddedOn = DateTime.Now,
@@ -102,6 +131,7 @@ namespace A5.Data
                         {
                             DesignationName = "CEO",
                             DepartmentId = 1,
+                            RoleId=5,
                             IsActive = true,
                             AddedBy = 1,
                             AddedOn = DateTime.Now,
@@ -113,6 +143,7 @@ namespace A5.Data
                         {
                             DesignationName = "VP",
                             DepartmentId = 1,
+                            RoleId=5,
                             IsActive = true,
                             AddedBy = 1,
                             AddedOn = DateTime.Now,
@@ -124,6 +155,7 @@ namespace A5.Data
                         {
                             DesignationName = "HR",
                             DepartmentId = 2,
+                            RoleId=4,
                             IsActive = true,
                             AddedBy = 1,
                             AddedOn = DateTime.Now,
@@ -135,6 +167,7 @@ namespace A5.Data
                         {
                             DesignationName = "Project Manager",
                             DepartmentId = 2,
+                            RoleId=3,
                             IsActive = true,
                             AddedBy = 1,
                             AddedOn = DateTime.Now,
@@ -146,6 +179,7 @@ namespace A5.Data
                         {
                             DesignationName = "Team Leader",
                             DepartmentId = 2,
+                            RoleId=2,
                             IsActive = true,
                             AddedBy = 1,
                             AddedOn = DateTime.Now,
@@ -157,6 +191,7 @@ namespace A5.Data
                         {
                             DesignationName = "Trainee",
                             DepartmentId = 2,
+                            RoleId=1,
                             IsActive = true,
                             AddedBy = 1,
                             AddedOn = DateTime.Now,
@@ -167,6 +202,7 @@ namespace A5.Data
                     });
                     context.SaveChanges();
                 }
+                
                 if (!context.Employees.Any())
                 {
                     context.Employees.AddRange(new List<Employee>() { 
@@ -484,6 +520,9 @@ namespace A5.Data
                     });
                     context.SaveChanges();
                 }
+
+                
+
                 if(!context.Awards.Any())
                 {
                     context.Awards.AddRange(new List<Award>() {
@@ -555,6 +594,7 @@ namespace A5.Data
                     });
                     context.SaveChanges();
                 }
+               
 
             }
         }

@@ -3,10 +3,12 @@ using A5.Models;
 using A5.Data.Service;
 using System.ComponentModel.DataAnnotations;
 using A5.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace A5.Controller
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class AwardTypeController : ControllerBase
     {

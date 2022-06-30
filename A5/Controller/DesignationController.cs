@@ -4,10 +4,12 @@ using A5.Models;
 using A5.Data.Service;
 using A5.Data;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authorization;
 
 namespace A5.Controller
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class DesignationController : ControllerBase
     {

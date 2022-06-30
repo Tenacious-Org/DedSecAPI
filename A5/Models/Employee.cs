@@ -45,11 +45,12 @@ namespace A5.Models
         
         public virtual ICollection<Employee> ? Reportingpersons { get; set; }
         public virtual ICollection<Employee> ? Hrs { get; set; }
-
-
-       
-         
-       
    
+       
+    }
+
+    public class Login{
+        public string  Email { get; set; }
+        public string Password { get; set; }
     }
 }

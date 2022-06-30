@@ -2,10 +2,12 @@ using Microsoft.AspNetCore.Mvc;
 using A5.Models;
 using A5.Data.Service;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authorization;
 
 namespace A5.Controller
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class StatusController : ControllerBase
     {

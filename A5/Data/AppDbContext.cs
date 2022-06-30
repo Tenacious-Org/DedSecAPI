@@ -24,6 +24,7 @@ namespace A5.Data
         public DbSet<Award> Awards {get; set;}
         public DbSet<Comment> Comments {get; set;}
         public DbSet<Status> Statuses {get; set;}
+        public DbSet<Role> Roles {get; set;}
         public DbSet<Organisation> Organisations{ get; set; }
         public DbSet<Department> Departments{ get; set; }
         public DbSet<Designation> Designations{ get; set; }

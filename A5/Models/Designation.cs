@@ -7,6 +7,7 @@ namespace A5.Models
     {
         public int Id{ get; set; }
         public string  DesignationName{ get; set; }
+        public int RoleId{get;set;}
         public int DepartmentId{ get; set; }
         public bool IsActive{ get; set; } = true;
 
@@ -17,6 +18,9 @@ namespace A5.Models
         public DateTime ? UpdatedOn {get;set;}
 
         //Navigation
+        [ForeignKey("RoleId")]
+        public virtual Role ? Role {get;set;}
+        
         [ForeignKey("DepartmentId")]
         public virtual Department ? Department{ get; set; }
         public virtual ICollection<Employee> ? Employees { get; set; }

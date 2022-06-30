@@ -3,10 +3,16 @@ using A5.Models;
 using A5.Data.Service;
 using System.ComponentModel.DataAnnotations;
 using A5.Data;
+<<<<<<< Updated upstream
+=======
+using A5.Validations;
+using Microsoft.AspNetCore.Authorization;
+>>>>>>> Stashed changes
 
 namespace A5.Controller
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class DepartmentController : ControllerBase
     {

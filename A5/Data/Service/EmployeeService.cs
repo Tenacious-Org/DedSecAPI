@@ -4,7 +4,14 @@ using A5.Models;
 using A5.Data.Base;
 using A5.Data.Service.Interfaces;
 using A5.Data.Repository;
+<<<<<<< Updated upstream
 using A5.Data.Service.Validations;
+=======
+using A5.Validations;
+using A5.Hasher;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
+>>>>>>> Stashed changes
 
 namespace A5.Data.Service
 {
@@ -230,5 +237,22 @@ namespace A5.Data.Service
                     throw exception;
                 }
             }
+
+             public Employee GetEmployee(string Email, string Password) 
+        {
+            if(Email == null || Password ==null) throw new ArgumentNullException("Email or Password cannot be null");
+            try
+            {
+                //var Hasher = PasswordHasherFactory.GetPasswordHasherFactory();
+                var User =_master.GetAllEmployees().ToList().Find(user => user.Email == Email && user.Password==Password);
+                if (User == null) throw new ValidationException("Invalid user");
+                return User;
+                //return Hasher.VerifyHashedPassword(User, User.Password, Password) == PasswordVerificationResult.Success ? User : throw new InvalidDataException("Password doesn't match");
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+        }
     }
 }
