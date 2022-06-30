@@ -3,11 +3,7 @@ using A5.Models;
 using A5.Data.Service;
 using A5.Data;
 using System.ComponentModel.DataAnnotations;
-<<<<<<< Updated upstream
-=======
-using A5.Validations;
 using Microsoft.AspNetCore.Authorization;
->>>>>>> Stashed changes
 
 namespace A5.Controller
 {

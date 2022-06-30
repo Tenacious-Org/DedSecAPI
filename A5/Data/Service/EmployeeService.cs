@@ -4,14 +4,8 @@ using A5.Models;
 using A5.Data.Base;
 using A5.Data.Service.Interfaces;
 using A5.Data.Repository;
-<<<<<<< Updated upstream
 using A5.Data.Service.Validations;
-=======
-using A5.Validations;
-using A5.Hasher;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Identity;
->>>>>>> Stashed changes
 
 namespace A5.Data.Service
 {

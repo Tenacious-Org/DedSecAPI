@@ -5,12 +5,8 @@ using A5.Data.Service;
 using A5.Data.Service.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using A5.Data;
-<<<<<<< Updated upstream
-=======
-using A5.Validations;
 using Microsoft.AspNetCore.Authorization;
 
->>>>>>> Stashed changes
 namespace A5.Controller
 {
     [Route("api/[controller]")]

@@ -4,14 +4,11 @@ using A5.Data.Service;
 using Serilog;
 using A5.Data.Repository;
 using System.Reflection;
-<<<<<<< Updated upstream
 using A5.Data.Service.Interfaces;
-=======
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
->>>>>>> Stashed changes
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -129,7 +126,7 @@ app.UseCors(builder =>
     .AllowAnyHeader();
 });
 
-AppDbInitializer.Seed(app);
+//AppDbInitializer.Seed(app);
 //AppDbInitializer.SeedRolesAsync(app).Wait();
 
 app.Run();
