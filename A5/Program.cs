@@ -110,9 +110,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
-
 app.UseAuthentication();
+
+app.UseAuthorization();
 
 app.MapControllers();
 
@@ -126,7 +126,7 @@ app.UseCors(builder =>
     .AllowAnyHeader();
 });
 
-//AppDbInitializer.Seed(app);
+AppDbInitializer.Seed(app);
 //AppDbInitializer.SeedRolesAsync(app).Wait();
 
 app.Run();
