@@ -25,7 +25,7 @@ builder.Services.AddDbContext<AppDbContext>(options=>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
 });
 builder.Services.AddTransient<IOrganisationService,OrganisationService>();
-builder.Services.AddTransient<IDepartmentService,DepartmentService>();
+builder.Services.AddTransient<DepartmentService>();
 builder.Services.AddTransient<DesignationService>();
 builder.Services.AddTransient<AwardTypeService>();
 builder.Services.AddTransient<StatusService>();
@@ -126,7 +126,7 @@ app.UseCors(builder =>
     .AllowAnyHeader();
 });
 
-AppDbInitializer.Seed(app);
+//AppDbInitializer.Seed(app);
 //AppDbInitializer.SeedRolesAsync(app).Wait();
 
 app.Run();
