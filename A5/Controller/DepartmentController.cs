@@ -14,11 +14,12 @@ namespace A5.Controller
     public class DepartmentController : ControllerBase
     {
         private readonly ILogger<IDepartmentService> _logger;
-        private readonly IDepartmentService _departmentService;
-        public DepartmentController(ILogger<IDepartmentService> logger, IDepartmentService departmentService)
+        private readonly AppDbContext _context;
+        private readonly DepartmentService _departmentService;
+        public DepartmentController(ILogger<IDepartmentService> logger, DepartmentService departmentService, AppDbContext context)
         {
             _logger= logger;
-           
+           _context=context;
             _departmentService = departmentService;
         }
 
@@ -43,7 +44,7 @@ namespace A5.Controller
         {
             try
             {
-                var result = _departmentService.GetAll();
+                var result = _departmentService.GetAllDepartments();
                 return Ok(result);
             }           
             catch(ValidationException exception)
