@@ -13,10 +13,12 @@ namespace A5.Data.Service
     public class DepartmentService : EntityBaseRepository<Department>, IDepartmentService
     {
         private readonly AppDbContext _context;
+        private readonly MasterRepository _master;
       //  private EntityBaseRepository<Organisation> _organisation;
 
-        public DepartmentService(AppDbContext context) : base(context) {
+        public DepartmentService(AppDbContext context, MasterRepository master) : base(context) {
                 _context=context;
+                _master = master;
          } 
          
         public bool CreateDepartment(Department department)
@@ -73,6 +75,21 @@ namespace A5.Data.Service
                 throw exception;
             }
         }
+        public IEnumerable<object> GetAllDepartments()
+         {
+            var department = _master.GetAllDepartments();
+            return department.Select( Department => new{
+                id = Department.Id,
+                departmentName = Department.DepartmentName,
+                organisationName = Department.Organisation.OrganisationName,
+                isActive = Department.IsActive,
+                addedBy = Department.AddedBy,
+                addedOn = Department.AddedOn,
+                updatedBy = Department.UpdatedBy,
+                updatedOn = Department.UpdatedOn
+            });
+             
+         }
         public int GetCount(int id)
         {
              var checkEmployee = _context.Set<Employee>().Where(nameof => nameof.IsActive == true && nameof.DepartmentId == id).ToList().Count();
