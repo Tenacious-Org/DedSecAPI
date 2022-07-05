@@ -125,17 +125,17 @@ namespace A5.Data.Service
                             image = Employee.Image,
                             gender = Employee.Gender,
                             dob = Employee.DOB,
-                            organisationName = Employee.Designation.Department.Organisation.OrganisationName,
-                            departmentName = Employee.Designation.Department.DepartmentName,
-                            designationName = Employee.Designation.DesignationName,
-                            reportingPersonName = Employee.ReportingPerson.FirstName,
-                            hRName = Employee.HR.FirstName,
-                            password = Employee.Password,
-                            isActive = Employee.IsActive,
-                            addedBy = Employee.AddedBy,
-                            addedOn = Employee.AddedOn,
-                            updatedBy = Employee.UpdatedBy,
-                            updatedOn = Employee.UpdatedOn
+                            organisationName = Employee?.Designation?.Department?.Organisation?.OrganisationName,
+                            departmentName = Employee?.Designation?.Department?.DepartmentName,
+                            designationName = Employee?.Designation?.DesignationName,
+                            reportingPersonName = Employee?.ReportingPerson?.FirstName,
+                            hRName = Employee?.HR?.FirstName,
+                            password = Employee?.Password,
+                            isActive = Employee?.IsActive,
+                            addedBy = Employee?.AddedBy,
+                            addedOn = Employee?.AddedOn,
+                            updatedBy = Employee?.UpdatedBy,
+                            updatedOn = Employee?.UpdatedOn
                     });
              }
              catch(Exception exception)
