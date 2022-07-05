@@ -14,12 +14,11 @@ namespace A5.Controller
     public class DepartmentController : ControllerBase
     {
         private readonly ILogger<IDepartmentService> _logger;
-        private readonly AppDbContext _context;
+        //private readonly AppDbContext _context;
         private readonly IDepartmentService _departmentService;
-        public DepartmentController(ILogger<IDepartmentService> logger,IDepartmentService departmentService, AppDbContext context)
+        public DepartmentController(ILogger<IDepartmentService> logger,IDepartmentService departmentService)
         {
             _logger= logger;
-           _context=context;
             _departmentService = departmentService;
         }
 
@@ -165,10 +164,11 @@ namespace A5.Controller
         [HttpPost("Create")]
         public ActionResult Create(Department department)
         {
+            if(department==null) return BadRequest("department should not be null");
             try{
                 // DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
                 // departmentValidations.CreateValidation(department);
-                var data = _departmentService.Create(department);
+                var data = _departmentService.CreateDepartment(department);
                 return Ok("Created.");
             }           
             catch(ValidationException exception)
@@ -205,8 +205,9 @@ namespace A5.Controller
         [HttpPut("Update")]
         public ActionResult Update(Department department)
         {
+            if(department==null) return BadRequest("Department should not be null");
             try{
-                var data = _departmentService.Update(department);
+                var data = _departmentService.UpdateDepartment(department);
                 return Ok("Updated.");
             }
             catch(ValidationException exception)

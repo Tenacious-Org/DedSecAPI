@@ -80,7 +80,7 @@ namespace A5.Controller
          [HttpGet("GetById")]
         public ActionResult GetByOrganisationId([FromQuery] int id)
         {
-           if(id==0) throw new ValidationException("Organisation Id should not be null");
+           if(id==0) return BadRequest("Organisation Id should not be null");
             try{
                
                 var data = _organisationService.GetByOrganisation(id);

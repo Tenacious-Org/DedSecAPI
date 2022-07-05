@@ -109,9 +109,40 @@ namespace Testing.Controller
             var Result=_organisationController.GetAllOrganisation() as ObjectResult;
             Assert.Equal(400,Result?.StatusCode);
         }
-        // [Theory]
-        // [InlineData(0)]
-
+        [Theory]
+        [InlineData(0)]
+        public void GetByOrganisationId_ShouldReturnStatusCode400_WhenGetByOrganisationIdIsNull(int id)
+        {
+            var Result=_organisationController.GetByOrganisationId(0) as ObjectResult;
+            Assert.Equal(400,Result?.StatusCode);
+        }
+        [Fact]
+        public void GetByOrganisationId_shouldReturnStatusCode200_whenGetByOrganisationIdIsValid()
+        {
+            int id=1;
+            var organisation=OrganisationMock.GetValidOrganisation();
+            _organisationService.Setup(obj=>obj.GetByOrganisation(id)).Returns(organisation);
+            var Result=_organisationController.GetByOrganisationId(id) as ObjectResult;
+            Assert.Equal(200,Result?.StatusCode);
+        }
+        [Fact]
+         public void GetByOrganisationId_shouldReturnStatusCode200_whenGetByOrganisationIdThrowsValidationException()
+        {
+            int id=1;
+            var organisation=OrganisationMock.GetValidOrganisation();
+            _organisationService.Setup(obj=>obj.GetByOrganisation(id)).Throws<ValidationException>();
+            var Result=_organisationController.GetByOrganisationId(id) as ObjectResult;
+            Assert.Equal(400,Result?.StatusCode);
+        }
+        [Fact]
+         public void GetByOrganisationId_shouldReturnStatusCode200_whenGetByOrganisationIdThrowsException()
+        {
+            int id=1;
+            var organisation=OrganisationMock.GetValidOrganisation();
+            _organisationService.Setup(obj=>obj.GetByOrganisation(id)).Throws<Exception>();
+            var Result=_organisationController.GetByOrganisationId(id) as ObjectResult;
+            Assert.Equal(400,Result?.StatusCode);
+        }
 
     }
 }
