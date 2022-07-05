@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace A5.Controller
 {
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     [ApiController]
     public class EmployeeController : ControllerBase
     {
@@ -437,5 +437,7 @@ namespace A5.Controller
             }
         }
         
+     
     }
+     
 }

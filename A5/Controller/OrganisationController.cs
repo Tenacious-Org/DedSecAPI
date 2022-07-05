@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace A5.Controller
 {
     [Route("api/[controller]")]
-    [Authorize]
+   // [Authorize]
     [ApiController]
     public class OrganisationController : ControllerBase
     {
@@ -80,7 +80,7 @@ namespace A5.Controller
          [HttpGet("GetById")]
         public ActionResult GetByOrganisationId([FromQuery] int id)
         {
-           
+           if(id==0) throw new ValidationException("Organisation Id should not be null");
             try{
                
                 var data = _organisationService.GetByOrganisation(id);
@@ -164,8 +164,7 @@ namespace A5.Controller
            if(organisation==null) return BadRequest("Organisation should not be null");
             try{
                
-                var data = _organisationService.UpdateOrganisation(organisation);           
-                return Ok("Organisation Updated.");          
+                return _organisationService.UpdateOrganisation(organisation) ?  Ok("Organisation Updated."):Problem("Error occured");          
             }        
             catch(ValidationException exception)
             {

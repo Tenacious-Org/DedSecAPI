@@ -60,7 +60,58 @@ namespace Testing.Controller
 
 
         }
-        // [Fact]
-        // public void UpdateOrganisation_Should
+        [Fact]
+        public void UpdateOrganisation_ShouldReturnStatusCode200_WhenUpdateOrganisationIsValid()
+        {
+            Organisation organisation=OrganisationMock.GetValidOrganisation();
+            _organisationService.Setup(obj=>obj.UpdateOrganisation(organisation)).Returns(true);
+            var Result=_organisationController.Update(organisation) as ObjectResult;
+            Assert.Equal(200,Result?.StatusCode);
+
+        }
+         [Fact]
+        public void UpdateOrganisation_ShouldReturnStatusCode400_WhenUpdateThrowsValidationException()
+        {
+            Organisation organisation=new Organisation();
+            _organisationService.Setup(obj=>obj.UpdateOrganisation(organisation)).Throws<ValidationException>();
+            var Result=_organisationController.Update(organisation) as ObjectResult;
+            Assert.Equal(400,Result?.StatusCode);
+        }
+         [Fact]
+        public void UpdateOrganisation_ShouldReturnStatusCode400_WhenUpdateThrowsException()
+        {
+            Organisation organisation=new Organisation();
+            _organisationService.Setup(obj=>obj.UpdateOrganisation(organisation)).Throws<Exception>();
+            var Result=_organisationController.Update(organisation) as ObjectResult;
+            Assert.Equal(400,Result?.StatusCode);
+        }
+        [Fact]
+        public void GetAllOrganisation_ShouldReturnStatusCode200_WhenGetAllIsValid()
+        {
+            var organisation=OrganisationMock.GetListOfOrganisations();
+            _organisationService.Setup(obj=>obj.GetAll()).Returns(organisation);
+            var Result=_organisationController.GetAllOrganisation() as ObjectResult;
+            Assert.Equal(200,Result?.StatusCode);
+        }
+        [Fact]
+        public void GetAllOrganisation_shouldReturnStatusCode400_WhenGetAllThrowsValidationException()
+        {
+            var organisation=OrganisationMock.GetListOfOrganisations();
+            _organisationService.Setup(obj=>obj.GetAll()).Throws<ValidationException>();
+            var Result=_organisationController.GetAllOrganisation() as ObjectResult;
+            Assert.Equal(400,Result?.StatusCode);
+        }
+         [Fact]
+        public void GetAllOrganisation_shouldReturnStatusCode400_WhenGetAllThrowsException()
+        {
+            var organisation=OrganisationMock.GetListOfOrganisations();
+            _organisationService.Setup(obj=>obj.GetAll()).Throws<Exception>();
+            var Result=_organisationController.GetAllOrganisation() as ObjectResult;
+            Assert.Equal(400,Result?.StatusCode);
+        }
+        // [Theory]
+        // [InlineData(0)]
+
+
     }
 }

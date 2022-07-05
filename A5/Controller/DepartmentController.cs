@@ -15,8 +15,8 @@ namespace A5.Controller
     {
         private readonly ILogger<IDepartmentService> _logger;
         private readonly AppDbContext _context;
-        private readonly DepartmentService _departmentService;
-        public DepartmentController(ILogger<IDepartmentService> logger, DepartmentService departmentService, AppDbContext context)
+        private readonly IDepartmentService _departmentService;
+        public DepartmentController(ILogger<IDepartmentService> logger,IDepartmentService departmentService, AppDbContext context)
         {
             _logger= logger;
            _context=context;

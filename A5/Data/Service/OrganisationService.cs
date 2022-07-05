@@ -74,6 +74,7 @@ namespace A5.Data.Service
              var checkEmployee = _context.Set<Employee>().Where(nameof => nameof.IsActive == true && nameof.OrganisationId == id).ToList().Count();
              return checkEmployee;
         }
+       
     }
 
    
