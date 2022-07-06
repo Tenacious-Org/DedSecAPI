@@ -9,7 +9,7 @@ using A5.Data.Service.Interfaces;
 namespace A5.Controller
 {
     [Route("[controller]")]
-   // [Authorize]
+    [Authorize]
     [ApiController]
     public class DepartmentController : ControllerBase
     {

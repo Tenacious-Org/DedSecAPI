@@ -111,12 +111,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
-<<<<<<< Updated upstream
-=======
-
-app.UseAuthorization();
-
->>>>>>> Stashed changes
 
 app.UseAuthorization();
 

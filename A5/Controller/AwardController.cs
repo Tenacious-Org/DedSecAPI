@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace A5.Controller
 {
-    //[Authorize]
+    [Authorize]
     [Route("[controller]")]
     [ApiController]
     public class AwardController : ControllerBase

@@ -7,12 +7,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace A5.Controller
 {
-<<<<<<< Updated upstream
-    [Route("api/[controller]")]
-=======
     [Route("[controller]")]
->>>>>>> Stashed changes
-    //[Authorize]
+    [Authorize]
     [ApiController]
     public class AwardTypeController : ControllerBase
     {

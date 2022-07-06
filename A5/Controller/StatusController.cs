@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace A5.Controller
 {
     [Route("[controller]")]
-   // [Authorize]
+    [Authorize]
     [ApiController]
     public class StatusController : ControllerBase
     {

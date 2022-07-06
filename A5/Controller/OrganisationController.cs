@@ -9,13 +9,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace A5.Controller
 {
-<<<<<<< Updated upstream
-    [Route("api/[controller]")]
-   // [Authorize]
-=======
     [Route("[controller]")]
-    //[Authorize]
->>>>>>> Stashed changes
+    [Authorize]
     [ApiController]
     public class OrganisationController : ControllerBase
     {
