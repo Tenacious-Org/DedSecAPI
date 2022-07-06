@@ -168,8 +168,8 @@ namespace A5.Controller
             try{
                 // DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
                 // departmentValidations.CreateValidation(department);
-                var data = _departmentService.CreateDepartment(department);
-                return Ok("Created.");
+                var data = _departmentService.Create(department);
+                return Ok(data);
             }           
             catch(ValidationException exception)
             {
@@ -207,8 +207,8 @@ namespace A5.Controller
         {
             if(department==null) return BadRequest("Department should not be null");
             try{
-                var data = _departmentService.UpdateDepartment(department);
-                return Ok("Updated.");
+                var data = _departmentService.Update(department);
+                return Ok(data);
             }
             catch(ValidationException exception)
             {

@@ -169,7 +169,7 @@ namespace A5.Controller
                 // DesignationServiceValidations designationValidations=new DesignationServiceValidations(_context);
                 // designationValidations.CreateValidation(designation);
                 var data = _designationService.Create(designation);           
-                return Ok("Created.");
+                return Ok(data);
             }         
             catch(ValidationException exception)
             {
@@ -210,7 +210,7 @@ namespace A5.Controller
                 // DesignationServiceValidations designationServiceValidations=new DesignationServiceValidations(_context);
                 // designationServiceValidations.UpdateValidation(designation,id);  
                 var data = _designationService.Update(designation);
-                return Ok("Updated.");
+                return Ok(data);
             }
             catch(ValidationException exception)
             {

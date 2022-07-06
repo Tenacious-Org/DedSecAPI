@@ -48,7 +48,7 @@ namespace A5.Data.Repository
                     .Include("Designation")
                     .Include("ReportingPerson")
                     .Include("HR")
-                    .Where(nameof => nameof.IsActive == true)
+                    .Where(nameof => nameof.IsActive == true  && nameof.ReportingPersonId!=null && nameof.HRId!=null)
                     .ToList();
                 return employee;
             }
@@ -112,7 +112,7 @@ namespace A5.Data.Repository
                     .Include("Designation")
                     .Include("ReportingPerson")
                     .Include("HR")
-                    .Where(nameof => nameof.ReportingPersonId != null && nameof.HRId != null && nameof.IsActive == true)
+                    .Where(nameof => nameof.IsActive == true)
                     .FirstOrDefault(nameof =>nameof.Id == id);
                 return employee;
             }
