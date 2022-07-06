@@ -52,6 +52,7 @@ namespace A5.Data.Service
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token),
                     ExpiryInMinutes = 360,
+                    IsRole = user.Designation.RoleId,
                     IsRequester = user.Designation.RoleId == 2 ? true : false,
                     IsApprover = user.Designation.RoleId == 3? true : false,
                     IsPublisher = user.Designation.RoleId == 4 ? true : false,
