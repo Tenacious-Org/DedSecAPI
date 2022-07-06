@@ -92,17 +92,7 @@ namespace A5.Data.Service
         //     }
         // }
         
-        public IEnumerable<Award> GetRequestedAward(int employeeId)
-        {
-            AwardServiceValidations.ValidateRequestedAward(employeeId);
-            try{
-                return _context.Set<Award>().Where(nameof=> nameof.Awardee.Id == employeeId && nameof.StatusId == 3).ToList();
-            }
-            catch(Exception exception)
-            {
-                throw exception;
-            }
-        }
+        
         public object GetAwardById(int id)
         {
             AwardServiceValidations.ValidateGetAwardById(id);

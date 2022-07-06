@@ -104,40 +104,8 @@ namespace A5.Controller
 
         }
         
-       /// <summary>
-        ///  This Method is used to
-        /// </summary>
-        /// <remarks>
-        /// Sample request:
-        ///
-        ///     GET /
-        ///     {
-        ///        sample i/p o/p have to write here
-        ///     }
-        ///
-        /// </remarks>
-        /// <response code="201">Returns </response>
-        /// <response code="400">If the item is null</response> 
-        /// <param name="employeeId">String</param>
-        /// <returns>
-        ///Return 
-        /// </returns>
 
-       [HttpGet("GetRequestedAward")]
-       public ActionResult GetRequestedAward(int employeeId)
-       {
-            
-            try{
-                var data=_awardService.GetRequestedAward(employeeId);
-                return Ok(data);
-            }
-            catch(Exception exception)
-            {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
-            }
-
-       }
+       
        
         /// <summary>
         ///  This Method is used to

@@ -10,7 +10,6 @@ namespace A5.Data.Service.Interfaces
     {
         public bool RaiseRequest(Award award,int id);
         public bool Approval(Award award,int id);
-        public IEnumerable<Award> GetRequestedAward(int employeeId);
         public bool AddComment(Comment comment);
         public object GetAwardById(int id);
         public IEnumerable<object> GetAwardsList(int ? pageId,int ? employeeId);

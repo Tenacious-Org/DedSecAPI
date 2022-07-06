@@ -259,7 +259,7 @@ namespace A5.Controller
         /// </returns>
 
         [HttpGet("GetEmployeeByDepartment")]
-        public ActionResult GetEmployeeByDeprtmentId(int id)
+        public ActionResult GetEmployeeByDepartmentId(int id)
         {
             try
             {
