@@ -17,9 +17,9 @@ namespace A5.Data.Service.Validations
         public static bool CreateValidation(Organisation organisation)
         {        
             if(organisation==null) throw new ValidationException("Organisation should not be null");   
-            if(String.IsNullOrEmpty(organisation.OrganisationName)) throw new ValidationException("Organisation Name should not be null or Empty.");
+            if(String.IsNullOrWhiteSpace(organisation.OrganisationName)) throw new ValidationException("Organisation Name should not be null or Empty.");
             //if(_context.Organisations.Any(nameof=>nameof.OrganisationName==organisation.OrganisationName)) throw new ValidationException("organisation name already exists");           
-            if(!( Regex.IsMatch(organisation.OrganisationName, @"^[a-zA-Z]+$"))) throw new ValidationException("Organisation Name should have only alphabets.No special Characters or numbers are allowed");
+            if(!( Regex.IsMatch(organisation.OrganisationName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("Organisation Name should have only alphabets.No special Characters or numbers are allowed");
             if(organisation.IsActive == false) throw new ValidationException("Organisation should be Active when it is created.");
             if(organisation.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
@@ -27,8 +27,8 @@ namespace A5.Data.Service.Validations
         public static bool UpdateValidation(Organisation organisation)
         {
 
-            if(string.IsNullOrEmpty(organisation.OrganisationName)) throw new ValidationException("Organisation name should not be null or empty");          
-            if(!( Regex.IsMatch(organisation.OrganisationName, @"^[a-zA-Z]+$"))) throw new ValidationException("Namse should have only alphabets.No special Characters or numbers are allowed");
+            if(string.IsNullOrWhiteSpace(organisation.OrganisationName)) throw new ValidationException("Organisation name should not be null or empty");          
+            if(!( Regex.IsMatch(organisation.OrganisationName, @"^[A-z][A-z|\.|\s]+$"))) throw new ValidationException("Namse should have only alphabets.No special Characters or numbers are allowed");
             if(organisation.IsActive == false) throw new ValidationException("To update organisation it should be active");
             if(organisation.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             if(organisation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
@@ -46,6 +46,7 @@ namespace A5.Data.Service.Validations
         {
             
             if(id == 0) throw new ValidationException("Organisation Id should not be null.");
+            else if(id<0) throw new ValidationException("Negative values are not accepted");
             else return true;
         }
         // public int GetCount(int id)

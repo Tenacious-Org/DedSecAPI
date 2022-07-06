@@ -43,7 +43,6 @@ namespace A5.Data.Service.Validations
 
         public bool ValidateGetById(int id)
         {
-            Department department=new Department();
             if(id == 0) throw new ValidationException("Department Id should not be null.");
             else return true;
         }

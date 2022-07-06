@@ -85,7 +85,7 @@ namespace A5.Controller
            
             try{
                 //DepartmentServiceValidations.ValidateGetByOrganisation(id);
-                var data = _departmentService.GetByDepartment(id);
+                var data = _departmentService.GetDepartmentsByOrganisationId(id);
                 return Ok(data);
             }          
             catch(ValidationException exception)

@@ -13,5 +13,6 @@ namespace A5.Data.Service.Interfaces
         bool DisableDepartment(int id);
         int GetCount(int id);
         public IEnumerable<object> GetAllDepartments();
+        public IEnumerable<Department> GetDepartmentsByOrganisationId(int id);
     }
 }

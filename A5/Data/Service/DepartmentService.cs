@@ -95,6 +95,20 @@ namespace A5.Data.Service
              var checkEmployee = _context.Set<Employee>().Where(nameof => nameof.IsActive == true && nameof.DepartmentId == id).ToList().Count();
              return checkEmployee;
         }
+        public IEnumerable<Department> GetDepartmentsByOrganisationId(int id)
+         { 
+            DepartmentServiceValidations.ValidateGetByOrganisation(id);
+            try
+            {
+                var organisationDetails = _context.Set<Department>().Where(nameof => nameof.OrganisationId == id && nameof.IsActive == true).ToList();
+                return organisationDetails;
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+             
+         }
     }
 
    
@@ -113,20 +127,7 @@ namespace A5.Data.Service
 //         }
         
 
-//          public IEnumerable<Department> GetDepartmentsByOrganisationId(int id)
-//          { 
-//             DepartmentServiceValidations.ValidateGetByOrganisation(id);
-//             try
-//             {
-//                 var organisationDetails = _context.Set<Department>().Where(nameof => nameof.OrganisationId == id && nameof.IsActive == true).ToList();
-//                 return organisationDetails;
-//             }
-//             catch(Exception exception)
-//             {
-//                 throw exception;
-//             }
-             
-//          }
+         
 //          public IEnumerable<object> GetAllDepartments()
 //          {
 //             var department = _master.GetAllDepartments();

@@ -8,6 +8,7 @@ namespace A5.Data.Service.Validations
         public static void ValdiateGetById(int id)
         {
             if(id==0) throw new ValidationException("Status Id should not be null");
+            if(id<0) throw new ValidationException("Status Id should not be negative");
         }
     }
 }
