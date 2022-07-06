@@ -57,6 +57,26 @@ namespace A5.Data.Repository
                 throw exception;
             }
         }
+
+        public IEnumerable<Employee> GetAllEmployees1()
+        {
+            try
+            {
+                var employee = _context.Set<Employee>()
+                    .Include("Designation.Department.Organisation")
+                    .Include("Designation.Department")
+                    .Include("Designation")
+                    .Include("ReportingPerson")
+                    .Include("HR")
+                    .Where(nameof => nameof.IsActive == true)
+                    .ToList();
+                return employee;
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
         public IEnumerable<Award> GetAllAwardsList()
         {
             try
