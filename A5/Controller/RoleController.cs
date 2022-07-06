@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace A5.Controller
 {
-    [Route("api/[controller]")]
-    [Authorize]
+    [Route("[controller]")]
+    //[Authorize]
     [ApiController]
     public class RoleController : ControllerBase
     {
