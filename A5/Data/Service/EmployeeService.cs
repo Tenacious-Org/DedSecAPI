@@ -238,7 +238,7 @@ namespace A5.Data.Service
             try
             {
                 //var Hasher = PasswordHasherFactory.GetPasswordHasherFactory();
-                var User =_master.GetAllEmployees().ToList().Find(user => user.Email == Email && user.Password==Password);
+                var User =_master.GetAllEmployees1().ToList().Find(user => user.Email == Email && user.Password==Password);
                 if (User == null) throw new ValidationException("Invalid user");
                 return User;
                 //return Hasher.VerifyHashedPassword(User, User.Password, Password) == PasswordVerificationResult.Success ? User : throw new InvalidDataException("Password doesn't match");
