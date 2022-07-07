@@ -28,6 +28,7 @@ builder.Services.AddTransient<IOrganisationService,OrganisationService>();
 builder.Services.AddTransient<IDepartmentService,DepartmentService>();
 builder.Services.AddTransient<DesignationService>();
 builder.Services.AddTransient<AwardTypeService>();
+builder.Services.AddTransient<DashboardService>();
 builder.Services.AddTransient<StatusService>();
 builder.Services.AddTransient<RoleService>();
 builder.Services.AddTransient<TokenService>();
