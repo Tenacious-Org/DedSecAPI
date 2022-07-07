@@ -34,7 +34,7 @@ namespace A5.Data.Service
         public bool UpdateOrganisation(Organisation organisation)
         {
             if(!OrganisationServiceValidations.UpdateValidation(organisation)) throw new ValidationException("Invalid Data");
-             bool NameExists=_context.Organisations.Any(nameof=>nameof.OrganisationName==organisation.OrganisationName);
+            bool NameExists=_context.Organisations.Any(nameof=>nameof.OrganisationName==organisation.OrganisationName);
             if(NameExists) throw new ValidationException("Organisation Name already exists");
             try{
                 return Update(organisation);
@@ -73,6 +73,10 @@ namespace A5.Data.Service
         {
              var checkEmployee = _context.Set<Employee>().Where(nameof => nameof.IsActive == true && nameof.OrganisationId == id).ToList().Count();
              return checkEmployee;
+        }
+        public object ErrorMessage(string ValidationMessage)
+        {
+            return new{message=ValidationMessage};
         }
        
     }

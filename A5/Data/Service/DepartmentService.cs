@@ -37,7 +37,8 @@ namespace A5.Data.Service
         }
         public bool UpdateDepartment(Department department)
         {
-            if(!DepartmentServiceValidations.UpdateValidation(department)) throw new ValidationException("Invalid Data");
+             var obj = new DepartmentServiceValidations(_context);
+            if(!obj.UpdateValidation(department)) throw new ValidationException("Invalid Data");
              bool NameExists=_context.Departments.Any(nameof=>nameof.DepartmentName==department.DepartmentName);
             if(NameExists) throw new ValidationException("Department Name already exists");
             try{
@@ -109,6 +110,11 @@ namespace A5.Data.Service
             }
              
          }
+           public object ErrorMessage(string ValidationMessage)
+        {
+            return new{message=ValidationMessage};
+        }
+       
     }
 
    

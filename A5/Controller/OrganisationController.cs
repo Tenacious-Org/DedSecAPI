@@ -132,7 +132,7 @@ namespace A5.Controller
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
                 _logger.LogInformation($"Organisation Controller : Create(Organisation organisation) : (Error:{exception.Message}");
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(_organisationService.ErrorMessage($"{exception.Message}"));
             }
             catch(Exception exception)
             {
@@ -171,7 +171,7 @@ namespace A5.Controller
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
                 _logger.LogInformation($"Organisation Controller : Update(Organisation organisation,int id) : (Error: {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(_organisationService.ErrorMessage($"{exception.Message}"));
             }
             catch(Exception exception)
             {

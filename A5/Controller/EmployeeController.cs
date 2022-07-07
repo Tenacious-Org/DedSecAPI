@@ -134,7 +134,7 @@ namespace A5.Controller
                 // EmployeeServiceValidations employeeServiceValidations=new EmployeeServiceValidations(_context);
                 // employeeServiceValidations.CreateValidation(employee);
                 employee.Image = System.Convert.FromBase64String(employee.ImageString);              
-                var data = _employeeService.Create(employee);
+                var data = _employeeService.CreateEmployee(employee);
                 //employee.Password=_employeeService.GeneratePassword(employee.Id);
                 return Ok(data);
             }

@@ -54,6 +54,22 @@ namespace A5.Data.Service
                 updatedOn = Designation.UpdatedOn
             });
          }
+          public bool CreateDesignation(Designation designation)
+        {
+            var obj = new DesignationServiceValidations(_context);
+            if(!obj.CreateValidation(designation)) throw new ValidationException("Invalid data");
+            bool NameExists=_context.Departments.Any(nameof=>nameof.DepartmentName==designation.DesignationName);
+            if(NameExists) throw new ValidationException("Department Name already exists");
+            try{
+                return Create(designation);
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
     }
     
 }
+ 
+    

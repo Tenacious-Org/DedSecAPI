@@ -13,6 +13,7 @@ namespace A5.Data.Service.Validations
         }
          public bool CreateValidation(Employee employee)
         {
+             if(!ValidateAceId(employee.ACEID)) throw new ValidationException("ID should begin with ACE"); 
              if(string.IsNullOrEmpty(employee.FirstName)) throw new ValidationException("Employee's first name should not be null or empty");
              if(string.IsNullOrEmpty(employee.LastName)) throw new ValidationException("Employee's last name should not be null or empty");
             // if(_context.Employees.Any(nameof=>nameof.FirstName==employee.FirstName)) throw new ValidationException("First name already exists");                   
@@ -93,5 +94,11 @@ namespace A5.Data.Service.Validations
     //     else if(age<18 || age>60) return false;
     //     else return true;
     //   }
+    public bool ValidateAceId(string ACEID)
+    {
+        char[] charArray=ACEID.ToCharArray();
+        if(!((charArray[0]=='A' && charArray[1]=='C' && charArray[2]=='E'  ))) return false;
+        else return true;
+    }
     }
 }

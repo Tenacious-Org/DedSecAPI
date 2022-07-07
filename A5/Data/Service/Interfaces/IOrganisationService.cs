@@ -12,5 +12,6 @@ namespace A5.Data.Service.Interfaces
         Organisation GetByOrganisation(int id);
         bool DisableOrganisation(int id);
         int GetCount(int id);
+        public  object ErrorMessage(string ValidationMessage);
     }
 }

@@ -10,6 +10,7 @@ namespace A5.Data.Service.Interfaces
          public IEnumerable<Employee> GetByHR(int id);
          public IEnumerable<Employee> GetByReportingPerson(int id);
          public IEnumerable<Employee> GetEmployeeByRequesterId(int id);
+         public bool CreateEmployee(Employee employee);
        
     }
 }

@@ -248,7 +248,22 @@ namespace A5.Data.Service
                 throw exception;
             }
         }
+
+        public bool CreateEmployee(Employee employee)
+        {
+            EmployeeServiceValidations employeeServiceValidations=new EmployeeServiceValidations(_context);
+            employeeServiceValidations.CreateValidation(employee);
+            try{
+                return Create(employee);
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+
+        }
     
     }
+    
     
 }

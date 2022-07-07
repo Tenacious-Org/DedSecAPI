@@ -8,5 +8,6 @@ namespace A5.Data.Service.Interfaces
     public interface IDesignationService : IEntityBaseRepository<Designation>
     {
          public IEnumerable<Designation> GetDesignationsByDepartmentId(int id);
+         public bool CreateDesignation(Designation designation);
     }
 }

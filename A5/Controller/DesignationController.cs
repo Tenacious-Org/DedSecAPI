@@ -168,7 +168,7 @@ namespace A5.Controller
             try{
                 // DesignationServiceValidations designationValidations=new DesignationServiceValidations(_context);
                 // designationValidations.CreateValidation(designation);
-                var data = _designationService.Create(designation);           
+                var data = _designationService.CreateDesignation(designation);           
                 return Ok(data);
             }         
             catch(ValidationException exception)

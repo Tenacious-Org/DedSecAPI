@@ -126,7 +126,7 @@ namespace A5.Controller
             try{
                 // DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
                 // departmentValidations.ValidateGetById(id);
-                var data = _departmentService.GetById(id);
+                var data = _departmentService.GetByDepartment(id);
                 return Ok(data);
             }           
             catch(ValidationException exception)
@@ -168,14 +168,14 @@ namespace A5.Controller
             try{
                 // DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
                 // departmentValidations.CreateValidation(department);
-                var data = _departmentService.Create(department);
+                var data = _departmentService.CreateDepartment(department);
                 return Ok(data);
             }           
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
                  _logger.LogInformation($"Department Controller : Create(Department department) : (Error: {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(_departmentService.ErrorMessage($"{exception.Message}"));
             }
             catch(Exception exception)
             {
@@ -207,14 +207,14 @@ namespace A5.Controller
         {
             if(department==null) return BadRequest("Department should not be null");
             try{
-                var data = _departmentService.Update(department);
+                var data = _departmentService.UpdateDepartment(department);
                 return Ok(data);
             }
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
                  _logger.LogInformation($"Department Controller : Update(Department department,int id) : (Error: {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(_departmentService.ErrorMessage($"{exception.Message}"));
             }
             catch(Exception exception)
             {
