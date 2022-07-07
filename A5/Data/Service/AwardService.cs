@@ -177,7 +177,6 @@ namespace A5.Data.Service
             try
             {
                 var awards = _master.GetAllAwardsList();
-                AwardServiceValidations.ValidateGetAwardsList(pageId,employeeId);
                 if(pageId==1) 
                     awards =awards.Where(nameof =>nameof.StatusId == 4 && nameof.AwardeeId==employeeId).ToList();
                 else if(pageId==2) 
@@ -191,6 +190,7 @@ namespace A5.Data.Service
                 return awards.Select( Award => new{
                     id = Award.Id,
                     awardeeName = Award.Awardee.FirstName,
+                    awardeeImage=Award.Awardee.Image,
                     requesterName = Award.Awardee.ReportingPerson.FirstName,
                     approverName = Award.Awardee.ReportingPerson.ReportingPerson.FirstName,
                     hRName = Award.Awardee.HR.FirstName,
