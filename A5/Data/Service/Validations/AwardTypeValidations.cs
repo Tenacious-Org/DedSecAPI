@@ -14,7 +14,7 @@ namespace A5.Data.Service.Validations
          public bool CreateValidation(AwardType awardType)
         {             
             if(String.IsNullOrEmpty(awardType.AwardName)) throw new ValidationException("Award Name should not be null or Empty.");
-            if(_context.AwardTypes.Any(nameof=>nameof.AwardName==awardType.AwardName)) throw new ValidationException("Award name already exists");
+            //if(_context.AwardTypes.Any(nameof=>nameof.AwardName==awardType.AwardName)) throw new ValidationException("Award name already exists");
             if(!( Regex.IsMatch(awardType.AwardName, @"^[a-zA-Z]+$"))) throw new ValidationException("Award Name should have only alphabets.No special Characters or numbers are allowed");
             if(awardType.IsActive == false) throw new ValidationException("Award should be Active when it is created.");
             if(awardType.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero."); 

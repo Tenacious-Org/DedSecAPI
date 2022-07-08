@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using A5.Models;
 using A5.Data.Service;
 using A5.Data;
+using A5.Data.Service.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Authorization;
 
@@ -13,15 +14,15 @@ namespace A5.Controller
     [ApiController]
     public class DesignationController : ControllerBase
     {
-        private readonly ILogger<DesignationController> _logger;
-        private readonly DesignationService _designationService;
-        private readonly AppDbContext _context;
+        private readonly ILogger<IDesignationService> _logger;
+        private readonly IDesignationService _designationService;
+      
 
-        public DesignationController( ILogger<DesignationController> logger, DesignationService designationService,AppDbContext context)
+        public DesignationController( ILogger<IDesignationService> logger, IDesignationService designationService)
         {
             _logger = logger;
             _designationService = designationService;
-            _context=context;
+           
         }
 
         /// <summary>
@@ -175,7 +176,7 @@ namespace A5.Controller
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
                  _logger.LogInformation($"Designation Controller : Create(Designation designation) : (Error : {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(_designationService.ErrorMessage($"{exception.Message}"));
             }
             catch(Exception exception)
             {
@@ -209,14 +210,14 @@ namespace A5.Controller
             try{
                 // DesignationServiceValidations designationServiceValidations=new DesignationServiceValidations(_context);
                 // designationServiceValidations.UpdateValidation(designation,id);  
-                var data = _designationService.Update(designation);
+                var data = _designationService.UpdateDesignation(designation);
                 return Ok(data);
             }
             catch(ValidationException exception)
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
                  _logger.LogInformation($"Designation Controller : Update(Designation designation,int id) : (Error : {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(_designationService.ErrorMessage($"{exception.Message}"));
             }
             catch(Exception exception)
             {
@@ -251,7 +252,8 @@ namespace A5.Controller
             {
                 // DesignationServiceValidations designationServiceValidations=new DesignationServiceValidations(_context);
                 // designationServiceValidations.DisableValidation(id);
-                var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.DesignationId== id).ToList().Count();
+               // var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.DesignationId== id).ToList().Count();
+                  var checkEmployee = _designationService.GetCount(id);
                 if(checkEmployee>0){
                     return Ok(checkEmployee);
                 }else{
@@ -271,5 +273,6 @@ namespace A5.Controller
                 return BadRequest($"Error : {exception.Message}");
             }
         }
+        
     }
 }

@@ -4,6 +4,7 @@ using A5.Data.Service;
 using System.ComponentModel.DataAnnotations;
 using A5.Data;
 using Microsoft.AspNetCore.Authorization;
+using A5.Data.Service.Interfaces;
 
 namespace A5.Controller
 {
@@ -12,14 +13,14 @@ namespace A5.Controller
     [ApiController]
     public class AwardTypeController : ControllerBase
     {
-        private readonly AppDbContext _context;
-        private readonly AwardTypeService _awardTypeService;
-        private readonly ILogger<AwardTypeController> _logger;
-        public AwardTypeController( ILogger<AwardTypeController> logger,AwardTypeService awardTypeService,AppDbContext context)
+        //private readonly AppDbContext _context;
+        private readonly IAwardTypeService _awardTypeService;
+        private readonly ILogger<IAwardTypeService> _logger;
+        public AwardTypeController( ILogger<IAwardTypeService> logger,IAwardTypeService awardTypeService)
         {
             _awardTypeService = awardTypeService;
             _logger=logger;
-            _context=context;
+        
         }
 
         /// <summary>
@@ -125,7 +126,7 @@ namespace A5.Controller
                 //AwardTypeValidations awardTypeValidations=new AwardTypeValidations(_context);
                 //awardTypeValidations.CreateValidation(awardType);
                 awardType.Image = System.Convert.FromBase64String(awardType.ImageString);
-                var data = _awardTypeService.Create(awardType);
+                var data = _awardTypeService.CreateAwardType(awardType);
                  return Ok(data);
             }
             catch(ValidationException exception)

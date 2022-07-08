@@ -7,6 +7,6 @@ namespace A5.Data.Service.Interfaces
 {
     public interface IAwardTypeService : IEntityBaseRepository<AwardType>
     {
-        
+        public bool CreateAwardType(AwardType awardType);
     }
 }
