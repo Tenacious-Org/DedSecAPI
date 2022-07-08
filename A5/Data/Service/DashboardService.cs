@@ -17,17 +17,37 @@ namespace A5.Data.Service
             _master = master;
         }
 
+        public IEnumerable<object> GetAllByOrgwise(int orgid)
+        {
+            try
+            {
+                var orgwise = _master.GetAllbyOrgwise(orgid);
+                return orgwise.Select(Award => new{
+                    
+                    organisation = Award.Awardee.Designation.Department.Organisation.OrganisationName,
+                    
+                    department = Award.Awardee.Designation.Department.DepartmentName,
+                    
+                    awardName = Award.AwardType.AwardName,
+                });
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
+
         public IEnumerable<object> GetAllWinners()
         {
             try
             {
                 var winners = _master.GetAllWinners();
                 return winners.Select(Award => new{
-                    orgid = Award.Awardee.Designation.Department.Organisation.Id,
+                    
                     organisation = Award.Awardee.Designation.Department.Organisation.OrganisationName,
-                    deptid = Award.Awardee.Designation.Department.Id,
+                    
                     department = Award.Awardee.Designation.Department.DepartmentName,
-                    awardid = Award.AwardType.Id,
+                    
                     awardName = Award.AwardType.AwardName,
                 });
             }
