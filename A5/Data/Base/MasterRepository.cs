@@ -100,6 +100,30 @@ namespace A5.Data.Repository
             }
         }
 
+        public IEnumerable<Award> GetAllbyOrgwise(int id)
+        {
+            try
+            {
+                var award = _context.Set<Award>()
+                    .Include("Awardee")
+                    .Include("Awardee.Designation")
+                    .Include("Awardee.Designation.Department")
+                    .Include("Awardee.Designation.Department.Organisation")
+                    .Include("Awardee.ReportingPerson")
+                    .Include("Awardee.ReportingPerson.ReportingPerson")
+                    .Include("Awardee.HR")
+                    .Include("AwardType")
+                    .Include("Status")
+                    .Where(nameof => nameof.Awardee.Designation.Department.OrganisationId == id)
+                    .ToList();
+                return award;
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
+
         public IEnumerable<Award> GetAllWinners()
         {
             try
