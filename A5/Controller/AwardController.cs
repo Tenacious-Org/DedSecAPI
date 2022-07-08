@@ -53,7 +53,7 @@ namespace A5.Controller
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
                 _logger.LogInformation($"Award Controller : RaiseRequest(Award award,int id) : (Error:{exception.Message}");
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(_awardService.ErrorMessage($"{exception.Message}"));
             }
             catch(Exception exception)
             {

@@ -210,6 +210,10 @@ namespace A5.Data.Service
                 throw exception;
             }
         }
+        public object ErrorMessage(string ValidationMessage)
+        {
+            return new{message=ValidationMessage};
+        }
 
     }
 }

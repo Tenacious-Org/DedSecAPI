@@ -8,9 +8,10 @@ namespace A5.Data.Service.Validations
     {
         public static void RequestValidation(Award award,int id)
         {
-            if(award.AwardeeId==0) throw new ValidationException("Awardee should not be null");
+            if(award==null) throw new ValidationException("Award should not be null");
+            if(award.AwardeeId==0) throw new ValidationException("Awardee not found");
             if(award.AwardTypeId==0) throw new ValidationException("Award Type Should not be null");
-            if(string.IsNullOrEmpty(award.Reason)) throw new ValidationException("Reason for award should not be null");
+            if(string.IsNullOrWhiteSpace(award.Reason)) throw new ValidationException("Reason for award should not be null");
            
         }
         public static void ValidateRequestedAward(int employeeId)

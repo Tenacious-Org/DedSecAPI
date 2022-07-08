@@ -14,9 +14,9 @@ namespace A5.Data.Service.Validations
 
         public bool CreateValidation(Designation designation)
         {           
-            if(String.IsNullOrEmpty(designation.DesignationName)) throw new ValidationException("Designation Name should not be null or Empty.");
+            if(String.IsNullOrWhiteSpace(designation.DesignationName)) throw new ValidationException("Designation Name should not be null or Empty.");
            // if(_context.Designations.Any(nameof=>nameof.DesignationName==designation.DesignationName)) throw new ValidationException("Designation name already exists");           
-            if(!( Regex.IsMatch(designation.DesignationName, @"^[a-zA-Z]+$"))) throw new ValidationException("Designation Name should have only alphabets.No special Characters or numbers are allowed");
+            if(!( Regex.IsMatch(designation.DesignationName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("Designation Name should have only alphabets.No special Characters or numbers are allowed");
             if(designation.IsActive == false) throw new ValidationException("Designation should be Active when it is created.");
             if(designation.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
@@ -24,9 +24,9 @@ namespace A5.Data.Service.Validations
         public bool UpdateValidation(Designation designation)
         {
             if((designation.Id == null)) throw new ValidationException("Designation Id should not be null.");
-            if(string.IsNullOrEmpty(designation.DesignationName)) throw new ValidationException("Designation name should not be null or empty");
+            if(string.IsNullOrWhiteSpace(designation.DesignationName)) throw new ValidationException("Designation name should not be null or empty");
            // if(_context.Designations.Any(nameof=>nameof.DesignationName==designation.DesignationName)) throw new ValidationException("Designation name already exists");           
-            if(!( Regex.IsMatch(designation.DesignationName, @"^[a-zA-Z]+$"))) throw new ValidationException("Designation Name should have only alphabets.No special Characters or numbers are allowed");
+            if(!( Regex.IsMatch(designation.DesignationName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("Designation Name should have only alphabets.No special Characters or numbers are allowed");
             if(designation.IsActive == false) throw new ValidationException("To update designation it should be active");
             if(designation.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             if(designation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
