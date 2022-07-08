@@ -58,7 +58,7 @@ namespace A5.Data.Service
         {
             var obj = new DesignationServiceValidations(_context);
             if(!obj.CreateValidation(designation)) throw new ValidationException("Invalid data");
-            bool NameExists=_context.Designations.Any(nameof=>nameof.DesignationName==designation.DesignationName && nameof.DepartmentId==designation.DepartmentId && nameof.RoleId==designation.RoleId);
+            bool NameExists=_context.Designations.Any(nameof=>nameof.DesignationName==designation.DesignationName && nameof.DepartmentId==designation.DepartmentId);
             if(NameExists) throw new ValidationException("Designation Name already exists");
             try{
                 return Create(designation);
