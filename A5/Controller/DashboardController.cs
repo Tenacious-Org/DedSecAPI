@@ -25,12 +25,25 @@ namespace A5.Controller
             _context = context;
         }
 
-        [HttpGet("Get All Winners")]
+        [HttpGet("GetAllWinners")]
         public ActionResult GetPublisherDashboard()
         {
             try
             {
                 var data = _dash.GetAllWinners();
+                return Ok(data);
+            }
+            catch(Exception exception)
+            {
+                return BadRequest($"Error : {exception.Message}");
+            }
+        }
+        [HttpGet("GetAllOrgWise")]
+        public ActionResult GetOrgWiseDashboard(int id)
+        {
+            try
+            {
+                var data = _dash.GetAllByOrgwise(id);
                 return Ok(data);
             }
             catch(Exception exception)
