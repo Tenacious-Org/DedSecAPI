@@ -58,10 +58,33 @@ namespace A5.Data.Service
         {
             var obj = new DesignationServiceValidations(_context);
             if(!obj.CreateValidation(designation)) throw new ValidationException("Invalid data");
-            bool NameExists=_context.Departments.Any(nameof=>nameof.DepartmentName==designation.DesignationName);
-            if(NameExists) throw new ValidationException("Department Name already exists");
+            bool NameExists=_context.Designations.Any(nameof=>nameof.DesignationName==designation.DesignationName && nameof.DepartmentId==designation.DepartmentId);
+            if(NameExists) throw new ValidationException("Designation Name already exists");
             try{
                 return Create(designation);
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
+        public int GetCount(int id)
+        {
+             var checkEmployee = _context.Set<Designation>().Where(nameof => nameof.IsActive == true && nameof.Id == id).ToList().Count();
+             return checkEmployee;
+        }
+         public object ErrorMessage(string ValidationMessage)
+        {
+            return new{message=ValidationMessage};
+        }
+        public bool UpdateDesignation(Designation designation)
+        {
+             var obj = new DesignationServiceValidations(_context);
+            if(!obj.UpdateValidation(designation)) throw new ValidationException("Invalid Data");
+             bool NameExists=_context.Designations.Any(nameof=>nameof.DesignationName==designation.DesignationName);
+            if(NameExists) throw new ValidationException("Designation Name already exists");
+            try{
+                return Update(designation);
             }
             catch(Exception exception)
             {
