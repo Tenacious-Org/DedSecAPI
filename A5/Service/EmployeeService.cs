@@ -7,6 +7,7 @@ using A5.Data.Repository;
 using A5.Service.Validations;
 using System.ComponentModel.DataAnnotations;
 using A5.Data;
+using A5.Data.Service.Interfaces;
 
 namespace A5.Service
 {
