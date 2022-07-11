@@ -162,12 +162,16 @@ namespace A5.Service
                     statusId=Award.StatusId,
                     status=Award.Status.StatusName,
                     awardName=Award.AwardType.AwardName,
+                    awardTypeId=Award.AwardType.Id,
                     awardImage=Award.AwardType.Image,
                     reason=Award.Reason,
                     rejectedReason=Award.RejectedReason,
+                    organisationId=Award.Awardee.Designation.Department.Organisation.Id,
+                    departmentId=Award.Awardee.Designation.Department.Id,
                     designation=Award.Awardee.Designation.DesignationName,
                     department=Award.Awardee.Designation.Department.DepartmentName,
-                    organisation=Award.Awardee.Designation.Department.Organisation.OrganisationName                 
+                    organisation=Award.Awardee.Designation.Department.Organisation.OrganisationName ,
+                    updatedOn=Award.UpdatedOn
                 });
             }
             catch(Exception exception)
