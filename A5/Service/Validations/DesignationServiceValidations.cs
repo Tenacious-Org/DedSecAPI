@@ -24,7 +24,7 @@ namespace A5.Service.Validations
         }
         public bool UpdateValidation(Designation designation)
         {
-            if((designation.Id == null)) throw new ValidationException("Designation Id should not be null.");
+            // if((designation.Id == null)) throw new ValidationException("Designation Id should not be null.");
             if(string.IsNullOrWhiteSpace(designation.DesignationName)) throw new ValidationException("Designation name should not be null or empty");
            // if(_context.Designations.Any(nameof=>nameof.DesignationName==designation.DesignationName)) throw new ValidationException("Designation name already exists");           
             if(!( Regex.IsMatch(designation.DesignationName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("Designation Name should have only alphabets.No special Characters or numbers are allowed");

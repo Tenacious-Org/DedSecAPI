@@ -166,7 +166,7 @@ namespace A5.Controller
         /// </returns>
 
         [HttpPut("Update")]
-        public ActionResult Update(Employee employee,int id)
+        public ActionResult Update(Employee employee)
         {
             try{
                return _employeeService.UpdateEmployee(employee) ?  Ok("Employee Updated."):Problem("Error occured"); 

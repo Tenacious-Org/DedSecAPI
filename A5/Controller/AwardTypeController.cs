@@ -157,7 +157,7 @@ namespace A5.Controller
         /// </returns>
 
         [HttpPut("Update")]
-        public ActionResult Update(AwardType awardType,int id)
+        public ActionResult Update(AwardType awardType)
         {
             try{
                  return _awardTypeService.UpdateAwardType(awardType) ?  Ok("Awardtype Updated."):Problem("Error occured"); 

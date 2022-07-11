@@ -201,7 +201,7 @@ namespace A5.Controller
         /// </returns>
 
         [HttpPut("Update")]
-        public ActionResult Update(Designation designation,int id)
+        public ActionResult Update(Designation designation)
         {
             
             try{
