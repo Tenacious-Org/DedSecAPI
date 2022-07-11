@@ -1,4 +1,4 @@
-using A5.Data.Base;
+using A5.Data.Repository;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using A5.Data;
 using A5.Data.Repository;
-using A5.Data.Service;
+using A5.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

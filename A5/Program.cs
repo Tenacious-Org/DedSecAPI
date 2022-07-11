@@ -1,14 +1,15 @@
 using A5.Data;
 using Microsoft.EntityFrameworkCore;
-using A5.Data.Service;
 using Serilog;
 using A5.Data.Repository;
 using System.Reflection;
-using A5.Data.Service.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using A5.Service;
+using A5.Service.Interfaces;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

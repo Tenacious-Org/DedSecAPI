@@ -1,8 +1,7 @@
-using A5.Data.Base;
+using A5.Data.Repository;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.RegularExpressions;
-using A5.Data.Service;
 using A5.Data;
 
 namespace A5.Models

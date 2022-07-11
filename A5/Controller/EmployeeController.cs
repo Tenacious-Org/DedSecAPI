@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using A5.Models;
-using A5.Data.Service;
+using A5.Service;
 using A5.Data;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Authorization;

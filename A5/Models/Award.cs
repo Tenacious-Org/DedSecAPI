@@ -1,4 +1,3 @@
-using A5.Data.Base;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace A5.Models
