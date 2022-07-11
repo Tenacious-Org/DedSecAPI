@@ -164,8 +164,7 @@ namespace A5.Controller
         {
            if(organisation==null) return BadRequest("Organisation should not be null");
             try{
-                var data=_organisationService.UpdateOrganisation(organisation);    
-                return  Ok(data);
+                return _organisationService.UpdateOrganisation(organisation) ?  Ok("Organisation Updated."):Problem("Error occured"); 
             }        
             catch(ValidationException exception)
             {
