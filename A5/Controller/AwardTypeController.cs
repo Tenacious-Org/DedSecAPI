@@ -133,7 +133,7 @@ namespace A5.Controller
             {
                 _logger.LogError($"log: (Error: {exception.Message})");
                  _logger.LogInformation($"AwardType Controller : Create(AwardType awardType) : (Error:{exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(_awardTypeService.ErrorMessage($"{exception.Message}"));
             }
             catch(Exception exception)
             {

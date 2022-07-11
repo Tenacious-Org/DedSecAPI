@@ -24,9 +24,9 @@ namespace A5.Service.Validations
              if(employee.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
              else return true;
         }
-        public bool UpdateValidation(Employee employee,int id)
+        public bool UpdateValidation(Employee employee)
         {
-            if(!(id==0)) throw new ValidationException("Employee Id should not be null.");
+           
             if(string.IsNullOrEmpty(employee.FirstName)) throw new ValidationException("Employee name should not be null or empty");
             if(string.IsNullOrEmpty(employee.LastName)) throw new ValidationException("Employee name should not be null or empty");
             if(_context.Employees.Any(nameof=>nameof.FirstName==employee.FirstName)) throw new ValidationException("First name already exists");           

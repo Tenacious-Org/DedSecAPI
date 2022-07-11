@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream:A5/Service/Interfaces/IEmployeeService.cs
 using System.Collections.Generic;
 using System.Linq;
 using A5.Data.Repository;
@@ -13,4 +14,22 @@ namespace A5.Service.Interfaces
          public bool CreateEmployee(Employee employee);
        
     }
+=======
+using System.Collections.Generic;
+using System.Linq;
+using A5.Data.Base;
+using A5.Models;
+
+namespace A5.Data.Service.Interfaces
+{
+    public interface IEmployeeService : IEntityBaseRepository<Employee>
+    {
+         public IEnumerable<Employee> GetByHR(int id);
+         public IEnumerable<Employee> GetByReportingPerson(int id);
+         public IEnumerable<Employee> GetEmployeeByRequesterId(int id);
+         public bool CreateEmployee(Employee employee);
+         
+       
+    }
+>>>>>>> Stashed changes:A5/Data/Service/Interfaces/IEmployeeService.cs
 }

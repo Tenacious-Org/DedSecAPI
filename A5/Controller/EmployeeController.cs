@@ -131,8 +131,7 @@ namespace A5.Controller
         public ActionResult Create(Employee employee)
         {
             try{
-                // EmployeeServiceValidations employeeServiceValidations=new EmployeeServiceValidations(_context);
-                // employeeServiceValidations.CreateValidation(employee);
+                
                 employee.Image = System.Convert.FromBase64String(employee.ImageString);              
                 var data = _employeeService.CreateEmployee(employee);
                 //employee.Password=_employeeService.GeneratePassword(employee.Id);
@@ -173,8 +172,7 @@ namespace A5.Controller
         public ActionResult Update(Employee employee,int id)
         {
             try{
-                // EmployeeServiceValidations employeeServiceValidations=new EmployeeServiceValidations(_context);
-                // employeeServiceValidations.UpdateValidation(employee,id);
+              
                 employee.Image = System.Convert.FromBase64String(employee.ImageString);
                 var data = _employeeService.Update(employee);
                 return Ok(data);
