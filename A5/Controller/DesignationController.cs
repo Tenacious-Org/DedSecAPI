@@ -167,10 +167,7 @@ namespace A5.Controller
         {
             
             try{
-                // DesignationServiceValidations designationValidations=new DesignationServiceValidations(_context);
-                // designationValidations.CreateValidation(designation);
-                var data = _designationService.CreateDesignation(designation);           
-                return Ok(data);
+               return _designationService.CreateDesignation(designation) ?  Ok("Designation Created."):Problem("Error occured"); 
             }         
             catch(ValidationException exception)
             {
@@ -208,10 +205,7 @@ namespace A5.Controller
         {
             
             try{
-                // DesignationServiceValidations designationServiceValidations=new DesignationServiceValidations(_context);
-                // designationServiceValidations.UpdateValidation(designation,id);  
-                var data = _designationService.UpdateDesignation(designation);
-                return Ok(data);
+                return _designationService.UpdateDesignation(designation) ?  Ok("Designation Updated."):Problem("Error occured"); 
             }
             catch(ValidationException exception)
             {

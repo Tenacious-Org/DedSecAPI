@@ -264,6 +264,20 @@ namespace A5.Service
             }
 
         }
+         public bool UpdateEmployee(Employee employee)
+        {
+            EmployeeServiceValidations employeeServiceValidations=new EmployeeServiceValidations(_context);
+            employeeServiceValidations.UpdateValidation(employee);
+            try{
+                return Update(employee);
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+
+        }
+
     
     }
     

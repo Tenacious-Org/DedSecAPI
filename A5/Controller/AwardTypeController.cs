@@ -123,11 +123,7 @@ namespace A5.Controller
         public ActionResult Create(AwardType awardType)
         {
             try{
-                //AwardTypeValidations awardTypeValidations=new AwardTypeValidations(_context);
-                //awardTypeValidations.CreateValidation(awardType);
-                awardType.Image = System.Convert.FromBase64String(awardType.ImageString);
-                var data = _awardTypeService.CreateAwardType(awardType);
-                 return Ok(data);
+                return _awardTypeService.CreateAwardType(awardType) ?  Ok("Awardtype Created."):Problem("Error occured"); 
             }
             catch(ValidationException exception)
             {
@@ -164,11 +160,7 @@ namespace A5.Controller
         public ActionResult Update(AwardType awardType,int id)
         {
             try{
-                // AwardTypeValidations awardTypeValidations=new AwardTypeValidations(_context);
-                // awardTypeValidations.UpdateValidation(awardType,id);
-                awardType.Image = System.Convert.FromBase64String(awardType.ImageString);
-                var data = _awardTypeService.Update(awardType);
-                 return Ok(data);
+                 return _awardTypeService.UpdateAwardType(awardType) ?  Ok("Awardtype Updated."):Problem("Error occured"); 
             }
             catch(ValidationException exception)
             {
@@ -205,10 +197,7 @@ namespace A5.Controller
         public ActionResult Disable(int id)
         {
             try{
-                // AwardTypeValidations awardTypeValidations=new AwardTypeValidations(_context);
-                // awardTypeValidations.DisableValidation(id);
-                var data = _awardTypeService.DisableAward(id);
-                 return Ok(data);
+                 return _awardTypeService.DisableAwardType(id) ?  Ok("Awardtype Disabled."):Problem("Error occured"); 
             }
             catch(ValidationException exception)
             {

@@ -132,10 +132,7 @@ namespace A5.Controller
         {
             try{
                 
-                employee.Image = System.Convert.FromBase64String(employee.ImageString);              
-                var data = _employeeService.CreateEmployee(employee);
-                //employee.Password=_employeeService.GeneratePassword(employee.Id);
-                return Ok(data);
+                 return _employeeService.CreateEmployee(employee) ?  Ok("Employee Created."):Problem("Error occured"); 
             }
             catch(ValidationException exception)
             {
@@ -172,10 +169,8 @@ namespace A5.Controller
         public ActionResult Update(Employee employee,int id)
         {
             try{
-              
-                employee.Image = System.Convert.FromBase64String(employee.ImageString);
-                var data = _employeeService.Update(employee);
-                return Ok(data);
+               return _employeeService.UpdateEmployee(employee) ?  Ok("Employee Updated."):Problem("Error occured"); 
+                
             }
             catch(ValidationException exception)
             {

@@ -9,6 +9,8 @@ namespace A5.Service.Interfaces
     {
         public bool CreateAwardType(AwardType awardType);
         public object ErrorMessage(string ValidationMessage);
-        public bool DisableAward(int id);
+        public bool UpdateAwardType(AwardType awardType);
+        public bool DisableAwardType(int id);
+    
     }
 }
