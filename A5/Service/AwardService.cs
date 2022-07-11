@@ -4,18 +4,17 @@ using A5.Models;
 using A5.Service.Validations;
 using System.ComponentModel.DataAnnotations;
 using A5.Data;
+using System.Linq;
 
 namespace A5.Service
 {
     public class AwardService:IAwardService
     {
-        private readonly AppDbContext _context;
         private readonly MasterRepository _master;
         
         private readonly AwardRepository _award;
-        public AwardService(AppDbContext context, MasterRepository master,AwardRepository awardRepository)
+        public AwardService(MasterRepository master,AwardRepository awardRepository)
         {
-            _context=context;
             _master = master;
             _award=awardRepository;
            
@@ -135,17 +134,7 @@ namespace A5.Service
             }
            
         }
-        public IEnumerable<object> GetComments(int awardId)
-        {
-           AwardServiceValidations.ValidateGetComments(awardId);
-           try
-           {
-              return _award.GetComment(awardId);
-           }
-           catch(Exception exception){
-               throw exception;
-           }
-        }
+      
 
         public IEnumerable<object> GetAwardsList(int ? pageId,int ? employeeId)
         {
@@ -186,6 +175,26 @@ namespace A5.Service
                 throw exception;
             }
         }
+
+        public IEnumerable<object> GetComments(int awardId)
+        {
+            try{
+                 var comments=_award.GetComments(awardId);
+                   return comments.Select( Comment =>  new{
+                   id=Comment.Id,
+                   comments=Comment.Comments,
+                   gender=Comment.Employees.Gender,
+                   employeeName=Comment.Employees.FirstName,
+                   employeeImage=Comment.Employees.Image
+               }).OrderByDescending(nameof=>nameof.id);
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+
+        }
+
         public object ErrorMessage(string ValidationMessage)
         {
             return new{message=ValidationMessage};

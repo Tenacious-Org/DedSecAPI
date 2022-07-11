@@ -92,24 +92,7 @@ namespace A5.Data.Repository
             }
 
         }
-        public IEnumerable<object> GetComment(int awardId)
-        {
-            try{
-                 var comments=GetComments(awardId);
-                   return comments.Select( Comment =>  new{
-                   id=Comment.Id,
-                   comments=Comment.Comments,
-                   gender=Comment.Employees.Gender,
-                   employeeName=Comment.Employees.FirstName,
-                   employeeImage=Comment.Employees.Image
-               });
-            }
-            catch(Exception exception)
-            {
-                throw exception;
-            }
-
-        }
+        
          public IEnumerable<Comment> GetComments(int awardId)
         {
            try
