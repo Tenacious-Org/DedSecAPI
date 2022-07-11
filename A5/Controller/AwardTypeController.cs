@@ -207,7 +207,7 @@ namespace A5.Controller
             try{
                 // AwardTypeValidations awardTypeValidations=new AwardTypeValidations(_context);
                 // awardTypeValidations.DisableValidation(id);
-                var data = _awardTypeService.Disable(id);
+                var data = _awardTypeService.DisableAward(id);
                  return Ok(data);
             }
             catch(ValidationException exception)

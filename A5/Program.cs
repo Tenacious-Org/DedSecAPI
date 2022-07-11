@@ -36,6 +36,8 @@ builder.Services.AddTransient<TokenService>();
 builder.Services.AddTransient<EmployeeService>();
 builder.Services.AddTransient<IAwardService,AwardService>();
 builder.Services.AddTransient<MasterRepository>();
+builder.Services.AddTransient<AwardRepository>();
+
 
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>

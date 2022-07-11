@@ -6,12 +6,8 @@ namespace A5.Service.Validations
 {
     public class AwardTypeValidations
     {
-        private readonly AppDbContext _context;
-        public AwardTypeValidations(AppDbContext context)
-        {
-            _context=context;
-        }
-         public bool CreateValidation(AwardType awardType)
+       
+         public static bool CreateValidation(AwardType awardType)
         {             
             if(String.IsNullOrWhiteSpace(awardType.AwardName)) throw new ValidationException("Award Name should not be null or Empty.");
             //if(_context.AwardTypes.Any(nameof=>nameof.AwardName==awardType.AwardName)) throw new ValidationException("Award name already exists");
@@ -20,7 +16,7 @@ namespace A5.Service.Validations
             if(awardType.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero."); 
             else return true;
         }
-         public bool UpdateValidation(AwardType awardType,int id)
+         public static bool UpdateValidation(AwardType awardType,int id)
         {
             if(id==0) throw new ValidationException ("Enter the id to update");
             if(string.IsNullOrEmpty(awardType.AwardName)) throw new ValidationException("Award name should not be null or empty");
@@ -31,7 +27,7 @@ namespace A5.Service.Validations
             if(awardType.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
-        public bool DisableValidation(int id)
+        public static bool DisableValidation(int id)
         {
             AwardType awardType=new AwardType();
             if(id==0) throw new ValidationException ("Enter the id to update");         
@@ -39,7 +35,7 @@ namespace A5.Service.Validations
             else if(awardType.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
-        public bool ValidateGetById(int id)
+        public static bool ValidateGetById(int id)
         {
             AwardType awardType=new AwardType();
             if(id==0) throw new ValidationException("Award Id should not be null.");

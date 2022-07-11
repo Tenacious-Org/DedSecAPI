@@ -11,11 +11,13 @@ namespace A5.Service
     {
         private readonly AppDbContext _context;
         private readonly MasterRepository _master;
-
-        public AwardService(AppDbContext context, MasterRepository master)
+        
+        private readonly AwardRepository _award;
+        public AwardService(AppDbContext context, MasterRepository master,AwardRepository awardRepository)
         {
             _context=context;
             _master = master;
+            _award=awardRepository;
            
         }
         public bool RaiseRequest(Award award,int id)
@@ -24,17 +26,7 @@ namespace A5.Service
             AwardServiceValidations.RequestValidation(award,id);
             bool result=false;
             try{
-                var employee = _master.GetEmployeeById(id);
-                _context.Set<Award>().Add(award);
-                award.RequesterId=employee.Id;
-                award.ApproverId= (int)employee.ReportingPersonId;
-                award.HRId= (int)employee.HRId;
-                award.StatusId=1;
-                award.AddedBy=employee.Id;
-                award.AddedOn=DateTime.Now;
-                _context.SaveChanges();
-                result=true;
-                return result;
+               return _award.RaiseAwardRequest(award,id);
             }
             catch(Exception exception)
             {

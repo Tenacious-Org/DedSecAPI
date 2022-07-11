@@ -17,12 +17,27 @@ namespace A5.Service
         }
           public bool CreateAwardType(AwardType awardType)
         {
-            var obj = new AwardTypeValidations(_context);
-            if(!obj.CreateValidation(awardType)) throw new ValidationException("Invalid data");
+           
+            if(!AwardTypeValidations.CreateValidation(awardType)) throw new ValidationException("Invalid data");
             bool NameExists=_context.AwardTypes.Any(nameof=>nameof.AwardName==awardType.AwardName);
             if(NameExists) throw new ValidationException("Award Name already exists");
             try{
                 return Create(awardType);
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
+        
+        public bool DisableAward(int id)
+        {
+            AwardType awardType=new AwardType();
+            if(!AwardTypeValidations.DisableValidation(id)) throw new ValidationException("Invalid data");
+            bool NameExists=_context.AwardTypes.Any(nameof=>nameof.AwardName==awardType.AwardName);
+            if(NameExists) throw new ValidationException("Award Name already exists");
+            try{
+                return Disable(id);
             }
             catch(Exception exception)
             {
