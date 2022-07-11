@@ -130,7 +130,7 @@ app.UseCors(builder =>
     .AllowAnyHeader();
 });
 
-AppDbInitializer.Seed(app);
+//AppDbInitializer.Seed(app);
 //AppDbInitializer.SeedRolesAsync(app).Wait();
 
 app.Run();

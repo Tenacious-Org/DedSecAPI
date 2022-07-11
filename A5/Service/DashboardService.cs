@@ -11,18 +11,18 @@ namespace A5.Service
     public class DashboardService
     {
         private readonly AppDbContext _context;
-        private readonly MasterRepository _master;
-        public DashboardService(AppDbContext context, MasterRepository master)
+        private readonly AwardRepository _award;
+        public DashboardService(AppDbContext context,AwardRepository awardRepository)
         {
             _context = context;
-            _master = master;
+            _award=awardRepository;
         }
 
         public IEnumerable<object> GetAllByOrgwise(int orgid)
         {
             try
             {
-                var orgwise = _master.GetAllbyOrgwise(orgid);
+                var orgwise = _award.GetAllbyOrgwise(orgid);
                 return orgwise.Select(Award => new{
                     
                     organisation = Award.Awardee.Designation.Department.Organisation.OrganisationName,
@@ -42,7 +42,7 @@ namespace A5.Service
         {
             try
             {
-                var winners = _master.GetAllWinners();
+                var winners = _award.GetAllWinners();
                 return winners.Select(Award => new{
                     
                     organisation = Award.Awardee.Designation.Department.Organisation.OrganisationName,

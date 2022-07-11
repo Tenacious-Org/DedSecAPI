@@ -24,7 +24,6 @@ namespace A5.Service
         {
              
             AwardServiceValidations.RequestValidation(award,id);
-            bool result=false;
             try{
                return _award.RaiseAwardRequest(award,id);
             }
@@ -49,15 +48,9 @@ namespace A5.Service
 
         public bool Approval(Award award,int id)
         {
-             bool result = false;
+          
             try{
-                var employee = _master.GetEmployeeById(id);
-                _context.Set<Award>().Update(award);
-                award.UpdatedBy=employee.Id;
-                award.UpdatedOn=DateTime.Now;
-                _context.SaveChanges();
-                result=true;
-                return result;              
+                return  _award.ApproveRequest(award,id);           
             }
             catch(Exception exception)
             {
@@ -91,7 +84,7 @@ namespace A5.Service
         {
             AwardServiceValidations.ValidateGetAwardById(id);
             try{
-                var award= _master.GetAwardById(id);
+                var award= _award.GetAwardById(id);
                 return new{
                     id = award.Id,
                     requesterId=award.RequesterId,
@@ -133,13 +126,9 @@ namespace A5.Service
 
         public bool AddComment(Comment comment)
         {
-            AwardServiceValidations.ValidateAddComment(comment);
-            bool result = false;
+             AwardServiceValidations.ValidateAddComment(comment);
             try{
-                    _context.Set<Comment>().Add(comment);
-                    _context.SaveChanges();
-                    result=true;
-                    return result;
+                  return _award.AddComments(comment);
             }
             catch(Exception exception){
                 throw exception;
@@ -148,17 +137,10 @@ namespace A5.Service
         }
         public IEnumerable<object> GetComments(int awardId)
         {
-            AwardServiceValidations.ValidateGetComments(awardId);
+           AwardServiceValidations.ValidateGetComments(awardId);
            try
            {
-               var comments=_master.GetComments(awardId);
-               return comments.Select( Comment =>  new{
-                   id=Comment.Id,
-                   comments=Comment.Comments,
-                   gender=Comment.Employees.Gender,
-                   employeeName=Comment.Employees.FirstName,
-                   employeeImage=Comment.Employees.Image
-               });
+              return _award.GetComment(awardId);
            }
            catch(Exception exception){
                throw exception;
@@ -170,7 +152,7 @@ namespace A5.Service
             
             try
             {
-                var awards = _master.GetAllAwardsList();
+                var awards = _award.GetAllAwardsList();
                 if(pageId==1) 
                     awards =awards.Where(nameof =>nameof.StatusId == 4 && nameof.AwardeeId==employeeId).ToList();
                 else if(pageId==2) 

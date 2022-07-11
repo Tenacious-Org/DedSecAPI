@@ -77,98 +77,7 @@ namespace A5.Data.Repository
                 throw exception;
             }
         }
-        public IEnumerable<Award> GetAllAwardsList()
-        {
-            try
-            {
-                var award = _context.Set<Award>()
-                    .Include("Awardee")
-                    .Include("Awardee.Designation")
-                    .Include("Awardee.Designation.Department")
-                    .Include("Awardee.Designation.Department.Organisation")
-                    .Include("Awardee.ReportingPerson")
-                    .Include("Awardee.ReportingPerson.ReportingPerson")
-                    .Include("Awardee.HR")
-                    .Include("AwardType")
-                    .Include("Status")
-                    .ToList();
-                return award;
-            }
-            catch(Exception exception)
-            {
-                throw exception;
-            }
-        }
-
-        public IEnumerable<Award> GetAllbyOrgwise(int id)
-        {
-            try
-            {
-                var award = _context.Set<Award>()
-                    .Include("Awardee")
-                    .Include("Awardee.Designation")
-                    .Include("Awardee.Designation.Department")
-                    .Include("Awardee.Designation.Department.Organisation")
-                    .Include("Awardee.ReportingPerson")
-                    .Include("Awardee.ReportingPerson.ReportingPerson")
-                    .Include("Awardee.HR")
-                    .Include("AwardType")
-                    .Include("Status")
-                    .Where(nameof => nameof.Awardee.Designation.Department.OrganisationId == id)
-                    .ToList();
-                return award;
-            }
-            catch(Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public IEnumerable<Award> GetAllWinners()
-        {
-            try
-            {
-                var award = _context.Set<Award>()
-                    .Include("Awardee")
-                    .Include("Awardee.Designation")
-                    .Include("Awardee.Designation.Department")
-                    .Include("Awardee.Designation.Department.Organisation")
-                    .Include("Awardee.ReportingPerson")
-                    .Include("Awardee.ReportingPerson.ReportingPerson")
-                    .Include("Awardee.HR")
-                    .Include("AwardType")
-                    .Include("Status")
-                    .Where(nameof => nameof.StatusId == 4)
-                    .ToList();
-                return award;
-            }
-            catch(Exception exception)
-            {
-                throw exception;
-            }
-        }
-
-         public Award GetAwardById(int id)
-        {
-            try{
-                var award=_context.Set<Award>()
-                    .Include("Awardee")
-                    .Include("Awardee.Designation")
-                    .Include("Awardee.Designation.Department")
-                    .Include("Awardee.Designation.Department.Organisation")
-                    .Include("Awardee.ReportingPerson")
-                    .Include("Awardee.ReportingPerson.ReportingPerson")
-                    .Include("Awardee.HR")
-                    .Include("AwardType")
-                    .Include("Status")
-                    .FirstOrDefault(nameof=> nameof.Id == id);
-                return award;
-            }
-            catch(Exception exception)
-            {
-                throw exception;
-            }
-        }
+      
 
         public Employee GetEmployeeById(int id)
         {
@@ -190,20 +99,6 @@ namespace A5.Data.Repository
             }
         }
 
-        public IEnumerable<Comment> GetComments(int awardId)
-        {
-           try
-           {
-               var comments= _context.Set<Comment>()
-                    .Include("Employees")
-                    .Include("Awards")
-                    .Where(nameof=>nameof.AwardId==awardId)
-                    .ToList();
-               return comments;
-           }
-           catch(Exception exception){
-               throw exception;
-           }
-        }
+        
     }
 }
