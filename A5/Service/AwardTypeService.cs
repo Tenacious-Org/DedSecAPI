@@ -33,8 +33,6 @@ namespace A5.Service
         {
           
             if(!AwardTypeValidations.UpdateValidation(awardType)) throw new ValidationException("Invalid data");
-            bool NameExists=_context.AwardTypes.Any(nameof=>nameof.AwardName==awardType.AwardName);
-            if(NameExists) throw new ValidationException("Award Name already exists");
             try{
                 return Update(awardType);
             }

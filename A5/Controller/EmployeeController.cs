@@ -131,8 +131,9 @@ namespace A5.Controller
         public ActionResult Create(Employee employee)
         {
             try{
-                
-                 return _employeeService.CreateEmployee(employee) ?  Ok("Employee Created."):Problem("Error occured"); 
+                employee.Image = System.Convert.FromBase64String(employee.ImageString);
+                var data=_employeeService.CreateEmployee(employee);
+                 return  Ok(data); 
             }
             catch(ValidationException exception)
             {
@@ -169,7 +170,9 @@ namespace A5.Controller
         public ActionResult Update(Employee employee)
         {
             try{
-               return _employeeService.UpdateEmployee(employee) ?  Ok("Employee Updated."):Problem("Error occured"); 
+                employee.Image = System.Convert.FromBase64String(employee.ImageString);
+                var data=_employeeService.UpdateEmployee(employee);
+               return  Ok(data); 
                 
             }
             catch(ValidationException exception)
