@@ -148,6 +148,7 @@ namespace A5.Controller
         /// </returns>
 
        [HttpGet("GetAwardById")]
+       [AllowAnonymous]
        public ActionResult GetAwardById(int id)
        {
         if(id<=0)
@@ -191,6 +192,7 @@ namespace A5.Controller
         /// </returns>
 
        [HttpGet("GetAwardsList")]
+       [AllowAnonymous]
        public ActionResult GetAwardsList(int ? pageId,int ? employeeId)
        {          
            try{
@@ -271,6 +273,7 @@ namespace A5.Controller
         /// </returns>
 
        [HttpGet("GetComments")]
+       [AllowAnonymous]
        public ActionResult GetComments(int awardId)
        {
            if(awardId<=0) return BadRequest("Award Id should not be negative or zero");
