@@ -13,7 +13,7 @@ namespace A5.Controller
     [ApiController]
     public class AwardTypeController : ControllerBase
     {
-        //private readonly AppDbContext _context;
+        
         private readonly IAwardTypeService _awardTypeService;
         private readonly ILogger<IAwardTypeService> _logger;
         public AwardTypeController( ILogger<IAwardTypeService> logger,IAwardTypeService awardTypeService)
@@ -49,13 +49,13 @@ namespace A5.Controller
             }
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                _logger.LogInformation($"AwardType Controller : GetAll() : (Error:{exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
+                _logger.LogError("log: (Error: {Message})",exception.Message);
+                _logger.LogInformation("AwardType Controller : GetAll() : (Error:{Message})",exception.Message);
+                return BadRequest(exception.Message);
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(exception.Message);
             }
         }
 
@@ -83,20 +83,19 @@ namespace A5.Controller
         {
             try
             {
-                //AwardTypeValidations awardTypeValidations=new AwardTypeValidations(_context);
-                //awardTypeValidations.ValidateGetById(id);
+               
                 var data = _awardTypeService.GetById(id);
                  return Ok(data);
             }
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                 _logger.LogInformation($"AwardType Controller : GetById(int id) : (Error:{exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
+                _logger.LogError("log: (Error: {Message})",exception.Message);
+                 _logger.LogInformation("AwardType Controller : GetById(int id) : (Error:{Message})",exception.Message);
+                return BadRequest(exception.Message);
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(exception.Message);
             }
         }
 
@@ -123,19 +122,19 @@ namespace A5.Controller
         public ActionResult Create(AwardType awardType)
         {
             try{
-                awardType.Image = System.Convert.FromBase64String(awardType.ImageString);
+                awardType.Image = System.Convert.FromBase64String(awardType.ImageString!);
                 var data=_awardTypeService.CreateAwardType(awardType);
                 return  Ok(data); 
             }
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                 _logger.LogInformation($"AwardType Controller : Create(AwardType awardType) : (Error:{exception.Message})");
-                return BadRequest(_awardTypeService.ErrorMessage($"{exception.Message}"));
+                _logger.LogError("log: (Error: {Message})",exception.Message);
+                 _logger.LogInformation("AwardType Controller : Create(AwardType awardType) : (Error:{Message})",exception.Message);
+                return BadRequest(_awardTypeService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(exception.Message);
             }
         }
 
@@ -162,19 +161,19 @@ namespace A5.Controller
         public ActionResult Update(AwardType awardType)
         {
             try{
-                awardType.Image = System.Convert.FromBase64String(awardType.ImageString);
+                awardType.Image = System.Convert.FromBase64String(awardType.ImageString!);
                 var data=_awardTypeService.UpdateAwardType(awardType);
                  return  Ok(data); 
             }
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                 _logger.LogInformation($"AwardType Controller : Update(AwardType awardType,int id) : (Error:{exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
+                _logger.LogError("log: (Error: {Message})",exception.Message);
+                 _logger.LogInformation("AwardType Controller : Update(AwardType awardType,int id) : (Error:{Message})",exception.Message);
+                return BadRequest(exception.Message);
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(exception.Message);
             }
         }
 
@@ -207,13 +206,13 @@ namespace A5.Controller
             }
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                 _logger.LogInformation($"AwardType Controller : Disable(int id) : (Error:{exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
+                _logger.LogError("log: (Error: {Message})",exception.Message);
+                 _logger.LogInformation("AwardType Controller : Disable(int id) : (Error:{Message})",exception.Message);
+                return BadRequest(exception.Message);
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(exception.Message);
             }
         }
 

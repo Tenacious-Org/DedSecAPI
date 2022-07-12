@@ -4,14 +4,14 @@ namespace A5.Models
 {
     public class Award
     {
-        public int Id {get; set;}
+        public int  Id {get; set;}
         public int RequesterId {get; set;}
         public int AwardeeId {get; set;}
         public int AwardTypeId {get; set;}
-        public int ApproverId {get; set;}
-        public string Reason {get;set;}
+        public int ? ApproverId {get; set;}
+        public string ? Reason {get;set;}
         public string ? RejectedReason {get;set;}
-        public int HRId {get;set;}
+        public int ? HRId {get;set;}
         public string ? CouponCode {get; set;}
         public int StatusId {get;set;}
         public int AddedBy {get; set;}
@@ -20,7 +20,7 @@ namespace A5.Models
         public DateTime ?  UpdatedOn {get;set;}
 
         [ForeignKey("AwardeeId")]
-        public virtual Employee? Awardee {get;set;}
+        public virtual Employee ? Awardee {get;set;}
 
         [ForeignKey("AwardTypeId")]
         public virtual AwardType? AwardType {get;set;}

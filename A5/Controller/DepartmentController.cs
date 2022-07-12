@@ -14,7 +14,6 @@ namespace A5.Controller
     public class DepartmentController : ControllerBase
     {
         private readonly ILogger<IDepartmentService> _logger;
-        //private readonly AppDbContext _context;
         private readonly IDepartmentService _departmentService;
         public DepartmentController(ILogger<IDepartmentService> logger,IDepartmentService departmentService)
         {
@@ -48,13 +47,13 @@ namespace A5.Controller
             }           
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                _logger.LogInformation($"Department Controller : GetAllDepartment() : (Error: {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
+                _logger.LogError("log: (Error: {Message})",exception.Message);
+                _logger.LogInformation("Department Controller : GetAllDepartment() : (Error: {Message})",exception.Message);
+                return BadRequest(exception.Message);
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(exception.Message);
             }
         }
 
@@ -84,19 +83,18 @@ namespace A5.Controller
         {
            
             try{
-                //DepartmentServiceValidations.ValidateGetByOrganisation(id);
                 var data = _departmentService.GetDepartmentsByOrganisationId(id);
                 return Ok(data);
             }          
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                 _logger.LogInformation($"Department Controller : GetDepartmentByOrganisationId(int id) : (Error: {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
+                _logger.LogError("log: (Error: {Message})",exception.Message);
+                 _logger.LogInformation("Department Controller : GetDepartmentByOrganisationId(int id) : (Error: {Message})",exception.Message);
+                return BadRequest(exception.Message);
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(exception.Message);
             }
         }
 
@@ -124,20 +122,19 @@ namespace A5.Controller
         {
             
             try{
-                // DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
-                // departmentValidations.ValidateGetById(id);
+               
                 var data = _departmentService.GetByDepartment(id);
                 return Ok(data);
             }           
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                 _logger.LogInformation($"Department Controller : GetByDepartmentId(int id) : (Error: {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
+                _logger.LogError("log: (Error: {exception.Message})",exception.Message);
+                 _logger.LogInformation("Department Controller : GetByDepartmentId(int id) : (Error: {exception.Message})",exception.Message);
+                return BadRequest(exception.Message);
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(exception.Message);
             }
         }
 
@@ -171,13 +168,13 @@ namespace A5.Controller
             }           
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                 _logger.LogInformation($"Department Controller : Create(Department department) : (Error: {exception.Message})");
-                return BadRequest(_departmentService.ErrorMessage($"{exception.Message}"));
+                _logger.LogError("log: (Error: {Message})",exception.Message);
+                 _logger.LogInformation("Department Controller : Create(Department department) : (Error: {Message})",exception.Message);
+                return BadRequest(_departmentService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(exception.Message);
             }
         }
 
@@ -210,13 +207,13 @@ namespace A5.Controller
             }
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                 _logger.LogInformation($"Department Controller : Update(Department department,int id) : (Error: {exception.Message})");
-                return BadRequest(_departmentService.ErrorMessage($"{exception.Message}"));
+                _logger.LogError("log: (Error: {Message})",exception.Message);
+                 _logger.LogInformation("Department Controller : Update(Department department,int id) : (Error: {Message})",exception.Message);
+                return BadRequest(_departmentService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(exception.Message);
             }
         }
 
@@ -244,8 +241,6 @@ namespace A5.Controller
         {
              
             try{
-                // DepartmentServiceValidations departmentValidations=new DepartmentServiceValidations(_context);
-                // departmentValidations.DisableValidation(id);
                  var checkEmployee = _departmentService.GetCount(id);
                 if(checkEmployee>0){
                     return Ok(checkEmployee);
@@ -257,13 +252,13 @@ namespace A5.Controller
             }           
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                 _logger.LogInformation($"Department Controller : Disable(int id) : (Error: {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
+                _logger.LogError("log: (Error: {Message})",exception.Message);
+                 _logger.LogInformation("Department Controller : Disable(int id) : (Error: {Message})",exception.Message);
+                return BadRequest(exception.Message);
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(exception.Message);
             }
         }
     }

@@ -1,7 +1,7 @@
 using A5.Models;
 namespace A5.Hasher
 {
-    public class PasswordHasherFactory
+    public static class PasswordHasherFactory
     {
         public static BCryptPasswordHasher<Employee> GetPasswordHasherFactory()
         {

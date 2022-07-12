@@ -80,8 +80,7 @@ namespace A5.Controller
         public ActionResult GetEmployeeById([FromQuery] int id)
         {
             try{
-                // EmployeeServiceValidations employeeServiceValidations=new EmployeeServiceValidations(_context);
-                // employeeServiceValidations.ValidateGetById(id);
+               
                 var data = _employeeService.GetEmployeeById(id);
                 return Ok(data);
             }
@@ -131,7 +130,7 @@ namespace A5.Controller
         public ActionResult Create(Employee employee)
         {
             try{
-                employee.Image = System.Convert.FromBase64String(employee.ImageString);
+                employee.Image = System.Convert.FromBase64String(employee.ImageString!);
                 var data=_employeeService.CreateEmployee(employee);
                  return  Ok(data); 
             }
@@ -170,8 +169,8 @@ namespace A5.Controller
         public ActionResult Update(Employee employee)
         {
             try{
-                employee.Image = System.Convert.FromBase64String(employee.ImageString);
-                var data=_employeeService.UpdateEmployee(employee);
+                employee.Image = System.Convert.FromBase64String(employee.ImageString!);
+                var data=_employeeService.UpdateEmployee( employee);
                return  Ok(data); 
                 
             }
@@ -211,9 +210,8 @@ namespace A5.Controller
         {
             try
             {
-                // EmployeeServiceValidations employeeServiceValidations=new EmployeeServiceValidations(_context);
-                // employeeServiceValidations.DisableValidation(id);
-                var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.HRId== id || nameof.ReportingPersonId== id  ).ToList().Count();
+       
+                var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.HRId== id || nameof.ReportingPersonId== id  ).Count();
                 if(checkEmployee>0){
                     return Ok(checkEmployee);
                 }else{

@@ -14,8 +14,8 @@ namespace A5.Controller
     [ApiController]
     public class OrganisationController : ControllerBase
     {
-        private  ILogger<IOrganisationService> _logger;
-        private  IOrganisationService _organisationService;
+        private  readonly ILogger<IOrganisationService> _logger;
+        private  readonly IOrganisationService _organisationService;
         public OrganisationController(ILogger<IOrganisationService> logger,  IOrganisationService organisationService)
         {
             _logger = logger;
@@ -208,7 +208,7 @@ namespace A5.Controller
                 if(checkEmployee > 0)
                 {             
                     return Ok(checkEmployee);
-                    // return Ok ( new{Message= "There are certain Employees in that Organisation. You're gonna change their Organisation to disable this Organisation." } );
+                   
                 }
                 else
                 {

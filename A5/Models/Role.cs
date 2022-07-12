@@ -8,8 +8,8 @@ namespace A5.Models
     {
         [Key]
         public int Id {get; set;}
-        public string RoleName {get;set;}
+        public string ? RoleName {get;set;}
 
-        public virtual ICollection<Designation> Designations {get;set;}
+        public virtual ICollection<Designation> ? Designations {get;set;}
     }
 }

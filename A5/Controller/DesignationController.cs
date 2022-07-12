@@ -125,8 +125,6 @@ namespace A5.Controller
         {
             
             try{
-                // DesignationServiceValidations designationServiceValidations=new DesignationServiceValidations(_context);
-                // designationServiceValidations.ValidateGetById(id);
                 var data = _designationService.GetById(id);
                 return Ok(data);
             }           
@@ -246,9 +244,7 @@ namespace A5.Controller
             
             try
             {
-                // DesignationServiceValidations designationServiceValidations=new DesignationServiceValidations(_context);
-                // designationServiceValidations.DisableValidation(id);
-               // var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.DesignationId== id).ToList().Count();
+               
                   var checkEmployee = _designationService.GetCount(id);
                 if(checkEmployee>0){
                     return Ok(checkEmployee);

@@ -1,14 +1,15 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using A5.Models;
 using Microsoft.EntityFrameworkCore;
 namespace A5.Data.Repository
 {
-    public class EntityBaseRepository<T> : IEntityBaseRepository<T> where T : class, IAudit, IEntityBase,  new()
+    public class EntityBaseRepository<T>  : IEntityBaseRepository<T> where T : class, IAudit, IEntityBase,  new()
     {
         private readonly AppDbContext _context;
-        private readonly Department department;
+  
 
         public EntityBaseRepository( AppDbContext context )
         {
@@ -28,15 +29,13 @@ namespace A5.Data.Repository
                 entity.AddedOn=DateTime.Now;
                 _context.SaveChanges();
                 result = true;
-            // if(entity!=null){
-               
-            // }
+          
             return result; 
                 
            }
-           catch(ValidationException exception)
+           catch(ValidationException)
            {
-               throw exception;
+               throw;
            }
 
         }
@@ -47,18 +46,18 @@ namespace A5.Data.Repository
           bool result = false;
             try
             {
-                if(id!= null )
+                if(id!=0)
                 {
                 var disable = _context.Set<T>().FirstOrDefault(nameof =>nameof.Id == id);
-                disable.IsActive = false;
+                disable!.IsActive = false;
                 _context.SaveChanges();
                 result= true;
                 }
                 return result; 
             }
-            catch(Exception exception)
+            catch(Exception)
             {
-                throw exception;
+                throw;
             }
                     
         }
@@ -78,22 +77,22 @@ namespace A5.Data.Repository
                 }
                 return result;               
             }
-            catch(Exception exception){
-                throw exception;
+            catch(Exception){
+                throw;
             }
             
         }
 
-        public T GetById(int id)
+        public T? GetById(int id)
         {
             
             try
             {
                 return _context.Set<T>().FirstOrDefault(nameof =>nameof.Id == id);              
             }
-            catch(Exception exception)
+            catch(Exception)
             {
-                throw exception;
+                throw ;
             }
             
         }
@@ -103,9 +102,9 @@ namespace A5.Data.Repository
             {
                 return _context.Set<T>().Where(nameof =>nameof.IsActive == true).ToList();
             }
-            catch(Exception exception)
+            catch(Exception)
             {
-                throw exception;
+                throw ;
             }
             
         }

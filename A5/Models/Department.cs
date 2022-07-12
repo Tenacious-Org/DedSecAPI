@@ -7,7 +7,7 @@ namespace A5.Models
     public class Department : IEntityBase, IAudit
     {
         public int Id{ get; set; }
-        public string DepartmentName{ get; set; }
+        public string ? DepartmentName{ get; set; }
         public int OrganisationId{ get; set; }
         public bool IsActive{ get; set; } = true;
 
