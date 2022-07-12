@@ -12,7 +12,7 @@ namespace A5.Data
                 var context = serviceScope.ServiceProvider.GetService<AppDbContext>()!;
                 context.Database.EnsureCreated();
                 
-                if(context.Organisations?.Any()==true)
+                if(!context.Organisations?.Any()==true)
                 {
                     context.Organisations.AddRange(new List<Organisation>() {
                         new Organisation()
@@ -45,7 +45,7 @@ namespace A5.Data
                     });
                     context.SaveChanges();
                 }
-                if(context.Departments?.Any()==true)
+                if(!context.Departments?.Any()==true)
                 {
                     context.Departments.AddRange(new List<Department>() {
                         new Department()
@@ -84,7 +84,7 @@ namespace A5.Data
                     context.SaveChanges();
                 }
 
-                if(context.Roles?.Any()==true)
+                if(!context.Roles?.Any()==true)
                 {
                     context.Roles.AddRange(new List<Role>() {
                         new Role()
@@ -111,7 +111,7 @@ namespace A5.Data
                     context.SaveChanges();
                 }
 
-                 if(context.Designations?.Any()==true)
+                 if(!context.Designations?.Any()==true)
                 {
                     context.Designations.AddRange(new List<Designation>() {
                         new Designation()
@@ -451,7 +451,7 @@ namespace A5.Data
                     });
                     context.SaveChanges();
                 }
-                if(context.AwardTypes?.Any()==true)
+                if(!context.AwardTypes?.Any()==true)
                 {
                     context.AwardTypes.AddRange(new List<AwardType>() {
                         new AwardType()
