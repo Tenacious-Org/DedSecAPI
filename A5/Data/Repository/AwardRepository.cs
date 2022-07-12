@@ -23,9 +23,9 @@ namespace A5.Data.Repository
         try{
             var employee = _master.GetEmployeeById(id);
                 _context.Set<Award>().Add(award);
-                award.RequesterId=employee.Id;
-                award.ApproverId= (int)employee.ReportingPersonId;
-                award.HRId= (int)employee.HRId;
+                award.RequesterId=employee!.Id;
+                award.ApproverId = (int?)employee.ReportingPersonId;
+                award.HRId= (int?)employee.HRId;
                 award.StatusId=1;
                 award.AddedBy=employee.Id;
                 award.AddedOn=DateTime.Now;
@@ -33,9 +33,9 @@ namespace A5.Data.Repository
                 result=true;
                 return result;
         }
-        catch(Exception exception)
+        catch(Exception)
         {
-            throw exception;
+            throw;
         }
     }
     public bool ApproveRequest(Award award,int id)
@@ -44,18 +44,19 @@ namespace A5.Data.Repository
        try{
          var employee = _master.GetEmployeeById(id);
                 _context.Set<Award>().Update(award);
-                award.UpdatedBy=employee.Id;
+                award.UpdatedBy=employee?.Id;
                 award.UpdatedOn=DateTime.Now;
                 _context.SaveChanges();
                 result=true;
                 return result;  
        }
-       catch(Exception exception)
+       catch(Exception)
        {
-        throw exception;
+        throw;
        }
     }
-     public Award GetAwardById(int id)
+   
+     public Award? GetAwardById(int id)
         {
             try{
                 var award=_context.Set<Award>()
@@ -71,9 +72,9 @@ namespace A5.Data.Repository
                     .FirstOrDefault(nameof=> nameof.Id == id);
                 return award;
             }
-            catch(Exception exception)
+            catch(Exception)
             {
-                throw exception;
+                throw;
             }
         }
         public bool AddComments(Comment comment)
@@ -86,9 +87,9 @@ namespace A5.Data.Repository
                     result=true;
                     return result;
             }
-            catch(Exception exception)
+            catch(Exception)
             {
-                throw exception;
+                throw;
             }
 
         }
@@ -104,8 +105,8 @@ namespace A5.Data.Repository
                     .ToList();
                return comments;
            }
-           catch(Exception exception){
-               throw exception;
+           catch(Exception){
+               throw;
            }
         }
           public IEnumerable<Award> GetAllAwardsList()
@@ -125,9 +126,9 @@ namespace A5.Data.Repository
                     .ToList();
                 return award;
             }
-            catch(Exception exception)
+            catch(Exception)
             {
-                throw exception;
+                throw;
             }
         }
         public IEnumerable<Award> GetAllWinners()
@@ -148,9 +149,9 @@ namespace A5.Data.Repository
                     .ToList();
                 return award;
             }
-            catch(Exception exception)
+            catch(Exception)
             {
-                throw exception;
+                throw;
             }
         }
         
@@ -168,13 +169,13 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof => nameof.Awardee.Designation.Department.OrganisationId == id)
+                    .Where(nameof => nameof.Awardee!.Designation!.Department!.OrganisationId == id)
                     .ToList();
                 return award;
             }
-            catch(Exception e)
+            catch(Exception)
             {
-                throw e;
+                throw;
             }
         }
 

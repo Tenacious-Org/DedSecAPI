@@ -12,13 +12,11 @@ namespace A5.Controller
     public class TokenController : ControllerBase
     {
 
-        private TokenService _tokenService;
-        private ILogger<TokenController> _logger;
-        public TokenController(TokenService tokenService, ILogger<TokenController> logger)
+        private readonly TokenService _tokenService;
+        public TokenController(TokenService tokenService)
         {
 
             _tokenService = tokenService;
-            _logger = logger;
         }
 
        

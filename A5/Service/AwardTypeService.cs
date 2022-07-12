@@ -18,14 +18,14 @@ namespace A5.Service
         {
            
             if(!AwardTypeValidations.CreateValidation(awardType)) throw new ValidationException("Invalid data");
-            bool NameExists=_context.AwardTypes.Any(nameof=>nameof.AwardName==awardType.AwardName);
+            bool NameExists=_context.AwardTypes!.Any(nameof=>nameof.AwardName==awardType.AwardName)==true;
             if(NameExists) throw new ValidationException("Award Name already exists");
             try{
                 return Create(awardType);
             }
-            catch(Exception exception)
+            catch(Exception)
             {
-                throw exception;
+                throw ;
             }
         }
         
@@ -36,23 +36,23 @@ namespace A5.Service
             try{
                 return Update(awardType);
             }
-            catch(Exception exception)
+            catch(Exception)
             {
-                throw exception;
+                throw;
             }
         }
         public bool DisableAwardType(int id)
         {
             AwardType awardType=new AwardType();
             if(!AwardTypeValidations.DisableValidation(id)) throw new ValidationException("Invalid data");
-            bool NameExists=_context.AwardTypes.Any(nameof=>nameof.AwardName==awardType.AwardName);
+            bool NameExists=_context.AwardTypes!.Any(nameof=>nameof.AwardName==awardType.AwardName)==true;
             if(NameExists) throw new ValidationException("Award Name already exists");
             try{
                 return Disable(id);
             }
-            catch(Exception exception)
+            catch(Exception)
             {
-                throw exception;
+                throw ;
             }
         }
          public object ErrorMessage(string ValidationMessage)

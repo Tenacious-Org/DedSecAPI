@@ -14,15 +14,12 @@ namespace A5.Controller
     [ApiController]
     public class DashboardController : ControllerBase
     {
-        private readonly ILogger<DashboardController> _logger;
-        private readonly AppDbContext _context;
+     
         private readonly DashboardService _dash;
 
-        public DashboardController(ILogger<DashboardController> logger, DashboardService dash, AppDbContext context)
+        public DashboardController( DashboardService dash)
         {
-            _logger = logger;
             _dash = dash;
-            _context = context;
         }
 
         [HttpGet("GetAllWinners")]
@@ -35,7 +32,7 @@ namespace A5.Controller
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(exception.Message);
             }
         }
         [HttpGet("GetAllOrgWise")]
@@ -48,7 +45,7 @@ namespace A5.Controller
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(exception.Message);
             }
         }   
     }

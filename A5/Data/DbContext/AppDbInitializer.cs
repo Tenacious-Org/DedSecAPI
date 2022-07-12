@@ -3,16 +3,16 @@ using Microsoft.AspNetCore.Identity;
 
 namespace A5.Data
 {
-    public class AppDbInitializer
+    public static class AppDbInitializer
     {
          public static void Seed(IApplicationBuilder applicationBuilder)
         {
             using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
             {
-                var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
+                var context = serviceScope.ServiceProvider.GetService<AppDbContext>()!;
                 context.Database.EnsureCreated();
                 
-                if(!context.Organisations.Any())
+                if(context.Organisations?.Any()==true)
                 {
                     context.Organisations.AddRange(new List<Organisation>() {
                         new Organisation()
@@ -45,7 +45,7 @@ namespace A5.Data
                     });
                     context.SaveChanges();
                 }
-                if(!context.Departments.Any())
+                if(context.Departments?.Any()==true)
                 {
                     context.Departments.AddRange(new List<Department>() {
                         new Department()
@@ -84,7 +84,7 @@ namespace A5.Data
                     context.SaveChanges();
                 }
 
-                if(!context.Roles.Any())
+                if(context.Roles?.Any()==true)
                 {
                     context.Roles.AddRange(new List<Role>() {
                         new Role()
@@ -111,7 +111,7 @@ namespace A5.Data
                     context.SaveChanges();
                 }
 
-                 if(!context.Designations.Any())
+                 if(context.Designations?.Any()==true)
                 {
                     context.Designations.AddRange(new List<Designation>() {
                         new Designation()
@@ -202,7 +202,7 @@ namespace A5.Data
                     context.SaveChanges();
                 }
                 
-                if (!context.Employees.Any())
+                if (context.Employees?.Any()==true)
                 {
                     context.Employees.AddRange(new List<Employee>() { 
                        new Employee()
@@ -451,7 +451,7 @@ namespace A5.Data
                     });
                     context.SaveChanges();
                 }
-                if(!context.AwardTypes.Any())
+                if(context.AwardTypes?.Any()==true)
                 {
                     context.AwardTypes.AddRange(new List<AwardType>() {
                         new AwardType()
@@ -493,9 +493,9 @@ namespace A5.Data
                     });
                     context.SaveChanges();
                 }
-                if(!context.Statuses.Any())
+                if(!context.Statuses?.Any()==true)
                 {
-                    context.Statuses.AddRange(new List<Status>() {
+                    context.Statuses!.AddRange(new List<Status>() {
                         new Status()
                         {
                             StatusName = "Pending",
@@ -522,9 +522,9 @@ namespace A5.Data
 
                 
 
-                if(!context.Awards.Any())
+                if(!context.Awards?.Any()==true)
                 {
-                    context.Awards.AddRange(new List<Award>() {
+                    context.Awards!.AddRange(new List<Award>() {
                         new Award()
                         {
                             AwardTypeId = 1,
@@ -598,27 +598,6 @@ namespace A5.Data
             }
         }
         
-        // public static async Task SeedRolesAsync(IApplicationBuilder applicationBuilder)
-        // {
-        //     using(var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
-        //     {
-        //         var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-
-        //         if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
-        //             await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
-
-        //         if (!await roleManager.RoleExistsAsync(UserRoles.Publisher))
-        //             await roleManager.CreateAsync(new IdentityRole(UserRoles.Publisher));
-
-        //         if (!await roleManager.RoleExistsAsync(UserRoles.Approver))
-        //             await roleManager.CreateAsync(new IdentityRole(UserRoles.Approver));
-
-        //         if (!await roleManager.RoleExistsAsync(UserRoles.Requester))
-        //             await roleManager.CreateAsync(new IdentityRole(UserRoles.Requester));
-                
-        //         if (!await roleManager.RoleExistsAsync(UserRoles.User))
-        //             await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
-        //     };
-        // }
+       
     }
 }

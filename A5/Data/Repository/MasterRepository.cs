@@ -9,7 +9,7 @@ namespace A5.Data.Repository
 {
     public class MasterRepository
     {
-        private AppDbContext _context;
+        private readonly AppDbContext _context;
         public MasterRepository(AppDbContext context)
         {
             _context = context;
@@ -21,9 +21,9 @@ namespace A5.Data.Repository
                 var departments = _context.Set<Department>().Where(nameof =>nameof.IsActive == true).Include("Organisation").ToList();
                 return departments;
             }
-            catch(Exception exception)
+            catch(Exception)
             {
-                throw exception;
+                throw;
             }
         }
         public IEnumerable<Designation> GetAllDesignation()
@@ -33,9 +33,9 @@ namespace A5.Data.Repository
                 var designations = _context.Set<Designation>().Where(nameof =>nameof.IsActive == true).Include("Department").ToList();
                 return designations;
             }
-            catch(Exception exception)
+            catch(Exception)
             {
-                throw exception;
+                throw;
             }
         }
         public IEnumerable<Employee> GetAllEmployees()
@@ -52,9 +52,9 @@ namespace A5.Data.Repository
                     .ToList();
                 return employee;
             }
-            catch(Exception exception)
+            catch(Exception)
             {
-                throw exception;
+                throw;
             }
         }
 
@@ -72,14 +72,14 @@ namespace A5.Data.Repository
                     .ToList();
                 return employee;
             }
-            catch(Exception exception)
+            catch(Exception)
             {
-                throw exception;
+                throw;
             }
         }
       
 
-        public Employee GetEmployeeById(int id)
+        public Employee? GetEmployeeById(int id)
         {
             try
             {
@@ -93,9 +93,9 @@ namespace A5.Data.Repository
                     .FirstOrDefault(nameof =>nameof.Id == id);
                 return employee;
             }
-            catch(Exception exception)
+            catch(Exception )
             {
-                throw exception;
+                throw;
             }
         }
 

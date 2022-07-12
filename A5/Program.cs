@@ -92,7 +92,7 @@ builder.Services.AddHttpLogging(httpLogging=>
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-// builder.Services.AddSwaggerGen();
+
 builder.Services.AddSwaggerGen(options =>
 {
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
@@ -131,6 +131,6 @@ app.UseCors(builder =>
 });
 
 //AppDbInitializer.Seed(app);
-//AppDbInitializer.SeedRolesAsync(app).Wait();
+
 
 app.Run();

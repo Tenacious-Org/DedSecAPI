@@ -8,7 +8,7 @@ namespace A5.Data.Repository
         public bool Create(T entity);
         public bool Disable(int id);
         public bool Update(T entity);
-        public T GetById(int id);
+        public T? GetById(int id);
         public IEnumerable<T> GetAll();
 
     }

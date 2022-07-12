@@ -12,9 +12,9 @@ namespace A5.Models
         [Key]
         public int Id {get;set;}
         [Required]
-        public string AwardName {get;set;}
+        public string ? AwardName {get;set;}
         [Required]
-        public string AwardDescription {get;set;}
+        public string ? AwardDescription {get;set;}
         public byte[] ? Image { get ; set; }
 
         public string ? ImageName { get ; set; }
@@ -29,7 +29,7 @@ namespace A5.Models
         public DateTime ? UpdatedOn {get;set;}
 
         [NotMapped]
-        public string ImageString {get;set;}
+        public string ? ImageString {get;set;}
 
 
        

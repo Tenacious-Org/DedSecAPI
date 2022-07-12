@@ -6,7 +6,7 @@ namespace A5.Models
     public class Designation : IEntityBase, IAudit
     {
         public int Id{ get; set; }
-        public string  DesignationName{ get; set; }
+        public string ? DesignationName{ get; set; }
         public int RoleId{get;set;}
         public int DepartmentId{ get; set; }
         public bool IsActive{ get; set; } = true;
