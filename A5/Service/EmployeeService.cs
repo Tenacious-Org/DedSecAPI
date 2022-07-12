@@ -152,7 +152,35 @@ namespace A5.Service
              try
              {
                  var employee = _master.GetEmployeeById(id);
-                 return  new{
+                 if(employee.HRId==null || employee.ReportingPersonId==null){
+                    return  new{
+                            id = employee.Id,
+                            aceid = employee.ACEID,
+                            firstName = employee.FirstName,
+                            lastName = employee.LastName,
+                            email = employee.Email,
+                            image = employee.Image,
+                            gender = employee.Gender,
+                            dob = employee.DOB,
+                            organisationId = employee.OrganisationId,
+                            departmentId = employee.DepartmentId,
+                            designationId = employee.DesignationId,
+                            organisationName = employee.Designation.Department.Organisation.OrganisationName,
+                            departmentName = employee.Designation.Department.DepartmentName,
+                            designationName = employee.Designation.DesignationName,
+                            // reportingPersonId=employee.ReportingPersonId,
+                            // hrId=employee.HRId,
+                            // reportingPersonName = employee.ReportingPerson.FirstName,
+                            // hRName = employee.HR.FirstName,
+                            password = employee.Password,
+                            isActive = employee.IsActive,
+                            addedBy = employee.AddedBy,
+                            addedOn = employee.AddedOn,
+                            updatedBy = employee.UpdatedBy,
+                            updatedOn = employee.UpdatedOn
+                };
+            }else{
+                return  new{
                             id = employee.Id,
                             aceid = employee.ACEID,
                             firstName = employee.FirstName,
@@ -178,6 +206,8 @@ namespace A5.Service
                             updatedBy = employee.UpdatedBy,
                             updatedOn = employee.UpdatedOn
                 };
+            }
+                 
              }
              catch(Exception exception)
              {

@@ -53,7 +53,6 @@ namespace A5.Service
                     token = new JwtSecurityTokenHandler().WriteToken(token),
                     ExpiryInMinutes = 360,
                     UserId=user.Id,
-                    UserName=user.FirstName +' '+ user.LastName,
                     IsRole = user.Designation.RoleId,
                     IsRequester = user.Designation.RoleId == 2 ? true : false,
                     IsApprover = user.Designation.RoleId == 3? true : false,
