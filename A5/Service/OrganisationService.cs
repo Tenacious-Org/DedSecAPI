@@ -13,10 +13,12 @@ namespace A5.Service
     public class OrganisationService : EntityBaseRepository<Organisation>, IOrganisationService
     {
         private readonly AppDbContext _context;
-      //  private EntityBaseRepository<Organisation> _organisation;
+     
+       private readonly ILogger<EntityBaseRepository<Organisation>> _logger;
 
-        public OrganisationService(AppDbContext context) : base(context) {
+        public OrganisationService(AppDbContext context,ILogger<EntityBaseRepository<Organisation>> logger) : base(context,logger) {
                 _context=context;
+                _logger=logger;
          } 
          
         public bool CreateOrganisation(Organisation organisation)

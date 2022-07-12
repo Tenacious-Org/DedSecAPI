@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using A5.Models;
@@ -10,6 +11,7 @@ namespace A5.Data.Repository
     public class MasterRepository
     {
         private readonly AppDbContext _context;
+        
         public MasterRepository(AppDbContext context)
         {
             _context = context;
@@ -21,9 +23,12 @@ namespace A5.Data.Repository
                 var departments = _context.Set<Department>().Where(nameof =>nameof.IsActive == true).Include("Organisation").ToList();
                 return departments;
             }
-            catch(Exception)
+             catch(ValidationException)
             {
                 throw;
+            }
+            catch (Exception ){
+              throw;
             }
         }
         public IEnumerable<Designation> GetAllDesignation()
@@ -33,10 +38,14 @@ namespace A5.Data.Repository
                 var designations = _context.Set<Designation>().Where(nameof =>nameof.IsActive == true).Include("Department").ToList();
                 return designations;
             }
-            catch(Exception)
+             catch(ValidationException)
             {
                 throw;
             }
+            catch (Exception){
+               throw;
+            } 
+            
         }
         public IEnumerable<Employee> GetAllEmployees()
         {
@@ -52,10 +61,16 @@ namespace A5.Data.Repository
                     .ToList();
                 return employee;
             }
-            catch(Exception)
+             catch(ValidationException)
             {
+               
                 throw;
             }
+            catch (Exception){
+               throw;
+            } 
+            
+            
         }
 
         public IEnumerable<Employee> GetUserDetails()
@@ -72,10 +87,13 @@ namespace A5.Data.Repository
                     .ToList();
                 return employee;
             }
-            catch(Exception)
+             catch(ValidationException )
             {
                 throw;
             }
+            catch (Exception ){
+               throw;
+            } 
         }
       
 

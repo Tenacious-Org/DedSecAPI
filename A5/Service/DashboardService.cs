@@ -25,16 +25,16 @@ namespace A5.Service
                 var orgwise = _award.GetAllbyOrgwise(orgid);
                 return orgwise.Select(Award => new{
                     
-                    organisation = Award.Awardee.Designation.Department.Organisation.OrganisationName,
+                    organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
                     
-                    department = Award.Awardee.Designation.Department.DepartmentName,
+                    department = Award?.Awardee?.Designation?.Department?.DepartmentName,
                     
-                    awardName = Award.AwardType.AwardName,
+                    awardName = Award?.AwardType?.AwardName,
                 });
             }
-            catch(Exception exception)
+            catch(Exception)
             {
-                throw exception;
+                throw;
             }
         }
 
@@ -45,16 +45,16 @@ namespace A5.Service
                 var winners = _award.GetAllWinners();
                 return winners.Select(Award => new{
                     
-                    organisation = Award.Awardee.Designation.Department.Organisation.OrganisationName,
+                    organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
                     
-                    department = Award.Awardee.Designation.Department.DepartmentName,
+                    department = Award?.Awardee?.Designation?.Department?.DepartmentName,
                     
-                    awardName = Award.AwardType.AwardName,
+                    awardName = Award?.AwardType?.AwardName,
                 });
             }
-            catch(Exception exception)
+            catch(Exception)
             {
-                throw exception;
+                throw;
             }
         }
     }

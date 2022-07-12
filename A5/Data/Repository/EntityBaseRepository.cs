@@ -9,34 +9,38 @@ namespace A5.Data.Repository
     public class EntityBaseRepository<T>  : IEntityBaseRepository<T> where T : class, IAudit, IEntityBase,  new()
     {
         private readonly AppDbContext _context;
-  
+        private readonly ILogger<EntityBaseRepository<T>> _logger;
 
-        public EntityBaseRepository( AppDbContext context )
+       
+        public EntityBaseRepository( AppDbContext context,ILogger<EntityBaseRepository<T>> logger)
         {
             _context = context;
+            _logger=logger;
         }
 
         //Methods
         public bool Create(T entity)
         {
-
-           bool result = false;
-          
+   
            try
            {
               _context.Set<T>().Add(entity);
                 entity.AddedBy=1;
                 entity.AddedOn=DateTime.Now;
                 _context.SaveChanges();
-                result = true;
-          
-            return result; 
+            return true; 
                 
            }
-           catch(ValidationException)
-           {
-               throw;
-           }
+            catch(ValidationException exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogInformation("Entity Base Repository : Create(T entity) : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch (Exception exception){
+              _logger.LogError("Error: {Message}",exception.Message);
+              return false;
+            }
 
         }
 
@@ -55,9 +59,15 @@ namespace A5.Data.Repository
                 }
                 return result; 
             }
-            catch(Exception)
+              catch(ValidationException exception)
             {
+                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogInformation("Entity Base Repository : Disable(int id) : (Error:{Message}",exception.Message);
                 throw;
+            }
+            catch (Exception exception){
+              _logger.LogError("Error: {Message}",exception.Message);
+              return result;
             }
                     
         }
@@ -77,8 +87,15 @@ namespace A5.Data.Repository
                 }
                 return result;               
             }
-            catch(Exception){
+             catch(ValidationException exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogInformation("Entity Base Repository : Update(T entity) : (Error:{Message}",exception.Message);
                 throw;
+            }
+            catch (Exception exception){
+              _logger.LogError("Error: {Message}",exception.Message);
+              return result;
             }
             
         }
@@ -90,9 +107,15 @@ namespace A5.Data.Repository
             {
                 return _context.Set<T>().FirstOrDefault(nameof =>nameof.Id == id);              
             }
-            catch(Exception)
+            catch(ValidationException exception)
             {
-                throw ;
+                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogInformation("Entity Base Repository : GetById(int id) : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch (Exception exception){
+              _logger.LogError("Error: {Message}",exception.Message);
+              throw;
             }
             
         }
@@ -102,9 +125,15 @@ namespace A5.Data.Repository
             {
                 return _context.Set<T>().Where(nameof =>nameof.IsActive == true).ToList();
             }
-            catch(Exception)
+            catch(ValidationException exception)
             {
-                throw ;
+                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogInformation("Entity Base Repository : GetAll() : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch (Exception exception){
+              _logger.LogError("Error: {Message}",exception.Message);
+               throw;
             }
             
         }

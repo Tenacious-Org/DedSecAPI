@@ -11,8 +11,10 @@ namespace A5.Service
     public class AwardTypeService : EntityBaseRepository<AwardType>,IAwardTypeService
     {
         private readonly AppDbContext _context;
-        public AwardTypeService(AppDbContext context) : base(context) { 
+         private readonly ILogger<EntityBaseRepository<AwardType>> _logger;
+        public AwardTypeService(AppDbContext context,ILogger<EntityBaseRepository<AwardType>> logger ) : base(context,logger) { 
             _context=context;
+            _logger=logger;
         }
           public bool CreateAwardType(AwardType awardType)
         {
