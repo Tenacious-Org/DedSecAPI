@@ -45,6 +45,7 @@ namespace A5.Data
                     });
                     context.SaveChanges();
                 }
+                
                 if(!context.Departments?.Any()==true)
                 {
                     context.Departments.AddRange(new List<Department>() {
@@ -111,7 +112,7 @@ namespace A5.Data
                     context.SaveChanges();
                 }
 
-                 if(!context.Designations?.Any()==true)
+                if(!context.Designations?.Any()==true)
                 {
                     context.Designations.AddRange(new List<Designation>() {
                         new Designation()
@@ -202,7 +203,7 @@ namespace A5.Data
                     context.SaveChanges();
                 }
                 
-                if (context.Employees?.Any()==true)
+                if(!context.Employees?.Any()==true)
                 {
                     context.Employees.AddRange(new List<Employee>() { 
                        new Employee()
@@ -451,6 +452,7 @@ namespace A5.Data
                     });
                     context.SaveChanges();
                 }
+
                 if(!context.AwardTypes?.Any()==true)
                 {
                     context.AwardTypes.AddRange(new List<AwardType>() {
@@ -493,6 +495,7 @@ namespace A5.Data
                     });
                     context.SaveChanges();
                 }
+
                 if(!context.Statuses?.Any()==true)
                 {
                     context.Statuses!.AddRange(new List<Status>() {
@@ -519,8 +522,6 @@ namespace A5.Data
                     });
                     context.SaveChanges();
                 }
-
-                
 
                 if(!context.Awards?.Any()==true)
                 {
