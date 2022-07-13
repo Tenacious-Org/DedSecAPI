@@ -128,7 +128,7 @@ namespace A5.Service
             EmployeeServiceValidations.ValidateGetByRequester(id);
             try
             {
-                return _context.Set<Employee>().Where(nameof => nameof.ReportingPersonId == id).ToList();
+                return _context.Set<Employee>().Where(nameof => nameof.ReportingPersonId == id && nameof.IsActive==true).ToList();
             }
             catch(ValidationException exception)
             {
