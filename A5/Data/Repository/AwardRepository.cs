@@ -214,7 +214,7 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof => nameof.Awardee!.Designation!.Department!.OrganisationId == id)
+                    .Where(nameof => nameof.Awardee!.Designation!.Department!.OrganisationId == id && nameof.StatusId == 4)
                     .ToList();
                 return award;
             }
