@@ -46,10 +46,11 @@ namespace A5.Service.Validations
             else return true;
         }
 
-        public static void ValidateGetByOrganisation(int id)
+        public static bool ValidateGetByOrganisation(int id)
         {
             if(id==0) throw new ValidationException("Organisation should not be null");
             if(id<0) throw new ValidationException("Organisation Id should not be negative");
+            else return true;
 
         }
 

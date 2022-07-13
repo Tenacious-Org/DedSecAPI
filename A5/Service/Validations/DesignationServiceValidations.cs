@@ -5,11 +5,11 @@ using System.Text.RegularExpressions;
 
 namespace A5.Service.Validations
 {
-    public class DesignationServiceValidations
+    public static class DesignationServiceValidations
     {
         
 
-        public bool CreateValidation(Designation designation)
+        public static bool CreateValidation(Designation designation)
         {           
             if(String.IsNullOrWhiteSpace(designation.DesignationName)) throw new ValidationException("Designation Name should not be null or Empty.");
             if(!( Regex.IsMatch(designation.DesignationName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("Designation Name should have only alphabets.No special Characters or numbers are allowed");
@@ -17,7 +17,7 @@ namespace A5.Service.Validations
             if(designation.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
-        public bool UpdateValidation(Designation designation)
+        public static bool UpdateValidation(Designation designation)
         {
             if(string.IsNullOrWhiteSpace(designation.DesignationName)) throw new ValidationException("Designation name should not be null or empty");
             if(!( Regex.IsMatch(designation.DesignationName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("Designation Name should have only alphabets.No special Characters or numbers are allowed");
@@ -26,7 +26,7 @@ namespace A5.Service.Validations
             if(designation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
-         public bool DisableValidation(int id)
+         public static bool DisableValidation(int id)
         {
             Designation designation = new Designation();
             if((id == 0)) throw new ValidationException("Designation Id should not be null.");
@@ -34,7 +34,7 @@ namespace A5.Service.Validations
             if(designation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
-         public bool ValidateGetById(int id)
+         public static bool ValidateGetById(int id)
         {
             Designation designation = new Designation();
             if((id == 0)) throw new ValidationException("Designation Id should not be null.");
@@ -42,9 +42,10 @@ namespace A5.Service.Validations
         }
          
         
-        public static void ValidateGetByDepartment(int id)
+        public static bool ValidateGetByDepartment(int id)
         {
             if(id==0) throw new ValidationException("Organisation should not be null");
+            else return true;
 
         }
     }

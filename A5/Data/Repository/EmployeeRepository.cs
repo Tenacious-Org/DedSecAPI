@@ -21,7 +21,7 @@ namespace A5.Data.Repository
 
         public IEnumerable<Employee> GetByHR(int id)
         {
-            EmployeeServiceValidations.ValidateGetByHr(id);
+            if(!EmployeeServiceValidations.ValidateGetByHr(id)) throw new ValidationException("Invalid data");
             try
             {
                 return _context.Set<Employee>().Where(nameof => nameof.HRId == id && nameof.IsActive == true).ToList();
@@ -41,7 +41,7 @@ namespace A5.Data.Repository
 
         public IEnumerable<Employee> GetByReportingPerson(int id)
         {
-            EmployeeServiceValidations.ValidateGetByReportingPerson(id);
+            if(!EmployeeServiceValidations.ValidateGetByReportingPerson(id)) throw new ValidationException("Invalid data");
             try
             {
                 return _context.Set<Employee>().Where(nameof => nameof.ReportingPersonId == id).ToList();
@@ -61,7 +61,7 @@ namespace A5.Data.Repository
 
         public IEnumerable<Employee> GetEmployeeByDepartmentId(int id)
         {
-            EmployeeServiceValidations.ValidateGetByDepartment(id);
+            if(!EmployeeServiceValidations.ValidateGetByDepartment(id)) throw new ValidationException("Invalid data");
             try
             {
                 return _context.Set<Employee>().Where(nameof => nameof.DepartmentId == id).ToList();
@@ -79,7 +79,7 @@ namespace A5.Data.Repository
         }
         public IEnumerable<Employee> GetReportingPersonByDepartmentId(int id)
         {
-            EmployeeServiceValidations.ValidateGetByDepartment(id);
+            if(!EmployeeServiceValidations.ValidateGetByDepartment(id)) throw new ValidationException("Invalid data");
             try
             {
 
@@ -98,7 +98,7 @@ namespace A5.Data.Repository
         }
         public IEnumerable<Employee> GetHrByDepartmentId(int id)
         {
-            EmployeeServiceValidations.ValidateGetByDepartment(id);
+            if(!EmployeeServiceValidations.ValidateGetByDepartment(id)) throw new ValidationException("Invalid data");
             try
             {
                 return _context.Set<Employee>().Where(nameof => nameof.DepartmentId == id && nameof.Designation!.DesignationName == "hr").ToList();
@@ -116,7 +116,7 @@ namespace A5.Data.Repository
         }
         public IEnumerable<Employee> GetEmployeeByRequesterId(int id)
         {
-            EmployeeServiceValidations.ValidateGetByRequester(id);
+            if(!EmployeeServiceValidations.ValidateGetByRequester(id)) throw new ValidationException("Invalid data");
             try
             {
                 return _context.Set<Employee>().Where(nameof => nameof.ReportingPersonId == id && nameof.IsActive == true).ToList();
@@ -134,7 +134,7 @@ namespace A5.Data.Repository
         }
         public IEnumerable<Employee> GetEmployeeByOrganisation(int id)
         {
-            EmployeeServiceValidations.ValidateGetByOrganisation(id);
+            if(!EmployeeServiceValidations.ValidateGetByOrganisation(id)) throw new ValidationException("Invalid data");
             try
             {
                 var result = _context.Set<Employee>().Where(nameof => nameof.IsActive == true && nameof.OrganisationId == id).ToList();
@@ -210,6 +210,7 @@ namespace A5.Data.Repository
 
         public Employee? GetEmployeeById(int id)
         {
+            if(!EmployeeServiceValidations.ValidateGetById(id)) throw new ValidationException("Invalid data");
             try
             {
                 var employee = _context.Set<Employee>()
@@ -274,14 +275,13 @@ namespace A5.Data.Repository
         }
         public bool ChangePassword(Employee employee, int id, String Email)
         {
-            bool result = false;
+            if(!EmployeeServiceValidations.PasswordValidation(employee,id,Email)) throw new ValidationException("Invalid data");
             try
             {            
                 EmployeeServiceValidations.PasswordValidation(employee, id, Email);
                 _context.Set<Employee>().Update(employee);
                 _context.SaveChanges();
-                result = true;
-                return result;
+                return true;
             }
             catch (ValidationException exception)
             {
@@ -291,7 +291,7 @@ namespace A5.Data.Repository
             catch (Exception exception)
             {
                 _logger.LogError("Error: {Message}", exception.Message);
-                throw;
+                return false;
             }
         }
 
@@ -319,7 +319,11 @@ namespace A5.Data.Repository
 
         public bool CreateEmployee(Employee employee)
         {
-
+            if(!EmployeeServiceValidations.CreateValidation(employee)) throw new ValidationException("Invalid data");
+            bool IsIdAlreadyExists=_context.Employees!.Any(nameof=>nameof.ACEID==employee.ACEID);
+            if(!IsIdAlreadyExists) throw new ValidationException("Employee Id already exists");
+            bool IsEmailAlreadyExists=_context.Employees!.Any(nameof=>nameof.Email==employee.Email);
+            if(!IsEmailAlreadyExists) throw new ValidationException("Email Id already exists");
             try
             {
                 return Create(employee);
@@ -338,6 +342,7 @@ namespace A5.Data.Repository
         }
         public bool UpdateEmployee(Employee employee)
         {
+            if(!EmployeeServiceValidations.UpdateValidation(employee)) throw new ValidationException("Invalid data");
             try
             {
                 return Update(employee);
@@ -356,6 +361,7 @@ namespace A5.Data.Repository
         }
         public bool DisableEmployee(int id)
         {
+            if(!EmployeeServiceValidations.DisableValidation(id)) throw new ValidationException("Invalid data");
             try
             {
                 return Disable(id);
@@ -374,6 +380,7 @@ namespace A5.Data.Repository
         }
         public int GetEmployeeCount(int id)
         {
+            if(!EmployeeServiceValidations.ValidateById(id)) throw new ValidationException("Invalid data");
             try
             {
 

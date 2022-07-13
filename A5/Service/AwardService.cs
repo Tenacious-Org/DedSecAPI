@@ -23,7 +23,7 @@ namespace A5.Service
         public bool RaiseRequest(Award award,int id)
         {
              
-            AwardServiceValidations.RequestValidation(award,id);
+            if(!AwardServiceValidations.RequestValidation(award,id)) throw new ValidationException("Invalid data");
             try{
                return _award.RaiseAwardRequest(award,id);
             }
@@ -60,7 +60,7 @@ namespace A5.Service
         
         public object GetAwardById(int id)
         {
-            AwardServiceValidations.ValidateGetAwardById(id);
+            if(!AwardServiceValidations.ValidateGetAwardById(id)) throw new ValidationException("Invalid data");
             try{
                 var award= _award.GetAwardById(id);
                 return new{
@@ -110,7 +110,7 @@ namespace A5.Service
 
         public bool AddComment(Comment comment)
         {
-             AwardServiceValidations.ValidateAddComment(comment);
+            if(!AwardServiceValidations.ValidateAddComment(comment)) throw new ValidationException("Invalid data");
             try{
                   return _award.AddComments(comment);
             }
@@ -180,6 +180,7 @@ namespace A5.Service
 
         public IEnumerable<object> GetComments(int awardId)
         {
+            if(!AwardServiceValidations.ValidateGetComments(awardId)) throw new ValidationException("Invalid data");
             try{
                  var comments=_award.GetComments(awardId);
                    return comments.Select( Comment =>  new{

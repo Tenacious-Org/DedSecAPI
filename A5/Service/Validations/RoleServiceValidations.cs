@@ -4,10 +4,11 @@ namespace A5.Service.Validations
 {
     public static class RoleServiceValidations
     {
-        public static void ValidateGetById(int id)
+        public static bool ValidateGetById(int id)
         {
             if(id==0) throw new ValidationException("Role Id should not be null");
             if(id<0) throw new ValidationException("Role Id should not be negative");
+            else return true;
         }
     }
 }

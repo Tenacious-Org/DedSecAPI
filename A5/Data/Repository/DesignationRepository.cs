@@ -18,7 +18,7 @@ namespace A5.Data.Repository
 
          public IEnumerable<Designation> GetDesignationsByDepartmentId(int id)
          {
-             DesignationServiceValidations.ValidateGetByDepartment(id);
+             if(!DesignationServiceValidations.ValidateGetByDepartment(id)) throw new ValidationException("Invalid data");
             try
             {
                 var data =  _context.Set<Designation>().Where(nameof =>nameof.DepartmentId == id && nameof.IsActive == true).ToList();
@@ -81,8 +81,7 @@ namespace A5.Data.Repository
         }
           public bool CreateDesignation(Designation designation)
         {
-            var obj = new DesignationServiceValidations();
-            if(!obj.CreateValidation(designation)) throw new ValidationException("Invalid data");
+            if(!DesignationServiceValidations.CreateValidation(designation)) throw new ValidationException("Invalid data");
             bool NameExists=_context.Designations!.Any(nameof=>nameof.DesignationName==designation.DesignationName && nameof.DepartmentId==designation.DepartmentId);
             if(NameExists) throw new ValidationException("Designation Name already exists");
             try{
@@ -110,8 +109,7 @@ namespace A5.Data.Repository
         }
         public bool UpdateDesignation(Designation designation)
         {
-             var obj = new DesignationServiceValidations();
-            if(!obj.UpdateValidation(designation)) throw new ValidationException("Invalid Data");
+            if(!DesignationServiceValidations.UpdateValidation(designation)) throw new ValidationException("Invalid Data");
              bool NameExists=_context.Designations!.Any(nameof=>nameof.DesignationName==designation.DesignationName);
             if(NameExists) throw new ValidationException("Designation Name already exists");
             try{
@@ -130,7 +128,7 @@ namespace A5.Data.Repository
         }
         public bool DisableDesignation(int id)
         {
-          
+            if(!DesignationServiceValidations.DisableValidation(id)) throw new ValidationException("Invalid data");
             try{
                 return Disable(id);
             }

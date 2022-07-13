@@ -95,7 +95,7 @@ namespace A5.Service
 
          public AwardType? GetAwardTypeById(int id)
         {
-          
+            if(!AwardTypeValidations.ValidateGetById(id)) throw new ValidationException("Invalid data");
             try{
                 return _awardTypeRepository.GetAwardTypeById(id);
             }

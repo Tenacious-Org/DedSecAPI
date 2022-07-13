@@ -100,7 +100,7 @@ namespace A5.Service
         }
         public IEnumerable<Department> GetDepartmentsByOrganisationId(int id)
          { 
-            DepartmentServiceValidations.ValidateGetByOrganisation(id);
+            if(!DepartmentServiceValidations.ValidateGetByOrganisation(id)) throw new ValidationException("Invalid data");
             try
             {
                return _departmentRepository.GetDepartmentsByOrganisationId(id);

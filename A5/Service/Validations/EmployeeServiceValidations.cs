@@ -44,29 +44,35 @@ namespace A5.Service.Validations
             else return true;
         }
         
-        public static void ValidateGetByHr(int id)
+        public static bool ValidateGetByHr(int id)
         {
             if(id==0) throw new ValidationException("HR Id should not be null");
+            else return true;
         }
-        public static void ValidateGetByReportingPerson(int id)
+        public static bool ValidateGetByReportingPerson(int id)
         {
             if(id==0) throw new ValidationException("Reporting Person Id should not be null");
+            else return true;
         }
-        public static void ValidateGetByDepartment(int id)
+        public static bool ValidateGetByDepartment(int id)
         {
             if(id==0) throw new ValidationException("Department Id should not be null");
+            else return true;
         }
-       public static void ValidateGetByRequester(int id)
+       public static bool ValidateGetByRequester(int id)
        {
             if(id==0) throw new ValidationException("Requester ID should not be null");
+            else return true;
        }
-       public static void ValidateGetByOrganisation(int id)
+       public static bool ValidateGetByOrganisation(int id)
        {
            if(id==0) throw new ValidationException("Organisation id should not be null");
+           else return true;
        }
-       public static void GetEmployeeById(int id)
+       public static bool ValidateById(int id)
        {
         if(id==0) throw new ValidationException("Employee id should not be null");
+        else return true;
        }
                   
 

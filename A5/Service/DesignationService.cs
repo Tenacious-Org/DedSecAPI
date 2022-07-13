@@ -22,7 +22,7 @@ namespace A5.Service
 
          public IEnumerable<Designation> GetDesignationsByDepartmentId(int id)
          {
-             DesignationServiceValidations.ValidateGetByDepartment(id);
+            if(!DesignationServiceValidations.ValidateGetByDepartment(id)) throw new ValidationException("Invalid data");
             try
             {
                 return _desginationRepository.GetDesignationsByDepartmentId(id);
@@ -54,7 +54,7 @@ namespace A5.Service
          }
           public bool CreateDesignation(Designation designation)
         {
-           
+            if(!DesignationServiceValidations.CreateValidation(designation)) throw new ValidationException("Invalid data");
             try{
                 return _desginationRepository.CreateDesignation(designation);
             }
@@ -79,7 +79,7 @@ namespace A5.Service
         }
         public bool UpdateDesignation(Designation designation)
         {
-             
+            if(!DesignationServiceValidations.UpdateValidation(designation)) throw new ValidationException("Invalid data"); 
             try{
                 return _desginationRepository.UpdateDesignation(designation);
             }
@@ -96,7 +96,7 @@ namespace A5.Service
         }
         public bool DisableDesignation(int id)
         {
-            
+            if(!DesignationServiceValidations.DisableValidation(id)) throw new ValidationException("Invalid data");
             try{
                 return _desginationRepository.DisableDesignation(id);
             }
@@ -114,6 +114,7 @@ namespace A5.Service
 
         public Designation? GetDesignationById(int id)
         {
+            if(!DesignationServiceValidations.ValidateGetById(id)) throw new ValidationException("Invalid data");
              try{
                 return _desginationRepository.GetDesignationById(id);
             }

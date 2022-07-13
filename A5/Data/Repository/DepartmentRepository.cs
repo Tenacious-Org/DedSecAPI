@@ -116,7 +116,7 @@ namespace A5.Data.Repository
         }
         public IEnumerable<Department> GetDepartmentsByOrganisationId(int id)
          { 
-            DepartmentServiceValidations.ValidateGetByOrganisation(id);
+            if(!DepartmentServiceValidations.ValidateGetByOrganisation(id)) throw new ValidationException("Invalid data");
             try
             {
                 var organisationDetails = _context.Set<Department>().Where(nameof => nameof.OrganisationId == id && nameof.IsActive == true).ToList();

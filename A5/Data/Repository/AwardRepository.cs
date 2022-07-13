@@ -7,6 +7,8 @@ using A5.Models;
 using Microsoft.EntityFrameworkCore;
 using A5.Service.Interfaces;
 using A5.Data.Repository.Interface;
+using A5.Service.Validations;
+
 namespace A5.Data.Repository
 {
    public class AwardRepository
@@ -24,7 +26,7 @@ namespace A5.Data.Repository
         }
     public bool RaiseAwardRequest(Award award,int id)
     {
-       
+        if(!AwardServiceValidations.RequestValidation(award,id)) throw new ValidationException("Invalid data");
         try{
             var employee = _employeeRepository.GetEmployeeById(id);
                 _context.Set<Award>().Add(award);
@@ -49,15 +51,13 @@ namespace A5.Data.Repository
     }
     public bool ApproveRequest(Award award,int id)
     {
-         bool result = false;
        try{
          var employee = _employeeRepository.GetEmployeeById(id);
                 _context.Set<Award>().Update(award);
                 award.UpdatedBy=employee?.Id;
                 award.UpdatedOn=DateTime.Now;
                 _context.SaveChanges();
-                result=true;
-                return result;  
+                return true;  
        }
        catch(ValidationException exception)
         {
@@ -72,6 +72,7 @@ namespace A5.Data.Repository
    
      public Award? GetAwardById(int id)
         {
+            if(!AwardServiceValidations.ValidateGetAwardById(id)) throw new ValidationException("Invalid data");
             try{
                 var award=_context.Set<Award>()
                     .Include("Awardee")
@@ -98,13 +99,11 @@ namespace A5.Data.Repository
         }
         public bool AddComments(Comment comment)
         {
-           
-            bool result=false;
+            if(!AwardServiceValidations.ValidateAddComment(comment)) throw new ValidationException("Invalid data");
             try{
                   _context.Set<Comment>().Add(comment);
                     _context.SaveChanges();
-                    result=true;
-                    return result;
+                    return true;
             }
              catch(ValidationException exception)
             {
@@ -113,12 +112,13 @@ namespace A5.Data.Repository
             }
             catch (Exception exception){
               _logger.LogError("Error: {Message}",exception.Message);
-              throw;
+              return false;
             }
         }
         
          public IEnumerable<Comment> GetComments(int awardId)
         {
+            if(!AwardServiceValidations.ValidateGetComments(awardId)) throw new ValidationException("Invalid data");
            try
            {
                var comments= _context.Set<Comment>()

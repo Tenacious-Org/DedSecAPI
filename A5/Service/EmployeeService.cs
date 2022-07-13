@@ -24,7 +24,7 @@ namespace A5.Service
 
         public IEnumerable<Employee> GetByHR(int id)
         {
-            EmployeeServiceValidations.ValidateGetByHr(id);
+            if(!EmployeeServiceValidations.ValidateGetByHr(id)) throw new ValidationException("Invalid Data");
             try
             {
                 return _employeeRepository.GetByHR(id);
@@ -44,7 +44,7 @@ namespace A5.Service
 
         public IEnumerable<Employee> GetByReportingPerson(int id)
         {
-            EmployeeServiceValidations.ValidateGetByReportingPerson(id);
+            if(!EmployeeServiceValidations.ValidateGetByReportingPerson(id)) throw new ValidationException("Invalid data");
             try
             {
                 return _employeeRepository.GetByReportingPerson(id);
@@ -64,7 +64,7 @@ namespace A5.Service
 
         public IEnumerable<Employee> GetEmployeeByDepartmentId(int id)
         {
-            EmployeeServiceValidations.ValidateGetByDepartment(id);
+            if(!EmployeeServiceValidations.ValidateGetByDepartment(id)) throw new ValidationException("Invalid data");
             try
             {
                 return _employeeRepository.GetEmployeeByDepartmentId(id);
@@ -82,7 +82,7 @@ namespace A5.Service
         }
         public IEnumerable<Employee> GetReportingPersonByDepartmentId(int id)
         {
-            EmployeeServiceValidations.ValidateGetByDepartment(id);
+            if(!EmployeeServiceValidations.ValidateGetByDepartment(id)) throw new ValidationException("Invalid data");
             try
             {
 
@@ -101,7 +101,7 @@ namespace A5.Service
         }
         public IEnumerable<Employee> GetHrByDepartmentId(int id)
         {
-            EmployeeServiceValidations.ValidateGetByDepartment(id);
+            if(!EmployeeServiceValidations.ValidateGetByDepartment(id)) throw new ValidationException("Invalid data");
             try
             {
                 return _employeeRepository.GetHrByDepartmentId(id);
@@ -119,7 +119,7 @@ namespace A5.Service
         }
         public IEnumerable<Employee> GetEmployeeByRequesterId(int id)
         {
-            EmployeeServiceValidations.ValidateGetByRequester(id);
+            if(!EmployeeServiceValidations.ValidateGetByRequester(id)) throw new ValidationException("Invalid data");
             try
             {
                 return _employeeRepository.GetEmployeeByRequesterId(id);
@@ -137,7 +137,7 @@ namespace A5.Service
         }
         public IEnumerable<Employee> GetEmployeeByOrganisation(int id)
         {
-            EmployeeServiceValidations.ValidateGetByOrganisation(id);
+            if(!EmployeeServiceValidations.ValidateGetByOrganisation(id)) throw new ValidationException("Invalid data");
             try
             {
                 return _employeeRepository.GetEmployeeByOrganisation(id);
@@ -176,7 +176,7 @@ namespace A5.Service
         }
         public object GetEmployeeById(int id)
         {
-            EmployeeServiceValidations.GetEmployeeById(id);
+            if(!EmployeeServiceValidations.ValidateById(id)) throw new ValidationException("Invalid data");
             try
             {
                 var employee = _employeeRepository.GetEmployeeById(id);
@@ -366,6 +366,7 @@ namespace A5.Service
         }
         public int GetEmployeeCount(int id)
         {
+            if(!EmployeeServiceValidations.ValidateById(id)) throw new ValidationException("Invalid data");
             try
             {
 

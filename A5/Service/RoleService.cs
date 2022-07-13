@@ -5,6 +5,7 @@ using A5.Data.Repository;
 using A5.Service.Interfaces;
 using A5.Data;
 using System.ComponentModel.DataAnnotations;
+using A5.Service.Validations;
 
 namespace A5.Service
 {
@@ -18,6 +19,7 @@ namespace A5.Service
         }
         public Role? GetById(int id)
         {
+            if(!RoleServiceValidations.ValidateGetById(id)) throw new ValidationException("Invalid data");
             try
             {
                 return _context.Set<Role>().FirstOrDefault(nameof =>nameof.Id == id);              

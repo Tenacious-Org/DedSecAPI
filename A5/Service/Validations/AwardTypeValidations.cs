@@ -34,7 +34,6 @@ namespace A5.Service.Validations
         }
         public static bool ValidateGetById(int id)
         {
-            AwardType awardType=new AwardType();
             if(id==0) throw new ValidationException("Award Id should not be null.");
             else return true;
         }
