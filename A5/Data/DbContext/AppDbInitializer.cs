@@ -45,7 +45,7 @@ namespace A5.Data
                     });
                     context.SaveChanges();
                 }
-                
+
                 if(!context.Departments?.Any()==true)
                 {
                     context.Departments.AddRange(new List<Department>() {
@@ -595,7 +595,6 @@ namespace A5.Data
                     context.SaveChanges();
                 }
                
-
             }
         }
         
