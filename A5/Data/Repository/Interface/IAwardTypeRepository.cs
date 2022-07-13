@@ -9,7 +9,7 @@ namespace A5.Data.Repository.Interface
         public bool DisableAwardType(int id);
         public bool UpdateAwardType(AwardType entity);
         public AwardType? GetAwardTypeById(int id);
-        public IEnumerable<AwardType> GetAllAwardType();
+        public IEnumerable<AwardType> GetAllAwardTypes();
 
     }
 }

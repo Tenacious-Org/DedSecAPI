@@ -80,7 +80,7 @@ namespace A5.Service
         {
             
             try{
-                return _awardTypeRepository.GetAllAwardType();
+                return _awardTypeRepository.GetAllAwardTypes();
             }
              catch(ValidationException exception)
             {

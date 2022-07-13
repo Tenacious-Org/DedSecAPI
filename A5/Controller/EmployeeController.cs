@@ -207,11 +207,11 @@ namespace A5.Controller
             try
             {
        
-                var checkEmployee = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.HRId== id || nameof.ReportingPersonId== id  ).Count();
+                var checkEmployee = _employeeService.GetEmployeeCount(id);
                 if(checkEmployee>0){
                     return Ok(checkEmployee);
                 }else{
-                    var data = _employeeService.Disable(id);
+                    var data = _employeeService.DisableEmployee(id);
                     return Ok(data);
                 }
             }
@@ -383,25 +383,7 @@ namespace A5.Controller
                 return BadRequest($"Error : {exception.Message}");
             }
         }
-        [HttpPut("GeneratePassword")]
-        public ActionResult GeneratePassword(Employee employee,int id)
-        {
-            try
-            {
-                var data = _employeeService.GeneratePassword(employee,id);
-                return Ok(data);
-            }
-            catch(ValidationException exception)
-            {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                 _logger.LogInformation($"Employee Controller : GeneratePassword(Employee employee,int id) : (Error: {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
-            }
-            catch(Exception exception)
-            {
-                return BadRequest($"Error : {exception.Message}");
-            }
-        }
+        
         
         [HttpPut("ChangePassword")]
         public ActionResult ChangePassword(Employee employee,int id,string Email)

@@ -78,7 +78,7 @@ namespace A5.Data.Repository
             }
         }
 
-        public IEnumerable<AwardType> GetAllAwardType()
+        public IEnumerable<AwardType> GetAllAwardTypes()
         {
             
             try{

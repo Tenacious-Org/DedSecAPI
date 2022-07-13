@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using A5.Models;
 using A5.Data.Repository;
+using A5.Data.Repository.Interface;
 using A5.Service.Interfaces;
 using A5.Service.Validations;
 using System.ComponentModel.DataAnnotations;
@@ -10,17 +11,15 @@ using A5.Data.Service.Interfaces;
 
 namespace A5.Service
 {
-    public class EmployeeService : EntityBaseRepository<Employee>, IEmployeeService
+    public class EmployeeService : IEmployeeService
     {
-        private readonly AppDbContext _context;
-        private readonly MasterRepository _master;
-         private readonly ILogger<EntityBaseRepository<Employee>> _logger;
+        private readonly IEmployeeRepository _employeeRepository;
+        private readonly ILogger<IEmployeeRepository> _logger;
 
-        public EmployeeService(AppDbContext context, MasterRepository master,ILogger<EntityBaseRepository<Employee>> logger) : base(context,logger)
+        public EmployeeService(IEmployeeRepository employeeRepository, ILogger<IEmployeeRepository> logger)
         {
-            _context = context;
-            _master = master;
-            _logger=logger;
+            _employeeRepository = employeeRepository;
+            _logger = logger;
         }
 
         public IEnumerable<Employee> GetByHR(int id)
@@ -28,19 +27,19 @@ namespace A5.Service
             EmployeeServiceValidations.ValidateGetByHr(id);
             try
             {
-                return _context.Set<Employee>().Where(nameof => nameof.HRId == id && nameof.IsActive == true).ToList();
+                return _employeeRepository.GetByHR(id);
             }
-            catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeService: GetByHR(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("EmployeeService: GetByHR(int id) : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("Error: {Message}", exception.Message);
                 throw;
             }
-            
+
         }
 
         public IEnumerable<Employee> GetByReportingPerson(int id)
@@ -48,19 +47,19 @@ namespace A5.Service
             EmployeeServiceValidations.ValidateGetByReportingPerson(id);
             try
             {
-                return _context.Set<Employee>().Where(nameof => nameof.ReportingPersonId == id).ToList();
+                return _employeeRepository.GetByReportingPerson(id);
             }
-            catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeService: GetByReportingPerson(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("EmployeeService: GetByReportingPerson(int id) : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("Error: {Message}", exception.Message);
                 throw;
             }
-            
+
         }
 
         public IEnumerable<Employee> GetEmployeeByDepartmentId(int id)
@@ -68,16 +67,16 @@ namespace A5.Service
             EmployeeServiceValidations.ValidateGetByDepartment(id);
             try
             {
-                return _context.Set<Employee>().Where(nameof => nameof.DepartmentId == id).ToList();
+                return _employeeRepository.GetEmployeeByDepartmentId(id);
             }
-           catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeService: GetEmployeeByDepartmentId(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("EmployeeService: GetEmployeeByDepartmentId(int id) : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("Error: {Message}", exception.Message);
                 throw;
             }
         }
@@ -86,17 +85,17 @@ namespace A5.Service
             EmployeeServiceValidations.ValidateGetByDepartment(id);
             try
             {
-                
-                return _context.Set<Employee>().Where(nameof => nameof.DepartmentId == id && nameof.Designation!.DesignationName!="Trainee" ).ToList();
+
+                return _employeeRepository.GetReportingPersonByDepartmentId(id);
             }
-             catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeService: GetReportingPersonByDepartmentId(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("EmployeeService: GetReportingPersonByDepartmentId(int id) : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("Error: {Message}", exception.Message);
                 throw;
             }
         }
@@ -105,34 +104,34 @@ namespace A5.Service
             EmployeeServiceValidations.ValidateGetByDepartment(id);
             try
             {
-                return _context.Set<Employee>().Where(nameof => nameof.DepartmentId == id && nameof.Designation!.DesignationName=="hr").ToList();
+                return _employeeRepository.GetHrByDepartmentId(id);
             }
-            catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeService: GetHrByDepartmentId(id) : (Error:{Message}",exception.Message);
+                _logger.LogError("EmployeeService: GetHrByDepartmentId(id) : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("Error: {Message}", exception.Message);
                 throw;
             }
         }
-         public IEnumerable<Employee> GetEmployeeByRequesterId(int id)
+        public IEnumerable<Employee> GetEmployeeByRequesterId(int id)
         {
             EmployeeServiceValidations.ValidateGetByRequester(id);
             try
             {
-                return _context.Set<Employee>().Where(nameof => nameof.ReportingPersonId == id && nameof.IsActive==true).ToList();
+                return _employeeRepository.GetEmployeeByRequesterId(id);
             }
-            catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeService: GetEmployeeByRequesterId(Designation) : (Error:{Message}",exception.Message);
+                _logger.LogError("EmployeeService: GetEmployeeByRequesterId(Designation) : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("Error: {Message}", exception.Message);
                 throw;
             }
         }
@@ -141,259 +140,245 @@ namespace A5.Service
             EmployeeServiceValidations.ValidateGetByOrganisation(id);
             try
             {
-                var result = _context.Set<Employee>().Where(nameof =>nameof.IsActive == true && nameof.OrganisationId == id).ToList();
-                return result;
+                return _employeeRepository.GetEmployeeByOrganisation(id);
             }
-            catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeService: GetEmployeeByOrganisation(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("EmployeeService: GetEmployeeByOrganisation(int id) : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("Error: {Message}", exception.Message);
                 throw;
-            }
-            
-        }
-        public IEnumerable<object> GetAllEmployees()
-         {
-             try
-             {
-                 var employee = _master.GetAllEmployees();
-                    return employee.Select( Employee => new{
-                            id = Employee.Id,
-                            aceid = Employee.ACEID,
-                            firstName = Employee.FirstName,
-                            lastName = Employee.LastName,
-                            fullName= Employee.FirstName+" "+Employee.LastName,
-                            email = Employee.Email,
-                            image = Employee.Image,
-                            gender = Employee.Gender,
-                            dob = Employee.DOB,
-                            organisationName = Employee?.Designation?.Department?.Organisation?.OrganisationName,
-                            departmentName = Employee?.Designation?.Department?.DepartmentName,
-                            designationName = Employee?.Designation?.DesignationName,
-                            reportingPersonName = Employee?.ReportingPerson?.FirstName,
-                            hRName = Employee?.HR?.FirstName,
-                            password = Employee?.Password,
-                            isActive = Employee?.IsActive,
-                            addedBy = Employee?.AddedBy,
-                            addedOn = Employee?.AddedOn,
-                            updatedBy = Employee?.UpdatedBy,
-                            updatedOn = Employee?.UpdatedOn
-                    });
-             }
-              catch(ValidationException exception)
-            {
-                _logger.LogError("EmployeeService: GetAllEmployees() : (Error:{Message}",exception.Message);
-                throw;
-            }
-            catch(Exception exception)
-            {
-                _logger.LogError("Error: {Message}",exception.Message);
-                throw;
-            }
-            
-         }
-         public object GetEmployeeById(int id)
-         {
-            EmployeeServiceValidations.GetEmployeeById(id);
-             try
-             {
-                 var employee = _master.GetEmployeeById(id);
-                 if(employee?.HRId==null || employee.ReportingPersonId==null){
-                    return  new{
-                            id = employee?.Id,
-                            aceid = employee?.ACEID,
-                            firstName = employee?.FirstName,
-                            lastName = employee?.LastName,
-                            email = employee?.Email,
-                            image = employee?.Image,
-                            gender = employee?.Gender,
-                            dob = employee?.DOB,
-                            organisationId = employee?.OrganisationId,
-                            departmentId = employee?.DepartmentId,
-                            designationId = employee?.DesignationId,
-                            organisationName = employee?.Designation?.Department?.Organisation?.OrganisationName,
-                            departmentName = employee?.Designation?.Department?.DepartmentName,
-                            designationName = employee?.Designation?.DesignationName,
-                            password = employee?.Password,
-                            isActive = employee?.IsActive,
-                            addedBy = employee?.AddedBy,
-                            addedOn = employee?.AddedOn,
-                            updatedBy = employee?.UpdatedBy,
-                            updatedOn = employee?.UpdatedOn
-                };
-            }else{
-                return  new{
-                            id = employee.Id,
-                            aceid = employee.ACEID,
-                            firstName = employee.FirstName,
-                            lastName = employee.LastName,
-                            email = employee.Email,
-                            image = employee.Image,
-                            gender = employee.Gender,
-                            dob = employee.DOB,
-                            organisationId = employee.OrganisationId,
-                            departmentId = employee.DepartmentId,
-                            designationId = employee.DesignationId,
-                            organisationName = employee?.Designation?.Department?.Organisation?.OrganisationName,
-                            departmentName = employee?.Designation?.Department?.DepartmentName,
-                            designationName = employee?.Designation?.DesignationName,
-                            reportingPersonId=employee?.ReportingPersonId,
-                            hrId=employee?.HRId,
-                            reportingPersonName = employee?.ReportingPerson?.FirstName,
-                            hRName = employee?.HR?.FirstName,
-                            password = employee?.Password,
-                            isActive = employee?.IsActive,
-                            addedBy = employee?.AddedBy,
-                            addedOn = employee?.AddedOn,
-                            updatedBy = employee?.UpdatedBy,
-                            updatedOn = employee?.UpdatedOn
-                };
-            }
-                 
-             }
-             catch(ValidationException exception)
-            {
-                _logger.LogError("EmployeeService: GetEmployeeById(int id) : (Error:{Message}",exception.Message);
-                throw;
-            }
-            catch(Exception exception)
-            {
-                _logger.LogError("Error: {Message}",exception.Message);
-                throw;
-            }
-            
-         }
-         public bool GeneratePassword(Employee employee,int id)
-         {
-         
-           bool result=false;
-            try{
-                _context.Set<Employee>().Update(employee);
-                 string allowedChars = "";
-                 allowedChars = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,";
-                 allowedChars += "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,";
-                 allowedChars += "1,2,3,4,5,6,7,8,9,0,!,@,#,$,%,&,?";
-                 char[] sep = { ',' };
-                 string[] arr = allowedChars.Split(sep);
-                 string passwordString = "";
-                 string temp = "";
-                 Random rand = new Random();
-                 for (int i = 0; i < 8; i++)
-                 {
-                   temp = arr[rand.Next(0, arr.Length)];
-                   passwordString += temp;
-                 }
-                 employee.Password = passwordString;
-                 _context.SaveChanges();
-                 result=true;
-                 return result;            
-                }
-                catch(ValidationException exception)
-            {
-                _logger.LogError("EmployeeService: GeneratePassword(Employee employee,int id) : (Error:{Message}",exception.Message);
-                throw;
-            }
-            catch(Exception exception)
-            {
-                _logger.LogError("Error: {Message}",exception.Message);
-                throw;
-            }
-            }
-            public bool ChangePassword(Employee employee,int id,String Email)
-            {
-                bool result=false;
-                try{
-                    
-                      EmployeeServiceValidations employeeServiceValidations=new EmployeeServiceValidations(_context);
-                      employeeServiceValidations.PasswordValidation(employee,id,Email);
-                      _context.Set<Employee>().Update(employee);
-                      _context.SaveChanges();
-                      result=true;
-                       return result;
-                }
-                catch(ValidationException exception)
-            {
-                _logger.LogError("EmployeeService: ChangePassword(Employee employee,int id,String Email) : (Error:{Message}",exception.Message);
-                throw;
-            }
-            catch(Exception exception)
-            {
-                _logger.LogError("Error: {Message}",exception.Message);
-                throw;
-            }
             }
 
-             public Employee GetEmployee(string Email, string Password) 
+        }
+        public IEnumerable<object> GetAllEmployees()
         {
-            if(Email == null || Password ==null) throw new ValidationException("Email or Password cannot be null");
             try
             {
-                var User =_master.GetUserDetails().ToList().Find(user => user.Email == Email && user.Password==Password);
-                if (User == null) throw new ValidationException("Invalid user");
-                return User;
-               
+                var employee = _employeeRepository.GetAllEmployees();
+                return employee.Select(employee => GetEmployeeObject(employee));
             }
-            catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeService: GetEmployee(string Email,string Password) : (Error:{Message}",exception.Message);
+                _logger.LogError("EmployeeService: GetAllEmployees() : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("Error: {Message}", exception.Message);
+                throw;
+            }
+
+        }
+        public object GetEmployeeById(int id)
+        {
+            EmployeeServiceValidations.GetEmployeeById(id);
+            try
+            {
+                var employee = _employeeRepository.GetEmployeeById(id);
+                if (employee?.HRId == null || employee.ReportingPersonId == null)
+                {
+                    return new
+                    {
+                        id = employee?.Id,
+                        aceid = employee?.ACEID,
+                        firstName = employee?.FirstName,
+                        lastName = employee?.LastName,
+                        email = employee?.Email,
+                        image = employee?.Image,
+                        gender = employee?.Gender,
+                        dob = employee?.DOB,
+                        organisationId = employee?.OrganisationId,
+                        departmentId = employee?.DepartmentId,
+                        designationId = employee?.DesignationId,
+                        organisationName = employee?.Designation?.Department?.Organisation?.OrganisationName,
+                        departmentName = employee?.Designation?.Department?.DepartmentName,
+                        designationName = employee?.Designation?.DesignationName,
+                        password = employee?.Password,
+                        isActive = employee?.IsActive,
+                        addedBy = employee?.AddedBy,
+                        addedOn = employee?.AddedOn,
+                        updatedBy = employee?.UpdatedBy,
+                        updatedOn = employee?.UpdatedOn
+                    };
+                }
+                else
+                {
+                    return GetEmployeeObject(employee);
+                }
+
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("EmployeeService: GetEmployeeById(int id) : (Error:{Message}", exception.Message);
+                throw;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError("Error: {Message}", exception.Message);
+                throw;
+            }
+
+        }
+
+
+
+        public Employee GetEmployee(string email, string password)
+        {
+            if (email == null || password == null) throw new ValidationException("Email or Password cannot be null");
+            try
+            {
+
+                return _employeeRepository.GetEmployee(email, password);
+
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("EmployeeService: GetEmployee(string Email,string Password) : (Error:{Message}", exception.Message);
+                throw;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError("Error: {Message}", exception.Message);
                 throw;
             }
         }
 
         public bool CreateEmployee(Employee employee)
         {
-            EmployeeServiceValidations employeeServiceValidations=new EmployeeServiceValidations(_context);
-            employeeServiceValidations.CreateValidation(employee);
-            try{
-                return Create(employee);
-            }
-             catch(ValidationException exception)
+            try
             {
-                _logger.LogError("EmployeeService: CreateEmployee(Employee employee) : (Error:{Message}",exception.Message);
+                return _employeeRepository.CreateEmployee(employee);
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("EmployeeService: CreateEmployee(Employee employee) : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("Error: {Message}", exception.Message);
                 throw;
             }
 
         }
-         public bool UpdateEmployee(Employee employee)
+        public bool UpdateEmployee(Employee employee)
         {
-            EmployeeServiceValidations employeeServiceValidations=new EmployeeServiceValidations(_context);
-            employeeServiceValidations.UpdateValidation(employee);
-            try{
-                return Update(employee);
-            }
-             catch(ValidationException exception)
+
+            try
             {
-                _logger.LogError("Employee Service: UpdateEmployee(Employee employee) : (Error:{Message}",exception.Message);
+                return _employeeRepository.UpdateEmployee(employee);
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("EmployeeService: UpdateEmployee(Employee employee) : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("Error: {Message}", exception.Message);
                 throw;
             }
 
         }
-         public object ErrorMessage(string ValidationMessage)
+        public bool DisableEmployee(int id)
         {
-            return new{message=ValidationMessage};
+
+            try
+            {
+                return _employeeRepository.DisableEmployee(id);
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("EmployeeService: UpdateEmployee(Employee employee) : (Error:{Message}", exception.Message);
+                throw;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError("Error: {Message}", exception.Message);
+                throw;
+            }
+
         }
 
-    
+        public bool ChangePassword(Employee employee, int id, String email)
+        {
+            try
+            {
+
+                return _employeeRepository.ChangePassword(employee, id, email);
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("EmployeeService: ChangePassword(Employee employee,int id,String Email) : (Error:{Message}", exception.Message);
+                throw;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError("Error: {Message}", exception.Message);
+                throw;
+            }
+        }
+        public object ErrorMessage(string ValidationMessage)
+        {
+            return new { message = ValidationMessage };
+        }
+
+        private object GetEmployeeObject(Employee employee){
+            return new
+                    {
+                        id = employee.Id,
+                        aceid = employee.ACEID,
+                        firstName = employee.FirstName,
+                        lastName = employee.LastName,
+                        fullName = employee.FirstName + " " + employee.LastName,
+                        email = employee.Email,
+                        image = employee.Image,
+                        gender = employee.Gender,
+                        dob = employee.DOB,
+                        organisationId = employee.OrganisationId,
+                        departmentId = employee.DepartmentId,
+                        designationId = employee.DesignationId,
+                        organisationName = employee?.Designation?.Department?.Organisation?.OrganisationName,
+                        departmentName = employee?.Designation?.Department?.DepartmentName,
+                        designationName = employee?.Designation?.DesignationName,
+                        reportingPersonId = employee?.ReportingPersonId,
+                        hrId = employee?.HRId,
+                        reportingPersonName = employee?.ReportingPerson?.FirstName,
+                        hRName = employee?.HR?.FirstName,
+                        password = employee?.Password,
+                        isActive = employee?.IsActive,
+                        addedBy = employee?.AddedBy,
+                        addedOn = employee?.AddedOn,
+                        updatedBy = employee?.UpdatedBy,
+                        updatedOn = employee?.UpdatedOn
+                       
+                    };
+
+        }
+        public int GetEmployeeCount(int id){
+             try
+            {
+
+            return _employeeRepository.GetEmployeeCount(id);
+                }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("EmployeeService: ChangePassword(Employee employee,int id,String Email) : (Error:{Message}", exception.Message);
+                throw;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError("Error: {Message}", exception.Message);
+                throw;
+            }
+        }
+
+
     }
-    
-    
+
+
 }
