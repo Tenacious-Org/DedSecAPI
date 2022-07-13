@@ -39,14 +39,11 @@ builder.Services.AddTransient<IAwardService,AwardService>();
 builder.Services.AddTransient<MasterRepository>();
 builder.Services.AddTransient<AwardRepository>();
 builder.Services.AddTransient<IAwardTypeRepository,AwardTypeRepository>();
-<<<<<<< Updated upstream
 builder.Services.AddTransient<IEmployeeRepository,EmployeeRepository>();
-=======
 builder.Services.AddTransient<IOrganisationRepository,OrganisationRepository>();
 builder.Services.AddTransient<IDepartmentRepository,DepartmentRepository>();
 
 
->>>>>>> Stashed changes
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {

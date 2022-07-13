@@ -18,7 +18,8 @@ YC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\EmployeeRep
 [C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\EntityBaseRepository.csutf-8`
 WC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\Interface\IAudit.csutf-8n
 eC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\Interface\IAwardTypeRepository.csutf-8o
-fC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\Interface\IDepartmentRepository.csutf-8e
+fC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\Interface\IDepartmentRepository.csutf-8m
+dC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\Interface\IEmployeeRepository.csutf-8e
 \C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\Interface\IEntityBase.csutf-8o
 fC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\Interface\IEntityBaseRepository.csutf-8q
 hC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\Interface\IOrganisationRepository.csutf-8`

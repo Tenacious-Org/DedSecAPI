@@ -226,13 +226,13 @@ namespace A5.Service
 
 
 
-        public Employee GetEmployee(string email, string password)
+        public Employee GetEmployee(string Email, string Password)
         {
-            if (email == null || password == null) throw new ValidationException("Email or Password cannot be null");
+            if (Email == null || Password == null) throw new ValidationException("Email or Password cannot be null");
             try
             {
 
-                return _employeeRepository.GetEmployee(email, password);
+                return _employeeRepository.GetEmployee(Email, Password);
 
             }
             catch (ValidationException exception)
@@ -304,12 +304,12 @@ namespace A5.Service
 
         }
 
-        public bool ChangePassword(Employee employee, int id, String email)
+        public bool ChangePassword(Employee employee, int id, String Email)
         {
             try
             {
 
-                return _employeeRepository.ChangePassword(employee, id, email);
+                return _employeeRepository.ChangePassword(employee, id, Email);
             }
             catch (ValidationException exception)
             {

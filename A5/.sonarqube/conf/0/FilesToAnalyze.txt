@@ -18,6 +18,7 @@ C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\EntityBaseRe
 C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\Interface\IAudit.cs
 C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\Interface\IAwardTypeRepository.cs
 C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\Interface\IDepartmentRepository.cs
+C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\Interface\IEmployeeRepository.cs
 C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\Interface\IEntityBase.cs
 C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\Interface\IEntityBaseRepository.cs
 C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\Interface\IOrganisationRepository.cs

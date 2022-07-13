@@ -11,12 +11,12 @@ using A5.Data.Repository.Interface;
 
 namespace A5.Service
 {
-    public class DepartmentService : EntityBaseRepository<Department>, IDepartmentService
+    public class DepartmentService :  IDepartmentService
     {
          private readonly ILogger<EntityBaseRepository<Department>> _logger; 
          private readonly IDepartmentRepository _departmentRepository;
         
-        public DepartmentService(AppDbContext context, ILogger<EntityBaseRepository<Department>> logger,IDepartmentRepository departmentRepository) : base(context,logger) {
+        public DepartmentService( ILogger<EntityBaseRepository<Department>> logger,IDepartmentRepository departmentRepository){
                
                 _logger=logger;
                 _departmentRepository=departmentRepository;

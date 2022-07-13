@@ -14,12 +14,10 @@ namespace A5.Controller
     {
         private readonly EmployeeService _employeeService;
         private readonly ILogger<EmployeeController> _logger;
-        private readonly AppDbContext _context;
-        public EmployeeController(ILogger<EmployeeController> logger,EmployeeService employeeService,AppDbContext context)
+        public EmployeeController(ILogger<EmployeeController> logger,EmployeeService employeeService)
         {
             _logger = logger;
             _employeeService = employeeService;
-            _context=context;
         }
 
         /// <summary>
@@ -381,28 +379,7 @@ namespace A5.Controller
                 return Problem(exception.Message);
             }
         }
-<<<<<<< Updated upstream
         
-=======
-        [HttpPut("GeneratePassword")]
-        public ActionResult GeneratePassword(Employee employee,int id)
-        {
-            try
-            {
-                var data = _employeeService.GeneratePassword(employee,id);
-                return Ok(data);
-            }
-            catch(ValidationException exception)
-            {
-                 _logger.LogError("EmployeeController : GeneratePassword(Employee employee,int id) : (Error: {Message})",exception.Message);
-                return BadRequest(_employeeService.ErrorMessage(exception.Message));
-            }
-            catch(Exception exception)
-            {
-                return Problem(exception.Message);
-            }
-        }
->>>>>>> Stashed changes
         
         [HttpPut("ChangePassword")]
         public ActionResult ChangePassword(Employee employee,int id,string Email)

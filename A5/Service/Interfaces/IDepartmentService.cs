@@ -5,7 +5,7 @@ using A5.Data.Repository.Interface;
 
 namespace A5.Service.Interfaces
 {
-    public interface IDepartmentService : IEntityBaseRepository<Department>
+    public interface IDepartmentService
     {
         bool CreateDepartment(Department department);
         bool UpdateDepartment(Department department);

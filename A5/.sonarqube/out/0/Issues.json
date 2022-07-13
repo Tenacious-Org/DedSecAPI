@@ -12,27 +12,6 @@
       },
       "results": [
         {
-          "ruleId": "S1118",
-          "level": "warning",
-          "message": "Add a 'protected' constructor or the 'static' keyword to the class declaration.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/Validations/DepartmentServiceValidations.cs",
-                "region": {
-                  "startLine": 11,
-                  "startColumn": 18,
-                  "endLine": 11,
-                  "endColumn": 46
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
           "ruleId": "S1125",
           "level": "warning",
           "message": "Remove the unnecessary Boolean literal(s).",
@@ -45,321 +24,6 @@
                   "startColumn": 41,
                   "endLine": 15,
                   "endColumn": 46
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1125",
-          "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/MasterRepository.cs",
-                "region": {
-                  "startLine": 25,
-                  "startColumn": 95,
-                  "endLine": 25,
-                  "endColumn": 102
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1125",
-          "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Controller/EmployeeController.cs",
-                "region": {
-                  "startLine": 210,
-                  "startColumn": 93,
-                  "endLine": 210,
-                  "endColumn": 100
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1125",
-          "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/MasterRepository.cs",
-                "region": {
-                  "startLine": 50,
-                  "startColumn": 54,
-                  "endLine": 50,
-                  "endColumn": 61
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S4792",
-          "level": "warning",
-          "message": "Make sure that this logger's configuration is safe.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Program.cs",
-                "region": {
-                  "startLine": 18,
-                  "startColumn": 14,
-                  "endLine": 18,
-                  "endColumn": 39
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1125",
-          "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/MasterRepository.cs",
-                "region": {
-                  "startLine": 77,
-                  "startColumn": 54,
-                  "endLine": 77,
-                  "endColumn": 61
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S5122",
-          "level": "warning",
-          "message": "Make sure this permissive CORS policy is safe here.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Program.cs",
-                "region": {
-                  "startLine": 131,
-                  "startColumn": 5,
-                  "endLine": 132,
-                  "endColumn": 22
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CA1825",
-          "level": "note",
-          "message": "Avoid unnecessary zero-length array allocations.  Use Array.Empty<string>() instead.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Program.cs",
-                "region": {
-                  "startLine": 80,
-                  "startColumn": 13,
-                  "endLine": 80,
-                  "endColumn": 28
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1125",
-          "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/MasterRepository.cs",
-                "region": {
-                  "startLine": 104,
-                  "startColumn": 54,
-                  "endLine": 104,
-                  "endColumn": 61
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1125",
-          "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/DesignationService.cs",
-                "region": {
-                  "startLine": 29,
-                  "startColumn": 117,
-                  "endLine": 29,
-                  "endColumn": 124
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1125",
-          "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/DepartmentRepository.cs",
-                "region": {
-                  "startLine": 128,
-                  "startColumn": 91,
-                  "endLine": 128,
-                  "endColumn": 98
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1125",
-          "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/DepartmentRepository.cs",
-                "region": {
-                  "startLine": 136,
-                  "startColumn": 133,
-                  "endLine": 136,
-                  "endColumn": 140
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1125",
-          "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/DesignationService.cs",
-                "region": {
-                  "startLine": 87,
-                  "startColumn": 94,
-                  "endLine": 87,
-                  "endColumn": 101
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1125",
-          "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
-                "region": {
-                  "startLine": 31,
-                  "startColumn": 102,
-                  "endLine": 31,
-                  "endColumn": 109
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1125",
-          "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
-                "region": {
-                  "startLine": 126,
-                  "startColumn": 114,
-                  "endLine": 126,
-                  "endColumn": 120
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1125",
-          "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
-                "region": {
-                  "startLine": 144,
-                  "startColumn": 86,
-                  "endLine": 144,
-                  "endColumn": 93
                 }
               }
             }
@@ -432,6 +96,27 @@
           }
         },
         {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'employee'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/Validations/EmployeeServiceValidations.cs",
+                "region": {
+                  "startLine": 38,
+                  "startColumn": 22,
+                  "endLine": 38,
+                  "endColumn": 30
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
           "ruleId": "S1125",
           "level": "warning",
           "message": "Remove the unnecessary Boolean literal(s).",
@@ -459,12 +144,75 @@
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/StatusService.cs",
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/Validations/DesignationServiceValidations.cs",
                 "region": {
-                  "startLine": 43,
-                  "startColumn": 78,
-                  "endLine": 43,
-                  "endColumn": 85
+                  "startLine": 16,
+                  "startColumn": 40,
+                  "endLine": 16,
+                  "endColumn": 45
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/Validations/DesignationServiceValidations.cs",
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 40,
+                  "endLine": 24,
+                  "endColumn": 45
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/Validations/DesignationServiceValidations.cs",
+                "region": {
+                  "startLine": 33,
+                  "startColumn": 38,
+                  "endLine": 33,
+                  "endColumn": 43
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/Validations/DepartmentServiceValidations.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 39,
+                  "endLine": 18,
+                  "endColumn": 44
                 }
               }
             }
@@ -476,16 +224,58 @@
         {
           "ruleId": "S1481",
           "level": "warning",
-          "message": "Remove the unused local variable 'employee'.",
+          "message": "Remove the unused local variable 'designation'.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/Validations/EmployeeServiceValidations.cs",
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/Validations/DesignationServiceValidations.cs",
                 "region": {
-                  "startLine": 38,
-                  "startColumn": 22,
-                  "endLine": 38,
-                  "endColumn": 30
+                  "startLine": 39,
+                  "startColumn": 25,
+                  "endLine": 39,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/Validations/DepartmentServiceValidations.cs",
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 40,
+                  "endLine": 27,
+                  "endColumn": 45
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/Validations/DepartmentServiceValidations.cs",
+                "region": {
+                  "startLine": 44,
+                  "startColumn": 37,
+                  "endLine": 44,
+                  "endColumn": 42
                 }
               }
             }
@@ -543,27 +333,6 @@
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/Validations/DesignationServiceValidations.cs",
-                "region": {
-                  "startLine": 16,
-                  "startColumn": 40,
-                  "endLine": 16,
-                  "endColumn": 45
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1125",
-          "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
-          "locations": [
-            {
-              "resultFile": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/Validations/AwardTypeValidations.cs",
                 "region": {
                   "startLine": 31,
@@ -579,39 +348,18 @@
           }
         },
         {
-          "ruleId": "S1125",
+          "ruleId": "S4792",
           "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
+          "message": "Make sure that this logger's configuration is safe.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/Validations/DesignationServiceValidations.cs",
-                "region": {
-                  "startLine": 24,
-                  "startColumn": 40,
-                  "endLine": 24,
-                  "endColumn": 45
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1125",
-          "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/Validations/DepartmentServiceValidations.cs",
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Program.cs",
                 "region": {
                   "startLine": 18,
-                  "startColumn": 39,
+                  "startColumn": 14,
                   "endLine": 18,
-                  "endColumn": 44
+                  "endColumn": 39
                 }
               }
             }
@@ -642,18 +390,18 @@
           }
         },
         {
-          "ruleId": "S1125",
+          "ruleId": "S5122",
           "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
+          "message": "Make sure this permissive CORS policy is safe here.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/Validations/DesignationServiceValidations.cs",
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Program.cs",
                 "region": {
-                  "startLine": 33,
-                  "startColumn": 38,
-                  "endLine": 33,
-                  "endColumn": 43
+                  "startLine": 132,
+                  "startColumn": 5,
+                  "endLine": 133,
+                  "endColumn": 22
                 }
               }
             }
@@ -663,81 +411,18 @@
           }
         },
         {
-          "ruleId": "S1125",
-          "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
+          "ruleId": "CA1825",
+          "level": "note",
+          "message": "Avoid unnecessary zero-length array allocations.  Use Array.Empty<string>() instead.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/Validations/DepartmentServiceValidations.cs",
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Program.cs",
                 "region": {
-                  "startLine": 27,
-                  "startColumn": 40,
-                  "endLine": 27,
-                  "endColumn": 45
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1481",
-          "level": "warning",
-          "message": "Remove the unused local variable 'designation'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/Validations/DesignationServiceValidations.cs",
-                "region": {
-                  "startLine": 39,
-                  "startColumn": 25,
-                  "endLine": 39,
-                  "endColumn": 36
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1125",
-          "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/Validations/DepartmentServiceValidations.cs",
-                "region": {
-                  "startLine": 44,
-                  "startColumn": 37,
-                  "endLine": 44,
-                  "endColumn": 42
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1125",
-          "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EntityBaseRepository.cs",
-                "region": {
-                  "startLine": 123,
-                  "startColumn": 73,
-                  "endLine": 123,
-                  "endColumn": 80
+                  "startLine": 81,
+                  "startColumn": 13,
+                  "endLine": 81,
+                  "endColumn": 28
                 }
               }
             }
@@ -831,18 +516,18 @@
           }
         },
         {
-          "ruleId": "S2245",
+          "ruleId": "S1125",
           "level": "warning",
-          "message": "Make sure that using this pseudorandom number generator is safe here.",
+          "message": "Remove the unnecessary Boolean literal(s).",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/StatusService.cs",
                 "region": {
-                  "startLine": 284,
-                  "startColumn": 32,
-                  "endLine": 284,
-                  "endColumn": 44
+                  "startLine": 43,
+                  "startColumn": 78,
+                  "endLine": 43,
+                  "endColumn": 85
                 }
               }
             }
@@ -852,18 +537,102 @@
           }
         },
         {
-          "ruleId": "S1643",
+          "ruleId": "S1125",
           "level": "warning",
-          "message": "Use a StringBuilder instead.",
+          "message": "Remove the unnecessary Boolean literal(s).",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/MasterRepository.cs",
                 "region": {
-                  "startLine": 288,
-                  "startColumn": 20,
-                  "endLine": 288,
-                  "endColumn": 42
+                  "startLine": 25,
+                  "startColumn": 95,
+                  "endLine": 25,
+                  "endColumn": 102
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/MasterRepository.cs",
+                "region": {
+                  "startLine": 50,
+                  "startColumn": 54,
+                  "endLine": 50,
+                  "endColumn": 61
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/MasterRepository.cs",
+                "region": {
+                  "startLine": 77,
+                  "startColumn": 54,
+                  "endLine": 77,
+                  "endColumn": 61
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/MasterRepository.cs",
+                "region": {
+                  "startLine": 104,
+                  "startColumn": 54,
+                  "endLine": 104,
+                  "endColumn": 61
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EntityBaseRepository.cs",
+                "region": {
+                  "startLine": 123,
+                  "startColumn": 73,
+                  "endLine": 123,
+                  "endColumn": 80
                 }
               }
             }
@@ -1102,9 +871,319 @@
           "properties": {
             "warningLevel": 1
           }
+        },
+        {
+          "ruleId": "CA1822",
+          "level": "note",
+          "message": "Member 'GetEmployeeObject' does not access instance data and can be marked as static",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
+                "region": {
+                  "startLine": 330,
+                  "startColumn": 24,
+                  "endLine": 330,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 102,
+                  "endLine": 27,
+                  "endColumn": 109
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/DesignationService.cs",
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 117,
+                  "endLine": 29,
+                  "endColumn": 124
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/DesignationService.cs",
+                "region": {
+                  "startLine": 87,
+                  "startColumn": 94,
+                  "endLine": 87,
+                  "endColumn": 101
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
+                "region": {
+                  "startLine": 122,
+                  "startColumn": 114,
+                  "endLine": 122,
+                  "endColumn": 120
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
+                "region": {
+                  "startLine": 140,
+                  "startColumn": 86,
+                  "endLine": 140,
+                  "endColumn": 93
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
+                "region": {
+                  "startLine": 165,
+                  "startColumn": 54,
+                  "endLine": 165,
+                  "endColumn": 61
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
+                "region": {
+                  "startLine": 193,
+                  "startColumn": 54,
+                  "endLine": 193,
+                  "endColumn": 61
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 54,
+                  "endLine": 221,
+                  "endColumn": 61
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2245",
+          "level": "warning",
+          "message": "Make sure that using this pseudorandom number generator is safe here.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
+                "region": {
+                  "startLine": 252,
+                  "startColumn": 32,
+                  "endLine": 252,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1643",
+          "level": "warning",
+          "message": "Use a StringBuilder instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
+                "region": {
+                  "startLine": 256,
+                  "startColumn": 20,
+                  "endLine": 256,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/DepartmentRepository.cs",
+                "region": {
+                  "startLine": 128,
+                  "startColumn": 91,
+                  "endLine": 128,
+                  "endColumn": 98
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/DepartmentRepository.cs",
+                "region": {
+                  "startLine": 136,
+                  "startColumn": 133,
+                  "endLine": 136,
+                  "endColumn": 140
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
+                "region": {
+                  "startLine": 376,
+                  "startColumn": 89,
+                  "endLine": 376,
+                  "endColumn": 96
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
         }
       ],
       "rules": {
+        "CA1822": {
+          "id": "CA1822",
+          "shortDescription": "Mark members as static",
+          "fullDescription": "Members that do not access instance data or call instance methods can be marked as static. After you mark the methods as static, the compiler will emit nonvirtual call sites to these members. This can give you a measurable performance gain for performance-sensitive code.",
+          "defaultLevel": "note",
+          "helpUri": "https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1822",
+          "properties": {
+            "category": "Performance",
+            "isEnabledByDefault": true,
+            "tags": [
+              "PortedFromFxCop",
+              "Telemetry",
+              "EnabledRuleInAggressiveMode"
+            ]
+          }
+        },
         "CA1825": {
           "id": "CA1825",
           "shortDescription": "Avoid zero-length array allocations",
@@ -1116,23 +1195,6 @@
             "tags": [
               "Telemetry",
               "EnabledRuleInAggressiveMode"
-            ]
-          }
-        },
-        "S1118": {
-          "id": "S1118",
-          "shortDescription": "Utility classes should not have public constructors",
-          "fullDescription": "Utility classes, which are collections of static members, are not meant to be instantiated.",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1118",
-          "properties": {
-            "category": "Major Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "SonarWay",
-              "MainSourceScope",
-              "TestSourceScope"
             ]
           }
         },
