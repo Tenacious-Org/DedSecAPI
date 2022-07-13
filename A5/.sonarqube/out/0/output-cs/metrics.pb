@@ -23,12 +23,11 @@ QC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Controller\TokenController.
 !"#$&'()*,/2x‚$)€
 RC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\DbContext\AppDbContext.cs 8r	 !‚Ÿ
 
-VC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\DbContext\AppDbInitializer.cs 8(r	
- !"#$%&'()*+,-./0123456789:;=>?@ABCDEFHIJKLMNOPQRSTUWXYZ[\]^_`abcdefghijklmnoprstuvwxyz{|}~€‚ƒ„…†‡ˆ‰ŠŒŽ‘’“”•–˜™š›œžŸ ¡¢¤¥¦§¨©ª«¬­®°±²³´µ¶·¸¹º¼½¾¿ÀÁÂÃÄÅÆÈÉÊËÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ€‚ƒ„…†‡ˆ‰Š‹ŒŽ‘’“”•–—˜™š›œžŸ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ€‚ƒ„…†‡ˆ‰Š‹ŒŽ‘’“”•–—˜™š›œžŸ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ€‚ƒ„…†‡ˆ‰Ž‘’“”•–—˜™š›œžŸ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÖ×ÚÛx‚¦
- ")+.029;DFOQTWYort|~ˆŠ”– ¢¬®¸ºÄÆÊÍÏÙâäïøú…Ž›¤¦±º¼ÇÐÒÝæèóüþ‰’”Ÿ¨ªµ¾ÀÄÆÈÑÝéîðòˆœž¬®¼¾ÌÎÒŸ
-VC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\AwardRepository.csT 	8
-rË	
- !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHJKLMNOPQRSTUVWXYZ[\]^_`abcdefhijklmnopqrstuvwxy{|}~€‚ƒ„…†‡ˆ‰Š‹ŒŽ‘’“”•–—˜™š›œžŸ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçëìx‚l !"#$%)*+./6789:;<@ABEFMWX\]^abjklmqrsvw‚„ˆ‰ŠŽ• ¤¥¦©ª±»½ÁÂÃÆÇÏÙÛßàáäå­
+VC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\DbContext\AppDbInitializer.cs 80r	
+ !"#$%&'()*+,-./123456789:;<>?@ABCDEFGIJKLMNOPQRSTUVXYZ[\]^_`abcdefghijklmnopqstuvwxyz{|}~‚ƒ„…†‡ˆ‰Š‹Ž‘’“”•–—™š›œžŸ ¡¢£¥¦§¨©ª«¬­®¯±²³´µ¶·¸¹º»½¾¿ÀÁÂÃÄÅÆÇÉÊËÌÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ€‚ƒ„…†‡ˆ‰Š‹ŒŽ‘’“”•–—˜™š›œžŸ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ€‚ƒ„…†‡ˆ‰Š‹ŒŽ‘’“”•–—˜™š›œžŸ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ€‚ƒ„…†‡ˆ‰ŠŽ‘’“”•–—˜™š›œžŸ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÒÓÔÖ×ÚÛx‚¦
+ ")+.13:<EGPRUXZpsu}‰‹•—¡£­¯¹»ÅÇËÎÐÚãåðùû†‘œ¥§²»½ÈÑÓÞçéôýÿŠ“• ©«¶¿ÁÅÇÉÒÞêïñó‰ŽŸ­¯½¿ÍÏÓŸ
+VC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\AwardRepository.csT 	8rË	
+ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHJKLMNOPQRSTUVWXYZ[\]^_`abcdefhijklmnopqrstuvwxy{|}~€‚ƒ„…†‡ˆ‰Š‹ŒŽ‘’“”•–—˜™š›œžŸ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçëìx‚l !"#$%)*+./6789:;<@ABEFMWX\]^abjklmqrsvw‚„ˆ‰ŠŽ• ¤¥¦©ª±»½ÁÂÃÆÇÏÙÛßàáäå­
 [C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\EntityBaseRepository.cs6 8jr‰	
 !"#$%&'()*+-0123456789:;<=>?@ABCDEFGIKLMOPQRSTUVWXYZ[\]^_`abceghjklmnopqrstuvwyz{|}~€‚ƒ„…†‡ˆ‰‹x‚4$%&)*5789:<@ABEFPRSTUVX\]^ablpqruv~‚ƒ„‡ˆ_
 MC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\IAudit.cs8r
@@ -43,7 +42,7 @@ LC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Hasher\PasswordHasher.cs
 x‚	n
 SC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Hasher\PasswordHasherFactory.cs 8r
 ‚Ú
-XC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Migrations\20220706044434_Initial.cs1 8rï	
+XC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Migrations\20220713043614_Initial.cs1 8rï	
 !"#$%&'()*+,-./013456789:;<=>@ABCDEFGHIJKLNOPQRSTUVWXYZ[\]^_`abcdeghijklmnopqrstuvwxyz{|}~€‚ƒ„…‡ˆ‰Š‹ŒŽ‘’“”•–—˜™š›œžŸ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßáâãäåæçèéêëìíîïðñòóôõö÷øùúüýþÿ‚ƒ„†‡ˆ‰‹ŒŽ‘’“•–—˜š›œŸ ¡¢¤¥¦§©ª«¬®¯°±²´µ¶·¹º¼½¿ÀÂÃÅÆÈÉËÌÎÏÐÑÒ‚‚!#%'()*+,.03579;=@BDFGIKNPRTUVWXYZ\^_adgikmnopqrstvxy{~„‡‰‹Ž‘’“”•–—˜™š›œžŸ¡£¤¦©ª¬¯±¶¸º¼½¾¿ÀÁÂÃÄÅÆÇÈÊÌÍÏÒÓÕØÙÛÞáãåçèéëíîðóôöùü†‹•šŸ¤©®¶¹¼¿ÂÅÈËÎh
 CC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Models\Award.cs "8"r	
  n

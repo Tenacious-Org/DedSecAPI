@@ -19,8 +19,8 @@ RC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\IEntityBase
 WC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\MasterRepository.csutf-8U
 LC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Hasher\PasswordHasher.csutf-8\
 SC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Hasher\PasswordHasherFactory.csutf-8a
-XC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Migrations\20220706044434_Initial.csutf-8l
-aC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Migrations\20220706044434_Initial.Designer.csutf-8f
+XC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Migrations\20220713043614_Initial.csutf-8l
+aC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Migrations\20220713043614_Initial.Designer.csutf-8f
 [C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Migrations\AppDbContextModelSnapshot.csutf-8L
 CC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Models\Award.csutf-8P
 GC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Models\AwardType.csutf-8N
