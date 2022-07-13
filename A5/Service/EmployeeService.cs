@@ -251,6 +251,7 @@ namespace A5.Service
         {
             try
             {
+                employee.Image = System.Convert.FromBase64String(employee.ImageString!);
                 return _employeeRepository.CreateEmployee(employee);
             }
             catch (ValidationException exception)
@@ -327,44 +328,46 @@ namespace A5.Service
             return new { message = ValidationMessage };
         }
 
-        private object GetEmployeeObject(Employee employee){
+        private object GetEmployeeObject(Employee employee)
+        {
             return new
-                    {
-                        id = employee.Id,
-                        aceid = employee.ACEID,
-                        firstName = employee.FirstName,
-                        lastName = employee.LastName,
-                        fullName = employee.FirstName + " " + employee.LastName,
-                        email = employee.Email,
-                        image = employee.Image,
-                        gender = employee.Gender,
-                        dob = employee.DOB,
-                        organisationId = employee.OrganisationId,
-                        departmentId = employee.DepartmentId,
-                        designationId = employee.DesignationId,
-                        organisationName = employee?.Designation?.Department?.Organisation?.OrganisationName,
-                        departmentName = employee?.Designation?.Department?.DepartmentName,
-                        designationName = employee?.Designation?.DesignationName,
-                        reportingPersonId = employee?.ReportingPersonId,
-                        hrId = employee?.HRId,
-                        reportingPersonName = employee?.ReportingPerson?.FirstName,
-                        hRName = employee?.HR?.FirstName,
-                        password = employee?.Password,
-                        isActive = employee?.IsActive,
-                        addedBy = employee?.AddedBy,
-                        addedOn = employee?.AddedOn,
-                        updatedBy = employee?.UpdatedBy,
-                        updatedOn = employee?.UpdatedOn
-                       
-                    };
+            {
+                id = employee.Id,
+                aceid = employee.ACEID,
+                firstName = employee.FirstName,
+                lastName = employee.LastName,
+                fullName = employee.FirstName + " " + employee.LastName,
+                email = employee.Email,
+                image = employee.Image,
+                gender = employee.Gender,
+                dob = employee.DOB,
+                organisationId = employee.OrganisationId,
+                departmentId = employee.DepartmentId,
+                designationId = employee.DesignationId,
+                organisationName = employee?.Designation?.Department?.Organisation?.OrganisationName,
+                departmentName = employee?.Designation?.Department?.DepartmentName,
+                designationName = employee?.Designation?.DesignationName,
+                reportingPersonId = employee?.ReportingPersonId,
+                hrId = employee?.HRId,
+                reportingPersonName = employee?.ReportingPerson?.FirstName,
+                hRName = employee?.HR?.FirstName,
+                password = employee?.Password,
+                isActive = employee?.IsActive,
+                addedBy = employee?.AddedBy,
+                addedOn = employee?.AddedOn,
+                updatedBy = employee?.UpdatedBy,
+                updatedOn = employee?.UpdatedOn
+
+            };
 
         }
-        public int GetEmployeeCount(int id){
-             try
+        public int GetEmployeeCount(int id)
+        {
+            try
             {
 
-            return _employeeRepository.GetEmployeeCount(id);
-                }
+                return _employeeRepository.GetEmployeeCount(id);
+            }
             catch (ValidationException exception)
             {
                 _logger.LogError("EmployeeService: ChangePassword(Employee employee,int id,String Email) : (Error:{Message}", exception.Message);

@@ -93,20 +93,7 @@ namespace A5.Service
                 throw;
             }
         }
-       public IEnumerable<object> GetAllDepartments()
-         {
-            try
-            {
-                return _departmentRepository.GetAllDepartments();
-
-            }
-            catch(Exception exception)
-            {
-                _logger.LogError("Error: {Message}",exception.Message);
-                throw;
-            }
-             
-         }
+      
         public int GetCount(int id)
         {
              return _departmentRepository.GetCount(id);
@@ -128,6 +115,21 @@ namespace A5.Service
                 _logger.LogError("Error: {Message}",exception.Message);
                 throw;
             }
+             
+         }
+          public IEnumerable<object> GetAllDepartments()
+         {
+            var department = _departmentRepository.GetAllDepartment();
+            return department.Select( Department => new{
+                id = Department.Id,
+                departmentName = Department.DepartmentName,
+                organisationName = Department?.Organisation?.OrganisationName,
+                isActive = Department?.IsActive,
+                addedBy = Department?.AddedBy,
+                addedOn = Department?.AddedOn,
+                updatedBy = Department?.UpdatedBy,
+                updatedOn = Department?.UpdatedOn
+            });
              
          }
            public object ErrorMessage(string ValidationMessage)

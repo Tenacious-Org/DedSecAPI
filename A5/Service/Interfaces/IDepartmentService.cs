@@ -9,11 +9,11 @@ namespace A5.Service.Interfaces
     {
         bool CreateDepartment(Department department);
         bool UpdateDepartment(Department department);
-        Department ? GetByDepartment(int id);
+        Department? GetByDepartment(int id);
         bool DisableDepartment(int id);
         int GetCount(int id);
         public IEnumerable<object> GetAllDepartments();
         public IEnumerable<Department> GetDepartmentsByOrganisationId(int id);
-        public  object ErrorMessage(string ValidationMessage);
+        public object ErrorMessage(string ValidationMessage);
     }
 }

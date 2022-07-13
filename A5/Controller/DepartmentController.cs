@@ -240,7 +240,7 @@ namespace A5.Controller
                 if(checkEmployee>0){
                     return Ok(checkEmployee);
                 }else{
-                    var data = _departmentService.Disable(id);
+                    var data = _departmentService.DisableDepartment(id);
                     return Ok(data);
                 }
                 

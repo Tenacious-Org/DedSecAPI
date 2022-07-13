@@ -13,13 +13,13 @@ namespace A5.Controller
     [ApiController]
     public class AwardController : ControllerBase
     {
-        private  readonly ILogger<IAwardService> _logger;
+        private readonly ILogger<IAwardService> _logger;
         private readonly IAwardService _awardService;
 
-        public AwardController(ILogger<IAwardService> logger,IAwardService awardService)
+        public AwardController(ILogger<IAwardService> logger, IAwardService awardService)
         {
-            _awardService=awardService;
-            _logger=logger;
+            _awardService = awardService;
+            _logger = logger;
         }
 
         /// <summary>
@@ -43,23 +43,24 @@ namespace A5.Controller
         /// </returns>
 
         [HttpPost("RaiseRequest")]
-        public ActionResult RaiseRequest(Award award,int employeeId)
+        public ActionResult RaiseRequest(Award award, int employeeId)
         {
-            if(employeeId<=0) return BadRequest("Id cannot be null or negative");
-            try{
-                var data=_awardService.RaiseRequest(award,employeeId);
-                return Ok(data);
-            }           
-             catch(ValidationException exception)
+            if (employeeId <= 0) return BadRequest("Id cannot be null or negative");
+            try
             {
-                _logger.LogError("AwardController : RaiseRequest(Award award,int id) : (Error:{Message}",exception.Message);
+                var data = _awardService.RaiseRequest(award, employeeId);
+                return Ok(data);
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("AwardController : RaiseRequest(Award award,int id) : (Error:{Message}", exception.Message);
                 return BadRequest(_awardService.ErrorMessage(exception.Message));
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
-            
+
         }
 
         /// <summary>
@@ -83,28 +84,30 @@ namespace A5.Controller
         /// </returns>
 
         [HttpPut("Approval")]
-        public ActionResult Approval(Award award,int employeeId){
-        
-            if(employeeId<=0) return BadRequest("Id should not be null or negative");
-            try{
-                var data=_awardService.Approval(award,employeeId);
+        public ActionResult Approval(Award award, int employeeId)
+        {
+
+            if (employeeId <= 0) return BadRequest("Id should not be null or negative");
+            try
+            {
+                var data = _awardService.Approval(award, employeeId);
                 return Ok(data);
             }
-             catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("AwardController : Approval(Award award,int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardController : Approval(Award award,int id) : (Error:{Message}", exception.Message);
                 return BadRequest(exception.Message);
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
 
         }
-        
 
-       
-       
+
+
+
         /// <summary>
         ///  This Method is used to
         /// </summary>
@@ -123,9 +126,9 @@ namespace A5.Controller
         ///Return 
         /// </returns>
 
-       
 
-       /// <summary>
+
+        /// <summary>
         ///  This Method is used to
         /// </summary>
         /// <remarks>
@@ -144,30 +147,31 @@ namespace A5.Controller
         ///Return 
         /// </returns>
 
-       [HttpGet("GetAwardById")]
-       [AllowAnonymous]
-       public ActionResult GetAwardById(int id)
-       {
-        if(id<=0)
-            return BadRequest("Id cannot be null or negative");
-           
-           try{
-                var data=_awardService.GetAwardById(id);
+        [HttpGet("GetAwardById")]
+        [AllowAnonymous]
+        public ActionResult GetAwardById(int id)
+        {
+            if (id <= 0)
+                return BadRequest("Id cannot be null or negative");
+
+            try
+            {
+                var data = _awardService.GetAwardById(id);
                 return Ok(data);
             }
-             catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("AwardController :GetAwardById(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardController :GetAwardById(int id) : (Error:{Message}", exception.Message);
                 return BadRequest(exception.Message);
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
 
-       }
+        }
 
-       /// <summary>
+        /// <summary>
         ///  This Method is used to
         /// </summary>
         /// <remarks>
@@ -186,24 +190,25 @@ namespace A5.Controller
         ///Return 
         /// </returns>
 
-       [HttpGet("GetAwardsList")]
-       [AllowAnonymous]
-       public ActionResult GetAwardsList(int pageId =0,int employeeId=0)
-       {          
-           try{
-                var data=_awardService.GetAwardsList(pageId,employeeId);
+        [HttpGet("GetAwardsList")]
+        [AllowAnonymous]
+        public ActionResult GetAwardsList(int pageId = 0, int employeeId = 0)
+        {
+            try
+            {
+                var data = _awardService.GetAwardsList(pageId, employeeId);
                 return Ok(data);
             }
-             catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("AwardController : GetAwardsList(int pageId,int employeeId) : (Error:{Message})",exception.Message);
+                _logger.LogError("AwardController : GetAwardsList(int pageId,int employeeId) : (Error:{Message})", exception.Message);
                 return BadRequest(exception.Message);
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
-       }
+        }
 
         /// <summary>
         ///  This Method is used to 
@@ -224,25 +229,26 @@ namespace A5.Controller
         ///Return 
         /// </returns>
 
-       [HttpPost("AddComment")]
-       public ActionResult AddComment(Comment comment)
-       {
-           if(comment==null) return BadRequest("comment should not be null"); 
-           try{
-               var data=_awardService.AddComment(comment);
-                return Ok(data);               
-            }
-             catch(ValidationException exception)
+        [HttpPost("AddComment")]
+        public ActionResult AddComment(Comment comment)
+        {
+            if (comment == null) return BadRequest("comment should not be null");
+            try
             {
-                _logger.LogError("AwardController : AddComment(Comment comment) : (Error:{Message}",exception.Message);
+                var data = _awardService.AddComment(comment);
+                return Ok(data);
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("AwardController : AddComment(Comment comment) : (Error:{Message}", exception.Message);
                 return BadRequest(exception.Message);
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
 
-       }
+        }
 
         /// <summary>
         ///  This Method is used to
@@ -263,27 +269,28 @@ namespace A5.Controller
         ///Return 
         /// </returns>
 
-       [HttpGet("GetComments")]
-       [AllowAnonymous]
-       public ActionResult GetComments(int awardId)
-       {
-           if(awardId<=0) return BadRequest("Award Id should not be negative or zero");
-           try{
-                var data=_awardService.GetComments(awardId);
+        [HttpGet("GetComments")]
+        [AllowAnonymous]
+        public ActionResult GetComments(int awardId)
+        {
+            if (awardId <= 0) return BadRequest("Award Id should not be negative or zero");
+            try
+            {
+                var data = _awardService.GetComments(awardId);
                 return Ok(data);
             }
-            catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("AwardController : GetComments(int awardId) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardController : GetComments(int awardId) : (Error:{Message}", exception.Message);
                 return BadRequest(exception.Message);
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
 
-       }
-  
+        }
+
     }
 }
 

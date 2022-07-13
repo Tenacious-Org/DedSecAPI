@@ -31,17 +31,17 @@ builder.Services.AddTransient<IDepartmentService,DepartmentService>();
 builder.Services.AddTransient<IDesignationService,DesignationService>();
 builder.Services.AddTransient<IAwardTypeService,AwardTypeService>();
 builder.Services.AddTransient<DashboardService>();
-builder.Services.AddTransient<StatusService>();
 builder.Services.AddTransient<RoleService>();
 builder.Services.AddTransient<TokenService>();
 builder.Services.AddTransient<EmployeeService>();
 builder.Services.AddTransient<IAwardService,AwardService>();
-builder.Services.AddTransient<MasterRepository>();
 builder.Services.AddTransient<AwardRepository>();
 builder.Services.AddTransient<IAwardTypeRepository,AwardTypeRepository>();
 builder.Services.AddTransient<IEmployeeRepository,EmployeeRepository>();
 builder.Services.AddTransient<IOrganisationRepository,OrganisationRepository>();
 builder.Services.AddTransient<IDepartmentRepository,DepartmentRepository>();
+builder.Services.AddTransient<IDesignationRepository,DesignationRepository>();
+
 
 
 

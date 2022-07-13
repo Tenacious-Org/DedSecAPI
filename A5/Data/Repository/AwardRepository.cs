@@ -6,18 +6,19 @@ using System.Threading.Tasks;
 using A5.Models;
 using Microsoft.EntityFrameworkCore;
 using A5.Service.Interfaces;
+using A5.Data.Repository.Interface;
 namespace A5.Data.Repository
 {
    public class AwardRepository
    {
      private readonly AppDbContext _context;
-        private readonly MasterRepository _master;
+        private readonly IEmployeeRepository _employeeRepository;
         private readonly  ILogger<IAwardService> _logger;
 
-        public AwardRepository(AppDbContext context, MasterRepository master,ILogger<IAwardService> logger)
+        public AwardRepository(AppDbContext context, IEmployeeRepository employeeRepository,ILogger<IAwardService> logger)
         {
             _context=context;
-            _master = master;
+            _employeeRepository = employeeRepository;
             _logger=logger;
            
         }
@@ -25,7 +26,7 @@ namespace A5.Data.Repository
     {
        
         try{
-            var employee = _master.GetEmployeeById(id);
+            var employee = _employeeRepository.GetEmployeeById(id);
                 _context.Set<Award>().Add(award);
                 award.RequesterId=employee!.Id;
                 award.ApproverId = employee.ReportingPersonId;
@@ -50,7 +51,7 @@ namespace A5.Data.Repository
     {
          bool result = false;
        try{
-         var employee = _master.GetEmployeeById(id);
+         var employee = _employeeRepository.GetEmployeeById(id);
                 _context.Set<Award>().Update(award);
                 award.UpdatedBy=employee?.Id;
                 award.UpdatedOn=DateTime.Now;

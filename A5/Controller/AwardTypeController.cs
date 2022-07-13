@@ -13,14 +13,14 @@ namespace A5.Controller
     [ApiController]
     public class AwardTypeController : ControllerBase
     {
-        
+
         private readonly IAwardTypeService _awardTypeService;
         private readonly ILogger<IAwardTypeService> _logger;
-        public AwardTypeController( ILogger<IAwardTypeService> logger,IAwardTypeService awardTypeService)
+        public AwardTypeController(ILogger<IAwardTypeService> logger, IAwardTypeService awardTypeService)
         {
             _awardTypeService = awardTypeService;
-            _logger=logger;
-        
+            _logger = logger;
+
         }
 
         /// <summary>
@@ -42,17 +42,18 @@ namespace A5.Controller
         [HttpGet("GetAll")]
         public ActionResult GetAll()
         {
-            try{
-                
-                var data = _awardTypeService.GetAllAwardType();
-                 return Ok(data);
-            }
-            catch(ValidationException exception)
+            try
             {
-                _logger.LogError("AwardTypeController : GetAll() : (Error:{Message})",exception.Message);
+
+                var data = _awardTypeService.GetAllAwardType();
+                return Ok(data);
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("AwardTypeController : GetAll() : (Error:{Message})", exception.Message);
                 return BadRequest(_awardTypeService.ErrorMessage(exception.Message));
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
@@ -82,16 +83,16 @@ namespace A5.Controller
         {
             try
             {
-               
+
                 var data = _awardTypeService.GetAwardTypeById(id);
-                 return Ok(data);
+                return Ok(data);
             }
-            catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                 _logger.LogError("AwardTypeController : GetById(int id) : (Error:{Message})",exception.Message);
+                _logger.LogError("AwardTypeController : GetById(int id) : (Error:{Message})", exception.Message);
                 return BadRequest(_awardTypeService.ErrorMessage(exception.Message));
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
@@ -119,17 +120,17 @@ namespace A5.Controller
         [HttpPost("Create")]
         public ActionResult Create(AwardType awardType)
         {
-            try{
-                awardType.Image = System.Convert.FromBase64String(awardType.ImageString!);
-                var data=_awardTypeService.CreateAwardType(awardType);
-                return  Ok(data); 
-            }
-            catch(ValidationException exception)
+            try
             {
-                 _logger.LogError("AwardTypeController : Create(AwardType awardType) : (Error:{Message})",exception.Message);
+                var data = _awardTypeService.CreateAwardType(awardType);
+                return Ok(data);
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("AwardTypeController : Create(AwardType awardType) : (Error:{Message})", exception.Message);
                 return BadRequest(_awardTypeService.ErrorMessage(exception.Message));
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
@@ -157,17 +158,17 @@ namespace A5.Controller
         [HttpPut("Update")]
         public ActionResult Update(AwardType awardType)
         {
-            try{
-                awardType.Image = System.Convert.FromBase64String(awardType.ImageString!);
-                var data=_awardTypeService.UpdateAwardType(awardType);
-                 return  Ok(data); 
-            }
-            catch(ValidationException exception)
+            try
             {
-                 _logger.LogError("AwardTypeController : Update(AwardType awardType,int id) : (Error:{Message})",exception.Message);
+                var data = _awardTypeService.UpdateAwardType(awardType);
+                return Ok(data);
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("AwardTypeController : Update(AwardType awardType,int id) : (Error:{Message})", exception.Message);
                 return BadRequest(_awardTypeService.ErrorMessage(exception.Message));
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
@@ -195,16 +196,17 @@ namespace A5.Controller
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
         {
-            try{           
-                var data=_awardTypeService.DisableAwardType(id);
-                 return  Ok(data); 
-            }
-            catch(ValidationException exception)
+            try
             {
-                 _logger.LogError("AwardTypeController : Disable(int id) : (Error:{Message})",exception.Message);
+                var data = _awardTypeService.DisableAwardType(id);
+                return Ok(data);
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("AwardTypeController : Disable(int id) : (Error:{Message})", exception.Message);
                 return BadRequest(_awardTypeService.ErrorMessage(exception.Message));
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }

@@ -5,7 +5,7 @@ using A5.Models;
 
 namespace A5.Data.Service.Interfaces
 {
-    public interface IEmployeeService 
+    public interface IEmployeeService
     {
         public bool CreateEmployee(Employee employee);
         public bool DisableEmployee(int id);
@@ -19,10 +19,10 @@ namespace A5.Data.Service.Interfaces
         public IEnumerable<Employee> GetHrByDepartmentId(int id);
         public IEnumerable<Employee> GetEmployeeByRequesterId(int id);
         public IEnumerable<Employee> GetEmployeeByOrganisation(int id);
-        public bool ChangePassword(Employee employee,int id,String Email);
+        public bool ChangePassword(Employee employee, int id, String Email);
         public Employee GetEmployee(string Email, string Password);
         public int GetEmployeeCount(int id);
-         
-       
+
+
     }
 }

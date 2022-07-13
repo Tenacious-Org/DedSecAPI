@@ -90,21 +90,7 @@ namespace A5.Data.Repository
                 throw;
             }
         }
-        public IEnumerable<object> GetAllDepartments()
-         {
-            var department = GetAllDepartment();
-            return department.Select( Department => new{
-                id = Department.Id,
-                departmentName = Department.DepartmentName,
-                organisationName = Department?.Organisation?.OrganisationName,
-                isActive = Department?.IsActive,
-                addedBy = Department?.AddedBy,
-                addedOn = Department?.AddedOn,
-                updatedBy = Department?.UpdatedBy,
-                updatedOn = Department?.UpdatedOn
-            });
-             
-         }
+       
          public IEnumerable<Department> GetAllDepartment()
         {
             try

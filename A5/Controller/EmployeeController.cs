@@ -126,7 +126,6 @@ namespace A5.Controller
         public ActionResult Create(Employee employee)
         {
             try{
-                employee.Image = System.Convert.FromBase64String(employee.ImageString!);
                 var data=_employeeService.CreateEmployee(employee);
                  return  Ok(data); 
             }

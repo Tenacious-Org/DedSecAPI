@@ -16,13 +16,13 @@ namespace A5.Controller
     {
         private readonly ILogger<IDesignationService> _logger;
         private readonly IDesignationService _designationService;
-      
 
-        public DesignationController( ILogger<IDesignationService> logger, IDesignationService designationService)
+
+        public DesignationController(ILogger<IDesignationService> logger, IDesignationService designationService)
         {
             _logger = logger;
             _designationService = designationService;
-           
+
         }
 
         /// <summary>
@@ -44,20 +44,21 @@ namespace A5.Controller
         [HttpGet("GetAll")]
         public ActionResult GetAllDesignation()
         {
-            try{
+            try
+            {
                 var data = _designationService.GetAllDesignations();
                 return Ok(data);
             }
-            catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("DesignationController : GetAllDesignation() : (Error : {Message})",exception.Message);
+                _logger.LogError("DesignationController : GetAllDesignation() : (Error : {Message})", exception.Message);
                 return BadRequest(_designationService.ErrorMessage(exception.Message));
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
-            
+
         }
 
         /// <summary>
@@ -84,16 +85,17 @@ namespace A5.Controller
         [HttpGet("GetDesignationsByDepartmentId")]
         public ActionResult GetDesignationsByDepartmentId(int id)
         {
-            try{
+            try
+            {
                 var data = _designationService.GetDesignationsByDepartmentId(id);
                 return Ok(data);
             }
-            catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                 _logger.LogError("DesignationController : GetDesignationsByDepartmentId(int id) : (Error : Message})",exception.Message);
+                _logger.LogError("DesignationController : GetDesignationsByDepartmentId(int id) : (Error : Message})", exception.Message);
                 return BadRequest(_designationService.ErrorMessage(exception.Message));
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
@@ -121,17 +123,18 @@ namespace A5.Controller
         [HttpGet("GetById")]
         public ActionResult GetByDesignationId([FromQuery] int id)
         {
-            
-            try{
-                var data = _designationService.GetById(id);
-                return Ok(data);
-            }           
-            catch(ValidationException exception)
+
+            try
             {
-                 _logger.LogError("DesignationController : GetByDesignationId(int id) : (Error : {Message})",exception.Message);
+                var data = _designationService.GetDesignationById(id);
+                return Ok(data);
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("DesignationController : GetByDesignationId(int id) : (Error : {Message})", exception.Message);
                 return BadRequest(_designationService.ErrorMessage(exception.Message));
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
@@ -160,17 +163,18 @@ namespace A5.Controller
         [HttpPost("Create")]
         public ActionResult Create(Designation designation)
         {
-            
-            try{
-                var data=_designationService.CreateDesignation(designation);
-               return  Ok(data); 
-            }         
-            catch(ValidationException exception)
+
+            try
             {
-                 _logger.LogError("DesignationController : Create(Designation designation) : (Error : {Message})",exception.Message);
+                var data = _designationService.CreateDesignation(designation);
+                return Ok(data);
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("DesignationController : Create(Designation designation) : (Error : {Message})", exception.Message);
                 return BadRequest(_designationService.ErrorMessage(exception.Message));
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
@@ -198,23 +202,24 @@ namespace A5.Controller
         [HttpPut("Update")]
         public ActionResult Update(Designation designation)
         {
-            
-            try{
-                var data=_designationService.UpdateDesignation(designation);
-                return  Ok(data); 
-            }
-            catch(ValidationException exception)
+
+            try
             {
-                 _logger.LogError("Designation Controller : Update(Designation designation,int id) : (Error : {Message})",exception.Message);
+                var data = _designationService.UpdateDesignation(designation);
+                return Ok(data);
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("Designation Controller : Update(Designation designation,int id) : (Error : {Message})", exception.Message);
                 return BadRequest(_designationService.ErrorMessage(exception.Message));
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
         }
 
-         /// <summary>
+        /// <summary>
         ///  This Method is used to disable the Designation by id from DepartmentId
         /// </summary>
         /// <remarks>
@@ -236,29 +241,32 @@ namespace A5.Controller
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
         {
-            
+
             try
             {
-               
-                  var checkEmployee = _designationService.GetCount(id);
-                if(checkEmployee>0){
+
+                var checkEmployee = _designationService.GetCount(id);
+                if (checkEmployee > 0)
+                {
                     return Ok(checkEmployee);
-                }else{
-                    var data = _designationService.Disable(id);
+                }
+                else
+                {
+                    var data = _designationService.DisableDesignation(id);
                     return Ok(data);
                 }
-                
-            }           
-            catch(ValidationException exception)
+
+            }
+            catch (ValidationException exception)
             {
-                 _logger.LogError("Designation Controller : Disable(int id) : (Error : {Message})",exception.Message);
+                _logger.LogError("Designation Controller : Disable(int id) : (Error : {Message})", exception.Message);
                 return BadRequest(_designationService.ErrorMessage(exception.Message));
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
         }
-        
+
     }
 }

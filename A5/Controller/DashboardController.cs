@@ -14,10 +14,10 @@ namespace A5.Controller
     [ApiController]
     public class DashboardController : ControllerBase
     {
-     
+
         private readonly DashboardService _dashboardService;
 
-        public DashboardController( DashboardService dash)
+        public DashboardController(DashboardService dash)
         {
             _dashboardService = dash;
         }
@@ -30,7 +30,7 @@ namespace A5.Controller
                 var data = _dashboardService.GetAllWinners();
                 return Ok(data);
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return BadRequest(exception.Message);
             }
@@ -43,10 +43,10 @@ namespace A5.Controller
                 var data = _dashboardService.GetAllByOrgwise(id);
                 return Ok(data);
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
-        }   
+        }
     }
 }

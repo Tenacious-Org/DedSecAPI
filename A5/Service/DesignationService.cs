@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using A5.Models;
 using A5.Data.Repository;
+using A5.Data.Repository.Interface;
 using A5.Service.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using A5.Service.Validations;
@@ -9,15 +10,13 @@ using A5.Data;
 
 namespace A5.Service
 {
-    public class DesignationService : EntityBaseRepository<Designation>, IDesignationService
+    public class DesignationService :  IDesignationService
     {
-        private readonly AppDbContext _context;
-        private readonly MasterRepository _master;
-         private readonly ILogger<EntityBaseRepository<Designation>> _logger;
-        public DesignationService(AppDbContext context, MasterRepository master,ILogger<EntityBaseRepository<Designation>> logger) : base(context,logger)
+        private readonly IDesignationRepository _desginationRepository;
+         private readonly ILogger<IDesignationRepository> _logger;
+        public DesignationService(IDesignationRepository desginationRepository, ILogger<IDesignationRepository> logger) 
         {
-            _context = context;
-            _master = master;
+            _desginationRepository = desginationRepository;
             _logger=logger;
         }
 
@@ -26,16 +25,7 @@ namespace A5.Service
              DesignationServiceValidations.ValidateGetByDepartment(id);
             try
             {
-                var data =  _context.Set<Designation>().Where(nameof =>nameof.DepartmentId == id && nameof.IsActive == true).ToList();
-                var count = data.Count;
-                if(count != 0)
-                {
-                    return data;
-                }
-                else
-                {
-                    throw new ValidationException(" Department not Found!! ");
-                }
+                return _desginationRepository.GetDesignationsByDepartmentId(id);
             }
              catch(ValidationException exception)
             {
@@ -50,7 +40,7 @@ namespace A5.Service
          }
          public IEnumerable<object> GetAllDesignations()
          {
-            var designation = _master.GetAllDesignation();
+            var designation = _desginationRepository.GetAllDesignation();
             return designation.Select( Designation => new{
                 id = Designation.Id,
                 designationName = Designation.DesignationName,
@@ -64,12 +54,9 @@ namespace A5.Service
          }
           public bool CreateDesignation(Designation designation)
         {
-            var obj = new DesignationServiceValidations();
-            if(!obj.CreateValidation(designation)) throw new ValidationException("Invalid data");
-            bool NameExists=_context.Designations!.Any(nameof=>nameof.DesignationName==designation.DesignationName && nameof.DepartmentId==designation.DepartmentId);
-            if(NameExists) throw new ValidationException("Designation Name already exists");
+           
             try{
-                return Create(designation);
+                return _desginationRepository.CreateDesignation(designation);
             }
              catch(ValidationException exception)
             {
@@ -84,8 +71,7 @@ namespace A5.Service
         }
         public int GetCount(int id)
         {
-             var checkEmployee = _context.Set<Designation>().Where(nameof => nameof.IsActive == true && nameof.Id == id).Count();
-             return checkEmployee;
+             return _desginationRepository.GetCount(id);
         }
          public object ErrorMessage(string ValidationMessage)
         {
@@ -93,12 +79,9 @@ namespace A5.Service
         }
         public bool UpdateDesignation(Designation designation)
         {
-             var obj = new DesignationServiceValidations();
-            if(!obj.UpdateValidation(designation)) throw new ValidationException("Invalid Data");
-             bool NameExists=_context.Designations!.Any(nameof=>nameof.DesignationName==designation.DesignationName);
-            if(NameExists) throw new ValidationException("Designation Name already exists");
+             
             try{
-                return Update(designation);
+                return _desginationRepository.UpdateDesignation(designation);
             }
             catch(ValidationException exception)
             {
@@ -111,6 +94,41 @@ namespace A5.Service
                 throw;
             }
         }
+        public bool DisableDesignation(int id)
+        {
+            
+            try{
+                return _desginationRepository.DisableDesignation(id);
+            }
+            catch(ValidationException exception)
+            {
+                _logger.LogError("Designation Service: UpdateDesignation(Designation) : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                throw;
+            }
+        }
+
+        public Designation? GetDesignationById(int id)
+        {
+             try{
+                return _desginationRepository.GetDesignationById(id);
+            }
+            catch(ValidationException exception)
+            {
+                _logger.LogError("DesginationService: GetByDepartment(int id) : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                throw;
+            }
+        }
+
     }
     
 }

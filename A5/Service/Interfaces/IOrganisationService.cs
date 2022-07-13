@@ -12,8 +12,8 @@ namespace A5.Service.Interfaces
         Organisation? GetByOrganisation(int id);
         bool DisableOrganisation(int id);
         int GetCount(int id);
-         public IEnumerable<Organisation> GetAllOrganisation();
+        public IEnumerable<Organisation> GetAllOrganisation();
 
-        public  object ErrorMessage(string ValidationMessage);
+        public object ErrorMessage(string ValidationMessage);
     }
 }

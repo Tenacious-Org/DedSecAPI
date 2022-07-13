@@ -17,13 +17,14 @@ namespace A5.Service
             _awardTypeRepository=awardTypeRepository;
             _logger=logger;
         }
-          public bool CreateAwardType(AwardType entity)
+          public bool CreateAwardType(AwardType awardType)
         {
            
-            if(!AwardTypeValidations.CreateValidation(entity)) throw new ValidationException("Invalid data");
+            if(!AwardTypeValidations.CreateValidation(awardType)) throw new ValidationException("Invalid data");
    
             try{
-                return _awardTypeRepository.CreateAwardType(entity);
+                awardType.Image = System.Convert.FromBase64String(awardType.ImageString!);
+                return _awardTypeRepository.CreateAwardType(awardType);
             }
             catch(ValidationException exception)
             {
@@ -37,12 +38,13 @@ namespace A5.Service
             }
         }
         
-         public bool UpdateAwardType(AwardType entity)
+         public bool UpdateAwardType(AwardType awardType)
         {
           
-            if(!AwardTypeValidations.UpdateValidation(entity)) throw new ValidationException("Invalid data");
+            if(!AwardTypeValidations.UpdateValidation(awardType)) throw new ValidationException("Invalid data");
             try{
-                return _awardTypeRepository.UpdateAwardType(entity);
+                awardType.Image = System.Convert.FromBase64String(awardType.ImageString!);
+                return _awardTypeRepository.UpdateAwardType(awardType);
             }
             catch(ValidationException exception)
             {
