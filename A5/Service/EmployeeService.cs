@@ -156,6 +156,7 @@ namespace A5.Service
         }
         public IEnumerable<object> GetAllEmployees()
         {
+            
             try
             {
                 var employee = _employeeRepository.GetAllEmployees();
@@ -227,7 +228,7 @@ namespace A5.Service
 
 
         public Employee GetEmployee(string Email, string Password)
-        {
+        {           
             if (Email == null || Password == null) throw new ValidationException("Email or Password cannot be null");
             try
             {
@@ -249,6 +250,7 @@ namespace A5.Service
 
         public bool CreateEmployee(Employee employee)
         {
+            if(!EmployeeServiceValidations.CreateValidation(employee)) throw new ValidationException("Invalid data");
             try
             {
                 employee.Image = System.Convert.FromBase64String(employee.ImageString!);
@@ -268,7 +270,7 @@ namespace A5.Service
         }
         public bool UpdateEmployee(Employee employee)
         {
-
+             if(!EmployeeServiceValidations.UpdateValidation(employee)) throw new ValidationException("Invalid data");
             try
             {
                 return _employeeRepository.UpdateEmployee(employee);
@@ -287,7 +289,7 @@ namespace A5.Service
         }
         public bool DisableEmployee(int id)
         {
-
+             if(!EmployeeServiceValidations.DisableValidation(id)) throw new ValidationException("Invalid data");
             try
             {
                 return _employeeRepository.DisableEmployee(id);
@@ -307,6 +309,7 @@ namespace A5.Service
 
         public bool ChangePassword(Employee employee, int id, String Email)
         {
+             if(!EmployeeServiceValidations.PasswordValidation(employee,id,Email)) throw new ValidationException("Invalid data");
             try
             {
 

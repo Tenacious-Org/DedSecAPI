@@ -4,14 +4,10 @@ using A5.Data;
 using System.Text.RegularExpressions;
 namespace A5.Service.Validations
 {
-    public class EmployeeServiceValidations
+    public static class EmployeeServiceValidations
     {
-        private readonly AppDbContext _context;
-        public EmployeeServiceValidations(AppDbContext context)
-        {
-            _context=context;
-        }
-         public bool CreateValidation(Employee employee)
+        
+         public static bool CreateValidation(Employee employee)
         {
              if(!ValidateAceId(employee.ACEID!)) throw new ValidationException("ID should begin with ACE"); 
              if(string.IsNullOrWhiteSpace(employee.FirstName)) throw new ValidationException("Employee's first name should not be null or empty");
@@ -22,7 +18,7 @@ namespace A5.Service.Validations
              if(employee.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
              else return true;
         }
-        public bool UpdateValidation(Employee employee)
+        public static bool UpdateValidation(Employee employee)
         {
            
             if(string.IsNullOrWhiteSpace(employee.FirstName)) throw new ValidationException("Employee name should not be null or empty");
@@ -33,13 +29,13 @@ namespace A5.Service.Validations
             if(employee.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
-        public bool ValidateGetById(int id)
+        public static bool ValidateGetById(int id)
         {
             Employee employee = new Employee();
             if(id==0) throw new ValidationException("Employee Id should not be null.");
             return true;
         }
-        public bool DisableValidation(int id)
+        public static bool DisableValidation(int id)
         {
             Employee employee = new Employee();
             if(id==0) throw new ValidationException("Employee Id should not be null.");
@@ -74,15 +70,14 @@ namespace A5.Service.Validations
        }
                   
 
-      public bool  PasswordValidation(Employee employee,int id,string Email)
-      {
-        if(!(_context.Employees!.Any(nameof=>nameof.Email==employee.Email))) throw new ValidationException("Email not found");
+      public static bool  PasswordValidation(Employee employee,int id,string Email)
+      {       
         if(string.IsNullOrEmpty(employee.Password)) throw new ValidationException("Password should not be null");
         if (!Regex.IsMatch(employee.Password,@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$")) throw new ValidationException ("Password must be between 8 and 15 characters and atleast contain one uppercase letter, one lowercase letter, one digit and one special character.");
         else return true;
       }
   
-    public bool ValidateAceId(string ACEID)
+    public static bool ValidateAceId(string ACEID)
     {
         char[] charArray=ACEID.ToCharArray();
         if(!(charArray[0]=='A' && charArray[1]=='C' && charArray[2]=='E'  )) return false;

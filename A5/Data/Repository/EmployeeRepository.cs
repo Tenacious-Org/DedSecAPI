@@ -276,9 +276,8 @@ namespace A5.Data.Repository
         {
             bool result = false;
             try
-            {
-                EmployeeServiceValidations employeeServiceValidations = new EmployeeServiceValidations(_context);
-                employeeServiceValidations.PasswordValidation(employee, id, Email);
+            {            
+                EmployeeServiceValidations.PasswordValidation(employee, id, Email);
                 _context.Set<Employee>().Update(employee);
                 _context.SaveChanges();
                 result = true;
