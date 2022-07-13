@@ -52,7 +52,7 @@ namespace A5.Controller
             }
             catch(Exception exception)
             {
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
         }
 
@@ -92,7 +92,7 @@ namespace A5.Controller
             }
             catch(Exception exception)
             {
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
         }
 
@@ -131,7 +131,7 @@ namespace A5.Controller
             }
             catch(Exception exception)
             {
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
         }
 
@@ -170,7 +170,7 @@ namespace A5.Controller
             }
             catch(Exception exception)
             {
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
         }
 
@@ -208,7 +208,7 @@ namespace A5.Controller
             }
             catch(Exception exception)
             {
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
         }
 
@@ -252,7 +252,7 @@ namespace A5.Controller
             }
             catch(Exception exception)
             {
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
         }
     }

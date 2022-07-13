@@ -12,6 +12,7 @@ namespace A5.Data.Service.Interfaces
          public IEnumerable<Employee> GetEmployeeByRequesterId(int id);
          public bool CreateEmployee(Employee employee);
          public bool UpdateEmployee(Employee employee);
+         public object ErrorMessage(string ValidationMessage);
          
        
     }

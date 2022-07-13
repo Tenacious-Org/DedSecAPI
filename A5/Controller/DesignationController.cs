@@ -55,7 +55,7 @@ namespace A5.Controller
             }
             catch(Exception exception)
             {
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
             
         }
@@ -91,11 +91,11 @@ namespace A5.Controller
             catch(ValidationException exception)
             {
                  _logger.LogError("DesignationController : GetDesignationsByDepartmentId(int id) : (Error : Message})",exception.Message);
-                return BadRequest(exception.Message);
+                return BadRequest(_designationService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
         }
 
@@ -129,11 +129,11 @@ namespace A5.Controller
             catch(ValidationException exception)
             {
                  _logger.LogError("DesignationController : GetByDesignationId(int id) : (Error : {Message})",exception.Message);
-                return BadRequest(exception.Message);
+                return BadRequest(_designationService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
         }
 
@@ -172,7 +172,7 @@ namespace A5.Controller
             }
             catch(Exception exception)
             {
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
         }
 
@@ -210,7 +210,7 @@ namespace A5.Controller
             }
             catch(Exception exception)
             {
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
         }
 
@@ -252,11 +252,11 @@ namespace A5.Controller
             catch(ValidationException exception)
             {
                  _logger.LogError("Designation Controller : Disable(int id) : (Error : {Message})",exception.Message);
-                return BadRequest(exception.Message);
+                return BadRequest(_designationService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
         }
         

@@ -387,6 +387,10 @@ namespace A5.Service
             }
 
         }
+         public object ErrorMessage(string ValidationMessage)
+        {
+            return new{message=ValidationMessage};
+        }
 
     
     }
