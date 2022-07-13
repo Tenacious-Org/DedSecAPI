@@ -37,29 +37,27 @@ namespace A5.Controller
         /// <response code="201">Returns </response>
         /// <response code="400">If the item is null</response> 
         /// <param name="award">String</param>
-        /// <param name="id"></param>
+        /// <param name="employeeId"></param>
         /// <returns>
         ///Return 
         /// </returns>
 
         [HttpPost("RaiseRequest")]
-        public ActionResult RaiseRequest(Award award,int id)
+        public ActionResult RaiseRequest(Award award,int employeeId)
         {
-            if(id<=0) return BadRequest("Id cannot be null or negative");
+            if(employeeId<=0) return BadRequest("Id cannot be null or negative");
             try{
-                var data=_awardService.RaiseRequest(award,id);
+                var data=_awardService.RaiseRequest(award,employeeId);
                 return Ok(data);
             }           
              catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("AwardController : RaiseRequest(Award award,int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardController : RaiseRequest(Award award,int id) : (Error:{Message}",exception.Message);
                 return BadRequest(_awardService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
             
         }
@@ -79,29 +77,27 @@ namespace A5.Controller
         /// <response code="201">Returns </response>
         /// <response code="400">If the item is null</response> 
         /// <param name="award">String</param>
-        /// <param name="id"></param>
+        /// <param name="employeeId"></param>
         /// <returns>
         ///Return 
         /// </returns>
 
         [HttpPut("Approval")]
-        public ActionResult Approval(Award award,int id){
+        public ActionResult Approval(Award award,int employeeId){
         
-            if(id<=0) return BadRequest("Id should not be null or negative");
+            if(employeeId<=0) return BadRequest("Id should not be null or negative");
             try{
-                var data=_awardService.Approval(award,id);
+                var data=_awardService.Approval(award,employeeId);
                 return Ok(data);
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("log: (Error: {Message})",exception.Message);
-                _logger.LogInformation("Award Controller : Approval(Award award,int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardController : Approval(Award award,int id) : (Error:{Message}",exception.Message);
                 return BadRequest(exception.Message);
             }
             catch(Exception exception)
             {
-                _logger.LogError("log: (Error: {Message})",exception.Message);
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
 
         }
@@ -161,14 +157,12 @@ namespace A5.Controller
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("log: (Error: {Message})",exception.Message);
-                _logger.LogInformation("Award Controller :GetAwardById(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardController :GetAwardById(int id) : (Error:{Message}",exception.Message);
                 return BadRequest(exception.Message);
             }
             catch(Exception exception)
             {
-                _logger.LogError("log: (Error: {Message}",exception.Message);
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
 
        }
@@ -202,14 +196,12 @@ namespace A5.Controller
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("log: (Error: {Message})",exception.Message);
-                _logger.LogInformation("Award Controller : GetAwardsList(int pageId,int employeeId) : (Error:{Message})",exception.Message);
+                _logger.LogError("AwardController : GetAwardsList(int pageId,int employeeId) : (Error:{Message})",exception.Message);
                 return BadRequest(exception.Message);
             }
             catch(Exception exception)
             {
-                _logger.LogError("log: (Error: {Message})",exception.Message);
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
        }
 
@@ -242,14 +234,12 @@ namespace A5.Controller
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("log: (Error: {Message})",exception.Message);
-                _logger.LogInformation("Award Controller : AddComment(Comment comment) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardController : AddComment(Comment comment) : (Error:{Message}",exception.Message);
                 return BadRequest(exception.Message);
             }
             catch(Exception exception)
             {
-                _logger.LogError("log: (Error: {Message})",exception.Message);
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
 
        }
@@ -284,14 +274,12 @@ namespace A5.Controller
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("log: (Error: {Message})",exception.Message);
-                _logger.LogInformation("Award Controller : GetComments(int awardId) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardController : GetComments(int awardId) : (Error:{Message}",exception.Message);
                 return BadRequest(exception.Message);
             }
             catch(Exception exception)
             {
-                _logger.LogError("log: (Error: {Message})",exception.Message);
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
 
        }

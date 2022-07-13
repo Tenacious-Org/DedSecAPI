@@ -50,13 +50,12 @@ namespace A5.Controller
             }
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                _logger.LogInformation($"Designation Controller : GetAllDesignation() : (Error : {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
+                _logger.LogError("DesignationController : GetAllDesignation() : (Error : {Message})",exception.Message);
+                return BadRequest(_designationService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(exception.Message);
             }
             
         }
@@ -91,13 +90,12 @@ namespace A5.Controller
             }
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                 _logger.LogInformation($"Designation Controller : GetDesignationsByDepartmentId(int id) : (Error : {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
+                 _logger.LogError("DesignationController : GetDesignationsByDepartmentId(int id) : (Error : Message})",exception.Message);
+                return BadRequest(exception.Message);
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(exception.Message);
             }
         }
 
@@ -130,13 +128,12 @@ namespace A5.Controller
             }           
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                 _logger.LogInformation($"Designation Controller : GetByDesignationId(int id) : (Error : {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
+                 _logger.LogError("DesignationController : GetByDesignationId(int id) : (Error : {Message})",exception.Message);
+                return BadRequest(exception.Message);
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(exception.Message);
             }
         }
 
@@ -170,13 +167,12 @@ namespace A5.Controller
             }         
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                 _logger.LogInformation($"Designation Controller : Create(Designation designation) : (Error : {exception.Message})");
-                return BadRequest(_designationService.ErrorMessage($"{exception.Message}"));
+                 _logger.LogError("DesignationController : Create(Designation designation) : (Error : {Message})",exception.Message);
+                return BadRequest(_designationService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(exception.Message);
             }
         }
 
@@ -209,13 +205,12 @@ namespace A5.Controller
             }
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                 _logger.LogInformation($"Designation Controller : Update(Designation designation,int id) : (Error : {exception.Message})");
-                return BadRequest(_designationService.ErrorMessage($"{exception.Message}"));
+                 _logger.LogError("Designation Controller : Update(Designation designation,int id) : (Error : {Message})",exception.Message);
+                return BadRequest(_designationService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(exception.Message);
             }
         }
 
@@ -256,13 +251,12 @@ namespace A5.Controller
             }           
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                 _logger.LogInformation($"Designation Controller : Disable(int id) : (Error : {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
+                 _logger.LogError("Designation Controller : Disable(int id) : (Error : {Message})",exception.Message);
+                return BadRequest(exception.Message);
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(exception.Message);
             }
         }
         

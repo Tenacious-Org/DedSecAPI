@@ -47,9 +47,8 @@ namespace A5.Controller
             }           
             catch(ValidationException exception)
             {
-                _logger.LogError("log: (Error: {Message})",exception.Message);
-                _logger.LogInformation("Department Controller : GetAllDepartment() : (Error: {Message})",exception.Message);
-                return BadRequest(exception.Message);
+                _logger.LogError("DepartmentController : GetAllDepartment() : (Error: {Message})",exception.Message);
+                return BadRequest(_departmentService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
@@ -88,9 +87,8 @@ namespace A5.Controller
             }          
             catch(ValidationException exception)
             {
-                _logger.LogError("log: (Error: {Message})",exception.Message);
-                 _logger.LogInformation("Department Controller : GetDepartmentByOrganisationId(int id) : (Error: {Message})",exception.Message);
-                return BadRequest(exception.Message);
+                 _logger.LogError("DepartmentController : GetDepartmentByOrganisationId(int id) : (Error: {Message})",exception.Message);
+                return BadRequest(_departmentService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
@@ -128,9 +126,8 @@ namespace A5.Controller
             }           
             catch(ValidationException exception)
             {
-                _logger.LogError("log: (Error: {exception.Message})",exception.Message);
-                 _logger.LogInformation("Department Controller : GetByDepartmentId(int id) : (Error: {exception.Message})",exception.Message);
-                return BadRequest(exception.Message);
+                 _logger.LogError("DepartmentController : GetByDepartmentId(int id) : (Error: {exception.Message})",exception.Message);
+                return BadRequest(_departmentService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
@@ -168,8 +165,7 @@ namespace A5.Controller
             }           
             catch(ValidationException exception)
             {
-                _logger.LogError("log: (Error: {Message})",exception.Message);
-                 _logger.LogInformation("Department Controller : Create(Department department) : (Error: {Message})",exception.Message);
+                 _logger.LogError("DepartmentController : Create(Department department) : (Error: {Message})",exception.Message);
                 return BadRequest(_departmentService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
@@ -207,8 +203,7 @@ namespace A5.Controller
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("log: (Error: {Message})",exception.Message);
-                 _logger.LogInformation("Department Controller : Update(Department department,int id) : (Error: {Message})",exception.Message);
+                _logger.LogError("DepartmentController : Update(Department department,int id) : (Error: {Message})",exception.Message);
                 return BadRequest(_departmentService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
@@ -252,9 +247,8 @@ namespace A5.Controller
             }           
             catch(ValidationException exception)
             {
-                _logger.LogError("log: (Error: {Message})",exception.Message);
-                 _logger.LogInformation("Department Controller : Disable(int id) : (Error: {Message})",exception.Message);
-                return BadRequest(exception.Message);
+                 _logger.LogError("DepartmentController : Disable(int id) : (Error: {Message})",exception.Message);
+                return BadRequest(_departmentService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {

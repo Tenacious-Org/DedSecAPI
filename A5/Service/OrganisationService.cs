@@ -102,7 +102,7 @@ namespace A5.Service
         }
         public int GetCount(int id)
         {
-             var checkEmployee = _context.Set<Employee>().Where(nameof => nameof.IsActive == true && nameof.OrganisationId == id).Count();
+             var checkEmployee = _context.Set<Employee>().Where(nameof => nameof.IsActive && nameof.OrganisationId == id).Count();
              return checkEmployee;
         }
         public object ErrorMessage(string ValidationMessage)

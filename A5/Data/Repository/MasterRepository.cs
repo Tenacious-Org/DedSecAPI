@@ -21,7 +21,7 @@ namespace A5.Data.Repository
         {
             try
             {
-                var departments = _context.Set<Department>().Where(nameof =>nameof.IsActive == true).Include("Organisation").ToList();
+                var departments = _context.Set<Department>().Where(nameof =>nameof.IsActive).Include("Organisation").ToList();
                 return departments;
             }
            catch(ValidationException exception)

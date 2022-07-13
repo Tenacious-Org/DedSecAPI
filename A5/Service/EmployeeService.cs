@@ -32,8 +32,7 @@ namespace A5.Service
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Employee Service: GetByHR(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("EmployeeService: GetByHR(int id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -53,8 +52,7 @@ namespace A5.Service
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Employee Service: GetByReportingPerson(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("EmployeeService: GetByReportingPerson(int id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -74,8 +72,7 @@ namespace A5.Service
             }
            catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Employee Service: GetEmployeeByDepartmentId(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("EmployeeService: GetEmployeeByDepartmentId(int id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -94,8 +91,7 @@ namespace A5.Service
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Employee Service: GetReportingPersonByDepartmentId(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("EmployeeService: GetReportingPersonByDepartmentId(int id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -113,8 +109,7 @@ namespace A5.Service
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Employee Service: GetHrByDepartmentId(id) : (Error:{Message}",exception.Message);
+                _logger.LogError("EmployeeService: GetHrByDepartmentId(id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -132,8 +127,7 @@ namespace A5.Service
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Employee Service: GetEmployeeByRequesterId(Designation) : (Error:{Message}",exception.Message);
+                _logger.LogError("EmployeeService: GetEmployeeByRequesterId(Designation) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -152,8 +146,7 @@ namespace A5.Service
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Employee Service: GetEmployeeByOrganisation(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("EmployeeService: GetEmployeeByOrganisation(int id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -193,8 +186,7 @@ namespace A5.Service
              }
               catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Employee Service: GetAllEmployees() : (Error:{Message}",exception.Message);
+                _logger.LogError("EmployeeService: GetAllEmployees() : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -265,8 +257,7 @@ namespace A5.Service
              }
              catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Employee Service: GetEmployeeById(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("EmployeeService: GetEmployeeById(int id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -303,8 +294,7 @@ namespace A5.Service
                 }
                 catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Employee Service: GeneratePassword(Employee employee,int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("EmployeeService: GeneratePassword(Employee employee,int id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -327,8 +317,7 @@ namespace A5.Service
                 }
                 catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Employee Service: ChangePassword(Employee employee,int id,String Email) : (Error:{Message}",exception.Message);
+                _logger.LogError("EmployeeService: ChangePassword(Employee employee,int id,String Email) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -350,8 +339,7 @@ namespace A5.Service
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Employee Service: GetEmployee(string Email,string Password) : (Error:{Message}",exception.Message);
+                _logger.LogError("EmployeeService: GetEmployee(string Email,string Password) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -370,8 +358,7 @@ namespace A5.Service
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Employee Service: CreateEmployee(Employee employee) : (Error:{Message}",exception.Message);
+                _logger.LogError("EmployeeService: CreateEmployee(Employee employee) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -390,8 +377,7 @@ namespace A5.Service
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Employee Service: UpdateEmployee(Employee employee) : (Error:{Message}",exception.Message);
+                _logger.LogError("Employee Service: UpdateEmployee(Employee employee) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
