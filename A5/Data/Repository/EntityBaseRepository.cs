@@ -34,8 +34,7 @@ namespace A5.Data.Repository
            }
             catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Entity Base Repository : Create(T entity) : (Error:{Message}",exception.Message);
+                _logger.LogError("EntityBaseRepository : Create(T entity) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch (Exception exception){
@@ -62,8 +61,7 @@ namespace A5.Data.Repository
             }
               catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Entity Base Repository : Disable(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("EntityBaseRepository : Disable(int id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch (Exception exception){
@@ -90,8 +88,7 @@ namespace A5.Data.Repository
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Entity Base Repository : Update(T entity) : (Error:{Message}",exception.Message);
+                _logger.LogError("EntityBaseRepository : Update(T entity) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch (Exception exception){
@@ -110,8 +107,7 @@ namespace A5.Data.Repository
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Entity Base Repository : GetById(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("EntityBaseRepository : GetById(int id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch (Exception exception){
@@ -128,8 +124,7 @@ namespace A5.Data.Repository
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Entity Base Repository : GetAll() : (Error:{Message}",exception.Message);
+                _logger.LogError("EntityBaseRepository : GetAll() : (Error:{Message}",exception.Message);
                 throw;
             }
             catch (Exception exception){

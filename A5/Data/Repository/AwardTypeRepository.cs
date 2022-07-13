@@ -15,19 +15,18 @@ namespace A5.Data.Repository
             _context=context;
             _logger=logger;
         }
-          public bool CreateAwardType(AwardType awardType)
+          public bool CreateAwardType(AwardType entity)
         {
            
-            if(!AwardTypeValidations.CreateValidation(awardType)) throw new ValidationException("Invalid data");
-            bool NameExists=_context.AwardTypes!.Any(nameof=>nameof.AwardName==awardType.AwardName);
+            if(!AwardTypeValidations.CreateValidation(entity)) throw new ValidationException("Invalid data");
+            bool NameExists=_context.AwardTypes!.Any(nameof=>nameof.AwardName==entity.AwardName);
             if(NameExists) throw new ValidationException("Award Name already exists");
             try{
-                return Create(awardType);
+                return Create(entity);
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("AwardType Service: CreateAwardType(AwardType awardType) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardTypeRepository: CreateAwardType(AwardType awardType) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -37,17 +36,16 @@ namespace A5.Data.Repository
             }
         }
         
-         public bool UpdateAwardType(AwardType awardType)
+         public bool UpdateAwardType(AwardType entity)
         {
           
-            if(!AwardTypeValidations.UpdateValidation(awardType)) throw new ValidationException("Invalid data");
+            if(!AwardTypeValidations.UpdateValidation(entity)) throw new ValidationException("Invalid data");
             try{
-                return Update(awardType);
+                return Update(entity);
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("AwardType Service: UpdateAwardType(AwardType awardType) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardTypeRepository: UpdateAwardType(AwardType awardType) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -67,8 +65,7 @@ namespace A5.Data.Repository
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("AwardType Service: DisableAwardType(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardTypeRepository: DisableAwardType(int id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -86,8 +83,7 @@ namespace A5.Data.Repository
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("AwardTypeRepository: GetAllAwardType() : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardTypeRepository: GetAllAwardType() : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -105,8 +101,7 @@ namespace A5.Data.Repository
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("AwardTypeService: GetAwardTypeById(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardTypeRepository: GetAwardTypeById(int id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -115,10 +110,7 @@ namespace A5.Data.Repository
                 throw;
             }
         }
-         public object ErrorMessage(string ValidationMessage)
-        {
-            return new{message=ValidationMessage};
-        }
+       
        
     }
 }

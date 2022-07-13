@@ -13,10 +13,12 @@ namespace A5.Controller
     {
 
         private readonly TokenService _tokenService;
-        public TokenController(TokenService tokenService)
+        private readonly ILogger<TokenController> _logger;
+        public TokenController(TokenService tokenService,ILogger<TokenController> logger)
         {
 
             _tokenService = tokenService;
+            _logger=logger;
         }
 
        
@@ -31,14 +33,14 @@ namespace A5.Controller
                 return Ok(Result);
 
             }
-            catch (ValidationException exception)
+             catch(ValidationException exception)
             {
+                 _logger.LogError("TokenController :AuthToken(Login Credentials) : (Error: {Message})",exception.Message);
                 return BadRequest(exception.Message);
-
             }
-            catch (Exception exception)
+            catch(Exception exception)
             {
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
 
         }

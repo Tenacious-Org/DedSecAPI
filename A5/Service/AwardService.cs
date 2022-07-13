@@ -28,8 +28,7 @@ namespace A5.Service
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Award Service: RaiseRequest(Award award,int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardService: RaiseRequest(Award award,int id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -47,8 +46,7 @@ namespace A5.Service
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Award Service: Approval(Award award,int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardService: Approval(Award award,int id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -98,8 +96,7 @@ namespace A5.Service
            
            catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Award Service: GetAwardById(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardService: GetAwardById(int id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -118,8 +115,7 @@ namespace A5.Service
             }
            catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Award Service: AddComment(Comment comment) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardService: AddComment(Comment comment) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -171,8 +167,7 @@ namespace A5.Service
             }
            catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Award Service: GetAwardsList(int ? pageId,int ? employeeId) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardService: GetAwardsList(int ? pageId,int ? employeeId) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -196,8 +191,7 @@ namespace A5.Service
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Award Service: GetComments(int awardId) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardService: GetComments(int awardId) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)

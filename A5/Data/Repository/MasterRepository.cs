@@ -17,25 +17,7 @@ namespace A5.Data.Repository
             _context = context;
             _logger=logger;
         }
-        public IEnumerable<Department> GetAllDepartments()
-        {
-            try
-            {
-                var departments = _context.Set<Department>().Where(nameof =>nameof.IsActive).Include("Organisation").ToList();
-                return departments;
-            }
-           catch(ValidationException exception)
-            {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Master Repository: GetAllDepartments() : (Error:{Message}",exception.Message);
-                throw;
-            }
-            catch(Exception exception)
-            {
-                _logger.LogError("Error: {Message}",exception.Message);
-                throw;
-            }
-        }
+        
         public IEnumerable<Designation> GetAllDesignation()
         {
             try
@@ -45,8 +27,7 @@ namespace A5.Data.Repository
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Master Repository: GetAllDesignation() : (Error:{Message}",exception.Message);
+                _logger.LogError("MasterRepository: GetAllDesignation() : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -72,8 +53,7 @@ namespace A5.Data.Repository
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Master Repository: GetAllEmployees() : (Error:{Message}",exception.Message);
+                _logger.LogError("MasterRepository: GetAllEmployees() : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -100,8 +80,7 @@ namespace A5.Data.Repository
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Master Repository: GetUserDetails() : (Error:{Message}",exception.Message);
+                _logger.LogError("MasterRepository: GetUserDetails() : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -128,8 +107,7 @@ namespace A5.Data.Repository
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Master Repository: GetEmployeeById(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("Master Repository: GetEmployeeById(int id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)

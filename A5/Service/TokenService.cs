@@ -66,8 +66,7 @@ namespace A5.Service
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Token Service: GenerateToken(Login Credentials) : (Error:{Message}",exception.Message);
+                _logger.LogError("TokenService: GenerateToken(Login Credentials) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)

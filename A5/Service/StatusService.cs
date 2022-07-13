@@ -26,8 +26,7 @@ namespace A5.Service
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Status Service: GetById(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("StatusService: GetById(int id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -45,8 +44,7 @@ namespace A5.Service
             }
            catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Status Service: GetAll() : (Error:{Message}",exception.Message);
+                _logger.LogError("StatusService: GetAll() : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)

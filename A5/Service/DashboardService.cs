@@ -35,8 +35,7 @@ namespace A5.Service
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Dashboard Service: GetAllByOrgWise(int orgid) : (Error:{Message}",exception.Message);
+                _logger.LogError("DashboardService: GetAllByOrgWise(int orgid) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -62,8 +61,7 @@ namespace A5.Service
             }
            catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Dashboard Service: GetAllWinners() : (Error:{Message}",exception.Message);
+                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)

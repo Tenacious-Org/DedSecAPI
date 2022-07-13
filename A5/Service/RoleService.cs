@@ -24,8 +24,7 @@ namespace A5.Service
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Role Service: GetById(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("RoleService: GetById(int id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -44,8 +43,7 @@ namespace A5.Service
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Role Service: GetAll() : (Error:{Message}",exception.Message);
+                _logger.LogError("RoleService: GetAll() : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)

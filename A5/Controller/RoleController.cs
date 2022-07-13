@@ -28,13 +28,12 @@ namespace A5.Controller
             }
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                _logger.LogInformation($"Role Controller : GetByRoleId(int id) : (Error: {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
+                _logger.LogError("RoleController : GetByRoleId(int id) : (Error: {Message})",exception.Message);
+                return BadRequest(exception.Message);
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return Problem(exception.Message);
             }            
         }
 
@@ -47,13 +46,12 @@ namespace A5.Controller
             }
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                 _logger.LogInformation($"Role Controller : GetAll() : (Error: {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
+                 _logger.LogError("RoleController : GetAll() : (Error: {Message})",exception.Message);
+                return BadRequest(exception.Message);
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return Problem(exception.Message);
             }          
         }    
 

@@ -1,31 +1,26 @@
-using System.Collections.Generic;
-using System.Linq;
-using A5.Models;
-using A5.Data.Repository;
-using A5.Service.Interfaces;
 using System.ComponentModel.DataAnnotations;
-using System.Text.RegularExpressions;
-using A5.Service.Validations;
-using A5.Data;
+using A5.Models;
 using A5.Data.Repository.Interface;
+using A5.Service.Validations;
 
-namespace A5.Service
+namespace A5.Data.Repository
 {
-    public class OrganisationService :  IOrganisationService
+    public class OrganisationRepository:EntityBaseRepository<Organisation>,IOrganisationRepository
     {
-        private readonly IOrganisationRepository _organisationRepository;
-       private readonly ILogger<OrganisationService> _logger;
-
-        public OrganisationService(ILogger<OrganisationService> logger,IOrganisationRepository organisationRepository)  {
-                _logger=logger;
-                _organisationRepository=organisationRepository;
-         } 
-         
-        public bool CreateOrganisation(Organisation organisation)
+        private readonly AppDbContext _context;
+        private readonly ILogger<EntityBaseRepository<Organisation>> _logger;
+        public OrganisationRepository(AppDbContext context,ILogger<EntityBaseRepository<Organisation>> logger):base(context,logger)
         {
+            _context=context;
+            _logger=logger;
+        }
+            public bool CreateOrganisation(Organisation organisation)
+            {
             if(!OrganisationServiceValidations.CreateValidation(organisation)) throw new ValidationException("Invalid data");
+            bool NameExists=_context.Organisations!.Any(nameof=>nameof.OrganisationName==organisation.OrganisationName);
+            if(NameExists) throw new ValidationException("Organisation Name already exists");
             try{
-                return _organisationRepository.CreateOrganisation(organisation);
+                return Create(organisation);
             }
             catch(ValidationException exception)
             {
@@ -41,8 +36,10 @@ namespace A5.Service
         public bool UpdateOrganisation(Organisation organisation)
         {
             if(!OrganisationServiceValidations.UpdateValidation(organisation)) throw new ValidationException("Invalid Data");
+            bool NameExists=_context.Organisations!.Any(nameof=>nameof.OrganisationName==organisation.OrganisationName);
+            if(NameExists) throw new ValidationException("Organisation Name already exists");
             try{
-                return _organisationRepository.UpdateOrganisation(organisation);
+                return Update(organisation);
             }
             catch(ValidationException exception)
             {
@@ -59,28 +56,11 @@ namespace A5.Service
         {
             if(!OrganisationServiceValidations.ValidateGetById(id)) throw new ValidationException("Invalid Data");
             try{
-                return _organisationRepository.GetByOrganisation(id);
+                return GetById(id);
             }
             catch(ValidationException exception)
             {
                 _logger.LogError("OrganisationService: GetByOrganisation(int id) : (Error:{Message}",exception.Message);
-                throw;
-            }
-            catch(Exception exception)
-            {
-                _logger.LogError("Error: {Message}",exception.Message);
-                throw;
-            }
-        }
-         public IEnumerable<Organisation> GetAllOrganisation()
-        {
-            
-            try{
-                return _organisationRepository.GetAllOrganisation();
-            }
-             catch(ValidationException exception)
-            {
-                _logger.LogError("OrganisationService: GetAllOrganisation() : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -95,7 +75,7 @@ namespace A5.Service
             
             try
             {
-                return _organisationRepository.DisableOrganisation(id);
+                return Disable(id);
 
             }
            catch(ValidationException exception)
@@ -112,17 +92,29 @@ namespace A5.Service
         }
         public int GetCount(int id)
         {
-             return _organisationRepository.GetCount(id);
+             var checkEmployee = _context.Set<Employee>().Where(nameof => nameof.IsActive && nameof.OrganisationId == id).Count();
+             return checkEmployee;
+        }
+         public IEnumerable<Organisation> GetAllOrganisation()
+        {
+            
+            try{
+                return GetAll();
+            }
+             catch(ValidationException exception)
+            {
+                _logger.LogError("OrganisationService: GetAllOrganisation() : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                throw;
+            }
         }
         public object ErrorMessage(string ValidationMessage)
         {
             return new{message=ValidationMessage};
         }
-       
     }
-
-   
 }
-
-
-

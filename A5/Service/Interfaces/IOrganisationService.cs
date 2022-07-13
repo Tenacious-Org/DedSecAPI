@@ -5,13 +5,15 @@ using A5.Data.Repository.Interface;
 
 namespace A5.Service.Interfaces
 {
-    public interface IOrganisationService : IEntityBaseRepository<Organisation>
+    public interface IOrganisationService
     {
         bool CreateOrganisation(Organisation organisation);
         bool UpdateOrganisation(Organisation organisation);
         Organisation? GetByOrganisation(int id);
         bool DisableOrganisation(int id);
         int GetCount(int id);
+         public IEnumerable<Organisation> GetAllOrganisation();
+
         public  object ErrorMessage(string ValidationMessage);
     }
 }

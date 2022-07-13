@@ -38,8 +38,7 @@ namespace A5.Data.Repository
         }
         catch(ValidationException exception)
         {
-             _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Award Repository : RaiseAwardRequest(Award award,int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardRepository : RaiseAwardRequest(Award award,int id) : (Error:{Message}",exception.Message);
                 throw;
         }
         catch (Exception exception){
@@ -61,8 +60,7 @@ namespace A5.Data.Repository
        }
        catch(ValidationException exception)
         {
-             _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Award Repository : ApproveRequest(Award award,int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardRepository : ApproveRequest(Award award,int id) : (Error:{Message}",exception.Message);
                 throw;
         }
         catch (Exception exception){
@@ -89,8 +87,7 @@ namespace A5.Data.Repository
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Award Repository : GetAwardById(int id) : (Error:{Message}",exception.Message);
+                  _logger.LogError("AwardRepository : GetAwardById(int id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch (Exception exception){
@@ -110,8 +107,7 @@ namespace A5.Data.Repository
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Award Repository : AddComments(Comment comment) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardRepository : AddComments(Comment comment) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch (Exception exception){
@@ -133,8 +129,7 @@ namespace A5.Data.Repository
            }
             catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Award Repository : GetComments(Comment comment) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardRepository : GetComments(Comment comment) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch (Exception exception){
@@ -161,8 +156,7 @@ namespace A5.Data.Repository
             }
               catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Award Repository : GetAllAwardsList() : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardRepository : GetAllAwardsList() : (Error:{Message}",exception.Message);
                 throw;
             }
             catch (Exception exception){
@@ -190,8 +184,7 @@ namespace A5.Data.Repository
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Award Repository : GetAllWinners() : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardRepository : GetAllWinners() : (Error:{Message}",exception.Message);
                 throw;
             }
             catch (Exception exception){
@@ -220,8 +213,7 @@ namespace A5.Data.Repository
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Award Repository : GetAllbyOrgwise(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch (Exception exception){

@@ -42,18 +42,17 @@ namespace A5.Controller
         public ActionResult GetAllOrganisation()
         {
             try{
-                var data = _organisationService.GetAll();
+                var data = _organisationService.GetAllOrganisation();
                 return Ok(data);
             }
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                _logger.LogInformation($"Organisation Controller : GetAllOrganisation() : (Error:{exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
+                _logger.LogError("OrganisationController : GetAllOrganisation() : (Error:{Message})",exception.Message);
+                return BadRequest(_organisationService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return Problem(exception.Message);
             }
             
         }
@@ -88,13 +87,12 @@ namespace A5.Controller
             }
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                _logger.LogInformation($"Organisation Controller : GetByOrganisationId(int id) : (Error : {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
+                _logger.LogInformation("OrganisationController : GetByOrganisationId(int id) : (Error : {Message})",exception.Message);
+                return BadRequest(_organisationService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return Problem(exception.Message);
             }
             
         }
@@ -130,13 +128,13 @@ namespace A5.Controller
             }
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                _logger.LogInformation($"Organisation Controller : Create(Organisation organisation) : (Error:{exception.Message}");
+
+                _logger.LogError("OrganisationController : Create(Organisation organisation) : (Error:{Message}",exception.Message);
                 return BadRequest(_organisationService.ErrorMessage($"{exception.Message}"));
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return Problem(exception.Message);
             }
         }
 
@@ -169,13 +167,12 @@ namespace A5.Controller
             }        
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                _logger.LogInformation($"Organisation Controller : Update(Organisation organisation,int id) : (Error: {exception.Message})");
-                return BadRequest(_organisationService.ErrorMessage($"{exception.Message}"));
+                  _logger.LogError("OrganisationController : Update(Organisation organisation,int id) : (Error: {Message})",exception.Message);
+                return BadRequest(_organisationService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return Problem(exception.Message);
             }
         }
 
@@ -218,13 +215,12 @@ namespace A5.Controller
             }
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                _logger.LogInformation($"Organisation Controller : Disable(int id) : (Error : {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
+                _logger.LogError("OrganisationController : Disable(int id) : (Error : {Message})",exception.Message);
+                return BadRequest(_organisationService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(exception.Message);
             }
         }
     }

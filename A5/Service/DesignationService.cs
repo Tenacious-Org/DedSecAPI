@@ -39,8 +39,7 @@ namespace A5.Service
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Designation Service : GetDesignationsByDepartmentId(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("DesignationService : GetDesignationsByDepartmentId(int id) : (Error:{Message}",exception.Message);
                throw;
             }
             catch(Exception exception)
@@ -74,8 +73,7 @@ namespace A5.Service
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Designation Service: CreateDesignation(Designation) : (Error:{Message}",exception.Message);
+                _logger.LogError("DesignationService: CreateDesignation(Designation) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -104,8 +102,7 @@ namespace A5.Service
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Designation Service: UpdateDesignation(Designation) : (Error:{Message}",exception.Message);
+                _logger.LogError("Designation Service: UpdateDesignation(Designation) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
