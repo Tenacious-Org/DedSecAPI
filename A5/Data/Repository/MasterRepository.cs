@@ -61,7 +61,7 @@ namespace A5.Data.Repository
             try
             {
                 var employee = _context.Set<Employee>()
-                    .Include("Designation.Department.Organisation")
+                    .Include(e=>e.Designation!.Department!.Organisation)
                     .Include("Designation.Department")
                     .Include("Designation")
                     .Include("ReportingPerson")

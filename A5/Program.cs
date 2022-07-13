@@ -2,6 +2,7 @@ using A5.Data;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using A5.Data.Repository;
+using A5.Data.Repository.Interface;
 using System.Reflection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -37,6 +38,8 @@ builder.Services.AddTransient<EmployeeService>();
 builder.Services.AddTransient<IAwardService,AwardService>();
 builder.Services.AddTransient<MasterRepository>();
 builder.Services.AddTransient<AwardRepository>();
+builder.Services.AddTransient<IAwardTypeRepository,AwardTypeRepository>();
+
 
 
 

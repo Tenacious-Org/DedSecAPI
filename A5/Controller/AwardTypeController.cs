@@ -44,7 +44,7 @@ namespace A5.Controller
         {
             try{
                 
-                var data = _awardTypeService.GetAll();
+                var data = _awardTypeService.GetAllAwardType();
                  return Ok(data);
             }
             catch(ValidationException exception)
@@ -84,7 +84,7 @@ namespace A5.Controller
             try
             {
                
-                var data = _awardTypeService.GetById(id);
+                var data = _awardTypeService.GetAwardTypeById(id);
                  return Ok(data);
             }
             catch(ValidationException exception)
@@ -199,8 +199,7 @@ namespace A5.Controller
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
         {
-            try{
-                
+            try{           
                 var data=_awardTypeService.DisableAwardType(id);
                  return  Ok(data); 
             }

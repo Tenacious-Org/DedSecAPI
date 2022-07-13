@@ -53,7 +53,7 @@ namespace A5.Controller
              catch(ValidationException exception)
             {
                 _logger.LogError("Error: {Message}",exception.Message);
-                _logger.LogInformation("Award Controller : RaiseRequest(Award award,int id) : (Error:{Message}",exception.Message);
+                _logger.LogInformation("AwardController : RaiseRequest(Award award,int id) : (Error:{Message}",exception.Message);
                 return BadRequest(_awardService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
@@ -194,7 +194,7 @@ namespace A5.Controller
 
        [HttpGet("GetAwardsList")]
        [AllowAnonymous]
-       public ActionResult GetAwardsList(int ? pageId,int ? employeeId)
+       public ActionResult GetAwardsList(int pageId =0,int employeeId=0)
        {          
            try{
                 var data=_awardService.GetAwardsList(pageId,employeeId);
