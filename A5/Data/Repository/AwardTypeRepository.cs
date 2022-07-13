@@ -1,29 +1,28 @@
-
 using System.ComponentModel.DataAnnotations;
 using A5.Data;
-using A5.Data.Repository.Interface;
 using A5.Data.Repository;
+using A5.Data.Repository.Interface;
 using A5.Models;
-using A5.Service.Interfaces;
 using A5.Service.Validations;
 
-namespace A5.Service
+namespace A5.Data.Repository
 {
-    public class AwardTypeService : IAwardTypeService
+     public class AwardTypeRepository : EntityBaseRepository<AwardType>,IAwardTypeRepository
     {
-        private readonly IAwardTypeRepository _awardTypeRepository;
-        private readonly ILogger<AwardTypeService> _logger;
-        public AwardTypeService(IAwardTypeRepository awardTypeRepository,ILogger<AwardTypeService> logger )  { 
-            _awardTypeRepository=awardTypeRepository;
+        private readonly AppDbContext _context;
+         private readonly ILogger<EntityBaseRepository<AwardType>> _logger;
+        public AwardTypeRepository(AppDbContext context,ILogger<EntityBaseRepository<AwardType>> logger ) : base(context,logger) { 
+            _context=context;
             _logger=logger;
         }
           public bool CreateAwardType(AwardType awardType)
         {
            
             if(!AwardTypeValidations.CreateValidation(awardType)) throw new ValidationException("Invalid data");
-   
+            bool NameExists=_context.AwardTypes!.Any(nameof=>nameof.AwardName==awardType.AwardName);
+            if(NameExists) throw new ValidationException("Award Name already exists");
             try{
-                return _awardTypeRepository.CreateAwardType(awardType);
+                return Create(awardType);
             }
             catch(ValidationException exception)
             {
@@ -43,7 +42,7 @@ namespace A5.Service
           
             if(!AwardTypeValidations.UpdateValidation(awardType)) throw new ValidationException("Invalid data");
             try{
-                return _awardTypeRepository.UpdateAwardType(awardType);
+                return Update(awardType);
             }
             catch(ValidationException exception)
             {
@@ -59,9 +58,12 @@ namespace A5.Service
         }
         public bool DisableAwardType(int id)
         {
+            AwardType awardType=new AwardType();
             if(!AwardTypeValidations.DisableValidation(id)) throw new ValidationException("Invalid data");
+            bool NameExists=_context.AwardTypes!.Any(nameof=>nameof.AwardName==awardType.AwardName);
+            if(NameExists) throw new ValidationException("Award Name already exists");
             try{
-                return _awardTypeRepository.DisableAwardType(id);
+                return Disable(id);
             }
              catch(ValidationException exception)
             {
@@ -76,11 +78,11 @@ namespace A5.Service
             }
         }
 
-         public IEnumerable<AwardType> GetAllAwardType()
+        public IEnumerable<AwardType> GetAllAwardType()
         {
             
             try{
-                return _awardTypeRepository.GetAllAwardType();
+                return GetAll();
             }
              catch(ValidationException exception)
             {
@@ -99,7 +101,7 @@ namespace A5.Service
         {
           
             try{
-                return _awardTypeRepository.GetAwardTypeById(id);
+                return GetById(id);
             }
             catch(ValidationException exception)
             {

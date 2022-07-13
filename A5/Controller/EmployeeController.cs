@@ -47,13 +47,12 @@ namespace A5.Controller
             }
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                _logger.LogInformation($"Employee Controller : GetAllEmployees() : (Error: {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
+                _logger.LogError("Employee Controller : GetAllEmployees() : (Error: {Message})",exception.Message);
+                return BadRequest(exception.Message);
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(exception.Message);
             }
         }
 
@@ -86,13 +85,12 @@ namespace A5.Controller
             }
             catch(ValidationException exception)
             {
-                _logger.LogError($"log: (Error: {exception.Message})");
-                 _logger.LogInformation($"Employee Controller : GetEmployeeById(int id) : (Error: {exception.Message})");
-                return BadRequest($"Error : {exception.Message}");
+                 _logger.LogError("Employee Controller : GetEmployeeById(int id) : (Error: {Message})",exception.Message);
+                return BadRequest(exception.Message);
             }
             catch(Exception exception)
             {
-                return BadRequest($"Error : {exception.Message}");
+                return BadRequest(exception.Message);
             }
         }
 

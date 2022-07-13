@@ -1,4 +1,4 @@
-namespace A5.Data.Repository
+namespace A5.Data.Repository.Interface
 {
     public interface IAudit
     {

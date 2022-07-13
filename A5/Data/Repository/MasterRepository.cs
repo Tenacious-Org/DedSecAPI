@@ -21,7 +21,7 @@ namespace A5.Data.Repository
         {
             try
             {
-                var departments = _context.Set<Department>().Where(nameof =>nameof.IsActive == true).Include("Organisation").ToList();
+                var departments = _context.Set<Department>().Where(nameof =>nameof.IsActive).Include("Organisation").ToList();
                 return departments;
             }
            catch(ValidationException exception)
@@ -61,7 +61,7 @@ namespace A5.Data.Repository
             try
             {
                 var employee = _context.Set<Employee>()
-                    .Include("Designation.Department.Organisation")
+                    .Include(e=>e.Designation!.Department!.Organisation)
                     .Include("Designation.Department")
                     .Include("Designation")
                     .Include("ReportingPerson")

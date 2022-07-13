@@ -1,4 +1,4 @@
-using A5.Data.Repository;
+using A5.Data.Repository.Interface;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.RegularExpressions;
