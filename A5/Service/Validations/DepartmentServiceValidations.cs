@@ -18,7 +18,6 @@ namespace A5.Service.Validations
         public  bool CreateValidation(Department department)
         {
             if(string.IsNullOrWhiteSpace(department.DepartmentName)) throw new ValidationException("Department Name should not be null or Empty.");
-           // if(_context.Departments.Any(nameof=>nameof.DepartmentName==department.DepartmentName)) throw new ValidationException("Department name already exists");
             if(!( Regex.IsMatch(department.DepartmentName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("Department Name should have only alphabets.No special Characters or numbers are allowed");
             if(department.IsActive == false) throw new ValidationException("Department should be Active when it is created.");
             if(department.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
@@ -27,9 +26,8 @@ namespace A5.Service.Validations
 
          public bool UpdateValidation(Department department)
         {
-             //if(id == 0) throw new ValidationException("Department Id should not be null.");
              if(string.IsNullOrWhiteSpace(department.DepartmentName)) throw new ValidationException("Department name should not be null or empty");
-             if(_context.Departments.Any(nameof=>nameof.DepartmentName==department.DepartmentName)) throw new ValidationException("Department name already exists");
+             if(_context.Departments!.Any(nameof=>nameof.DepartmentName==department.DepartmentName)) throw new ValidationException("Department name already exists");
              if(!( Regex.IsMatch(department.DepartmentName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("Department Name should have only alphabets.No special Characters or numbers are allowed");
              if(department.IsActive == false) throw new ValidationException("To Update department it should be active");
              if(department.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");

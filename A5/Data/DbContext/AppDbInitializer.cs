@@ -14,7 +14,7 @@ namespace A5.Data
                 
                 if(!context.Organisations?.Any()==true)
                 {
-                    context.Organisations.AddRange(new List<Organisation>() {
+                    context?.Organisations?.AddRange(new List<Organisation>() {
                         new Organisation()
                         {
                             OrganisationName = "Tenacious",
@@ -43,12 +43,16 @@ namespace A5.Data
                             UpdatedOn = DateTime.Now
                         },
                     });
-                    context.SaveChanges();
+                    context?.SaveChanges();
                 }
+<<<<<<< Updated upstream
 
                 if(!context.Departments?.Any()==true)
+=======
+                if(context?.Departments?.Any()==true)
+>>>>>>> Stashed changes
                 {
-                    context.Departments.AddRange(new List<Department>() {
+                    context?.Departments?.AddRange(new List<Department>() {
                         new Department()
                         {
                             DepartmentName = "Management",
@@ -82,12 +86,12 @@ namespace A5.Data
                             UpdatedOn = DateTime.Now
                         },
                     });
-                    context.SaveChanges();
+                    context?.SaveChanges();
                 }
 
-                if(!context.Roles?.Any()==true)
+                if(context?.Roles?.Any()==true)
                 {
-                    context.Roles.AddRange(new List<Role>() {
+                    context?.Roles?.AddRange(new List<Role>() {
                         new Role()
                         {
                             RoleName = "Public",
@@ -109,12 +113,16 @@ namespace A5.Data
                             RoleName = "Admin",
                         },
                     });
-                    context.SaveChanges();
+                    context?.SaveChanges();
                 }
 
+<<<<<<< Updated upstream
                 if(!context.Designations?.Any()==true)
+=======
+                 if(context?.Designations?.Any()==true)
+>>>>>>> Stashed changes
                 {
-                    context.Designations.AddRange(new List<Designation>() {
+                    context?.Designations?.AddRange(new List<Designation>() {
                         new Designation()
                         {
                             DesignationName = "Admin",
@@ -200,10 +208,14 @@ namespace A5.Data
 
                         },
                     });
-                    context.SaveChanges();
+                    context?.SaveChanges();
                 }
                 
+<<<<<<< Updated upstream
                 if(!context.Employees?.Any()==true)
+=======
+                if (context?.Employees?.Any()==true)
+>>>>>>> Stashed changes
                 {
                     context.Employees.AddRange(new List<Employee>() { 
                        new Employee()
@@ -450,12 +462,16 @@ namespace A5.Data
                        },
 
                     });
-                    context.SaveChanges();
+                    context?.SaveChanges();
                 }
+<<<<<<< Updated upstream
 
                 if(!context.AwardTypes?.Any()==true)
+=======
+                if(context?.AwardTypes?.Any()==true)
+>>>>>>> Stashed changes
                 {
-                    context.AwardTypes.AddRange(new List<AwardType>() {
+                    context?.AwardTypes?.AddRange(new List<AwardType>() {
                         new AwardType()
                         {
                             AwardName = "Role Star",
@@ -493,10 +509,14 @@ namespace A5.Data
                             UpdatedOn = null
                         },
                     });
-                    context.SaveChanges();
+                    context?.SaveChanges();
                 }
+<<<<<<< Updated upstream
 
                 if(!context.Statuses?.Any()==true)
+=======
+                if(context?.Statuses?.Any()==true)
+>>>>>>> Stashed changes
                 {
                     context.Statuses!.AddRange(new List<Status>() {
                         new Status()
@@ -523,7 +543,13 @@ namespace A5.Data
                     context.SaveChanges();
                 }
 
+<<<<<<< Updated upstream
                 if(!context.Awards?.Any()==true)
+=======
+                
+
+                if(context?.Awards?.Any()==true)
+>>>>>>> Stashed changes
                 {
                     context.Awards!.AddRange(new List<Award>() {
                         new Award()

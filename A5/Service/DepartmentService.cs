@@ -31,8 +31,15 @@ namespace A5.Service
             try{
                 return Create(department);
             }
-            catch(Exception)
+            catch(ValidationException exception)
             {
+                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogInformation("Department Service: CreateDepartment(Departmetn department) : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
                 throw;
             }
         }
@@ -45,9 +52,16 @@ namespace A5.Service
             try{
                 return Update(department);
             }
-            catch(Exception)
+            catch(ValidationException exception)
             {
-                throw ;
+                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogInformation("Department Service: UpdateDepartment(Department department) : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                throw;
             }
         }
         public Department? GetByDepartment(int id)
@@ -57,8 +71,15 @@ namespace A5.Service
             try{
                 return GetById(id);
             }
-            catch(Exception)
+            catch(ValidationException exception)
             {
+                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogInformation("Department Service: GetByDepartment(int id) : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
                 throw;
             }
         }
@@ -72,9 +93,16 @@ namespace A5.Service
                 return Disable(id);
 
             }
-            catch(Exception)
+            catch(ValidationException exception)
             {
-                throw ;
+                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogInformation("Department Service: DisableDepartment(int id) : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                throw;
             }
         }
         public IEnumerable<object> GetAllDepartments()
@@ -105,8 +133,15 @@ namespace A5.Service
                 var organisationDetails = _context.Set<Department>().Where(nameof => nameof.OrganisationId == id && nameof.IsActive == true).ToList();
                 return organisationDetails;
             }
-            catch(Exception)
+            catch(ValidationException exception)
             {
+                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogInformation("Department Service: GetDepartmentsByOrganisationId(int id) : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
                 throw;
             }
              

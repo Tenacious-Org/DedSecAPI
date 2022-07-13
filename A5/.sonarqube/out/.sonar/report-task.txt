@@ -2,5 +2,5 @@ projectKey=Award
 serverUrl=http://localhost:9000
 serverVersion=9.5.0.56709
 dashboardUrl=http://localhost:9000/dashboard?id=Award
-ceTaskId=AYHzw1lit2LH1x0yTWL3
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYHzw1lit2LH1x0yTWL3
+ceTaskId=AYH1xdpqc1ryN_XA_MQd
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYH1xdpqc1ryN_XA_MQd

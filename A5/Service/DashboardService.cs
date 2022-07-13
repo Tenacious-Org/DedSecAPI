@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using A5.Data;
@@ -10,12 +11,12 @@ namespace A5.Service
 {
     public class DashboardService
     {
-        private readonly AppDbContext _context;
         private readonly AwardRepository _award;
-        public DashboardService(AppDbContext context,AwardRepository awardRepository)
+        private readonly ILogger<DashboardService> _logger;
+        public DashboardService(AwardRepository awardRepository,ILogger<DashboardService> logger)
         {
-            _context = context;
             _award=awardRepository;
+            _logger=logger;
         }
 
         public IEnumerable<object> GetAllByOrgwise(int orgid)
@@ -32,8 +33,15 @@ namespace A5.Service
                     awardName = Award?.AwardType?.AwardName,
                 });
             }
-            catch(Exception)
+             catch(ValidationException exception)
             {
+                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogInformation("Dashboard Service: GetAllByOrgWise(int orgid) : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
                 throw;
             }
         }
@@ -52,8 +60,15 @@ namespace A5.Service
                     awardName = Award?.AwardType?.AwardName,
                 });
             }
-            catch(Exception)
+           catch(ValidationException exception)
             {
+                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogInformation("Dashboard Service: GetAllWinners() : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
                 throw;
             }
         }

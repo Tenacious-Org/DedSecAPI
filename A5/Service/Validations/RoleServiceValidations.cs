@@ -2,7 +2,7 @@ using A5.Models;
 using System.ComponentModel.DataAnnotations;
 namespace A5.Service.Validations
 {
-    public class RoleServiceValidations
+    public static class RoleServiceValidations
     {
         public static void ValidateGetById(int id)
         {

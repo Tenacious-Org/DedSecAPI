@@ -4,12 +4,12 @@ namespace A5.Hasher
 {
 public  class BCryptPasswordHasher<TEmployee> : IPasswordHasher<TEmployee> where TEmployee : Employee
 {
-    public  string HashPassword(TEmployee employee, string password)
+    public  string HashPassword(TEmployee user, string password)
     {
         return BCrypt.Net.BCrypt.HashPassword(password, 12);
     }
 	
-    public  PasswordVerificationResult VerifyHashedPassword(TEmployee employee, string hashedPassword, string providedPassword)
+    public  PasswordVerificationResult VerifyHashedPassword(TEmployee user, string hashedPassword, string providedPassword)
     {
         var isValid = BCrypt.Net.BCrypt.Verify(providedPassword, hashedPassword);
 

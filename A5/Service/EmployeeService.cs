@@ -343,11 +343,10 @@ namespace A5.Service
             if(Email == null || Password ==null) throw new ValidationException("Email or Password cannot be null");
             try
             {
-                //var Hasher = PasswordHasherFactory.GetPasswordHasherFactory();
                 var User =_master.GetUserDetails().ToList().Find(user => user.Email == Email && user.Password==Password);
                 if (User == null) throw new ValidationException("Invalid user");
                 return User;
-                //return Hasher.VerifyHashedPassword(User, User.Password, Password) == PasswordVerificationResult.Success ? User : throw new InvalidDataException("Password doesn't match");
+               
             }
             catch(ValidationException exception)
             {

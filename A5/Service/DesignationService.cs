@@ -65,7 +65,7 @@ namespace A5.Service
          }
           public bool CreateDesignation(Designation designation)
         {
-            var obj = new DesignationServiceValidations(_context);
+            var obj = new DesignationServiceValidations();
             if(!obj.CreateValidation(designation)) throw new ValidationException("Invalid data");
             bool NameExists=_context.Designations!.Any(nameof=>nameof.DesignationName==designation.DesignationName && nameof.DepartmentId==designation.DepartmentId);
             if(NameExists) throw new ValidationException("Designation Name already exists");
@@ -95,7 +95,7 @@ namespace A5.Service
         }
         public bool UpdateDesignation(Designation designation)
         {
-             var obj = new DesignationServiceValidations(_context);
+             var obj = new DesignationServiceValidations();
             if(!obj.UpdateValidation(designation)) throw new ValidationException("Invalid Data");
              bool NameExists=_context.Designations!.Any(nameof=>nameof.DesignationName==designation.DesignationName);
             if(NameExists) throw new ValidationException("Designation Name already exists");

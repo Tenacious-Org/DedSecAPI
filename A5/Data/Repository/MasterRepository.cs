@@ -11,10 +11,11 @@ namespace A5.Data.Repository
     public class MasterRepository
     {
         private readonly AppDbContext _context;
-        
-        public MasterRepository(AppDbContext context)
+        private readonly ILogger<MasterRepository> _logger;
+        public MasterRepository(AppDbContext context,ILogger<MasterRepository> logger)
         {
             _context = context;
+            _logger=logger;
         }
         public IEnumerable<Department> GetAllDepartments()
         {
@@ -23,12 +24,16 @@ namespace A5.Data.Repository
                 var departments = _context.Set<Department>().Where(nameof =>nameof.IsActive == true).Include("Organisation").ToList();
                 return departments;
             }
-             catch(ValidationException)
+           catch(ValidationException exception)
             {
+                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogInformation("Master Repository: GetAllDepartments() : (Error:{Message}",exception.Message);
                 throw;
             }
-            catch (Exception ){
-              throw;
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                throw;
             }
         }
         public IEnumerable<Designation> GetAllDesignation()
@@ -38,13 +43,17 @@ namespace A5.Data.Repository
                 var designations = _context.Set<Designation>().Where(nameof =>nameof.IsActive == true).Include("Department").ToList();
                 return designations;
             }
-             catch(ValidationException)
+            catch(ValidationException exception)
             {
+                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogInformation("Master Repository: GetAllDesignation() : (Error:{Message}",exception.Message);
                 throw;
             }
-            catch (Exception){
-               throw;
-            } 
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                throw;
+            }
             
         }
         public IEnumerable<Employee> GetAllEmployees()
@@ -61,15 +70,17 @@ namespace A5.Data.Repository
                     .ToList();
                 return employee;
             }
-             catch(ValidationException)
+             catch(ValidationException exception)
             {
-               
+                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogInformation("Master Repository: GetAllEmployees() : (Error:{Message}",exception.Message);
                 throw;
             }
-            catch (Exception){
-               throw;
-            } 
-            
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                throw;
+            }
             
         }
 
@@ -87,13 +98,17 @@ namespace A5.Data.Repository
                     .ToList();
                 return employee;
             }
-             catch(ValidationException )
+            catch(ValidationException exception)
             {
+                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogInformation("Master Repository: GetUserDetails() : (Error:{Message}",exception.Message);
                 throw;
             }
-            catch (Exception ){
-               throw;
-            } 
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                throw;
+            }
         }
       
 
@@ -111,8 +126,15 @@ namespace A5.Data.Repository
                     .FirstOrDefault(nameof =>nameof.Id == id);
                 return employee;
             }
-            catch(Exception )
+            catch(ValidationException exception)
             {
+                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogInformation("Master Repository: GetEmployeeById(int id) : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
                 throw;
             }
         }

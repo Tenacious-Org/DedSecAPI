@@ -1,6 +1,6 @@
-´
-QC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Controller\AwardController.cs< 8jœ!$%&'()*+CDEFGIKNOPQRSTUpqrstvx{|}~€„…†‡ˆŠŒ‘’“”•¯°±²³µ·º»¼½¾¿ÀÖ×ØÙÚÜŞáâãäåæçÿ€‚ƒ…‡Š‹Œrà	
--./0123456789:;<=>?AWXZ[\]^_`abcdefghik—˜™š›Ÿ ¡¢£¤¥¦§¨©ª«­ÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔéêëìíîïğñòóôõö÷øùúûı’“”•–—˜™š›œŸ ¡¢£¤¦¨©x‚R023789=>Z\]abcghš›Ÿ£¤¥©ªÆÇËÌÍÑÒìîïóôõùú•—˜œ¢£¤
+º
+QC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Controller\AwardController.cs< 8jœ!$%&'()*+CDEFGIKNOPQRSTUpqrstvx{|}~€„…†‡ˆŠŒ‘’“”•°±²³´¶¸»¼½¾¿ÀÁØÙÚÛÜŞàãäåæçèé‚ƒ„…‡‰Œ‘’ræ	
+-./0123456789:;<=>?AWXZ[\]^_`abcdefghik—˜™š›œŸ ¡¢£¤¥¦§¨©ª«¬®ÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖëìíîïğñòóôõö÷øùúûüıÿ”•–—˜™š›œŸ ¡¢£¤¥¦§©«¬x‚R023789=>Z\]abcgh›œŸ ¤¥¦ª«ÈÉÍÎÏÓÔîğñõö÷ûü˜š›Ÿ ¡¥¦¤
 UC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Controller\AwardTypeController.cs' 8ja "#$%&'(>?@ABDFIJKLMNOfghijlnqrstuvw‘“•˜™š›œ´µ¶·¸º¼¿ÀÁÂÃÄÅr§	
 *+,-/0123456789:;<QRSTUWXYZ[\]^_`abcdyz{|}~€‚ƒ„…†‡ˆ‰Š‹ ¡¢£¤¥¦§¨©ª«¬­®¯°±²ÇÈÉÊÌÍÎÏĞÑÒÓÔÕÖ×ØÙÛÜx
 ‚3/0456:WX\]^b}~ƒ„…‰¤¥¦ª«¬°ÌÍÑÒÓ×
@@ -23,7 +23,7 @@ QC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Controller\TokenController.
 !"#$&'()*,/2x‚$)€
 RC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\DbContext\AppDbContext.cs 8r	 !‚Ÿ
 
-VC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\DbContext\AppDbInitializer.cs 8r	
+VC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\DbContext\AppDbInitializer.cs 8(r	
  !"#$%&'()*+,-./0123456789:;=>?@ABCDEFHIJKLMNOPQRSTUWXYZ[\]^_`abcdefghijklmnoprstuvwxyz{|}~€‚ƒ„…†‡ˆ‰ŠŒ‘’“”•–˜™š›œŸ ¡¢¤¥¦§¨©ª«¬­®°±²³´µ¶·¸¹º¼½¾¿ÀÁÂÃÄÅÆÈÉÊËÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞßàáâãäåæçèéêëìíîïğñòóôõö÷øùúûüışÿ€‚ƒ„…†‡ˆ‰Š‹Œ‘’“”•–—˜™š›œŸ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞßàáâãäåæçèéêëìíîïğñòóôõö÷øùúûüışÿ€‚ƒ„…†‡ˆ‰Š‹Œ‘’“”•–—˜™š›œŸ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞßàáâãäåæçèéêëìíîïğñòóôõö÷øùúûüışÿ€‚ƒ„…†‡ˆ‰‘’“”•–—˜™š›œŸ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÖ×ÚÛx‚¦
  ")+.029;DFOQTWYort|~ˆŠ”– ¢¬®¸ºÄÆÊÍÏÙâäïøú…›¤¦±º¼ÇĞÒİæèóüş‰’”Ÿ¨ªµ¾ÀÄÆÈÑİéîğòˆœ¬®¼¾ÌÎÒŸ
 VC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\AwardRepository.csT 	8
@@ -36,10 +36,9 @@ MC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\IAudit.cs
 b
 RC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\IEntityBase.cs8r	o
 \C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\IEntityBaseRepository.csr	
-ï
-WC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\MasterRepository.cs 8ro	
- !"#$%&'()*+,-./123456789:;<=>?@ACDEFGJLMNOPQRSTUVWXYZ[\]^_`adefghijklmnopqrstuvyzx
-‚&'+.6<>CFPVX\_hnoptw
+®
+WC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Repository\MasterRepository.cs* 8r—	
+ !"#$%&'()*+,-./012345678:;<=>?@ABCDEFGHIJKLMNOPQRSUWXYZ[\]^_`abcdefghijklmnopstuvwxyz{|}~€‚ƒ„…†‡ˆ‰Š‹Œx‚.#$+,01267?EGKLMQR[acghimnw}~ƒ„…‰Šw
 LC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Hasher\PasswordHasher.cs 8r	
 x‚	n
 SC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Hasher\PasswordHasherFactory.cs 8r
@@ -64,23 +63,22 @@ JC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Models\Organisation.cs 8
 BC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Models\Role.cs 8r	
 Y
 DC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Models\Status.cs 8r	
-ú
->C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Program.csN8j]h…rn	
- !"#$%&'+,-./0123456789:;<=>?@ABCDEFGHIJKLMNORSTUVWXYZ^`abcdfijklmnopsuwy{}~€‚ƒˆx‚9 !"#$%&'+-./34589<>ADHLRSTUWY^`bcfiklnsuwy{}ˆŒ
-KC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\AwardService.cs$ 8xrÅ	
- !#$&'()*+,-0123456789:;<=>?@ABCDEFGHIJKLMNOPRSUVWXY\]^_`abcdfijlmnopqrstuvwxyz{|}~€‚ƒ„…†‡ˆ‰Š‹Œ‘’“•–—˜™š›œŸ ¡¢£¤¥§¨©ª¬­x‚j'+2456789:;<=>?@ABCDEFGHIJKLMNOPW^`cnopqrstuvxyz{|}~€‚ƒ„…†‡ˆ‰Š‹Œ‘˜™š›œŸ£©¬
-OC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\AwardTypeService.cs 8
-r<	
- "#%&'()*+,-./0123456789:;<=>?ABx‚%'+12359>¢
-OC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\DashboardService.cs
- 8r4	
- !"#$%&')*+,-.02456789:;<=x‚ %-.0249õ
-PC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\DepartmentService.cs+ 	8rp	 !"#$%&'()*+,-./0123456789:;<=>?@ABCDFGHJKLMNOPQRSTUVWXYZ[\^_`abcdefghijklmnoqrstuwzx‚$ $*+,.28:>DHMRSTUVWXYZ[abfijntƒ
+ü
+>C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Program.csP8j]hrp	
+ !"#$%&'+,-./0123456789:;<=>?@ABCDEFGHIJKLMNORSTUVWXYZ^`abcdfijklmnopsuwy{}~€‚ƒ…ˆx‚; !"#$%&'+-./34589<>ADHLRSTUWY^`bcfiklnsuwy{}…ˆ‘
+KC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\AwardService.cs< 8xr—	
+ !"#$%&'(*+-./0123456789:;>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^`acdefghijklmnqrstuvwxyz{|}~€‚…†ˆ‰Š‹Œ‘’“”•–—˜™š›œŸ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÖ×x‚œ !%&.23489@BCDEFGHIJKLMNOPQRSTUVWXYZ[\]^efgklsuyz{€Š‹Œ‘’”•–—˜™š›œŸ ¡¢£¤¥¦§¨­®¯³´»¼½¾¿ÀÁÂÆÇÈÌÍÓÍ
+OC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\AwardTypeService.cs% 8
+rQ	
+ !"#$%&')*,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTVWx‚ $%,.23489?@ACGHIMNS¹
+OC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\DashboardService.cs 8rC
+!"#$%&'()*+,-./1234568:<=>?@ABCDEFGHIJKLx‚!&'(,-568:<ABCGHĞ
+PC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\DepartmentService.cs? 	8r­	 !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXY[\]_`abcdefghijklmnopqrstuvwxz{|}~€‚ƒ„…†‡ˆ‰Š‹Œ‘’”•–—˜šx‚A $%&*+12359:;?@FHLMNRSY]bcdhinopqrstuvw}~‚…†Š‹Œ‘—ƒ
 QC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\DesignationService.cs. 8rt
- !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuwx‚-!%*+,016789:;<=>?EFGIMNOSTYZ^cdegklmqrÁ
-NC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\EmployeeService.cs’ 8]jÚŞr	 !"#$%&'()*+-/0123456789:;<=>?@BDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~€‚ƒ„…†‡ˆ‰Š‹Œ‘’“”•–—˜™š›œŸ ¡¢£¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞßàáâãäåæçèéêëìíîïğñòóôõö÷øùúûüışÿ€‚ƒ„…†‡‰Š‹Œ‘’“”–—˜š›œŸ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÕÖ×ØÙÛÜİßàáâãäåæçèéêëíîïğñòóôõö÷øùúûüış€‚ƒ„…†‡ˆ‰Š‹Œ‘’”—šx(‚Ì#$%)*1489:>?FIMNOSTY]abcghmptuvz{€ƒ‡ˆ‰“–—›œ¡¢ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÄÅÆÊËÑÔÕÖ×ØÙÚÛÜİŞßàáâãäåæçèéêíîïğñòóôõö÷øùúûüışÿ€‚ƒ„…Œ’“œŸ ¡¢¦¨©«¬­®²³´¸¹ÂÃÄÅÆÊËÌĞÑ×ÛÜİâãäèéğòö÷øüı„†Š‹Œ‘q
-WC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\Interfaces\IAwardService.csr	
-o
+ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuwx‚-!%*+,016789:;<=>?EFGIMNOSTYZ^cdegklmqr»
+NC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\EmployeeService.cs’ 8]r	 !"#$%&'()*+-/0123456789:;<=>?@BDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~€‚ƒ„…†‡ˆ‰Š‹Œ‘’“”•–—˜™š›œŸ ¡¢£¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞßàáâãäåæçèéêëìíîïğñòóôõö÷øùúûüışÿ€‚ƒ„…†‡‰Š‹Œ‘’“”–—˜š›œŸ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÕÖ×ØÙÚÛÜŞßàáâãäåæçèéêìíîïğñòóôõö÷øùúûüıÿ€‚ƒ„…†‡ˆ‰Š‹Œ‘“–™x(‚Ì#$%)*1489:>?FIMNOSTY]abcghmptuvz{€ƒ‡ˆ‰“–—›œ¡¢ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÄÅÆÊËÑÔÕÖ×ØÙÚÛÜİŞßàáâãäåæçèéêíîïğñòóôõö÷øùúûüışÿ€‚ƒ„…Œ’“œŸ ¡¢¦¨©«¬­®²³´¸¹ÂÃÄÅÆÊËÌĞÑ×ÚÛÜáâãçèïñõö÷ûüƒ…‰Š‹p
+WC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\Interfaces\IAwardService.csr	
+o
 [C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\Interfaces\IAwardTypeService.csr	
 t
 \C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\Interfaces\IDepartmentService.csr	
@@ -96,26 +94,24 @@ XC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\Interfaces\IStatusS
 e
 WC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\Interfaces\ITokenService.csrƒ
 JC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\MailService.cs 8r 	 !"#$‚
- !Ç
-RC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\OrganisationService.cs 8rO	 !"#$%&'()*+,-./0123456789:;<=>?ABCEFGHIJKLMNOPQRSUXx‚"'()+/46:?CHMNR†
-JC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\RoleService.cs 8r&	
- !"#$%&()-x‚!%‹
-LC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\StatusService.cs 8r(	
- !"#$%&'(*+/x‚#'µ
-KC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\TokenService.cs 8j r>
-!"#$%&'(*+,-./013456789:;<=?ABCDEFGHx‚!"#$%&'*+05789:;<?D
+ !ó
+RC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\OrganisationService.cs/ 8rk	 !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTVWXZ[\]^_`abcdefghijklmnoqtx‚%"#$()./02678<=BDHIJNOTX]^_cdijn 
+JC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\RoleService.cs 8r7	
+ !"#%'()*+,-./012345679:>x‚!"+/0156¥
+LC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\StatusService.cs 8r9
+ !"#$%&()*+,-./012345678:;?x‚#$,01267Á
+KC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\TokenService.cs 8j!rF	 "#$%&'()+,-./012456789:;<=>@BCDEFGHIJKLMNOPx‚"#$%&'(+,1689:;<=@EFGKL
 bC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\Validations\AwardServiceValidations.cs 8r"	
- !#$x	‚	 ¯
-_C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\Validations\AwardTypeValidations.cs  8jr)
- !"#$%&'()*+-.x‚!"#$)*Ç
-gC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\Validations\DepartmentServiceValidations.cs& 8jr6	
- !"#$%&*+,-./012345689:;=ABx‚ !"#$%,-2345:;Ã
-hC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\Validations\DesignationServiceValidations.cs# 8jr2	
- !"#$%&'()*+,-./0145689:x‚ !"'()*/06ı
-eC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\Validations\EmployeeServiceValidations.cs@ 8*j WYZ[\]^_rW	
-!"#$%&'()*+,-./012346789:;<=>?@ABCDEFGHIJKLMPQRSTUVabcdefghx!‚#!"#$%*+01238<@DHLRSTUcdeÁ
-iC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\Validations\OrganisationServiceValidations.cs 8j')*467r,	
- !"#$%&(+,-.0123:;x‚ !"#(+012
+ !#$x	‚	 ª
+_C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\Validations\AwardTypeValidations.cs  8r)
+ !"#$%&'(*+x‚ !&'Ã
+gC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\Validations\DepartmentServiceValidations.cs& 8r6	
+ !"#$()*+,-./012346789;?@x‚ !"#*+012389¸
+hC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\Validations\DesignationServiceValidations.cs" 8r-	 !"#$%&'()*-./123x‚ !"#()/ğ
+eC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\Validations\EmployeeServiceValidations.cs@ 8*rW	
+ !"#$%&'()*+,-./013456789:;<=>?@ABCDEFGHIJMNOPQRSUVWXYZ[\x!‚# !"'(-./059=AEIOPQRWXY²
+iC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\Validations\OrganisationServiceValidations.cs 8r'
+ !"#%&'(*+x‚ %&'
 aC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\Validations\RoleServiceValidations.cs 8r	
 x‚	
 ƒ

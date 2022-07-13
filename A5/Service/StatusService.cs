@@ -5,27 +5,36 @@ using A5.Data.Repository;
 using A5.Service.Interfaces;
 using A5.Service.Validations;
 using A5.Data;
+using System.ComponentModel.DataAnnotations;
 
 namespace A5.Service
 {
     public class StatusService {
         private readonly AppDbContext _context;
-        public StatusService(AppDbContext context) 
+        private readonly ILogger<StatusService> _logger;
+        public StatusService(AppDbContext context,ILogger<StatusService> logger) 
         { 
             _context=context;
+            _logger=logger;
         }
-        public Status GetById(int id)
+        public Status? GetById(int id)
         {
             StatusServiceValidations.ValdiateGetById(id);
             try
             {
                 return _context.Set<Status>().FirstOrDefault(nameof =>nameof.Id == id);              
             }
+            catch(ValidationException exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogInformation("Status Service: GetById(int id) : (Error:{Message}",exception.Message);
+                throw;
+            }
             catch(Exception exception)
             {
-                throw exception;
+                _logger.LogError("Error: {Message}",exception.Message);
+                throw;
             }
-            
         }
 
         public IEnumerable<Status> GetAll()
@@ -34,9 +43,16 @@ namespace A5.Service
             {
                 return _context.Set<Status>().Where(nameof =>nameof.IsActive == true).ToList();
             }
+           catch(ValidationException exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogInformation("Status Service: GetAll() : (Error:{Message}",exception.Message);
+                throw;
+            }
             catch(Exception exception)
             {
-                throw exception;
+                _logger.LogError("Error: {Message}",exception.Message);
+                throw;
             }
             
         }

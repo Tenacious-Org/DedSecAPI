@@ -9,7 +9,7 @@ namespace A5.Service.Interfaces
     {
         bool CreateOrganisation(Organisation organisation);
         bool UpdateOrganisation(Organisation organisation);
-        Organisation GetByOrganisation(int id);
+        Organisation? GetByOrganisation(int id);
         bool DisableOrganisation(int id);
         int GetCount(int id);
         public  object ErrorMessage(string ValidationMessage);

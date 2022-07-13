@@ -20,14 +20,21 @@ namespace A5.Service
         {
            
             if(!AwardTypeValidations.CreateValidation(awardType)) throw new ValidationException("Invalid data");
-            bool NameExists=_context.AwardTypes!.Any(nameof=>nameof.AwardName==awardType.AwardName)==true;
+            bool NameExists=_context.AwardTypes!.Any(nameof=>nameof.AwardName==awardType.AwardName);
             if(NameExists) throw new ValidationException("Award Name already exists");
             try{
                 return Create(awardType);
             }
-            catch(Exception)
+            catch(ValidationException exception)
             {
-                throw ;
+                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogInformation("AwardType Service: CreateAwardType(AwardType awardType) : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                throw;
             }
         }
         
@@ -38,8 +45,15 @@ namespace A5.Service
             try{
                 return Update(awardType);
             }
-            catch(Exception)
+            catch(ValidationException exception)
             {
+                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogInformation("AwardType Service: UpdateAwardType(AwardType awardType) : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
                 throw;
             }
         }
@@ -47,14 +61,21 @@ namespace A5.Service
         {
             AwardType awardType=new AwardType();
             if(!AwardTypeValidations.DisableValidation(id)) throw new ValidationException("Invalid data");
-            bool NameExists=_context.AwardTypes!.Any(nameof=>nameof.AwardName==awardType.AwardName)==true;
+            bool NameExists=_context.AwardTypes!.Any(nameof=>nameof.AwardName==awardType.AwardName);
             if(NameExists) throw new ValidationException("Award Name already exists");
             try{
                 return Disable(id);
             }
-            catch(Exception)
+             catch(ValidationException exception)
             {
-                throw ;
+                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogInformation("AwardType Service: DisableAwardType(int id) : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                throw;
             }
         }
          public object ErrorMessage(string ValidationMessage)
