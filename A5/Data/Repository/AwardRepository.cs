@@ -12,7 +12,7 @@ using A5.Service;
 
 namespace A5.Data.Repository
 {
-   public class AwardRepository
+   public class AwardRepository :IAwardRepository
    {
      private readonly AppDbContext _context;
         private readonly IEmployeeRepository _employeeRepository;
@@ -62,13 +62,13 @@ namespace A5.Data.Repository
                 if(award.StatusId == 4)
                 {
                     var awardee = GetAwardById(award.Id); 
-                    _mail.ExampleAsync(awardee);
+                    _mail?.ExampleAsync(awardee);
                     
                 }
                 else if(award.StatusId == 2)
                 {
                     var awardee = GetAwardById(award.Id);
-                    _mail.RequesterAsync(awardee);
+                    _mail?.RequesterAsync(awardee);
                 }
                 return true;  
        }
@@ -151,7 +151,7 @@ namespace A5.Data.Repository
               throw;
             }
         }
-          public IEnumerable<Award> GetAllAwardsList()
+          public IEnumerable<Award> GetAllAwardsList(int ? pageId,int ? employeeId)
         {
             try
             {
@@ -166,7 +166,17 @@ namespace A5.Data.Repository
                     .Include("AwardType")
                     .Include("Status")
                     .ToList();
-                return award;
+                 if(pageId==1 && employeeId!=0) 
+                    return award =award.Where(nameof =>nameof.StatusId == 4 && nameof.AwardeeId==employeeId).ToList();
+                else if(pageId==2 && employeeId!=0) 
+                    return award =award.Where(nameof => nameof.RequesterId == employeeId).OrderBy(nameof => nameof.StatusId).ToList();
+                else if(pageId==3 && employeeId!=0) 
+                    return award =award.Where(nameof => nameof.ApproverId == employeeId).OrderBy(nameof => nameof.StatusId).ToList();
+                else if(pageId==4 && employeeId!=0) 
+                    return award =award.Where(nameof => nameof.HRId == employeeId && (nameof.StatusId == 2 || nameof.StatusId == 4)).OrderBy(nameof => nameof.StatusId).ToList();
+                else
+                    return award =award.Where(nameof =>nameof.StatusId == 4).ToList();
+
             }
               catch(ValidationException exception)
             {

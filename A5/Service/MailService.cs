@@ -52,7 +52,7 @@ namespace A5.Service
 
 
 
-    public async Task ExampleAsync(Award awardee)
+    public async Task ExampleAsync(Award? awardee)
     {
         
         string text1 =
@@ -136,7 +136,7 @@ namespace A5.Service
           <td style='padding:0px;margin:0px;border-spacing:0;'><table class='module' role='module' data-type='text' border='0' cellpadding='0' cellspacing='0' width='100%' style='table-layout: fixed;' data-muid='9f929b4b-e5da-486f-bdda-59da318ed1ea.1' data-mc-module-version='2019-10-22'>
     <tbody>
       <tr>
-        <td style='padding:0px 60px 0px 60px; line-height:28px; text-align:inherit;' height='100%' valign='top' bgcolor='' role='module-content'><div><div style='font-family: inherit; text-align: center'><span style='font-family: &quot;times new roman&quot;, times, serif; color: #403101; font-size: 20px'>Hi {awardee.Awardee.FirstName}, We are Congratulating you on receiving {awardee.AwardType.AwardName}</em></span></div>
+        <td style='padding:0px 60px 0px 60px; line-height:28px; text-align:inherit;' height='100%' valign='top' bgcolor='' role='module-content'><div><div style='font-family: inherit; text-align: center'><span style='font-family: &quot;times new roman&quot;, times, serif; color: #403101; font-size: 20px'>Hi {awardee.Awardee?.FirstName}, We are Congratulating you on receiving {awardee.AwardType?.AwardName!}</em></span></div>
 <div style='font-family: inherit; text-align: center'><span style='font-family: &quot;times new roman&quot;, times, serif; color: #403101; font-size: 20px'><em>You have won a coupon  </em></span><span style='font-family: &quot;times new roman&quot;, times, serif; color: #c29a1f; font-size: 20px'><strong>{awardee.CouponCode}</strong></span><span style='font-family: &quot;times new roman&quot;, times, serif; color: #403101; font-size: 20px'><em>!</em></span></div><div></div></div></td>
       </tr>
     </tbody>
@@ -164,7 +164,7 @@ namespace A5.Service
     </body>
   </html>";
 
-        await File.WriteAllTextAsync(@"C:\Users\aakaash.mani\Desktop\template.html", text1);
+        await File.WriteAllTextAsync(@"C:\Users\ajay.keasav\Desktop\template.html", text1);
     }
 
 
@@ -328,7 +328,7 @@ namespace A5.Service
   </html>
 ";
 
-        await File.WriteAllTextAsync(@"C:\Users\aakaash.mani\Desktop\template.html", text2);
+        await File.WriteAllTextAsync(@"C:\Users\ajay.kesav\Desktop\template.html", text2);
     }
 
 

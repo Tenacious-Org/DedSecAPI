@@ -129,21 +129,9 @@ namespace A5.Service
 
         public IEnumerable<object> GetAwardsList(int ? pageId,int ? employeeId)
         {
-
-
             try
             {
-                var awards = _award.GetAllAwardsList();
-                if(pageId==1) 
-                    awards =awards.Where(nameof =>nameof.StatusId == 4 && nameof.AwardeeId==employeeId).ToList();
-                else if(pageId==2) 
-                    awards =awards.Where(nameof => nameof.RequesterId == employeeId).OrderBy(nameof => nameof.StatusId);
-                else if(pageId==3) 
-                    awards =awards.Where(nameof => nameof.ApproverId == employeeId).OrderBy(nameof => nameof.StatusId);
-                else if(pageId==4) 
-                    awards =awards.Where(nameof => nameof.HRId == employeeId && (nameof.StatusId == 2 || nameof.StatusId == 4)).OrderBy(nameof => nameof.StatusId);
-                else
-                    awards =awards.Where(nameof =>nameof.StatusId == 4).ToList();
+                var awards = _award.GetAllAwardsList(pageId,employeeId);
                 return awards.Select( Award => new{
                     id = Award.Id,
                     awardeeName = Award?.Awardee?.FirstName,
