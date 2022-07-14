@@ -85,6 +85,7 @@ namespace A5.Controller
         [HttpGet("GetDesignationsByDepartmentId")]
         public ActionResult GetDesignationsByDepartmentId(int id)
         {
+            if (id <= 0) return BadRequest("Id cannot be null ");
             try
             {
                 var data = _designationService.GetDesignationsByDepartmentId(id);
@@ -121,9 +122,9 @@ namespace A5.Controller
         /// </returns>
 
         [HttpGet("GetById")]
-        public ActionResult GetByDesignationId([FromQuery] int id)
+        public ActionResult GetByDesignationId( int id)
         {
-
+            if (id <= 0) return BadRequest("Id cannot be null ");
             try
             {
                 var data = _designationService.GetDesignationById(id);
@@ -163,7 +164,7 @@ namespace A5.Controller
         [HttpPost("Create")]
         public ActionResult Create(Designation designation)
         {
-
+            if(designation==null) return BadRequest("Designation should not be null");
             try
             {
                 var data = _designationService.CreateDesignation(designation);
@@ -202,7 +203,7 @@ namespace A5.Controller
         [HttpPut("Update")]
         public ActionResult Update(Designation designation)
         {
-
+            if(designation==null) return BadRequest("Designation should not be null");
             try
             {
                 var data = _designationService.UpdateDesignation(designation);
@@ -241,7 +242,7 @@ namespace A5.Controller
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
         {
-
+            if (id <= 0) return BadRequest("Id cannot be null ");
             try
             {
 

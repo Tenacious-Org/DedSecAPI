@@ -20,8 +20,9 @@ namespace A5.Controller
         } 
 
         [HttpGet("GetById")]
-        public ActionResult GetByRoleId([FromQuery] int id)
+        public ActionResult GetByRoleId( int id)
         {
+            if (id <= 0) return BadRequest("Id cannot be null ");
             try{
                 var data = _roleService.GetById(id);
                  return Ok(data);
