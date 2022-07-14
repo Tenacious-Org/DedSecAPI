@@ -18,7 +18,7 @@ namespace A5.Data.Repository
          public bool CreateDepartment(Department department)
         {
             if(!DepartmentServiceValidations.CreateValidation(department)) throw new ValidationException("Invalid data");
-            bool NameExists=_context.Departments!.Any(nameof=>nameof.DepartmentName==department.DepartmentName);
+            bool NameExists=_context.Departments!.Any(nameof=>nameof.DepartmentName==department.DepartmentName && nameof.OrganisationId==department.OrganisationId);
             if(NameExists) throw new ValidationException("Department Name already exists");
             try{
                 return Create(department);
@@ -37,7 +37,7 @@ namespace A5.Data.Repository
         public bool UpdateDepartment(Department department)
         {
             if(!DepartmentServiceValidations.UpdateValidation(department)) throw new ValidationException("Invalid Data");
-             bool NameExists=_context.Departments!.Any(nameof=>nameof.DepartmentName==department.DepartmentName);
+             bool NameExists=_context.Departments!.Any(nameof=>nameof.DepartmentName==department.DepartmentName  && nameof.OrganisationId==department.OrganisationId);
             if(NameExists) throw new ValidationException("Department Name already exists");
             try{
                 return Update(department);

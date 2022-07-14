@@ -100,7 +100,7 @@ namespace A5.Data.Repository
         }
         public int GetCount(int id)
         {
-             var checkEmployee = _context.Set<Designation>().Where(nameof => nameof.IsActive == true && nameof.Id == id).Count();
+             var checkEmployee = _context.Set<Employee>().Where(nameof => nameof.IsActive == true && nameof.DesignationId == id).Count();
              return checkEmployee;
         }
          public object ErrorMessage(string ValidationMessage)
@@ -110,7 +110,7 @@ namespace A5.Data.Repository
         public bool UpdateDesignation(Designation designation)
         {
             if(!DesignationServiceValidations.UpdateValidation(designation)) throw new ValidationException("Invalid Data");
-             bool NameExists=_context.Designations!.Any(nameof=>nameof.DesignationName==designation.DesignationName);
+             bool NameExists=_context.Designations!.Any(nameof=>nameof.DesignationName==designation.DesignationName && nameof.DepartmentId==designation.DepartmentId);
             if(NameExists) throw new ValidationException("Designation Name already exists");
             try{
                 return Update(designation);
