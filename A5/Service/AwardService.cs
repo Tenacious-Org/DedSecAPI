@@ -20,12 +20,12 @@ namespace A5.Service
             _logger=logger;
            
         }
-        public bool RaiseRequest(Award award,int id)
+        public bool RaiseRequest(Award award,int employeeId)
         {
              
-            if(!AwardServiceValidations.RequestValidation(award,id)) throw new ValidationException("Invalid data");
+            if(!AwardServiceValidations.RequestValidation(award,employeeId)) throw new ValidationException("Invalid data");
             try{
-               return _award.RaiseAwardRequest(award,id);
+               return _award.RaiseAwardRequest(award,employeeId);
             }
             catch(ValidationException exception)
             {
@@ -39,11 +39,11 @@ namespace A5.Service
             }
         }
 
-        public bool Approval(Award award,int id)
+        public bool Approval(Award award,int employeeId)
         {
           
             try{
-                return  _award.ApproveRequest(award,id);           
+                return  _award.ApproveRequest(award,employeeId);           
             }
             catch(ValidationException exception)
             {
