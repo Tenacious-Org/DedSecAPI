@@ -18,3 +18,4 @@ A5/appsettings.json
 *.json
 *.json
 A5/appsettings.json
+A5/Service/MailService.cs
