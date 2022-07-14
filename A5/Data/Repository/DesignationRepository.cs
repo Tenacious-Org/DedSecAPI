@@ -34,7 +34,7 @@ namespace A5.Data.Repository
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("DesignationService : GetDesignationsByDepartmentId(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("DesignationRespository : GetDesignationsByDepartmentId(int id) : (Error:{Message}",exception.Message);
                throw;
             }
             catch(Exception exception)
@@ -52,7 +52,7 @@ namespace A5.Data.Repository
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("MasterRepository: GetAllDesignation() : (Error:{Message}",exception.Message);
+                _logger.LogError("DesignationRespository: GetAllDesignation() : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -70,7 +70,7 @@ namespace A5.Data.Repository
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("DesignationRepository: GetDesginationById(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("DesignationRespository: GetDesginationById(int id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -89,7 +89,7 @@ namespace A5.Data.Repository
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("DesignationService: CreateDesignation(Designation) : (Error:{Message}",exception.Message);
+                _logger.LogError("DesignationRespository: CreateDesignation(Designation) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -117,7 +117,7 @@ namespace A5.Data.Repository
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("Designation Service: UpdateDesignation(Designation) : (Error:{Message}",exception.Message);
+                _logger.LogError("DesignationRespository: UpdateDesignation(Designation) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -134,7 +134,7 @@ namespace A5.Data.Repository
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("Designation Service: UpdateDesignation(Designation) : (Error:{Message}",exception.Message);
+                _logger.LogError("DesignationRespository: UpdateDesignation(Designation) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)

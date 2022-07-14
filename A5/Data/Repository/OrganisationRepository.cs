@@ -24,7 +24,7 @@ namespace A5.Data.Repository
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("OrganisationService: CreateOrganisation(Organisation organisation) : (Error:{Message}",exception.Message);
+                _logger.LogError("OrganisationRepository: CreateOrganisation(Organisation organisation) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -43,7 +43,7 @@ namespace A5.Data.Repository
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("OrganisationService: UpdateOrganisation(Organisation organisation) : (Error:{Message}",exception.Message);
+                _logger.LogError("OrganisationRepository: UpdateOrganisation(Organisation organisation) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -60,7 +60,7 @@ namespace A5.Data.Repository
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("OrganisationService: GetByOrganisation(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("OrganisationRepository: GetByOrganisation(int id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -81,7 +81,7 @@ namespace A5.Data.Repository
            catch(ValidationException exception)
             {
                
-                _logger.LogError("OrganisationService: DisableOrganisation(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("OrganisationRepository: DisableOrganisation(int id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -103,7 +103,7 @@ namespace A5.Data.Repository
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("OrganisationService: GetAllOrganisation() : (Error:{Message}",exception.Message);
+                _logger.LogError("OrganisationRepository: GetAllOrganisation() : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
