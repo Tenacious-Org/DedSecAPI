@@ -25,7 +25,7 @@ namespace A5.Data.Repository
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("DepartmentService: CreateDepartment(Departmetn department) : (Error:{Message}",exception.Message);
+                _logger.LogError("DepartmentRepository: CreateDepartment(Departmetn department) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -44,7 +44,7 @@ namespace A5.Data.Repository
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("DepartmentService: UpdateDepartment(Department department) : (Error:{Message}",exception.Message);
+                _logger.LogError("DepartmentRepository: UpdateDepartment(Department department) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -61,7 +61,7 @@ namespace A5.Data.Repository
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("DepartmentService: GetByDepartment(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("DepartmentRepository: GetByDepartment(int id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -81,7 +81,7 @@ namespace A5.Data.Repository
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("DepartmentService: DisableDepartment(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("DepartmentRepository: DisableDepartment(int id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -100,7 +100,7 @@ namespace A5.Data.Repository
             }
            catch(ValidationException exception)
             {
-                _logger.LogError("MasterRepository: GetAllDepartments() : (Error:{Message}",exception.Message);
+                _logger.LogError("DepartmentRepository: GetAllDepartments() : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -124,7 +124,7 @@ namespace A5.Data.Repository
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("DepartmentService: GetDepartmentsByOrganisationId(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("DepartmentRepository: GetDepartmentsByOrganisationId(int id) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)

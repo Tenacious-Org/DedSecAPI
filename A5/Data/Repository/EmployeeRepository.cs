@@ -321,9 +321,9 @@ namespace A5.Data.Repository
         {
             if(!EmployeeServiceValidations.CreateValidation(employee)) throw new ValidationException("Invalid data");
             bool IsIdAlreadyExists=_context.Employees!.Any(nameof=>nameof.ACEID==employee.ACEID);
-            if(!IsIdAlreadyExists) throw new ValidationException("Employee Id already exists");
+            if(IsIdAlreadyExists) throw new ValidationException("Employee Id already exists");
             bool IsEmailAlreadyExists=_context.Employees!.Any(nameof=>nameof.Email==employee.Email);
-            if(!IsEmailAlreadyExists) throw new ValidationException("Email Id already exists");
+            if(IsEmailAlreadyExists) throw new ValidationException("Email Id already exists");
             try
             {
                 return Create(employee);
@@ -343,6 +343,10 @@ namespace A5.Data.Repository
         public bool UpdateEmployee(Employee employee)
         {
             if(!EmployeeServiceValidations.UpdateValidation(employee)) throw new ValidationException("Invalid data");
+            bool IsIdAlreadyExists=_context.Employees!.Any(nameof=>nameof.ACEID==employee.ACEID);
+            if(IsIdAlreadyExists) throw new ValidationException("Employee Id already exists");
+            bool IsEmailAlreadyExists=_context.Employees!.Any(nameof=>nameof.Email==employee.Email);
+            if(IsEmailAlreadyExists) throw new ValidationException("Email Id already exists");
             try
             {
                 return Update(employee);
