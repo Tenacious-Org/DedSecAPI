@@ -103,8 +103,8 @@ namespace A5.Service
   </table><table class='module' role='module' data-type='text' border='0' cellpadding='0' cellspacing='0' width='100%' style='table-layout: fixed;' data-muid='0fd7a287-e017-4d1b-87f0-bf7e517f6406' data-mc-module-version='2019-10-22'>
     <tbody>
       <tr>
-        <td style='padding:15px 10px 20px 0px; line-height:16px; text-align:inherit;' height='100%' valign='top' bgcolor='' role='module-content'><div><div style='font-family: inherit; text-align: right'><span style='font-family: &quot;times new roman&quot;, times, serif; font-size: 12px'><em>Email not displaying correctly?</em></span></div>
-<div style='font-family: inherit; text-align: right'><span style='font-family: &quot;times new roman&quot;, times, serif; color: #c29a1f; font-size: 12px'><strong>View it</strong></span><span style='font-family: &quot;times new roman&quot;, times, serif; font-size: 12px'><em> in your browser.</em></span></div><div></div></div></td>
+        <td style='padding:15px 10px 20px 0px; line-height:16px; text-align:inherit;' height='100%' valign='top' bgcolor='' role='module-content'><div><div style='font-family: inherit; text-align: right'><span style='font-family: &quot;times new roman&quot;, times, serif; font-size: 12px'></span></div>
+<div style='font-family: inherit; text-align: right'><span style='font-family: &quot;times new roman&quot;, times, serif; color: #c29a1f; font-size: 12px'></span><span style='font-family: &quot;times new roman&quot;, times, serif; font-size: 12px'></span></div><div></div></div></td>
       </tr>
     </tbody>
   </table><table border='0' cellpadding='0' cellspacing='0' align='center' width='100%' role='module' data-type='columns' style='padding:0px 0px 0px 0px;' bgcolor='' data-distribution='1'>
@@ -117,7 +117,7 @@ namespace A5.Service
     <tbody>
       <tr>
         <td style='font-size:6px; line-height:10px; padding:0px 0px 0px 0px;' valign='top' align='center'>
-          <img class='max-width' border='0' style='display:block; color:#000000; text-decoration:none; font-family:Helvetica, arial, sans-serif; font-size:16px; max-width:100% !important; width:100%; height:auto !important;' width='700' alt='' data-proportionally-constrained='true' data-responsive='true' src='https://raw.githubusercontent.com/Tenacious-Org/A5-Project-UI/main/Admin/images/Thankyou!!!.png'>
+          <img class='max-width' border='0' style='display:block; color:#000000; text-decoration:none; font-family:Helvetica, arial, sans-serif; font-size:16px; max-width:100% !important; width:100%; height:auto !important;' width='700' alt='' data-proportionally-constrained='true' data-responsive='true' src='http://cdn.mcauto-images-production.sendgrid.net/b841a9c8d79766a3/52d792c7-b069-4be5-9e9d-5570beca9466/1748x1240.png'>
         </td>
       </tr>
     </tbody>
