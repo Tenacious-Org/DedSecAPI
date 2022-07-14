@@ -52,7 +52,7 @@ namespace A5.Service
 
 
 
-    public async Task ExampleAsync()
+    public async Task ExampleAsync(Award awardee)
     {
         
         string text1 =
@@ -117,7 +117,7 @@ namespace A5.Service
     <tbody>
       <tr>
         <td style='font-size:6px; line-height:10px; padding:0px 0px 0px 0px;' valign='top' align='center'>
-          <img class='max-width' border='0' style='display:block; color:#000000; text-decoration:none; font-family:Helvetica, arial, sans-serif; font-size:16px; max-width:100% !important; width:100%; height:auto !important;' width='700' alt='' data-proportionally-constrained='true' data-responsive='true' src='http://cdn.mcauto-images-production.sendgrid.net/b841a9c8d79766a3/4d6753a1-c318-4f6e-9594-4c8fe198b99a/1748x1240.png'>
+          <img class='max-width' border='0' style='display:block; color:#000000; text-decoration:none; font-family:Helvetica, arial, sans-serif; font-size:16px; max-width:100% !important; width:100%; height:auto !important;' width='700' alt='' data-proportionally-constrained='true' data-responsive='true' src='https://raw.githubusercontent.com/Tenacious-Org/A5-Project-UI/main/Admin/images/Thankyou!!!.png'>
         </td>
       </tr>
     </tbody>
@@ -136,8 +136,8 @@ namespace A5.Service
           <td style='padding:0px;margin:0px;border-spacing:0;'><table class='module' role='module' data-type='text' border='0' cellpadding='0' cellspacing='0' width='100%' style='table-layout: fixed;' data-muid='9f929b4b-e5da-486f-bdda-59da318ed1ea.1' data-mc-module-version='2019-10-22'>
     <tbody>
       <tr>
-        <td style='padding:0px 60px 0px 60px; line-height:28px; text-align:inherit;' height='100%' valign='top' bgcolor='' role='module-content'><div><div style='font-family: inherit; text-align: center'><span style='font-family: &quot;times new roman&quot;, times, serif; color: #403101; font-size: 20px'>Congratulating you on receving the *********!</em></span></div>
-<div style='font-family: inherit; text-align: center'><span style='font-family: &quot;times new roman&quot;, times, serif; color: #403101; font-size: 20px'><em>You have won a coupon  </em></span><span style='font-family: &quot;times new roman&quot;, times, serif; color: #c29a1f; font-size: 20px'><strong>HSRF12sEDF</strong></span><span style='font-family: &quot;times new roman&quot;, times, serif; color: #403101; font-size: 20px'><em>!</em></span></div><div></div></div></td>
+        <td style='padding:0px 60px 0px 60px; line-height:28px; text-align:inherit;' height='100%' valign='top' bgcolor='' role='module-content'><div><div style='font-family: inherit; text-align: center'><span style='font-family: &quot;times new roman&quot;, times, serif; color: #403101; font-size: 20px'>Hi {awardee.Awardee.FirstName}, We are Congratulating you on receiving {awardee.AwardType.AwardName}</em></span></div>
+<div style='font-family: inherit; text-align: center'><span style='font-family: &quot;times new roman&quot;, times, serif; color: #403101; font-size: 20px'><em>You have won a coupon  </em></span><span style='font-family: &quot;times new roman&quot;, times, serif; color: #c29a1f; font-size: 20px'><strong>{awardee.CouponCode}</strong></span><span style='font-family: &quot;times new roman&quot;, times, serif; color: #403101; font-size: 20px'><em>!</em></span></div><div></div></div></td>
       </tr>
     </tbody>
   </table><table border='0' cellpadding='0' cellspacing='0' class='module' data-role='module-button' data-type='button' role='module' style='table-layout:fixed;' width='100%' data-muid='183cbc8c-7906-496a-8e51-d93e0f2a294a'>
