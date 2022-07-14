@@ -233,11 +233,7 @@ namespace A5.Service
   </table><table class='module' role='module' data-type='text' border='0' cellpadding='0' cellspacing='0' width='100%' style='table-layout: fixed;' data-muid='948e3f3f-5214-4721-a90e-625a47b1c957' data-mc-module-version='2019-10-22'>
     <tbody>
       <tr>
-<<<<<<< Updated upstream
-        <td style='padding:50px 30px 18px 30px; line-height:36px; text-align:inherit; background-color:#ffffff;' height='100%' valign='top' bgcolor='#ffffff' role='module-content'><div><div style='font-family: inherit; text-align: center'><span style='font-size: 43px'>Thanks for approving the request raised by {awardee?.Awardee?.ReportingPerson?.FirstName} </span></div><div></div></div></td>
-=======
         <td style='padding:50px 30px 18px 30px; line-height:36px; text-align:inherit; background-color:#ffffff;' height='100%' valign='top' bgcolor='#ffffff' role='module-content'><div><div style='font-family: inherit; text-align: center'><span style='font-size: 43px'>Hey {awardee.Awardee.ReportingPerson.ReportingPerson.FirstName}, you have received a request from {awardee.Awardee.ReportingPerson.FirstName}  </span></div><div></div></div></td>
->>>>>>> Stashed changes
       </tr>
     </tbody>
   </table><table class='module' role='module' data-type='text' border='0' cellpadding='0' cellspacing='0' width='100%' style='table-layout: fixed;' data-muid='a10dcb57-ad22-4f4d-b765-1d427dfddb4e' data-mc-module-version='2019-10-22'>
