@@ -31,6 +31,7 @@ builder.Services.AddTransient<IDepartmentService,DepartmentService>();
 builder.Services.AddTransient<IDesignationService,DesignationService>();
 builder.Services.AddTransient<IAwardTypeService,AwardTypeService>();
 builder.Services.AddTransient<DashboardService>();
+builder.Services.AddTransient<MailService>();
 builder.Services.AddTransient<RoleService>();
 builder.Services.AddTransient<TokenService>();
 builder.Services.AddTransient<EmployeeService>();
@@ -135,7 +136,7 @@ app.UseCors(builder =>
     .AllowAnyHeader();
 });
 
-AppDbInitializer.Seed(app);
+// AppDbInitializer.Seed(app);
 
 
 app.Run();
