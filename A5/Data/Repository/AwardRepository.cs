@@ -63,6 +63,12 @@ namespace A5.Data.Repository
                 {
                     var awardee = GetAwardById(award.Id); 
                     _mail.ExampleAsync(awardee);
+                    
+                }
+                else if(award.StatusId == 2)
+                {
+                    var awardee = GetAwardById(award.Id);
+                    _mail.RequesterAsync(awardee);
                 }
                 return true;  
        }
