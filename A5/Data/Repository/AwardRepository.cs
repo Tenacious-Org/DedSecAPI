@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using A5.Service.Interfaces;
 using A5.Data.Repository.Interface;
 using A5.Service.Validations;
+using A5.Service;
 
 namespace A5.Data.Repository
 {
@@ -16,12 +17,14 @@ namespace A5.Data.Repository
      private readonly AppDbContext _context;
         private readonly IEmployeeRepository _employeeRepository;
         private readonly  ILogger<IAwardService> _logger;
+        private readonly MailService _mail;
 
-        public AwardRepository(AppDbContext context, IEmployeeRepository employeeRepository,ILogger<IAwardService> logger)
+        public AwardRepository(AppDbContext context, IEmployeeRepository employeeRepository,ILogger<IAwardService> logger, MailService mail)
         {
             _context=context;
             _employeeRepository = employeeRepository;
             _logger=logger;
+            _mail = mail;
            
         }
     public bool RaiseAwardRequest(Award award,int id)
@@ -57,6 +60,10 @@ namespace A5.Data.Repository
                 award.UpdatedBy=employee?.Id;
                 award.UpdatedOn=DateTime.Now;
                 _context.SaveChanges();
+                if(award.StatusId == 4)
+                {
+
+                }
                 return true;  
        }
        catch(ValidationException exception)
@@ -181,6 +188,9 @@ namespace A5.Data.Repository
                     .Include("Status")
                     .Where(nameof => nameof.StatusId == 4)
                     .ToList();
+
+                _mail.ExampleAsync();
+                
                 return award;
             }
              catch(ValidationException exception)
