@@ -76,8 +76,8 @@ namespace A5.Controller
         [HttpGet("GetById")]
         public ActionResult GetEmployeeById([FromQuery] int id)
         {
+            if (id <= 0) return BadRequest("Id cannot be null ");
             try{
-               
                 var data = _employeeService.GetEmployeeById(id);
                 return Ok(data);
             }
@@ -125,6 +125,7 @@ namespace A5.Controller
         [HttpPost("Create")]
         public ActionResult Create(Employee employee)
         {
+            if(employee==null) return BadRequest("Employee should not be null");
             try{
                 var data=_employeeService.CreateEmployee(employee);
                  return  Ok(data); 
@@ -162,6 +163,7 @@ namespace A5.Controller
         [HttpPut("Update")]
         public ActionResult Update(Employee employee)
         {
+            if(employee==null) return BadRequest("Employee should not be null");
             try{
                 employee.Image = System.Convert.FromBase64String(employee.ImageString!);
                 var data=_employeeService.UpdateEmployee( employee);
@@ -201,6 +203,7 @@ namespace A5.Controller
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
         {
+            if (id <= 0) return BadRequest("Id cannot be null ");
             try
             {
        
@@ -247,6 +250,7 @@ namespace A5.Controller
         [HttpGet("GetEmployeeByDepartment")]
         public ActionResult GetEmployeeByDepartmentId(int id)
         {
+            if (id <= 0) return BadRequest("Id cannot be null ");
             try
             {
                 var data = _employeeService.GetEmployeeByDepartmentId(id);
@@ -265,6 +269,7 @@ namespace A5.Controller
         [HttpGet("GetReportingPersonByDepartment")]
         public ActionResult GetReportingPersonByDepartment(int id)
         {
+            if (id <= 0) return BadRequest("Id cannot be null ");
             try
             {
                 var data = _employeeService.GetReportingPersonByDepartmentId(id);
@@ -283,6 +288,7 @@ namespace A5.Controller
         [HttpGet("GetHrByDepartment")]
         public ActionResult GetHrByDepartment(int id)
         {
+            if (id <= 0) return BadRequest("Id cannot be null ");
             try
             {
                 var data = _employeeService.GetHrByDepartmentId(id);
@@ -323,6 +329,7 @@ namespace A5.Controller
         [HttpGet("GetEmloyeeByOrganisation")]
         public ActionResult GetEmployeeByOrganisation(int id)
         {
+            if (id <= 0) return BadRequest("Id cannot be null ");
             try
             {
                 var data = _employeeService.GetEmployeeByOrganisation(id);
@@ -363,6 +370,7 @@ namespace A5.Controller
         [HttpGet("GetEmployeeByRequesterId")]
         public ActionResult GetEmployeeByRequesterId(int id)
         {
+            if (id <= 0) return BadRequest("Id cannot be null ");
             try
             {
                 var data = _employeeService.GetEmployeeByRequesterId(id);

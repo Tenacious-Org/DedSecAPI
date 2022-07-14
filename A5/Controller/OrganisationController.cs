@@ -77,7 +77,7 @@ namespace A5.Controller
         /// </returns>
 
          [HttpGet("GetById")]
-        public ActionResult GetByOrganisationId([FromQuery] int id)
+        public ActionResult GetByOrganisationId( int id)
         {
            if(id==0) return BadRequest("Organisation Id should not be null");
             try{
@@ -198,7 +198,7 @@ namespace A5.Controller
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
         {
-            
+            if (id <= 0) return BadRequest("Id cannot be null ");   
             try
             {
                 var checkEmployee=_organisationService.GetCount(id);

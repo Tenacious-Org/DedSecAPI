@@ -80,7 +80,8 @@ namespace A5.Controller
         [HttpGet("GetDepartmentsByOrganisationId")]
         public ActionResult GetDepartmentsByOrganisationId(int id)
         {
-           
+            if (id <= 0) return BadRequest("Id cannot be null ");
+
             try{
                 var data = _departmentService.GetDepartmentsByOrganisationId(id);
                 return Ok(data);
@@ -116,11 +117,11 @@ namespace A5.Controller
         /// </returns>
 
         [HttpGet("GetById")]
-        public ActionResult GetByDepartmentId([FromQuery] int id)
+        public ActionResult GetByDepartmentId( int id)
         {
-            
+            if (id <= 0) return BadRequest("Id cannot be null ");
+
             try{
-               
                 var data = _departmentService.GetByDepartment(id);
                 return Ok(data);
             }           
@@ -234,7 +235,7 @@ namespace A5.Controller
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
         {
-             
+            if (id <= 0) return BadRequest("Id cannot be null ");
             try{
                  var checkEmployee = _departmentService.GetCount(id);
                 if(checkEmployee>0){

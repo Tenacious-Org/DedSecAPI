@@ -81,9 +81,10 @@ namespace A5.Controller
         [HttpGet("GetById")]
         public ActionResult GetById(int id)
         {
+            if (id <= 0) return BadRequest("Id cannot be null ");
+
             try
             {
-
                 var data = _awardTypeService.GetAwardTypeById(id);
                 return Ok(data);
             }
@@ -120,6 +121,8 @@ namespace A5.Controller
         [HttpPost("Create")]
         public ActionResult Create(AwardType awardType)
         {
+            if(awardType==null) return BadRequest("AwardType should not be null");
+
             try
             {
                 var data = _awardTypeService.CreateAwardType(awardType);
@@ -158,6 +161,7 @@ namespace A5.Controller
         [HttpPut("Update")]
         public ActionResult Update(AwardType awardType)
         {
+            if(awardType==null) return BadRequest("AwardType should not be null");
             try
             {
                 var data = _awardTypeService.UpdateAwardType(awardType);
@@ -196,6 +200,8 @@ namespace A5.Controller
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
         {
+            if (id <= 0) return BadRequest("Id cannot be null ");
+
             try
             {
                 var data = _awardTypeService.DisableAwardType(id);
