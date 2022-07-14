@@ -40,7 +40,13 @@ namespace A5.Data.Repository
                 award.AddedBy=employee.Id;
                 award.AddedOn=DateTime.Now;
                 _context.SaveChanges();
+                if(award.StatusId == 1)
+                {
+                    var awardee = GetAwardById(award.Id);
+                    _mail.RequesterAsync(awardee);
+                }
                 return true;
+
         }
         catch(ValidationException exception)
         {
@@ -65,10 +71,10 @@ namespace A5.Data.Repository
                     _mail?.ExampleAsync(awardee);
                     
                 }
-                else if(award.StatusId == 2)
+                else if(award.StatusId == 3)
                 {
                     var awardee = GetAwardById(award.Id);
-                    _mail?.RequesterAsync(awardee);
+                    _mail.RejectedAsync(awardee);
                 }
                 return true;  
        }
