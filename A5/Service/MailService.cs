@@ -3,6 +3,7 @@ using A5.Models;
 using A5.Service.Interfaces;
 using Microsoft.Extensions.Options;
 using MailKit.Net.Smtp;
+using System.Collections.Generic;
 using MailKit.Security;
 
 namespace A5.Service
@@ -23,7 +24,7 @@ namespace A5.Service
     email.To.Add(MailboxAddress.Parse(mailRequest.ToEmail));
     email.Subject = mailRequest.Subject;
     var builder = new BodyBuilder();
-   
+    var filepath = $"template.txt";
     builder.TextBody = mailRequest.Body;
     email.Body = builder.ToMessageBody();
     using var smtp = new SmtpClient();
@@ -32,5 +33,144 @@ namespace A5.Service
     await smtp.SendAsync(email);
     smtp.Disconnect(true);
 }
+
+ public static MailRequest AwardMail(string RecieverEmail,string AwardTitle,string Subject,int AwardStatusId)
+    {
+            var mail=new MailRequest();
+            mail.ToEmail=RecieverEmail;
+            mail.Subject=Subject;
+            switch(AwardStatusId){
+                // case 1: mail.Body=StringWriter.;
+                //         return mail;
+                case 4: mail.Body=$"Hello Aspirian,\n\nGreetings,\n\n Your Article - \"{AwardTitle}\" have been published successfully.\n\n Thanks and Regards,\nAspireOverflow.\n";
+                        return mail;
+                default: return mail;
+            }
+        }
+
+
+
+
+
+    public async Task ExampleAsync()
+    {
+        
+        string text1 =
+            $@"<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html data-editor-version='2' class='sg-campaigns' xmlns='http://www.w3.org/1999/xhtml'>
+    <head>
+      <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+      <meta name='viewport' content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1'>
+      <!--[if !mso]><!-->
+      <meta http-equiv='X-UA-Compatible' content='IE=Edge'>
+      <!--<![endif]-->
+      <!--[if (gte mso 9)|(IE)]>
+      <xml>
+        <o:OfficeDocumentSettings>
+          <o:AllowPNG/>
+          <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+      </xml>
+      <![endif]-->
+      <!--[if (gte mso 9)|(IE)]>
+  
+      <!--user entered Head Start--><!--End Head user entered-->
+    </head>
+    <body>
+      <center class='wrapper' data-link-color='#1188E6' data-body-style='font-size:14px; font-family:arial,helvetica,sans-serif; color:#000000; background-color:#e0d5b3;'>
+        <div class='webkit'>
+          <table cellpadding='0' cellspacing='0' border='0' width='100%' class='wrapper' bgcolor='#e0d5b3'>
+            <tr>
+              <td valign='top' bgcolor='#e0d5b3' width='100%'>
+                <table width='100%' role='content-container' class='outer' align='center' cellpadding='0' cellspacing='0' border='0'>
+                  <tr>
+                    <td width='100%'>
+                      <table width='100%' cellpadding='0' cellspacing='0' border='0'>
+                        <tr>
+                          <td>
+                            <!--[if mso]>
+    <center>
+    <table><tr><td width='700'>
+  <![endif]-->
+                                    <table width='100%' cellpadding='0' cellspacing='0' border='0' style='width:100%; max-width:700px;' align='center'>
+                                      <tr>
+                                        <td role='modules-container' style='padding:0px 0px 0px 0px; color:#000000; text-align:left;' bgcolor='#E0D5B3' width='100%' align='left'><table class='module preheader preheader-hide' role='module' data-type='preheader' border='0' cellpadding='0' cellspacing='0' width='100%' style='display: none !important; mso-hide: all; visibility: hidden; opacity: 0; color: transparent; height: 0; width: 0;'>
+    <tr>
+      <td role='module-content'>
+        <p>Congratulations!</p>
+      </td>
+    </tr>
+  </table><table class='module' role='module' data-type='text' border='0' cellpadding='0' cellspacing='0' width='100%' style='table-layout: fixed;' data-muid='0fd7a287-e017-4d1b-87f0-bf7e517f6406' data-mc-module-version='2019-10-22'>
+    <tbody>
+      <tr>
+        <td style='padding:15px 10px 20px 0px; line-height:16px; text-align:inherit;' height='100%' valign='top' bgcolor='' role='module-content'><div><div style='font-family: inherit; text-align: right'><span style='font-family: &quot;times new roman&quot;, times, serif; font-size: 12px'><em>Email not displaying correctly?</em></span></div>
+<div style='font-family: inherit; text-align: right'><span style='font-family: &quot;times new roman&quot;, times, serif; color: #c29a1f; font-size: 12px'><strong>View it</strong></span><span style='font-family: &quot;times new roman&quot;, times, serif; font-size: 12px'><em> in your browser.</em></span></div><div></div></div></td>
+      </tr>
+    </tbody>
+  </table><table border='0' cellpadding='0' cellspacing='0' align='center' width='100%' role='module' data-type='columns' style='padding:0px 0px 0px 0px;' bgcolor='' data-distribution='1'>
+    <tbody>
+      <tr role='module-content'>
+        <td height='100%' valign='top'><table width='700' style='width:700px; border-spacing:0; border-collapse:collapse; margin:0px 0px 0px 0px;' cellpadding='0' cellspacing='0' align='left' border='0' bgcolor='' class='column column-0'>
+      <tbody>
+        <tr>
+          <td style='padding:0px;margin:0px;border-spacing:0;'><table class='wrapper' role='module' data-type='image' border='0' cellpadding='0' cellspacing='0' width='100%' style='table-layout: fixed;' data-muid='eb8f13b4-163e-4e06-b97a-299f04852feb'>
+    <tbody>
+      <tr>
+        <td style='font-size:6px; line-height:10px; padding:0px 0px 0px 0px;' valign='top' align='center'>
+          <img class='max-width' border='0' style='display:block; color:#000000; text-decoration:none; font-family:Helvetica, arial, sans-serif; font-size:16px; max-width:100% !important; width:100%; height:auto !important;' width='700' alt='' data-proportionally-constrained='true' data-responsive='true' src='http://cdn.mcauto-images-production.sendgrid.net/b841a9c8d79766a3/4d6753a1-c318-4f6e-9594-4c8fe198b99a/1748x1240.png'>
+        </td>
+      </tr>
+    </tbody>
+  </table></td>
+        </tr>
+      </tbody>
+    </table></td>
+      </tr>
+    </tbody>
+  </table><table border='0' cellpadding='0' cellspacing='0' align='center' width='100%' role='module' data-type='columns' style='padding:20px 0px 0px 0px;' bgcolor='#F4F0E4' data-distribution='1'>
+    <tbody>
+      <tr role='module-content'>
+        <td height='100%' valign='top'><table width='680' style='width:680px; border-spacing:0; border-collapse:collapse; margin:0px 10px 0px 10px;' cellpadding='0' cellspacing='0' align='left' border='0' bgcolor='' class='column column-0'>
+      <tbody>
+        <tr>
+          <td style='padding:0px;margin:0px;border-spacing:0;'><table class='module' role='module' data-type='text' border='0' cellpadding='0' cellspacing='0' width='100%' style='table-layout: fixed;' data-muid='9f929b4b-e5da-486f-bdda-59da318ed1ea.1' data-mc-module-version='2019-10-22'>
+    <tbody>
+      <tr>
+        <td style='padding:0px 60px 0px 60px; line-height:28px; text-align:inherit;' height='100%' valign='top' bgcolor='' role='module-content'><div><div style='font-family: inherit; text-align: center'><span style='font-family: &quot;times new roman&quot;, times, serif; color: #403101; font-size: 20px'>Congratulating you on receving the *********!</em></span></div>
+<div style='font-family: inherit; text-align: center'><span style='font-family: &quot;times new roman&quot;, times, serif; color: #403101; font-size: 20px'><em>You have won a coupon  </em></span><span style='font-family: &quot;times new roman&quot;, times, serif; color: #c29a1f; font-size: 20px'><strong>HSRF12sEDF</strong></span><span style='font-family: &quot;times new roman&quot;, times, serif; color: #403101; font-size: 20px'><em>!</em></span></div><div></div></div></td>
+      </tr>
+    </tbody>
+  </table><table border='0' cellpadding='0' cellspacing='0' class='module' data-role='module-button' data-type='button' role='module' style='table-layout:fixed;' width='100%' data-muid='183cbc8c-7906-496a-8e51-d93e0f2a294a'>
+      <tbody>
+        <tr>
+          <td align='center' bgcolor='' class='outer-td' style='padding:25px 0px 30px 0px;'>
+            <table border='0' cellpadding='0' cellspacing='0' class='wrapper-mobile' style='text-align:center;'>
+              <tbody>
+                <tr>
+                <td align='center' bgcolor='#5a8dbb' class='inner-td' style='border-radius:6px; font-size:16px; text-align:center; background-color:inherit;'><a href='' style='background-color:#5a8dbb; border:0px solid #333333; border-color:#333333; border-radius:0px; border-width:0px; color:#F4F0E4; display:inline-block; font-size:16px; font-weight:normal; letter-spacing:2px; line-height:normal; padding:20px 60px 20px 60px; text-align:center; text-decoration:none; border-style:solid; font-family:times new roman,times,serif;' target='_blank'>Click here</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table></td>
+        </tr>
+      </tbody>
+    </table></td>
+      </tr>
+    </tbody>
+  </table>
+    </body>
+  </html>";
+
+        await File.WriteAllTextAsync(@"C:\Users\aakaash.mani\Desktop\template.html", text1);
+    }
+
+
+
+
+
+
 }
 }
