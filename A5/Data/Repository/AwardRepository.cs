@@ -55,14 +55,14 @@ namespace A5.Data.Repository
     public bool ApproveRequest(Award award,int id)
     {
        try{
-         var employee = _employeeRepository.GetEmployeeById(id);
                 _context.Set<Award>().Update(award);
-                award.UpdatedBy=employee?.Id;
+                award.UpdatedBy=id;
                 award.UpdatedOn=DateTime.Now;
                 _context.SaveChanges();
                 if(award.StatusId == 4)
                 {
-
+                    var awardee = GetAwardById(award.Id); 
+                    _mail.ExampleAsync(awardee);
                 }
                 return true;  
        }
@@ -189,7 +189,6 @@ namespace A5.Data.Repository
                     .Where(nameof => nameof.StatusId == 4)
                     .ToList();
 
-                _mail.ExampleAsync();
                 
                 return award;
             }
