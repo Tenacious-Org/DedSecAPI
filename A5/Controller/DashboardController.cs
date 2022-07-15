@@ -48,5 +48,44 @@ namespace A5.Controller
                 return Problem(exception.Message);
             }
         }
+        [HttpGet("GetAllAwardWise")]
+        public ActionResult GetAwardWiseDashboard(int id)
+        {
+            try
+            {
+                var data = _dashboardService.GetAllAwardwise(id);
+                return Ok(data);
+            }
+            catch (Exception exception)
+            {
+                return Problem(exception.Message);
+            }
+        }
+        [HttpGet("GetAllOrgandAwardWise")]
+        public ActionResult GetOrgandAwardWiseDashboard(int orgid, int awdid)
+        {
+            try
+            {
+                var data = _dashboardService.GetAllOrgandAward(orgid, awdid);
+                return Ok(data);
+            }
+            catch (Exception exception)
+            {
+                return Problem(exception.Message);
+            }
+        }
+        [HttpGet("GetAllDateWise")]
+        public ActionResult GetAllDateWiseDashboard(int orgid, int awdid, DateTime start, DateTime end)
+        {
+            try
+            {
+                var data = _dashboardService.GetAllDateWise(orgid, awdid, start, end);
+                return Ok(data);
+            }
+            catch (Exception exception)
+            {
+                return Problem(exception.Message);
+            }
+        }
     }
 }
