@@ -261,6 +261,35 @@ namespace A5.Data.Repository
             }
         }
 
+        public IEnumerable<Award> GetAllbyDeptwise(int id)
+        {
+            try
+            {
+                var award = _context.Set<Award>()
+                    .Include("Awardee")
+                    .Include("Awardee.Designation")
+                    .Include("Awardee.Designation.Department")
+                    .Include("Awardee.Designation.Department.Organisation")
+                    .Include("Awardee.ReportingPerson")
+                    .Include("Awardee.ReportingPerson.ReportingPerson")
+                    .Include("Awardee.HR")
+                    .Include("AwardType")
+                    .Include("Status")
+                    .Where(nameof => nameof.Awardee!.Designation!.Department!.Id == id && nameof.StatusId == 4)
+                    .ToList();
+                return award;
+            }
+             catch(ValidationException exception)
+            {
+                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch (Exception exception){
+              _logger.LogError("Error: {Message}",exception.Message);
+              throw;
+            }
+        }
+
         public IEnumerable<Award> GetAllAwardwise(int id)
         {
             try
@@ -318,8 +347,7 @@ namespace A5.Data.Repository
               throw;
             }
         }
-
-        public IEnumerable<Award> GetAllDateWise(int organisationId, int awardTypeId, DateTime start, DateTime end)
+        public IEnumerable<Award> GetAllOrgAndDepwise(int orgid, int depid)
         {
             try
             {
@@ -333,10 +361,40 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof   => nameof.Awardee.Designation.Department.Organisation.Id == organisationId 
-                                    && nameof.AwardTypeId == awardTypeId 
-                                    && nameof.StatusId == 4
-                                    && (nameof.UpdatedOn >= start.Date && nameof.UpdatedOn <= end.Date))
+                    .Where(nameof => nameof.Awardee.Designation.Department.Organisation.Id == orgid && nameof.Awardee.Designation.Department.Id == depid && nameof.StatusId == 4)
+                    .ToList();
+                return award;
+            }
+             catch(ValidationException exception)
+            {
+                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch (Exception exception){
+              _logger.LogError("Error: {Message}",exception.Message);
+              throw;
+            }
+        }
+
+        public IEnumerable<Award> GetAllFilteredDateWise(int orgid, int deptid, int awdid, DateTime start, DateTime end)
+        {
+            try
+            {
+                var award = _context.Set<Award>()
+                    .Include("Awardee")
+                    .Include("Awardee.Designation")
+                    .Include("Awardee.Designation.Department")
+                    .Include("Awardee.Designation.Department.Organisation")
+                    .Include("Awardee.ReportingPerson")
+                    .Include("Awardee.ReportingPerson.ReportingPerson")
+                    .Include("Awardee.HR")
+                    .Include("AwardType")
+                    .Include("Status")
+                    .Where(nameof => nameof.Awardee.Designation.Department.Organisation.Id == orgid 
+                                  && nameof.Awardee.Designation.Department.Id == deptid 
+                                  && nameof.AwardTypeId == awdid 
+                                  && nameof.StatusId == 4
+                                  && (nameof.UpdatedOn >= start.Date && nameof.UpdatedOn <= end.Date))
                     .ToList();
                 return award;
             }
