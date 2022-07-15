@@ -44,7 +44,31 @@ namespace A5.Service
                 throw;
             }
         }
-
+        public IEnumerable<object> GetAllAwardwise(int orgid)
+        {
+            try
+            {
+                var orgwise = _award.GetAllAwardwise(orgid);
+                return orgwise.Select(Award => new{
+                    
+                    organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
+                    
+                    department = Award?.Awardee?.Designation?.Department?.DepartmentName,
+                    
+                    awardName = Award?.AwardType?.AwardName,
+                });
+            }
+             catch(ValidationException exception)
+            {
+                _logger.LogError("DashboardService: GetAllByOrgWise(int orgid) : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                throw;
+            }
+        }
         public IEnumerable<object> GetAllWinners()
         {
             try
@@ -57,6 +81,59 @@ namespace A5.Service
                     department = Award?.Awardee?.Designation?.Department?.DepartmentName,
                     
                     awardName = Award?.AwardType?.AwardName,
+                });
+            }
+           catch(ValidationException exception)
+            {
+                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                throw;
+            }
+        }
+        public IEnumerable<object> GetAllOrgandAward(int orgid, int awdid)
+        {
+            try
+            {
+                var winners = _award.GetAllOrgAndAwardwise(orgid, awdid);
+                return winners.Select(Award => new{
+                    
+                    organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
+                    
+                    department = Award?.Awardee?.Designation?.Department?.DepartmentName,
+                    
+                    awardName = Award?.AwardType?.AwardName,
+                });
+            }
+           catch(ValidationException exception)
+            {
+                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                throw;
+            }
+        }
+
+        public IEnumerable<object> GetAllDateWise(int orgid, int awdid, DateTime start, DateTime end)
+        {
+            try
+            {
+                var winners = _award.GetAllDateWise(orgid, awdid, start, end);
+                return winners.Select(Award => new{
+                    
+                    organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
+                    
+                    department = Award?.Awardee?.Designation?.Department?.DepartmentName,
+                    
+                    awardName = Award?.AwardType?.AwardName,
+
+                    publishedDate = Award?.UpdatedOn
                 });
             }
            catch(ValidationException exception)
