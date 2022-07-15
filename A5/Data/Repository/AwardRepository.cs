@@ -43,7 +43,7 @@ namespace A5.Data.Repository
                 if(award.StatusId == 1)
                 {
                     var awardee = GetAwardById(award.Id);
-                    _mail.RequesterAsync(awardee);
+                    _mail?.RequesterAsync(awardee);
                 }
                 return true;
 
@@ -74,7 +74,7 @@ namespace A5.Data.Repository
                 else if(award.StatusId == 3)
                 {
                     var awardee = GetAwardById(award.Id);
-                    _mail.RejectedAsync(awardee);
+                    _mail?.RejectedAsync(awardee);
                 }
                 return true;  
        }
@@ -121,8 +121,9 @@ namespace A5.Data.Repository
             if(!AwardServiceValidations.ValidateAddComment(comment)) throw new ValidationException("Invalid data");
             try{
                   _context.Set<Comment>().Add(comment);
-                    _context.SaveChanges();
-                    return true;
+                  comment.CommentedOn=DateTime.Now;
+                  _context.SaveChanges();
+                  return true;
             }
              catch(ValidationException exception)
             {

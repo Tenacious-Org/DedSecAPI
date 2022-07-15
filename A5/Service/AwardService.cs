@@ -91,7 +91,6 @@ namespace A5.Service
                     designation=award?.Awardee?.Designation?.DesignationName,
                     department=award?.Awardee?.Designation?.Department?.DepartmentName,
                     organisation=award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName
-
                 };
             }
            
@@ -176,7 +175,8 @@ namespace A5.Service
                    comments=Comment.Comments,
                    gender=Comment?.Employees?.Gender,
                    employeeName=Comment?.Employees?.FirstName,
-                   employeeImage=Comment?.Employees?.Image
+                   employeeImage=Comment?.Employees?.Image,
+                   commentedOn=Comment?.CommentedOn
                }).OrderByDescending(nameof=>nameof.id);
             }
             catch(ValidationException exception)

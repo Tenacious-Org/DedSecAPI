@@ -78,6 +78,7 @@ namespace A5.Controller
         /// </returns>
 
         [HttpGet("GetDepartmentsByOrganisationId")]
+        [AllowAnonymous]
         public ActionResult GetDepartmentsByOrganisationId(int id)
         {
             if (id <= 0) return BadRequest("Id cannot be null ");

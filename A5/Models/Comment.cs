@@ -7,6 +7,7 @@ namespace A5.Models
         public string ?  Comments {get;set;}
 
         public int EmployeeId {get;set;}
+        public DateTime ?  CommentedOn {get;set;}
 
         [ForeignKey("EmployeeId")]
         public virtual Employee ? Employees{ get; set; }

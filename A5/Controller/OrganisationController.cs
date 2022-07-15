@@ -39,6 +39,7 @@ namespace A5.Controller
         /// </returns>
 
         [HttpGet("GetAll")]
+        [AllowAnonymous]
         public ActionResult GetAllOrganisation()
         {
             try{
