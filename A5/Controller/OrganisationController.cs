@@ -123,7 +123,7 @@ namespace A5.Controller
             if(organisation==null) return BadRequest("Organisation should not be null");
             try
             {   
-                var data=_organisationService.CreateOrganisation(organisation);
+                var data=_organisationService.CreateOrganisation(organisation,GetCurrentUserId());
                 return  Ok(data); 
                 
             }
@@ -163,7 +163,7 @@ namespace A5.Controller
         {
            if(organisation==null) return BadRequest("Organisation should not be null");
             try{
-                var data=_organisationService.UpdateOrganisation(organisation);
+                var data=_organisationService.UpdateOrganisation(organisation,GetCurrentUserId());
                 return Ok(data); 
             }        
             catch(ValidationException exception)
@@ -210,7 +210,7 @@ namespace A5.Controller
                 }
                 else
                 {
-                    var data = _organisationService.DisableOrganisation(id);
+                    var data = _organisationService.DisableOrganisation(id,GetCurrentUserId());
                     return Ok(data);
                 }
             }
@@ -223,6 +223,18 @@ namespace A5.Controller
             {
                 return BadRequest(exception.Message);
             }
+        }
+        private int GetCurrentUserId()
+        {
+            try
+            {
+                return Convert.ToInt32(User.FindFirst("UserId")?.Value);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error occured while getting current userId");
+            }
+
         }
     }
 }

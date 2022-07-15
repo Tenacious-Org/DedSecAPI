@@ -7,10 +7,10 @@ namespace A5.Service.Interfaces
 {
     public interface IOrganisationService
     {
-        bool CreateOrganisation(Organisation organisation);
-        bool UpdateOrganisation(Organisation organisation);
+        bool CreateOrganisation(Organisation organisation,int employeeId);
+        bool UpdateOrganisation(Organisation organisation,int employeeId);
         Organisation? GetByOrganisation(int id);
-        bool DisableOrganisation(int id);
+        bool DisableOrganisation(int id,int employeeId);
         int GetCount(int id);
         public IEnumerable<Organisation> GetAllOrganisation();
 

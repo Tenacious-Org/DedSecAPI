@@ -167,7 +167,7 @@ namespace A5.Controller
             if(designation==null) return BadRequest("Designation should not be null");
             try
             {
-                var data = _designationService.CreateDesignation(designation);
+                var data = _designationService.CreateDesignation(designation,GetCurrentUserId());
                 return Ok(data);
             }
             catch (ValidationException exception)
@@ -206,7 +206,7 @@ namespace A5.Controller
             if(designation==null) return BadRequest("Designation should not be null");
             try
             {
-                var data = _designationService.UpdateDesignation(designation);
+                var data = _designationService.UpdateDesignation(designation,GetCurrentUserId());
                 return Ok(data);
             }
             catch (ValidationException exception)
@@ -253,7 +253,7 @@ namespace A5.Controller
                 }
                 else
                 {
-                    var data = _designationService.DisableDesignation(id);
+                    var data = _designationService.DisableDesignation(id,GetCurrentUserId());
                     return Ok(data);
                 }
 
@@ -267,6 +267,18 @@ namespace A5.Controller
             {
                 return Problem(exception.Message);
             }
+        }
+        private int GetCurrentUserId()
+        {
+            try
+            {
+                return Convert.ToInt32(User.FindFirst("UserId")?.Value);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error occured while getting current userId");
+            }
+
         }
 
     }

@@ -317,7 +317,7 @@ namespace A5.Data.Repository
             }
         }
 
-        public bool CreateEmployee(Employee employee)
+        public bool CreateEmployee(Employee employee,int employeeId)
         {
             if(!EmployeeServiceValidations.CreateValidation(employee)) throw new ValidationException("Invalid data");
             bool IsIdAlreadyExists=_context.Employees!.Any(nameof=>nameof.ACEID==employee.ACEID);
@@ -326,7 +326,7 @@ namespace A5.Data.Repository
             if(IsEmailAlreadyExists) throw new ValidationException("Email Id already exists");
             try
             {
-                return Create(employee);
+                return Create(employee,employeeId);
             }
             catch (ValidationException exception)
             {
@@ -340,7 +340,7 @@ namespace A5.Data.Repository
             }
 
         }
-        public bool UpdateEmployee(Employee employee)
+        public bool UpdateEmployee(Employee employee,int employeeId)
         {
             if(!EmployeeServiceValidations.UpdateValidation(employee)) throw new ValidationException("Invalid data");
             bool IsIdAlreadyExists=_context.Employees!.Any(nameof=>nameof.ACEID==employee.ACEID);
@@ -349,7 +349,7 @@ namespace A5.Data.Repository
             if(IsEmailAlreadyExists) throw new ValidationException("Email Id already exists");
             try
             {
-                return Update(employee);
+                return Update(employee,employeeId);
             }
             catch (ValidationException exception)
             {
@@ -363,12 +363,12 @@ namespace A5.Data.Repository
             }
 
         }
-        public bool DisableEmployee(int id)
+        public bool DisableEmployee(int id,int employeeId)
         {
             if(!EmployeeServiceValidations.DisableValidation(id)) throw new ValidationException("Invalid data");
             try
             {
-                return Disable(id);
+                return Disable(id,employeeId);
             }
             catch (ValidationException exception)
             {

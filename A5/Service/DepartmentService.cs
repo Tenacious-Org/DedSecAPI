@@ -22,11 +22,11 @@ namespace A5.Service
                 _departmentRepository=departmentRepository;
          } 
          
-        public bool CreateDepartment(Department department)
+        public bool CreateDepartment(Department department,int employeeId)
         {
             if(!DepartmentServiceValidations.CreateValidation(department)) throw new ValidationException("Invalid data");
             try{
-                return _departmentRepository.CreateDepartment(department);
+                return _departmentRepository.CreateDepartment(department,employeeId);
             }
             catch(ValidationException exception)
             {
@@ -39,11 +39,11 @@ namespace A5.Service
                 throw;
             }
         }
-        public bool UpdateDepartment(Department department)
+        public bool UpdateDepartment(Department department,int employeeId)
         {
             if(!DepartmentServiceValidations.UpdateValidation(department)) throw new ValidationException("Invalid Data");
             try{
-                return _departmentRepository.UpdateDepartment(department);
+                return _departmentRepository.UpdateDepartment(department,employeeId);
             }
             catch(ValidationException exception)
             {
@@ -73,13 +73,13 @@ namespace A5.Service
                 throw;
             }
         }
-        public bool DisableDepartment(int id)
+        public bool DisableDepartment(int id,int employeeId)
         {
             if(!DepartmentServiceValidations.DisableValidation(id)) throw new ValidationException("Invalid Data");
             
             try
             {
-                return _departmentRepository.DisableDepartment(id);
+                return _departmentRepository.DisableDepartment(id,employeeId);
 
             }
             catch(ValidationException exception)

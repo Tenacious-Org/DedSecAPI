@@ -127,7 +127,7 @@ namespace A5.Controller
         {
             if(employee==null) return BadRequest("Employee should not be null");
             try{
-                var data=_employeeService.CreateEmployee(employee);
+                var data=_employeeService.CreateEmployee(employee,GetCurrentUserId());
                  return  Ok(data); 
             }
             catch(ValidationException exception)
@@ -165,8 +165,7 @@ namespace A5.Controller
         {
             if(employee==null) return BadRequest("Employee should not be null");
             try{
-                employee.Image = System.Convert.FromBase64String(employee.ImageString!);
-                var data=_employeeService.UpdateEmployee( employee);
+                var data=_employeeService.UpdateEmployee( employee,GetCurrentUserId());
                return  Ok(data); 
                 
             }
@@ -211,7 +210,7 @@ namespace A5.Controller
                 if(checkEmployee>0){
                     return Ok(checkEmployee);
                 }else{
-                    var data = _employeeService.DisableEmployee(id);
+                    var data = _employeeService.DisableEmployee(id,GetCurrentUserId());
                     return Ok(data);
                 }
             }
@@ -405,6 +404,18 @@ namespace A5.Controller
             {
                 return Problem(exception.Message);
             }
+        }
+        private int GetCurrentUserId()
+        {
+            try
+            {
+                return Convert.ToInt32(User.FindFirst("UserId")?.Value);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error occured while getting current userId");
+            }
+
         }
         
      

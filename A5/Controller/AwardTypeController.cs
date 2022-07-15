@@ -126,7 +126,7 @@ namespace A5.Controller
 
             try
             {
-                var data = _awardTypeService.CreateAwardType(awardType);
+                var data = _awardTypeService.CreateAwardType(awardType,GetCurrentUserId());
                 return Ok(data);
             }
             catch (ValidationException exception)
@@ -165,7 +165,7 @@ namespace A5.Controller
             if(awardType==null) return BadRequest("AwardType should not be null");
             try
             {
-                var data = _awardTypeService.UpdateAwardType(awardType);
+                var data = _awardTypeService.UpdateAwardType(awardType,GetCurrentUserId());
                 return Ok(data);
             }
             catch (ValidationException exception)
@@ -205,7 +205,7 @@ namespace A5.Controller
 
             try
             {
-                var data = _awardTypeService.DisableAwardType(id);
+                var data = _awardTypeService.DisableAwardType(id,GetCurrentUserId());
                 return Ok(data);
             }
             catch (ValidationException exception)
@@ -217,6 +217,18 @@ namespace A5.Controller
             {
                 return Problem(exception.Message);
             }
+        }
+        private int GetCurrentUserId()
+        {
+            try
+            {
+                return Convert.ToInt32(User.FindFirst("UserId")?.Value);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error occured while getting current userId");
+            }
+
         }
 
     }

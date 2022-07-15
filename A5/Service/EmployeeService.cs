@@ -24,7 +24,7 @@ namespace A5.Service
 
         public IEnumerable<Employee> GetByHR(int id)
         {
-            if(!EmployeeServiceValidations.ValidateGetByHr(id)) throw new ValidationException("Invalid Data");
+            if (!EmployeeServiceValidations.ValidateGetByHr(id)) throw new ValidationException("Invalid Data");
             try
             {
                 return _employeeRepository.GetByHR(id);
@@ -44,7 +44,7 @@ namespace A5.Service
 
         public IEnumerable<Employee> GetByReportingPerson(int id)
         {
-            if(!EmployeeServiceValidations.ValidateGetByReportingPerson(id)) throw new ValidationException("Invalid data");
+            if (!EmployeeServiceValidations.ValidateGetByReportingPerson(id)) throw new ValidationException("Invalid data");
             try
             {
                 return _employeeRepository.GetByReportingPerson(id);
@@ -64,7 +64,7 @@ namespace A5.Service
 
         public IEnumerable<Employee> GetEmployeeByDepartmentId(int id)
         {
-            if(!EmployeeServiceValidations.ValidateGetByDepartment(id)) throw new ValidationException("Invalid data");
+            if (!EmployeeServiceValidations.ValidateGetByDepartment(id)) throw new ValidationException("Invalid data");
             try
             {
                 return _employeeRepository.GetEmployeeByDepartmentId(id);
@@ -82,7 +82,7 @@ namespace A5.Service
         }
         public IEnumerable<Employee> GetReportingPersonByDepartmentId(int id)
         {
-            if(!EmployeeServiceValidations.ValidateGetByDepartment(id)) throw new ValidationException("Invalid data");
+            if (!EmployeeServiceValidations.ValidateGetByDepartment(id)) throw new ValidationException("Invalid data");
             try
             {
 
@@ -101,7 +101,7 @@ namespace A5.Service
         }
         public IEnumerable<Employee> GetHrByDepartmentId(int id)
         {
-            if(!EmployeeServiceValidations.ValidateGetByDepartment(id)) throw new ValidationException("Invalid data");
+            if (!EmployeeServiceValidations.ValidateGetByDepartment(id)) throw new ValidationException("Invalid data");
             try
             {
                 return _employeeRepository.GetHrByDepartmentId(id);
@@ -119,7 +119,7 @@ namespace A5.Service
         }
         public IEnumerable<Employee> GetEmployeeByRequesterId(int id)
         {
-            if(!EmployeeServiceValidations.ValidateGetByRequester(id)) throw new ValidationException("Invalid data");
+            if (!EmployeeServiceValidations.ValidateGetByRequester(id)) throw new ValidationException("Invalid data");
             try
             {
                 return _employeeRepository.GetEmployeeByRequesterId(id);
@@ -137,7 +137,7 @@ namespace A5.Service
         }
         public IEnumerable<Employee> GetEmployeeByOrganisation(int id)
         {
-            if(!EmployeeServiceValidations.ValidateGetByOrganisation(id)) throw new ValidationException("Invalid data");
+            if (!EmployeeServiceValidations.ValidateGetByOrganisation(id)) throw new ValidationException("Invalid data");
             try
             {
                 return _employeeRepository.GetEmployeeByOrganisation(id);
@@ -156,7 +156,7 @@ namespace A5.Service
         }
         public IEnumerable<object> GetAllEmployees()
         {
-            
+
             try
             {
                 var employee = _employeeRepository.GetAllEmployees();
@@ -176,7 +176,7 @@ namespace A5.Service
         }
         public object GetEmployeeById(int id)
         {
-            if(!EmployeeServiceValidations.ValidateById(id)) throw new ValidationException("Invalid data");
+            if (!EmployeeServiceValidations.ValidateById(id)) throw new ValidationException("Invalid data");
             try
             {
                 var employee = _employeeRepository.GetEmployeeById(id);
@@ -228,7 +228,7 @@ namespace A5.Service
 
 
         public Employee GetEmployee(string Email, string Password)
-        {           
+        {
             if (Email == null || Password == null) throw new ValidationException("Email or Password cannot be null");
             try
             {
@@ -248,13 +248,13 @@ namespace A5.Service
             }
         }
 
-        public bool CreateEmployee(Employee employee)
+        public bool CreateEmployee(Employee employee,int employeeId)
         {
-            if(!EmployeeServiceValidations.CreateValidation(employee)) throw new ValidationException("Invalid data");
+            if (!EmployeeServiceValidations.CreateValidation(employee)) throw new ValidationException("Invalid data");
             try
             {
                 employee.Image = System.Convert.FromBase64String(employee.ImageString!);
-                return _employeeRepository.CreateEmployee(employee);
+                return _employeeRepository.CreateEmployee(employee,employeeId);
             }
             catch (ValidationException exception)
             {
@@ -268,12 +268,13 @@ namespace A5.Service
             }
 
         }
-        public bool UpdateEmployee(Employee employee)
+        public bool UpdateEmployee(Employee employee,int employeeId)
         {
-             if(!EmployeeServiceValidations.UpdateValidation(employee)) throw new ValidationException("Invalid data");
+            if (!EmployeeServiceValidations.UpdateValidation(employee)) throw new ValidationException("Invalid data");
             try
             {
-                return _employeeRepository.UpdateEmployee(employee);
+                employee.Image = System.Convert.FromBase64String(employee.ImageString!);
+                return _employeeRepository.UpdateEmployee(employee,employeeId);
             }
             catch (ValidationException exception)
             {
@@ -287,12 +288,12 @@ namespace A5.Service
             }
 
         }
-        public bool DisableEmployee(int id)
+        public bool DisableEmployee(int id,int employeeId)
         {
-             if(!EmployeeServiceValidations.DisableValidation(id)) throw new ValidationException("Invalid data");
+            if (!EmployeeServiceValidations.DisableValidation(id)) throw new ValidationException("Invalid data");
             try
             {
-                return _employeeRepository.DisableEmployee(id);
+                return _employeeRepository.DisableEmployee(id,employeeId);
             }
             catch (ValidationException exception)
             {
@@ -309,7 +310,7 @@ namespace A5.Service
 
         public bool ChangePassword(Employee employee, int id, String Email)
         {
-             if(!EmployeeServiceValidations.PasswordValidation(employee,id,Email)) throw new ValidationException("Invalid data");
+            if (!EmployeeServiceValidations.PasswordValidation(employee, id, Email)) throw new ValidationException("Invalid data");
             try
             {
 
@@ -366,7 +367,7 @@ namespace A5.Service
         }
         public int GetEmployeeCount(int id)
         {
-            if(!EmployeeServiceValidations.ValidateById(id)) throw new ValidationException("Invalid data");
+            if (!EmployeeServiceValidations.ValidateById(id)) throw new ValidationException("Invalid data");
             try
             {
 

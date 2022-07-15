@@ -37,18 +37,17 @@ namespace A5.Controller
         /// <response code="201">Returns </response>
         /// <response code="400">If the item is null</response> 
         /// <param name="award">String</param>
-        /// <param name="employeeId"></param>
         /// <returns>
         ///Return 
         /// </returns>
 
         [HttpPost("RaiseRequest")]
-        public ActionResult RaiseRequest(Award award, int employeeId)
+        public ActionResult RaiseRequest(Award award)
         {
-            if (employeeId <= 0) return BadRequest("Id cannot be null or negative");
+            if (award ==null) return BadRequest("Award cannot be null ");
             try
             {
-                var data = _awardService.RaiseRequest(award, employeeId);
+                var data = _awardService.RaiseRequest(award, GetCurrentUserId());
                 return Ok(data);
             }
             catch (ValidationException exception)
@@ -78,19 +77,18 @@ namespace A5.Controller
         /// <response code="201">Returns </response>
         /// <response code="400">If the item is null</response> 
         /// <param name="award">String</param>
-        /// <param name="employeeId"></param>
         /// <returns>
         ///Return 
         /// </returns>
 
         [HttpPut("Approval")]
-        public ActionResult Approval(Award award, int employeeId)
+        public ActionResult Approval(Award award)
         {
 
-            if (employeeId <= 0) return BadRequest("Id should not be null or negative");
+            if (award ==null) return BadRequest("award should not be null");
             try
             {
-                var data = _awardService.Approval(award, employeeId);
+                var data = _awardService.Approval(award, GetCurrentUserId());
                 return Ok(data);
             }
             catch (ValidationException exception)
@@ -104,8 +102,6 @@ namespace A5.Controller
             }
 
         }
-
-
 
 
         /// <summary>
@@ -192,11 +188,13 @@ namespace A5.Controller
 
         [HttpGet("GetAwardsList")]
         [AllowAnonymous]
-        public ActionResult GetAwardsList(int pageId = 0, int employeeId = 0)
+        public ActionResult GetAwardsList(int pageId = 0)
         {
+            if (pageId < 0)
+                return BadRequest("pageId cannot be null or negative");
             try
             {
-                var data = _awardService.GetAwardsList(pageId, employeeId);
+                var data = _awardService.GetAwardsList(pageId, GetCurrentUserId());
                 return Ok(data);
             }
             catch (ValidationException exception)
@@ -235,7 +233,7 @@ namespace A5.Controller
             if (comment == null) return BadRequest("comment should not be null");
             try
             {
-                var data = _awardService.AddComment(comment);
+                var data = _awardService.AddComment(comment,GetCurrentUserId());
                 return Ok(data);
             }
             catch (ValidationException exception)
@@ -287,6 +285,19 @@ namespace A5.Controller
             catch (Exception exception)
             {
                 return Problem(exception.Message);
+            }
+
+        }
+
+        private int GetCurrentUserId()
+        {
+            try
+            {
+                return Convert.ToInt32(User.FindFirst("UserId")?.Value);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error occured while getting current userId");
             }
 
         }

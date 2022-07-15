@@ -14,13 +14,13 @@ namespace A5.Data.Repository
             _context=context;
             _logger=logger;
         }
-            public bool CreateOrganisation(Organisation organisation)
+            public bool CreateOrganisation(Organisation organisation,int employeeId)
             {
             if(!OrganisationServiceValidations.CreateValidation(organisation)) throw new ValidationException("Invalid data");
             bool NameExists=_context.Organisations!.Any(nameof=>nameof.OrganisationName==organisation.OrganisationName);
             if(NameExists) throw new ValidationException("Organisation Name already exists");
             try{
-                return Create(organisation);
+                return Create(organisation,employeeId);
             }
             catch(ValidationException exception)
             {
@@ -33,13 +33,13 @@ namespace A5.Data.Repository
                 throw;
             }
         }
-        public bool UpdateOrganisation(Organisation organisation)
+        public bool UpdateOrganisation(Organisation organisation,int employeeId)
         {
             if(!OrganisationServiceValidations.UpdateValidation(organisation)) throw new ValidationException("Invalid Data");
             bool NameExists=_context.Organisations!.Any(nameof=>nameof.OrganisationName==organisation.OrganisationName);
             if(NameExists) throw new ValidationException("Organisation Name already exists");
             try{
-                return Update(organisation);
+                return Update(organisation,employeeId);
             }
             catch(ValidationException exception)
             {
@@ -69,13 +69,13 @@ namespace A5.Data.Repository
                 throw;
             }
         }
-        public bool DisableOrganisation(int id)
+        public bool DisableOrganisation(int id,int employeeId)
         {
             if(!OrganisationServiceValidations.DisableValidation(id)) throw new ValidationException("Invalid Data");
             
             try
             {
-                return Disable(id);
+                return Disable(id,employeeId);
 
             }
            catch(ValidationException exception)

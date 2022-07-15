@@ -15,13 +15,13 @@ namespace A5.Data.Repository
              _context=context;
              _logger=logger;
         }
-         public bool CreateDepartment(Department department)
+         public bool CreateDepartment(Department department,int employeeId)
         {
             if(!DepartmentServiceValidations.CreateValidation(department)) throw new ValidationException("Invalid data");
             bool NameExists=_context.Departments!.Any(nameof=>nameof.DepartmentName==department.DepartmentName && nameof.OrganisationId==department.OrganisationId);
             if(NameExists) throw new ValidationException("Department Name already exists");
             try{
-                return Create(department);
+                return Create(department,employeeId);
             }
             catch(ValidationException exception)
             {
@@ -34,13 +34,13 @@ namespace A5.Data.Repository
                 throw;
             }
         }
-        public bool UpdateDepartment(Department department)
+        public bool UpdateDepartment(Department department,int employeeId)
         {
             if(!DepartmentServiceValidations.UpdateValidation(department)) throw new ValidationException("Invalid Data");
              bool NameExists=_context.Departments!.Any(nameof=>nameof.DepartmentName==department.DepartmentName  && nameof.OrganisationId==department.OrganisationId);
             if(NameExists) throw new ValidationException("Department Name already exists");
             try{
-                return Update(department);
+                return Update(department,employeeId);
             }
             catch(ValidationException exception)
             {
@@ -70,13 +70,13 @@ namespace A5.Data.Repository
                 throw;
             }
         }
-        public bool DisableDepartment(int id)
+        public bool DisableDepartment(int id,int employeeId)
         {
             if(!DepartmentServiceValidations.DisableValidation(id)) throw new ValidationException("Invalid Data");
             
             try
             {
-                return Disable(id);
+                return Disable(id,employeeId);
 
             }
             catch(ValidationException exception)

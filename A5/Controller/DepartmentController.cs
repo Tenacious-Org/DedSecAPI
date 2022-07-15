@@ -162,7 +162,7 @@ namespace A5.Controller
         {
             if(department==null) return BadRequest("department should not be null");
             try{
-                var data=_departmentService.CreateDepartment(department);
+                var data=_departmentService.CreateDepartment(department,GetCurrentUserId());
                 return Ok(data); 
             }           
             catch(ValidationException exception)
@@ -200,7 +200,7 @@ namespace A5.Controller
         {
             if(department==null) return BadRequest("Department should not be null");
             try{
-                var data=_departmentService.UpdateDepartment(department);
+                var data=_departmentService.UpdateDepartment(department,GetCurrentUserId());
                 return  Ok(data); 
             }
             catch(ValidationException exception)
@@ -242,7 +242,7 @@ namespace A5.Controller
                 if(checkEmployee>0){
                     return Ok(checkEmployee);
                 }else{
-                    var data = _departmentService.DisableDepartment(id);
+                    var data = _departmentService.DisableDepartment(id,GetCurrentUserId());
                     return Ok(data);
                 }
                 
@@ -256,6 +256,18 @@ namespace A5.Controller
             {
                 return Problem(exception.Message);
             }
+        }
+        private int GetCurrentUserId()
+        {
+            try
+            {
+                return Convert.ToInt32(User.FindFirst("UserId")?.Value);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error occured while getting current userId");
+            }
+
         }
     }
 }

@@ -63,35 +63,8 @@ namespace A5.Service
             if(!AwardServiceValidations.ValidateGetAwardById(id)) throw new ValidationException("Invalid data");
             try{
                 var award= _award.GetAwardById(id);
-                return new{
-                    id = award?.Id,
-                    requesterId=award?.RequesterId,
-                    awardeeId=award?.AwardeeId,
-                    awardTypeId=award?.AwardTypeId,
-                    approverId=award?.ApproverId,
-                    hRId=award?.HRId,
-                    reason=award?.Reason,
-                    rejectedReason=award?.RejectedReason,
-                    couponCode=award?.CouponCode,
-                    statusId=award?.StatusId,
-                    addedBy=award?.AddedBy,
-                    addedOn=award?.AddedOn,
-                    updatedBy=award?.UpdatedBy,
-                    updatedOn=award?.UpdatedOn,
-                    aceId=award?.Awardee?.ACEID,
-                    awardeeName = award?.Awardee?.FirstName + " "+ award?.Awardee?.LastName  ,
-                    awardeeImage=award?.Awardee?.Image,
-                    gender=award?.Awardee?.Gender,
-                    requesterName = award?.Awardee?.ReportingPerson?.FirstName,
-                    approverName = award?.Awardee?.ReportingPerson?.ReportingPerson?.FirstName,
-                    hRName = award?.Awardee?.HR?.FirstName,
-                    status=award?.Status?.StatusName,
-                    award=award?.AwardType?.AwardName,
-                    awardImage=award?.AwardType?.Image,
-                    designation=award?.Awardee?.Designation?.DesignationName,
-                    department=award?.Awardee?.Designation?.Department?.DepartmentName,
-                    organisation=award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName
-                };
+                return GetAwardObject(award);
+
             }
            
            catch(ValidationException exception)
@@ -107,11 +80,11 @@ namespace A5.Service
         }
 
 
-        public bool AddComment(Comment comment)
+        public bool AddComment(Comment comment,int employeeId)
         {
             if(!AwardServiceValidations.ValidateAddComment(comment)) throw new ValidationException("Invalid data");
             try{
-                  return _award.AddComments(comment);
+                  return _award.AddComments(comment,employeeId);
             }
            catch(ValidationException exception)
             {
@@ -131,27 +104,7 @@ namespace A5.Service
             try
             {
                 var awards = _award.GetAllAwardsList(pageId,employeeId);
-                return awards.Select( Award => new{
-                    id = Award.Id,
-                    awardeeName = Award?.Awardee?.FirstName,
-                    awardeeImage=Award?.Awardee?.Image,
-                    requesterName = Award?.Awardee?.ReportingPerson?.FirstName,
-                    approverName = Award?.Awardee?.ReportingPerson?.ReportingPerson?.FirstName,
-                    hRName = Award?.Awardee?.HR?.FirstName,
-                    statusId=Award?.StatusId,
-                    status=Award?.Status?.StatusName,
-                    awardName=Award?.AwardType?.AwardName,
-                    awardTypeId=Award?.AwardType?.Id,
-                    awardImage=Award?.AwardType?.Image,
-                    reason=Award?.Reason,
-                    rejectedReason=Award?.RejectedReason,
-                    organisationId=Award?.Awardee?.Designation?.Department?.Organisation?.Id,
-                    departmentId=Award?.Awardee?.Designation?.Department?.Id,
-                    designation=Award?.Awardee?.Designation?.DesignationName,
-                    department=Award?.Awardee?.Designation?.Department?.DepartmentName,
-                    organisation=Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName ,
-                    updatedOn=Award?.UpdatedOn
-                });
+                return awards.Select( award => GetAwardObject(award));
             }
            catch(ValidationException exception)
             {
@@ -191,6 +144,40 @@ namespace A5.Service
             }
         }
 
+        private object GetAwardObject(Award award)
+        {
+            return new
+            {
+                id = award?.Id,
+                    requesterId=award?.RequesterId,
+                    awardeeId=award?.AwardeeId,
+                    awardTypeId=award?.AwardTypeId,
+                    approverId=award?.ApproverId,
+                    hRId=award?.HRId,
+                    reason=award?.Reason,
+                    rejectedReason=award?.RejectedReason,
+                    couponCode=award?.CouponCode,
+                    statusId=award?.StatusId,
+                    addedBy=award?.AddedBy,
+                    addedOn=award?.AddedOn,
+                    updatedBy=award?.UpdatedBy,
+                    updatedOn=award?.UpdatedOn,
+                    aceId=award?.Awardee?.ACEID,
+                    awardeeName = award?.Awardee?.FirstName + " "+ award?.Awardee?.LastName  ,
+                    awardeeImage=award?.Awardee?.Image,
+                    gender=award?.Awardee?.Gender,
+                    requesterName = award?.Awardee?.ReportingPerson?.FirstName,
+                    approverName = award?.Awardee?.ReportingPerson?.ReportingPerson?.FirstName,
+                    hRName = award?.Awardee?.HR?.FirstName,
+                    status=award?.Status?.StatusName,
+                    award=award?.AwardType?.AwardName,
+                    awardImage=award?.AwardType?.Image,
+                    designation=award?.Awardee?.Designation?.DesignationName,
+                    department=award?.Awardee?.Designation?.Department?.DepartmentName,
+                    organisation=award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName
+            };
+            
+        }
         public object ErrorMessage(string ValidationMessage)
         {
             return new{message=ValidationMessage};

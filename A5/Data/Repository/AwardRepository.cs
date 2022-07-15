@@ -60,7 +60,9 @@ namespace A5.Data.Repository
     }
     public bool ApproveRequest(Award award,int id)
     {
-       try{
+        bool IsIdAlreadyExists=_context.Awards!.Any(nameof=>nameof.CouponCode==award.CouponCode);
+        if(IsIdAlreadyExists) throw new ValidationException("CouponCode already redeemed");
+        try{
                 _context.Set<Award>().Update(award);
                 award.UpdatedBy=id;
                 award.UpdatedOn=DateTime.Now;
@@ -116,11 +118,12 @@ namespace A5.Data.Repository
               throw;
             }
         }
-        public bool AddComments(Comment comment)
+        public bool AddComments(Comment comment,int employeeId)
         {
             if(!AwardServiceValidations.ValidateAddComment(comment)) throw new ValidationException("Invalid data");
             try{
                   _context.Set<Comment>().Add(comment);
+                  comment.EmployeeId=employeeId;
                   comment.CommentedOn=DateTime.Now;
                   _context.SaveChanges();
                   return true;

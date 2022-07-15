@@ -15,14 +15,14 @@ namespace A5.Data.Repository
             _context=context;
             _logger=logger;
         }
-          public bool CreateAwardType(AwardType entity)
+          public bool CreateAwardType(AwardType awardType,int employeeId)
         {
            
-            if(!AwardTypeValidations.CreateValidation(entity)) throw new ValidationException("Invalid data");
-            bool NameExists=_context.AwardTypes!.Any(nameof=>nameof.AwardName==entity.AwardName);
+            if(!AwardTypeValidations.CreateValidation(awardType)) throw new ValidationException("Invalid data");
+            bool NameExists=_context.AwardTypes!.Any(nameof=>nameof.AwardName==awardType.AwardName);
             if(NameExists) throw new ValidationException("Award Name already exists");
             try{
-                return Create(entity);
+                return Create(awardType,employeeId);
             }
             catch(ValidationException exception)
             {
@@ -36,12 +36,12 @@ namespace A5.Data.Repository
             }
         }
         
-         public bool UpdateAwardType(AwardType entity)
+         public bool UpdateAwardType(AwardType awardType,int employeeId)
         {
           
-            if(!AwardTypeValidations.UpdateValidation(entity)) throw new ValidationException("Invalid data");
+            if(!AwardTypeValidations.UpdateValidation(awardType)) throw new ValidationException("Invalid data");
             try{
-                return Update(entity);
+                return Update(awardType,employeeId);
             }
             catch(ValidationException exception)
             {
@@ -54,14 +54,11 @@ namespace A5.Data.Repository
                 throw;
             }
         }
-        public bool DisableAwardType(int id)
+        public bool DisableAwardType(int id,int employeeId)
         {
-            AwardType awardType=new AwardType();
             if(!AwardTypeValidations.DisableValidation(id)) throw new ValidationException("Invalid data");
-            bool NameExists=_context.AwardTypes!.Any(nameof=>nameof.AwardName==awardType.AwardName);
-            if(NameExists) throw new ValidationException("Award Name already exists");
             try{
-                return Disable(id);
+                return Disable(id,employeeId);
             }
              catch(ValidationException exception)
             {
@@ -110,6 +107,7 @@ namespace A5.Data.Repository
                 throw;
             }
         }
+        
        
        
     }

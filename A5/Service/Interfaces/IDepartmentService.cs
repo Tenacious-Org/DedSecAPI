@@ -7,10 +7,10 @@ namespace A5.Service.Interfaces
 {
     public interface IDepartmentService
     {
-        bool CreateDepartment(Department department);
-        bool UpdateDepartment(Department department);
+        bool CreateDepartment(Department department,int employeeId);
+        bool UpdateDepartment(Department department,int employeeId);
         Department? GetByDepartment(int id);
-        bool DisableDepartment(int id);
+        bool DisableDepartment(int id,int employeeId);
         int GetCount(int id);
         public IEnumerable<object> GetAllDepartments();
         public IEnumerable<Department> GetDepartmentsByOrganisationId(int id);
