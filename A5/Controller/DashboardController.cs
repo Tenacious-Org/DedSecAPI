@@ -35,6 +35,7 @@ namespace A5.Controller
                 return BadRequest(exception.Message);
             }
         }
+
         [HttpGet("GetAllOrgWise")]
         public ActionResult GetOrgWiseDashboard(int id)
         {
@@ -48,6 +49,21 @@ namespace A5.Controller
                 return Problem(exception.Message);
             }
         }
+
+        [HttpGet("GetAllDeptWise")]
+        public ActionResult GetDeptWiseDashboard(int id)
+        {
+            try
+            {
+                var data = _dashboardService.GetAllByDeptwise(id);
+                return Ok(data);
+            }
+            catch (Exception exception)
+            {
+                return Problem(exception.Message);
+            }
+        }
+
         [HttpGet("GetAllAwardWise")]
         public ActionResult GetAwardWiseDashboard(int id)
         {
@@ -61,6 +77,7 @@ namespace A5.Controller
                 return Problem(exception.Message);
             }
         }
+
         [HttpGet("GetAllOrgandAwardWise")]
         public ActionResult GetOrgandAwardWiseDashboard(int orgid, int awdid)
         {
@@ -74,12 +91,27 @@ namespace A5.Controller
                 return Problem(exception.Message);
             }
         }
-        [HttpGet("GetAllDateWise")]
-        public ActionResult GetAllDateWiseDashboard(int orgid, int awdid, DateTime start, DateTime end)
+
+        [HttpGet("GetAllOrgandDepWise")]
+        public ActionResult GetOrgandDepWiseDashboard(int orgid, int depid)
         {
             try
             {
-                var data = _dashboardService.GetAllDateWise(orgid, awdid, start, end);
+                var data = _dashboardService.GetAllOrgandDep(orgid, depid);
+                return Ok(data);
+            }
+            catch (Exception exception)
+            {
+                return Problem(exception.Message);
+            }
+        }
+        
+        [HttpGet("GetAllFilteredDateWise")]
+        public ActionResult GetAllFilteredDateWiseDashboard(int orgid, int deptid, int awdid, DateTime start, DateTime end)
+        {
+            try
+            {
+                var data = _dashboardService.GetAllFilteredDateWise(orgid, deptid, awdid, start, end);
                 return Ok(data);
             }
             catch (Exception exception)
