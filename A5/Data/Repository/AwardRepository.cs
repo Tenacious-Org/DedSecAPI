@@ -60,8 +60,11 @@ namespace A5.Data.Repository
     }
     public bool ApproveRequest(Award award,int id)
     {
+        if(award.StatusId == 4)
+        {
         bool IsIdAlreadyExists=_context.Awards!.Any(nameof=>nameof.CouponCode==award.CouponCode);
         if(IsIdAlreadyExists) throw new ValidationException("CouponCode already redeemed");
+        }
         try{
                 _context.Set<Award>().Update(award);
                 award.UpdatedBy=id;
