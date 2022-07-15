@@ -81,6 +81,46 @@ namespace A5.Data
                             UpdatedBy = 1,
                             UpdatedOn = DateTime.Now
                         },
+                        new Department()
+                        {
+                            DepartmentName = "LAMP",
+                            OrganisationId = 2,
+                            IsActive = true,
+                            AddedBy = 1,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 1,
+                            UpdatedOn = DateTime.Now
+                        },
+                        new Department()
+                        {
+                            DepartmentName = "Black Box Testing",
+                            OrganisationId = 3,
+                            IsActive = true,
+                            AddedBy = 1,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 1,
+                            UpdatedOn = DateTime.Now
+                        },
+                        new Department()
+                        {
+                            DepartmentName = "White Box Testing",
+                            OrganisationId = 3,
+                            IsActive = true,
+                            AddedBy = 1,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 1,
+                            UpdatedOn = DateTime.Now
+                        },
+                        new Department()
+                        {
+                            DepartmentName = "E2E Testing",
+                            OrganisationId = 3,
+                            IsActive = true,
+                            AddedBy = 1,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 1,
+                            UpdatedOn = DateTime.Now
+                        }
                     });
                     context?.SaveChanges();
                 }
@@ -143,7 +183,7 @@ namespace A5.Data
                         {
                             DesignationName = "VP",
                             DepartmentId = 1,
-                            RoleId=5,
+                            RoleId=4,
                             IsActive = true,
                             AddedBy = 1,
                             AddedOn = DateTime.Now,
@@ -199,6 +239,246 @@ namespace A5.Data
                             UpdatedOn = DateTime.Now
 
                         },
+                        new Designation()
+                        {
+                            DesignationName = "HR",
+                            DepartmentId = 3,
+                            RoleId=4,
+                            IsActive = true,
+                            AddedBy = 1,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 1,
+                            UpdatedOn = DateTime.Now
+
+                        },
+                        new Designation()
+                        {
+                            DesignationName = "Project Manager",
+                            DepartmentId = 3,
+                            RoleId=3,
+                            IsActive = true,
+                            AddedBy = 1,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 1,
+                            UpdatedOn = DateTime.Now
+
+                        },
+                        new Designation()
+                        {
+                            DesignationName = "Team Leader",
+                            DepartmentId = 3,
+                            RoleId=2,
+                            IsActive = true,
+                            AddedBy = 1,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 1,
+                            UpdatedOn = DateTime.Now
+
+                        },
+                        new Designation()
+                        {
+                            DesignationName = "Trainee",
+                            DepartmentId = 3,
+                            RoleId=1,
+                            IsActive = true,
+                            AddedBy = 1,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 1,
+                            UpdatedOn = DateTime.Now
+
+                        },
+                        new Designation()
+                        {
+                            DesignationName = "HR",
+                            DepartmentId = 4,
+                            RoleId=4,
+                            IsActive = true,
+                            AddedBy = 1,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 1,
+                            UpdatedOn = DateTime.Now
+
+                        },
+                        new Designation()
+                        {
+                            DesignationName = "Project Manager",
+                            DepartmentId = 4,
+                            RoleId=3,
+                            IsActive = true,
+                            AddedBy = 1,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 1,
+                            UpdatedOn = DateTime.Now
+
+                        },
+                        new Designation()
+                        {
+                            DesignationName = "Team Leader",
+                            DepartmentId = 4,
+                            RoleId=2,
+                            IsActive = true,
+                            AddedBy = 1,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 1,
+                            UpdatedOn = DateTime.Now
+
+                        },
+                        new Designation()
+                        {
+                            DesignationName = "Trainee",
+                            DepartmentId = 4,
+                            RoleId=1,
+                            IsActive = true,
+                            AddedBy = 1,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 1,
+                            UpdatedOn = DateTime.Now
+
+                        },
+                        new Designation()
+                        {
+                            DesignationName = "HR",
+                            DepartmentId = 5,
+                            RoleId=4,
+                            IsActive = true,
+                            AddedBy = 1,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 1,
+                            UpdatedOn = DateTime.Now
+
+                        },
+                        new Designation()
+                        {
+                            DesignationName = "Project Manager",
+                            DepartmentId = 5,
+                            RoleId=3,
+                            IsActive = true,
+                            AddedBy = 1,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 1,
+                            UpdatedOn = DateTime.Now
+
+                        },
+                        new Designation()
+                        {
+                            DesignationName = "Team Leader",
+                            DepartmentId = 5,
+                            RoleId=2,
+                            IsActive = true,
+                            AddedBy = 1,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 1,
+                            UpdatedOn = DateTime.Now
+
+                        },
+                        new Designation()
+                        {
+                            DesignationName = "Trainee",
+                            DepartmentId = 5,
+                            RoleId=1,
+                            IsActive = true,
+                            AddedBy = 1,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 1,
+                            UpdatedOn = DateTime.Now
+
+                        },
+                        new Designation()
+                        {
+                            DesignationName = "HR",
+                            DepartmentId = 6,
+                            RoleId=4,
+                            IsActive = true,
+                            AddedBy = 1,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 1,
+                            UpdatedOn = DateTime.Now
+
+                        },
+                        new Designation()
+                        {
+                            DesignationName = "Project Manager",
+                            DepartmentId = 6,
+                            RoleId=3,
+                            IsActive = true,
+                            AddedBy = 1,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 1,
+                            UpdatedOn = DateTime.Now
+
+                        },
+                        new Designation()
+                        {
+                            DesignationName = "Team Leader",
+                            DepartmentId = 6,
+                            RoleId=2,
+                            IsActive = true,
+                            AddedBy = 1,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 1,
+                            UpdatedOn = DateTime.Now
+
+                        },
+                        new Designation()
+                        {
+                            DesignationName = "Trainee",
+                            DepartmentId = 6,
+                            RoleId=1,
+                            IsActive = true,
+                            AddedBy = 1,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 1,
+                            UpdatedOn = DateTime.Now
+
+                        },
+                        new Designation()
+                        {
+                            DesignationName = "HR",
+                            DepartmentId = 7,
+                            RoleId=4,
+                            IsActive = true,
+                            AddedBy = 1,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 1,
+                            UpdatedOn = DateTime.Now
+
+                        },
+                        new Designation()
+                        {
+                            DesignationName = "Project Manager",
+                            DepartmentId = 7,
+                            RoleId=3,
+                            IsActive = true,
+                            AddedBy = 1,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 1,
+                            UpdatedOn = DateTime.Now
+
+                        },
+                        new Designation()
+                        {
+                            DesignationName = "Team Leader",
+                            DepartmentId = 7,
+                            RoleId=2,
+                            IsActive = true,
+                            AddedBy = 1,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 1,
+                            UpdatedOn = DateTime.Now
+
+                        },
+                        new Designation()
+                        {
+                            DesignationName = "Trainee",
+                            DepartmentId = 7,
+                            RoleId=1,
+                            IsActive = true,
+                            AddedBy = 1,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 1,
+                            UpdatedOn = DateTime.Now
+
+                        }
                     });
                     context?.SaveChanges();
                 }
@@ -264,7 +544,7 @@ namespace A5.Data
                            DepartmentId = 1,
                            DesignationId = 3,
                            ReportingPersonId = 2,
-                           HRId = null,
+                           HRId = 2,
                            Password = "Admin@123",
                            IsActive = true,
                            AddedBy = 1,
@@ -297,8 +577,8 @@ namespace A5.Data
                        new Employee()
                        {
                            ACEID = "ACE005",
-                           FirstName = "Aakash",
-                           LastName = "Aakaash",
+                           FirstName = "Aakaash",
+                           LastName = "M",
                            Email = "aakaash@tenacious.com",
                            Image=null,
                            ImageName=null,
@@ -448,6 +728,447 @@ namespace A5.Data
                            UpdatedBy = 1,
                            UpdatedOn = DateTime.Now
                        },
+                       new Employee()
+                       {
+                           ACEID = "ACE6010",
+                           FirstName = "Rishabh",
+                           LastName = "Pant",
+                           Email = "pant@tenacious.com",
+                           Image=null,
+                           ImageName=null,
+                           Gender="Male",
+                           DOB = DateTime.Now.AddDays(-9000),
+                           OrganisationId = 2,
+                           DepartmentId = 3,
+                           DesignationId = 8,
+                           ReportingPersonId = 3,
+                           HRId = 2,
+                           Password = "Admin@123",
+                           IsActive = true,
+                           AddedBy = 1,
+                           AddedOn = DateTime.Now,
+                           UpdatedBy = 1,
+                           UpdatedOn = DateTime.Now
+                       },
+                       new Employee()
+                       {
+                           ACEID = "ACE6011",
+                           FirstName = "Shubman",
+                           LastName = "Gill",
+                           Email = "shubman@tenacious.com",
+                           Image=null,
+                           ImageName=null,
+                           Gender="Male",
+                           DOB = DateTime.Now.AddDays(-9000),
+                           OrganisationId = 2,
+                           DepartmentId = 3,
+                           DesignationId = 9,
+                           ReportingPersonId = 8,
+                           HRId = 8,
+                           Password = "Admin@123",
+                           IsActive = true,
+                           AddedBy = 1,
+                           AddedOn = DateTime.Now,
+                           UpdatedBy = 1,
+                           UpdatedOn = DateTime.Now
+                       },
+                       new Employee()
+                       {
+                           ACEID = "ACE6012",
+                           FirstName = "Virat",
+                           LastName = "Kohli",
+                           Email = "virat@tenacious.com",
+                           Image=null,
+                           ImageName=null,
+                           Gender="Male",
+                           DOB = DateTime.Now.AddDays(-9000),
+                           OrganisationId = 2,
+                           DepartmentId = 3,
+                           DesignationId = 10,
+                           ReportingPersonId = 9,
+                           HRId = 8,
+                           Password = "Admin@123",
+                           IsActive = true,
+                           AddedBy = 1,
+                           AddedOn = DateTime.Now,
+                           UpdatedBy = 1,
+                           UpdatedOn = DateTime.Now
+                       },
+                       new Employee()
+                       {
+                           ACEID = "ACE6013",
+                           FirstName = "Rohit",
+                           LastName = "Sharma",
+                           Email = "rohit@tenacious.com",
+                           Image=null,
+                           ImageName=null,
+                           Gender="Male",
+                           DOB = DateTime.Now.AddDays(-9000),
+                           OrganisationId = 2,
+                           DepartmentId = 3,
+                           DesignationId = 11,
+                           ReportingPersonId = 10,
+                           HRId = 8,
+                           Password = "Admin@123",
+                           IsActive = true,
+                           AddedBy = 1,
+                           AddedOn = DateTime.Now,
+                           UpdatedBy = 1,
+                           UpdatedOn = DateTime.Now
+                       },
+                       new Employee()
+                       {
+                           ACEID = "ACE6014",
+                           FirstName = "Glen",
+                           LastName = "Maxwell",
+                           Email = "glen@tenacious.com",
+                           Image=null,
+                           ImageName=null,
+                           Gender="Male",
+                           DOB = DateTime.Now.AddDays(-9000),
+                           OrganisationId = 2,
+                           DepartmentId = 4,
+                           DesignationId = 12,
+                           ReportingPersonId = 3,
+                           HRId = 2,
+                           Password = "Admin@123",
+                           IsActive = true,
+                           AddedBy = 1,
+                           AddedOn = DateTime.Now,
+                           UpdatedBy = 1,
+                           UpdatedOn = DateTime.Now
+                       },
+                       new Employee()
+                       {
+                           ACEID = "ACE6015",
+                           FirstName = "Steven",
+                           LastName = "Smith",
+                           Email = "steven@tenacious.com",
+                           Image=null,
+                           ImageName=null,
+                           Gender="Male",
+                           DOB = DateTime.Now.AddDays(-9000),
+                           OrganisationId = 2,
+                           DepartmentId = 4,
+                           DesignationId = 13,
+                           ReportingPersonId = 12,
+                           HRId = 12,
+                           Password = "Admin@123",
+                           IsActive = true,
+                           AddedBy = 1,
+                           AddedOn = DateTime.Now,
+                           UpdatedBy = 1,
+                           UpdatedOn = DateTime.Now
+                       },
+                       new Employee()
+                       {
+                           ACEID = "ACE6016",
+                           FirstName = "Aron",
+                           LastName = "Finch",
+                           Email = "aron@tenacious.com",
+                           Image=null,
+                           ImageName=null,
+                           Gender="Male",
+                           DOB = DateTime.Now.AddDays(-9000),
+                           OrganisationId = 2,
+                           DepartmentId = 4,
+                           DesignationId = 14,
+                           ReportingPersonId = 13,
+                           HRId = 12,
+                           Password = "Admin@123",
+                           IsActive = true,
+                           AddedBy = 1,
+                           AddedOn = DateTime.Now,
+                           UpdatedBy = 1,
+                           UpdatedOn = DateTime.Now
+                       },
+                       new Employee()
+                       {
+                           ACEID = "ACE6017",
+                           FirstName = "Josh",
+                           LastName = "Hazelwood",
+                           Email = "josh@tenacious.com",
+                           Image=null,
+                           ImageName=null,
+                           Gender="Male",
+                           DOB = DateTime.Now.AddDays(-9000),
+                           OrganisationId = 2,
+                           DepartmentId = 4,
+                           DesignationId = 15,
+                           ReportingPersonId = 14,
+                           HRId = 12,
+                           Password = "Admin@123",
+                           IsActive = true,
+                           AddedBy = 1,
+                           AddedOn = DateTime.Now,
+                           UpdatedBy = 1,
+                           UpdatedOn = DateTime.Now
+                       },
+                       new Employee()
+                       {
+                           ACEID = "ACE6018",
+                           FirstName = "Ben",
+                           LastName = "Stokes",
+                           Email = "ben@tenacious.com",
+                           Image=null,
+                           ImageName=null,
+                           Gender="Male",
+                           DOB = DateTime.Now.AddDays(-9000),
+                           OrganisationId = 3,
+                           DepartmentId = 5,
+                           DesignationId = 16,
+                           ReportingPersonId = 3,
+                           HRId = 2,
+                           Password = "Admin@123",
+                           IsActive = true,
+                           AddedBy = 1,
+                           AddedOn = DateTime.Now,
+                           UpdatedBy = 1,
+                           UpdatedOn = DateTime.Now
+                       },
+                       new Employee()
+                       {
+                           ACEID = "ACE6019",
+                           FirstName = "Joe",
+                           LastName = "Root",
+                           Email = "joe@tenacious.com",
+                           Image=null,
+                           ImageName=null,
+                           Gender="Male",
+                           DOB = DateTime.Now.AddDays(-9000),
+                           OrganisationId = 3,
+                           DepartmentId = 5,
+                           DesignationId = 17,
+                           ReportingPersonId = 16,
+                           HRId = 16,
+                           Password = "Admin@123",
+                           IsActive = true,
+                           AddedBy = 1,
+                           AddedOn = DateTime.Now,
+                           UpdatedBy = 1,
+                           UpdatedOn = DateTime.Now
+                       },
+                       new Employee()
+                       {
+                           ACEID = "ACE6020",
+                           FirstName = "Jason",
+                           LastName = "Roy",
+                           Email = "jason@tenacious.com",
+                           Image=null,
+                           ImageName=null,
+                           Gender="Male",
+                           DOB = DateTime.Now.AddDays(-9000),
+                           OrganisationId = 3,
+                           DepartmentId = 5,
+                           DesignationId = 18,
+                           ReportingPersonId = 17,
+                           HRId = 16,
+                           Password = "Admin@123",
+                           IsActive = true,
+                           AddedBy = 1,
+                           AddedOn = DateTime.Now,
+                           UpdatedBy = 1,
+                           UpdatedOn = DateTime.Now
+                       },
+                       new Employee()
+                       {
+                           ACEID = "ACE6021",
+                           FirstName = "Ravi",
+                           LastName = "Bopara",
+                           Email = "ravi@tenacious.com",
+                           Image=null,
+                           ImageName=null,
+                           Gender="Male",
+                           DOB = DateTime.Now.AddDays(-9000),
+                           OrganisationId = 3,
+                           DepartmentId = 5,
+                           DesignationId = 19,
+                           ReportingPersonId = 18,
+                           HRId = 16,
+                           Password = "Admin@123",
+                           IsActive = true,
+                           AddedBy = 1,
+                           AddedOn = DateTime.Now,
+                           UpdatedBy = 1,
+                           UpdatedOn = DateTime.Now
+                       },
+                       new Employee()
+                       {
+                           ACEID = "ACE6022",
+                           FirstName = "Chris",
+                           LastName = "Gayle",
+                           Email = "chris@tenacious.com",
+                           Image=null,
+                           ImageName=null,
+                           Gender="Male",
+                           DOB = DateTime.Now.AddDays(-9000),
+                           OrganisationId = 3,
+                           DepartmentId = 6,
+                           DesignationId = 20,
+                           ReportingPersonId = 3,
+                           HRId = 2,
+                           Password = "Admin@123",
+                           IsActive = true,
+                           AddedBy = 1,
+                           AddedOn = DateTime.Now,
+                           UpdatedBy = 1,
+                           UpdatedOn = DateTime.Now
+                       },
+                       new Employee()
+                       {
+                           ACEID = "ACE6023",
+                           FirstName = "Ravi",
+                           LastName = "Rampaul",
+                           Email = "rampaul@tenacious.com",
+                           Image=null,
+                           ImageName=null,
+                           Gender="Male",
+                           DOB = DateTime.Now.AddDays(-9000),
+                           OrganisationId = 3,
+                           DepartmentId = 6,
+                           DesignationId = 21,
+                           ReportingPersonId = 20,
+                           HRId = 20,
+                           Password = "Admin@123",
+                           IsActive = true,
+                           AddedBy = 1,
+                           AddedOn = DateTime.Now,
+                           UpdatedBy = 1,
+                           UpdatedOn = DateTime.Now
+                       },
+                       new Employee()
+                       {
+                           ACEID = "ACE6024",
+                           FirstName = "Andre",
+                           LastName = "Russell",
+                           Email = "russ@tenacious.com",
+                           Image=null,
+                           ImageName=null,
+                           Gender="Male",
+                           DOB = DateTime.Now.AddDays(-9000),
+                           OrganisationId = 3,
+                           DepartmentId = 6,
+                           DesignationId = 22,
+                           ReportingPersonId = 21,
+                           HRId = 20,
+                           Password = "Admin@123",
+                           IsActive = true,
+                           AddedBy = 1,
+                           AddedOn = DateTime.Now,
+                           UpdatedBy = 1,
+                           UpdatedOn = DateTime.Now
+                       },
+                       new Employee()
+                       {
+                           ACEID = "ACE6025",
+                           FirstName = "Darren",
+                           LastName = "Sammy",
+                           Email = "sammy@tenacious.com",
+                           Image=null,
+                           ImageName=null,
+                           Gender="Male",
+                           DOB = DateTime.Now.AddDays(-9000),
+                           OrganisationId = 3,
+                           DepartmentId = 6,
+                           DesignationId = 23,
+                           ReportingPersonId = 22,
+                           HRId = 20,
+                           Password = "Admin@123",
+                           IsActive = true,
+                           AddedBy = 1,
+                           AddedOn = DateTime.Now,
+                           UpdatedBy = 1,
+                           UpdatedOn = DateTime.Now
+                       },
+                       new Employee()
+                       {
+                           ACEID = "ACE6026",
+                           FirstName = "Kane",
+                           LastName = "Williamson",
+                           Email = "kane@tenacious.com",
+                           Image=null,
+                           ImageName=null,
+                           Gender="Male",
+                           DOB = DateTime.Now.AddDays(-9000),
+                           OrganisationId = 3,
+                           DepartmentId = 7,
+                           DesignationId = 24,
+                           ReportingPersonId = 3,
+                           HRId = 2,
+                           Password = "Admin@123",
+                           IsActive = true,
+                           AddedBy = 1,
+                           AddedOn = DateTime.Now,
+                           UpdatedBy = 1,
+                           UpdatedOn = DateTime.Now
+                       },
+                       new Employee()
+                       {
+                           ACEID = "ACE6027",
+                           FirstName = "Jimmy",
+                           LastName = "Neesham",
+                           Email = "jimmmy@tenacious.com",
+                           Image=null,
+                           ImageName=null,
+                           Gender="Male",
+                           DOB = DateTime.Now.AddDays(-9000),
+                           OrganisationId = 3,
+                           DepartmentId = 7,
+                           DesignationId = 25,
+                           ReportingPersonId = 24,
+                           HRId = 24,
+                           Password = "Admin@123",
+                           IsActive = true,
+                           AddedBy = 1,
+                           AddedOn = DateTime.Now,
+                           UpdatedBy = 1,
+                           UpdatedOn = DateTime.Now
+                       },
+                       new Employee()
+                       {
+                           ACEID = "ACE6028",
+                           FirstName = "Tom",
+                           LastName = "Latham",
+                           Email = "tom@tenacious.com",
+                           Image=null,
+                           ImageName=null,
+                           Gender="Male",
+                           DOB = DateTime.Now.AddDays(-9000),
+                           OrganisationId = 3,
+                           DepartmentId = 7,
+                           DesignationId = 26,
+                           ReportingPersonId = 25,
+                           HRId = 24,
+                           Password = "Admin@123",
+                           IsActive = true,
+                           AddedBy = 1,
+                           AddedOn = DateTime.Now,
+                           UpdatedBy = 1,
+                           UpdatedOn = DateTime.Now
+                       },
+                        new Employee()
+                       {
+                           ACEID = "ACE6029",
+                           FirstName = "Finn",
+                           LastName = "Allen",
+                           Email = "finn@tenacious.com",
+                           Image=null,
+                           ImageName=null,
+                           Gender="Male",
+                           DOB = DateTime.Now.AddDays(-9000),
+                           OrganisationId = 3,
+                           DepartmentId = 7,
+                           DesignationId = 27,
+                           ReportingPersonId = 26,
+                           HRId = 24,
+                           Password = "Admin@123",
+                           IsActive = true,
+                           AddedBy = 1,
+                           AddedOn = DateTime.Now,
+                           UpdatedBy = 1,
+                           UpdatedOn = DateTime.Now
+                       },
+
 
                     });
                     context?.SaveChanges();
