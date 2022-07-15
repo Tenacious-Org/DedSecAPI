@@ -387,24 +387,6 @@ namespace A5.Controller
         }
         
         
-        [HttpPut("ChangePassword")]
-        public ActionResult ChangePassword(Employee employee,int id,string Email)
-        {
-           try
-            {
-                var data = _employeeService.ChangePassword(employee,id,Email);
-                return Ok(data);
-            }
-            catch(ValidationException exception)
-            {
-                 _logger.LogError("EmployeeController : ChangePassword(Employee employee,int id) : (Error: {Message})",exception.Message);
-                return BadRequest(_employeeService.ErrorMessage(exception.Message));
-            }
-            catch(Exception exception)
-            {
-                return Problem(exception.Message);
-            }
-        }
         private int GetCurrentUserId()
         {
             try

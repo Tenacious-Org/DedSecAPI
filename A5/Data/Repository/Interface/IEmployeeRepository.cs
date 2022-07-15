@@ -16,8 +16,7 @@ namespace A5.Data.Repository.Interface
         public IEnumerable<Employee> GetHrByDepartmentId(int id);
         public IEnumerable<Employee> GetEmployeeByRequesterId(int id);
         public IEnumerable<Employee> GetEmployeeByOrganisation(int id);
-        public Employee GetEmployee(string Email, string Password);
-        public bool ChangePassword(Employee employee,int id,String Email);
+        public Employee GetEmployee(string Email, string Password);        
         public int GetEmployeeCount(int id);
 
 

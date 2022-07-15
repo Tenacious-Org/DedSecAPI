@@ -316,7 +316,7 @@ namespace A5.Data.Repository
             }
         }
 
-        public IEnumerable<Award> GetAllDateWise(int orgid, int awdid, DateTime start, DateTime end)
+        public IEnumerable<Award> GetAllDateWise(int organisationId, int awardTypeId, DateTime start, DateTime end)
         {
             try
             {
@@ -330,8 +330,8 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof   => nameof.Awardee.Designation.Department.Organisation.Id == orgid 
-                                    && nameof.AwardTypeId == awdid 
+                    .Where(nameof   => nameof.Awardee.Designation.Department.Organisation.Id == organisationId 
+                                    && nameof.AwardTypeId == awardTypeId 
                                     && nameof.StatusId == 4
                                     && (nameof.UpdatedOn >= start.Date && nameof.UpdatedOn <= end.Date))
                     .ToList();

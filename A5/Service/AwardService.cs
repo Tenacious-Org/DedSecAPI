@@ -5,7 +5,6 @@ using A5.Models;
 using A5.Service.Validations;
 using System.ComponentModel.DataAnnotations;
 using A5.Data;
-using System.Linq;
 
 namespace A5.Service
 {
@@ -170,7 +169,7 @@ namespace A5.Service
                     approverName = award?.Awardee?.ReportingPerson?.ReportingPerson?.FirstName,
                     hRName = award?.Awardee?.HR?.FirstName,
                     status=award?.Status?.StatusName,
-                    award=award?.AwardType?.AwardName,
+                    awardName=award?.AwardType?.AwardName,
                     awardImage=award?.AwardType?.Image,
                     designation=award?.Awardee?.Designation?.DesignationName,
                     department=award?.Awardee?.Designation?.Department?.DepartmentName,

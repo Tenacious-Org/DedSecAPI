@@ -273,27 +273,8 @@ namespace A5.Data.Repository
                 throw;
             }
         }
-        public bool ChangePassword(Employee employee, int id, String Email)
-        {
-            if(!EmployeeServiceValidations.PasswordValidation(employee,id,Email)) throw new ValidationException("Invalid data");
-            try
-            {            
-                EmployeeServiceValidations.PasswordValidation(employee, id, Email);
-                _context.Set<Employee>().Update(employee);
-                _context.SaveChanges();
-                return true;
-            }
-            catch (ValidationException exception)
-            {
-                _logger.LogError("EmployeeRepository: ChangePassword(Employee employee,int id,String Email) : (Error:{Message}", exception.Message);
-                throw;
-            }
-            catch (Exception exception)
-            {
-                _logger.LogError("Error: {Message}", exception.Message);
-                return false;
-            }
-        }
+       
+        
 
         public Employee GetEmployee(string Email, string Password)
         {
@@ -393,7 +374,7 @@ namespace A5.Data.Repository
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeRepository: ChangePassword(Employee employee,int id,String Email) : (Error:{Message}", exception.Message);
+                _logger.LogError("EmployeeRepository: GetEmployeeCount(int id) : (Error:{Message}", exception.Message);
                 throw;
             }
             catch (Exception exception)
