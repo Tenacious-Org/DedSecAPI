@@ -517,7 +517,7 @@ namespace A5.Data
                            Image=null,
                            ImageName=null,
                            Gender="Male",
-                           DOB = DateTime.Now.AddDays(-10000),
+                           DOB = DateTime.Now.AddDays(-18000),
                            OrganisationId = 1,
                            DepartmentId = 1,
                            DesignationId = 2,
@@ -1104,7 +1104,7 @@ namespace A5.Data
                        },
                        new Employee()
                        {
-                           ACEID = "ACE6027",
+                           ACEID = "ACE6031",
                            FirstName = "Jimmy",
                            LastName = "Neesham",
                            Email = "jimmmy@tenacious.com",
@@ -1311,7 +1311,1193 @@ namespace A5.Data
                             UpdatedBy = 4,
                             UpdatedOn = DateTime.Now
                         },
+                        new Award()
+                        {
+                            AwardTypeId = 1,
+                            AwardeeId = 15,
+                            RequesterId = 14,
+                            ApproverId = 13,
+                            HRId = 12,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH1276HBH",
+                            AddedBy = 14,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 12,
+                            UpdatedOn = DateTime.Now.AddDays(-30)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 2,
+                            AwardeeId = 15,
+                            RequesterId = 14,
+                            ApproverId = 13,
+                            HRId = 12,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH1276HBH",
+                            AddedBy = 14,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 12,
+                            UpdatedOn = DateTime.Now.AddDays(-14)
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 15,
+                            RequesterId = 14,
+                            ApproverId = 13,
+                            HRId = 12,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH1276HBH",
+                            AddedBy = 14,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 12,
+                            UpdatedOn = DateTime.Now.AddDays(-17)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 1,
+                            AwardeeId = 15,
+                            RequesterId = 14,
+                            ApproverId = 13,
+                            HRId = 12,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH1276HBH",
+                            AddedBy = 14,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 12,
+                            UpdatedOn = DateTime.Now.AddDays(-35)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 2,
+                            AwardeeId = 15,
+                            RequesterId = 14,
+                            ApproverId = 13,
+                            HRId = 12,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH1276HBH",
+                            AddedBy = 14,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 12,
+                            UpdatedOn = DateTime.Now.AddDays(-13)
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 15,
+                            RequesterId = 14,
+                            ApproverId = 13,
+                            HRId = 12,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH1276HBH",
+                            AddedBy = 14,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 12,
+                            UpdatedOn = DateTime.Now.AddDays(-13)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 1,
+                            AwardeeId = 15,
+                            RequesterId = 14,
+                            ApproverId = 13,
+                            HRId = 12,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH1276HBH",
+                            AddedBy = 14,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 12,
+                            UpdatedOn = DateTime.Now.AddDays(-25)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 2,
+                            AwardeeId = 15,
+                            RequesterId = 14,
+                            ApproverId = 13,
+                            HRId = 12,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH1276HBH",
+                            AddedBy = 14,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 12,
+                            UpdatedOn = DateTime.Now.AddDays(-33)
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 15,
+                            RequesterId = 14,
+                            ApproverId = 13,
+                            HRId = 12,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH1276HBH",
+                            AddedBy = 14,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 12,
+                            UpdatedOn = DateTime.Now.AddDays(-22)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 1,
+                            AwardeeId = 15,
+                            RequesterId = 14,
+                            ApproverId = 13,
+                            HRId = 12,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH1276HBH",
+                            AddedBy = 14,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 12,
+                            UpdatedOn = DateTime.Now.AddDays(-40)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 2,
+                            AwardeeId = 15,
+                            RequesterId = 14,
+                            ApproverId = 13,
+                            HRId = 12,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH1276HBH",
+                            AddedBy = 14,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 12,
+                            UpdatedOn = DateTime.Now.AddDays(-7)
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 15,
+                            RequesterId = 14,
+                            ApproverId = 13,
+                            HRId = 12,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH1276HBH",
+                            AddedBy = 14,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 12,
+                            UpdatedOn = DateTime.Now.AddDays(-21)
+                        },new Award()
+                        {
+                            AwardTypeId = 1,
+                            AwardeeId = 15,
+                            RequesterId = 14,
+                            ApproverId = 13,
+                            HRId = 12,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH1276HBH",
+                            AddedBy = 14,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 12,
+                            UpdatedOn = DateTime.Now.AddDays(-12)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 2,
+                            AwardeeId = 15,
+                            RequesterId = 14,
+                            ApproverId = 13,
+                            HRId = 12,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH1276HBH",
+                            AddedBy = 14,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 12,
+                            UpdatedOn = DateTime.Now.AddDays(-13)
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 15,
+                            RequesterId = 14,
+                            ApproverId = 13,
+                            HRId = 12,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH1276HBH",
+                            AddedBy = 14,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 12,
+                            UpdatedOn = DateTime.Now.AddDays(-34)
+                        },
+
+
+
+                        ////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                ////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                        ////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+                        new Award()
+                        {
+                            AwardTypeId = 1,
+                            AwardeeId = 19,
+                            RequesterId = 18,
+                            ApproverId = 17,
+                            HRId = 16,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 18,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 8,
+                            UpdatedOn = DateTime.Now.AddDays(-30)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 2,
+                            AwardeeId = 19,
+                            RequesterId = 18,
+                            ApproverId = 17,
+                            HRId = 16,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 18,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 16,
+                            UpdatedOn = DateTime.Now.AddDays(-18)
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 19,
+                            RequesterId = 18,
+                            ApproverId = 17,
+                            HRId = 16,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 18,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 16,
+                            UpdatedOn = DateTime.Now.AddDays(-17)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 1,
+                            AwardeeId = 19,
+                            RequesterId = 18,
+                            ApproverId = 17,
+                            HRId = 16,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 18,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 16,
+                            UpdatedOn = DateTime.Now.AddDays(-30)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 2,
+                            AwardeeId = 19,
+                            RequesterId = 18,
+                            ApproverId = 17,
+                            HRId = 16,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 18,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 16,
+                            UpdatedOn = DateTime.Now.AddDays(-18)
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 19,
+                            RequesterId = 18,
+                            ApproverId = 17,
+                            HRId = 16,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 18,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 16,
+                            UpdatedOn = DateTime.Now.AddDays(-17)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 1,
+                            AwardeeId = 19,
+                            RequesterId = 18,
+                            ApproverId = 17,
+                            HRId = 16,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 18,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 16,
+                            UpdatedOn = DateTime.Now.AddDays(-30)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 2,
+                            AwardeeId = 19,
+                            RequesterId = 18,
+                            ApproverId = 17,
+                            HRId = 16,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 18,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 16,
+                            UpdatedOn = DateTime.Now.AddDays(-18)
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 19,
+                            RequesterId = 18,
+                            ApproverId = 17,
+                            HRId = 16,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 18,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 16,
+                            UpdatedOn = DateTime.Now.AddDays(-17)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 1,
+                            AwardeeId = 19,
+                            RequesterId = 18,
+                            ApproverId = 17,
+                            HRId = 16,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 18,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 16,
+                            UpdatedOn = DateTime.Now.AddDays(-30)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 2,
+                            AwardeeId = 19,
+                            RequesterId = 18,
+                            ApproverId = 17,
+                            HRId = 16,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 18,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 16,
+                            UpdatedOn = DateTime.Now.AddDays(-18)
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 19,
+                            RequesterId = 18,
+                            ApproverId = 17,
+                            HRId = 16,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 18,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 16,
+                            UpdatedOn = DateTime.Now.AddDays(-17)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 1,
+                            AwardeeId = 19,
+                            RequesterId = 18,
+                            ApproverId = 17,
+                            HRId = 16,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 18,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 16,
+                            UpdatedOn = DateTime.Now.AddDays(-30)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 2,
+                            AwardeeId = 19,
+                            RequesterId = 18,
+                            ApproverId = 17,
+                            HRId = 16,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 18,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 16,
+                            UpdatedOn = DateTime.Now.AddDays(-18)
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 19,
+                            RequesterId = 18,
+                            ApproverId = 17,
+                            HRId = 16,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 18,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 16,
+                            UpdatedOn = DateTime.Now.AddDays(-17)
+                        },
+                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         
+                        new Award()
+                        {
+                            AwardTypeId = 1,
+                            AwardeeId = 23,
+                            RequesterId = 22,
+                            ApproverId = 21,
+                            HRId = 20,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 22,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 20,
+                            UpdatedOn = DateTime.Now.AddDays(-30)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 2,
+                            AwardeeId = 23,
+                            RequesterId = 22,
+                            ApproverId = 21,
+                            HRId = 20,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 22,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 20,
+                            UpdatedOn = DateTime.Now.AddDays(-22)
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 23,
+                            RequesterId = 22,
+                            ApproverId = 21,
+                            HRId = 20,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 22,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 20,
+                            UpdatedOn = DateTime.Now.AddDays(-21)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 1,
+                            AwardeeId = 23,
+                            RequesterId = 22,
+                            ApproverId = 21,
+                            HRId = 20,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 22,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 20,
+                            UpdatedOn = DateTime.Now.AddDays(-30)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 2,
+                            AwardeeId = 23,
+                            RequesterId = 22,
+                            ApproverId = 21,
+                            HRId = 20,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 22,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 20,
+                            UpdatedOn = DateTime.Now.AddDays(-22)
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 23,
+                            RequesterId = 22,
+                            ApproverId = 21,
+                            HRId = 20,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 22,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 20,
+                            UpdatedOn = DateTime.Now.AddDays(-21)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 1,
+                            AwardeeId = 23,
+                            RequesterId = 22,
+                            ApproverId = 21,
+                            HRId = 20,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 22,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 20,
+                            UpdatedOn = DateTime.Now.AddDays(-30)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 2,
+                            AwardeeId = 23,
+                            RequesterId = 22,
+                            ApproverId = 21,
+                            HRId = 20,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 22,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 20,
+                            UpdatedOn = DateTime.Now.AddDays(-22)
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 23,
+                            RequesterId = 22,
+                            ApproverId = 21,
+                            HRId = 20,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 22,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 20,
+                            UpdatedOn = DateTime.Now.AddDays(-21)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 1,
+                            AwardeeId = 23,
+                            RequesterId = 22,
+                            ApproverId = 21,
+                            HRId = 20,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 22,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 20,
+                            UpdatedOn = DateTime.Now.AddDays(-30)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 2,
+                            AwardeeId = 23,
+                            RequesterId = 22,
+                            ApproverId = 21,
+                            HRId = 20,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 22,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 20,
+                            UpdatedOn = DateTime.Now.AddDays(-22)
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 23,
+                            RequesterId = 22,
+                            ApproverId = 21,
+                            HRId = 20,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 22,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 20,
+                            UpdatedOn = DateTime.Now.AddDays(-17)
+                        },
+
+                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                        
+                        new Award()
+                        {
+                            AwardTypeId = 1,
+                            AwardeeId = 27,
+                            RequesterId = 26,
+                            ApproverId = 25,
+                            HRId = 24,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 26,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 24,
+                            UpdatedOn = DateTime.Now.AddDays(-30)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 2,
+                            AwardeeId = 27,
+                            RequesterId = 26,
+                            ApproverId = 25,
+                            HRId = 24,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 26,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 24,
+                            UpdatedOn = DateTime.Now.AddDays(-26)
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 27,
+                            RequesterId = 26,
+                            ApproverId = 25,
+                            HRId = 24,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 26,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 24,
+                            UpdatedOn = DateTime.Now.AddDays(-17)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 1,
+                            AwardeeId = 27,
+                            RequesterId = 26,
+                            ApproverId = 25,
+                            HRId = 24,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 26,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 24,
+                            UpdatedOn = DateTime.Now.AddDays(-30)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 2,
+                            AwardeeId = 27,
+                            RequesterId = 26,
+                            ApproverId = 25,
+                            HRId = 24,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 26,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 24,
+                            UpdatedOn = DateTime.Now.AddDays(-26)
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 27,
+                            RequesterId = 26,
+                            ApproverId = 25,
+                            HRId = 24,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 26,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 24,
+                            UpdatedOn = DateTime.Now.AddDays(-17)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 1,
+                            AwardeeId = 27,
+                            RequesterId = 26,
+                            ApproverId = 25,
+                            HRId = 24,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 26,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 24,
+                            UpdatedOn = DateTime.Now.AddDays(-30)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 2,
+                            AwardeeId = 27,
+                            RequesterId = 26,
+                            ApproverId = 25,
+                            HRId = 24,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 26,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 24,
+                            UpdatedOn = DateTime.Now.AddDays(-26)
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 27,
+                            RequesterId = 26,
+                            ApproverId = 25,
+                            HRId = 24,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 26,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 24,
+                            UpdatedOn = DateTime.Now.AddDays(-17)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 1,
+                            AwardeeId = 27,
+                            RequesterId = 26,
+                            ApproverId = 25,
+                            HRId = 24,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 26,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 24,
+                            UpdatedOn = DateTime.Now.AddDays(-30)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 2,
+                            AwardeeId = 27,
+                            RequesterId = 26,
+                            ApproverId = 25,
+                            HRId = 24,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 26,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 24,
+                            UpdatedOn = DateTime.Now.AddDays(-26)
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 27,
+                            RequesterId = 26,
+                            ApproverId = 25,
+                            HRId = 24,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 26,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 24,
+                            UpdatedOn = DateTime.Now.AddDays(-17)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 1,
+                            AwardeeId = 27,
+                            RequesterId = 26,
+                            ApproverId = 25,
+                            HRId = 24,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 26,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 24,
+                            UpdatedOn = DateTime.Now.AddDays(-30)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 2,
+                            AwardeeId = 27,
+                            RequesterId = 26,
+                            ApproverId = 25,
+                            HRId = 24,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 26,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 24,
+                            UpdatedOn = DateTime.Now.AddDays(-26)
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 27,
+                            RequesterId = 26,
+                            ApproverId = 25,
+                            HRId = 24,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 26,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 24,
+                            UpdatedOn = DateTime.Now.AddDays(-17)
+                        },
+
+                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                        
+                        new Award()
+                        {
+                            AwardTypeId = 1,
+                            AwardeeId = 31,
+                            RequesterId = 30,
+                            ApproverId = 29,
+                            HRId = 28,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 30,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 28,
+                            UpdatedOn = DateTime.Now.AddDays(-30)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 2,
+                            AwardeeId = 31,
+                            RequesterId = 30,
+                            ApproverId = 29,
+                            HRId = 28,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 30,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 28,
+                            UpdatedOn = DateTime.Now.AddDays(-30)
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 31,
+                            RequesterId = 30,
+                            ApproverId = 29,
+                            HRId = 28,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 30,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 28,
+                            UpdatedOn = DateTime.Now.AddDays(-17)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 1,
+                            AwardeeId = 31,
+                            RequesterId = 30,
+                            ApproverId = 29,
+                            HRId = 28,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 30,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 28,
+                            UpdatedOn = DateTime.Now.AddDays(-30)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 2,
+                            AwardeeId = 31,
+                            RequesterId = 30,
+                            ApproverId = 29,
+                            HRId = 28,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 30,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 28,
+                            UpdatedOn = DateTime.Now.AddDays(-30)
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 31,
+                            RequesterId = 30,
+                            ApproverId = 29,
+                            HRId = 28,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 30,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 28,
+                            UpdatedOn = DateTime.Now.AddDays(-17)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 1,
+                            AwardeeId = 31,
+                            RequesterId = 30,
+                            ApproverId = 29,
+                            HRId = 28,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 30,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 28,
+                            UpdatedOn = DateTime.Now.AddDays(-30)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 2,
+                            AwardeeId = 31,
+                            RequesterId = 30,
+                            ApproverId = 29,
+                            HRId = 28,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 30,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 28,
+                            UpdatedOn = DateTime.Now.AddDays(-30)
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 31,
+                            RequesterId = 30,
+                            ApproverId = 29,
+                            HRId = 28,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 30,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 28,
+                            UpdatedOn = DateTime.Now.AddDays(-17)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 1,
+                            AwardeeId = 31,
+                            RequesterId = 30,
+                            ApproverId = 29,
+                            HRId = 28,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 30,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 28,
+                            UpdatedOn = DateTime.Now.AddDays(-30)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 2,
+                            AwardeeId = 31,
+                            RequesterId = 30,
+                            ApproverId = 29,
+                            HRId = 28,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 30,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 28,
+                            UpdatedOn = DateTime.Now.AddDays(-30)
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 31,
+                            RequesterId = 30,
+                            ApproverId = 29,
+                            HRId = 28,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 30,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 28,
+                            UpdatedOn = DateTime.Now.AddDays(-17)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 1,
+                            AwardeeId = 31,
+                            RequesterId = 30,
+                            ApproverId = 29,
+                            HRId = 28,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 30,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 28,
+                            UpdatedOn = DateTime.Now.AddDays(-30)
+                        },
+                        new Award()
+                        {
+                            AwardTypeId = 2,
+                            AwardeeId = 31,
+                            RequesterId = 30,
+                            ApproverId = 29,
+                            HRId = 28,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 30,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 28,
+                            UpdatedOn = DateTime.Now.AddDays(-30)
+                        },
+                         new Award()
+                        {
+                            AwardTypeId = 3,
+                            AwardeeId = 31,
+                            RequesterId = 30,
+                            ApproverId = 29,
+                            HRId = 28,
+                            StatusId = 4,
+                            Reason = "Best Performer in Team",
+                            RejectedReason = null,
+                            CouponCode = "KJ7JH876HBH",
+                            AddedBy = 30,
+                            AddedOn = DateTime.Now,
+                            UpdatedBy = 28,
+                            UpdatedOn = DateTime.Now.AddDays(-17)
+                        },
+
                     });
                     context?.SaveChanges();
                 }
