@@ -172,8 +172,11 @@ namespace A5.Service
                     awardName=award?.AwardType?.AwardName,
                     awardImage=award?.AwardType?.Image,
                     designation=award?.Awardee?.Designation?.DesignationName,
+                    departmentId=award?.Awardee?.Designation?.Department?.Id,
                     department=award?.Awardee?.Designation?.Department?.DepartmentName,
-                    organisation=award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName
+                    organisation=award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
+                    organisationId=award?.Awardee?.Designation?.Department?.Organisation?.Id
+
             };
             
         }
