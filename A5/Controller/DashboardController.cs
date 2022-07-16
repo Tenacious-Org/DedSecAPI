@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using A5.Data;
@@ -17,17 +18,20 @@ namespace A5.Controller
 
         private readonly DashboardService _dashboardService;
 
-        public DashboardController(DashboardService dash)
+        public DashboardController(DashboardService dashboard)
         {
-            _dashboardService = dash;
+            _dashboardService = dashboard;
         }
 
-        [HttpGet("GetAllWinners")]
-        public ActionResult GetPublisherDashboard()
+
+        //Get Method - To Retrieve All Awardees.
+
+        [HttpGet("GetAllAwardees")]
+        public ActionResult GetAllAwardeeDashboard()
         {
             try
             {
-                var data = _dashboardService.GetAllWinners();
+                var data = _dashboardService.GetAllAwardees();
                 return Ok(data);
             }
             catch (Exception exception)
@@ -35,6 +39,8 @@ namespace A5.Controller
                 return BadRequest(exception.Message);
             }
         }
+
+        //Get Method - To retrieve all Awardees Based on their Organisation Wise List
 
         [HttpGet("GetAllOrgWise")]
         public ActionResult GetOrgWiseDashboard(int id)
@@ -44,11 +50,13 @@ namespace A5.Controller
                 var data = _dashboardService.GetAllByOrgwise(id);
                 return Ok(data);
             }
-            catch (Exception exception)
+            catch (ValidationException exception)
             {
                 return Problem(exception.Message);
             }
         }
+
+        //Get Method - To retrieve all Awardees Based on their Department Wise List
 
         [HttpGet("GetAllDeptWise")]
         public ActionResult GetDeptWiseDashboard(int id)
@@ -64,6 +72,8 @@ namespace A5.Controller
             }
         }
 
+        //Get Method - To retrieve all Awardees Based on what Awards they Receiving List
+
         [HttpGet("GetAllAwardWise")]
         public ActionResult GetAwardWiseDashboard(int id)
         {
@@ -77,6 +87,8 @@ namespace A5.Controller
                 return Problem(exception.Message);
             }
         }
+
+        //Get Method - To retrieve all Awardees Based on their Organisation Wise and what awards they receiving List.
 
         [HttpGet("GetAllOrgandAwardWise")]
         public ActionResult GetOrgandAwardWiseDashboard(int orgid, int awdid)
