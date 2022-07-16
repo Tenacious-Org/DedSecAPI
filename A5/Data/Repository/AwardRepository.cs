@@ -221,11 +221,6 @@ namespace A5.Data.Repository
                 
                 return award;
             }
-             catch(ValidationException exception)
-            {
-                _logger.LogError("AwardRepository : GetAllWinners() : (Error:{Message}",exception.Message);
-                throw;
-            }
             catch (Exception exception){
               _logger.LogError("Error: {Message}",exception.Message);
               throw;
