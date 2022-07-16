@@ -23,6 +23,10 @@ namespace A5.Service
         {
             try
             {
+                if(orgid == 0)
+                {
+                    throw new ValidationException("Organisatioin ID should not be zero.");
+                }
                 var orgwise = _award.GetAllbyOrgwise(orgid);
                 return orgwise.Select(Award => new{
                     
@@ -44,12 +48,41 @@ namespace A5.Service
                 throw;
             }
         }
-        public IEnumerable<object> GetAllByDeptwise(int orgid)
+        public IEnumerable<object> GetAllByDeptwise(int deptid)
         {
             try
             {
-                var orgwise = _award.GetAllbyDeptwise(orgid);
-                return orgwise.Select(Award => new{
+                if(deptid == 0)
+                {
+                    throw new ValidationException("Department ID should not be zero.");
+                }
+                var deptwise = _award.GetAllbyDeptwise(deptid);
+                return deptwise.Select(Award => new{
+                    
+                    organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
+                    
+                    department = Award?.Awardee?.Designation?.Department?.DepartmentName,
+                    
+                    awardName = Award?.AwardType?.AwardName,
+                });
+            }
+             catch(ValidationException exception)
+            {
+                _logger.LogError("DashboardService: GetAllByDeptWise(int deptid) : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                throw;
+            }
+        }
+        public IEnumerable<object> GetAllAwardwise(int awdid)
+        {
+            try
+            {
+                var deptwise = _award.GetAllAwardwise(awdid);
+                return deptwise.Select(Award => new{
                     
                     organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
                     
@@ -69,36 +102,11 @@ namespace A5.Service
                 throw;
             }
         }
-        public IEnumerable<object> GetAllAwardwise(int orgid)
+        public IEnumerable<object> GetAllAwardees()
         {
             try
             {
-                var orgwise = _award.GetAllAwardwise(orgid);
-                return orgwise.Select(Award => new{
-                    
-                    organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
-                    
-                    department = Award?.Awardee?.Designation?.Department?.DepartmentName,
-                    
-                    awardName = Award?.AwardType?.AwardName,
-                });
-            }
-             catch(ValidationException exception)
-            {
-                _logger.LogError("DashboardService: GetAllByOrgWise(int orgid) : (Error:{Message}",exception.Message);
-                throw;
-            }
-            catch(Exception exception)
-            {
-                _logger.LogError("Error: {Message}",exception.Message);
-                throw;
-            }
-        }
-        public IEnumerable<object> GetAllWinners()
-        {
-            try
-            {
-                var winners = _award.GetAllWinners();
+                var winners = _award.GetAllAwardees();
                 return winners.Select(Award => new{
                     
                     organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
