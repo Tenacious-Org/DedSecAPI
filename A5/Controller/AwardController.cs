@@ -23,22 +23,25 @@ namespace A5.Controller
         }
 
         /// <summary>
-        ///  This Method is used to
+        ///  This Method is used to raise request for Awardee
         /// </summary>
         /// <remarks>
         /// Sample request:
         ///
         ///     POST / RaiseRequest
         ///     {
-        ///        sample i/p o/p have to write here
+        ///        "requesterId": 11,
+        ///        "awardeeId": 8,
+        ///        "awardTypeId": 2,
+        ///        "reason": "Best Performer",
         ///     }
         ///
         /// </remarks>
-        /// <response code="201">Returns </response>
+        /// <response code="201">Returns the newly created item</response>
         /// <response code="400">If the item is null</response> 
         /// <param name="award">String</param>
         /// <returns>
-        ///Return 
+        ///Return true when the request is added in the database otherwise return "sorry internal error is occured"
         /// </returns>
 
         [HttpPost("RaiseRequest")]
@@ -63,22 +66,27 @@ namespace A5.Controller
         }
 
         /// <summary>
-        ///  This Method is used to
+        ///  This Method is used to Approve or reject the request by Approver
         /// </summary>
         /// <remarks>
         /// Sample request:
         ///
-        ///     PUT /
+        ///     PUT / Approve or reject by Approver
         ///     {
-        ///        sample i/p o/p have to write here
+        ///        "requesterId": 11,
+        ///        "awardeeId": 8,
+        ///        "awardTypeId": 2,
+        ///        "approverId": 5,
+        ///        "reason": "Best Performer",
+        ///        "statusId": 3,
         ///     }
         ///
         /// </remarks>
-        /// <response code="201">Returns </response>
+        /// <response code="201">Returns the newly created item</response>
         /// <response code="400">If the item is null</response> 
         /// <param name="award">String</param>
         /// <returns>
-        ///Return 
+        ///Return the true whether the request getting approved or rejected otherwise it show "sorry internal error occured"  
         /// </returns>
 
         [HttpPut("Approval")]
@@ -103,44 +111,23 @@ namespace A5.Controller
 
         }
 
-
         /// <summary>
-        ///  This Method is used to
+        ///  This Method is used to get the details about the Specific Awardee by id whether he/she is getting Approved or rejected or published
         /// </summary>
         /// <remarks>
         /// Sample request:
         ///
-        ///     GET /
+        ///     GET / Awardee status by id
         ///     {
-        ///        sample i/p o/p have to write here
+        ///        AwardeeId = "1",
         ///     }
         ///
         /// </remarks>
-        /// <response code="201">Returns </response>
-        /// <response code="400">If the item is null</response>
-        /// <returns>
-        ///Return 
-        /// </returns>
-
-
-
-        /// <summary>
-        ///  This Method is used to
-        /// </summary>
-        /// <remarks>
-        /// Sample request:
-        ///
-        ///     GET /
-        ///     {
-        ///        sample i/p o/p have to write here
-        ///     }
-        ///
-        /// </remarks>
-        /// <response code="201">Returns </response>
+        /// <response code="201">Returns the newly created item</response>
         /// <response code="400">If the item is null</response> 
         /// <param name="id">String</param>
         /// <returns>
-        ///Return 
+        ///Return the informations and status about the specific Awardee 
         /// </returns>
 
         [HttpGet("GetAwardById")]
@@ -168,22 +155,19 @@ namespace A5.Controller
         }
 
         /// <summary>
-        ///  This Method is used to
+        ///  This Method is used to get all awardees including pending Awardees, Approved Awardees, Rejected Awardees, published Awardees
         /// </summary>
         /// <remarks>
         /// Sample request:
         ///
-        ///     GET /
-        ///     {
-        ///        sample i/p o/p have to write here
-        ///     }
+        ///     GET / GetAwardsList
         ///
         /// </remarks>
-        /// <response code="201">Returns </response>
+        /// <response code="201">Returns the newly created item</response>
         /// <response code="400">If the item is null</response> 
         /// <param>String</param>
         /// <returns>
-        ///Return 
+        ///Return List of Awardees who are in the status of pending, Approved, rejected, published
         /// </returns>
 
         [HttpGet("GetAwardsList")]
@@ -209,18 +193,20 @@ namespace A5.Controller
         }
 
         /// <summary>
-        ///  This Method is used to 
+        ///  This Method is used to Add comments for an Awardee who is getting an award
         /// </summary>
         /// <remarks>
         /// Sample request:
         ///
-        ///     POST /
-        ///     {
-        ///        sample i/p o/p have to write here
+        ///     POST / AddComment
+        ///     { 
+        ///        "comments": "congrats aravinth",
+        ///        "employeeId": 6,
+        ///        "awardId": 1,
         ///     }
         ///
         /// </remarks>
-        /// <response code="201">Returns </response>
+        /// <response code="201">Returns the newly created item</response>
         /// <response code="400">If the item is null</response> 
         /// <param name="comment">String</param>
         /// <returns>
@@ -260,7 +246,7 @@ namespace A5.Controller
         ///     }
         ///
         /// </remarks>
-        /// <response code="201">Returns </response>
+        /// <response code="201">Returns the newly created item</response>
         /// <response code="400">If the item is null</response> 
         /// <param name="awardId">String</param>
         /// <returns>
