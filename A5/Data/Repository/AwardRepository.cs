@@ -201,7 +201,7 @@ namespace A5.Data.Repository
               throw;
             }
         }
-        public IEnumerable<Award> GetAllWinners()
+        public IEnumerable<Award> GetAllAwardees()
         {
             try
             {
