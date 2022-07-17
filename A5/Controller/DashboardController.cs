@@ -173,12 +173,12 @@ namespace A5.Controller
             }
         }
 
-        [HttpGet("GetAllFilteredOrganisationandToDateWise")]
-        public ActionResult  GetAllFilteredOrganisationandToDate(int orgid, DateTime end)
+        [HttpGet("GetAllFilteredOrgDepandFromDateWise")]
+        public ActionResult  GetAllFilteredOrgDepandFromDate(int orgid, int deptid, DateTime start)
         {
             try
             {
-                var data = _dashboardService. GetAllFilteredOrganisayionandToDate(orgid, end);
+                var data = _dashboardService. GetAllFilteredOrgDepandFromDate(orgid, deptid, start);
                 return Ok(data);
             }
             catch (Exception exception)
@@ -186,5 +186,63 @@ namespace A5.Controller
                 return Problem(exception.Message);
             }
         }
+
+        [HttpGet("GetAllFilteredOrgAwdandFromDateWise")]
+        public ActionResult  GetAllFilteredOrgAwdandFromDate(int orgid, int awdid, DateTime start)
+        {
+            try
+            {
+                var data = _dashboardService. GetAllFilteredOrgAwdandFromDate(orgid, awdid, start);
+                return Ok(data);
+            }
+            catch (Exception exception)
+            {
+                return Problem(exception.Message);
+            }
+        }
+
+        [HttpGet("GetAllFilteredOrgDepandToDateWise")]
+        public ActionResult  GetAllFilteredOrgDepandToDate(int orgid, int deptid, DateTime end)
+        {
+            try
+            {
+                var data = _dashboardService. GetAllFilteredOrgDepandToDate(orgid, deptid, end);
+                return Ok(data);
+            }
+            catch (Exception exception)
+            {
+                return Problem(exception.Message);
+            }
+        }
+
+        [HttpGet("GetAllFilteredOrgAwdandToDateWise")]
+        public ActionResult  GetAllFilteredOrgAwdandToDate(int orgid, int awdid, DateTime end)
+        {
+            try
+            {
+                var data = _dashboardService. GetAllFilteredOrgAwdandToDate(orgid, awdid, end);
+                return Ok(data);
+            }
+            catch (Exception exception)
+            {
+                return Problem(exception.Message);
+            }
+        }
+
+        [HttpGet("GetAllFilteredOrganisationandToDateWise")]
+        public ActionResult  GetAllFilteredOrganisationandToDate(int orgid, DateTime end)
+        {
+            try
+            {
+                var data = _dashboardService. GetAllFilteredOrganisationandToDate(orgid, end);
+                return Ok(data);
+            }
+            catch (Exception exception)
+            {
+                return Problem(exception.Message);
+            }
+        }
+
+        
     }
 }
