@@ -56,21 +56,6 @@ namespace A5.Controller
             }
         }
 
-        //Get Method - To retrieve all Awardees Based on their Department Wise List
-
-        [HttpGet("GetAllDeptWise")]
-        public ActionResult GetDeptWiseDashboard(int id)
-        {
-            try
-            {
-                var data = _dashboardService.GetAllByDeptwise(id);
-                return Ok(data);
-            }
-            catch (Exception exception)
-            {
-                return Problem(exception.Message);
-            }
-        }
 
         //Get Method - To retrieve all Awardees Based on what Awards they Receiving List
 
@@ -117,6 +102,20 @@ namespace A5.Controller
                 return Problem(exception.Message);
             }
         }
+
+        [HttpGet("GetAllOrgDepandAwardWise")]
+        public ActionResult GetOrgandDepandAwardWiseDashboard(int orgid, int depid, int awdid)
+        {
+            try
+            {
+                var data = _dashboardService.GetAllOrgDepandAward(orgid, depid, awdid);
+                return Ok(data);
+            }
+            catch (Exception exception)
+            {
+                return Problem(exception.Message);
+            }
+        }
         
         [HttpGet("GetAllFilteredDateWise")]
         public ActionResult GetAllFilteredDateWiseDashboard(int orgid, int deptid, int awdid, DateTime start, DateTime end)
@@ -124,6 +123,62 @@ namespace A5.Controller
             try
             {
                 var data = _dashboardService.GetAllFilteredDateWise(orgid, deptid, awdid, start, end);
+                return Ok(data);
+            }
+            catch (Exception exception)
+            {
+                return Problem(exception.Message);
+            }
+        }
+
+        [HttpGet("GetAllFilteredFromDateWise")]
+        public ActionResult GetAllFilteredFromDateWise(DateTime start)
+        {
+            try
+            {
+                var data = _dashboardService.GetAllFilteredFromDate(start);
+                return Ok(data);
+            }
+            catch (Exception exception)
+            {
+                return Problem(exception.Message);
+            }
+        }
+
+        [HttpGet("GetAllFilteredToDateWise")]
+        public ActionResult GetAllFilteredToDateWise(DateTime end)
+        {
+            try
+            {
+                var data = _dashboardService.GetAllFilteredToDate(end);
+                return Ok(data);
+            }
+            catch (Exception exception)
+            {
+                return Problem(exception.Message);
+            }
+        }
+
+        [HttpGet("GetAllFilteredOrganisationandFromDateWise")]
+        public ActionResult  GetAllFilteredOrganisationandFromDate(int orgid, DateTime start)
+        {
+            try
+            {
+                var data = _dashboardService. GetAllFilteredOrganisationandFromDate(orgid, start);
+                return Ok(data);
+            }
+            catch (Exception exception)
+            {
+                return Problem(exception.Message);
+            }
+        }
+
+        [HttpGet("GetAllFilteredOrganisationandToDateWise")]
+        public ActionResult  GetAllFilteredOrganisationandToDate(int orgid, DateTime end)
+        {
+            try
+            {
+                var data = _dashboardService. GetAllFilteredOrganisayionandToDate(orgid, end);
                 return Ok(data);
             }
             catch (Exception exception)
