@@ -256,35 +256,6 @@ namespace A5.Data.Repository
             }
         }
 
-        public IEnumerable<Award> GetAllbyDeptwise(int id)
-        {
-            try
-            {
-                var award = _context.Set<Award>()
-                    .Include("Awardee")
-                    .Include("Awardee.Designation")
-                    .Include("Awardee.Designation.Department")
-                    .Include("Awardee.Designation.Department.Organisation")
-                    .Include("Awardee.ReportingPerson")
-                    .Include("Awardee.ReportingPerson.ReportingPerson")
-                    .Include("Awardee.HR")
-                    .Include("AwardType")
-                    .Include("Status")
-                    .Where(nameof => nameof.Awardee!.Designation!.Department!.Id == id && nameof.StatusId == 4)
-                    .ToList();
-                return award;
-            }
-             catch(ValidationException exception)
-            {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}",exception.Message);
-                throw;
-            }
-            catch (Exception exception){
-              _logger.LogError("Error: {Message}",exception.Message);
-              throw;
-            }
-        }
-
         public IEnumerable<Award> GetAllAwardwise(int id)
         {
             try
@@ -371,6 +342,100 @@ namespace A5.Data.Repository
             }
         }
 
+        public IEnumerable<Award> GetAllOrgDepandAwardwise(int orgid, int depid, int awdid)
+        {
+            try
+            {
+                var award = _context.Set<Award>()
+                    .Include("Awardee")
+                    .Include("Awardee.Designation")
+                    .Include("Awardee.Designation.Department")
+                    .Include("Awardee.Designation.Department.Organisation")
+                    .Include("Awardee.ReportingPerson")
+                    .Include("Awardee.ReportingPerson.ReportingPerson")
+                    .Include("Awardee.HR")
+                    .Include("AwardType")
+                    .Include("Status")
+                    .Where(nameof =>    nameof.Awardee.Designation.Department.Organisation.Id == orgid 
+                                     && nameof.Awardee.Designation.Department.Id == depid
+                                     && nameof.AwardTypeId == awdid 
+                                     && nameof.StatusId == 4)
+                    .ToList();
+                return award;
+            }
+             catch(ValidationException exception)
+            {
+                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch (Exception exception){
+              _logger.LogError("Error: {Message}",exception.Message);
+              throw;
+            }
+        }
+
+        public IEnumerable<Award> GetAllFilteredOrganisationandFromDateWise(int orgid, DateTime start)
+        {
+            try
+            {
+                var award = _context.Set<Award>()
+                    .Include("Awardee")
+                    .Include("Awardee.Designation")
+                    .Include("Awardee.Designation.Department")
+                    .Include("Awardee.Designation.Department.Organisation")
+                    .Include("Awardee.ReportingPerson")
+                    .Include("Awardee.ReportingPerson.ReportingPerson")
+                    .Include("Awardee.HR")
+                    .Include("AwardType")
+                    .Include("Status")
+                    .Where(nameof => nameof.Awardee.Designation.Department.Organisation.Id == orgid 
+                                  && nameof.StatusId == 4
+                                  && nameof.UpdatedOn >= start.Date)
+                    .ToList();
+                return award;
+            }
+             catch(ValidationException exception)
+            {
+                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch (Exception exception){
+              _logger.LogError("Error: {Message}",exception.Message);
+              throw;
+            }
+        }
+
+        public IEnumerable<Award> GetAllFilteredOrganisationandToDateWise(int orgid, DateTime end)
+        {
+            try
+            {
+                var award = _context.Set<Award>()
+                    .Include("Awardee")
+                    .Include("Awardee.Designation")
+                    .Include("Awardee.Designation.Department")
+                    .Include("Awardee.Designation.Department.Organisation")
+                    .Include("Awardee.ReportingPerson")
+                    .Include("Awardee.ReportingPerson.ReportingPerson")
+                    .Include("Awardee.HR")
+                    .Include("AwardType")
+                    .Include("Status")
+                    .Where(nameof => nameof.Awardee.Designation.Department.Organisation.Id == orgid 
+                                  && nameof.StatusId == 4
+                                  && nameof.UpdatedOn <= end.Date)
+                    .ToList();
+                return award;
+            }
+             catch(ValidationException exception)
+            {
+                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch (Exception exception){
+              _logger.LogError("Error: {Message}",exception.Message);
+              throw;
+            }
+        }
+
         public IEnumerable<Award> GetAllFilteredDateWise(int orgid, int deptid, int awdid, DateTime start, DateTime end)
         {
             try
@@ -390,6 +455,66 @@ namespace A5.Data.Repository
                                   && nameof.AwardTypeId == awdid 
                                   && nameof.StatusId == 4
                                   && (nameof.UpdatedOn >= start.Date && nameof.UpdatedOn <= end.Date))
+                    .ToList();
+                return award;
+            }
+             catch(ValidationException exception)
+            {
+                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch (Exception exception){
+              _logger.LogError("Error: {Message}",exception.Message);
+              throw;
+            }
+        }
+
+        //Filtered By From Date
+        public IEnumerable<Award> GetAllFilteredFromDateWise(DateTime start)
+        {
+            try
+            {
+                var award = _context.Set<Award>()
+                    .Include("Awardee")
+                    .Include("Awardee.Designation")
+                    .Include("Awardee.Designation.Department")
+                    .Include("Awardee.Designation.Department.Organisation")
+                    .Include("Awardee.ReportingPerson")
+                    .Include("Awardee.ReportingPerson.ReportingPerson")
+                    .Include("Awardee.HR")
+                    .Include("AwardType")
+                    .Include("Status")
+                    .Where(nameof => nameof.StatusId == 4 && (nameof.UpdatedOn >= start.Date))
+                    .ToList();
+                return award;
+            }
+             catch(ValidationException exception)
+            {
+                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch (Exception exception){
+              _logger.LogError("Error: {Message}",exception.Message);
+              throw;
+            }
+        }
+
+        //Filtered By To Date 
+        public IEnumerable<Award> GetAllFilteredToDateWise(DateTime end)
+        {
+            try
+            {
+                var award = _context.Set<Award>()
+                    .Include("Awardee")
+                    .Include("Awardee.Designation")
+                    .Include("Awardee.Designation.Department")
+                    .Include("Awardee.Designation.Department.Organisation")
+                    .Include("Awardee.ReportingPerson")
+                    .Include("Awardee.ReportingPerson.ReportingPerson")
+                    .Include("Awardee.HR")
+                    .Include("AwardType")
+                    .Include("Status")
+                    .Where(nameof => nameof.StatusId == 4 && (nameof.UpdatedOn <= end.Date))
                     .ToList();
                 return award;
             }
