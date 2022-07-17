@@ -48,35 +48,7 @@ namespace A5.Service
                 throw;
             }
         }
-        public IEnumerable<object> GetAllByDeptwise(int deptid)
-        {
-            try
-            {
-                if(deptid == 0)
-                {
-                    throw new ValidationException("Department ID should not be zero.");
-                }
-                var deptwise = _award.GetAllbyDeptwise(deptid);
-                return deptwise.Select(Award => new{
-                    
-                    organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
-                    
-                    department = Award?.Awardee?.Designation?.Department?.DepartmentName,
-                    
-                    awardName = Award?.AwardType?.AwardName,
-                });
-            }
-             catch(ValidationException exception)
-            {
-                _logger.LogError("DashboardService: GetAllByDeptWise(int deptid) : (Error:{Message}",exception.Message);
-                throw;
-            }
-            catch(Exception exception)
-            {
-                _logger.LogError("Error: {Message}",exception.Message);
-                throw;
-            }
-        }
+        
         public IEnumerable<object> GetAllAwardwise(int awdid)
         {
             try
@@ -178,11 +150,149 @@ namespace A5.Service
             }
         }
 
+        public IEnumerable<object> GetAllOrgDepandAward(int orgid, int depid, int awdid)
+        {
+            try
+            {
+                var winners = _award.GetAllOrgDepandAwardwise(orgid, depid, awdid);
+                return winners.Select(Award => new{
+                    
+                    organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
+                    
+                    department = Award?.Awardee?.Designation?.Department?.DepartmentName,
+                    
+                    awardName = Award?.AwardType?.AwardName,
+                });
+            }
+           catch(ValidationException exception)
+            {
+                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                throw;
+            }
+        }
+
         public IEnumerable<object> GetAllFilteredDateWise(int orgid, int deptid, int awdid, DateTime start, DateTime end)
         {
             try
             {
                 var winners = _award.GetAllFilteredDateWise(orgid, deptid, awdid, start, end);
+                return winners.Select(Award => new{
+                    
+                    organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
+                    
+                    department = Award?.Awardee?.Designation?.Department?.DepartmentName,
+                    
+                    awardName = Award?.AwardType?.AwardName,
+
+                    publishedDate = Award?.UpdatedOn
+                });
+            }
+           catch(ValidationException exception)
+            {
+                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                throw;
+            }
+        }
+
+        public IEnumerable<object> GetAllFilteredOrganisationandFromDate(int orgid, DateTime start)
+        {
+            try
+            {
+                var winners = _award.GetAllFilteredOrganisationandFromDateWise(orgid, start);
+                return winners.Select(Award => new{
+                    
+                    organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
+                    
+                    department = Award?.Awardee?.Designation?.Department?.DepartmentName,
+                    
+                    awardName = Award?.AwardType?.AwardName,
+
+                    publishedDate = Award?.UpdatedOn
+                });
+            }
+           catch(ValidationException exception)
+            {
+                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                throw;
+            }
+        }
+
+        public IEnumerable<object> GetAllFilteredOrganisayionandToDate(int orgid, DateTime end)
+        {
+            try
+            {
+                var winners = _award.GetAllFilteredOrganisationandToDateWise(orgid, end);
+                return winners.Select(Award => new{
+                    
+                    organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
+                    
+                    department = Award?.Awardee?.Designation?.Department?.DepartmentName,
+                    
+                    awardName = Award?.AwardType?.AwardName,
+
+                    publishedDate = Award?.UpdatedOn
+                });
+            }
+           catch(ValidationException exception)
+            {
+                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                throw;
+            }
+        }
+
+        public IEnumerable<object> GetAllFilteredFromDate(DateTime start)
+        {
+            try
+            {
+                var winners = _award.GetAllFilteredFromDateWise(start);
+                return winners.Select(Award => new{
+                    
+                    organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
+                    
+                    department = Award?.Awardee?.Designation?.Department?.DepartmentName,
+                    
+                    awardName = Award?.AwardType?.AwardName,
+
+                    publishedDate = Award?.UpdatedOn
+                });
+            }
+           catch(ValidationException exception)
+            {
+                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                throw;
+            }
+        }
+
+        public IEnumerable<object> GetAllFilteredToDate(DateTime end)
+        {
+            try
+            {
+                var winners = _award.GetAllFilteredToDateWise(end);
                 return winners.Select(Award => new{
                     
                     organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
