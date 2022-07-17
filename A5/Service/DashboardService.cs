@@ -427,5 +427,61 @@ namespace A5.Service
                 throw;
             }
         }
+
+        public IEnumerable<object> GetAllOrgDeptDateWise(int orgid, int deptid, DateTime start, DateTime end)
+        {
+            try
+            {
+                var winners = _award.GetAllOrgDepDateWise(orgid, deptid, start, end);
+                return winners.Select(Award => new{
+                    
+                    organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
+                    
+                    department = Award?.Awardee?.Designation?.Department?.DepartmentName,
+                    
+                    awardName = Award?.AwardType?.AwardName,
+
+                    publishedDate = Award?.UpdatedOn
+                });
+            }
+           catch(ValidationException exception)
+            {
+                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                throw;
+            }
+        }
+
+        public IEnumerable<object> GetAllOrgAwdDateWise(int orgid, int awdid, DateTime start, DateTime end)
+        {
+            try
+            {
+                var winners = _award.GetAllOrgAwdDateWise(orgid, awdid, start, end);
+                return winners.Select(Award => new{
+                    
+                    organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
+                    
+                    department = Award?.Awardee?.Designation?.Department?.DepartmentName,
+                    
+                    awardName = Award?.AwardType?.AwardName,
+
+                    publishedDate = Award?.UpdatedOn
+                });
+            }
+           catch(ValidationException exception)
+            {
+                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                throw;
+            }
+        }
     }
 }
