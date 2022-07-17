@@ -4,8 +4,8 @@ namespace A5.Data.Repository.Interface
 {
     public interface IDepartmentRepository
     {
-        bool CreateDepartment(Department department,int employeeId);
-        bool UpdateDepartment(Department department,int employeeId);
+        bool CreateDepartment(Department department);
+        bool UpdateDepartment(Department department);
         public Department ? GetByDepartment(int id);
         bool DisableDepartment(int id,int employeeId);
         int GetCount(int id);

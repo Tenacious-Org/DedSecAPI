@@ -14,13 +14,13 @@ namespace A5.Data.Repository
             _context=context;
             _logger=logger;
         }
-            public bool CreateOrganisation(Organisation organisation,int employeeId)
+            public bool CreateOrganisation(Organisation organisation)
             {
             if(!OrganisationServiceValidations.CreateValidation(organisation)) throw new ValidationException("Invalid data");
             bool NameExists=_context.Organisations!.Any(nameof=>nameof.OrganisationName==organisation.OrganisationName);
             if(NameExists) throw new ValidationException("Organisation Name already exists");
             try{
-                return Create(organisation,employeeId);
+                return Create(organisation);
             }
             catch(ValidationException exception)
             {
@@ -33,13 +33,13 @@ namespace A5.Data.Repository
                 throw;
             }
         }
-        public bool UpdateOrganisation(Organisation organisation,int employeeId)
+        public bool UpdateOrganisation(Organisation organisation)
         {
             if(!OrganisationServiceValidations.UpdateValidation(organisation)) throw new ValidationException("Invalid Data");
             bool NameExists=_context.Organisations!.Any(nameof=>nameof.OrganisationName==organisation.OrganisationName);
             if(NameExists) throw new ValidationException("Organisation Name already exists");
             try{
-                return Update(organisation,employeeId);
+                return Update(organisation);
             }
             catch(ValidationException exception)
             {

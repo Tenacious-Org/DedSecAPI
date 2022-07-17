@@ -20,14 +20,13 @@ namespace A5.Data.Repository
         }
 
         //Methods
-        public bool Create(T entity,int employeeId)
+        public bool Create(T entity)
         {
    
            try
            {
               _context.Set<T>().Add(entity);
-                entity.AddedBy=employeeId;
-                entity.AddedOn=DateTime.Now;
+                entity.AddedOn=DateTime.UtcNow;
                 _context.SaveChanges();
             return true; 
                 
@@ -56,7 +55,7 @@ namespace A5.Data.Repository
                 var disable = _context.Set<T>().FirstOrDefault(nameof =>nameof.Id == id);
                 disable!.IsActive = false;
                 entity!.UpdatedBy=employeeId;
-                entity.UpdatedOn=DateTime.Now;
+                entity.UpdatedOn=DateTime.UtcNow;
                 _context.SaveChanges();
                 result= true;
                 }
@@ -74,7 +73,7 @@ namespace A5.Data.Repository
                     
         }
 
-        public bool Update(T entity,int employeeId)
+        public bool Update(T entity)
         {
             bool result = false;
             
@@ -82,8 +81,7 @@ namespace A5.Data.Repository
                 if(entity != null )
                 {
                     _context.Set<T>().Update(entity);
-                    entity.UpdatedBy=employeeId;
-                    entity.UpdatedOn=DateTime.Now;
+                    entity.UpdatedOn=DateTime.UtcNow;
                     _context.SaveChanges();
                     result = true;
                 }

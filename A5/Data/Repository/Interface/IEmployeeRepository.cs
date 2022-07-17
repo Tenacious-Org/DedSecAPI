@@ -4,9 +4,9 @@ namespace A5.Data.Repository.Interface
 {
     public interface IEmployeeRepository
         {
-        public bool CreateEmployee(Employee employee,int employeeId);
+        public bool CreateEmployee(Employee employee);
         public bool DisableEmployee(int id,int employeeId);
-        public bool UpdateEmployee(Employee employee,int employeeId);
+        public bool UpdateEmployee(Employee employee);
         public Employee? GetEmployeeById(int id);
         public IEnumerable<Employee> GetAllEmployees();
         public IEnumerable<Employee> GetByHR(int id);

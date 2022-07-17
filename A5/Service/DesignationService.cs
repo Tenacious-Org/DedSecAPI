@@ -52,11 +52,11 @@ namespace A5.Service
                 updatedOn = Designation?.UpdatedOn
             });
          }
-          public bool CreateDesignation(Designation designation,int employeeId)
+          public bool CreateDesignation(Designation designation)
         {
             if(!DesignationServiceValidations.CreateValidation(designation)) throw new ValidationException("Invalid data");
             try{
-                return _desginationRepository.CreateDesignation(designation,employeeId);
+                return _desginationRepository.CreateDesignation(designation);
             }
              catch(ValidationException exception)
             {
@@ -77,11 +77,11 @@ namespace A5.Service
         {
             return new{message=ValidationMessage};
         }
-        public bool UpdateDesignation(Designation designation,int employeeId)
+        public bool UpdateDesignation(Designation designation)
         {
             if(!DesignationServiceValidations.UpdateValidation(designation)) throw new ValidationException("Invalid data"); 
             try{
-                return _desginationRepository.UpdateDesignation(designation,employeeId);
+                return _desginationRepository.UpdateDesignation(designation);
             }
             catch(ValidationException exception)
             {

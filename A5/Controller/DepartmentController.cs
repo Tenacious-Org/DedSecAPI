@@ -162,7 +162,8 @@ namespace A5.Controller
         {
             if(department==null) return BadRequest("department should not be null");
             try{
-                var data=_departmentService.CreateDepartment(department,GetCurrentUserId());
+                department.AddedBy=GetCurrentUserId();
+                var data=_departmentService.CreateDepartment(department);
                 return Ok(data); 
             }           
             catch(ValidationException exception)
@@ -200,7 +201,8 @@ namespace A5.Controller
         {
             if(department==null) return BadRequest("Department should not be null");
             try{
-                var data=_departmentService.UpdateDepartment(department,GetCurrentUserId());
+                department.UpdatedBy=GetCurrentUserId();
+                var data=_departmentService.UpdateDepartment(department);
                 return  Ok(data); 
             }
             catch(ValidationException exception)

@@ -1,24 +1,24 @@
-using Microsoft.AspNetCore.Identity;
-using A5.Models;
+using System.Text;
+
 namespace A5.Hasher
 {
-public  class BCryptPasswordHasher<TEmployee> : IPasswordHasher<TEmployee> where TEmployee : Employee
-{
-    public  string HashPassword(TEmployee user, string password)
+    public static class PasswordHasher
     {
-        return BCrypt.Net.BCrypt.HashPassword(password, 12);
-    }
-	
-    public  PasswordVerificationResult VerifyHashedPassword(TEmployee user, string hashedPassword, string providedPassword)
-    {
-        var isValid = BCrypt.Net.BCrypt.Verify(providedPassword, hashedPassword);
-
-        if (isValid && BCrypt.Net.BCrypt.PasswordNeedsRehash(hashedPassword, 12))
+        public static string Key = "#V1M1L1K1J1A5@TENACIOUS#";
+        public static string EncryptPassword(string password)
         {
-            return PasswordVerificationResult.SuccessRehashNeeded;
+            if (string.IsNullOrEmpty(password)) return "";
+            password += Key;
+            var passwordBytes = Encoding.UTF8.GetBytes(password);
+            return Convert.ToBase64String(passwordBytes);
         }
-
-        return isValid ? PasswordVerificationResult.Success : PasswordVerificationResult.Failed;
+        public static string DecryptPassword(string base64EncodedeData)
+        {
+            if (string.IsNullOrEmpty(base64EncodedeData)) return "";
+            var base64EncodeBytes = Convert.FromBase64String(base64EncodedeData);
+            var result = Encoding.UTF8.GetString(base64EncodeBytes);
+            result = result.Substring(0, result.Length - Key.Length);
+            return result;
+        }
     }
-}
 }

@@ -7,8 +7,8 @@ namespace A5.Service.Interfaces
 {
     public interface IDepartmentService
     {
-        bool CreateDepartment(Department department,int employeeId);
-        bool UpdateDepartment(Department department,int employeeId);
+        bool CreateDepartment(Department department);
+        bool UpdateDepartment(Department department);
         Department? GetByDepartment(int id);
         bool DisableDepartment(int id,int employeeId);
         int GetCount(int id);

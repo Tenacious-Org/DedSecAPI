@@ -14,7 +14,7 @@ namespace A5.Controller
     {
         private readonly EmployeeService _employeeService;
         private readonly ILogger<EmployeeController> _logger;
-        public EmployeeController(ILogger<EmployeeController> logger,EmployeeService employeeService)
+        public EmployeeController(ILogger<EmployeeController> logger, EmployeeService employeeService)
         {
             _logger = logger;
             _employeeService = employeeService;
@@ -36,19 +36,20 @@ namespace A5.Controller
         ///Return List of Employees.
         /// </returns>
 
-         [HttpGet("GetAll")]
+        [HttpGet("GetAll")]
         public ActionResult GetAllEmployees()
         {
-            try{
+            try
+            {
                 var data = _employeeService.GetAllEmployees();
                 return Ok(data);
             }
-            catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeController : GetAllEmployees() : (Error: {Message})",exception.Message);
+                _logger.LogError("EmployeeController : GetAllEmployees() : (Error: {Message})", exception.Message);
                 return BadRequest(_employeeService.ErrorMessage(exception.Message));
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
@@ -77,16 +78,17 @@ namespace A5.Controller
         public ActionResult GetEmployeeById([FromQuery] int id)
         {
             if (id <= 0) return BadRequest("Id cannot be null ");
-            try{
+            try
+            {
                 var data = _employeeService.GetEmployeeById(id);
                 return Ok(data);
             }
-            catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                 _logger.LogError("EmployeeController : GetEmployeeById(int id) : (Error: {Message})",exception.Message);
+                _logger.LogError("EmployeeController : GetEmployeeById(int id) : (Error: {Message})", exception.Message);
                 return BadRequest(_employeeService.ErrorMessage(exception.Message));
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
@@ -125,17 +127,19 @@ namespace A5.Controller
         [HttpPost("Create")]
         public ActionResult Create(Employee employee)
         {
-            if(employee==null) return BadRequest("Employee should not be null");
-            try{
-                var data=_employeeService.CreateEmployee(employee,GetCurrentUserId());
-                 return  Ok(data); 
-            }
-            catch(ValidationException exception)
+            if (employee == null) return BadRequest("Employee should not be null");
+            try
             {
-                 _logger.LogError("EmployeeController : Create(Employee employee) : (Error: {Message})",exception.Message);
+                employee.AddedBy=GetCurrentUserId();
+                var data = _employeeService.CreateEmployee(employee);
+                return Ok(data);
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("EmployeeController : Create(Employee employee) : (Error: {Message})", exception.Message);
                 return BadRequest(_employeeService.ErrorMessage(exception.Message));
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
@@ -163,18 +167,20 @@ namespace A5.Controller
         [HttpPut("Update")]
         public ActionResult Update(Employee employee)
         {
-            if(employee==null) return BadRequest("Employee should not be null");
-            try{
-                var data=_employeeService.UpdateEmployee( employee,GetCurrentUserId());
-               return  Ok(data); 
-                
-            }
-            catch(ValidationException exception)
+            if (employee == null) return BadRequest("Employee should not be null");
+            try
             {
-                 _logger.LogError("EmployeeController : Update(Employee employee,int id) : (Error: {Message})",exception.Message);
+                employee.UpdatedBy=GetCurrentUserId();
+                var data = _employeeService.UpdateEmployee(employee);
+                return Ok(data);
+
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("EmployeeController : Update(Employee employee,int id) : (Error: {Message})", exception.Message);
                 return BadRequest(_employeeService.ErrorMessage(exception.Message));
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
@@ -205,21 +211,24 @@ namespace A5.Controller
             if (id <= 0) return BadRequest("Id cannot be null ");
             try
             {
-       
+
                 var checkEmployee = _employeeService.GetEmployeeCount(id);
-                if(checkEmployee>0){
+                if (checkEmployee > 0)
+                {
                     return Ok(checkEmployee);
-                }else{
-                    var data = _employeeService.DisableEmployee(id,GetCurrentUserId());
+                }
+                else
+                {
+                    var data = _employeeService.DisableEmployee(id, GetCurrentUserId());
                     return Ok(data);
                 }
             }
-            catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                 _logger.LogError("EmployeeController : Disable(int id) : (Error: {Message})",exception.Message);
+                _logger.LogError("EmployeeController : Disable(int id) : (Error: {Message})", exception.Message);
                 return BadRequest(_employeeService.ErrorMessage(exception.Message));
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
@@ -255,12 +264,12 @@ namespace A5.Controller
                 var data = _employeeService.GetEmployeeByDepartmentId(id);
                 return Ok(data);
             }
-            catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                 _logger.LogError("EmployeeController : GetEmployeeByDepartmentId(int id) : (Error: {Message})",exception.Message);
+                _logger.LogError("EmployeeController : GetEmployeeByDepartmentId(int id) : (Error: {Message})", exception.Message);
                 return BadRequest(_employeeService.ErrorMessage(exception.Message));
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
@@ -274,12 +283,12 @@ namespace A5.Controller
                 var data = _employeeService.GetReportingPersonByDepartmentId(id);
                 return Ok(data);
             }
-            catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                 _logger.LogError("EmployeeController : GetReportingPersonbyDepartment(int id) : (Error: {Message})",exception.Message);
+                _logger.LogError("EmployeeController : GetReportingPersonbyDepartment(int id) : (Error: {Message})", exception.Message);
                 return BadRequest(_employeeService.ErrorMessage(exception.Message));
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
@@ -293,12 +302,12 @@ namespace A5.Controller
                 var data = _employeeService.GetHrByDepartmentId(id);
                 return Ok(data);
             }
-            catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                 _logger.LogError("EmployeeController : GetHrByDepartment(int id) : (Error: {Message})",exception.Message);
+                _logger.LogError("EmployeeController : GetHrByDepartment(int id) : (Error: {Message})", exception.Message);
                 return BadRequest(_employeeService.ErrorMessage(exception.Message));
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
@@ -334,12 +343,12 @@ namespace A5.Controller
                 var data = _employeeService.GetEmployeeByOrganisation(id);
                 return Ok(data);
             }
-            catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeController : GetEmployeebyOrganisation(int id) : (Error: {exception.Message})",exception.Message);
+                _logger.LogError("EmployeeController : GetEmployeebyOrganisation(int id) : (Error: {exception.Message})", exception.Message);
                 return BadRequest(_employeeService.ErrorMessage(exception.Message));
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
@@ -365,7 +374,7 @@ namespace A5.Controller
         /// <returns>
         ///Returns List of Employees from RequesterId
         /// </returns>
-        
+
         [HttpGet("GetEmployeeByRequesterId")]
         public ActionResult GetEmployeeByRequesterId(int id)
         {
@@ -375,18 +384,16 @@ namespace A5.Controller
                 var data = _employeeService.GetEmployeeByRequesterId(id);
                 return Ok(data);
             }
-            catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                 _logger.LogError("EmployeeController : GetEmployeeByRequesterId(int id) : (Error: {Message})",exception.Message);
+                _logger.LogError("EmployeeController : GetEmployeeByRequesterId(int id) : (Error: {Message})", exception.Message);
                 return BadRequest(_employeeService.ErrorMessage(exception.Message));
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return Problem(exception.Message);
             }
         }
-        
-        
         private int GetCurrentUserId()
         {
             try
@@ -397,10 +404,6 @@ namespace A5.Controller
             {
                 throw new Exception("Error occured while getting current userId");
             }
-
         }
-        
-     
     }
-     
 }

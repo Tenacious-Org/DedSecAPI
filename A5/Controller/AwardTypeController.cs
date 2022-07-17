@@ -126,7 +126,8 @@ namespace A5.Controller
 
             try
             {
-                var data = _awardTypeService.CreateAwardType(awardType,GetCurrentUserId());
+                awardType.AddedBy=GetCurrentUserId();
+                var data = _awardTypeService.CreateAwardType(awardType);
                 return Ok(data);
             }
             catch (ValidationException exception)
@@ -165,7 +166,8 @@ namespace A5.Controller
             if(awardType==null) return BadRequest("AwardType should not be null");
             try
             {
-                var data = _awardTypeService.UpdateAwardType(awardType,GetCurrentUserId());
+                awardType.UpdatedBy=GetCurrentUserId();
+                var data = _awardTypeService.UpdateAwardType(awardType);
                 return Ok(data);
             }
             catch (ValidationException exception)

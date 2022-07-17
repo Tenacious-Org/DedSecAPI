@@ -15,13 +15,13 @@ namespace A5.Data.Repository
              _context=context;
              _logger=logger;
         }
-         public bool CreateDepartment(Department department,int employeeId)
+         public bool CreateDepartment(Department department)
         {
             if(!DepartmentServiceValidations.CreateValidation(department)) throw new ValidationException("Invalid data");
             bool NameExists=_context.Departments!.Any(nameof=>nameof.DepartmentName==department.DepartmentName && nameof.OrganisationId==department.OrganisationId);
             if(NameExists) throw new ValidationException("Department Name already exists");
             try{
-                return Create(department,employeeId);
+                return Create(department);
             }
             catch(ValidationException exception)
             {
@@ -34,13 +34,13 @@ namespace A5.Data.Repository
                 throw;
             }
         }
-        public bool UpdateDepartment(Department department,int employeeId)
+        public bool UpdateDepartment(Department department)
         {
             if(!DepartmentServiceValidations.UpdateValidation(department)) throw new ValidationException("Invalid Data");
              bool NameExists=_context.Departments!.Any(nameof=>nameof.DepartmentName==department.DepartmentName  && nameof.OrganisationId==department.OrganisationId);
             if(NameExists) throw new ValidationException("Department Name already exists");
             try{
-                return Update(department,employeeId);
+                return Update(department);
             }
             catch(ValidationException exception)
             {

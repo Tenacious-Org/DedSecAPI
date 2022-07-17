@@ -167,7 +167,8 @@ namespace A5.Controller
             if(designation==null) return BadRequest("Designation should not be null");
             try
             {
-                var data = _designationService.CreateDesignation(designation,GetCurrentUserId());
+                designation.AddedBy=GetCurrentUserId();
+                var data = _designationService.CreateDesignation(designation);
                 return Ok(data);
             }
             catch (ValidationException exception)
@@ -206,7 +207,8 @@ namespace A5.Controller
             if(designation==null) return BadRequest("Designation should not be null");
             try
             {
-                var data = _designationService.UpdateDesignation(designation,GetCurrentUserId());
+                designation.UpdatedBy=GetCurrentUserId();
+                var data = _designationService.UpdateDesignation(designation);
                 return Ok(data);
             }
             catch (ValidationException exception)

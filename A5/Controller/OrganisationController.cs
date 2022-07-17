@@ -123,7 +123,8 @@ namespace A5.Controller
             if(organisation==null) return BadRequest("Organisation should not be null");
             try
             {   
-                var data=_organisationService.CreateOrganisation(organisation,GetCurrentUserId());
+                organisation.AddedBy=GetCurrentUserId();
+                var data=_organisationService.CreateOrganisation(organisation);
                 return  Ok(data); 
                 
             }
@@ -163,7 +164,8 @@ namespace A5.Controller
         {
            if(organisation==null) return BadRequest("Organisation should not be null");
             try{
-                var data=_organisationService.UpdateOrganisation(organisation,GetCurrentUserId());
+                organisation.UpdatedBy=GetCurrentUserId();
+                var data=_organisationService.UpdateOrganisation(organisation);
                 return Ok(data); 
             }        
             catch(ValidationException exception)

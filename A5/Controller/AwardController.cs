@@ -15,7 +15,6 @@ namespace A5.Controller
     {
         private readonly ILogger<IAwardService> _logger;
         private readonly IAwardService _awardService;
-
         public AwardController(ILogger<IAwardService> logger, IAwardService awardService)
         {
             _awardService = awardService;
@@ -92,7 +91,6 @@ namespace A5.Controller
         [HttpPut("Approval")]
         public ActionResult Approval(Award award)
         {
-
             if (award ==null) return BadRequest("award should not be null");
             try
             {
@@ -108,7 +106,6 @@ namespace A5.Controller
             {
                 return Problem(exception.Message);
             }
-
         }
 
         /// <summary>

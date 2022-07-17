@@ -9,9 +9,9 @@ namespace A5.Service.Interfaces
     {
         public IEnumerable<Designation> GetDesignationsByDepartmentId(int id);
         public IEnumerable<object> GetAllDesignations();
-        public bool CreateDesignation(Designation designation,int employeeId);
+        public bool CreateDesignation(Designation designation);
         public int GetCount(int id);
-        public bool UpdateDesignation(Designation designation,int employeeId);
+        public bool UpdateDesignation(Designation designation);
         public bool DisableDesignation(int id,int employeeId);
         public Designation? GetDesignationById(int id);
         public object ErrorMessage(string ValidationMessage);

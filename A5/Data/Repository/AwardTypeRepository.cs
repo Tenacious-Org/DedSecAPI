@@ -15,14 +15,14 @@ namespace A5.Data.Repository
             _context=context;
             _logger=logger;
         }
-          public bool CreateAwardType(AwardType awardType,int employeeId)
+          public bool CreateAwardType(AwardType awardType)
         {
            
             if(!AwardTypeValidations.CreateValidation(awardType)) throw new ValidationException("Invalid data");
             bool NameExists=_context.AwardTypes!.Any(nameof=>nameof.AwardName==awardType.AwardName);
             if(NameExists) throw new ValidationException("Award Name already exists");
             try{
-                return Create(awardType,employeeId);
+                return Create(awardType);
             }
             catch(ValidationException exception)
             {
@@ -36,12 +36,12 @@ namespace A5.Data.Repository
             }
         }
         
-         public bool UpdateAwardType(AwardType awardType,int employeeId)
+         public bool UpdateAwardType(AwardType awardType)
         {
           
             if(!AwardTypeValidations.UpdateValidation(awardType)) throw new ValidationException("Invalid data");
             try{
-                return Update(awardType,employeeId);
+                return Update(awardType);
             }
             catch(ValidationException exception)
             {

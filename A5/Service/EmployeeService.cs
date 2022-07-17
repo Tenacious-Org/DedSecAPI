@@ -1,13 +1,9 @@
-using System.Collections.Generic;
-using System.Linq;
 using A5.Models;
-using A5.Data.Repository;
 using A5.Data.Repository.Interface;
-using A5.Service.Interfaces;
 using A5.Service.Validations;
 using System.ComponentModel.DataAnnotations;
-using A5.Data;
 using A5.Data.Service.Interfaces;
+using A5.Hasher;
 
 namespace A5.Service
 {
@@ -15,7 +11,6 @@ namespace A5.Service
     {
         private readonly IEmployeeRepository _employeeRepository;
         private readonly ILogger<IEmployeeRepository> _logger;
-
         public EmployeeService(IEmployeeRepository employeeRepository, ILogger<IEmployeeRepository> logger)
         {
             _employeeRepository = employeeRepository;
@@ -39,7 +34,6 @@ namespace A5.Service
                 _logger.LogError("Error: {Message}", exception.Message);
                 throw;
             }
-
         }
 
         public IEnumerable<Employee> GetByReportingPerson(int id)
@@ -59,7 +53,6 @@ namespace A5.Service
                 _logger.LogError("Error: {Message}", exception.Message);
                 throw;
             }
-
         }
 
         public IEnumerable<Employee> GetEmployeeByDepartmentId(int id)
@@ -85,7 +78,6 @@ namespace A5.Service
             if (!EmployeeServiceValidations.ValidateGetByDepartment(id)) throw new ValidationException("Invalid data");
             try
             {
-
                 return _employeeRepository.GetReportingPersonByDepartmentId(id);
             }
             catch (ValidationException exception)
@@ -152,11 +144,9 @@ namespace A5.Service
                 _logger.LogError("Error: {Message}", exception.Message);
                 throw;
             }
-
         }
         public IEnumerable<object> GetAllEmployees()
         {
-
             try
             {
                 var employee = _employeeRepository.GetAllEmployees();
@@ -172,7 +162,6 @@ namespace A5.Service
                 _logger.LogError("Error: {Message}", exception.Message);
                 throw;
             }
-
         }
         public object GetEmployeeById(int id)
         {
@@ -222,23 +211,18 @@ namespace A5.Service
                 _logger.LogError("Error: {Message}", exception.Message);
                 throw;
             }
-
         }
-
-
-
         public Employee GetEmployee(string Email, string Password)
         {
             if (Email == null || Password == null) throw new ValidationException("Email or Password cannot be null");
+            //Password=PasswordHasher.EncryptPassword(Password);
             try
             {
-
                 return _employeeRepository.GetEmployee(Email, Password);
-
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeService: GetEmployee(string Email,string Password) : (Error:{Message}", exception.Message);
+                _logger.LogError("EmployeeService: GetEmployee(string Email,string Password) : (Error:{Message})", exception.Message);
                 throw;
             }
             catch (Exception exception)
@@ -247,14 +231,14 @@ namespace A5.Service
                 throw;
             }
         }
-
-        public bool CreateEmployee(Employee employee,int employeeId)
+        public bool CreateEmployee(Employee employee)
         {
             if (!EmployeeServiceValidations.CreateValidation(employee)) throw new ValidationException("Invalid data");
             try
             {
                 employee.Image = System.Convert.FromBase64String(employee.ImageString!);
-                return _employeeRepository.CreateEmployee(employee,employeeId);
+                employee.Password = GeneratePassword(employee);
+                return _employeeRepository.CreateEmployee(employee);
             }
             catch (ValidationException exception)
             {
@@ -266,15 +250,14 @@ namespace A5.Service
                 _logger.LogError("Error: {Message}", exception.Message);
                 throw;
             }
-
         }
-        public bool UpdateEmployee(Employee employee,int employeeId)
+        public bool UpdateEmployee(Employee employee)
         {
             if (!EmployeeServiceValidations.UpdateValidation(employee)) throw new ValidationException("Invalid data");
             try
             {
                 employee.Image = System.Convert.FromBase64String(employee.ImageString!);
-                return _employeeRepository.UpdateEmployee(employee,employeeId);
+                return _employeeRepository.UpdateEmployee(employee);
             }
             catch (ValidationException exception)
             {
@@ -286,14 +269,13 @@ namespace A5.Service
                 _logger.LogError("Error: {Message}", exception.Message);
                 throw;
             }
-
         }
-        public bool DisableEmployee(int id,int employeeId)
+        public bool DisableEmployee(int id, int employeeId)
         {
             if (!EmployeeServiceValidations.DisableValidation(id)) throw new ValidationException("Invalid data");
             try
             {
-                return _employeeRepository.DisableEmployee(id,employeeId);
+                return _employeeRepository.DisableEmployee(id, employeeId);
             }
             catch (ValidationException exception)
             {
@@ -305,15 +287,11 @@ namespace A5.Service
                 _logger.LogError("Error: {Message}", exception.Message);
                 throw;
             }
-
         }
-
-       
         public object ErrorMessage(string ValidationMessage)
         {
             return new { message = ValidationMessage };
         }
-
         private object GetEmployeeObject(Employee employee)
         {
             return new
@@ -343,16 +321,13 @@ namespace A5.Service
                 addedOn = employee?.AddedOn,
                 updatedBy = employee?.UpdatedBy,
                 updatedOn = employee?.UpdatedOn
-
             };
-
         }
         public int GetEmployeeCount(int id)
         {
             if (!EmployeeServiceValidations.ValidateById(id)) throw new ValidationException("Invalid data");
             try
             {
-
                 return _employeeRepository.GetEmployeeCount(id);
             }
             catch (ValidationException exception)
@@ -366,7 +341,12 @@ namespace A5.Service
                 throw;
             }
         }
-
+        private string GeneratePassword(Employee employee)
+        {
+            var password = employee.FirstName + "@" + employee.ACEID;
+            password = PasswordHasher.EncryptPassword(password);
+            return password;
+        }
 
     }
 

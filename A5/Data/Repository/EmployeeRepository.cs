@@ -281,6 +281,7 @@ namespace A5.Data.Repository
             if (Email == null || Password == null) throw new ValidationException("Email or Password cannot be null");
             try
             {
+                
                 var User = GetUserDetails().FirstOrDefault(user => user.Email == Email && user.Password == Password);
                 if (User == null) throw new ValidationException("Invalid user");
                 return User;
@@ -298,7 +299,7 @@ namespace A5.Data.Repository
             }
         }
 
-        public bool CreateEmployee(Employee employee,int employeeId)
+        public bool CreateEmployee(Employee employee)
         {
             if(!EmployeeServiceValidations.CreateValidation(employee)) throw new ValidationException("Invalid data");
             bool IsIdAlreadyExists=_context.Employees!.Any(nameof=>nameof.ACEID==employee.ACEID);
@@ -307,7 +308,7 @@ namespace A5.Data.Repository
             if(IsEmailAlreadyExists) throw new ValidationException("Email Id already exists");
             try
             {
-                return Create(employee,employeeId);
+                return Create(employee);
             }
             catch (ValidationException exception)
             {
@@ -321,7 +322,7 @@ namespace A5.Data.Repository
             }
 
         }
-        public bool UpdateEmployee(Employee employee,int employeeId)
+        public bool UpdateEmployee(Employee employee)
         {
             if(!EmployeeServiceValidations.UpdateValidation(employee)) throw new ValidationException("Invalid data");
             bool IsIdAlreadyExists=_context.Employees!.Any(nameof=>nameof.ACEID==employee.ACEID);
@@ -330,7 +331,7 @@ namespace A5.Data.Repository
             if(IsEmailAlreadyExists) throw new ValidationException("Email Id already exists");
             try
             {
-                return Update(employee,employeeId);
+                return Update(employee);
             }
             catch (ValidationException exception)
             {

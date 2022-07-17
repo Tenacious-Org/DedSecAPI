@@ -79,13 +79,13 @@ namespace A5.Data.Repository
                 throw;
             }
         }
-          public bool CreateDesignation(Designation designation,int employeeId)
+          public bool CreateDesignation(Designation designation)
         {
             if(!DesignationServiceValidations.CreateValidation(designation)) throw new ValidationException("Invalid data");
             bool NameExists=_context.Designations!.Any(nameof=>nameof.DesignationName==designation.DesignationName && nameof.DepartmentId==designation.DepartmentId);
             if(NameExists) throw new ValidationException("Designation Name already exists");
             try{
-                return Create(designation,employeeId);
+                return Create(designation);
             }
              catch(ValidationException exception)
             {
@@ -107,13 +107,13 @@ namespace A5.Data.Repository
         {
             return new{message=ValidationMessage};
         }
-        public bool UpdateDesignation(Designation designation,int employeeId)
+        public bool UpdateDesignation(Designation designation)
         {
             if(!DesignationServiceValidations.UpdateValidation(designation)) throw new ValidationException("Invalid Data");
              bool NameExists=_context.Designations!.Any(nameof=>nameof.DesignationName==designation.DesignationName && nameof.DepartmentId==designation.DepartmentId);
             if(NameExists) throw new ValidationException("Designation Name already exists");
             try{
-                return Update(designation,employeeId);
+                return Update(designation);
             }
             catch(ValidationException exception)
             {

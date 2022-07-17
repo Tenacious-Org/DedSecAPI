@@ -21,11 +21,11 @@ namespace A5.Service
                 _organisationRepository=organisationRepository;
          } 
          
-        public bool CreateOrganisation(Organisation organisation,int employeeId)
+        public bool CreateOrganisation(Organisation organisation)
         {
             if(!OrganisationServiceValidations.CreateValidation(organisation)) throw new ValidationException("Invalid data");
             try{
-                return _organisationRepository.CreateOrganisation(organisation,employeeId);
+                return _organisationRepository.CreateOrganisation(organisation);
             }
             catch(ValidationException exception)
             {
@@ -38,11 +38,11 @@ namespace A5.Service
                 throw;
             }
         }
-        public bool UpdateOrganisation(Organisation organisation,int employeeId)
+        public bool UpdateOrganisation(Organisation organisation)
         {
             if(!OrganisationServiceValidations.UpdateValidation(organisation)) throw new ValidationException("Invalid Data");
             try{
-                return _organisationRepository.UpdateOrganisation(organisation,employeeId);
+                return _organisationRepository.UpdateOrganisation(organisation);
             }
             catch(ValidationException exception)
             {
