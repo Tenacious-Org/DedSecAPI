@@ -1,12 +1,7 @@
-using System.Collections.Generic;
-using System.Linq;
 using A5.Models;
-using A5.Data.Repository;
 using A5.Service.Interfaces;
 using System.ComponentModel.DataAnnotations;
-using System.Text.RegularExpressions;
 using A5.Service.Validations;
-using A5.Data;
 using A5.Data.Repository.Interface;
 
 namespace A5.Service
@@ -23,7 +18,7 @@ namespace A5.Service
          
         public bool CreateOrganisation(Organisation organisation)
         {
-            if(!OrganisationServiceValidations.CreateValidation(organisation)) throw new ValidationException("Invalid data");
+            OrganisationServiceValidations.CreateValidation(organisation);
             try{
                 return _organisationRepository.CreateOrganisation(organisation);
             }
@@ -40,7 +35,7 @@ namespace A5.Service
         }
         public bool UpdateOrganisation(Organisation organisation)
         {
-            if(!OrganisationServiceValidations.UpdateValidation(organisation)) throw new ValidationException("Invalid Data");
+            OrganisationServiceValidations.UpdateValidation(organisation);
             try{
                 return _organisationRepository.UpdateOrganisation(organisation);
             }
@@ -55,11 +50,11 @@ namespace A5.Service
                 throw;
             }
         }
-        public Organisation? GetByOrganisation(int id)
+        public Organisation? GetOrganisationById(int id)
         {
-            if(!OrganisationServiceValidations.ValidateGetById(id)) throw new ValidationException("Invalid Data");
+            OrganisationServiceValidations.ValidateGetById(id);
             try{
-                return _organisationRepository.GetByOrganisation(id);
+                return _organisationRepository.GetOrganisationById(id);
             }
             catch(ValidationException exception)
             {
@@ -91,7 +86,7 @@ namespace A5.Service
         }
         public bool DisableOrganisation(int id,int employeeId)
         {
-            if(!OrganisationServiceValidations.DisableValidation(id)) throw new ValidationException("Invalid Data");
+            OrganisationServiceValidations.DisableValidation(id);
             
             try
             {

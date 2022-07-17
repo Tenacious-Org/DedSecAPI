@@ -22,7 +22,7 @@ namespace A5.Service
 
          public IEnumerable<Designation> GetDesignationsByDepartmentId(int id)
          {
-            if(!DesignationServiceValidations.ValidateGetByDepartment(id)) throw new ValidationException("Invalid data");
+            DesignationServiceValidations.ValidateGetByDepartment(id);
             try
             {
                 return _desginationRepository.GetDesignationsByDepartmentId(id);
@@ -54,7 +54,7 @@ namespace A5.Service
          }
           public bool CreateDesignation(Designation designation)
         {
-            if(!DesignationServiceValidations.CreateValidation(designation)) throw new ValidationException("Invalid data");
+            DesignationServiceValidations.CreateValidation(designation);
             try{
                 return _desginationRepository.CreateDesignation(designation);
             }
@@ -79,7 +79,7 @@ namespace A5.Service
         }
         public bool UpdateDesignation(Designation designation)
         {
-            if(!DesignationServiceValidations.UpdateValidation(designation)) throw new ValidationException("Invalid data"); 
+            DesignationServiceValidations.UpdateValidation(designation); 
             try{
                 return _desginationRepository.UpdateDesignation(designation);
             }
@@ -96,7 +96,7 @@ namespace A5.Service
         }
         public bool DisableDesignation(int id,int employeeId)
         {
-            if(!DesignationServiceValidations.DisableValidation(id)) throw new ValidationException("Invalid data");
+            DesignationServiceValidations.DisableValidation(id);
             try{
                 return _desginationRepository.DisableDesignation(id,employeeId);
             }
@@ -114,7 +114,7 @@ namespace A5.Service
 
         public Designation? GetDesignationById(int id)
         {
-            if(!DesignationServiceValidations.ValidateGetById(id)) throw new ValidationException("Invalid data");
+            DesignationServiceValidations.ValidateGetById(id);
              try{
                 return _desginationRepository.GetDesignationById(id);
             }

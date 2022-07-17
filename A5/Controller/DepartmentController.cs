@@ -123,7 +123,7 @@ namespace A5.Controller
             if (id <= 0) return BadRequest("Id cannot be null ");
 
             try{
-                var data = _departmentService.GetByDepartment(id);
+                var data = _departmentService.GetDepartmentById(id);
                 return Ok(data);
             }           
             catch(ValidationException exception)

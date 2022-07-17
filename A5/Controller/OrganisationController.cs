@@ -83,7 +83,7 @@ namespace A5.Controller
            if(id==0) return BadRequest("Organisation Id should not be null");
             try{
                
-                var data = _organisationService.GetByOrganisation(id);
+                var data = _organisationService.GetOrganisationById(id);
                  return Ok(data);
             }
             catch(ValidationException exception)
@@ -126,11 +126,9 @@ namespace A5.Controller
                 organisation.AddedBy=GetCurrentUserId();
                 var data=_organisationService.CreateOrganisation(organisation);
                 return  Ok(data); 
-                
             }
             catch(ValidationException exception)
             {
-
                 _logger.LogError("OrganisationController : Create(Organisation organisation) : (Error:{Message}",exception.Message);
                 return BadRequest(_organisationService.ErrorMessage($"{exception.Message}"));
             }

@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using A5.Models;
-using A5.Service;
 using System.ComponentModel.DataAnnotations;
-using System.Net;
 using A5.Service.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 
@@ -46,7 +44,7 @@ namespace A5.Controller
         [HttpPost("RaiseRequest")]
         public ActionResult RaiseRequest(Award award)
         {
-            if (award ==null) return BadRequest("Award cannot be null ");
+            if (award == null) return BadRequest("Award cannot be null ");
             try
             {
                 var data = _awardService.RaiseRequest(award, GetCurrentUserId());
@@ -61,7 +59,6 @@ namespace A5.Controller
             {
                 return Problem(exception.Message);
             }
-
         }
 
         /// <summary>
@@ -91,10 +88,11 @@ namespace A5.Controller
         [HttpPut("Approval")]
         public ActionResult Approval(Award award)
         {
-            if (award ==null) return BadRequest("award should not be null");
+            if (award == null) return BadRequest("award should not be null");
             try
             {
-                var data = _awardService.Approval(award, GetCurrentUserId());
+                award.UpdatedBy = GetCurrentUserId();
+                var data = _awardService.Approval(award);
                 return Ok(data);
             }
             catch (ValidationException exception)
@@ -131,8 +129,7 @@ namespace A5.Controller
         [AllowAnonymous]
         public ActionResult GetAwardById(int id)
         {
-            if (id <= 0)
-                return BadRequest("Id cannot be null or negative");
+            if (id <= 0)return BadRequest("Id cannot be null or negative");
 
             try
             {
@@ -216,7 +213,7 @@ namespace A5.Controller
             if (comment == null) return BadRequest("comment should not be null");
             try
             {
-                var data = _awardService.AddComment(comment,GetCurrentUserId());
+                var data = _awardService.AddComment(comment, GetCurrentUserId());
                 return Ok(data);
             }
             catch (ValidationException exception)

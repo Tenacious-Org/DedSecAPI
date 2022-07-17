@@ -5,116 +5,120 @@ using A5.Service.Validations;
 
 namespace A5.Data.Repository
 {
-    public class OrganisationRepository:EntityBaseRepository<Organisation>,IOrganisationRepository
+    public class OrganisationRepository : EntityBaseRepository<Organisation>, IOrganisationRepository
     {
         private readonly AppDbContext _context;
         private readonly ILogger<EntityBaseRepository<Organisation>> _logger;
-        public OrganisationRepository(AppDbContext context,ILogger<EntityBaseRepository<Organisation>> logger):base(context,logger)
+        public OrganisationRepository(AppDbContext context, ILogger<EntityBaseRepository<Organisation>> logger) : base(context, logger)
         {
-            _context=context;
-            _logger=logger;
+            _context = context;
+            _logger = logger;
         }
-            public bool CreateOrganisation(Organisation organisation)
+        public bool CreateOrganisation(Organisation organisation)
+        {
+
+            try
             {
-            if(!OrganisationServiceValidations.CreateValidation(organisation)) throw new ValidationException("Invalid data");
-            bool NameExists=_context.Organisations!.Any(nameof=>nameof.OrganisationName==organisation.OrganisationName);
-            if(NameExists) throw new ValidationException("Organisation Name already exists");
-            try{
+                bool NameExists = _context.Organisations!.Any(nameof => nameof.OrganisationName == organisation.OrganisationName);
+                if (NameExists) throw new ValidationException("Organisation Name already exists");
                 return Create(organisation);
             }
-            catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("OrganisationRepository: CreateOrganisation(Organisation organisation) : (Error:{Message}",exception.Message);
+                _logger.LogError("OrganisationRepository: CreateOrganisation(Organisation organisation) : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("Error: {Message}", exception.Message);
                 throw;
             }
         }
         public bool UpdateOrganisation(Organisation organisation)
         {
-            if(!OrganisationServiceValidations.UpdateValidation(organisation)) throw new ValidationException("Invalid Data");
-            bool NameExists=_context.Organisations!.Any(nameof=>nameof.OrganisationName==organisation.OrganisationName);
-            if(NameExists) throw new ValidationException("Organisation Name already exists");
-            try{
-                return Update(organisation);
-            }
-            catch(ValidationException exception)
-            {
-                _logger.LogError("OrganisationRepository: UpdateOrganisation(Organisation organisation) : (Error:{Message}",exception.Message);
-                throw;
-            }
-            catch(Exception exception)
-            {
-                _logger.LogError("Error: {Message}",exception.Message);
-                throw;
-            }
-        }
-        public Organisation? GetByOrganisation(int id)
-        {
-            if(!OrganisationServiceValidations.ValidateGetById(id)) throw new ValidationException("Invalid Data");
-            try{
-                return GetById(id);
-            }
-            catch(ValidationException exception)
-            {
-                _logger.LogError("OrganisationRepository: GetByOrganisation(int id) : (Error:{Message}",exception.Message);
-                throw;
-            }
-            catch(Exception exception)
-            {
-                _logger.LogError("Error: {Message}",exception.Message);
-                throw;
-            }
-        }
-        public bool DisableOrganisation(int id,int employeeId)
-        {
-            if(!OrganisationServiceValidations.DisableValidation(id)) throw new ValidationException("Invalid Data");
-            
+            OrganisationServiceValidations.UpdateValidation(organisation);
+            bool NameExists = _context.Organisations!.Any(nameof => nameof.OrganisationName == organisation.OrganisationName);
+            if (NameExists) throw new ValidationException("Organisation Name already exists");
             try
             {
-                return Disable(id,employeeId);
-
+                return Update(organisation);
             }
-           catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-               
-                _logger.LogError("OrganisationRepository: DisableOrganisation(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("OrganisationRepository: UpdateOrganisation(Organisation organisation) : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("Error: {Message}", exception.Message);
+                throw;
+            }
+        }
+        public Organisation? GetOrganisationById(int id)
+        {
+            OrganisationServiceValidations.ValidateGetById(id);
+            try
+            {
+                return GetById(id);
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("OrganisationRepository: GetByOrganisation(int id) : (Error:{Message}", exception.Message);
+                throw;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError("Error: {Message}", exception.Message);
+                throw;
+            }
+        }
+        public bool DisableOrganisation(int id, int employeeId)
+        {
+            OrganisationServiceValidations.DisableValidation(id);
+
+            try
+            {
+                return Disable(id, employeeId);
+
+            }
+            catch (ValidationException exception)
+            {
+
+                _logger.LogError("OrganisationRepository: DisableOrganisation(int id) : (Error:{Message}", exception.Message);
+                throw;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError("Error: {Message}", exception.Message);
                 throw;
             }
         }
         public int GetCount(int id)
         {
-             var checkEmployee = _context.Set<Employee>().Where(nameof => nameof.IsActive && nameof.OrganisationId == id).Count();
-             return checkEmployee;
+            var checkEmployee = _context.Set<Employee>().Where(nameof => nameof.IsActive && nameof.OrganisationId == id).Count();
+            return checkEmployee;
         }
-         public IEnumerable<Organisation> GetAllOrganisation()
+        public IEnumerable<Organisation> GetAllOrganisation()
         {
-            
-            try{
+
+            try
+            {
                 return GetAll();
             }
-             catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("OrganisationRepository: GetAllOrganisation() : (Error:{Message}",exception.Message);
+                _logger.LogError("OrganisationRepository: GetAllOrganisation() : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("Error: {Message}", exception.Message);
                 throw;
             }
         }
         public object ErrorMessage(string ValidationMessage)
         {
-            return new{message=ValidationMessage};
+            return new { message = ValidationMessage };
         }
     }
 }

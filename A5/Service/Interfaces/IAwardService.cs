@@ -9,8 +9,8 @@ namespace A5.Service.Interfaces
 {
     public interface IAwardService
     {
-        public bool RaiseRequest(Award award, int employeeId);
-        public bool Approval(Award award, int employeeId);
+        public bool RaiseRequest(Award award,int employeeId);
+        public bool Approval(Award award);
         public bool AddComment(Comment comment,int employeeId);
         public object GetAwardById(int id);
         public IEnumerable<object> GetAwardsList(int? pageId, int? employeeId);

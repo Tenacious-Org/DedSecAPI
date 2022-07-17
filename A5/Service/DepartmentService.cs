@@ -24,7 +24,7 @@ namespace A5.Service
          
         public bool CreateDepartment(Department department)
         {
-            if(!DepartmentServiceValidations.CreateValidation(department)) throw new ValidationException("Invalid data");
+            DepartmentServiceValidations.CreateValidation(department);
             try{
                 return _departmentRepository.CreateDepartment(department);
             }
@@ -41,7 +41,7 @@ namespace A5.Service
         }
         public bool UpdateDepartment(Department department)
         {
-            if(!DepartmentServiceValidations.UpdateValidation(department)) throw new ValidationException("Invalid Data");
+            DepartmentServiceValidations.UpdateValidation(department);
             try{
                 return _departmentRepository.UpdateDepartment(department);
             }
@@ -56,11 +56,11 @@ namespace A5.Service
                 throw;
             }
         }
-        public Department? GetByDepartment(int id)
+        public Department? GetDepartmentById(int id)
         {
-            if(!DepartmentServiceValidations.ValidateGetById(id)) throw new ValidationException("Invalid Data");
+            DepartmentServiceValidations.ValidateGetById(id);
             try{
-                return _departmentRepository.GetByDepartment(id);
+                return _departmentRepository.GetDepartmentById(id);
             }
             catch(ValidationException exception)
             {
@@ -75,7 +75,7 @@ namespace A5.Service
         }
         public bool DisableDepartment(int id,int employeeId)
         {
-            if(!DepartmentServiceValidations.DisableValidation(id)) throw new ValidationException("Invalid Data");
+            DepartmentServiceValidations.DisableValidation(id);
             
             try
             {
@@ -100,7 +100,7 @@ namespace A5.Service
         }
         public IEnumerable<Department> GetDepartmentsByOrganisationId(int id)
          { 
-            if(!DepartmentServiceValidations.ValidateGetByOrganisation(id)) throw new ValidationException("Invalid data");
+            DepartmentServiceValidations.ValidateGetByOrganisation(id);
             try
             {
                return _departmentRepository.GetDepartmentsByOrganisationId(id);

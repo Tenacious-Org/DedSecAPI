@@ -18,7 +18,7 @@ namespace A5.Data.Repository
 
          public IEnumerable<Designation> GetDesignationsByDepartmentId(int id)
          {
-             if(!DesignationServiceValidations.ValidateGetByDepartment(id)) throw new ValidationException("Invalid data");
+             DesignationServiceValidations.ValidateGetByDepartment(id);
             try
             {
                 var data =  _context.Set<Designation>().Where(nameof =>nameof.DepartmentId == id && nameof.IsActive == true).ToList();
@@ -64,7 +64,7 @@ namespace A5.Data.Repository
         }
         public Designation? GetDesignationById(int id)
         {
-            if(!DepartmentServiceValidations.ValidateGetById(id)) throw new ValidationException("Invalid Data");
+            DepartmentServiceValidations.ValidateGetById(id);
             try{
                 return GetById(id);
             }
@@ -81,7 +81,7 @@ namespace A5.Data.Repository
         }
           public bool CreateDesignation(Designation designation)
         {
-            if(!DesignationServiceValidations.CreateValidation(designation)) throw new ValidationException("Invalid data");
+            DesignationServiceValidations.CreateValidation(designation);
             bool NameExists=_context.Designations!.Any(nameof=>nameof.DesignationName==designation.DesignationName && nameof.DepartmentId==designation.DepartmentId);
             if(NameExists) throw new ValidationException("Designation Name already exists");
             try{
@@ -109,7 +109,7 @@ namespace A5.Data.Repository
         }
         public bool UpdateDesignation(Designation designation)
         {
-            if(!DesignationServiceValidations.UpdateValidation(designation)) throw new ValidationException("Invalid Data");
+            DesignationServiceValidations.UpdateValidation(designation);
              bool NameExists=_context.Designations!.Any(nameof=>nameof.DesignationName==designation.DesignationName && nameof.DepartmentId==designation.DepartmentId);
             if(NameExists) throw new ValidationException("Designation Name already exists");
             try{
@@ -128,7 +128,7 @@ namespace A5.Data.Repository
         }
         public bool DisableDesignation(int id,int employeeId)
         {
-            if(!DesignationServiceValidations.DisableValidation(id)) throw new ValidationException("Invalid data");
+            DesignationServiceValidations.DisableValidation(id);
             try{
                 return Disable(id,employeeId);
             }

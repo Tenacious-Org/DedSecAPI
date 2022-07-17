@@ -17,7 +17,7 @@ namespace A5.Data.Repository
         }
          public bool CreateDepartment(Department department)
         {
-            if(!DepartmentServiceValidations.CreateValidation(department)) throw new ValidationException("Invalid data");
+            DepartmentServiceValidations.CreateValidation(department);
             bool NameExists=_context.Departments!.Any(nameof=>nameof.DepartmentName==department.DepartmentName && nameof.OrganisationId==department.OrganisationId);
             if(NameExists) throw new ValidationException("Department Name already exists");
             try{
@@ -36,7 +36,7 @@ namespace A5.Data.Repository
         }
         public bool UpdateDepartment(Department department)
         {
-            if(!DepartmentServiceValidations.UpdateValidation(department)) throw new ValidationException("Invalid Data");
+            DepartmentServiceValidations.UpdateValidation(department);
              bool NameExists=_context.Departments!.Any(nameof=>nameof.DepartmentName==department.DepartmentName  && nameof.OrganisationId==department.OrganisationId);
             if(NameExists) throw new ValidationException("Department Name already exists");
             try{
@@ -53,9 +53,9 @@ namespace A5.Data.Repository
                 throw;
             }
         }
-        public Department? GetByDepartment(int id)
+        public Department? GetDepartmentById(int id)
         {
-            if(!DepartmentServiceValidations.ValidateGetById(id)) throw new ValidationException("Invalid Data");
+            DepartmentServiceValidations.ValidateGetById(id);
             try{
                 return GetById(id);
             }
@@ -72,7 +72,7 @@ namespace A5.Data.Repository
         }
         public bool DisableDepartment(int id,int employeeId)
         {
-            if(!DepartmentServiceValidations.DisableValidation(id)) throw new ValidationException("Invalid Data");
+            DepartmentServiceValidations.DisableValidation(id);
             
             try
             {
@@ -116,7 +116,7 @@ namespace A5.Data.Repository
         }
         public IEnumerable<Department> GetDepartmentsByOrganisationId(int id)
          { 
-            if(!DepartmentServiceValidations.ValidateGetByOrganisation(id)) throw new ValidationException("Invalid data");
+            DepartmentServiceValidations.ValidateGetByOrganisation(id);
             try
             {
                 var organisationDetails = _context.Set<Department>().Where(nameof => nameof.OrganisationId == id && nameof.IsActive == true).ToList();

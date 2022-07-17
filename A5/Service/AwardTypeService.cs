@@ -40,7 +40,7 @@ namespace A5.Service
          public bool UpdateAwardType(AwardType awardType)
         {
           
-            if(!AwardTypeValidations.UpdateValidation(awardType)) throw new ValidationException("Invalid data");
+            AwardTypeValidations.UpdateValidation(awardType);
             try{
                 awardType.Image = System.Convert.FromBase64String(awardType.ImageString!);
                 return _awardTypeRepository.UpdateAwardType(awardType);
@@ -58,7 +58,7 @@ namespace A5.Service
         }
         public bool DisableAwardType(int id,int employeeId)
         {
-            if(!AwardTypeValidations.DisableValidation(id)) throw new ValidationException("Invalid data");
+            AwardTypeValidations.DisableValidation(id);
             try{
                 return _awardTypeRepository.DisableAwardType(id,employeeId);
             }
@@ -94,7 +94,7 @@ namespace A5.Service
 
          public AwardType? GetAwardTypeById(int id)
         {
-            if(!AwardTypeValidations.ValidateGetById(id)) throw new ValidationException("Invalid data");
+            AwardTypeValidations.ValidateGetById(id);
             try{
                 return _awardTypeRepository.GetAwardTypeById(id);
             }

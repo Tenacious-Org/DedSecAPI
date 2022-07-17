@@ -10,17 +10,17 @@ namespace A5.Service
     {
         private readonly AwardRepository _award;
         private readonly ILogger<IAwardService> _logger;
-        public AwardService(AwardRepository awardRepository, ILogger<IAwardService> logger)
+        public AwardService(AwardRepository awardRepository,ILogger<IAwardService> logger)
         {
             _award = awardRepository;
             _logger = logger;
         }
-        public bool RaiseRequest(Award award, int employeeId)
+        public bool RaiseRequest(Award award,int employeeId)
         {
-            if (!AwardServiceValidations.RequestValidation(award, employeeId)) throw new ValidationException("Invalid data");
+            AwardServiceValidations.RequestValidation(award);
             try
             {
-                return _award.RaiseAwardRequest(award, employeeId);
+                return _award.RaiseAwardRequest(award,employeeId);
             }
             catch (ValidationException exception)
             {
@@ -34,15 +34,15 @@ namespace A5.Service
             }
         }
 
-        public bool Approval(Award award, int employeeId)
+        public bool Approval(Award award)
         {
             try
             {
-                return _award.ApproveRequest(award, employeeId);
+                return _award.ApproveRequest(award);
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardService: Approval(Award award,int id) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardService: Approval(Award award) : (Error:{Message}", exception.Message);
                 throw;
             }
             catch (Exception exception)
@@ -53,7 +53,6 @@ namespace A5.Service
         }
         public object GetAwardById(int id)
         {
-            if (!AwardServiceValidations.ValidateGetAwardById(id)) throw new ValidationException("Invalid data");
             try
             {
                 var award = _award.GetAwardById(id);
@@ -72,7 +71,7 @@ namespace A5.Service
         }
         public bool AddComment(Comment comment, int employeeId)
         {
-            if (!AwardServiceValidations.ValidateAddComment(comment)) throw new ValidationException("Invalid data");
+            AwardServiceValidations.ValidateAddComment(comment);
             try
             {
                 return _award.AddComments(comment, employeeId);
@@ -92,7 +91,7 @@ namespace A5.Service
         {
             try
             {
-                var awards = _award.GetAllAwardsList(pageId, employeeId);
+                var awards = _award.GetAllAwardsList(pageId,employeeId );
                 return awards.Select(award => GetAwardObject(award));
             }
             catch (ValidationException exception)
@@ -108,7 +107,7 @@ namespace A5.Service
         }
         public IEnumerable<object> GetComments(int awardId)
         {
-            if (!AwardServiceValidations.ValidateGetComments(awardId)) throw new ValidationException("Invalid data");
+            AwardServiceValidations.ValidateGetComments(awardId);
             try
             {
                 var comments = _award.GetComments(awardId);

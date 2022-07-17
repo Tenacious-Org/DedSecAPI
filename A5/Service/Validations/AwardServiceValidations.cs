@@ -6,9 +6,8 @@ namespace A5.Service.Validations
 {
     public static class AwardServiceValidations
     {
-        public static bool RequestValidation(Award award,int id)
+        public static bool RequestValidation(Award award)
         {
-            if(award==null) throw new ValidationException("Award should not be null");
             if(award.AwardeeId==0) throw new ValidationException("Awardee not found");
             if(award.AwardTypeId==0) throw new ValidationException("Award Type Should not be null");
             if(string.IsNullOrWhiteSpace(award.Reason)) throw new ValidationException("Reason for award should not be null");
@@ -20,11 +19,7 @@ namespace A5.Service.Validations
             if(employeeId==0) throw new ValidationException("Id is null.Login to get the List of Requested Awards");
             else return true;
         }
-        public static bool ValidateGetAwardById(int id)
-        {
-            if(id==0) throw new ValidationException("No Award exists in that ID.Enter the correct id");
-            else return true;
-        }
+
         public static bool ValidateAddComment(Comment comment)
         {
             if(comment==null) throw new ValidationException("Comment hshould not be null");

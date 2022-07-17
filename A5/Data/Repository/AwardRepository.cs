@@ -12,93 +12,96 @@ using A5.Service;
 
 namespace A5.Data.Repository
 {
-   public class AwardRepository :IAwardRepository
-   {
-     private readonly AppDbContext _context;
+    public class AwardRepository : IAwardRepository
+    {
+        private readonly AppDbContext _context;
         private readonly IEmployeeRepository _employeeRepository;
-        private readonly  ILogger<IAwardService> _logger;
+        private readonly ILogger<IAwardService> _logger;
         private readonly MailService _mail;
 
-        public AwardRepository(AppDbContext context, IEmployeeRepository employeeRepository,ILogger<IAwardService> logger, MailService mail)
+        public AwardRepository(AppDbContext context, IEmployeeRepository employeeRepository, ILogger<IAwardService> logger, MailService mail)
         {
-            _context=context;
+            _context = context;
             _employeeRepository = employeeRepository;
-            _logger=logger;
+            _logger = logger;
             _mail = mail;
-           
+
         }
-    public bool RaiseAwardRequest(Award award,int id)
-    {
-        if(!AwardServiceValidations.RequestValidation(award,id)) throw new ValidationException("Invalid data");
-        try{
-            var employee = _employeeRepository.GetEmployeeById(id);
+        public bool RaiseAwardRequest(Award award, int employeeId)
+        {
+            try
+            {
+                var employee = _employeeRepository.GetEmployeeById(employeeId);
+                if (employee == null) throw new ValidationException("Requester Details Not Found");
                 _context.Set<Award>().Add(award);
-                award.RequesterId=employee!.Id;
+                award.RequesterId = employee!.Id;
                 award.ApproverId = employee.ReportingPersonId;
-                award.HRId= employee.HRId;
-                award.StatusId=1;
-                award.AddedBy=employee.Id;
-                award.AddedOn=DateTime.Now;
+                award.HRId = employee.HRId;
+                award.StatusId = 1;
+                award.AddedBy = employeeId;
+                award.AddedOn = DateTime.Now;
                 _context.SaveChanges();
-                if(award.StatusId == 1)
+                if (award.StatusId == 1)
                 {
                     var awardee = GetAwardById(award.Id);
                     _mail?.RequesterAsync(awardee);
                 }
                 return true;
 
-        }
-        catch(ValidationException exception)
-        {
-                _logger.LogError("AwardRepository : RaiseAwardRequest(Award award,int id) : (Error:{Message}",exception.Message);
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("AwardRepository : RaiseAwardRequest(Award award,int id) : (Error:{Message}", exception.Message);
                 throw;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError("Error: {Message}", exception.Message);
+                return false;
+            }
         }
-        catch (Exception exception){
-            _logger.LogError("Error: {Message}",exception.Message);
-            return false;
-        }
-    }
-    public bool ApproveRequest(Award award,int id)
-    {
-        if(award.StatusId == 4)
+        public bool ApproveRequest(Award award)
         {
-        bool IsIdAlreadyExists=_context.Awards!.Any(nameof=>nameof.CouponCode==award.CouponCode);
-        if(IsIdAlreadyExists) throw new ValidationException("CouponCode already redeemed");
-        }
-        try{
-                _context.Set<Award>().Update(award);
-                award.UpdatedBy=id;
-                award.UpdatedOn=DateTime.Now;
-                _context.SaveChanges();
-                if(award.StatusId == 4)
+            try
+            {
+                if (award.StatusId == 4)
                 {
-                    var awardee = GetAwardById(award.Id); 
-                    _mail?.ExampleAsync(awardee);
-                    
+                    bool IsIdAlreadyExists = _context.Awards!.Any(nameof => nameof.CouponCode == award.CouponCode);
+                    if (IsIdAlreadyExists) throw new ValidationException("CouponCode already redeemed");
                 }
-                else if(award.StatusId == 3)
+                _context.Set<Award>().Update(award);
+                award.UpdatedOn = DateTime.Now;
+                _context.SaveChanges();
+                if (award.StatusId == 4)
+                {
+                    var awardee = GetAwardById(award.Id);
+                    _mail?.ExampleAsync(awardee);
+
+                }
+                else if (award.StatusId == 3)
                 {
                     var awardee = GetAwardById(award.Id);
                     _mail?.RejectedAsync(awardee);
                 }
-                return true;  
-       }
-       catch(ValidationException exception)
-        {
-                _logger.LogError("AwardRepository : ApproveRequest(Award award,int id) : (Error:{Message}",exception.Message);
+                return true;
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("AwardRepository : ApproveRequest(Award award,int id) : (Error:{Message}", exception.Message);
                 throw;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError("Error: {Message}", exception.Message);
+                return false;
+            }
         }
-        catch (Exception exception){
-            _logger.LogError("Error: {Message}",exception.Message);
-            return false;
-        }
-    }
-   
-     public Award? GetAwardById(int id)
+
+        public Award? GetAwardById(int id)
         {
-            if(!AwardServiceValidations.ValidateGetAwardById(id)) throw new ValidationException("Invalid data");
-            try{
-                var award=_context.Set<Award>()
+            try
+            {
+                var award = _context.Set<Award>()
                     .Include("Awardee")
                     .Include("Awardee.Designation")
                     .Include("Awardee.Designation.Department")
@@ -108,63 +111,67 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .FirstOrDefault(nameof=> nameof.Id == id);
-                return award;
+                    .FirstOrDefault(nameof => nameof.Id == id);
+                return award != null ? award : throw new ValidationException($"There is no matching records found for award Id -{id} , enter the correct award Id");
             }
-            catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                  _logger.LogError("AwardRepository : GetAwardById(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardRepository : GetAwardById(int id) : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch (Exception exception){
-              _logger.LogError("Error: {Message}",exception.Message);
-              throw;
+            catch (Exception exception)
+            {
+                _logger.LogError("Error: {Message}", exception.Message);
+                throw;
             }
         }
-        public bool AddComments(Comment comment,int employeeId)
+        public bool AddComments(Comment comment, int employeeId)
         {
-            if(!AwardServiceValidations.ValidateAddComment(comment)) throw new ValidationException("Invalid data");
-            try{
-                  _context.Set<Comment>().Add(comment);
-                  comment.EmployeeId=employeeId;
-                  comment.CommentedOn=DateTime.Now;
-                  _context.SaveChanges();
-                  return true;
-            }
-             catch(ValidationException exception)
+            AwardServiceValidations.ValidateAddComment(comment);
+            try
             {
-                _logger.LogError("AwardRepository : AddComments(Comment comment) : (Error:{Message}",exception.Message);
+                _context.Set<Comment>().Add(comment);
+                comment.EmployeeId = employeeId;
+                comment.CommentedOn = DateTime.Now;
+                _context.SaveChanges();
+                return true;
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("AwardRepository : AddComments(Comment comment) : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch (Exception exception){
-              _logger.LogError("Error: {Message}",exception.Message);
-              return false;
+            catch (Exception exception)
+            {
+                _logger.LogError("Error: {Message}", exception.Message);
+                return false;
             }
         }
-        
-         public IEnumerable<Comment> GetComments(int awardId)
+
+        public IEnumerable<Comment> GetComments(int awardId)
         {
-            if(!AwardServiceValidations.ValidateGetComments(awardId)) throw new ValidationException("Invalid data");
-           try
-           {
-               var comments= _context.Set<Comment>()
-                    .Include("Employees")
-                    .Include("Awards")
-                    .Where(nameof=>nameof.AwardId==awardId)
-                    .ToList();
-               return comments;
-           }
-            catch(ValidationException exception)
+            AwardServiceValidations.ValidateGetComments(awardId);
+            try
             {
-                _logger.LogError("AwardRepository : GetComments(Comment comment) : (Error:{Message}",exception.Message);
+                var comments = _context.Set<Comment>()
+                     .Include("Employees")
+                     .Include("Awards")
+                     .Where(nameof => nameof.AwardId == awardId)
+                     .ToList();
+                return comments;
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("AwardRepository : GetComments(Comment comment) : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch (Exception exception){
-              _logger.LogError("Error: {Message}",exception.Message);
-              throw;
+            catch (Exception exception)
+            {
+                _logger.LogError("Error: {Message}", exception.Message);
+                throw;
             }
         }
-          public IEnumerable<Award> GetAllAwardsList(int ? pageId,int ? employeeId)
+        public IEnumerable<Award> GetAllAwardsList(int? pageId, int? employeeId)
         {
             try
             {
@@ -179,26 +186,31 @@ namespace A5.Data.Repository
                     .Include("AwardType")
                     .Include("Status")
                     .ToList();
-                 if(pageId==1 && employeeId!=0) 
-                    return award =award.Where(nameof =>nameof.StatusId == 4 && nameof.AwardeeId==employeeId).ToList();
-                else if(pageId==2 && employeeId!=0) 
-                    return award =award.Where(nameof => nameof.RequesterId == employeeId).OrderBy(nameof => nameof.StatusId).ToList();
-                else if(pageId==3 && employeeId!=0) 
-                    return award =award.Where(nameof => nameof.ApproverId == employeeId).OrderBy(nameof => nameof.StatusId).ToList();
-                else if(pageId==4 && employeeId!=0) 
-                    return award =award.Where(nameof => nameof.HRId == employeeId && (nameof.StatusId == 2 || nameof.StatusId == 4)).OrderBy(nameof => nameof.StatusId).ToList();
+                if (pageId == 0 && employeeId == 0)
+                    award = award.Where(nameof => nameof.StatusId == 4).ToList();
+                else if (pageId == 1 && employeeId != 0)
+                    award = award.Where(nameof => nameof.StatusId == 4 && nameof.AwardeeId == employeeId).ToList();
+                else if (pageId == 2 && employeeId != 0)
+                    award = award.Where(nameof => nameof.RequesterId == employeeId).OrderBy(nameof => nameof.StatusId).ToList();
+                else if (pageId == 3 && employeeId != 0)
+                    award = award.Where(nameof => nameof.ApproverId == employeeId).OrderBy(nameof => nameof.StatusId).ToList();
+                else if (pageId == 4 && employeeId != 0)
+                    award = award.Where(nameof => nameof.HRId == employeeId && (nameof.StatusId == 2 || nameof.StatusId == 4)).OrderBy(nameof => nameof.StatusId).ToList();
                 else
-                    return award =award.Where(nameof =>nameof.StatusId == 4).ToList();
+                    throw new ValidationException("enter correct pageId and EmployeeId ");
+
+                return award != null ? award : throw new ValidationException("No records Found");
 
             }
-              catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllAwardsList() : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardRepository : GetAllAwardsList() : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch (Exception exception){
-              _logger.LogError("Error: {Message}",exception.Message);
-              throw;
+            catch (Exception exception)
+            {
+                _logger.LogError("Error: {Message}", exception.Message);
+                throw;
             }
         }
         public IEnumerable<Award> GetAllAwardees()
@@ -218,15 +230,16 @@ namespace A5.Data.Repository
                     .Where(nameof => nameof.StatusId == 4)
                     .ToList();
 
-                
+
                 return award;
             }
-            catch (Exception exception){
-              _logger.LogError("Error: {Message}",exception.Message);
-              throw;
+            catch (Exception exception)
+            {
+                _logger.LogError("Error: {Message}", exception.Message);
+                throw;
             }
         }
-        
+
         public IEnumerable<Award> GetAllbyOrgwise(int id)
         {
             try
@@ -245,14 +258,15 @@ namespace A5.Data.Repository
                     .ToList();
                 return award;
             }
-             catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch (Exception exception){
-              _logger.LogError("Error: {Message}",exception.Message);
-              throw;
+            catch (Exception exception)
+            {
+                _logger.LogError("Error: {Message}", exception.Message);
+                throw;
             }
         }
 
@@ -274,14 +288,15 @@ namespace A5.Data.Repository
                     .ToList();
                 return award;
             }
-             catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch (Exception exception){
-              _logger.LogError("Error: {Message}",exception.Message);
-              throw;
+            catch (Exception exception)
+            {
+                _logger.LogError("Error: {Message}", exception.Message);
+                throw;
             }
         }
 
@@ -331,14 +346,15 @@ namespace A5.Data.Repository
                     .ToList();
                 return award;
             }
-             catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch (Exception exception){
-              _logger.LogError("Error: {Message}",exception.Message);
-              throw;
+            catch (Exception exception)
+            {
+                _logger.LogError("Error: {Message}", exception.Message);
+                throw;
             }
         }
 
@@ -363,14 +379,15 @@ namespace A5.Data.Repository
                     .ToList();
                 return award;
             }
-             catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch (Exception exception){
-              _logger.LogError("Error: {Message}",exception.Message);
-              throw;
+            catch (Exception exception)
+            {
+                _logger.LogError("Error: {Message}", exception.Message);
+                throw;
             }
         }
 
@@ -553,14 +570,15 @@ namespace A5.Data.Repository
                     .ToList();
                 return award;
             }
-             catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch (Exception exception){
-              _logger.LogError("Error: {Message}",exception.Message);
-              throw;
+            catch (Exception exception)
+            {
+                _logger.LogError("Error: {Message}", exception.Message);
+                throw;
             }
         }
 
@@ -578,22 +596,23 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof => nameof.Awardee.Designation.Department.Organisation.Id == orgid 
-                                  && nameof.Awardee.Designation.Department.Id == deptid 
-                                  && nameof.AwardTypeId == awdid 
+                    .Where(nameof => nameof.Awardee.Designation.Department.Organisation.Id == orgid
+                                  && nameof.Awardee.Designation.Department.Id == deptid
+                                  && nameof.AwardTypeId == awdid
                                   && nameof.StatusId == 4
                                   && (nameof.UpdatedOn >= start.Date && nameof.UpdatedOn <= end.Date))
                     .ToList();
                 return award;
             }
-             catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch (Exception exception){
-              _logger.LogError("Error: {Message}",exception.Message);
-              throw;
+            catch (Exception exception)
+            {
+                _logger.LogError("Error: {Message}", exception.Message);
+                throw;
             }
         }
 

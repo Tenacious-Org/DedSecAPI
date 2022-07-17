@@ -5,7 +5,7 @@ namespace A5.Data.Repository.Interface
     {
          bool CreateOrganisation(Organisation organisation);
         bool UpdateOrganisation(Organisation organisation);
-        Organisation? GetByOrganisation(int id);
+        Organisation? GetOrganisationById(int id);
         bool DisableOrganisation(int id,int employeeId);
         int GetCount(int id);
         public IEnumerable<Organisation> GetAllOrganisation();

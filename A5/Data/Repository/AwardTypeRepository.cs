@@ -18,7 +18,7 @@ namespace A5.Data.Repository
           public bool CreateAwardType(AwardType awardType)
         {
            
-            if(!AwardTypeValidations.CreateValidation(awardType)) throw new ValidationException("Invalid data");
+            AwardTypeValidations.CreateValidation(awardType);
             bool NameExists=_context.AwardTypes!.Any(nameof=>nameof.AwardName==awardType.AwardName);
             if(NameExists) throw new ValidationException("Award Name already exists");
             try{
@@ -39,7 +39,7 @@ namespace A5.Data.Repository
          public bool UpdateAwardType(AwardType awardType)
         {
           
-            if(!AwardTypeValidations.UpdateValidation(awardType)) throw new ValidationException("Invalid data");
+            AwardTypeValidations.UpdateValidation(awardType);
             try{
                 return Update(awardType);
             }
@@ -56,7 +56,7 @@ namespace A5.Data.Repository
         }
         public bool DisableAwardType(int id,int employeeId)
         {
-            if(!AwardTypeValidations.DisableValidation(id)) throw new ValidationException("Invalid data");
+            AwardTypeValidations.DisableValidation(id);
             try{
                 return Disable(id,employeeId);
             }
@@ -92,7 +92,7 @@ namespace A5.Data.Repository
 
          public AwardType? GetAwardTypeById(int id)
         {
-           if(!AwardTypeValidations.ValidateGetById(id)) throw new ValidationException("Invalid data");
+           AwardTypeValidations.ValidateGetById(id);
             try{
                 return GetById(id);
             }
