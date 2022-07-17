@@ -173,6 +173,20 @@ namespace A5.Controller
             }
         }
 
+        [HttpGet("GetAllFilteredOrganisationandToDateWise")]
+        public ActionResult  GetAllFilteredOrganisationandToDate(int orgid, DateTime end)
+        {
+            try
+            {
+                var data = _dashboardService. GetAllFilteredOrganisationandToDate(orgid, end);
+                return Ok(data);
+            }
+            catch (Exception exception)
+            {
+                return Problem(exception.Message);
+            }
+        }
+
         [HttpGet("GetAllFilteredOrgDepandFromDateWise")]
         public ActionResult  GetAllFilteredOrgDepandFromDate(int orgid, int deptid, DateTime start)
         {
@@ -200,6 +214,7 @@ namespace A5.Controller
                 return Problem(exception.Message);
             }
         }
+
 
         [HttpGet("GetAllFilteredOrgDepandToDateWise")]
         public ActionResult  GetAllFilteredOrgDepandToDate(int orgid, int deptid, DateTime end)
@@ -229,12 +244,26 @@ namespace A5.Controller
             }
         }
 
-        [HttpGet("GetAllFilteredOrganisationandToDateWise")]
-        public ActionResult  GetAllFilteredOrganisationandToDate(int orgid, DateTime end)
+        [HttpGet("GetAllOrgDepandDateWise")]
+        public ActionResult  GetAllOrgDepandDate(int orgid, int deptid, DateTime start, DateTime end)
         {
             try
             {
-                var data = _dashboardService. GetAllFilteredOrganisationandToDate(orgid, end);
+                var data = _dashboardService.GetAllOrgDeptDateWise(orgid, deptid, start, end);
+                return Ok(data);
+            }
+            catch (Exception exception)
+            {
+                return Problem(exception.Message);
+            }
+        }
+
+        [HttpGet("GetAllOrgAwdandDateWise")]
+        public ActionResult  GetAllOrgAwdandDate(int orgid, int awdid, DateTime start, DateTime end)
+        {
+            try
+            {
+                var data = _dashboardService.GetAllOrgAwdDateWise(orgid, awdid, start, end);
                 return Ok(data);
             }
             catch (Exception exception)
