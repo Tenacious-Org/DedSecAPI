@@ -39,7 +39,6 @@ namespace A5.Service.Validations
         public static bool DisableValidation(int id)
         {
             Employee employee = new Employee();
-            if(id==0) throw new ValidationException("Employee Id should not be null.");
             if(employee.IsActive == false) throw new ValidationException("Employee is already disabled");
             if(employee.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
