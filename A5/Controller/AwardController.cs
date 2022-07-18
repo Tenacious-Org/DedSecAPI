@@ -229,14 +229,14 @@ namespace A5.Controller
         }
 
         /// <summary>
-        ///  This Method is used to
+        ///  This Method is used to get comments of Specific awardee
         /// </summary>
         /// <remarks>
         /// Sample request:
         ///
-        ///     GET /
+        ///     GET / GetComments
         ///     {
-        ///        sample i/p o/p have to write here
+        ///        "awardId" = "1" 
         ///     }
         ///
         /// </remarks>
@@ -244,7 +244,7 @@ namespace A5.Controller
         /// <response code="400">If the item is null</response> 
         /// <param name="awardId">String</param>
         /// <returns>
-        ///Return 
+        ///Return the comments and some details of awardee 
         /// </returns>
 
         [HttpGet("GetComments")]

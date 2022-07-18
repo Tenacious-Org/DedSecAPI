@@ -22,7 +22,7 @@ namespace A5.Service
            if(id<=0) throw new ValidationException("HR id should not be null or negative");
             try
             {
-                return _employeeRepository.GetByHR(id);
+                return _employeeRepository.GetEmployeeByDepartmentId(id);
             }
             catch (ValidationException exception)
             {
@@ -41,7 +41,7 @@ namespace A5.Service
             if(id<=0) throw new ValidationException("Reporting person id should not be null or negative");
             try
             {
-                return _employeeRepository.GetByReportingPerson(id);
+                return _employeeRepository.GetReportingPersonByDepartmentId(id);
             }
             catch (ValidationException exception)
             {
@@ -330,6 +330,8 @@ namespace A5.Service
                 updatedOn = employee?.UpdatedOn
             };
         }
+        
+        //gets employee count by using employee id
         public int GetEmployeeCount(int id)
         {
             if(id<=0) throw new ValidationException("Employee Id should not be null or negative");

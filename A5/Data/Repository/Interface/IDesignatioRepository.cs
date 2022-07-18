@@ -7,7 +7,7 @@ namespace A5.Data.Repository.Interface
         public IEnumerable<Designation> GetDesignationsByDepartmentId(int id);
         public IEnumerable<Designation> GetAllDesignation();
         public bool CreateDesignation(Designation designation);
-        public int GetCount(int id);
+        public int GetCount(int designationId);
         public bool UpdateDesignation(Designation designation);
         public bool DisableDesignation(int id,int employeeId);
         public Designation? GetDesignationById(int id);

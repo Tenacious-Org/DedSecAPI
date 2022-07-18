@@ -49,13 +49,9 @@ namespace A5.Controller
                 var data = _designationService.GetAllDesignations();
                 return Ok(data);
             }
-            catch (ValidationException exception)
-            {
-                _logger.LogError("DesignationController : GetAllDesignation() : (Error : {Message})", exception.Message);
-                return BadRequest(_designationService.ErrorMessage(exception.Message));
-            }
             catch (Exception exception)
             {
+                 _logger.LogError("DesignationController : GetAllDesignation() : (Error : {Message})", exception.Message);
                 return Problem(exception.Message);
             }
 
@@ -85,7 +81,7 @@ namespace A5.Controller
         [HttpGet("GetDesignationsByDepartmentId")]
         public ActionResult GetDesignationsByDepartmentId(int id)
         {
-            if (id <= 0) return BadRequest("Id cannot be null ");
+            if (id <= 0) return BadRequest("Id must be greater than zero ");
             try
             {
                 var data = _designationService.GetDesignationsByDepartmentId(id);
@@ -98,6 +94,7 @@ namespace A5.Controller
             }
             catch (Exception exception)
             {
+                _logger.LogError("DesignationController : GetDesignationsByDepartmentId(int id) : (Error : Message})", exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -124,7 +121,7 @@ namespace A5.Controller
         [HttpGet("GetById")]
         public ActionResult GetByDesignationId( int id)
         {
-            if (id <= 0) return BadRequest("Id cannot be null ");
+            if (id <= 0) return BadRequest("Designation Id must be greater than zero ");
             try
             {
                 var data = _designationService.GetDesignationById(id);
@@ -137,6 +134,7 @@ namespace A5.Controller
             }
             catch (Exception exception)
             {
+                _logger.LogError("DesignationController : GetByDesignationId(int id) : (Error : {Message})", exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -178,6 +176,7 @@ namespace A5.Controller
             }
             catch (Exception exception)
             {
+                _logger.LogError("DesignationController : Create(Designation designation) : (Error : {Message})", exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -213,11 +212,12 @@ namespace A5.Controller
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("Designation Controller : Update(Designation designation,int id) : (Error : {Message})", exception.Message);
+                _logger.LogError("Designation Controller : Update(Designation designation) : (Error : {Message})", exception.Message);
                 return BadRequest(_designationService.ErrorMessage(exception.Message));
             }
             catch (Exception exception)
             {
+                _logger.LogError("Designation Controller : Update(Designation designation) : (Error : {Message})", exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -244,7 +244,7 @@ namespace A5.Controller
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
         {
-            if (id <= 0) return BadRequest("Id cannot be null ");
+            if (id <= 0) return BadRequest("Designation Id must be greater than zero");
             try
             {
 
@@ -260,13 +260,9 @@ namespace A5.Controller
                 }
 
             }
-            catch (ValidationException exception)
-            {
-                _logger.LogError("Designation Controller : Disable(int id) : (Error : {Message})", exception.Message);
-                return BadRequest(_designationService.ErrorMessage(exception.Message));
-            }
             catch (Exception exception)
             {
+                 _logger.LogError("Designation Controller : Disable(int id) : (Error : {Message})", exception.Message);
                 return Problem(exception.Message);
             }
         }

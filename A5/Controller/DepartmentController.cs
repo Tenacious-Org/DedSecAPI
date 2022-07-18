@@ -108,27 +108,27 @@ namespace A5.Controller
         /// </remarks>
         /// <response code="201">Returns the newly created item</response>
         /// <response code="400">If the item is null</response> 
-        /// <param name="id">String</param>
+        /// <param name="departmentId">String</param>
         /// <returns>
         ///Returns signle Department by id
         /// </returns>
 
         [HttpGet("GetById")]
-        public ActionResult GetByDepartmentId( int id)
+        public ActionResult GetByDepartmentId( int departmentId)
         {
-            if (id <= 0) return BadRequest("Id cannot be null or negative");
+            if (departmentId <= 0) return BadRequest("Id must be greater than zero");
             try{
-                var data = _departmentService.GetDepartmentById(id);
+                var data = _departmentService.GetDepartmentById(departmentId);
                 return Ok(data);
             }           
             catch(ValidationException exception)
             {
-                 _logger.LogError("DepartmentController : GetByDepartmentId({id}) : (Error: {exception.Message})",id,exception.Message);
+                 _logger.LogError("DepartmentController : GetByDepartmentId({departmentId}) : (Error: {exception.Message})",departmentId,exception.Message);
                 return BadRequest(_departmentService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
-                  _logger.LogError("DepartmentController : GetByDepartmentId({id}) : (Error: {exception.Message})",id,exception.Message);
+                  _logger.LogError("DepartmentController : GetByDepartmentId({departmentId}) : (Error: {exception.Message})",departmentId,exception.Message);
                 return Problem(exception.Message);
             }
         }

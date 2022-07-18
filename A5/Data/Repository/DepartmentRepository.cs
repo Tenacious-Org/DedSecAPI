@@ -51,7 +51,7 @@ namespace A5.Data.Repository
         //Get department using Department Id
         public Department? GetDepartmentById(int id)
         {
-            if(id<=0) throw new ValidationException("Department Id should not be null or negative");
+            if(id<=0) throw new ValidationException("Department Id must be greater than zero");
             try
             {
                 return GetById(id);

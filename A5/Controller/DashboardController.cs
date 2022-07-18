@@ -31,7 +31,7 @@ namespace A5.Controller
         {
             try
             {
-                var data = _dashboardService.GetAllAwardees();
+                var data = _dashboardService.GetAllAwards();
                 return Ok(data);
             }
             catch (Exception exception)
@@ -47,7 +47,7 @@ namespace A5.Controller
         {
             try
             {
-                var data = _dashboardService.GetAllByOrgwise(id);
+                var data = _dashboardService.GetAllByOrganisationwise(id);
                 return Ok(data);
             }
             catch (ValidationException exception)
@@ -80,7 +80,7 @@ namespace A5.Controller
         {
             try
             {
-                var data = _dashboardService.GetAllOrgandAward(orgid, awdid);
+                var data = _dashboardService.GetAllOrganisationandAward(orgid, awdid);
                 return Ok(data);
             }
             catch (Exception exception)
@@ -90,11 +90,11 @@ namespace A5.Controller
         }
 
         [HttpGet("GetAllOrgandDepWise")]
-        public ActionResult GetOrgandDepWiseDashboard(int orgid, int depid)
+        public ActionResult GetOrganisationandDepartmentWiseDashboard(int organisationid, int departmentid)
         {
             try
             {
-                var data = _dashboardService.GetAllOrgandDep(orgid, depid);
+                var data = _dashboardService.GetAllOrganisationandDepartment(organisationid, departmentid);
                 return Ok(data);
             }
             catch (Exception exception)
@@ -108,7 +108,7 @@ namespace A5.Controller
         {
             try
             {
-                var data = _dashboardService.GetAllOrgDepandAward(orgid, depid, awdid);
+                var data = _dashboardService.GetAllOrganisationDepartmentandAward(orgid, depid, awdid);
                 return Ok(data);
             }
             catch (Exception exception)
