@@ -26,18 +26,8 @@ namespace A5.Service.Validations
             if(organisation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
-         public static bool DisableValidation(int id)
-        {
-            if(id <= 0) throw new ValidationException("Organisation Id must be greater than Zero.");
-            else return true;
-        }
-         public static bool ValidateGetById(int id)
-        {
-            
-            if(id == 0) throw new ValidationException("Organisation Id should not be null.");
-            else if(id<0) throw new ValidationException("Negative values are not accepted");
-            else return true;
-        }
+         
+        
 
     }
 }
