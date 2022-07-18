@@ -37,8 +37,7 @@ namespace A5.Data.Repository
         public bool UpdateOrganisation(Organisation organisation)
         {
             OrganisationServiceValidations.UpdateValidation(organisation);
-            bool NameExists = _context.Organisations!.Any(nameof => nameof.OrganisationName == organisation.OrganisationName);
-            if (NameExists) throw new ValidationException("Organisation Name already exists");
+
             try
             {
                 return Update(organisation);

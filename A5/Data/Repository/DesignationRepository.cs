@@ -107,8 +107,7 @@ namespace A5.Data.Repository
         public bool UpdateDesignation(Designation designation)
         {
             DesignationServiceValidations.UpdateValidation(designation);
-             bool NameExists=_context.Designations!.Any(nameof=>nameof.DesignationName==designation.DesignationName && nameof.DepartmentId==designation.DepartmentId);
-            if(NameExists) throw new ValidationException("Designation Name already exists");
+            
             try{
                 return Update(designation);
             }

@@ -37,8 +37,7 @@ namespace A5.Data.Repository
          public bool UpdateAwardType(AwardType awardType)
         {
             AwardTypeValidations.UpdateValidation(awardType);
-            bool NameExists=_context.AwardTypes!.Any(nameof=>nameof.AwardName==awardType.AwardName);
-            if(NameExists) throw new ValidationException("Award Name already exists");
+            
             try{
                 return Update(awardType);
             }
