@@ -36,8 +36,7 @@ namespace A5.Data.Repository
         //to update an awardtype using awardtype object
          public bool UpdateAwardType(AwardType awardType)
         {
-            AwardTypeValidations.UpdateValidation(awardType);
-            
+            AwardTypeValidations.UpdateValidation(awardType);          
             try{
                 return Update(awardType);
             }
@@ -52,12 +51,13 @@ namespace A5.Data.Repository
         public bool DisableAwardType(int id,int employeeId)
         {
              if (employeeId<=0) throw new ValidationException("currents user id must be greater than 0");
+             if(id<=0) throw new ValidationException("Award type id should not be zero or negative");
             try{
                 return Disable(id,employeeId);
             }
             catch(Exception exception)
             {
-                _logger.LogError("AwardTypeRepository: DisableAwardType(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardTypeRepository: DisableAwardType(awardTypeId : {awardTypeId},employeeId : {employeeId}) : (Error:{Message}",id,employeeId,exception.Message);
                 throw;
             }
         }
@@ -85,7 +85,7 @@ namespace A5.Data.Repository
             }
             catch(Exception exception)
             {
-                _logger.LogError("AwardTypeRepository: GetAwardTypeById(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardTypeRepository: GetAwardTypeById(id :{id}) : (Error:{Message}",id,exception.Message);
                 throw;
             }
         }  

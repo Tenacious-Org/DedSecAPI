@@ -19,19 +19,19 @@ namespace A5.Service
         }
         public Role? GetById(int id)
         {
-            if(!RoleServiceValidations.ValidateGetById(id)) throw new ValidationException("Invalid data");
+            if(id<=0) throw new ValidationException("Id should not be zero or negative");
             try
             {
                 return _context.Set<Role>().FirstOrDefault(nameof =>nameof.Id == id);              
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("RoleService: GetById(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("RoleService: GetById(id  :{id}) : (Error:{Message}",id,exception.Message);
                 throw;
             }
             catch(Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("RoleService: GetById(id  :{id}) : (Error:{Message}",id,exception.Message);
                 throw;
             }
             
@@ -50,7 +50,7 @@ namespace A5.Service
             }
             catch(Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("RoleService: GetAll() : (Error:{Message}",exception.Message);
                 throw;
             }
             

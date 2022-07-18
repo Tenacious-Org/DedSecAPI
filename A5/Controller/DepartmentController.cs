@@ -77,7 +77,7 @@ namespace A5.Controller
         [AllowAnonymous]
         public ActionResult GetDepartmentsByOrganisationId(int id)
         {
-            if (id <= 0) return BadRequest("Id cannot be null ");
+            if (id <= 0) return BadRequest("Id cannot be zero or negative");
             try{
                 var data = _departmentService.GetDepartmentsByOrganisationId(id);
                 return Ok(data);
@@ -204,11 +204,12 @@ namespace A5.Controller
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("DepartmentController : Update(Department department,int id) : (Error: {Message})",exception.Message);
+                _logger.LogError("DepartmentController : Update(Department department) : (Error: {Message})",exception.Message);
                 return BadRequest(_departmentService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
+                 _logger.LogError("DepartmentController : Update(Department department) : (Error: {Message})",exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -235,14 +236,14 @@ namespace A5.Controller
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
         {
-            if (id <= 0) return BadRequest("Id cannot be null or negative.");
+            if (id <= 0) return BadRequest("Id cannot be  or negative.");
             try{
                  var checkEmployee = _departmentService.GetCount(id);
                 if(checkEmployee>0){
                     return Ok(checkEmployee);
                 }else{
                     var data = _departmentService.DisableDepartment(id,GetCurrentUserId());
-                    return Ok(data);
+                    return data ? Ok("Successfully disabled") : BadRequest("Failed to disable award type");
                 }
                 
             }           

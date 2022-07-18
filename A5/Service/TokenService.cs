@@ -71,7 +71,7 @@ namespace A5.Service
             }
             catch(Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("TokenService: GenerateToken(Login Credentials) : (Error:{Message}",exception.Message);
                 throw;
             }
         }

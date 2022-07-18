@@ -40,6 +40,7 @@ namespace A5.Controller
             }
             catch(Exception exception)
             {
+                 _logger.LogError("TokenController :AuthToken(Login Credentials) : (Error: {Message})",exception.Message);
                 return Problem(exception.Message);
             }
 

@@ -51,6 +51,7 @@ namespace A5.Controller
             }
             catch (Exception exception)
             {
+                _logger.LogError("EmployeeController : GetAllEmployees() : (Error: {Message})", exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -77,7 +78,7 @@ namespace A5.Controller
         [HttpGet("GetById")]
         public ActionResult GetEmployeeById([FromQuery] int id)
         {
-            if (id <= 0) return BadRequest("Id cannot be null ");
+            if (id <= 0) return BadRequest("Id cannot be zero or negative");
             try
             {
                 var data = _employeeService.GetEmployeeById(id);
@@ -85,11 +86,12 @@ namespace A5.Controller
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeController : GetEmployeeById(int id) : (Error: {Message})", exception.Message);
+                _logger.LogError("EmployeeController : GetEmployeeById(id : {id}) : (Error: {Message})", id,exception.Message);
                 return BadRequest(_employeeService.ErrorMessage(exception.Message));
             }
             catch (Exception exception)
             {
+                _logger.LogError("EmployeeController : GetEmployeeById(id : {id}) : (Error: {Message})", id,exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -132,7 +134,7 @@ namespace A5.Controller
             {
                 employee.AddedBy=GetCurrentUserId();
                 var data = _employeeService.CreateEmployee(employee);
-                return Ok(data);
+                return data ? Ok("Successfully created a new employee") : BadRequest("Failed to create a new employee");
             }
             catch (ValidationException exception)
             {
@@ -140,7 +142,8 @@ namespace A5.Controller
                 return BadRequest(_employeeService.ErrorMessage(exception.Message));
             }
             catch (Exception exception)
-            {
+            {              
+                  _logger.LogError("EmployeeController : Create(Employee employee) : (Error: {Message})", exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -172,7 +175,7 @@ namespace A5.Controller
             {
                 employee.UpdatedBy=GetCurrentUserId();
                 var data = _employeeService.UpdateEmployee(employee);
-                return Ok(data);
+                return data ? Ok("Successfully updated employee") : BadRequest("Failed to update an employee");
 
             }
             catch (ValidationException exception)
@@ -181,7 +184,8 @@ namespace A5.Controller
                 return BadRequest(_employeeService.ErrorMessage(exception.Message));
             }
             catch (Exception exception)
-            {
+            {              
+                  _logger.LogError("EmployeeController : Update(Employee employee,int id) : (Error: {Message})", exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -208,7 +212,7 @@ namespace A5.Controller
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
         {
-            if (id <= 0) return BadRequest("Id cannot be null ");
+            if (id <= 0) return BadRequest("Id cannot be zero or negative ");
             try
             {
 
@@ -220,16 +224,17 @@ namespace A5.Controller
                 else
                 {
                     var data = _employeeService.DisableEmployee(id, GetCurrentUserId());
-                    return Ok(data);
+                    return data ? Ok("successfully disabled") : BadRequest("Failed to disable employee");
                 }
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeController : Disable(int id) : (Error: {Message})", exception.Message);
+                _logger.LogError("EmployeeController : Disable(id : {id}) : (Error: {Message})", id,exception.Message);
                 return BadRequest(_employeeService.ErrorMessage(exception.Message));
             }
             catch (Exception exception)
-            {
+            {   
+                 _logger.LogError("EmployeeController : Disable(id : {id}) : (Error: {Message})", id,exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -258,7 +263,7 @@ namespace A5.Controller
         [HttpGet("GetEmployeeByDepartment")]
         public ActionResult GetEmployeeByDepartmentId(int id)
         {
-            if (id <= 0) return BadRequest("Id cannot be null ");
+            if (id <= 0) return BadRequest("Id cannot be zero or negative");
             try
             {
                 var data = _employeeService.GetEmployeeByDepartmentId(id);
@@ -266,18 +271,19 @@ namespace A5.Controller
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeController : GetEmployeeByDepartmentId(int id) : (Error: {Message})", exception.Message);
+                _logger.LogError("EmployeeController : GetEmployeeByDepartmentId(id : {id}) : (Error: {Message})",id, exception.Message);
                 return BadRequest(_employeeService.ErrorMessage(exception.Message));
             }
             catch (Exception exception)
             {
+                 _logger.LogError("EmployeeController : GetEmployeeByDepartmentId(id : {id}) : (Error: {Message})",id, exception.Message);
                 return Problem(exception.Message);
             }
         }
         [HttpGet("GetReportingPersonByDepartment")]
         public ActionResult GetReportingPersonByDepartment(int id)
         {
-            if (id <= 0) return BadRequest("Id cannot be null ");
+            if (id <= 0) return BadRequest("Id cannot be zero or negative");
             try
             {
                 var data = _employeeService.GetReportingPersonByDepartmentId(id);
@@ -285,18 +291,19 @@ namespace A5.Controller
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeController : GetReportingPersonbyDepartment(int id) : (Error: {Message})", exception.Message);
+                _logger.LogError("EmployeeController : GetReportingPersonbyDepartment(id : {id}) : (Error: {Message})",id, exception.Message);
                 return BadRequest(_employeeService.ErrorMessage(exception.Message));
             }
             catch (Exception exception)
             {
+                 _logger.LogError("EmployeeController : GetReportingPersonbyDepartment(id : {id}) : (Error: {Message})",id, exception.Message);
                 return Problem(exception.Message);
             }
         }
         [HttpGet("GetHrByDepartment")]
         public ActionResult GetHrByDepartment(int id)
         {
-            if (id <= 0) return BadRequest("Id cannot be null ");
+            if (id <= 0) return BadRequest("Id cannot be zero or negative");
             try
             {
                 var data = _employeeService.GetHrByDepartmentId(id);
@@ -304,11 +311,12 @@ namespace A5.Controller
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeController : GetHrByDepartment(int id) : (Error: {Message})", exception.Message);
+                _logger.LogError("EmployeeController : GetHrByDepartment(id : {id}) : (Error: {Message})", id,exception.Message);
                 return BadRequest(_employeeService.ErrorMessage(exception.Message));
             }
             catch (Exception exception)
             {
+                _logger.LogError("EmployeeController : GetHrByDepartment(id : {id}) : (Error: {Message})", id,exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -337,7 +345,7 @@ namespace A5.Controller
         [HttpGet("GetEmloyeeByOrganisation")]
         public ActionResult GetEmployeeByOrganisation(int id)
         {
-            if (id <= 0) return BadRequest("Id cannot be null ");
+            if (id <= 0) return BadRequest("Id cannot be zero or negative");
             try
             {
                 var data = _employeeService.GetEmployeeByOrganisation(id);
@@ -345,11 +353,12 @@ namespace A5.Controller
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeController : GetEmployeebyOrganisation(int id) : (Error: {exception.Message})", exception.Message);
+                _logger.LogError("EmployeeController : GetEmployeebyOrganisation(id : {id}) : (Error: {exception.Message})",id, exception.Message);
                 return BadRequest(_employeeService.ErrorMessage(exception.Message));
             }
             catch (Exception exception)
             {
+                 _logger.LogError("EmployeeController : GetEmployeebyOrganisation(id : {id}) : (Error: {exception.Message})",id, exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -378,7 +387,7 @@ namespace A5.Controller
         [HttpGet("GetEmployeeByRequesterId")]
         public ActionResult GetEmployeeByRequesterId(int id)
         {
-            if (id <= 0) return BadRequest("Id cannot be null ");
+            if (id <= 0) return BadRequest("Id cannot be zero or negative");
             try
             {
                 var data = _employeeService.GetEmployeeByRequesterId(id);
@@ -386,11 +395,12 @@ namespace A5.Controller
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeController : GetEmployeeByRequesterId(int id) : (Error: {Message})", exception.Message);
+                _logger.LogError("EmployeeController : GetEmployeeByRequesterId(id : {id}) : (Error: {Message})",id, exception.Message);
                 return BadRequest(_employeeService.ErrorMessage(exception.Message));
             }
             catch (Exception exception)
             {
+                _logger.LogError("EmployeeController : GetEmployeeByRequesterId(id : {id}) : (Error: {Message})",id, exception.Message);
                 return Problem(exception.Message);
             }
         }

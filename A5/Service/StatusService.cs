@@ -25,9 +25,14 @@ namespace A5.Service
             {
                 return _statusRepository.GetStatusById(id);
             }
+             catch (ValidationException exception)
+            {
+                _logger.LogError("StatusService: GetStatusById(id : {id}) : (Error:{Message}", id,exception.Message);
+                throw;
+            }
             catch (Exception exception)
             {
-                _logger.LogError("StatusService: GetStatusById(int id) : (Error:{Message}", exception.Message);
+                _logger.LogError("StatusService: GetStatusById(id : {id}) : (Error:{Message}",id, exception.Message);
                 throw;
             }
         }

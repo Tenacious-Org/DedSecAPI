@@ -236,6 +236,7 @@ namespace A5.Service
         //Creates Employee using employee object.
         public bool CreateEmployee(Employee employee)
         {
+            if(employee==null) throw new ValidationException("Employee should not be null");
             EmployeeServiceValidations.CreateValidation(employee);
             try
             {
@@ -257,6 +258,7 @@ namespace A5.Service
         //Update Employee using employeee object.
         public bool UpdateEmployee(Employee employee)
         {
+            if(employee==null) throw new ValidationException("Employee should not be null");
             EmployeeServiceValidations.UpdateValidation(employee);
             try
             {
@@ -270,7 +272,7 @@ namespace A5.Service
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                _logger.LogError("EmployeeService: UpdateEmployee(Employee employee) : (Error:{Message}", exception.Message);
                 throw;
             }
         }

@@ -28,12 +28,12 @@ namespace A5.Controller
             }
             catch (ValidationException exception)
             {
-                _logger.LogError($"Status Controller : GetByStatusId(int id) : (Error: {exception.Message})");
+                _logger.LogError("Status Controller : GetByStatusId(id : {id}) : (Error: {exception.Message})",id,exception.Message);
                 return BadRequest((exception.Message));
             }
             catch (Exception exception)
             {
-                _logger.LogError($"Status Controller : GetByStatusId(int id) : (Error: {exception.Message})");
+                _logger.LogError("Status Controller : GetByStatusId(id : {id}) : (Error: {exception.Message})",id,exception.Message);
                 return Problem($"Error : {exception.Message}");
             }
 

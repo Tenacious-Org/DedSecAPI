@@ -74,12 +74,12 @@ namespace A5.Data.Repository
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeRepository: GetEmployeeByDepartmentId(int id) : (Error:{Message})", exception.Message);
+                _logger.LogError("EmployeeRepository: GetEmployeeByDepartmentId(id :{id}) : (Error:{Message})", id,exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("EmployeeRepository: GetEmployeeByDepartmentId(int id) : (Error:{Message})", exception.Message);
+                _logger.LogError("EmployeeRepository: GetEmployeeByDepartmentId(int id) : (Error:{Message})",id, exception.Message);
                 throw;
             }
         }
@@ -268,6 +268,7 @@ namespace A5.Data.Repository
         //Creates employee by using employee object.
         public bool CreateEmployee(Employee employee)
         {
+            if(employee==null) throw new ValidationException("Employee should not be null");
             EmployeeServiceValidations.CreateValidation(employee);
             bool IsIdAlreadyExists=_context.Employees!.Any(nameof=>nameof.ACEID==employee.ACEID);
             if(IsIdAlreadyExists) throw new ValidationException("Employee Id already exists");
@@ -287,6 +288,7 @@ namespace A5.Data.Repository
         //Updates employee by using Employee object.
         public bool UpdateEmployee(Employee employee)
         {
+            if(employee==null) throw new ValidationException("Employee should not be null");
             EmployeeServiceValidations.UpdateValidation(employee);
             try
             {
@@ -332,7 +334,7 @@ namespace A5.Data.Repository
         }
         public int GetEmployeeCount(int id)
         {
-            if(id<=0) throw new ValidationException("Employee Id should not be null or negative");
+            if(id<=0) throw new ValidationException("Employee Id should not be zero or negative");
             try
             {
 

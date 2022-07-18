@@ -22,18 +22,19 @@ namespace A5.Controller
         [HttpGet("GetById")]
         public ActionResult GetByRoleId( int id)
         {
-            if (id <= 0) return BadRequest("Id cannot be null ");
+            if (id <= 0) return BadRequest("Id cannot be zero or negative");
             try{
                 var data = _roleService.GetById(id);
                  return Ok(data);
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("RoleController : GetByRoleId(int id) : (Error: {Message})",exception.Message);
+                _logger.LogError("RoleController : GetByRoleId(id : {id}) : (Error: {Message})",id,exception.Message);
                 return BadRequest(exception.Message);
             }
             catch(Exception exception)
-            {
+            {      
+                _logger.LogError("RoleController : GetByRoleId(id : {id}) : (Error: {Message})",id,exception.Message);
                 return Problem(exception.Message);
             }            
         }
@@ -52,6 +53,7 @@ namespace A5.Controller
             }
             catch(Exception exception)
             {
+                 _logger.LogError("RoleController : GetAll() : (Error: {Message})",exception.Message);
                 return Problem(exception.Message);
             }          
         }    

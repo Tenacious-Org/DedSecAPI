@@ -82,7 +82,7 @@ namespace A5.Controller
         [HttpGet("GetById")]
         public ActionResult GetById(int id)
         {
-            if (id <= 0) return BadRequest("Id cannot be null ");
+            if (id <= 0) return BadRequest("Id cannot be zero or negative");
 
             try
             {
@@ -91,12 +91,12 @@ namespace A5.Controller
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardTypeController : GetById(int id) : (Error:{Message})", exception.Message);
+                _logger.LogError("AwardTypeController : GetById(id : {id}) : (Error:{Message})", id,exception.Message);
                 return BadRequest(_awardTypeService.ErrorMessage(exception.Message));
             }
             catch (Exception exception)
             {
-                _logger.LogError("AwardTypeController : GetById(int id) : (Error:{Message})", exception.Message);
+                _logger.LogError("AwardTypeController : GetById(id : {id}) : (Error:{Message})", id,exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -131,7 +131,7 @@ namespace A5.Controller
             {
                 awardType.AddedBy=GetCurrentUserId();
                 var data = _awardTypeService.CreateAwardType(awardType);
-                return Ok(data);
+                return data ? Ok("Award Type successfully created") : BadRequest("Failed to create new Award Type.");
             }
             catch (ValidationException exception)
             {
@@ -140,7 +140,7 @@ namespace A5.Controller
             }
             catch (Exception exception)
             {
-                                _logger.LogError("AwardTypeController : Create(AwardType awardType) : (Error:{Message})", exception.Message);
+                 _logger.LogError("AwardTypeController : Create(AwardType awardType) : (Error:{Message})", exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -175,15 +175,16 @@ namespace A5.Controller
             {
                 awardType.UpdatedBy=GetCurrentUserId();
                 var data = _awardTypeService.UpdateAwardType(awardType);
-                return Ok(data);
+                return data ? Ok("Award type successfully updated") : BadRequest("Failed to update award type");
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardTypeController : Update(AwardType awardType,int id) : (Error:{Message})", exception.Message);
+                _logger.LogError("AwardTypeController : Update(AwardType awardType) : (Error:{Message})", exception.Message);
                 return BadRequest(_awardTypeService.ErrorMessage(exception.Message));
             }
             catch (Exception exception)
             {
+                _logger.LogError("AwardTypeController : Update(AwardType awardType) : (Error:{Message})", exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -210,7 +211,7 @@ namespace A5.Controller
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
         {
-            if (id <= 0) return BadRequest("Id cannot be null ");
+            if (id <= 0) return BadRequest("Id cannot be zero or negative ");
             try
             {
                 var data = _awardTypeService.DisableAwardType(id,GetCurrentUserId());
@@ -218,11 +219,12 @@ namespace A5.Controller
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardTypeController : Disable(int id) : (Error:{Message})", exception.Message);
+                _logger.LogError("AwardTypeController : Disable(awardTypeId : {awardTypeId}): (Error:{Message})",id, exception.Message);
                 return BadRequest(_awardTypeService.ErrorMessage(exception.Message));
             }
             catch (Exception exception)
             {
+                _logger.LogError("AwardTypeController : Disable(awardTypeId : {awardTypeId}): (Error:{Message})",id, exception.Message);
                 return Problem(exception.Message);
             }
         }
