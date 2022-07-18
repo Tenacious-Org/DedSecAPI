@@ -107,7 +107,7 @@ namespace A5.Service
         //Gets Department by organisation Id.
         public IEnumerable<Department> GetDepartmentsByOrganisationId(int departmentId)
          { 
-           if(id<=0) throw new ValidationException("organisation Id should not be null or negative");
+           if(departmentId<=0) throw new ValidationException("organisation Id should not be null or negative");
             try
             {
                return _departmentRepository.GetDepartmentsByOrganisationId(departmentId);
