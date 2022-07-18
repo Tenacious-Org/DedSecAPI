@@ -1,11 +1,5 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using A5.Data;
 using A5.Data.Repository;
-using A5.Models;
 
 namespace A5.Service
 {
