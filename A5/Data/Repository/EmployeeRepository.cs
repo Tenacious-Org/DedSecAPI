@@ -323,6 +323,19 @@ namespace A5.Data.Repository
             }
 
         }
+
+        public int HRID(int id)
+        {
+            
+            foreach(var q in _context.Set<Employee>().Where(nameof => nameof.Id == id)){
+                var answer = q.HRId;
+            }
+
+            var hr = 0;
+            
+            return hr;
+            
+        }
         public int GetEmployeeCount(int id)
         {
             try
