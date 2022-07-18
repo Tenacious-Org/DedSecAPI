@@ -14,6 +14,8 @@ namespace A5.Data.Repository
             _logger = logger;
         }
 
+        
+        //gets all status by using status id
         public Status? GetStatusById(int id)
         {
             try
@@ -27,6 +29,8 @@ namespace A5.Data.Repository
                 throw;
             }
         }
+        
+        //gets all status
         public IEnumerable<Status> GetAllStatus()
         {
 

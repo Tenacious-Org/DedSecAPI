@@ -48,7 +48,7 @@ namespace A5.Data.Repository
                 throw;
             }
         }
-        //Get department using Department Id
+        //Gets department using Department Id
         public Department? GetDepartmentById(int id)
         {
             if(id<=0) throw new ValidationException("Department Id must be greater than zero");
@@ -62,7 +62,7 @@ namespace A5.Data.Repository
                 throw;
             }
         }
-         //Disable department using department id and employee id.
+         //Disables department using department id and current user id.
         public bool DisableDepartment(int id, int employeeId)
         {
             if(id<=0) throw new ValidationException("Department Id should not be null or negative");

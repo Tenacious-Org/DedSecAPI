@@ -49,7 +49,7 @@ namespace A5.Data.Repository
             }
         }
 
-        //to disable an awardtype using id and employeeId
+        //to disable an awardtype using awardtype id and current user id
         public bool DisableAwardType(int id,int employeeId)
         {
              if (employeeId<=0) throw new ValidationException("currents user id must be greater than 0");
@@ -77,7 +77,7 @@ namespace A5.Data.Repository
             }
         }
 
-        // to get an awardtype by Id using id
+        // to get an awardtype by Id using  award id
          public AwardType? GetAwardTypeById(int id)
         {
             if (id <= 0) throw new ValidationException("Award Id must be greater than 0.");

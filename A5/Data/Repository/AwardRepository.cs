@@ -27,6 +27,8 @@ namespace A5.Data.Repository
             _mail = mail;
 
         }
+        
+        //raises award request by using award object and employee
         public bool RaiseAwardRequest(Award award, int employeeId)
         {
             try
@@ -61,12 +63,16 @@ namespace A5.Data.Repository
                 return false;
             }
         }
+        
+        //Gets HR id by using awardee id
         public int GetHRID(int awardeeid)
         {
             var list = _context.Set<Employee>().FirstOrDefault(nameof => nameof.Id == awardeeid).HRId;
             
             return (int)list;
         }
+        
+        //approves the request raised by using award object
         public bool ApproveRequest(Award award)
         {
             try
@@ -104,6 +110,7 @@ namespace A5.Data.Repository
             }
         }
 
+        //Gets award by using award id
         public Award? GetAwardById(int id)
         {
             try
@@ -132,6 +139,8 @@ namespace A5.Data.Repository
                 throw;
             }
         }
+        
+        //Adds the comment by using comment object and employee id
         public bool AddComments(Comment comment, int employeeId)
         {
             AwardServiceValidations.ValidateAddComment(comment);
@@ -155,6 +164,7 @@ namespace A5.Data.Repository
             }
         }
 
+        //returns the comments by using award id
         public IEnumerable<Comment> GetComments(int awardId)
         {
             AwardServiceValidations.ValidateGetComments(awardId);
@@ -178,6 +188,8 @@ namespace A5.Data.Repository
                 throw;
             }
         }
+        
+        //returns list of all awards by using page id and employee id
         public IEnumerable<Award> GetAllAwardsList(int? pageId, int? employeeId)
         {
             try
@@ -217,6 +229,8 @@ namespace A5.Data.Repository
                 throw;
             }
         }
+        
+        //returns the list of all awards
         public IEnumerable<Award> GetAllAwardees()
         {
             try
@@ -244,6 +258,7 @@ namespace A5.Data.Repository
             }
         }
 
+        //Gets list of awards filtered by organisation wise using organisation id
         public IEnumerable<Award> GetAllbyOrgwise(int orgid)
         {
             try
@@ -274,6 +289,7 @@ namespace A5.Data.Repository
             }
         }
 
+        //Gets list of awards filtered by awards wise using award id
         public IEnumerable<Award> GetAllAwardwise(int id)
         {
             try
@@ -304,6 +320,8 @@ namespace A5.Data.Repository
             }
         }
 
+        
+        //Gets list of awards filtered by organisation and award using organisation id and award id
         public IEnumerable<Award> GetAllOrganisationandAward(int orgid, int awdid)
         {
             try
@@ -332,6 +350,8 @@ namespace A5.Data.Repository
               throw;
             }
         }
+        
+         //Gets list of awards filtered by organisation and department using organisation id and department id
         public IEnumerable<Award> GetAllOrganisationandDepartment(int orgid, int depid)
         {
             try
@@ -362,6 +382,7 @@ namespace A5.Data.Repository
             }
         }
 
+         //Gets list of awards filtered by organisation and award using organisation id, department id and award id
         public IEnumerable<Award> GetAllOrgDepandAwardwise(int orgid, int depid, int awdid)
         {
             try
@@ -395,6 +416,7 @@ namespace A5.Data.Repository
             }
         }
 
+         //Gets list of awards filtered by organisation, department and from date using organisation id and award id and from date
         public IEnumerable<Award> GetAllOrgDepandFromdatewise(int orgid, int depid, DateTime start)
         {
             try
@@ -427,6 +449,7 @@ namespace A5.Data.Repository
             }
         }
 
+        //Gets list of awards filtered by organisation, award and from date using organisation id and award id and from date
         public IEnumerable<Award> GetAllOrgAwardandFromdatewise(int orgid, int awdid, DateTime start)
         {
             try
@@ -459,6 +482,8 @@ namespace A5.Data.Repository
             }
         }
 
+       
+       //Gets list of awards filtered by organisation, department and To date using organisation id and department id and To date
         public IEnumerable<Award> GetAllOrgDepandTodatewise(int orgid, int depid, DateTime end)
         {
             try
@@ -491,6 +516,7 @@ namespace A5.Data.Repository
             }
         }
 
+        //Gets list of awards filtered by organisation, award and To date using organisation id and award id and To date
         public IEnumerable<Award> GetAllOrgAwardandTodatewise(int orgid, int awdid, DateTime end)
         {
             try
@@ -523,6 +549,7 @@ namespace A5.Data.Repository
             }
         }
 
+        //Gets list of awards filtered by organisation and from date using organisation id and from date
         public IEnumerable<Award> GetAllFilteredOrganisationandFromDateWise(int orgid, DateTime start)
         {
             try
@@ -554,6 +581,7 @@ namespace A5.Data.Repository
             }
         }
 
+        //Gets all awards filtered by organisation and To date using organisation id and To date
         public IEnumerable<Award> GetAllFilteredOrganisationandToDateWise(int orgid, DateTime end)
         {
             try
@@ -586,6 +614,7 @@ namespace A5.Data.Repository
             }
         }
 
+        //Gets all awards filtered by date wise using organisation id,department id, award id,from date and to date
         public IEnumerable<Award> GetAllFilteredDateWise(int orgid, int deptid, int awdid, DateTime start, DateTime end)
         {
             try
@@ -620,6 +649,7 @@ namespace A5.Data.Repository
             }
         }
 
+        //Gets all awards list filtered by organisation,department and date wise using organisation id, department id, from date and To date
         public IEnumerable<Award> GetAllOrgDepDateWise(int orgid, int deptid, DateTime start, DateTime end)
         {
             try
@@ -653,6 +683,8 @@ namespace A5.Data.Repository
             }
         }
 
+        
+        //gets all list of awards by organisation and date wise using organisation id,award id, from date and To date
         public IEnumerable<Award> GetAllOrgAwdDateWise(int orgid, int awdid, DateTime start, DateTime end)
         {
             try
@@ -686,7 +718,7 @@ namespace A5.Data.Repository
             }
         }
 
-        //Filtered By From Date
+        //Gets all list of awards by date wise using from date
         public IEnumerable<Award> GetAllFilteredFromDateWise(DateTime start)
         {
             try
@@ -716,7 +748,7 @@ namespace A5.Data.Repository
             }
         }
 
-        //Filtered By To Date 
+        //Gets all list of awards by date wise using To date
         public IEnumerable<Award> GetAllFilteredToDateWise(DateTime end)
         {
             try

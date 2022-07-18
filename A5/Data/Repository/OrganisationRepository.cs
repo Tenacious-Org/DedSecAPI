@@ -14,6 +14,8 @@ namespace A5.Data.Repository
             _context = context;
             _logger = logger;
         }
+        
+        //Creates organisation using organisation object
         public bool CreateOrganisation(Organisation organisation)
         {
             bool NameExists = _context.Organisations!.Any(nameof => nameof.OrganisationName == organisation.OrganisationName);
@@ -30,6 +32,8 @@ namespace A5.Data.Repository
                 throw;
             }
         }
+        
+        //Updates organisation using organisation object
         public bool UpdateOrganisation(Organisation organisation)
         {
             OrganisationServiceValidations.UpdateValidation(organisation);
@@ -45,6 +49,8 @@ namespace A5.Data.Repository
                 throw;
             }
         }
+        
+        //gets organisation by using organisation id
         public Organisation? GetOrganisationById(int id)
         {
             
@@ -58,6 +64,8 @@ namespace A5.Data.Repository
                 throw;
             }
         }
+        
+        //disables organisation using organisation id and current user id
         public bool DisableOrganisation(int id, int employeeId)
         {
 
@@ -72,11 +80,15 @@ namespace A5.Data.Repository
                 throw;
             }
         }
+        
+        //gets all designation count by using designation id
         public int GetCount(int id)
         {
             var checkEmployee = _context.Set<Employee>().Where(nameof => nameof.IsActive && nameof.OrganisationId == id).Count();
             return checkEmployee;
         }
+        
+        //gets all organisation 
         public IEnumerable<Organisation> GetAllOrganisation()
         {
 

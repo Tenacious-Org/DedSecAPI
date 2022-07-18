@@ -21,6 +21,7 @@ namespace A5.Data.Repository
 
         //Methods
 
+        
         public bool Create(T entity)
         {
            try

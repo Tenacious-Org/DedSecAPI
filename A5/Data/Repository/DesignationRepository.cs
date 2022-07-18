@@ -71,7 +71,7 @@ namespace A5.Data.Repository
             }
         }
 
-        // to create designation using designation object
+        //creates designation using designation object
           public bool CreateDesignation(Designation designation)
         {
             DesignationServiceValidations.CreateValidation(designation);
@@ -124,7 +124,7 @@ namespace A5.Data.Repository
             }
         }
 
-        //to disable designation using id and employee id
+        //to disable designation using designation id and current user id
         public bool DisableDesignation(int id,int employeeId)
         {
            
