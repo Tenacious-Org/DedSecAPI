@@ -24,14 +24,9 @@ namespace A5.Data.Repository
             try{
                 return Create(awardType);
             }
-            catch(ValidationException exception)
-            {
-                _logger.LogError("AwardTypeRepository: CreateAwardType(AwardType awardType) : (Error:{Message}",exception.Message);
-                throw;
-            }
             catch(Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("AwardTypeRepository: CreateAwardType(AwardType awardType) : (Error:{Message}",exception.Message);
                 throw;
             }
         }
@@ -52,6 +47,7 @@ namespace A5.Data.Repository
         }
         public bool DisableAwardType(int id,int employeeId)
         {
+             if (employeeId<=0) throw new ValidationException("currents user id must be greater than 0");
             try{
                 return Disable(id,employeeId);
             }
@@ -64,7 +60,6 @@ namespace A5.Data.Repository
 
         public IEnumerable<AwardType> GetAllAwardTypes()
         {
-            
             try{
                 return GetAll();
             }
@@ -77,7 +72,7 @@ namespace A5.Data.Repository
 
          public AwardType? GetAwardTypeById(int id)
         {
-           AwardTypeValidations.ValidateGetById(id);
+            if (id <= 0) throw new ValidationException("Award Id must be greater than 0.");
             try{
                 return GetById(id);
             }

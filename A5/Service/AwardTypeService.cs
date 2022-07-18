@@ -81,21 +81,16 @@ namespace A5.Service
             try{
                 return _awardTypeRepository.GetAllAwardTypes();
             }
-             catch(ValidationException exception)
-            {
-                _logger.LogError("AwardTypeRepository: GetAllAwardType() : (Error:{Message}",exception.Message);
-                throw;
-            }
             catch(Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("AwardTypeRepository: GetAllAwardType() : (Error:{Message}",exception.Message);
                 throw;
             }
         }
 
          public AwardType? GetAwardTypeById(int id)
         {
-            AwardTypeValidations.ValidateGetById(id);
+            if (id <= 0) throw new ValidationException("Award Id must be greater than 0.");
             try{
                 return _awardTypeRepository.GetAwardTypeById(id);
             }

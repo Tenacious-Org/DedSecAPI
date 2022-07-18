@@ -203,7 +203,6 @@ namespace A5.Controller
         public ActionResult Disable(int id)
         {
             if (id <= 0) return BadRequest("Id cannot be null ");
-
             try
             {
                 var data = _awardTypeService.DisableAwardType(id,GetCurrentUserId());

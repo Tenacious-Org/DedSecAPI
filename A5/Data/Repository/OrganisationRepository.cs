@@ -16,11 +16,12 @@ namespace A5.Data.Repository
         }
         public bool CreateOrganisation(Organisation organisation)
         {
+            bool NameExists = _context.Organisations!.Any(nameof => nameof.OrganisationName == organisation.OrganisationName);
+            if (NameExists) throw new ValidationException("Organisation Name already exists");
 
             try
             {
-                bool NameExists = _context.Organisations!.Any(nameof => nameof.OrganisationName == organisation.OrganisationName);
-                if (NameExists) throw new ValidationException("Organisation Name already exists");
+                
                 return Create(organisation);
             }
             catch (ValidationException exception)
