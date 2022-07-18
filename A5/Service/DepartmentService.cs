@@ -22,6 +22,7 @@ namespace A5.Service
                 _departmentRepository=departmentRepository;
          } 
          
+         //creates department using department object.
         public bool CreateDepartment(Department department)
         {
             DepartmentServiceValidations.CreateValidation(department);
@@ -39,6 +40,7 @@ namespace A5.Service
                 throw;
             }
         }
+        //updates department using department object.
         public bool UpdateDepartment(Department department)
         {
             DepartmentServiceValidations.UpdateValidation(department);
@@ -56,6 +58,7 @@ namespace A5.Service
                 throw;
             }
         }
+        //Get department using Department Id
         public Department? GetDepartmentById(int id)
         {
             if(id<=0) throw new ValidationException("Department Id should not be null or negative");
@@ -73,6 +76,7 @@ namespace A5.Service
                 throw;
             }
         }
+        //Disable department using department id and employee id.
         public bool DisableDepartment(int id,int employeeId)
         {   
             if(id<=0) throw new ValidationException("Department Id should not be null or negative");
@@ -93,11 +97,13 @@ namespace A5.Service
                 throw;
             }
         }
+        //Gets the count of employees under department.
       
         public int GetCount(int id)
         {
              return _departmentRepository.GetCount(id);
         }
+        //Gets Department by organisation Id.
         public IEnumerable<Department> GetDepartmentsByOrganisationId(int id)
          { 
            if(id<=0) throw new ValidationException("organisation Id should not be null or negative");
@@ -117,6 +123,7 @@ namespace A5.Service
             }
              
          }
+         //Gets all the department.
           public IEnumerable<object> GetAllDepartments()
          {
             var department = _departmentRepository.GetAllDepartment();

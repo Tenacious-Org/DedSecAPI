@@ -11,6 +11,5 @@ namespace A5.Data.Repository.Interface
         int GetCount(int id);
         public IEnumerable<Department> GetAllDepartment();
         public IEnumerable<Department> GetDepartmentsByOrganisationId(int id);
-        public  object ErrorMessage(string ValidationMessage);
     }
 }
