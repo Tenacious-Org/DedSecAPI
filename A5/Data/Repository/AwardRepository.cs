@@ -297,7 +297,7 @@ namespace A5.Data.Repository
             }
         }
 
-        public IEnumerable<Award> GetAllOrgAndAwardwise(int orgid, int awdid)
+        public IEnumerable<Award> GetAllOrganisationandDepartment(int orgid, int awdid)
         {
             try
             {

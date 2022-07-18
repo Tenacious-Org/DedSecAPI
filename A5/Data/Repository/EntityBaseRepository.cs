@@ -21,7 +21,6 @@ namespace A5.Data.Repository
 
         //Methods
 
-        //to
         public bool Create(T entity)
         {
            try
@@ -58,7 +57,7 @@ namespace A5.Data.Repository
                 return result; 
             }
             catch (Exception exception){
-                _logger.LogError("EntityBaseRepository : Disable(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("EntityBaseRepository : Disable(int id,int employeeId) : (Error:{Message}",exception.Message);
               return result;
             }
                     

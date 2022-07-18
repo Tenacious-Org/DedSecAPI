@@ -20,27 +20,31 @@ namespace A5.Service
             _logger=logger;
         }
 
-         public IEnumerable<Designation> GetDesignationsByDepartmentId(int id)
+         //returns list of designation by department id
+         public IEnumerable<Designation> GetDesignationsByDepartmentId(int departmentId)
          {
-            DesignationServiceValidations.ValidateGetByDepartment(id);
+            DesignationServiceValidations.ValidateGetByDepartment(departmentId);
             try
             {
-                return _desginationRepository.GetDesignationsByDepartmentId(id);
+                return _desginationRepository.GetDesignationsByDepartmentId(departmentId);
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("DesignationService : GetDesignationsByDepartmentId(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("DesignationService : GetDesignationsByDepartmentId(int departmentId) : (Error:{Message}",exception.Message);
                throw;
             }
             catch(Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+               _logger.LogError("DesignationService : GetDesignationsByDepartmentId(int departmentId) : (Error:{Message}",exception.Message);
                throw;
             }
          }
+        
+        //gets the designations value and returns the anonymous object
          public IEnumerable<object> GetAllDesignations()
-         {
-            var designation = _desginationRepository.GetAllDesignation();
+         { 
+            try{
+             var designation = _desginationRepository.GetAllDesignation();
             return designation.Select( Designation => new{
                 id = Designation.Id,
                 designationName = Designation.DesignationName,
@@ -49,9 +53,20 @@ namespace A5.Service
                 addedBy = Designation?.AddedBy,
                 addedOn = Designation?.AddedOn,
                 updatedBy = Designation?.UpdatedBy,
-                updatedOn = Designation?.UpdatedOn
-            });
+                updatedOn = Designation?.UpdatedOn });
+
          }
+         catch(Exception exception)
+         {
+             
+                 _logger.LogError("DesignationService : GetAllDesignations() : (Error:{Message}",exception.Message);
+                throw;
+         }
+           
+           
+         }
+
+         //creates the designation using designation object
           public bool CreateDesignation(Designation designation)
         {
             DesignationServiceValidations.CreateValidation(designation);
@@ -65,18 +80,23 @@ namespace A5.Service
             }
             catch(Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("DesignationService: CreateDesignation(Designation) : (Error:{Message}",exception.Message);
                 throw;
             }
         }
-        public int GetCount(int id)
+
+        //gets the designation count by using designation id
+        public int GetCount(int designationId)
         {
-             return _desginationRepository.GetCount(id);
+             return _desginationRepository.GetCount(designationId);
         }
          public object ErrorMessage(string ValidationMessage)
         {
             return new{message=ValidationMessage};
         }
+
+
+        //updates the designation using designation object
         public bool UpdateDesignation(Designation designation)
         {
             DesignationServiceValidations.UpdateValidation(designation); 
@@ -90,42 +110,34 @@ namespace A5.Service
             }
             catch(Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
-                throw;
-            }
-        }
-        public bool DisableDesignation(int id,int employeeId)
-        {
-            DesignationServiceValidations.DisableValidation(id);
-            try{
-                return _desginationRepository.DisableDesignation(id,employeeId);
-            }
-            catch(ValidationException exception)
-            {
                 _logger.LogError("Designation Service: UpdateDesignation(Designation) : (Error:{Message}",exception.Message);
-                throw;
-            }
-            catch(Exception exception)
-            {
-                _logger.LogError("Error: {Message}",exception.Message);
                 throw;
             }
         }
 
-        public Designation? GetDesignationById(int id)
+        //disbales the designation using designation id and current user id
+        public bool DisableDesignation(int designationId,int employeeId)
         {
-            DesignationServiceValidations.ValidateGetById(id);
-             try{
-                return _desginationRepository.GetDesignationById(id);
-            }
-            catch(ValidationException exception)
-            {
-                _logger.LogError("DesginationService: GetByDepartment(int id) : (Error:{Message}",exception.Message);
-                throw;
+            try{
+                return _desginationRepository.DisableDesignation(designationId,employeeId);
             }
             catch(Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("Designation Service: DisableDesignation(int designationId,int employeeId) : (Error:{Message}",exception.Message);
+                throw;
+            }
+        }
+
+        //Returns designation by designation Id
+        public Designation? GetDesignationById(int designationId)
+        {
+            DesignationServiceValidations.ValidateGetById(designationId);
+             try{
+                return _desginationRepository.GetDesignationById(designationId);
+            }
+            catch(Exception exception)
+            {
+                 _logger.LogError("DesginationService: GetDesignationById(int designationId) : (Error:{Message}",exception.Message);
                 throw;
             }
         }

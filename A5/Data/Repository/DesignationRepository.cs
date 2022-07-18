@@ -17,13 +17,13 @@ namespace A5.Data.Repository
         }
 
     
-        //to get designations by departmentId using id
-         public IEnumerable<Designation> GetDesignationsByDepartmentId(int id)
+        //to get designations by departmentId
+         public IEnumerable<Designation> GetDesignationsByDepartmentId(int departmentId)
          {
-             DesignationServiceValidations.ValidateGetByDepartment(id);
+             DesignationServiceValidations.ValidateGetByDepartment(departmentId);
             try
             {
-                var data =  _context.Set<Designation>().Where(nameof =>nameof.DepartmentId == id && nameof.IsActive == true).ToList();
+                var data =  _context.Set<Designation>().Where(nameof =>nameof.DepartmentId == departmentId && nameof.IsActive == true).ToList();
                 var count = data.Count;
                 if(count != 0)
                 {
@@ -34,14 +34,9 @@ namespace A5.Data.Repository
                     throw new ValidationException(" Department not Found!! ");
                 }
             }
-             catch(ValidationException exception)
-            {
-                _logger.LogError("DesignationRespository : GetDesignationsByDepartmentId(int id) : (Error:{Message}",exception.Message);
-               throw;
-            }
             catch(Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("DesignationRespository : GetDesignationsByDepartmentId(int id) : (Error:{Message}",exception.Message);
                throw;
             }
          }
@@ -54,34 +49,24 @@ namespace A5.Data.Repository
                 var designations = _context.Set<Designation>().Where(nameof =>nameof.IsActive == true).Include("Department").ToList();
                 return designations;
             }
-            catch(ValidationException exception)
-            {
-                _logger.LogError("DesignationRespository: GetAllDesignation() : (Error:{Message}",exception.Message);
-                throw;
-            }
             catch(Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                 _logger.LogError("DesignationRespository: GetAllDesignation() : (Error:{Message}",exception.Message);
                 throw;
             }
             
         }
 
-        //to get designation by using id
-        public Designation? GetDesignationById(int id)
+        //to get designation by using designation id
+        public Designation? GetDesignationById(int designationId)
         {
-            if(id<=0) throw new ValidationException(" Designation Id should nto be null or negative");
+            if(designationId<=0) throw new ValidationException(" Designation Id must be greatet than zero");
             try{
-                return GetById(id);
-            }
-            catch(ValidationException exception)
-            {
-                _logger.LogError("DesignationRespository: GetDesginationById(int id) : (Error:{Message}",exception.Message);
-                throw;
+                return GetById(designationId);
             }
             catch(Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+               _logger.LogError("DesignationRespository: GetDesginationById(int id) : (Error:{Message}",exception.Message);
                 throw;
             }
         }
@@ -102,12 +87,12 @@ namespace A5.Data.Repository
             }
             catch(Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+               _logger.LogError("DesignationRespository: CreateDesignation(Designation) : (Error:{Message}",exception.Message);
                 throw;
             }
         }
 
-        // to get count by using id
+        // to get designation count by using designation id
         public int GetCount(int id)
         {
              var checkEmployee = _context.Set<Employee>().Where(nameof => nameof.IsActive == true && nameof.DesignationId == id).Count();
@@ -134,7 +119,7 @@ namespace A5.Data.Repository
             }
             catch(Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+              _logger.LogError("DesignationRespository: UpdateDesignation(Designation) : (Error:{Message}",exception.Message);
                 throw;
             }
         }
@@ -142,18 +127,13 @@ namespace A5.Data.Repository
         //to disable designation using id and employee id
         public bool DisableDesignation(int id,int employeeId)
         {
-            DesignationServiceValidations.DisableValidation(id);
+           
             try{
                 return Disable(id,employeeId);
             }
-            catch(ValidationException exception)
-            {
-                _logger.LogError("DesignationRespository: UpdateDesignation(Designation) : (Error:{Message}",exception.Message);
-                throw;
-            }
             catch(Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("DesignationRespository: DisableDesignation(int id,int employeeId) : (Error:{Message}",exception.Message);
                 throw;
             }
         }

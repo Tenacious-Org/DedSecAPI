@@ -61,17 +61,17 @@ namespace A5.Service
             }
         }
 
-        //disables awardtype using employee object id and current user id
-        public bool DisableAwardType(int id,int employeeId)
+        //disables awardtype using awardtype id and current user id
+        public bool DisableAwardType(int awardtypeid,int employeeId)
         {
             if (employeeId<=0) throw new ValidationException("currents user id must be greater than 0");
 
             try{
-                return _awardTypeRepository.DisableAwardType(id,employeeId);
+                return _awardTypeRepository.DisableAwardType(awardtypeid,employeeId);
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("AwardTypeService: DisableAwardType(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardTypeService: DisableAwardType(int awardtypeid) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -97,11 +97,11 @@ namespace A5.Service
 
 
         //gets awardtype by awardtype Id
-         public AwardType? GetAwardTypeById(int id)
+         public AwardType? GetAwardTypeById(int awardtypeid)
         {
-            if (id <= 0) throw new ValidationException("Award Id must be greater than 0.");
+            if (awardtypeid <= 0) throw new ValidationException("Award Id must be greater than 0.");
             try{
-                return _awardTypeRepository.GetAwardTypeById(id);
+                return _awardTypeRepository.GetAwardTypeById(awardtypeid);
             }
             catch(ValidationException exception)
             {

@@ -99,31 +99,32 @@ namespace A5.Service
         }
         //Gets the count of employees under department.
       
-        public int GetCount(int id)
+        //gets the department count by using department id
+        public int GetCount(int departmentid)
         {
-             return _departmentRepository.GetCount(id);
+             return _departmentRepository.GetCount(departmentid);
         }
         //Gets Department by organisation Id.
-        public IEnumerable<Department> GetDepartmentsByOrganisationId(int id)
+        public IEnumerable<Department> GetDepartmentsByOrganisationId(int departmentId)
          { 
            if(id<=0) throw new ValidationException("organisation Id should not be null or negative");
             try
             {
-               return _departmentRepository.GetDepartmentsByOrganisationId(id);
+               return _departmentRepository.GetDepartmentsByOrganisationId(departmentId);
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("DepartmentService: GetDepartmentsByOrganisationId({id}) : (Error:{Message}",id,exception.Message);
+                _logger.LogError("DepartmentService: GetDepartmentsByOrganisationId({departmentId}) : (Error:{Message}",departmentId,exception.Message);
                 throw;
             }
             catch(Exception exception)
             {
-                _logger.LogError("DepartmentService: GetDepartmentsByOrganisationId({id}) : (Error:{Message}",id,exception.Message);
+                _logger.LogError("DepartmentService: GetDepartmentsByOrganisationId({departmentId}) : (Error:{Message}",departmentId,exception.Message);
                 throw;
             }
              
          }
-         //Gets all the department.
+         //Gets all the department
           public IEnumerable<object> GetAllDepartments()
          {
             var department = _departmentRepository.GetAllDepartment();

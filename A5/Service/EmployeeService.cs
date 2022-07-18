@@ -17,104 +17,73 @@ namespace A5.Service
             _logger = logger;
         }
 
-        public IEnumerable<Employee> GetByHR(int id)
+        //gets employee by using department id
+        public IEnumerable<Employee> GetEmployeeByDepartmentId(int departmentid)
         {
-            EmployeeServiceValidations.ValidateGetByHr(id);
+            
             try
             {
-                return _employeeRepository.GetByHR(id);
+                return _employeeRepository.GetEmployeeByDepartmentId(departmentid);
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeService: GetByHR(int id) : (Error:{Message}", exception.Message);
+                _logger.LogError("EmployeeService: GetEmployeeByDepartmentId(int departmentid) : (Error:{Message}", exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                 _logger.LogError("EmployeeService: GetEmployeeByDepartmentId(int departmentid) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
-
-        public IEnumerable<Employee> GetByReportingPerson(int id)
+        
+        //Gets reporting person list by Department Id
+        public IEnumerable<Employee> GetReportingPersonByDepartmentId(int departmentid)
         {
-            EmployeeServiceValidations.ValidateGetByReportingPerson(id);
+           
             try
             {
-                return _employeeRepository.GetByReportingPerson(id);
+                return _employeeRepository.GetReportingPersonByDepartmentId(departmentid);
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeService: GetByReportingPerson(int id) : (Error:{Message}", exception.Message);
+                _logger.LogError("EmployeeService: GetReportingPersonByDepartmentId(int departmentid) : (Error:{Message}", exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                _logger.LogError("EmployeeService: GetReportingPersonByDepartmentId(int departmentid) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
-
-        public IEnumerable<Employee> GetEmployeeByDepartmentId(int id)
+        
+        //gets Hr list by department id
+        public IEnumerable<Employee> GetHrByDepartmentId(int departmentid)
         {
-            EmployeeServiceValidations.ValidateGetByDepartment(id);
+            
             try
             {
-                return _employeeRepository.GetEmployeeByDepartmentId(id);
+                return _employeeRepository.GetHrByDepartmentId(departmentid);
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeService: GetEmployeeByDepartmentId(int id) : (Error:{Message}", exception.Message);
+                _logger.LogError("EmployeeService: GetHrByDepartmentId(departmentid) : (Error:{Message}", exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                _logger.LogError("EmployeeService: GetHrByDepartmentId(departmentid) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
-        public IEnumerable<Employee> GetReportingPersonByDepartmentId(int id)
+        
+        //gets list of employees by using requester id
+        public IEnumerable<Employee> GetEmployeeByRequesterId(int requesterid)
         {
-            EmployeeServiceValidations.ValidateGetByDepartment(id);
+            
             try
             {
-                return _employeeRepository.GetReportingPersonByDepartmentId(id);
-            }
-            catch (ValidationException exception)
-            {
-                _logger.LogError("EmployeeService: GetReportingPersonByDepartmentId(int id) : (Error:{Message}", exception.Message);
-                throw;
-            }
-            catch (Exception exception)
-            {
-                _logger.LogError("Error: {Message}", exception.Message);
-                throw;
-            }
-        }
-        public IEnumerable<Employee> GetHrByDepartmentId(int id)
-        {
-            EmployeeServiceValidations.ValidateGetByDepartment(id);
-            try
-            {
-                return _employeeRepository.GetHrByDepartmentId(id);
-            }
-            catch (ValidationException exception)
-            {
-                _logger.LogError("EmployeeService: GetHrByDepartmentId(id) : (Error:{Message}", exception.Message);
-                throw;
-            }
-            catch (Exception exception)
-            {
-                _logger.LogError("Error: {Message}", exception.Message);
-                throw;
-            }
-        }
-        public IEnumerable<Employee> GetEmployeeByRequesterId(int id)
-        {
-            EmployeeServiceValidations.ValidateGetByRequester(id);
-            try
-            {
-                return _employeeRepository.GetEmployeeByRequesterId(id);
+                return _employeeRepository.GetEmployeeByRequesterId(requesterid);
             }
             catch (ValidationException exception)
             {
@@ -127,12 +96,14 @@ namespace A5.Service
                 throw;
             }
         }
-        public IEnumerable<Employee> GetEmployeeByOrganisation(int id)
+        
+        //gets list of employees by using organisation id
+        public IEnumerable<Employee> GetEmployeeByOrganisation(int organisationid)
         {
-            EmployeeServiceValidations.ValidateGetByOrganisation(id);
+            
             try
             {
-                return _employeeRepository.GetEmployeeByOrganisation(id);
+                return _employeeRepository.GetEmployeeByOrganisation(organisationid);
             }
             catch (ValidationException exception)
             {
@@ -145,6 +116,8 @@ namespace A5.Service
                 throw;
             }
         }
+        
+        //gets list of all employees
         public IEnumerable<object> GetAllEmployees()
         {
             try
@@ -163,12 +136,14 @@ namespace A5.Service
                 throw;
             }
         }
-        public object GetEmployeeById(int id)
+       
+        //gets employee by using employee id
+        public object GetEmployeeById(int employeeid)
         {
-            EmployeeServiceValidations.ValidateById(id);
+            
             try
             {
-                var employee = _employeeRepository.GetEmployeeById(id);
+                var employee = _employeeRepository.GetEmployeeById(employeeid);
                 if (employee?.HRId == null || employee.ReportingPersonId == null)
                 {
                     return new
@@ -212,6 +187,8 @@ namespace A5.Service
                 throw;
             }
         }
+        
+        //checks employees by using email and password
         public Employee GetEmployee(string Email, string Password)
         {
             if (Email == null || Password == null) throw new ValidationException("Email or Password cannot be null");
@@ -231,6 +208,8 @@ namespace A5.Service
                 throw;
             }
         }
+        
+        //creates employee by using employee object
         public bool CreateEmployee(Employee employee)
         {
             EmployeeServiceValidations.CreateValidation(employee);
@@ -251,6 +230,8 @@ namespace A5.Service
                 throw;
             }
         }
+        
+        //updates employee by using employee object
         public bool UpdateEmployee(Employee employee)
         {
             EmployeeServiceValidations.UpdateValidation(employee);
@@ -270,6 +251,8 @@ namespace A5.Service
                 throw;
             }
         }
+        
+        //disables employee by using employee id to be disabled and current user id
         public bool DisableEmployee(int id, int employeeId)
         {
             EmployeeServiceValidations.DisableValidation(id);
@@ -323,9 +306,10 @@ namespace A5.Service
                 updatedOn = employee?.UpdatedOn
             };
         }
+        
+        //gets employee count by using employee id
         public int GetEmployeeCount(int id)
         {
-            EmployeeServiceValidations.ValidateById(id);
             try
             {
                 return _employeeRepository.GetEmployeeCount(id);
@@ -346,6 +330,44 @@ namespace A5.Service
             var password = employee.FirstName + "@" + employee.ACEID;
             password = PasswordHasher.EncryptPassword(password);
             return password;
+        }
+
+         public IEnumerable<Employee> GetByHR(int id)
+        {
+            EmployeeServiceValidations.ValidateGetByHr(id);
+            try
+            {
+                return _employeeRepository.GetByHR(id);
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("EmployeeService: GetByHR(int id) : (Error:{Message}", exception.Message);
+                throw;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError("EmployeeService: GetByHR(int id) : (Error:{Message}", exception.Message);
+                throw;
+            }
+        }
+
+        public IEnumerable<Employee> GetByReportingPerson(int id)
+        {
+            EmployeeServiceValidations.ValidateGetByReportingPerson(id);
+            try
+            {
+                return _employeeRepository.GetByReportingPerson(id);
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("EmployeeService: GetByReportingPerson(int id) : (Error:{Message}", exception.Message);
+                throw;
+            }
+            catch (Exception exception)
+            {
+                 _logger.LogError("EmployeeService: GetByReportingPerson(int id) : (Error:{Message}", exception.Message);
+                throw;
+            }
         }
 
     }

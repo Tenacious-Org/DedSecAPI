@@ -61,7 +61,6 @@ namespace A5.Data.Repository
 
         public IEnumerable<Employee> GetEmployeeByDepartmentId(int id)
         {
-            EmployeeServiceValidations.ValidateGetByDepartment(id);
             try
             {
                 return _context.Set<Employee>().Where(nameof => nameof.DepartmentId == id).ToList();
@@ -79,7 +78,7 @@ namespace A5.Data.Repository
         }
         public IEnumerable<Employee> GetReportingPersonByDepartmentId(int id)
         {
-            EmployeeServiceValidations.ValidateGetByDepartment(id);
+           
             try
             {
 
@@ -98,7 +97,7 @@ namespace A5.Data.Repository
         }
         public IEnumerable<Employee> GetHrByDepartmentId(int id)
         {
-            EmployeeServiceValidations.ValidateGetByDepartment(id);
+           
             try
             {
                 return _context.Set<Employee>().Where(nameof => nameof.DepartmentId == id && nameof.Designation!.DesignationName == "hr").ToList();
@@ -116,7 +115,7 @@ namespace A5.Data.Repository
         }
         public IEnumerable<Employee> GetEmployeeByRequesterId(int id)
         {
-            EmployeeServiceValidations.ValidateGetByRequester(id);
+           
             try
             {
                 return _context.Set<Employee>().Where(nameof => nameof.ReportingPersonId == id && nameof.IsActive == true).ToList();
@@ -134,7 +133,7 @@ namespace A5.Data.Repository
         }
         public IEnumerable<Employee> GetEmployeeByOrganisation(int id)
         {
-            EmployeeServiceValidations.ValidateGetByOrganisation(id);
+           
             try
             {
                 var result = _context.Set<Employee>().Where(nameof => nameof.IsActive == true && nameof.OrganisationId == id).ToList();
@@ -326,7 +325,6 @@ namespace A5.Data.Repository
         }
         public int GetEmployeeCount(int id)
         {
-            EmployeeServiceValidations.ValidateById(id);
             try
             {
 
