@@ -471,6 +471,34 @@ namespace A5.Service
             }
         }
 
+        public IEnumerable<object> GetAllDateWise(DateTime start, DateTime end)
+        {
+            try
+            {
+                var winners = _award.GetAllDateWise(start, end);
+                return winners.Select(Award => new{
+                    
+                    organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
+                    
+                    department = Award?.Awardee?.Designation?.Department?.DepartmentName,
+                    
+                    awardName = Award?.AwardType?.AwardName,
+
+                    publishedDate = Award?.UpdatedOn
+                });
+            }
+           catch(ValidationException exception)
+            {
+                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("Error: {Message}",exception.Message);
+                throw;
+            }
+        }
+
         //Filters all organisation, department,awardname ad published date by using organisation Id, award Id, From date and To date
         public IEnumerable<object> GetAllOrgAwdDateWise(int orgid, int awdid, DateTime start, DateTime end)
         {
