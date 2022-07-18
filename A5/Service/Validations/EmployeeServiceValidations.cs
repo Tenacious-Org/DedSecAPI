@@ -30,12 +30,6 @@ namespace A5.Service.Validations
             if(employee.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
-        public static bool ValidateGetById(int id)
-        {
-            Employee employee = new Employee();
-            if(id==0) throw new ValidationException("Employee Id should not be null.");
-            return true;
-        }
         public static bool DisableValidation(int id)
         {
             Employee employee = new Employee();
@@ -44,16 +38,7 @@ namespace A5.Service.Validations
             else return true;
         }
         
-        public static bool ValidateGetByHr(int id)
-        {
-            if(id==0) throw new ValidationException("HR Id should not be null");
-            else return true;
-        }
-        public static bool ValidateGetByReportingPerson(int id)
-        {
-            if(id==0) throw new ValidationException("Reporting Person Id should not be null");
-            else return true;
-        }
+        
                   
 
       public static bool  PasswordValidation(Employee employee,int id,string Email)

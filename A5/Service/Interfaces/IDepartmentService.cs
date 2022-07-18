@@ -9,7 +9,7 @@ namespace A5.Service.Interfaces
     {
         bool CreateDepartment(Department department);
         bool UpdateDepartment(Department department);
-        Department? GetDepartmentById(int id);
+        Department? GetDepartmentById(int departmentId);
         bool DisableDepartment(int id,int employeeId);
         int GetCount(int id);
         public IEnumerable<object> GetAllDepartments();

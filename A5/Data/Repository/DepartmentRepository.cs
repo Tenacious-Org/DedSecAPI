@@ -48,16 +48,16 @@ namespace A5.Data.Repository
             }
         }
         //Gets department using Department Id
-        public Department? GetDepartmentById(int id)
+        public Department? GetDepartmentById(int departmentId)
         {
-            if(id<=0) throw new ValidationException("Department Id must be greater than zero");
+            if(departmentId<=0) throw new ValidationException("Department Id must be greater than zero");
             try
             {
-                return GetById(id);
+                return GetById(departmentId);
             }
             catch (Exception exception)
             {
-                _logger.LogError("DepartmentRepository: GetDepartmentById({id}) : (Error:{Message}",id, exception.Message);
+                _logger.LogError("DepartmentRepository: GetDepartmentById({id}) : (Error:{Message}",departmentId, exception.Message);
                 throw;
             }
         }
