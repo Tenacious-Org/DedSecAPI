@@ -19,6 +19,7 @@ namespace A5.Service
             _logger=logger;
         }
 
+        //to getall by organisation Id
         public IEnumerable<object> GetAllByOrgwise(int orgid)
         {
             try
@@ -48,7 +49,9 @@ namespace A5.Service
                 throw;
             }
         }
-        
+
+
+        //to getall awardwise by award Id
         public IEnumerable<object> GetAllAwardwise(int awdid)
         {
             try
@@ -74,6 +77,8 @@ namespace A5.Service
                 throw;
             }
         }
+
+        //gets all awardees list
         public IEnumerable<object> GetAllAwardees()
         {
             try
@@ -99,6 +104,8 @@ namespace A5.Service
                 throw;
             }
         }
+
+        //get all by organisation id and award id 
         public IEnumerable<object> GetAllOrgandAward(int orgid, int awdid)
         {
             try
@@ -124,6 +131,8 @@ namespace A5.Service
                 throw;
             }
         }
+
+        //get all by organisation id and department id
         public IEnumerable<object> GetAllOrgandDep(int orgid, int depid)
         {
             try
@@ -150,6 +159,7 @@ namespace A5.Service
             }
         }
 
+        // get all by organisation id, department id and award id
         public IEnumerable<object> GetAllOrgDepandAward(int orgid, int depid, int awdid)
         {
             try
@@ -176,6 +186,8 @@ namespace A5.Service
             }
         }
 
+
+        // gets all filtered by datewise using organisation id, department id, award id and datetime
         public IEnumerable<object> GetAllFilteredDateWise(int orgid, int deptid, int awdid, DateTime start, DateTime end)
         {
             try
@@ -204,6 +216,8 @@ namespace A5.Service
             }
         }
 
+
+        //filter organisation and from date by using organisation id and datetime 
         public IEnumerable<object> GetAllFilteredOrganisationandFromDate(int orgid, DateTime start)
         {
             try
@@ -232,6 +246,7 @@ namespace A5.Service
             }
         }
 
+        //filter organisation,department and from date by using organisation id,department id and datetime 
         public IEnumerable<object> GetAllFilteredOrgDepandFromDate(int orgid, int deptid, DateTime start)
         {
             try
@@ -259,7 +274,7 @@ namespace A5.Service
                 throw;
             }
         }
-
+        //filter organisation,award and from date by using organisation id,award id and datetime 
         public IEnumerable<object> GetAllFilteredOrgAwdandFromDate(int orgid, int awdid, DateTime start)
         {
             try
@@ -288,6 +303,7 @@ namespace A5.Service
             }
         }
 
+        //Filter organisation, department and Todate by using organisation Id, Department Id and DateTime
         public IEnumerable<object> GetAllFilteredOrgDepandToDate(int orgid, int deptid, DateTime end)
         {
             try
@@ -316,6 +332,7 @@ namespace A5.Service
             }
         }
 
+        //Filter organisation, department and Todate by using organisation Id, Department Id and DateTime
         public IEnumerable<object> GetAllFilteredOrgAwdandToDate(int orgid, int awdid, DateTime end)
         {
             try

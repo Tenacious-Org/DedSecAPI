@@ -15,6 +15,8 @@ namespace A5.Data.Repository
             _context=context;
             _logger=logger;
         }
+          
+          //to create an awardtype using awardtype object
           public bool CreateAwardType(AwardType awardType)
         {
            
@@ -31,6 +33,7 @@ namespace A5.Data.Repository
             }
         }
         
+        //to update an awardtype using awardtype object
          public bool UpdateAwardType(AwardType awardType)
         {
             AwardTypeValidations.UpdateValidation(awardType);
@@ -45,6 +48,8 @@ namespace A5.Data.Repository
                 throw;
             }
         }
+
+        //to disable an awardtype using id and employeeId
         public bool DisableAwardType(int id,int employeeId)
         {
              if (employeeId<=0) throw new ValidationException("currents user id must be greater than 0");
@@ -58,6 +63,8 @@ namespace A5.Data.Repository
             }
         }
 
+
+        //to get all awardtype
         public IEnumerable<AwardType> GetAllAwardTypes()
         {
             try{
@@ -70,6 +77,7 @@ namespace A5.Data.Repository
             }
         }
 
+        // to get an awardtype by Id using id
          public AwardType? GetAwardTypeById(int id)
         {
             if (id <= 0) throw new ValidationException("Award Id must be greater than 0.");

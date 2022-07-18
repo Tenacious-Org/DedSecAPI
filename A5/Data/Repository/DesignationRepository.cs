@@ -16,6 +16,8 @@ namespace A5.Data.Repository
             _logger=logger;
         }
 
+    
+        //to get designations by departmentId using id
          public IEnumerable<Designation> GetDesignationsByDepartmentId(int id)
          {
              DesignationServiceValidations.ValidateGetByDepartment(id);
@@ -43,6 +45,8 @@ namespace A5.Data.Repository
                throw;
             }
          }
+
+         //to get all designations
           public IEnumerable<Designation> GetAllDesignation()
         {
             try
@@ -62,6 +66,8 @@ namespace A5.Data.Repository
             }
             
         }
+
+        //to get designation by using id
         public Designation? GetDesignationById(int id)
         {
             DepartmentServiceValidations.ValidateGetById(id);
@@ -79,6 +85,8 @@ namespace A5.Data.Repository
                 throw;
             }
         }
+
+        // to create designation using designation object
           public bool CreateDesignation(Designation designation)
         {
             DesignationServiceValidations.CreateValidation(designation);
@@ -98,6 +106,8 @@ namespace A5.Data.Repository
                 throw;
             }
         }
+
+        // to get count by using id
         public int GetCount(int id)
         {
              var checkEmployee = _context.Set<Employee>().Where(nameof => nameof.IsActive == true && nameof.DesignationId == id).Count();
@@ -107,6 +117,8 @@ namespace A5.Data.Repository
         {
             return new{message=ValidationMessage};
         }
+
+        // to update designation using designation object
         public bool UpdateDesignation(Designation designation)
         {
             DesignationServiceValidations.UpdateValidation(designation);
@@ -126,6 +138,8 @@ namespace A5.Data.Repository
                 throw;
             }
         }
+
+        //to disable designation using id and employee id
         public bool DisableDesignation(int id,int employeeId)
         {
             DesignationServiceValidations.DisableValidation(id);

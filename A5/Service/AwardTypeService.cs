@@ -17,6 +17,9 @@ namespace A5.Service
             _awardTypeRepository=awardTypeRepository;
             _logger=logger;
         }
+         
+         
+         //creates awardtype using awardtype object
           public bool CreateAwardType(AwardType awardType)
         {
            
@@ -37,6 +40,7 @@ namespace A5.Service
             }
         }
         
+        //updates awardtype using awardtype object
          public bool UpdateAwardType(AwardType awardType)
         {
           
@@ -56,6 +60,8 @@ namespace A5.Service
                 throw;
             }
         }
+
+        //disables awardtype using employee object id and current user id
         public bool DisableAwardType(int id,int employeeId)
         {
             if (employeeId<=0) throw new ValidationException("currents user id must be greater than 0");
@@ -75,6 +81,7 @@ namespace A5.Service
             }
         }
 
+        //gets list of all awardtypes
          public IEnumerable<AwardType> GetAllAwardType()
         {
             
@@ -88,6 +95,8 @@ namespace A5.Service
             }
         }
 
+
+        //gets awardtype by awardtype Id
          public AwardType? GetAwardTypeById(int id)
         {
             if (id <= 0) throw new ValidationException("Award Id must be greater than 0.");
