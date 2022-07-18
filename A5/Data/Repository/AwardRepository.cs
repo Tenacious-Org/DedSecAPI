@@ -718,6 +718,37 @@ namespace A5.Data.Repository
             }
         }
 
+         public IEnumerable<Award> GetAllDateWise(DateTime start, DateTime end)
+        {
+            try
+            {
+                var award = _context.Set<Award>()
+                    .Include("Awardee")
+                    .Include("Awardee.Designation")
+                    .Include("Awardee.Designation.Department")
+                    .Include("Awardee.Designation.Department.Organisation")
+                    .Include("Awardee.ReportingPerson")
+                    .Include("Awardee.ReportingPerson.ReportingPerson")
+                    .Include("Awardee.HR")
+                    .Include("AwardType")
+                    .Include("Status")
+                    .Where(nameof =>  nameof.StatusId == 4
+                                  && (nameof.UpdatedOn >= start.Date && nameof.UpdatedOn <= end.Date))
+                    .ToList();
+                return award;
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}", exception.Message);
+                throw;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError("Error: {Message}", exception.Message);
+                throw;
+            }
+        }
+
         //Gets all list of awards by date wise using from date
         public IEnumerable<Award> GetAllFilteredFromDateWise(DateTime start)
         {
