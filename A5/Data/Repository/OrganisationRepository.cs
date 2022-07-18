@@ -24,14 +24,9 @@ namespace A5.Data.Repository
                 
                 return Create(organisation);
             }
-            catch (ValidationException exception)
-            {
-                _logger.LogError("OrganisationRepository: CreateOrganisation(Organisation organisation) : (Error:{Message}", exception.Message);
-                throw;
-            }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                _logger.LogError("OrganisationRepository: CreateOrganisation(Organisation organisation) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
@@ -44,53 +39,36 @@ namespace A5.Data.Repository
             {
                 return Update(organisation);
             }
-            catch (ValidationException exception)
-            {
-                _logger.LogError("OrganisationRepository: UpdateOrganisation(Organisation organisation) : (Error:{Message}", exception.Message);
-                throw;
-            }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                 _logger.LogError("OrganisationRepository: UpdateOrganisation(Organisation organisation) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
         public Organisation? GetOrganisationById(int id)
         {
-            OrganisationServiceValidations.ValidateGetById(id);
+            
             try
             {
                 return GetById(id);
             }
-            catch (ValidationException exception)
-            {
-                _logger.LogError("OrganisationRepository: GetByOrganisation(int id) : (Error:{Message}", exception.Message);
-                throw;
-            }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                _logger.LogError("OrganisationRepository: GetByOrganisation(int id) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
         public bool DisableOrganisation(int id, int employeeId)
         {
-            OrganisationServiceValidations.DisableValidation(id);
 
             try
             {
                 return Disable(id, employeeId);
 
             }
-            catch (ValidationException exception)
-            {
-
-                _logger.LogError("OrganisationRepository: DisableOrganisation(int id) : (Error:{Message}", exception.Message);
-                throw;
-            }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                _logger.LogError("OrganisationRepository: DisableOrganisation(int id) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
@@ -106,14 +84,9 @@ namespace A5.Data.Repository
             {
                 return GetAll();
             }
-            catch (ValidationException exception)
-            {
-                _logger.LogError("OrganisationRepository: GetAllOrganisation() : (Error:{Message}", exception.Message);
-                throw;
-            }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+               _logger.LogError("OrganisationRepository: GetAllOrganisation() : (Error:{Message}", exception.Message);
                 throw;
             }
         }

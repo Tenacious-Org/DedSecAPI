@@ -70,7 +70,7 @@ namespace A5.Data.Repository
         //to get designation by using id
         public Designation? GetDesignationById(int id)
         {
-            DepartmentServiceValidations.ValidateGetById(id);
+            if(id<=0) throw new ValidationException(" Designation Id should nto be null or negative");
             try{
                 return GetById(id);
             }

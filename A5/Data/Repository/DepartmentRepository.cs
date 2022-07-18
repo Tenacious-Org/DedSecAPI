@@ -24,14 +24,9 @@ namespace A5.Data.Repository
             {
                 return Create(department);
             }
-            catch (ValidationException exception)
-            {
-                _logger.LogError("DepartmentRepository: CreateDepartment(Departmetn department) : (Error:{Message}", exception.Message);
-                throw;
-            }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                _logger.LogError("DepartmentRepository: CreateDepartment(Departmetn department) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
@@ -44,44 +39,36 @@ namespace A5.Data.Repository
             {
                 return Update(department);
             }
-            catch (ValidationException exception)
-            {
-                _logger.LogError("DepartmentRepository: UpdateDepartment(Department department) : (Error:{Message}", exception.Message);
-                throw;
-            }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                _logger.LogError("DepartmentRepository: UpdateDepartment(Department department) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
         public Department? GetDepartmentById(int id)
         {
-            DepartmentServiceValidations.ValidateGetById(id);
+            if(id<=0) throw new ValidationException("Department Id should not be null or negative");
             try
             {
                 return GetById(id);
             }
-            catch (ValidationException exception)
-            {
-                _logger.LogError("DepartmentRepository: GetByDepartment(int id) : (Error:{Message}", exception.Message);
-                throw;
-            }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                _logger.LogError("DepartmentRepository: GetDepartmentById({id}) : (Error:{Message}",id, exception.Message);
                 throw;
             }
         }
         public bool DisableDepartment(int id, int employeeId)
         {
+            if(id<=0) throw new ValidationException("Department Id should not be null or negative");
+            if(employeeId<=0) throw new ValidationException("Employee Id should not be null or negative");
             try
             {
                 return Disable(id, employeeId);
             }
             catch (Exception exception)
             {
-                _logger.LogError("DepartmentRepository: DisableDepartment(int id) : (Error:{Message}", exception.Message);
+                _logger.LogError("DepartmentRepository: DisableDepartment(Id:{id},EmployeeId:{employeeId}) : (Error:{Message}", id,employeeId,exception.Message);
                 throw;
             }
         }
@@ -92,11 +79,6 @@ namespace A5.Data.Repository
             {
                 var departments = _context.Set<Department>().Where(nameof => nameof.IsActive).Include("Organisation").ToList();
                 return departments;
-            }
-            catch (ValidationException exception)
-            {
-                _logger.LogError("DepartmentRepository: GetAllDepartments() : (Error:{Message}", exception.Message);
-                throw;
             }
             catch (Exception exception)
             {
@@ -111,20 +93,15 @@ namespace A5.Data.Repository
         }
         public IEnumerable<Department> GetDepartmentsByOrganisationId(int id)
         {
-            DepartmentServiceValidations.ValidateGetByOrganisation(id);
+            if(id<=0) throw new ValidationException("Organisation Id should not be null or negative");
             try
             {
                 var organisationDetails = _context.Set<Department>().Where(nameof => nameof.OrganisationId == id && nameof.IsActive == true).ToList();
                 return organisationDetails;
             }
-            catch (ValidationException exception)
-            {
-                _logger.LogError("DepartmentRepository: GetDepartmentsByOrganisationId(int id) : (Error:{Message}", exception.Message);
-                throw;
-            }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                _logger.LogError("DepartmentRepository: GetDepartmentsByOrganisationId({id}) : (Error:{Message}", id,exception.Message);
                 throw;
             }
 

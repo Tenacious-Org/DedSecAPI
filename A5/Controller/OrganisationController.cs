@@ -43,13 +43,9 @@ namespace A5.Controller
                 var data = _organisationService.GetAllOrganisation();
                 return Ok(data);
             }
-            catch(ValidationException exception)
-            {
-                _logger.LogError("OrganisationController : GetAllOrganisation() : (Error:{Message})",exception.Message);
-                return BadRequest(_organisationService.ErrorMessage(exception.Message));
-            }
             catch(Exception exception)
             {
+                 _logger.LogError("OrganisationController : GetAllOrganisation() : (Error:{Message})",exception.Message);
                 return Problem(exception.Message);
             }
             
@@ -77,7 +73,7 @@ namespace A5.Controller
          [HttpGet("GetById")]
         public ActionResult GetByOrganisationId( int id)
         {
-           if(id==0) return BadRequest("Organisation Id should not be null");
+           if(id<=0) return BadRequest("Organisation Id must be greater than zero");
             try{
                
                 var data = _organisationService.GetOrganisationById(id);
@@ -85,11 +81,12 @@ namespace A5.Controller
             }
             catch(ValidationException exception)
             {
-                _logger.LogInformation("OrganisationController : GetByOrganisationId(int id) : (Error : {Message})",exception.Message);
+                _logger.LogError("OrganisationController : GetByOrganisationId(int id) : (Error : {Message})",exception.Message);
                 return BadRequest(_organisationService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
+                _logger.LogError("OrganisationController : GetByOrganisationId(int id) : (Error : {Message})",exception.Message);
                 return Problem(exception.Message);
             }
             
@@ -131,6 +128,7 @@ namespace A5.Controller
             }
             catch(Exception exception)
             {
+                _logger.LogError("OrganisationController : Create(Organisation organisation) : (Error:{Message}",exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -170,6 +168,7 @@ namespace A5.Controller
             }
             catch(Exception exception)
             {
+                 _logger.LogError("OrganisationController : Update(Organisation organisation,int id) : (Error: {Message})",exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -196,7 +195,7 @@ namespace A5.Controller
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
         {
-            if (id <= 0) return BadRequest("Id cannot be null ");   
+            if (id <= 0) return BadRequest("Id must be greater than zero ");   
             try
             {
                 var checkEmployee=_organisationService.GetCount(id);
@@ -218,6 +217,7 @@ namespace A5.Controller
             }
             catch(Exception exception)
             {
+                 _logger.LogError("OrganisationController : Disable(int id) : (Error : {Message})",exception.Message);
                 return BadRequest(exception.Message);
             }
         }

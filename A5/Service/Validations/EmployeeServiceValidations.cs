@@ -24,6 +24,7 @@ namespace A5.Service.Validations
             if(string.IsNullOrWhiteSpace(employee.FirstName)) throw new ValidationException("Employee name should not be null or empty");
             if(string.IsNullOrWhiteSpace(employee.LastName)) throw new ValidationException("Employee name should not be null or empty");
             if(!( Regex.IsMatch(employee.FirstName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("First Name should have only alphabets.No special Characters or numbers are allowed");
+            if(!( Regex.IsMatch(employee.LastName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("Last Name should have only alphabets.No special Characters or numbers are allowed");   
             if(employee.IsActive==false) throw new ValidationException("Employee should be active when it is created");
             if(employee.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             if(employee.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
