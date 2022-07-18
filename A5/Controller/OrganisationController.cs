@@ -1,10 +1,7 @@
-using System;
 using Microsoft.AspNetCore.Mvc;
 using A5.Models;
-using A5.Service;
 using A5.Service.Interfaces;
 using System.ComponentModel.DataAnnotations;
-using A5.Data;
 using Microsoft.AspNetCore.Authorization;
 
 namespace A5.Controller

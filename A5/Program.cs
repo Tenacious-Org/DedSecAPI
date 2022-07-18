@@ -30,6 +30,7 @@ builder.Services.AddTransient<IOrganisationService,OrganisationService>();
 builder.Services.AddTransient<IDepartmentService,DepartmentService>();
 builder.Services.AddTransient<IDesignationService,DesignationService>();
 builder.Services.AddTransient<IAwardTypeService,AwardTypeService>();
+builder.Services.AddTransient<IStatusService,StatusService>();
 builder.Services.AddTransient<DashboardService>();
 builder.Services.AddTransient<MailService>();
 builder.Services.AddTransient<RoleService>();
@@ -42,6 +43,8 @@ builder.Services.AddTransient<IEmployeeRepository,EmployeeRepository>();
 builder.Services.AddTransient<IOrganisationRepository,OrganisationRepository>();
 builder.Services.AddTransient<IDepartmentRepository,DepartmentRepository>();
 builder.Services.AddTransient<IDesignationRepository,DesignationRepository>();
+builder.Services.AddTransient<IStatusRepository,StatusRepository>();
+
 
 
 

@@ -52,7 +52,7 @@ namespace A5.Service
         }
         public Organisation? GetOrganisationById(int id)
         {
-            if(id<=0) throw new ValidationException("organisationId ");
+            OrganisationServiceValidations.ValidateGetById(id);
             try{
                 return _organisationRepository.GetOrganisationById(id);
             }
@@ -86,7 +86,8 @@ namespace A5.Service
         }
         public bool DisableOrganisation(int id,int employeeId)
         {
-            if(employeeId<=0) throw new ValidationException("employeeId must be greater than 0");          
+            OrganisationServiceValidations.DisableValidation(id);
+            
             try
             {
                 return _organisationRepository.DisableOrganisation(id,employeeId);
