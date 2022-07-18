@@ -54,26 +54,6 @@ namespace A5.Service.Validations
             if(id==0) throw new ValidationException("Reporting Person Id should not be null");
             else return true;
         }
-        public static bool ValidateGetByDepartment(int id)
-        {
-            if(id==0) throw new ValidationException("Department Id should not be null");
-            else return true;
-        }
-       public static bool ValidateGetByRequester(int id)
-       {
-            if(id==0) throw new ValidationException("Requester ID should not be null");
-            else return true;
-       }
-       public static bool ValidateGetByOrganisation(int id)
-       {
-           if(id==0) throw new ValidationException("Organisation id should not be null");
-           else return true;
-       }
-       public static bool ValidateById(int id)
-       {
-        if(id==0) throw new ValidationException("Employee id should not be null");
-        else return true;
-       }
                   
 
       public static bool  PasswordValidation(Employee employee,int id,string Email)

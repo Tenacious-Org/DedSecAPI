@@ -13,16 +13,16 @@ namespace A5.Service
             _logger=logger;
         }
 
-        //to getall by organisation Id
-        public IEnumerable<object> GetAllByOrgwise(int orgid)
+        //filters all organisation,department and awardname by organisation Id
+        public IEnumerable<object> GetAllByOrganisationwise(int organisationid)
         {
             try
             {
-                if(orgid == 0)
+                if(organisationid == 0)
                 {
                     throw new ValidationException("Organisatioin ID should not be zero.");
                 }
-                var orgwise = _award.GetAllbyOrgwise(orgid);
+                var orgwise = _award.GetAllbyOrgwise(organisationid);
                 return orgwise.Select(Award => new{
                     
                     organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
@@ -45,12 +45,12 @@ namespace A5.Service
         }
 
 
-        //to getall awardwise by award Id
-        public IEnumerable<object> GetAllAwardwise(int awdid)
+        //filters all organisation, department and awardname by award Id
+        public IEnumerable<object> GetAllAwardwise(int awardid)
         {
             try
             {
-                var deptwise = _award.GetAllAwardwise(awdid);
+                var deptwise = _award.GetAllAwardwise(awardid);
                 return deptwise.Select(Award => new{
                     
                     organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
@@ -72,8 +72,8 @@ namespace A5.Service
             }
         }
 
-        //gets all awardees list
-        public IEnumerable<object> GetAllAwardees()
+        //filters all organisation,department and awardname
+        public IEnumerable<object> GetAllAwards()
         {
             try
             {
@@ -99,12 +99,12 @@ namespace A5.Service
             }
         }
 
-        //get all by organisation id and award id 
-        public IEnumerable<object> GetAllOrgandAward(int orgid, int awdid)
+        //filters all organisation,department and awardname by using organisation id and award id
+        public IEnumerable<object> GetAllOrganisationandAward(int organisationid, int awardid)
         {
             try
             {
-                var winners = _award.GetAllOrganisationandAward(orgid, awdid);
+                var winners = _award.GetAllOrganisationandDepartment(organisationid, awardid);
                 return winners.Select(Award => new{
                     
                     organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
@@ -127,11 +127,11 @@ namespace A5.Service
         }
 
         //get all by organisation id and department id
-        public IEnumerable<object> GetAllOrgandDep(int orgid, int depid)
+        public IEnumerable<object> GetAllOrganisationandDepartment(int organisationid, int departmentid)
         {
             try
             {
-                var winners = _award.GetAllOrgAndDepwise(orgid, depid);
+                var winners = _award.GetAllOrganisationandDepartment(organisationid, departmentid);
                 return winners.Select(Award => new{
                     
                     organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
@@ -153,12 +153,12 @@ namespace A5.Service
             }
         }
 
-        // get all by organisation id, department id and award id
-        public IEnumerable<object> GetAllOrgDepandAward(int orgid, int depid, int awdid)
+        // filters all organisation,department and awardname by organisation id, department id and award id
+        public IEnumerable<object> GetAllOrganisationDepartmentandAward(int organisationid, int departmentid, int awardid)
         {
             try
             {
-                var winners = _award.GetAllOrgDepandAwardwise(orgid, depid, awdid);
+                var winners = _award.GetAllOrgDepandAwardwise(organisationid, departmentid, awardid);
                 return winners.Select(Award => new{
                     
                     organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
@@ -181,7 +181,7 @@ namespace A5.Service
         }
 
 
-        // gets all filtered by datewise using organisation id, department id, award id and datetime
+        // filters all organisation,department,awardname and published date by organisation id, department id,award id, from date and to date
         public IEnumerable<object> GetAllFilteredDateWise(int orgid, int deptid, int awdid, DateTime start, DateTime end)
         {
             try
@@ -211,7 +211,7 @@ namespace A5.Service
         }
 
 
-        //filter organisation and from date by using organisation id and datetime 
+        //filters all organisation,department,awardname and published date by organisation id and from date 
         public IEnumerable<object> GetAllFilteredOrganisationandFromDate(int orgid, DateTime start)
         {
             try
@@ -240,7 +240,7 @@ namespace A5.Service
             }
         }
 
-        //filter organisation,department and from date by using organisation id,department id and datetime 
+        //filters all organisation,department,awardname and published date by using organisation id,department id and from date
         public IEnumerable<object> GetAllFilteredOrgDepandFromDate(int orgid, int deptid, DateTime start)
         {
             try
@@ -268,7 +268,7 @@ namespace A5.Service
                 throw;
             }
         }
-        //filter organisation,award and from date by using organisation id,award id and datetime 
+        //filters all organisation, departmnet, awardname and published date by using organisation id,award id and from date
         public IEnumerable<object> GetAllFilteredOrgAwdandFromDate(int orgid, int awdid, DateTime start)
         {
             try
@@ -297,7 +297,7 @@ namespace A5.Service
             }
         }
 
-        //Filter organisation, department and Todate by using organisation Id, Department Id and DateTime
+        //Filters all organisation, department, awardname and published date by using organisation Id, Department Id and To date
         public IEnumerable<object> GetAllFilteredOrgDepandToDate(int orgid, int deptid, DateTime end)
         {
             try
@@ -326,7 +326,7 @@ namespace A5.Service
             }
         }
 
-        //Filter organisation, department and Todate by using organisation Id, Department Id and DateTime
+        //Filters all organisation, department,awardname ad published date by using organisation Id, award Id Id and To date
         public IEnumerable<object> GetAllFilteredOrgAwdandToDate(int orgid, int awdid, DateTime end)
         {
             try
@@ -355,6 +355,7 @@ namespace A5.Service
             }
         }
 
+        //Filters all organisation, department,awardname ad published date by using organisation Id and To date
         public IEnumerable<object> GetAllFilteredOrganisationandToDate(int orgid, DateTime end)
         {
             try
@@ -383,6 +384,7 @@ namespace A5.Service
             }
         }
 
+       //Filters all organisation, department,awardname ad published date by using To date
         public IEnumerable<object> GetAllFilteredFromDate(DateTime start)
         {
             try
@@ -411,6 +413,7 @@ namespace A5.Service
             }
         }
 
+        //Filters all organisation, department,awardname ad published date by using To date
         public IEnumerable<object> GetAllFilteredToDate(DateTime end)
         {
             try
@@ -439,6 +442,7 @@ namespace A5.Service
             }
         }
 
+        //Filters all organisation, department,awardname ad published date by using organisation Id, department Id, From date and To date
         public IEnumerable<object> GetAllOrgDeptDateWise(int orgid, int deptid, DateTime start, DateTime end)
         {
             try
@@ -467,6 +471,7 @@ namespace A5.Service
             }
         }
 
+        //Filters all organisation, department,awardname ad published date by using organisation Id, award Id, From date and To date
         public IEnumerable<object> GetAllOrgAwdDateWise(int orgid, int awdid, DateTime start, DateTime end)
         {
             try

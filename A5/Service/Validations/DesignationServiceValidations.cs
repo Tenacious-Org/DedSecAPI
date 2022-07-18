@@ -26,14 +26,6 @@ namespace A5.Service.Validations
             if(designation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
-         public static bool DisableValidation(int id)
-        {
-            Designation designation = new Designation();
-            if((id == 0)) throw new ValidationException("Designation Id should not be null.");
-            if(designation.IsActive==false) throw new ValidationException("Designation is already disabled");
-            if(designation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
-            else return true;
-        }
          public static bool ValidateGetById(int id)
         {
             Designation designation = new Designation();
