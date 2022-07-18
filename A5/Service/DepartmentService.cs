@@ -30,12 +30,12 @@ namespace A5.Service
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("DepartmentService: CreateDepartment(Departmetn department) : (Error:{Message}",exception.Message);
+                _logger.LogError("DepartmentService: CreateDepartment(Department department) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("DepartmentService: CreateDepartment(Department department) : (Error:{Message}",exception.Message);
                 throw;
             }
         }
@@ -52,29 +52,31 @@ namespace A5.Service
             }
             catch(Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("DepartmentService: UpdateDepartment(Department department) : (Error:{Message}",exception.Message);
                 throw;
             }
         }
         public Department? GetDepartmentById(int id)
         {
-            DepartmentServiceValidations.ValidateGetById(id);
+            if(id<=0) throw new ValidationException("Department Id should not be null or negative");
             try{
                 return _departmentRepository.GetDepartmentById(id);
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("DepartmentService: GetByDepartment(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("DepartmentService: GetByDepartment({id}) : (Error:{Message}",id,exception.Message);
                 throw;
             }
             catch(Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("DepartmentService: GetByDepartment({id}) : (Error:{Message}",id,exception.Message);
                 throw;
             }
         }
         public bool DisableDepartment(int id,int employeeId)
-        {            
+        {   
+            if(id<=0) throw new ValidationException("Department Id should not be null or negative");
+            if(employeeId<=0 )throw new ValidationException("Employee Id should not be null or negative");       
             try
             {
                 return _departmentRepository.DisableDepartment(id,employeeId);
@@ -82,7 +84,7 @@ namespace A5.Service
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("DepartmentService: DisableDepartment(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("DepartmentService: DisableDepartment(id:{id},employeeId:{employeeId}) : (Error:{Message}",id,employeeId,exception.Message);
                 throw;
             }
             catch(Exception exception)
@@ -98,19 +100,19 @@ namespace A5.Service
         }
         public IEnumerable<Department> GetDepartmentsByOrganisationId(int id)
          { 
-            DepartmentServiceValidations.ValidateGetByOrganisation(id);
+           if(id<=0) throw new ValidationException("organisation Id should not be null or negative");
             try
             {
                return _departmentRepository.GetDepartmentsByOrganisationId(id);
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("DepartmentService: GetDepartmentsByOrganisationId(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("DepartmentService: GetDepartmentsByOrganisationId({id}) : (Error:{Message}",id,exception.Message);
                 throw;
             }
             catch(Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("DepartmentService: GetDepartmentsByOrganisationId({id}) : (Error:{Message}",id,exception.Message);
                 throw;
             }
              

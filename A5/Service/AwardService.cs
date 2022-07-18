@@ -56,7 +56,7 @@ namespace A5.Service
             try
             {
                 var award = _award.GetAwardById(id);
-                return GetAwardObject(award);
+                return GetAwardObject(award!);
             }
             catch (ValidationException exception)
             {

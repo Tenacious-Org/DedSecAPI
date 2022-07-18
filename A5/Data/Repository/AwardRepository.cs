@@ -81,7 +81,7 @@ namespace A5.Data.Repository
                 else if (award.StatusId == 3)
                 {
                     var awardee = GetAwardById(award.Id);
-                    _mail?.RejectedAsync(awardee);
+                    _mail?.RejectedAsync(awardee!);
                 }
                 return true;
             }

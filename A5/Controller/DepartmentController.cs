@@ -45,13 +45,9 @@ namespace A5.Controller
                 var result = _departmentService.GetAllDepartments();
                 return Ok(result);
             }           
-            catch(ValidationException exception)
-            {
-                _logger.LogError("DepartmentController : GetAllDepartment() : (Error: {Message})",exception.Message);
-                return BadRequest(_departmentService.ErrorMessage(exception.Message));
-            }
             catch(Exception exception)
             {
+                _logger.LogError("DepartmentController : GetAllDepartment() : (Error: {Message})",exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -82,18 +78,18 @@ namespace A5.Controller
         public ActionResult GetDepartmentsByOrganisationId(int id)
         {
             if (id <= 0) return BadRequest("Id cannot be null ");
-
             try{
                 var data = _departmentService.GetDepartmentsByOrganisationId(id);
                 return Ok(data);
             }          
             catch(ValidationException exception)
             {
-                 _logger.LogError("DepartmentController : GetDepartmentByOrganisationId(int id) : (Error: {Message})",exception.Message);
+                 _logger.LogError("DepartmentController : GetDepartmentByOrganisationId({id}) : (Error: {Message})",id,exception.Message);
                 return BadRequest(_departmentService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
+                _logger.LogError("DepartmentController : GetDepartmentByOrganisationId({id}) : (Error: {Message})",id,exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -120,19 +116,19 @@ namespace A5.Controller
         [HttpGet("GetById")]
         public ActionResult GetByDepartmentId( int id)
         {
-            if (id <= 0) return BadRequest("Id cannot be null ");
-
+            if (id <= 0) return BadRequest("Id cannot be null or negative");
             try{
                 var data = _departmentService.GetDepartmentById(id);
                 return Ok(data);
             }           
             catch(ValidationException exception)
             {
-                 _logger.LogError("DepartmentController : GetByDepartmentId(int id) : (Error: {exception.Message})",exception.Message);
+                 _logger.LogError("DepartmentController : GetByDepartmentId({id}) : (Error: {exception.Message})",id,exception.Message);
                 return BadRequest(_departmentService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
+                  _logger.LogError("DepartmentController : GetByDepartmentId({id}) : (Error: {exception.Message})",id,exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -173,6 +169,7 @@ namespace A5.Controller
             }
             catch(Exception exception)
             {
+                _logger.LogError("DepartmentController : Create(Department department) : (Error: {Message})",exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -238,7 +235,7 @@ namespace A5.Controller
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
         {
-            if (id <= 0) return BadRequest("Id cannot be null ");
+            if (id <= 0) return BadRequest("Id cannot be null or negative.");
             try{
                  var checkEmployee = _departmentService.GetCount(id);
                 if(checkEmployee>0){
@@ -251,11 +248,12 @@ namespace A5.Controller
             }           
             catch(ValidationException exception)
             {
-                 _logger.LogError("DepartmentController : Disable(int id) : (Error: {Message})",exception.Message);
+                 _logger.LogError("DepartmentController : Disable({id}) : (Error: {Message})",id,exception.Message);
                 return BadRequest(_departmentService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
+                _logger.LogError("DepartmentController : Disable({id}) : (Error: {Message})",id,exception.Message);
                 return Problem(exception.Message);
             }
         }

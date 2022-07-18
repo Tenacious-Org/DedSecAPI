@@ -31,23 +31,6 @@ namespace A5.Service.Validations
         }
 
         
-
-        public static bool ValidateGetById(int id)
-        {
-            if(id == 0) throw new ValidationException("Department Id should not be null.");
-            else return true;
-        }
-
-
-        public static bool ValidateGetByOrganisation(int id)
-        {
-            if(id==0) throw new ValidationException("Organisation should not be null");
-            if(id<0) throw new ValidationException("Organisation Id should not be negative");
-            else return true;
-
-        }
-
-        
-       
+    
     }
 }
