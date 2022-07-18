@@ -237,7 +237,7 @@ namespace A5.Data.Repository
             }
         }
 
-        public IEnumerable<Award> GetAllbyOrgwise(int id)
+        public IEnumerable<Award> GetAllbyOrgwise(int orgid)
         {
             try
             {
@@ -251,7 +251,7 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof => nameof.Awardee!.Designation!.Department!.OrganisationId == id && nameof.StatusId == 4)
+                    .Where(nameof => nameof.Awardee!.Designation!.Department!.OrganisationId == orgid && nameof.StatusId == 4)
                     .ToList();
                 return award;
             }
@@ -311,7 +311,7 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof => nameof.Awardee.Designation.Department.Organisation.Id == orgid && nameof.AwardTypeId == awdid && nameof.StatusId == 4)
+                    .Where(nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == orgid && nameof.AwardTypeId == awdid && nameof.StatusId == 4)
                     .ToList();
                 return award;
             }
@@ -339,7 +339,7 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof => nameof.Awardee.Designation.Department.Organisation.Id == orgid && nameof.Awardee.Designation.Department.Id == depid && nameof.StatusId == 4)
+                    .Where(nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == orgid && nameof.Awardee.Designation.Department.Id == depid && nameof.StatusId == 4)
                     .ToList();
                 return award;
             }
@@ -369,7 +369,7 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof =>    nameof.Awardee.Designation.Department.Organisation.Id == orgid 
+                    .Where(nameof =>    nameof.Awardee!.Designation!.Department!.Organisation!.Id == orgid 
                                      && nameof.Awardee.Designation.Department.Id == depid
                                      && nameof.AwardTypeId == awdid 
                                      && nameof.StatusId == 4)
@@ -402,7 +402,7 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof =>    nameof.Awardee.Designation.Department.Organisation.Id == orgid 
+                    .Where(nameof =>    nameof.Awardee!.Designation!.Department!.Organisation!.Id == orgid 
                                      && nameof.Awardee.Designation.Department.Id == depid
                                      && nameof.UpdatedOn >= start.Date
                                      && nameof.StatusId == 4)
@@ -434,7 +434,7 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof =>    nameof.Awardee.Designation.Department.Organisation.Id == orgid 
+                    .Where(nameof =>    nameof.Awardee!.Designation!.Department!.Organisation!.Id == orgid 
                                      && nameof.AwardTypeId == awdid
                                      && nameof.UpdatedOn >= start.Date
                                      && nameof.StatusId == 4)
@@ -466,7 +466,7 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof =>    nameof.Awardee.Designation.Department.Organisation.Id == orgid 
+                    .Where(nameof =>    nameof.Awardee!.Designation!.Department!.Organisation!.Id == orgid 
                                      && nameof.Awardee.Designation.Department.Id == depid
                                      && nameof.UpdatedOn <= end.Date
                                      && nameof.StatusId == 4)
@@ -498,7 +498,7 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof =>    nameof.Awardee.Designation.Department.Organisation.Id == orgid 
+                    .Where(nameof =>    nameof.Awardee!.Designation!.Department!.Organisation!.Id == orgid 
                                      && nameof.AwardTypeId == awdid
                                      && nameof.UpdatedOn <= end.Date
                                      && nameof.StatusId == 4)
@@ -530,7 +530,7 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof => nameof.Awardee.Designation.Department.Organisation.Id == orgid 
+                    .Where(nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == orgid 
                                   && nameof.StatusId == 4
                                   && nameof.UpdatedOn >= start.Date)
                     .ToList();
@@ -561,7 +561,7 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof => nameof.Awardee.Designation.Department.Organisation.Id == orgid 
+                    .Where(nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == orgid 
                                   && nameof.StatusId == 4
                                   && nameof.UpdatedOn <= end.Date)
                     .ToList();
@@ -593,7 +593,7 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof => nameof.Awardee.Designation.Department.Organisation.Id == orgid
+                    .Where(nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == orgid
                                   && nameof.Awardee.Designation.Department.Id == deptid
                                   && nameof.AwardTypeId == awdid
                                   && nameof.StatusId == 4
@@ -627,7 +627,7 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof => nameof.Awardee.Designation.Department.Organisation.Id == orgid
+                    .Where(nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == orgid
                                   && nameof.Awardee.Designation.Department.Id == deptid
                                   && nameof.StatusId == 4
                                   && (nameof.UpdatedOn >= start.Date && nameof.UpdatedOn <= end.Date))
@@ -660,7 +660,7 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof => nameof.Awardee.Designation.Department.Organisation.Id == orgid
+                    .Where(nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == orgid
                                   && nameof.AwardTypeId == awdid
                                   && nameof.StatusId == 4
                                   && (nameof.UpdatedOn >= start.Date && nameof.UpdatedOn <= end.Date))
