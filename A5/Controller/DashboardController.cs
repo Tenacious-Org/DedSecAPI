@@ -90,11 +90,11 @@ namespace A5.Controller
         }
 
         [HttpGet("GetAllOrgandDepWise")]
-        public ActionResult GetOrganisationandDepartmentWiseDashboard(int organisationid, int departmentid)
+        public ActionResult GetOrganisationandDepartmentWiseDashboard(int orgid, int depid)
         {
             try
             {
-                var data = _dashboardService.GetAllOrganisationandDepartment(organisationid, departmentid);
+                var data = _dashboardService.GetAllOrganisationandDepartment(orgid, depid);
                 return Ok(data);
             }
             catch (Exception exception)

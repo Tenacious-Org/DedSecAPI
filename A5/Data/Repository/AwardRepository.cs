@@ -297,7 +297,7 @@ namespace A5.Data.Repository
             }
         }
 
-        public IEnumerable<Award> GetAllOrganisationandDepartment(int orgid, int awdid)
+        public IEnumerable<Award> GetAllOrganisationandAward(int orgid, int awdid)
         {
             try
             {
@@ -325,7 +325,7 @@ namespace A5.Data.Repository
               throw;
             }
         }
-        public IEnumerable<Award> GetAllOrgAndDepwise(int orgid, int depid)
+        public IEnumerable<Award> GetAllOrganisationandDepartment(int orgid, int depid)
         {
             try
             {
