@@ -68,28 +68,28 @@ namespace A5.Controller
         /// </remarks>
         /// <response code="201">Returns the newly created item</response>
         /// <response code="400">If the item is null</response>
-        /// <param name="organisationId">String</param>
+        /// <param name="id">String</param>
         /// <returns>
         ///Returns List of Departments from OrganisationId
         /// </returns>
 
         [HttpGet("GetDepartmentsByOrganisationId")]
         [AllowAnonymous]
-        public ActionResult GetDepartmentsByOrganisationId(int organisationId)
+        public ActionResult GetDepartmentsByOrganisationId(int id)
         {
-            if (organisationId <= 0) return BadRequest("Id cannot be null ");
+            if (id <= 0) return BadRequest("Id cannot be null ");
             try{
-                var data = _departmentService.GetDepartmentsByOrganisationId(organisationId);
+                var data = _departmentService.GetDepartmentsByOrganisationId(id);
                 return Ok(data);
             }          
             catch(ValidationException exception)
             {
-                 _logger.LogError("DepartmentController : GetDepartmentByOrganisationId({id}) : (Error: {Message})",organisationId,exception.Message);
+                 _logger.LogError("DepartmentController : GetDepartmentByOrganisationId({id}) : (Error: {Message})",id,exception.Message);
                 return BadRequest(_departmentService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
-                _logger.LogError("DepartmentController : GetDepartmentByOrganisationId({id}) : (Error: {Message})",organisationId,exception.Message);
+                _logger.LogError("DepartmentController : GetDepartmentByOrganisationId({id}) : (Error: {Message})",id,exception.Message);
                 return Problem(exception.Message);
             }
         }
