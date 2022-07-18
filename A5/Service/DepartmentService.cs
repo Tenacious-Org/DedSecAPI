@@ -59,20 +59,20 @@ namespace A5.Service
             }
         }
         //Get department using Department Id
-        public Department? GetDepartmentById(int id)
+        public Department? GetDepartmentById(int departmentId)
         {
-            if(id<=0) throw new ValidationException("Department Id should not be null or negative");
+            if(departmentId<=0) throw new ValidationException("Department Id should not be null or negative");
             try{
-                return _departmentRepository.GetDepartmentById(id);
+                return _departmentRepository.GetDepartmentById(departmentId);
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("DepartmentService: GetByDepartment({id}) : (Error:{Message}",id,exception.Message);
+                _logger.LogError("DepartmentService: GetByDepartment({id}) : (Error:{Message}",departmentId,exception.Message);
                 throw;
             }
             catch(Exception exception)
             {
-                _logger.LogError("DepartmentService: GetByDepartment({id}) : (Error:{Message}",id,exception.Message);
+                _logger.LogError("DepartmentService: GetByDepartment({id}) : (Error:{Message}",departmentId,exception.Message);
                 throw;
             }
         }

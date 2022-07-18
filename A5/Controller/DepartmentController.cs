@@ -114,21 +114,21 @@ namespace A5.Controller
         /// </returns>
 
         [HttpGet("GetById")]
-        public ActionResult GetByDepartmentId( int id)
+        public ActionResult GetByDepartmentId( int departmentId)
         {
-            if (id <= 0) return BadRequest("Id must be greater than zero");
+            if (departmentId <= 0) return BadRequest("Id must be greater than zero");
             try{
-                var data = _departmentService.GetDepartmentById(id);
+                var data = _departmentService.GetDepartmentById(departmentId);
                 return Ok(data);
             }           
             catch(ValidationException exception)
             {
-                 _logger.LogError("DepartmentController : GetByDepartmentId({departmentId}) : (Error: {exception.Message})",id,exception.Message);
+                 _logger.LogError("DepartmentController : GetByDepartmentId({departmentId}) : (Error: {exception.Message})",departmentId,exception.Message);
                 return BadRequest(_departmentService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
-                  _logger.LogError("DepartmentController : GetByDepartmentId({departmentId}) : (Error: {exception.Message})",id,exception.Message);
+                  _logger.LogError("DepartmentController : GetByDepartmentId({departmentId}) : (Error: {exception.Message})",departmentId,exception.Message);
                 return Problem(exception.Message);
             }
         }
