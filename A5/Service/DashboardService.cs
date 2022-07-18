@@ -104,7 +104,7 @@ namespace A5.Service
         {
             try
             {
-                var winners = _award.GetAllOrgAndAwardwise(orgid, awdid);
+                var winners = _award.GetAllOrganisationandAward(orgid, awdid);
                 return winners.Select(Award => new{
                     
                     organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,

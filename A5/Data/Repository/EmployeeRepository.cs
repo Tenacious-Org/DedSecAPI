@@ -317,6 +317,19 @@ namespace A5.Data.Repository
 
         }
         //Gets employee count using employee id.
+
+        public int HRID(int id)
+        {
+            
+            foreach(var q in _context.Set<Employee>().Where(nameof => nameof.Id == id)){
+                var answer = q.HRId;
+            }
+
+            var hr = 0;
+            
+            return hr;
+            
+        }
         public int GetEmployeeCount(int id)
         {
             if(id<=0) throw new ValidationException("Employee Id should not be null or negative");

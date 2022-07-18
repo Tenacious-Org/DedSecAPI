@@ -34,9 +34,10 @@ namespace A5.Data.Repository
                 var employee = _employeeRepository.GetEmployeeById(employeeId);
                 if (employee == null) throw new ValidationException("Requester Details Not Found");
                 _context.Set<Award>().Add(award);
+                var aid = award.AwardeeId;
                 award.RequesterId = employee!.Id;
                 award.ApproverId = employee.ReportingPersonId;
-                award.HRId = employee.HRId;
+                award.HRId = GetHRID(aid);
                 award.StatusId = 1;
                 award.AddedBy = employeeId;
                 award.AddedOn = DateTime.Now;
@@ -59,6 +60,12 @@ namespace A5.Data.Repository
                 _logger.LogError("Error: {Message}", exception.Message);
                 return false;
             }
+        }
+        public int GetHRID(int awardeeid)
+        {
+            var list = _context.Set<Employee>().FirstOrDefault(nameof => nameof.Id == awardeeid).HRId;
+            
+            return (int)list;
         }
         public bool ApproveRequest(Award award)
         {
@@ -297,7 +304,7 @@ namespace A5.Data.Repository
             }
         }
 
-        public IEnumerable<Award> GetAllOrganisationandDepartment(int orgid, int awdid)
+        public IEnumerable<Award> GetAllOrganisationandAward(int orgid, int awdid)
         {
             try
             {
@@ -325,7 +332,7 @@ namespace A5.Data.Repository
               throw;
             }
         }
-        public IEnumerable<Award> GetAllOrgAndDepwise(int orgid, int depid)
+        public IEnumerable<Award> GetAllOrganisationandDepartment(int orgid, int depid)
         {
             try
             {
