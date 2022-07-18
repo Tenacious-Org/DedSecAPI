@@ -272,6 +272,20 @@ namespace A5.Controller
             }
         }
 
+        [HttpGet("GetAllDateWise")]
+        public ActionResult  GetAllDate(DateTime start, DateTime end)
+        {
+            try
+            {
+                var data = _dashboardService.GetAllDateWise(start, end);
+                return Ok(data);
+            }
+            catch (Exception exception)
+            {
+                return Problem(exception.Message);
+            }
+        }
+
         
     }
 }
