@@ -75,8 +75,7 @@ namespace A5.Service
             }
         }
         public bool DisableOrganisation(int id,int employeeId)
-        {
-            if(employeeId<=0) throw new ValidationException("employeeId must be greater than 0");          
+        {            
             try
             {
                 return _organisationRepository.DisableOrganisation(id,employeeId);

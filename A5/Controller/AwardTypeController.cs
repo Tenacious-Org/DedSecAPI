@@ -55,6 +55,7 @@ namespace A5.Controller
             }
             catch (Exception exception)
             {
+                _logger.LogError("AwardTypeController : GetAll() : (Error:{Message})", exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -95,6 +96,7 @@ namespace A5.Controller
             }
             catch (Exception exception)
             {
+                _logger.LogError("AwardTypeController : GetById(int id) : (Error:{Message})", exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -136,6 +138,7 @@ namespace A5.Controller
             }
             catch (Exception exception)
             {
+                                _logger.LogError("AwardTypeController : Create(AwardType awardType) : (Error:{Message})", exception.Message);
                 return Problem(exception.Message);
             }
         }
