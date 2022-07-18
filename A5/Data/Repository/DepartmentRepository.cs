@@ -6,138 +6,133 @@ using Microsoft.EntityFrameworkCore;
 
 namespace A5.Data.Repository
 {
-    public class DepartmentRepository:EntityBaseRepository<Department>,IDepartmentRepository
+    public class DepartmentRepository : EntityBaseRepository<Department>, IDepartmentRepository
     {
         private readonly AppDbContext _context;
         private readonly ILogger<EntityBaseRepository<Department>> _logger;
-        public DepartmentRepository(AppDbContext context,ILogger<EntityBaseRepository<Department>> logger):base(context,logger)
+        public DepartmentRepository(AppDbContext context, ILogger<EntityBaseRepository<Department>> logger) : base(context, logger)
         {
-             _context=context;
-             _logger=logger;
+            _context = context;
+            _logger = logger;
         }
-         public bool CreateDepartment(Department department)
+        public bool CreateDepartment(Department department)
         {
             DepartmentServiceValidations.CreateValidation(department);
-            bool NameExists=_context.Departments!.Any(nameof=>nameof.DepartmentName==department.DepartmentName && nameof.OrganisationId==department.OrganisationId);
-            if(NameExists) throw new ValidationException("Department Name already exists");
-            try{
+            bool NameExists = _context.Departments!.Any(nameof => nameof.DepartmentName == department.DepartmentName && nameof.OrganisationId == department.OrganisationId);
+            if (NameExists) throw new ValidationException("Department Name already exists");
+            try
+            {
                 return Create(department);
             }
-            catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("DepartmentRepository: CreateDepartment(Departmetn department) : (Error:{Message}",exception.Message);
+                _logger.LogError("DepartmentRepository: CreateDepartment(Departmetn department) : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("Error: {Message}", exception.Message);
                 throw;
             }
         }
         public bool UpdateDepartment(Department department)
         {
             DepartmentServiceValidations.UpdateValidation(department);
-             bool NameExists=_context.Departments!.Any(nameof=>nameof.DepartmentName==department.DepartmentName  && nameof.OrganisationId==department.OrganisationId);
-            if(NameExists) throw new ValidationException("Department Name already exists");
-            try{
+            bool NameExists = _context.Departments!.Any(nameof => nameof.DepartmentName == department.DepartmentName && nameof.OrganisationId == department.OrganisationId);
+            if (NameExists) throw new ValidationException("Department Name already exists");
+            try
+            {
                 return Update(department);
             }
-            catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("DepartmentRepository: UpdateDepartment(Department department) : (Error:{Message}",exception.Message);
+                _logger.LogError("DepartmentRepository: UpdateDepartment(Department department) : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("Error: {Message}", exception.Message);
                 throw;
             }
         }
         public Department? GetDepartmentById(int id)
         {
             DepartmentServiceValidations.ValidateGetById(id);
-            try{
+            try
+            {
                 return GetById(id);
             }
-            catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("DepartmentRepository: GetByDepartment(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("DepartmentRepository: GetByDepartment(int id) : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("Error: {Message}", exception.Message);
                 throw;
             }
         }
-        public bool DisableDepartment(int id,int employeeId)
+        public bool DisableDepartment(int id, int employeeId)
         {
-            DepartmentServiceValidations.DisableValidation(id);
-            
             try
             {
-                return Disable(id,employeeId);
+                return Disable(id, employeeId);
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError("DepartmentRepository: DisableDepartment(int id) : (Error:{Message}", exception.Message);
+                throw;
+            }
+        }
 
-            }
-            catch(ValidationException exception)
-            {
-                _logger.LogError("DepartmentRepository: DisableDepartment(int id) : (Error:{Message}",exception.Message);
-                throw;
-            }
-            catch(Exception exception)
-            {
-                _logger.LogError("Error: {Message}",exception.Message);
-                throw;
-            }
-        }
-       
-         public IEnumerable<Department> GetAllDepartment()
+        public IEnumerable<Department> GetAllDepartment()
         {
             try
             {
-                var departments = _context.Set<Department>().Where(nameof =>nameof.IsActive).Include("Organisation").ToList();
+                var departments = _context.Set<Department>().Where(nameof => nameof.IsActive).Include("Organisation").ToList();
                 return departments;
             }
-           catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("DepartmentRepository: GetAllDepartments() : (Error:{Message}",exception.Message);
+                _logger.LogError("DepartmentRepository: GetAllDepartments() : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("Error: {Message}", exception.Message);
                 throw;
             }
         }
         public int GetCount(int id)
         {
-             var checkEmployee = _context.Set<Employee>().Where(nameof => nameof.IsActive == true && nameof.DepartmentId == id).Count();
-             return checkEmployee;
+            var checkEmployee = _context.Set<Employee>().Where(nameof => nameof.IsActive == true && nameof.DepartmentId == id).Count();
+            return checkEmployee;
         }
         public IEnumerable<Department> GetDepartmentsByOrganisationId(int id)
-         { 
+        {
             DepartmentServiceValidations.ValidateGetByOrganisation(id);
             try
             {
                 var organisationDetails = _context.Set<Department>().Where(nameof => nameof.OrganisationId == id && nameof.IsActive == true).ToList();
                 return organisationDetails;
             }
-            catch(ValidationException exception)
+            catch (ValidationException exception)
             {
-                _logger.LogError("DepartmentRepository: GetDepartmentsByOrganisationId(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("DepartmentRepository: GetDepartmentsByOrganisationId(int id) : (Error:{Message}", exception.Message);
                 throw;
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("Error: {Message}", exception.Message);
                 throw;
             }
-             
-         }
-           public object ErrorMessage(string ValidationMessage)
-        {
-            return new{message=ValidationMessage};
+
         }
-       
+        public object ErrorMessage(string ValidationMessage)
+        {
+            return new { message = ValidationMessage };
+        }
+
     }
 }

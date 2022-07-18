@@ -45,7 +45,6 @@ namespace A5.Controller
         {
             try
             {
-
                 var data = _awardTypeService.GetAllAwardType();
                 return Ok(data);
             }

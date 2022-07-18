@@ -58,7 +58,8 @@ namespace A5.Service
         }
         public bool DisableAwardType(int id,int employeeId)
         {
-            AwardTypeValidations.DisableValidation(id);
+            if (employeeId<=0) throw new ValidationException("currents user id must be greater than 0");
+
             try{
                 return _awardTypeRepository.DisableAwardType(id,employeeId);
             }

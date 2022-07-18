@@ -25,14 +25,6 @@ namespace A5.Service.Validations
             if (awardType.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
-        public static bool DisableValidation(int id)
-        {
-            AwardType awardType = new AwardType();
-            if (id == 0) throw new ValidationException("Enter the id to update");
-            if (awardType.IsActive == false) throw new ValidationException("AwardType is already disabled");
-            else if (awardType.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
-            else return true;
-        }
         public static bool ValidateGetById(int id)
         {
             if (id == 0) throw new ValidationException("Award Id should not be null.");

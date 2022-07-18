@@ -74,9 +74,7 @@ namespace A5.Service
             }
         }
         public bool DisableDepartment(int id,int employeeId)
-        {
-            DepartmentServiceValidations.DisableValidation(id);
-            
+        {            
             try
             {
                 return _departmentRepository.DisableDepartment(id,employeeId);

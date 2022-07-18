@@ -22,7 +22,6 @@ namespace A5.Data.Repository
         //Methods
         public bool Create(T entity)
         {
-   
            try
            {
               _context.Set<T>().Add(entity);
@@ -31,13 +30,8 @@ namespace A5.Data.Repository
             return true; 
                 
            }
-            catch(ValidationException exception)
-            {
-                _logger.LogError("EntityBaseRepository : Create(T entity) : (Error:{Message}",exception.Message);
-                throw;
-            }
             catch (Exception exception){
-              _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("EntityBaseRepository : Create({T} entity) : (Error:{Message}",exception.Message);
               return false;
             }
 
@@ -61,13 +55,8 @@ namespace A5.Data.Repository
                 }
                 return result; 
             }
-              catch(ValidationException exception)
-            {
-                _logger.LogError("EntityBaseRepository : Disable(int id) : (Error:{Message}",exception.Message);
-                throw;
-            }
             catch (Exception exception){
-              _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("EntityBaseRepository : Disable(int id) : (Error:{Message}",exception.Message);
               return result;
             }
                     
@@ -76,7 +65,6 @@ namespace A5.Data.Repository
         public bool Update(T entity)
         {
             bool result = false;
-            
             try{
                 if(entity != null )
                 {
@@ -87,32 +75,20 @@ namespace A5.Data.Repository
                 }
                 return result;               
             }
-             catch(ValidationException exception)
-            {
-                _logger.LogError("EntityBaseRepository : Update(T entity) : (Error:{Message}",exception.Message);
-                throw;
-            }
             catch (Exception exception){
-              _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("EntityBaseRepository : Update(T entity) : (Error:{Message}",exception.Message);
               return result;
-            }
-            
+            }    
         }
 
         public T? GetById(int id)
-        {
-            
+        { 
             try
             {
                 return _context.Set<T>().FirstOrDefault(nameof =>nameof.Id == id);              
             }
-            catch(ValidationException exception)
-            {
-                _logger.LogError("EntityBaseRepository : GetById(int id) : (Error:{Message}",exception.Message);
-                throw;
-            }
             catch (Exception exception){
-              _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("EntityBaseRepository : GetById(int id) : (Error:{Message}",exception.Message);
               throw;
             }
             
@@ -123,13 +99,8 @@ namespace A5.Data.Repository
             {
                 return _context.Set<T>().Where(nameof =>nameof.IsActive == true).ToList();
             }
-            catch(ValidationException exception)
-            {
-                _logger.LogError("EntityBaseRepository : GetAll() : (Error:{Message}",exception.Message);
-                throw;
-            }
             catch (Exception exception){
-              _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("EntityBaseRepository : GetAll() : (Error:{Message}",exception.Message);
                throw;
             }
             

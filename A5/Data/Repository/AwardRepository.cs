@@ -195,10 +195,7 @@ namespace A5.Data.Repository
                 else if (pageId == 3 && employeeId != 0)
                     award = award.Where(nameof => nameof.ApproverId == employeeId).OrderBy(nameof => nameof.StatusId).ToList();
                 else if (pageId == 4 && employeeId != 0)
-                    award = award.Where(nameof => nameof.HRId == employeeId && (nameof.StatusId == 2 || nameof.StatusId == 4)).OrderBy(nameof => nameof.StatusId).ToList();
-                else
-                    throw new ValidationException("enter correct pageId and EmployeeId ");
-
+                    award = award.Where(nameof => nameof.HRId == employeeId && (nameof.StatusId == 2 || nameof.StatusId == 4)).OrderBy(nameof => nameof.StatusId).ToList();         
                 return award != null ? award : throw new ValidationException("No records Found");
 
             }

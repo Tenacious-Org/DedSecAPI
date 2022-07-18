@@ -37,14 +37,7 @@ namespace A5.Service.Validations
             if(id == 0) throw new ValidationException("Department Id should not be null.");
             else return true;
         }
-        public static bool DisableValidation(int id)
-        {
-             Department department=new Department();
-            if(id == 0) throw new ValidationException("Department Id should not be null.");
-            if(department.IsActive==false) throw new ValidationException("Department is already disabled");
-            if(department.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
-            else return true;
-        }
+
 
         public static bool ValidateGetByOrganisation(int id)
         {
