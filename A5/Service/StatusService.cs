@@ -18,21 +18,21 @@ namespace A5.Service
         }
 
         //gets status of particular id using status id.
-        public Status? GetStatusById(int id)
+        public Status? GetStatusById(int statusId)
         {
-            if (id <= 0) throw new ValidationException("organisationId ");
+            if (statusId <= 0) throw new ValidationException("organisationId ");
             try
             {
-                return _statusRepository.GetStatusById(id);
+                return _statusRepository.GetStatusById(statusId);
             }
              catch (ValidationException exception)
             {
-                _logger.LogError("StatusService: GetStatusById(id : {id}) : (Error:{Message}", id,exception.Message);
+                _logger.LogError("StatusService: GetStatusById(id : {id}) : (Error:{Message}", statusId,exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("StatusService: GetStatusById(id : {id}) : (Error:{Message}",id, exception.Message);
+                _logger.LogError("StatusService: GetStatusById(id : {id}) : (Error:{Message}",statusId, exception.Message);
                 throw;
             }
         }

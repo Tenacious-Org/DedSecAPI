@@ -33,27 +33,27 @@ namespace A5.Controller
         /// </remarks>
         /// <response code="201">Returns the newly created item</response>
         /// <response code="400">If the item is null</response> 
-        /// <param name="id">String</param>
+        /// <param name="roleId">String</param>
         /// <returns>
         ///Returns Role from Id
         /// </returns>
 
         [HttpGet("GetById")]
-        public ActionResult GetByRoleId( int id)
+        public ActionResult GetByRoleId( int roleId)
         {
-            if (id <= 0) return BadRequest("Id cannot be zero or negative");
+            if (roleId <= 0) return BadRequest("Id cannot be zero or negative");
             try{
-                var data = _roleService.GetById(id);
+                var data = _roleService.GetById(roleId);
                  return Ok(data);
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("RoleController : GetByRoleId(id : {id}) : (Error: {Message})",id,exception.Message);
+                _logger.LogError("RoleController : GetByRoleId(id : {id}) : (Error: {Message})",roleId,exception.Message);
                 return BadRequest(exception.Message);
             }
             catch(Exception exception)
             {      
-                _logger.LogError("RoleController : GetByRoleId(id : {id}) : (Error: {Message})",id,exception.Message);
+                _logger.LogError("RoleController : GetByRoleId(id : {id}) : (Error: {Message})",roleId,exception.Message);
                 return Problem(exception.Message);
             }            
         }

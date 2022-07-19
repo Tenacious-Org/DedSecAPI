@@ -16,17 +16,17 @@ namespace A5.Data.Repository
 
         
         //gets all status by using status id
-        public Status? GetStatusById(int id)
+        public Status? GetStatusById(int statusId)
         {
-            if(id<=0) throw new ValidationException("Id should not be zero or negative");
+            if(statusId<=0) throw new ValidationException("Id should not be zero or negative");
             try
             {
-                var status = _context.Set<Status>().FirstOrDefault(nameof => nameof.Id == id);
+                var status = _context.Set<Status>().FirstOrDefault(nameof => nameof.Id == statusId);
                 return status;
             }
             catch (Exception exception)
             {
-                _logger.LogError("StatusRepository : GetStatusById(id : {id}) : (Error: {Message}", id,exception.Message);
+                _logger.LogError("StatusRepository : GetStatusById(id : {id}) : (Error: {Message}", statusId,exception.Message);
                 throw;
             }
         }

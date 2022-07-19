@@ -33,27 +33,28 @@ namespace A5.Controller
         /// </remarks>
         /// <response code="201">Returns the newly created item</response>
         /// <response code="400">If the item is null</response> 
-        /// <param name="id">String</param>
+        /// <param name="statusId">String</param>
         /// <returns>
         ///Returns status from Id
         /// </returns>
 
         [HttpGet("GetById")]
-        public ActionResult GetByStatusId([FromQuery] int id)
+        public ActionResult GetByStatusId([FromQuery] int statusId)
         {
+            if(statusId<=0) throw new ValidationException("Status id should not be zero or negative");
             try
             {
-                var data = _statusService.GetStatusById(id);
+                var data = _statusService.GetStatusById(statusId);
                 return Ok(data);
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("Status Controller : GetByStatusId(id : {id}) : (Error: {exception.Message})",id,exception.Message);
+                _logger.LogError("Status Controller : GetByStatusId(id : {id}) : (Error: {exception.Message})",statusId,exception.Message);
                 return BadRequest((exception.Message));
             }
             catch (Exception exception)
             {
-                _logger.LogError("Status Controller : GetByStatusId(id : {id}) : (Error: {exception.Message})",id,exception.Message);
+                _logger.LogError("Status Controller : GetByStatusId(id : {id}) : (Error: {exception.Message})",statusId,exception.Message);
                 return Problem($"Error : {exception.Message}");
             }
 

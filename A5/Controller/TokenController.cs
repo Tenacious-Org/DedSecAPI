@@ -45,9 +45,9 @@ namespace A5.Controller
         [HttpPost]
         public IActionResult AuthToken(Login Crendentials)
         {
+          if ( Crendentials == null ) return BadRequest("Login Credentials cannot be null");
           try
-            {
-                if ( Crendentials == null ) return BadRequest("Login Credentials cannot be null");
+            {              
                 var Result = _tokenService.GenerateToken(Crendentials);
                 return Ok(Result);
 
