@@ -69,9 +69,9 @@ namespace A5.Data.Repository
         //Gets HR id by using awardee id
         public int? GetHRID(int awardeeId)
         {
-            var  list = _context?.Set<Employee>()?.FirstOrDefault(nameof => nameof.Id == awardeeId)?.HRId;
+            var list = _context.Set<Employee>().FirstOrDefault(nameof => nameof.Id == awardeeId)!.HRId;
             
-            return (int?)list; 
+            return list; 
         }
         
         //approves the request raised by using award object
@@ -214,18 +214,12 @@ namespace A5.Data.Repository
                 else if (pageId == 1 && employeeId != 0)
                     award = award.Where(nameof => nameof.StatusId == 4 && nameof.AwardeeId == employeeId).ToList();
                 else if (pageId == 2 && employeeId != 0)
-                    award = award.Where(nameof => nameof.RequesterId == employeeId).OrderBy(nameof => nameof.StatusId).ToList();
+                    award = award.Where(nameof => nameof.RequesterId == employeeId).OrderBy(nameof => nameof.StatusId ).OrderByDescending(nameof=>nameof.AddedOn).ToList();
                 else if (pageId == 3 && employeeId != 0)
-                    award = award.Where(nameof => nameof.ApproverId == employeeId).OrderBy(nameof => nameof.StatusId).ToList();
+                    award = award.Where(nameof => nameof.ApproverId == employeeId).OrderBy(nameof => nameof.StatusId).OrderByDescending(nameof=>nameof.AddedOn).ToList();
                 else if (pageId == 4 && employeeId != 0)
-                    award = award.Where(nameof => nameof.HRId == employeeId && (nameof.StatusId == 2 || nameof.StatusId == 4)).OrderBy(nameof => nameof.StatusId).ToList();         
-                return award != null ? award : throw new ValidationException("No records Found");
-
-            }
-            catch (ValidationException exception)
-            {
-                _logger.LogError("AwardRepository : GetAllAwardsList(int? pageId, int? employeeId) : (Error:{Message}", exception.Message);
-                throw;
+                    award = award.Where(nameof => nameof.HRId == employeeId && (nameof.StatusId == 2 || nameof.StatusId == 4)).OrderByDescending(nameof => nameof.UpdatedOn).ToList();         
+                return award;
             }
             catch (Exception exception)
             {

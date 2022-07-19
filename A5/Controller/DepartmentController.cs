@@ -264,7 +264,7 @@ namespace A5.Controller
             }
             catch (Exception)
             {
-                throw new Exception("Error occured while getting current userId");
+                throw;
             }
 
         }

@@ -34,7 +34,6 @@ namespace A5.Service.Validations
         public static bool ApprovalValidation(Award award)
         {
             if(award.ApproverId==null)throw new ValidationException("Approver Id should not be null");
-            if(award == null)throw new ValidationException("Award should not be null");
             if(award.StatusId==3)throw new ValidationException("Rejection Reason should not be null");
             else return true;
 

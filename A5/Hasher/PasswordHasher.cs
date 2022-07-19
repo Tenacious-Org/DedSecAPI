@@ -6,7 +6,7 @@ namespace A5.Hasher
     ///hashed the password using key
     public static class PasswordHasher
     {
-        public static string Key = "#V1M1L1K1J1A5@TENACIOUS#";
+        public static readonly string Key = "#V1M1L1K1J1A5@TENACIOUS#";
         public static string EncryptPassword(string password)
         {
             if (string.IsNullOrEmpty(password)) return "";

@@ -11,9 +11,9 @@ namespace A5.Service.Interfaces
         bool UpdateDepartment(Department department);
         Department? GetDepartmentById(int departmentId);
         bool DisableDepartment(int id,int employeeId);
-        int GetCount(int id);
+        int GetCount(int departmentid);
         public IEnumerable<object> GetAllDepartments();
-        public IEnumerable<Department> GetDepartmentsByOrganisationId(int id);
+        public IEnumerable<Department> GetDepartmentsByOrganisationId(int organisationId);
         public object ErrorMessage(string ValidationMessage);
     }
 }

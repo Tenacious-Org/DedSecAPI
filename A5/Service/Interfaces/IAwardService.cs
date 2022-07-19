@@ -12,7 +12,7 @@ namespace A5.Service.Interfaces
         public bool RaiseRequest(Award award,int employeeId);
         public bool Approval(Award award);
         public bool AddComment(Comment comment,int employeeId);
-        public object GetAwardById(int id);
+        public object GetAwardById(int awardId);
         public IEnumerable<object> GetAwardsList(int? pageId, int? employeeId);
         public IEnumerable<object> GetComments(int awardId);
         public object ErrorMessage(string ValidationMessage);

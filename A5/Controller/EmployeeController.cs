@@ -263,26 +263,6 @@ namespace A5.Controller
         ///Returns List of Reporting persons from DepartmentId
         /// </returns>
 
-        // [HttpGet("GetEmployeeByDepartment")]
-        // public ActionResult GetEmployeeByDepartmentId(int DepartmentId)
-        // {
-        //     if (DepartmentId <= 0) return BadRequest("Id cannot be zero or negative");
-        //     try
-        //     {
-        //         var data = _employeeService.GetEmployeeByDepartmentId(DepartmentId);
-        //         return Ok(data);
-        //     }
-        //     catch (ValidationException exception)
-        //     {
-        //         _logger.LogError("EmployeeController : GetEmployeeByDepartmentId(id : {id}) : (Error: {Message})",DepartmentId, exception.Message);
-        //         return BadRequest(_employeeService.ErrorMessage(exception.Message));
-        //     }
-        //     catch (Exception exception)
-        //     {
-        //          _logger.LogError("EmployeeController : GetEmployeeByDepartmentId(id : {id}) : (Error: {Message})",DepartmentId, exception.Message);
-        //         return Problem(exception.Message);
-        //     }
-        // }
         [HttpGet("GetReportingPersonByDepartment")]
         public ActionResult GetReportingPersonByDepartment(int departmentId)
         {
@@ -431,7 +411,7 @@ namespace A5.Controller
             }
             catch (Exception)
             {
-                throw new Exception("Error occured while getting current userId");
+                throw;
             }
         }
     }

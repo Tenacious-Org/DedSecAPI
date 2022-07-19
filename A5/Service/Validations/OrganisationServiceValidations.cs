@@ -13,7 +13,7 @@ namespace A5.Service.Validations
             if(String.IsNullOrWhiteSpace(organisation.OrganisationName)) throw new ValidationException("Organisation Name should not be null or Empty.");
             if(!( Regex.IsMatch(organisation.OrganisationName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("Organisation Name should have only alphabets.No special Characters or numbers are allowed");
             if(organisation.IsActive == false) throw new ValidationException("Organisation should be Active when it is created.");
-           // if(organisation.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            if(organisation.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
         public static bool UpdateValidation(Organisation organisation)

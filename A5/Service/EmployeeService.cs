@@ -16,64 +16,7 @@ namespace A5.Service
             _employeeRepository = employeeRepository;
             _logger = logger;
         }
-        //Gets Employee of particular HR by using  HR id.
-        // public IEnumerable<Employee> GetByHR(int id)
-        // {
-        //    if(id<=0) throw new ValidationException("HR id should not be null or negative");
-        //     try
-        //     {
-        //         return _employeeRepository.GetByHR(id);
-        //     }
-        //     catch (ValidationException exception)
-        //     {
-        //         _logger.LogError("EmployeeService: GetByHR(id : {id}) : (Error:{Message}", id,exception.Message);
-        //         throw;
-        //     }
-        //     catch (Exception exception)
-        //     {
-        //         _logger.LogError("EmployeeService: GetByHR(id : {id}) : (Error:{Message}", id,exception.Message);
-        //         throw;
-        //     }
-        // }
-       //Gets Employee of particular reporting person by using reporting person id.
-        // public IEnumerable<Employee> GetByReportingPerson(int id)
-        // {
-        //     if(id<=0) throw new ValidationException("Reporting person id should not be null or negative");
-        //     try
-        //     {
-        //         return _employeeRepository.GetReportingPersonByDepartmentId(id);
-        //     }
-        //     catch (ValidationException exception)
-        //     {
-        //         _logger.LogError("EmployeeService: GetByReportingPerson(id : {id}) : (Error:{Message}", id,exception.Message);
-        //         throw;
-        //     }
-        //     catch (Exception exception)
-        //     {
-        //         _logger.LogError("EmployeeService: GetByReportingPerson(id : {id}) : (Error:{Message}", id,exception.Message);
-        //         throw;
-        //     }
-        // }
-        //Gets Employee of particular department using department id.
-        // public IEnumerable<Employee> GetEmployeeByDepartmentId(int departmentId)
-        // {
-        //     if(departmentId<=0) throw new ValidationException("Department id should not be null or negative");
-        //     try
-        //     {
-        //         return _employeeRepository.GetEmployeeByDepartmentId(departmentId);
-        //     }
-        //     catch (ValidationException exception)
-        //     {
-        //         _logger.LogError("EmployeeService: GetEmployeeByDepartmentId(id : {id}) : (Error:{Message}",departmentId, exception.Message);
-        //         throw;
-        //     }
-        //     catch (Exception exception)
-        //     {
-        //         _logger.LogError("EmployeeService: GetEmployeeByDepartmentId(id : {id}) : (Error:{Message}",departmentId, exception.Message);
-        //         throw;
-        //     }
-        // }
-
+        
         //Gets reporting Person of particular department by using department id.
         public IEnumerable<Employee> GetReportingPersonByDepartmentId(int departmentId)
         {
@@ -218,7 +161,6 @@ namespace A5.Service
         public Employee GetEmployee(string Email, string Password)
         {
             if (Email == null || Password == null) throw new ValidationException("Email or Password cannot be null");
-            //Password=PasswordHasher.EncryptPassword(Password);
             try
             {
                 return _employeeRepository.GetEmployee(Email, Password);

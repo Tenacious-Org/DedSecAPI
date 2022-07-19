@@ -10,7 +10,7 @@ namespace A5.Service.Interfaces
         public IEnumerable<Designation> GetDesignationsByDepartmentId(int departmentId);
         public IEnumerable<object> GetAllDesignations();
         public bool CreateDesignation(Designation designation);
-        public int GetCount(int id);
+        public int GetCount(int designationId);
         public bool UpdateDesignation(Designation designation);
         public bool DisableDesignation(int designationId,int employeeId);
         public Designation? GetDesignationById(int designationId);

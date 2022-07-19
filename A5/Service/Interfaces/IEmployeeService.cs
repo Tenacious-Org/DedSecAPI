@@ -12,9 +12,6 @@ namespace A5.Data.Service.Interfaces
         public bool UpdateEmployee(Employee employee);
         public object? GetEmployeeById(int id);
         public IEnumerable<object> GetAllEmployees();
-        //public IEnumerable<Employee> GetByHR(int id);
-        //public IEnumerable<Employee> GetByReportingPerson(int id);
-        //public IEnumerable<Employee> GetEmployeeByDepartmentId(int departmentId);
         public IEnumerable<Employee> GetReportingPersonByDepartmentId(int departmentId);
         public IEnumerable<Employee> GetHrByDepartmentId(int departmentId);
         public IEnumerable<Employee> GetEmployeeByRequesterId(int requesterId);
