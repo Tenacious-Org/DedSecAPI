@@ -64,7 +64,7 @@ namespace A5.Controller
         {
             try
             {
-                var data = _dashboardService.GetAllAwardwise(id);
+                var data = _dashboardService.GetAllAwardWise(id);
                 return Ok(data);
             }
             catch (Exception exception)
@@ -80,7 +80,7 @@ namespace A5.Controller
         {
             try
             {
-                var data = _dashboardService.GetAllOrganisationandAward(orgid, awdid);
+                var data = _dashboardService.GetAllOrganisationAndAward(orgid, awdid);
                 return Ok(data);
             }
             catch (Exception exception)
@@ -94,7 +94,7 @@ namespace A5.Controller
         {
             try
             {
-                var data = _dashboardService.GetAllOrganisationandDepartment(orgid, depid);
+                var data = _dashboardService.GetAllOrganisationAndDepartment(orgid, depid);
                 return Ok(data);
             }
             catch (Exception exception)
@@ -108,7 +108,7 @@ namespace A5.Controller
         {
             try
             {
-                var data = _dashboardService.GetAllOrganisationDepartmentandAward(orgid, depid, awdid);
+                var data = _dashboardService.GetAllOrganisationDepartmentAndAwardwise(orgid, depid, awdid);
                 return Ok(data);
             }
             catch (Exception exception)
@@ -178,7 +178,7 @@ namespace A5.Controller
         {
             try
             {
-                var data = _dashboardService. GetAllFilteredOrganisationandToDate(orgid, end);
+                var data = _dashboardService. GetAllFilteredOrganisationAndToDate(orgid, end);
                 return Ok(data);
             }
             catch (Exception exception)
@@ -192,7 +192,7 @@ namespace A5.Controller
         {
             try
             {
-                var data = _dashboardService. GetAllFilteredOrgDepandFromDate(orgid, deptid, start);
+                var data = _dashboardService. GetAllFilteredOrganisationDepartmentAndFromDate(orgid, deptid, start);
                 return Ok(data);
             }
             catch (Exception exception)
@@ -206,7 +206,7 @@ namespace A5.Controller
         {
             try
             {
-                var data = _dashboardService. GetAllFilteredOrgAwdandFromDate(orgid, awdid, start);
+                var data = _dashboardService.GetAllOrganisationDepartmentAndFromDateWise(orgid, awdid, start);
                 return Ok(data);
             }
             catch (Exception exception)
@@ -221,7 +221,7 @@ namespace A5.Controller
         {
             try
             {
-                var data = _dashboardService. GetAllFilteredOrgDepandToDate(orgid, deptid, end);
+                var data = _dashboardService.GetAllFilteredOrganisationDepartmentAndToDate(orgid, deptid, end);
                 return Ok(data);
             }
             catch (Exception exception)
@@ -235,7 +235,7 @@ namespace A5.Controller
         {
             try
             {
-                var data = _dashboardService. GetAllFilteredOrgAwdandToDate(orgid, awdid, end);
+                var data = _dashboardService.GetAllFilteredOrganisationAwarddAndToDate(orgid, awdid, end);
                 return Ok(data);
             }
             catch (Exception exception)
@@ -263,7 +263,7 @@ namespace A5.Controller
         {
             try
             {
-                var data = _dashboardService.GetAllOrgAwdDateWise(orgid, awdid, start, end);
+                var data = _dashboardService.GetAllOrganisationAwardAndDateWise(orgid, awdid, start, end);
                 return Ok(data);
             }
             catch (Exception exception)

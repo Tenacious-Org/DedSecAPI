@@ -119,7 +119,7 @@ namespace A5.Controller
             {   
                 organisation.AddedBy=GetCurrentUserId();
                 var data=_organisationService.CreateOrganisation(organisation);
-                return  Ok(data); 
+                return data ? Ok("Organisation created successfully"):BadRequest();
             }
             catch(ValidationException exception)
             {
@@ -160,7 +160,7 @@ namespace A5.Controller
             try{
                 organisation.UpdatedBy=GetCurrentUserId();
                 var data=_organisationService.UpdateOrganisation(organisation);
-                return Ok(data); 
+                return data ? Ok("Organisation updated successfully"):BadRequest();
             }        
             catch(ValidationException exception)
             {
@@ -196,7 +196,7 @@ namespace A5.Controller
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
         {
-            if (id <= 0) return BadRequest("Id must be greater than zero ");   
+            if (id <= 0) return BadRequest("Organisation Id must be greater than zero ");   
             try
             {
                 var checkEmployee=_organisationService.GetCount(id);
@@ -208,7 +208,7 @@ namespace A5.Controller
                 else
                 {
                     var data = _organisationService.DisableOrganisation(id,GetCurrentUserId());
-                    return Ok(data);
+                    return data ? Ok("Organisation disabled successfully"):BadRequest();
                 }
             }
             catch(ValidationException exception)

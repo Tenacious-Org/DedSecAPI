@@ -54,22 +54,22 @@ namespace A5.Data.Repository
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : RaiseAwardRequest(Award award,int id) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardRepository : RaiseAwardRequest(Award award,int employeeId) : (Error:{Message}", exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                _logger.LogError("AwardRepository : RaiseAwardRequest(Award award,int employeeId) : (Error:{Message}", exception.Message);
                 return false;
             }
         }
         
         //Gets HR id by using awardee id
-        public int? GetHRID(int awardeeid)
+        public int GetHRID(int awardeeId)
         {
-            var list = _context?.Set<Employee>()?.FirstOrDefault(nameof => nameof.Id == awardeeid)?.HRId;
+            var list = _context.Set<Employee>().FirstOrDefault(nameof => nameof.Id == awardeeId)!.HRId;
             
-            return (int?)list;
+            return (int)list; 
         }
         
         //approves the request raised by using award object
@@ -100,18 +100,19 @@ namespace A5.Data.Repository
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : ApproveRequest(Award award,int id) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardRepository : ApproveRequest(Award award) : (Error:{Message}", exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                
+                _logger.LogError("AwardRepository : ApproveRequest(Award award) : (Error:{Message}", exception.Message);
                 return false;
             }
         }
 
         //Gets award by using award id
-        public Award? GetAwardById(int id)
+        public Award? GetAwardById(int awardId)
         {
             try
             {
@@ -125,17 +126,17 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .FirstOrDefault(nameof => nameof.Id == id);
-                return award != null ? award : throw new ValidationException($"There is no matching records found for award Id -{id} , enter the correct award Id");
+                    .FirstOrDefault(nameof => nameof.Id == awardId);
+                return award != null ? award : throw new ValidationException($"There is no matching records found for award Id -{awardId} , enter the correct award Id");
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAwardById(int id) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardRepository : GetAwardById(int awardId) : (Error:{Message}", exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+               _logger.LogError("AwardRepository : GetAwardById(int awardId) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
@@ -154,12 +155,12 @@ namespace A5.Data.Repository
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : AddComments(Comment comment) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardRepository : AddComments(Comment comment, int employeeId) : (Error:{Message}", exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                _logger.LogError("AwardRepository : AddComments(Comment comment, int employeeId) : (Error:{Message}", exception.Message);
                 return false;
             }
         }
@@ -179,12 +180,12 @@ namespace A5.Data.Repository
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetComments(Comment comment) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardRepository : GetComments(int awardId) : (Error:{Message}", exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                _logger.LogError("AwardRepository : GetComments(int awardId) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
@@ -225,7 +226,7 @@ namespace A5.Data.Repository
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                _logger.LogError("AwardRepository : GetAllAwardsList() : (Error:{Message}", exception.Message);
                 throw;
             }
         }
@@ -253,13 +254,13 @@ namespace A5.Data.Repository
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+               _logger.LogError("AwardRepository : GetAllAwardees(): (Error:{Message}", exception.Message);
                 throw;
             }
         }
 
         //Gets list of awards filtered by organisation wise using organisation id
-        public IEnumerable<Award> GetAllbyOrgwise(int orgid)
+        public IEnumerable<Award> GetAllByOrganisationWise(int organisationId)
         {
             try
             {
@@ -273,24 +274,24 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof => nameof.Awardee!.Designation!.Department!.OrganisationId == orgid && nameof.StatusId == 4)
+                    .Where(nameof => nameof.Awardee!.Designation!.Department!.OrganisationId ==  organisationId && nameof.StatusId == 4)
                     .ToList();
                 return award;
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardRepository : GetAllByOrganisationWise(int organisationId) : (Error:{Message}", exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                _logger.LogError("AwardRepository : GetAllByOrganisationWise(int organisationId) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
 
         //Gets list of awards filtered by awards wise using award id
-        public IEnumerable<Award> GetAllAwardwise(int id)
+        public IEnumerable<Award> GetAllAwardWise(int awardId)
         {
             try
             {
@@ -304,25 +305,25 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof => nameof.AwardTypeId == id && nameof.StatusId == 4)
+                    .Where(nameof => nameof.AwardTypeId == awardId && nameof.StatusId == 4)
                     .ToList();
                 return award;
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardRepository : GetAllbyOrgwise(int awardId) : (Error:{Message}", exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                _logger.LogError("AwardRepository : GetAllbyOrgwise(int awardId) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
 
         
         //Gets list of awards filtered by organisation and award using organisation id and award id
-        public IEnumerable<Award> GetAllOrganisationandAward(int orgid, int awdid)
+        public IEnumerable<Award> GetAllOrganisationAndAward(int organisationId, int awardId)
         {
             try
             {
@@ -336,23 +337,23 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == orgid && nameof.AwardTypeId == awdid && nameof.StatusId == 4)
+                    .Where(nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId && nameof.AwardTypeId == awardId && nameof.StatusId == 4)
                     .ToList();
                 return award;
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardRepository : GetAllOrganisationAndAward(int organisationId, int awardId)  : (Error:{Message}",exception.Message);
                 throw;
             }
             catch (Exception exception){
-              _logger.LogError("Error: {Message}",exception.Message);
+              _logger.LogError("AwardRepository : GetAllOrganisationAndAward(int organisationId, int awardId)  : (Error:{Message}",exception.Message);
               throw;
             }
         }
         
          //Gets list of awards filtered by organisation and department using organisation id and department id
-        public IEnumerable<Award> GetAllOrganisationandDepartment(int orgid, int depid)
+        public IEnumerable<Award> GetAllOrganisationAndDepartment(int organisationId, int departmentId)
         {
             try
             {
@@ -366,24 +367,24 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == orgid && nameof.Awardee.Designation.Department.Id == depid && nameof.StatusId == 4)
+                    .Where(nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId && nameof.Awardee.Designation.Department.Id == departmentId && nameof.StatusId == 4)
                     .ToList();
                 return award;
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardRepository :GetAllOrganisationAndDepartment(int organisationId, int departmentId): (Error:{Message}", exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                _logger.LogError("AwardRepository :GetAllOrganisationAndDepartment(int organisationId, int departmentId): (Error:{Message}", exception.Message);
                 throw;
             }
         }
 
          //Gets list of awards filtered by organisation and award using organisation id, department id and award id
-        public IEnumerable<Award> GetAllOrgDepandAwardwise(int orgid, int depid, int awdid)
+        public IEnumerable<Award> GetAllOrganisationDepartmentAndAwardwise(int organisationId, int departmentId, int awardId)
         {
             try
             {
@@ -397,27 +398,27 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof =>    nameof.Awardee!.Designation!.Department!.Organisation!.Id == orgid 
-                                     && nameof.Awardee.Designation.Department.Id == depid
-                                     && nameof.AwardTypeId == awdid 
+                    .Where(nameof =>    nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId 
+                                     && nameof.Awardee.Designation.Department.Id == departmentId
+                                     && nameof.AwardTypeId == awardId 
                                      && nameof.StatusId == 4)
                     .ToList();
                 return award;
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardRepository : GetAllOrganisationDepartmentAndAwardwise(int organisationId, int departmentId, int awardId) : (Error:{Message}", exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                _logger.LogError("AwardRepository : GetAllOrganisationDepartmentAndAwardwise(int organisationId, int departmentId, int awardId) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
 
          //Gets list of awards filtered by organisation, department and from date using organisation id and award id and from date
-        public IEnumerable<Award> GetAllOrgDepandFromdatewise(int orgid, int depid, DateTime start)
+        public IEnumerable<Award> GetAllOrganisationDepartmentAndFromDateWise(int organisationId, int departmentId, DateTime start)
         {
             try
             {
@@ -431,8 +432,8 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof =>    nameof.Awardee!.Designation!.Department!.Organisation!.Id == orgid 
-                                     && nameof.Awardee.Designation.Department.Id == depid
+                    .Where(nameof =>    nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId 
+                                     && nameof.Awardee.Designation.Department.Id == departmentId
                                      && nameof.UpdatedOn >= start.Date
                                      && nameof.StatusId == 4)
                     .ToList();
@@ -440,17 +441,18 @@ namespace A5.Data.Repository
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardRepository : GetAllOrganisationDepartmentAndFromDateWise(int organisationId, int departmentId, DateTime start) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch (Exception exception){
-              _logger.LogError("Error: {Message}",exception.Message);
+             
+               _logger.LogError("AwardRepository : GetAllOrganisationDepartmentAndFromDateWise(int organisationId, int departmentId, DateTime start) : (Error:{Message}",exception.Message);
               throw;
             }
         }
 
         //Gets list of awards filtered by organisation, award and from date using organisation id and award id and from date
-        public IEnumerable<Award> GetAllOrgAwardandFromdatewise(int orgid, int awdid, DateTime start)
+        public IEnumerable<Award> GetAllOrganisationAwardAndFromDateWise(int organisationId, int awardId, DateTime start)
         {
             try
             {
@@ -464,8 +466,8 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof =>    nameof.Awardee!.Designation!.Department!.Organisation!.Id == orgid 
-                                     && nameof.AwardTypeId == awdid
+                    .Where(nameof =>    nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId 
+                                     && nameof.AwardTypeId == awardId
                                      && nameof.UpdatedOn >= start.Date
                                      && nameof.StatusId == 4)
                     .ToList();
@@ -473,18 +475,18 @@ namespace A5.Data.Repository
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardRepository : GetAllOrganisationAwardAndFromDateWise(int organisationId, int awardId, DateTime start): (Error:{Message}",exception.Message);
                 throw;
             }
             catch (Exception exception){
-              _logger.LogError("Error: {Message}",exception.Message);
+              _logger.LogError("AwardRepository : GetAllOrganisationAwardAndFromDateWise(int organisationId, int awardId, DateTime start): (Error:{Message}",exception.Message);
               throw;
             }
         }
 
        
        //Gets list of awards filtered by organisation, department and To date using organisation id and department id and To date
-        public IEnumerable<Award> GetAllOrgDepandTodatewise(int orgid, int depid, DateTime end)
+        public IEnumerable<Award> GetAllOrganisationDepartmentAndToDateWise(int organisationId, int departmentId, DateTime end)
         {
             try
             {
@@ -498,8 +500,8 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof =>    nameof.Awardee!.Designation!.Department!.Organisation!.Id == orgid 
-                                     && nameof.Awardee.Designation.Department.Id == depid
+                    .Where(nameof =>    nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId 
+                                     && nameof.Awardee.Designation.Department.Id == departmentId
                                      && nameof.UpdatedOn <= end.Date
                                      && nameof.StatusId == 4)
                     .ToList();
@@ -507,17 +509,17 @@ namespace A5.Data.Repository
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardRepository : GetAllOrganisationDepartmentAndToDateWise(int organisationId, int departmentId, DateTime end) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch (Exception exception){
-              _logger.LogError("Error: {Message}",exception.Message);
+               _logger.LogError("AwardRepository : GetAllOrganisationDepartmentAndToDateWise(int organisationId, int departmentId, DateTime end) : (Error:{Message}",exception.Message);
               throw;
             }
         }
 
         //Gets list of awards filtered by organisation, award and To date using organisation id and award id and To date
-        public IEnumerable<Award> GetAllOrgAwardandTodatewise(int orgid, int awdid, DateTime end)
+        public IEnumerable<Award> GetAllOrganisationAwardAndToDateWise(int organisationId, int awardId, DateTime end)
         {
             try
             {
@@ -531,8 +533,8 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof =>    nameof.Awardee!.Designation!.Department!.Organisation!.Id == orgid 
-                                     && nameof.AwardTypeId == awdid
+                    .Where(nameof =>    nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId 
+                                     && nameof.AwardTypeId == awardId
                                      && nameof.UpdatedOn <= end.Date
                                      && nameof.StatusId == 4)
                     .ToList();
@@ -540,17 +542,17 @@ namespace A5.Data.Repository
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardRepository :GetAllOrganisationAwardAndToDateWise(int organisationId, int awardId, DateTime end) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch (Exception exception){
-              _logger.LogError("Error: {Message}",exception.Message);
+              _logger.LogError("AwardRepository :GetAllOrganisationAwardAndToDateWise(int organisationId, int awardId, DateTime end) : (Error:{Message}",exception.Message);
               throw;
             }
         }
 
         //Gets list of awards filtered by organisation and from date using organisation id and from date
-        public IEnumerable<Award> GetAllFilteredOrganisationandFromDateWise(int orgid, DateTime start)
+        public IEnumerable<Award> GetAllFilteredOrganisationandFromDateWise(int organisationId, DateTime start)
         {
             try
             {
@@ -564,7 +566,7 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == orgid 
+                    .Where(nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
                                   && nameof.StatusId == 4
                                   && nameof.UpdatedOn >= start.Date)
                     .ToList();
@@ -572,17 +574,17 @@ namespace A5.Data.Repository
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardRepository :GetAllFilteredOrganisationandFromDateWise(int organisationId, DateTime start) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch (Exception exception){
-              _logger.LogError("Error: {Message}",exception.Message);
+              _logger.LogError("AwardRepository :GetAllFilteredOrganisationandFromDateWise(int organisationId, DateTime start) : (Error:{Message}",exception.Message);
               throw;
             }
         }
 
         //Gets all awards filtered by organisation and To date using organisation id and To date
-        public IEnumerable<Award> GetAllFilteredOrganisationandToDateWise(int orgid, DateTime end)
+        public IEnumerable<Award> GetAllFilteredOrganisationAndToDateWise(int organisationId, DateTime end)
         {
             try
             {
@@ -596,7 +598,7 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == orgid 
+                    .Where(nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
                                   && nameof.StatusId == 4
                                   && nameof.UpdatedOn <= end.Date)
                     .ToList();
@@ -604,18 +606,18 @@ namespace A5.Data.Repository
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardRepository : GetAllFilteredOrganisationAndToDateWise(int organisationId, DateTime end) : (Error:{Message}", exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+               _logger.LogError("AwardRepository : GetAllFilteredOrganisationAndToDateWise(int organisationId, DateTime end) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
 
         //Gets all awards filtered by date wise using organisation id,department id, award id,from date and to date
-        public IEnumerable<Award> GetAllFilteredDateWise(int orgid, int deptid, int awdid, DateTime start, DateTime end)
+        public IEnumerable<Award> GetAllFilteredDateWise(int organisationId, int departmentId, int awardId, DateTime start, DateTime end)
         {
             try
             {
@@ -629,9 +631,9 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == orgid
-                                  && nameof.Awardee.Designation.Department.Id == deptid
-                                  && nameof.AwardTypeId == awdid
+                    .Where(nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
+                                  && nameof.Awardee.Designation.Department.Id ==departmentId 
+                                  && nameof.AwardTypeId == awardId
                                   && nameof.StatusId == 4
                                   && (nameof.UpdatedOn >= start.Date && nameof.UpdatedOn <= end.Date))
                     .ToList();
@@ -639,18 +641,18 @@ namespace A5.Data.Repository
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardRepository : GetAllFilteredDateWise(int orgianisationId, int departmentId, int awardId, DateTime start, DateTime end) : (Error:{Message}", exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                _logger.LogError("AwardRepository : GetAllFilteredDateWise(int orgianisationId, int departmentId, int awardId, DateTime start, DateTime end) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
 
         //Gets all awards list filtered by organisation,department and date wise using organisation id, department id, from date and To date
-        public IEnumerable<Award> GetAllOrgDepDateWise(int orgid, int deptid, DateTime start, DateTime end)
+        public IEnumerable<Award> GetAllOrganisationDepartmentDateWise(int organisationId, int departmentId, DateTime start, DateTime end)
         {
             try
             {
@@ -664,8 +666,8 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == orgid
-                                  && nameof.Awardee.Designation.Department.Id == deptid
+                    .Where(nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
+                                  && nameof.Awardee.Designation.Department.Id == departmentId
                                   && nameof.StatusId == 4
                                   && (nameof.UpdatedOn >= start.Date && nameof.UpdatedOn <= end.Date))
                     .ToList();
@@ -673,19 +675,19 @@ namespace A5.Data.Repository
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardRepository : GetAllOrganisationDepartmentDateWise(int organisationId, int departmentId, DateTime start, DateTime end): (Error:{Message}", exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                _logger.LogError("AwardRepository : GetAllOrganisationDepartmentDateWise(int organisationId, int departmentId, DateTime start, DateTime end): (Error:{Message}", exception.Message);
                 throw;
             }
         }
 
         
         //gets all list of awards by organisation and date wise using organisation id,award id, from date and To date
-        public IEnumerable<Award> GetAllOrgAwdDateWise(int orgid, int awdid, DateTime start, DateTime end)
+        public IEnumerable<Award> GetAllOrganisationAwardDateWise(int organisationId, int awardId, DateTime start, DateTime end)
         {
             try
             {
@@ -699,8 +701,8 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == orgid
-                                  && nameof.AwardTypeId == awdid
+                    .Where(nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
+                                  && nameof.AwardTypeId == awardId
                                   && nameof.StatusId == 4
                                   && (nameof.UpdatedOn >= start.Date && nameof.UpdatedOn <= end.Date))
                     .ToList();
@@ -708,12 +710,12 @@ namespace A5.Data.Repository
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardRepository : GetAllOrganisationAwarddDateWise(int organisationId, int awardId, DateTime start, DateTime end) : (Error:{Message}", exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+               _logger.LogError("AwardRepository : GetAllOrganisationAwarddDateWise(int organisationId, int awardId, DateTime start, DateTime end) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
@@ -770,11 +772,11 @@ namespace A5.Data.Repository
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardRepository : GetAllFilteredFromDateWise(DateTime start) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch (Exception exception){
-              _logger.LogError("Error: {Message}",exception.Message);
+              _logger.LogError("AwardRepository : GetAllFilteredFromDateWise(DateTime start) : (Error:{Message}",exception.Message);
               throw;
             }
         }
@@ -800,11 +802,12 @@ namespace A5.Data.Repository
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardRepository : GetAllFilteredToDateWise(DateTime end) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch (Exception exception){
-              _logger.LogError("Error: {Message}",exception.Message);
+              
+              _logger.LogError("AwardRepository : GetAllFilteredToDateWise(DateTime end) : (Error:{Message}",exception.Message);
               throw;
             }
         }

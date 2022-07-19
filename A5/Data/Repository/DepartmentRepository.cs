@@ -26,9 +26,10 @@ namespace A5.Data.Repository
             {
                 return Create(department);
             }
+
             catch (Exception exception)
             {
-                _logger.LogError("DepartmentRepository: CreateDepartment(Departmetn department) : (Error:{Message}", exception.Message);
+                _logger.LogError("DepartmentRepository: CreateDepartment(Department department) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
@@ -57,22 +58,22 @@ namespace A5.Data.Repository
             }
             catch (Exception exception)
             {
-                _logger.LogError("DepartmentRepository: GetDepartmentById({id}) : (Error:{Message}",departmentId, exception.Message);
+                _logger.LogError("DepartmentRepository: GetDepartmentById({departmentId}) : (Error:{Message}",departmentId, exception.Message);
                 throw;
             }
         }
          //Disables department using department id and current user id.
-        public bool DisableDepartment(int id, int employeeId)
+        public bool DisableDepartment(int departmentId, int employeeId)
         {
-            if(id<=0) throw new ValidationException("Department Id should not be null or negative");
+            if(departmentId<=0) throw new ValidationException("Department Id should not be null or negative");
             if(employeeId<=0) throw new ValidationException("Employee Id should not be null or negative");
             try
             {
-                return Disable(id, employeeId);
+                return Disable(departmentId, employeeId);
             }
             catch (Exception exception)
             {
-                _logger.LogError("DepartmentRepository: DisableDepartment(Id:{id},EmployeeId:{employeeId}) : (Error:{Message}", id,employeeId,exception.Message);
+                _logger.LogError("DepartmentRepository: DisableDepartment(departmentId:{departmentId},EmployeeId:{employeeId}) : (Error:{Message}", departmentId,employeeId,exception.Message);
                 throw;
             }
         }
@@ -86,28 +87,28 @@ namespace A5.Data.Repository
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                _logger.LogError("DepartmentRepository: GetAllDepartment() : (Error:{Message}",exception.Message);
                 throw;
             }
         }
         //Gets the count of employees under department.
-        public int GetCount(int id)
+        public int GetCount(int departmentId)
         {
-            var checkEmployee = _context.Set<Employee>().Where(nameof => nameof.IsActive == true && nameof.DepartmentId == id).Count();
+            var checkEmployee = _context.Set<Employee>().Where(nameof => nameof.IsActive == true && nameof.DepartmentId == departmentId).Count();
             return checkEmployee;
         }
         //Gets Department by organisation Id.
-        public IEnumerable<Department> GetDepartmentsByOrganisationId(int id)
+        public IEnumerable<Department> GetDepartmentsByOrganisationId(int organisationId)
         {
-            if(id<=0) throw new ValidationException("Organisation Id should not be null or negative");
+            if(organisationId<=0) throw new ValidationException("Organisation Id should not be null or negative");
             try
             {
-                var organisationDetails = _context.Set<Department>().Where(nameof => nameof.OrganisationId == id && nameof.IsActive == true).ToList();
+                var organisationDetails = _context.Set<Department>().Where(nameof => nameof.OrganisationId == organisationId && nameof.IsActive == true).ToList();
                 return organisationDetails;
             }
             catch (Exception exception)
             {
-                _logger.LogError("DepartmentRepository: GetDepartmentsByOrganisationId({id}) : (Error:{Message}", id,exception.Message);
+                _logger.LogError("DepartmentRepository: GetDepartmentsByOrganisationId({organisationId}) : (Error:{Message}", organisationId,exception.Message);
                 throw;
             }
 

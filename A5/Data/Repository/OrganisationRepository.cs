@@ -50,40 +50,40 @@ namespace A5.Data.Repository
         }
         
         //gets organisation by using organisation id
-        public Organisation? GetOrganisationById(int id)
+        public Organisation? GetOrganisationById(int organisationId)
         {
             
             try
             {
-                return GetById(id);
+                return GetById(organisationId);
             }
             catch (Exception exception)
             {
-                _logger.LogError("OrganisationRepository: GetByOrganisation(int id) : (Error:{Message}", exception.Message);
+                _logger.LogError("OrganisationRepository: GetByOrganisation(int organisationId) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
         
         //disables organisation using organisation id and current user id
-        public bool DisableOrganisation(int id, int employeeId)
+        public bool DisableOrganisation(int organisationId, int employeeId)
         {
 
             try
             {
-                return Disable(id, employeeId);
+                return Disable( organisationId, employeeId);
 
             }
             catch (Exception exception)
             {
-                _logger.LogError("OrganisationRepository: DisableOrganisation(int id) : (Error:{Message}", exception.Message);
+                _logger.LogError("OrganisationRepository: DisableOrganisation(int  organisationId) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
         
-        //gets all designation count by using designation id
-        public int GetCount(int id)
+        //gets all organisatiob count by using organisation id
+        public int GetCount(int organisationId)
         {
-            var checkEmployee = _context.Set<Employee>().Where(nameof => nameof.IsActive && nameof.OrganisationId == id).Count();
+            var checkEmployee = _context.Set<Employee>().Where(nameof => nameof.IsActive && nameof.OrganisationId == organisationId).Count();
             return checkEmployee;
         }
         

@@ -36,7 +36,7 @@ namespace A5.Data.Repository
             }
             catch(Exception exception)
             {
-                _logger.LogError("DesignationRespository : GetDesignationsByDepartmentId(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("DesignationRespository : GetDesignationsByDepartmentId(int departmentId) : (Error:{Message}",exception.Message);
                throw;
             }
          }
@@ -66,7 +66,7 @@ namespace A5.Data.Repository
             }
             catch(Exception exception)
             {
-               _logger.LogError("DesignationRespository: GetDesginationById(int id) : (Error:{Message}",exception.Message);
+               _logger.LogError("DesignationRespository: GetDesginationById(int designationId) : (Error:{Message}",exception.Message);
                 throw;
             }
         }
@@ -93,9 +93,9 @@ namespace A5.Data.Repository
         }
 
         // to get designation count by using designation id
-        public int GetCount(int id)
+        public int GetCount(int designationId)
         {
-             var checkEmployee = _context.Set<Employee>().Where(nameof => nameof.IsActive == true && nameof.DesignationId == id).Count();
+             var checkEmployee = _context.Set<Employee>().Where(nameof => nameof.IsActive == true && nameof.DesignationId == designationId).Count();
              return checkEmployee;
         }
          public object ErrorMessage(string ValidationMessage)
@@ -124,15 +124,15 @@ namespace A5.Data.Repository
         }
 
         //to disable designation using designation id and current user id
-        public bool DisableDesignation(int id,int employeeId)
+        public bool DisableDesignation(int designationId,int employeeId)
         {
            
             try{
-                return Disable(id,employeeId);
+                return Disable(designationId,employeeId);
             }
             catch(Exception exception)
             {
-                _logger.LogError("DesignationRespository: DisableDesignation(int id,int employeeId) : (Error:{Message}",exception.Message);
+                _logger.LogError("DesignationRespository: DisableDesignation(int designationId,int employeeId) : (Error:{Message}",exception.Message);
                 throw;
             }
         }

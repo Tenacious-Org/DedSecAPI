@@ -125,11 +125,11 @@ namespace A5.Controller
         [HttpPost("Create")]
         public ActionResult Create(AwardType awardType)
         {
-            if(awardType==null) return BadRequest("AwardType should not be null");
+            if (awardType == null) return BadRequest("AwardType should not be null");
 
             try
             {
-                awardType.AddedBy=GetCurrentUserId();
+                awardType.AddedBy = GetCurrentUserId();
                 var data = _awardTypeService.CreateAwardType(awardType);
                 return data ? Ok("Award Type successfully created") : BadRequest("Failed to create new Award Type.");
             }
@@ -140,7 +140,7 @@ namespace A5.Controller
             }
             catch (Exception exception)
             {
-                 _logger.LogError("AwardTypeController : Create(AwardType awardType) : (Error:{Message})", exception.Message);
+                _logger.LogError("AwardTypeController : Create(AwardType awardType) : (Error:{Message})", exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -170,10 +170,10 @@ namespace A5.Controller
         [HttpPut("Update")]
         public ActionResult Update(AwardType awardType)
         {
-            if(awardType==null) return BadRequest("AwardType should not be null");
+            if (awardType == null) return BadRequest("AwardType should not be null");
             try
             {
-                awardType.UpdatedBy=GetCurrentUserId();
+                awardType.UpdatedBy = GetCurrentUserId();
                 var data = _awardTypeService.UpdateAwardType(awardType);
                 return data ? Ok("Award type successfully updated") : BadRequest("Failed to update award type");
             }
@@ -214,7 +214,7 @@ namespace A5.Controller
             if (id <= 0) return BadRequest("Id cannot be zero or negative ");
             try
             {
-                var data = _awardTypeService.DisableAwardType(id,GetCurrentUserId());
+                var data = _awardTypeService.DisableAwardType(id, GetCurrentUserId());
                 return Ok(data);
             }
             catch (ValidationException exception)

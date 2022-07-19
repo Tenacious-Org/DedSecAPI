@@ -28,7 +28,7 @@ namespace A5.Service.Validations
         }
         public static bool ValidateGetComments(int awardId)
         {
-            if(awardId==0) throw new ValidationException ("No such awards!!");
+            if(awardId<=0) throw new ValidationException ("No such awards!!");
             else return true;
         }
         

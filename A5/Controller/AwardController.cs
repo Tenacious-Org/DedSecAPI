@@ -44,19 +44,20 @@ namespace A5.Controller
         [HttpPost("RaiseRequest")]
         public ActionResult RaiseRequest(Award award)
         {
-            if (award == null) return BadRequest("Award cannot be null ");
+            if (award == null) return BadRequest("Award cannot be null");
             try
             {
                 var data = _awardService.RaiseRequest(award, GetCurrentUserId());
-                return Ok(data);
+                return data ? Ok("Request raised successfully"):BadRequest();
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardController : RaiseRequest(Award award,int id) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardController : RaiseRequest(Award award) : (Error:{Message}", exception.Message);
                 return BadRequest(_awardService.ErrorMessage(exception.Message));
             }
             catch (Exception exception)
             {
+                _logger.LogError("AwardController : RaiseRequest(Award award) : (Error:{Message}", exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -93,15 +94,16 @@ namespace A5.Controller
             {
                 award.UpdatedBy = GetCurrentUserId();
                 var data = _awardService.Approval(award);
-                return Ok(data);
+                return data ? Ok("Request approved succesfully"):BadRequest();
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardController : Approval(Award award,int id) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardController : Approval(Award award) : (Error:{Message}", exception.Message);
                 return BadRequest(exception.Message);
             }
             catch (Exception exception)
             {
+                 _logger.LogError("AwardController : Approval(Award award) : (Error:{Message}", exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -129,7 +131,7 @@ namespace A5.Controller
         [AllowAnonymous]
         public ActionResult GetAwardById(int id)
         {
-            if (id <= 0)return BadRequest("Id cannot be null or negative");
+            if (id <= 0)return BadRequest("Award Id must be greater than zero");
 
             try
             {
@@ -143,6 +145,7 @@ namespace A5.Controller
             }
             catch (Exception exception)
             {
+                _logger.LogError("AwardController :GetAwardById(int id) : (Error:{Message}", exception.Message);
                 return Problem(exception.Message);
             }
 
@@ -168,8 +171,7 @@ namespace A5.Controller
         [AllowAnonymous]
         public ActionResult GetAwardsList(int pageId = 0)
         {
-            if (pageId < 0)
-                return BadRequest("pageId cannot be null or negative");
+            if (pageId <= 0)return BadRequest("pageId must be greater than zero");
             try
             {
                 var data = _awardService.GetAwardsList(pageId, GetCurrentUserId());
@@ -177,11 +179,12 @@ namespace A5.Controller
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardController : GetAwardsList(int pageId,int employeeId) : (Error:{Message})", exception.Message);
+                _logger.LogError("AwardController : GetAwardsList(int pageId) : (Error:{Message})", exception.Message);
                 return BadRequest(exception.Message);
             }
             catch (Exception exception)
             {
+                 _logger.LogError("AwardController : GetAwardsList(int pageId) : (Error:{Message})", exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -214,7 +217,8 @@ namespace A5.Controller
             try
             {
                 var data = _awardService.AddComment(comment, GetCurrentUserId());
-                return Ok(data);
+                return data ? Ok("Comments added succesfully"):BadRequest();
+
             }
             catch (ValidationException exception)
             {
@@ -223,6 +227,7 @@ namespace A5.Controller
             }
             catch (Exception exception)
             {
+                _logger.LogError("AwardController : AddComment(Comment comment) : (Error:{Message}", exception.Message);
                 return Problem(exception.Message);
             }
 
@@ -242,28 +247,29 @@ namespace A5.Controller
         /// </remarks>
         /// <response code="201">Returns the newly created item</response>
         /// <response code="400">If the item is null</response> 
-        /// <param name="awardId">String</param>
+        /// <param name="id">String</param>
         /// <returns>
         ///Return the comments and some details of awardee 
         /// </returns>
 
         [HttpGet("GetComments")]
         [AllowAnonymous]
-        public ActionResult GetComments(int awardId)
+        public ActionResult GetComments(int id)
         {
-            if (awardId <= 0) return BadRequest("Award Id should not be negative or zero");
+            if (id <= 0) return BadRequest("Award Id must be greater than zero");
             try
             {
-                var data = _awardService.GetComments(awardId);
+                var data = _awardService.GetComments(id);
                 return Ok(data);
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardController : GetComments(int awardId) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardController : GetComments(int id) : (Error:{Message}", exception.Message);
                 return BadRequest(exception.Message);
             }
             catch (Exception exception)
             {
+                _logger.LogError("AwardController : GetComments(int id) : (Error:{Message}", exception.Message);
                 return Problem(exception.Message);
             }
 

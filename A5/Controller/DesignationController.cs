@@ -79,7 +79,7 @@ namespace A5.Controller
         [HttpGet("GetDesignationsByDepartmentId")]
         public ActionResult GetDesignationsByDepartmentId(int id)
         {
-            if (id <= 0) return BadRequest("Id must be greater than zero ");
+            if (id <= 0) return BadRequest("Designation Id muts be greaer than zero");
             try
             {
                 var data = _designationService.GetDesignationsByDepartmentId(id);
@@ -166,7 +166,7 @@ namespace A5.Controller
             {
                 designation.AddedBy=GetCurrentUserId();
                 var data = _designationService.CreateDesignation(designation);
-                return Ok(data);
+                return data ? Ok("Designation created successfully"):BadRequest();
             }
             catch (ValidationException exception)
             {
@@ -207,7 +207,7 @@ namespace A5.Controller
             {
                 designation.UpdatedBy=GetCurrentUserId();
                 var data = _designationService.UpdateDesignation(designation);
-                return Ok(data);
+                return data ? Ok("Designation updated successfully"):BadRequest();
             }
             catch (ValidationException exception)
             {
@@ -255,7 +255,7 @@ namespace A5.Controller
                 else
                 {
                     var data = _designationService.DisableDesignation(id,GetCurrentUserId());
-                    return Ok(data);
+                   return data ? Ok("Designation disabled successfully"):BadRequest();
                 }
 
             }

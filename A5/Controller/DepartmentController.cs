@@ -75,7 +75,7 @@ namespace A5.Controller
         [AllowAnonymous]
         public ActionResult GetDepartmentsByOrganisationId(int id)
         {
-            if (id <= 0) return BadRequest("Id cannot be zero or negative");
+            if (id <= 0) return BadRequest("Organisation Id must be greater than zero");
             try{
                 var data = _departmentService.GetDepartmentsByOrganisationId(id);
                 return Ok(data);
@@ -106,27 +106,27 @@ namespace A5.Controller
         /// </remarks>
         /// <response code="201">Returns the newly created item</response>
         /// <response code="400">If the item is null</response> 
-        /// <param name="departmentId">String</param>
+        /// <param name="id">String</param>
         /// <returns>
         ///Returns signle Department by id
         /// </returns>
 
         [HttpGet("GetById")]
-        public ActionResult GetByDepartmentId( int departmentId)
+        public ActionResult GetByDepartmentId( int id)
         {
-            if (departmentId <= 0) return BadRequest("Id must be greater than zero");
+            if (id <= 0) return BadRequest("Id must be greater than zero");
             try{
-                var data = _departmentService.GetDepartmentById(departmentId);
+                var data = _departmentService.GetDepartmentById(id);
                 return Ok(data);
             }           
             catch(ValidationException exception)
             {
-                 _logger.LogError("DepartmentController : GetByDepartmentId({departmentId}) : (Error: {exception.Message})",departmentId,exception.Message);
+                 _logger.LogError("DepartmentController : GetByDepartmentId({id}) : (Error: {exception.Message})",id,exception.Message);
                 return BadRequest(_departmentService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
-                  _logger.LogError("DepartmentController : GetByDepartmentId({departmentId}) : (Error: {exception.Message})",departmentId,exception.Message);
+                  _logger.LogError("DepartmentController : GetByDepartmentId({id}) : (Error: {exception.Message})",id,exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -154,11 +154,11 @@ namespace A5.Controller
         [HttpPost("Create")]
         public ActionResult Create(Department department)
         {
-            if(department==null) return BadRequest("department should not be null");
+            if(department==null) return BadRequest("Department should not be null");
             try{
                 department.AddedBy=GetCurrentUserId();
                 var data=_departmentService.CreateDepartment(department);
-                return Ok(data); 
+                return data ? Ok("Department created successfully"):BadRequest(); 
             }           
             catch(ValidationException exception)
             {
@@ -198,7 +198,7 @@ namespace A5.Controller
             try{
                 department.UpdatedBy=GetCurrentUserId();
                 var data=_departmentService.UpdateDepartment(department);
-                return  Ok(data); 
+                return data ? Ok("Department updated succesfully"):BadRequest();
             }
             catch(ValidationException exception)
             {
@@ -207,7 +207,7 @@ namespace A5.Controller
             }
             catch(Exception exception)
             {
-                 _logger.LogError("DepartmentController : Update(Department department) : (Error: {Message})",exception.Message);
+                _logger.LogError("DepartmentController : Update(Department department) : (Error: {Message})",exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -234,14 +234,14 @@ namespace A5.Controller
         [HttpPut("Disable")]
         public ActionResult Disable(int id)
         {
-            if (id <= 0) return BadRequest("Id cannot be  or negative.");
+            if (id <= 0) return BadRequest("Department Id must be greater than zero");
             try{
                  var checkEmployee = _departmentService.GetCount(id);
                 if(checkEmployee>0){
                     return Ok(checkEmployee);
                 }else{
                     var data = _departmentService.DisableDepartment(id,GetCurrentUserId());
-                    return data ? Ok("Successfully disabled") : BadRequest("Failed to disable award type");
+                    return data ? Ok("Department disabled succesfully"):BadRequest();
                 }
                 
             }           

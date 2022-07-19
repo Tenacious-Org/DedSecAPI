@@ -24,12 +24,13 @@ namespace A5.Service
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardService: RaiseRequest(Award award,int id) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardService: RaiseRequest(Award award,int employeeId) : (Error:{Message}", exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                
+                _logger.LogError("AwardService: RaiseRequest(Award award,int employeeId) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
@@ -47,7 +48,7 @@ namespace A5.Service
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+               _logger.LogError("AwardService: Approval(Award award) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
