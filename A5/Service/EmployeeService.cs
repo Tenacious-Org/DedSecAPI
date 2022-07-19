@@ -17,135 +17,136 @@ namespace A5.Service
             _logger = logger;
         }
         //Gets Employee of particular HR by using  HR id.
-        public IEnumerable<Employee> GetByHR(int id)
-        {
-           if(id<=0) throw new ValidationException("HR id should not be null or negative");
-            try
-            {
-                return _employeeRepository.GetEmployeeByDepartmentId(id);
-            }
-            catch (ValidationException exception)
-            {
-                _logger.LogError("EmployeeService: GetByHR(id : {id}) : (Error:{Message}", id,exception.Message);
-                throw;
-            }
-            catch (Exception exception)
-            {
-                _logger.LogError("EmployeeService: GetByHR(id : {id}) : (Error:{Message}", id,exception.Message);
-                throw;
-            }
-        }
+        // public IEnumerable<Employee> GetByHR(int id)
+        // {
+        //    if(id<=0) throw new ValidationException("HR id should not be null or negative");
+        //     try
+        //     {
+        //         return _employeeRepository.GetByHR(id);
+        //     }
+        //     catch (ValidationException exception)
+        //     {
+        //         _logger.LogError("EmployeeService: GetByHR(id : {id}) : (Error:{Message}", id,exception.Message);
+        //         throw;
+        //     }
+        //     catch (Exception exception)
+        //     {
+        //         _logger.LogError("EmployeeService: GetByHR(id : {id}) : (Error:{Message}", id,exception.Message);
+        //         throw;
+        //     }
+        // }
        //Gets Employee of particular reporting person by using reporting person id.
-        public IEnumerable<Employee> GetByReportingPerson(int id)
-        {
-            if(id<=0) throw new ValidationException("Reporting person id should not be null or negative");
-            try
-            {
-                return _employeeRepository.GetReportingPersonByDepartmentId(id);
-            }
-            catch (ValidationException exception)
-            {
-                _logger.LogError("EmployeeService: GetByReportingPerson(id : {id}) : (Error:{Message}", id,exception.Message);
-                throw;
-            }
-            catch (Exception exception)
-            {
-                _logger.LogError("EmployeeService: GetByReportingPerson(id : {id}) : (Error:{Message}", id,exception.Message);
-                throw;
-            }
-        }
+        // public IEnumerable<Employee> GetByReportingPerson(int id)
+        // {
+        //     if(id<=0) throw new ValidationException("Reporting person id should not be null or negative");
+        //     try
+        //     {
+        //         return _employeeRepository.GetReportingPersonByDepartmentId(id);
+        //     }
+        //     catch (ValidationException exception)
+        //     {
+        //         _logger.LogError("EmployeeService: GetByReportingPerson(id : {id}) : (Error:{Message}", id,exception.Message);
+        //         throw;
+        //     }
+        //     catch (Exception exception)
+        //     {
+        //         _logger.LogError("EmployeeService: GetByReportingPerson(id : {id}) : (Error:{Message}", id,exception.Message);
+        //         throw;
+        //     }
+        // }
         //Gets Employee of particular department using department id.
-        public IEnumerable<Employee> GetEmployeeByDepartmentId(int id)
-        {
-            if(id<=0) throw new ValidationException("Department id should not be null or negative");
-            try
-            {
-                return _employeeRepository.GetEmployeeByDepartmentId(id);
-            }
-            catch (ValidationException exception)
-            {
-                _logger.LogError("EmployeeService: GetEmployeeByDepartmentId(id : {id}) : (Error:{Message}",id, exception.Message);
-                throw;
-            }
-            catch (Exception exception)
-            {
-                _logger.LogError("EmployeeService: GetEmployeeByDepartmentId(id : {id}) : (Error:{Message}",id, exception.Message);
-                throw;
-            }
-        }
+        // public IEnumerable<Employee> GetEmployeeByDepartmentId(int departmentId)
+        // {
+        //     if(departmentId<=0) throw new ValidationException("Department id should not be null or negative");
+        //     try
+        //     {
+        //         return _employeeRepository.GetEmployeeByDepartmentId(departmentId);
+        //     }
+        //     catch (ValidationException exception)
+        //     {
+        //         _logger.LogError("EmployeeService: GetEmployeeByDepartmentId(id : {id}) : (Error:{Message}",departmentId, exception.Message);
+        //         throw;
+        //     }
+        //     catch (Exception exception)
+        //     {
+        //         _logger.LogError("EmployeeService: GetEmployeeByDepartmentId(id : {id}) : (Error:{Message}",departmentId, exception.Message);
+        //         throw;
+        //     }
+        // }
+
         //Gets reporting Person of particular department by using department id.
-        public IEnumerable<Employee> GetReportingPersonByDepartmentId(int id)
+        public IEnumerable<Employee> GetReportingPersonByDepartmentId(int departmentId)
         {
-            if(id<=0) throw new ValidationException("Reporting Person Id should not be null or negative");
+            if(departmentId<=0) throw new ValidationException("Reporting Person Id should not be null or negative");
             try
             {
-                return _employeeRepository.GetReportingPersonByDepartmentId(id);
+                return _employeeRepository.GetReportingPersonByDepartmentId(departmentId);
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeService: GetReportingPersonByDepartmentId(id : {id}) : (Error:{Message}", id,exception.Message);
+                _logger.LogError("EmployeeService: GetReportingPersonByDepartmentId(id : {id}) : (Error:{Message}", departmentId,exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("EmployeeService: GetReportingPersonByDepartmentId(id : {id}) : (Error:{Message}", id,exception.Message);
+                _logger.LogError("EmployeeService: GetReportingPersonByDepartmentId(id : {id}) : (Error:{Message}", departmentId,exception.Message);
                 throw;
             }
         }
         //Gets Hr of particular department using Department Id.
-        public IEnumerable<Employee> GetHrByDepartmentId(int id)
+        public IEnumerable<Employee> GetHrByDepartmentId(int departmentId)
         {
-            if(id<=0) throw new ValidationException("Department Id should not be null or negative");
+            if(departmentId<=0) throw new ValidationException("Department Id should not be null or negative");
             try
             {
-                return _employeeRepository.GetHrByDepartmentId(id);
+                return _employeeRepository.GetHrByDepartmentId(departmentId);
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeService: GetHrByDepartmentId(id : {id}) : (Error:{Message}",id, exception.Message);
+                _logger.LogError("EmployeeService: GetHrByDepartmentId(id : {id}) : (Error:{Message}",departmentId, exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("EmployeeService: GetHrByDepartmentId(id : {id}) : (Error:{Message}", id,exception.Message);
+                _logger.LogError("EmployeeService: GetHrByDepartmentId(id : {id}) : (Error:{Message}", departmentId,exception.Message);
                 throw;
             }
         }
         //Get Employee by using Requester Id.
-        public IEnumerable<Employee> GetEmployeeByRequesterId(int id)
+        public IEnumerable<Employee> GetEmployeeByRequesterId(int requesterId)
         {
-           if(id<=0) throw new ValidationException("Requester Id should not be null or negative");
+           if(requesterId<=0) throw new ValidationException("Requester Id should not be null or negative");
             try
             {
-                return _employeeRepository.GetEmployeeByRequesterId(id);
+                return _employeeRepository.GetEmployeeByRequesterId(requesterId);
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeService: GetEmployeeByRequesterId(id : {id}) : (Error:{Message}", id,exception.Message);
+                _logger.LogError("EmployeeService: GetEmployeeByRequesterId(id : {id}) : (Error:{Message}", requesterId,exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("EmployeeService: GetEmployeeByRequesterId(id : {id}) : (Error:{Message}", id,exception.Message);
+                _logger.LogError("EmployeeService: GetEmployeeByRequesterId(id : {id}) : (Error:{Message}", requesterId,exception.Message);
                 throw;
             }
         }
         //Get employees of particular organisation by using organisation id.
-        public IEnumerable<Employee> GetEmployeeByOrganisation(int id)
+        public IEnumerable<Employee> GetEmployeeByOrganisation(int organisationId)
         {
-            if(id<=0) throw new ValidationException("Organisation Id should not be null or negative");
+            if(organisationId<=0) throw new ValidationException("Organisation Id should not be null or negative");
             try
             {
-                return _employeeRepository.GetEmployeeByOrganisation(id);
+                return _employeeRepository.GetEmployeeByOrganisation(organisationId);
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeService: GetEmployeeByOrganisation(id : {id}) : (Error:{Message}",id, exception.Message);
+                _logger.LogError("EmployeeService: GetEmployeeByOrganisation(id : {id}) : (Error:{Message}",organisationId, exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("EmployeeService: GetEmployeeByOrganisation(id : {id}) : (Error:{Message}",id, exception.Message);
+                _logger.LogError("EmployeeService: GetEmployeeByOrganisation(id : {id}) : (Error:{Message}",organisationId, exception.Message);
                 throw;
             }
         }
@@ -301,6 +302,7 @@ namespace A5.Service
         {
             return new { message = ValidationMessage };
         }
+        //gets employee using employee object
         private object GetEmployeeObject(Employee employee)
         {
             return new

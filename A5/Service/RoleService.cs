@@ -17,6 +17,7 @@ namespace A5.Service
             _context=context;
             _logger=logger;
         }
+        //Gets the role of particular id using role id.
         public Role? GetById(int id)
         {
             if(id<=0) throw new ValidationException("Id should not be zero or negative");
@@ -36,7 +37,7 @@ namespace A5.Service
             }
             
         }
-
+        //gets all the roles.
         public IEnumerable<Role> GetAll()
         {
             try

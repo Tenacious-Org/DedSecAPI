@@ -19,152 +19,152 @@ namespace A5.Data.Repository
             _logger = logger;
         }
         //Gets Employee of particular HR by using HR id.
-        public IEnumerable<Employee> GetByHR(int id)
-        {
-            if(id<=0) throw new ValidationException("Id should not be null or negative");
-            try
-            {
-                var result=_context.Set<Employee>().Where(nameof => nameof.HRId == id && nameof.IsActive == true).ToList();
-                if(result==null) throw new ValidationException("No records found");
-                return result;
-            }
-            catch (ValidationException exception)
-            {
-                _logger.LogError("EmployeeRepository: GetByHR(id : {id}) : (Error:{Message})",id, exception.Message);
-                throw;
-            }
-            catch (Exception exception)
-            {
-                _logger.LogError("EmployeeRepository: GetByHR(id : {id}) : (Error:{Message})",id, exception.Message);
-                throw;
-            }
+    //     public IEnumerable<Employee> GetByHR(int id)
+    //     {
+    //         if(id<=0) throw new ValidationException("Id should not be null or negative");
+    //         try
+    //         {
+    //             var result=_context.Set<Employee>().Where(nameof => nameof.HRId == id && nameof.IsActive == true).ToList();
+    //             if(result==null) throw new ValidationException("No records found");
+    //             return result;
+    //         }
+    //         catch (ValidationException exception)
+    //         {
+    //             _logger.LogError("EmployeeRepository: GetByHR(id : {id}) : (Error:{Message})",id, exception.Message);
+    //             throw;
+    //         }
+    //         catch (Exception exception)
+    //         {
+    //             _logger.LogError("EmployeeRepository: GetByHR(id : {id}) : (Error:{Message})",id, exception.Message);
+    //             throw;
+    //         }
 
-        }
-       //Gets Employee of particular reporting person by using reporting person id.
-        public IEnumerable<Employee> GetByReportingPerson(int id)
-        {
-            if(id<=0) throw new ValidationException("Id should not be null or negative");
-            try
-            {
-                var result= _context.Set<Employee>().Where(nameof => nameof.ReportingPersonId == id).ToList();
-                if(result==null) throw new ValidationException("No records found");
-                return result;
-            }
-            catch (ValidationException exception)
-            {
-                _logger.LogError("EmployeeRepository: GetByReportingPerson(id : {id}) : (Error:{Message})", id,exception.Message);
-                throw;
-            }
-            catch (Exception exception)
-            {
-                _logger.LogError("EmployeeRepository: GetByReportingPerson(id : {id}) : (Error:{Message})", id,exception.Message);
-                throw;
-            }
+    //     }
+    //    //Gets Employee of particular reporting person by using reporting person id.
+    //     public IEnumerable<Employee> GetByReportingPerson(int id)
+    //     {
+    //         if(id<=0) throw new ValidationException("Id should not be null or negative");
+    //         try
+    //         {
+    //             var result= _context.Set<Employee>().Where(nameof => nameof.ReportingPersonId == id).ToList();
+    //             if(result==null) throw new ValidationException("No records found");
+    //             return result;
+    //         }
+    //         catch (ValidationException exception)
+    //         {
+    //             _logger.LogError("EmployeeRepository: GetByReportingPerson(id : {id}) : (Error:{Message})", id,exception.Message);
+    //             throw;
+    //         }
+    //         catch (Exception exception)
+    //         {
+    //             _logger.LogError("EmployeeRepository: GetByReportingPerson(id : {id}) : (Error:{Message})", id,exception.Message);
+    //             throw;
+    //         }
 
-        }
+    //     }
         //Gets Employees of particular department using Department Id.
-        public IEnumerable<Employee> GetEmployeeByDepartmentId(int id)
-        {
-           if(id<=0) throw new ValidationException("id should not be  null or negative");
-            try
-            {
-                var result= _context.Set<Employee>().Where(nameof => nameof.DepartmentId == id).ToList();
-                if(result==null) throw new ValidationException("No records found");
-                return result;
-            }
-            catch (ValidationException exception)
-            {
-                _logger.LogError("EmployeeRepository: GetEmployeeByDepartmentId(id :{id}) : (Error:{Message})", id,exception.Message);
-                throw;
-            }
-            catch (Exception exception)
-            {
-                _logger.LogError("EmployeeRepository: GetEmployeeByDepartmentId(int id) : (Error:{Message})",id, exception.Message);
-                throw;
-            }
-        }
+        // public IEnumerable<Employee> GetEmployeeByDepartmentId(int departmentId)
+        // {
+        //    if(departmentId<=0) throw new ValidationException("id should not be  null or negative");
+        //     try
+        //     {
+        //         var result= _context.Set<Employee>().Where(nameof => nameof.DepartmentId == departmentId).ToList();
+        //         if(result==null) throw new ValidationException("No records found");
+        //         return result;
+        //     }
+        //     catch (ValidationException exception)
+        //     {
+        //         _logger.LogError("EmployeeRepository: GetEmployeeByDepartmentId(id :{id}) : (Error:{Message})", departmentId,exception.Message);
+        //         throw;
+        //     }
+        //     catch (Exception exception)
+        //     {
+        //         _logger.LogError("EmployeeRepository: GetEmployeeByDepartmentId(int id) : (Error:{Message})",departmentId, exception.Message);
+        //         throw;
+        //     }
+        // }
         //Gets reporting Person of particular department using department id.
-        public IEnumerable<Employee> GetReportingPersonByDepartmentId(int id)
+        public IEnumerable<Employee> GetReportingPersonByDepartmentId(int departmentId)
         {
-            if(id<=0) throw new ValidationException("Department Id should not be null or negative");
+            if(departmentId<=0) throw new ValidationException("Department Id should not be null or negative");
             try
             {
 
-                var result=_context.Set<Employee>().Where(nameof => nameof.DepartmentId == id && nameof.Designation!.DesignationName != "Trainee").ToList();
+                var result=_context.Set<Employee>().Where(nameof => nameof.DepartmentId == departmentId && nameof.Designation!.DesignationName != "Trainee").ToList();
                 if(result==null) throw new ValidationException("No records found");
                 return result;
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeRepository: GetReportingPersonByDepartmentId(id : {id}) : (Error:{Message})",id, exception.Message);
+                _logger.LogError("EmployeeRepository: GetReportingPersonByDepartmentId(id : {id}) : (Error:{Message})",departmentId, exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("EmployeeRepository: GetReportingPersonByDepartmentId(id : {id}) : (Error:{Message})",id, exception.Message);
+                _logger.LogError("EmployeeRepository: GetReportingPersonByDepartmentId(id : {id}) : (Error:{Message})",departmentId, exception.Message);
                 throw;
             }
         }
         //Gets HR of particular department using Department Id.
-        public IEnumerable<Employee> GetHrByDepartmentId(int id)
+        public IEnumerable<Employee> GetHrByDepartmentId(int departmentId)
         {
-            if(id<=0) throw new ValidationException("Department Id should not be null or negative");
+            if(departmentId<=0) throw new ValidationException("Department Id should not be null or negative");
             try
             {
-                var result= _context.Set<Employee>().Where(nameof => nameof.DepartmentId == id && nameof.Designation!.DesignationName == "hr").ToList();
+                var result= _context.Set<Employee>().Where(nameof => nameof.DepartmentId == departmentId && nameof.Designation!.DesignationName == "hr").ToList();
                 if(result==null) throw new ValidationException("No records found");
                 return result;
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeRepository: GetHrByDepartmentId(id : {id} ): (Error:{Message})", id,exception.Message);
+                _logger.LogError("EmployeeRepository: GetHrByDepartmentId(id : {id} ): (Error:{Message})", departmentId,exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("EmployeeRepository: GetHrByDepartmentId(id : {id} ): (Error:{Message})", id,exception.Message);
+                _logger.LogError("EmployeeRepository: GetHrByDepartmentId(id : {id} ): (Error:{Message})", departmentId,exception.Message);
                 throw;
             }
         }
         //Gets Employee details of particular requester using Requester Id.
-        public IEnumerable<Employee> GetEmployeeByRequesterId(int id)
+        public IEnumerable<Employee> GetEmployeeByRequesterId(int requesterId)
         {          
-           if(id<=0) throw new ValidationException("Requester id should not be null or negative");
+           if(requesterId<=0) throw new ValidationException("Requester id should not be null or negative");
             try
             {
-                var result= _context.Set<Employee>().Where(nameof => nameof.ReportingPersonId == id && nameof.IsActive == true).ToList();
+                var result= _context.Set<Employee>().Where(nameof => nameof.ReportingPersonId == requesterId && nameof.IsActive == true).ToList();
                 if(result==null) throw new ValidationException("No records found");
                 return result;
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeRepository: GetEmployeeByRequesterId(Id : {Id}) : (Error:{Message})", id,exception.Message);
+                _logger.LogError("EmployeeRepository: GetEmployeeByRequesterId(Id : {Id}) : (Error:{Message})", requesterId,exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("EmployeeRepository: GetEmployeeByRequesterId(Id : {Id}) : (Error:{Message})", id,exception.Message);
+                _logger.LogError("EmployeeRepository: GetEmployeeByRequesterId(Id : {Id}) : (Error:{Message})", requesterId,exception.Message);
                 throw;
             }
         }
         //Gets employee details of particular organisation using organisation Id.
-        public IEnumerable<Employee> GetEmployeeByOrganisation(int id)
+        public IEnumerable<Employee> GetEmployeeByOrganisation(int organisationId)
         {
-           if(id<=0) throw new ValidationException("Organisation Id should not be null or negative");
+           if(organisationId<=0) throw new ValidationException("Organisation Id should not be null or negative");
             try
             {
-                var result = _context.Set<Employee>().Where(nameof => nameof.IsActive == true && nameof.OrganisationId == id).ToList();
+                var result = _context.Set<Employee>().Where(nameof => nameof.IsActive == true && nameof.OrganisationId == organisationId).ToList();
                 if(result==null) throw new ValidationException("No records found");
                 return result;
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeRepository: GetEmployeeByOrganisation(id : {id}) : (Error:{Message})",id, exception.Message);
+                _logger.LogError("EmployeeRepository: GetEmployeeByOrganisation(id : {id}) : (Error:{Message})",organisationId, exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("EmployeeRepository: GetEmployeeByOrganisation(id : {id}) : (Error:{Message})", id,exception.Message);
+                _logger.LogError("EmployeeRepository: GetEmployeeByOrganisation(id : {id}) : (Error:{Message})", organisationId,exception.Message);
                 throw;
             }
 

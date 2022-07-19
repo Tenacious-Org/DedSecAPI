@@ -242,47 +242,6 @@ namespace A5.Controller
             }
         }
 
-        /// <summary>
-        ///  This Method is used to view All Employees whose comes under one Department.
-        /// </summary>
-        /// <remarks>
-        /// Sample request:
-        ///
-        ///     GET / ViewEmployeeByDepartmentId
-        ///     {
-        ///        "DepartmentId" = "1",    
-        ///        "EmployeeId" = "3",
-        ///        "EmployeeId" = "4",
-        ///     }
-        ///
-        /// </remarks>
-        /// <response code="201">Returns the newly created item</response>
-        /// <response code="400">If the item is null</response> 
-        /// <param name="id">String</param>
-        /// <returns>
-        ///Returns List of Employees from DepartmentId
-        /// </returns>
-
-        [HttpGet("GetEmployeeByDepartment")]
-        public ActionResult GetEmployeeByDepartmentId(int id)
-        {
-            if (id <= 0) return BadRequest("Id cannot be zero or negative");
-            try
-            {
-                var data = _employeeService.GetEmployeeByDepartmentId(id);
-                return Ok(data);
-            }
-            catch (ValidationException exception)
-            {
-                _logger.LogError("EmployeeController : GetEmployeeByDepartmentId(id : {id}) : (Error: {Message})",id, exception.Message);
-                return BadRequest(_employeeService.ErrorMessage(exception.Message));
-            }
-            catch (Exception exception)
-            {
-                 _logger.LogError("EmployeeController : GetEmployeeByDepartmentId(id : {id}) : (Error: {Message})",id, exception.Message);
-                return Problem(exception.Message);
-            }
-        }
 
         /// <summary>
         ///  This Method is used to get all reporting persons under an department.
@@ -298,28 +257,48 @@ namespace A5.Controller
         /// </remarks>
         /// <response code="201">Returns the newly created item</response>
         /// <response code="400">If the item is null</response> 
-        /// <param name="id">String</param>
+        /// <param name="departmentId">String</param>
         /// <returns>
         ///Returns List of Reporting persons from DepartmentId
         /// </returns>
 
+        // [HttpGet("GetEmployeeByDepartment")]
+        // public ActionResult GetEmployeeByDepartmentId(int DepartmentId)
+        // {
+        //     if (DepartmentId <= 0) return BadRequest("Id cannot be zero or negative");
+        //     try
+        //     {
+        //         var data = _employeeService.GetEmployeeByDepartmentId(DepartmentId);
+        //         return Ok(data);
+        //     }
+        //     catch (ValidationException exception)
+        //     {
+        //         _logger.LogError("EmployeeController : GetEmployeeByDepartmentId(id : {id}) : (Error: {Message})",DepartmentId, exception.Message);
+        //         return BadRequest(_employeeService.ErrorMessage(exception.Message));
+        //     }
+        //     catch (Exception exception)
+        //     {
+        //          _logger.LogError("EmployeeController : GetEmployeeByDepartmentId(id : {id}) : (Error: {Message})",DepartmentId, exception.Message);
+        //         return Problem(exception.Message);
+        //     }
+        // }
         [HttpGet("GetReportingPersonByDepartment")]
-        public ActionResult GetReportingPersonByDepartment(int id)
+        public ActionResult GetReportingPersonByDepartment(int departmentId)
         {
-            if (id <= 0) return BadRequest("Id cannot be zero or negative");
+            if (departmentId <= 0) return BadRequest("Id cannot be zero or negative");
             try
             {
-                var data = _employeeService.GetReportingPersonByDepartmentId(id);
+                var data = _employeeService.GetReportingPersonByDepartmentId(departmentId);
                 return Ok(data);
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeController : GetReportingPersonbyDepartment(id : {id}) : (Error: {Message})",id, exception.Message);
+                _logger.LogError("EmployeeController : GetReportingPersonbyDepartment(id : {id}) : (Error: {Message})",departmentId, exception.Message);
                 return BadRequest(_employeeService.ErrorMessage(exception.Message));
             }
             catch (Exception exception)
             {
-                 _logger.LogError("EmployeeController : GetReportingPersonbyDepartment(id : {id}) : (Error: {Message})",id, exception.Message);
+                 _logger.LogError("EmployeeController : GetReportingPersonbyDepartment(id : {id}) : (Error: {Message})",departmentId, exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -338,28 +317,28 @@ namespace A5.Controller
         /// </remarks>
         /// <response code="201">Returns the newly created item</response>
         /// <response code="400">If the item is null</response> 
-        /// <param name="id">String</param>
+        /// <param name="departmentId">String</param>
         /// <returns>
         ///Returns List of HR persons from DepartmentId
         /// </returns>
 
         [HttpGet("GetHrByDepartment")]
-        public ActionResult GetHrByDepartment(int id)
+        public ActionResult GetHrByDepartment(int departmentId)
         {
-            if (id <= 0) return BadRequest("Id cannot be zero or negative");
+            if (departmentId <= 0) return BadRequest("Id cannot be zero or negative");
             try
             {
-                var data = _employeeService.GetHrByDepartmentId(id);
+                var data = _employeeService.GetHrByDepartmentId(departmentId);
                 return Ok(data);
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeController : GetHrByDepartment(id : {id}) : (Error: {Message})", id,exception.Message);
+                _logger.LogError("EmployeeController : GetHrByDepartment(id : {id}) : (Error: {Message})", departmentId,exception.Message);
                 return BadRequest(_employeeService.ErrorMessage(exception.Message));
             }
             catch (Exception exception)
             {
-                _logger.LogError("EmployeeController : GetHrByDepartment(id : {id}) : (Error: {Message})", id,exception.Message);
+                _logger.LogError("EmployeeController : GetHrByDepartment(id : {id}) : (Error: {Message})", departmentId,exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -378,28 +357,28 @@ namespace A5.Controller
         /// </remarks>
         /// <response code="201">Returns the newly created item</response>
         /// <response code="400">If the item is null</response> 
-        /// <param name="id">String</param>
+        /// <param name="organisationId">String</param>
         /// <returns>
         ///Returns List of Employees from OrganisationId
         /// </returns>
 
         [HttpGet("GetEmloyeeByOrganisation")]
-        public ActionResult GetEmployeeByOrganisation(int id)
+        public ActionResult GetEmployeeByOrganisation(int organisationId)
         {
-            if (id <= 0) return BadRequest("Id cannot be zero or negative");
+            if (organisationId <= 0) return BadRequest("Id cannot be zero or negative");
             try
             {
-                var data = _employeeService.GetEmployeeByOrganisation(id);
+                var data = _employeeService.GetEmployeeByOrganisation(organisationId);
                 return Ok(data);
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeController : GetEmployeebyOrganisation(id : {id}) : (Error: {exception.Message})",id, exception.Message);
+                _logger.LogError("EmployeeController : GetEmployeebyOrganisation(id : {id}) : (Error: {exception.Message})",organisationId, exception.Message);
                 return BadRequest(_employeeService.ErrorMessage(exception.Message));
             }
             catch (Exception exception)
             {
-                 _logger.LogError("EmployeeController : GetEmployeebyOrganisation(id : {id}) : (Error: {exception.Message})",id, exception.Message);
+                 _logger.LogError("EmployeeController : GetEmployeebyOrganisation(id : {id}) : (Error: {exception.Message})",organisationId, exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -418,28 +397,28 @@ namespace A5.Controller
         /// </remarks>
         /// <response code="201">Returns the newly created item</response>
         /// <response code="400">If the item is null</response> 
-        /// <param name="id">String</param>
+        /// <param name="RequesterId">String</param>
         /// <returns>
         ///Returns List of Employees from RequesterId
         /// </returns>
 
         [HttpGet("GetEmployeeByRequesterId")]
-        public ActionResult GetEmployeeByRequesterId(int id)
+        public ActionResult GetEmployeeByRequesterId(int RequesterId)
         {
-            if (id <= 0) return BadRequest("Id cannot be zero or negative");
+            if (RequesterId <= 0) return BadRequest("Id cannot be zero or negative");
             try
             {
-                var data = _employeeService.GetEmployeeByRequesterId(id);
+                var data = _employeeService.GetEmployeeByRequesterId(RequesterId);
                 return Ok(data);
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeController : GetEmployeeByRequesterId(id : {id}) : (Error: {Message})",id, exception.Message);
+                _logger.LogError("EmployeeController : GetEmployeeByRequesterId(id : {id}) : (Error: {Message})",RequesterId, exception.Message);
                 return BadRequest(_employeeService.ErrorMessage(exception.Message));
             }
             catch (Exception exception)
             {
-                _logger.LogError("EmployeeController : GetEmployeeByRequesterId(id : {id}) : (Error: {Message})",id, exception.Message);
+                _logger.LogError("EmployeeController : GetEmployeeByRequesterId(id : {id}) : (Error: {Message})",RequesterId, exception.Message);
                 return Problem(exception.Message);
             }
         }

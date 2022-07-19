@@ -17,7 +17,7 @@ namespace A5.Service
             _statusRepository = statusRepository;
         }
 
-
+        //gets status of particular id using status id.
         public Status? GetStatusById(int id)
         {
             if (id <= 0) throw new ValidationException("organisationId ");
@@ -36,6 +36,7 @@ namespace A5.Service
                 throw;
             }
         }
+        //gets all status.
         public IEnumerable<Status> GetAllStatus()
         {
 

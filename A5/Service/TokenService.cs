@@ -23,6 +23,7 @@ namespace A5.Service
             _logger = logger;
 
         }
+        //generates token using login credentials.
 
         public object GenerateToken(Login Credentials)
         {
