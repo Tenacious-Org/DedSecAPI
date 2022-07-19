@@ -108,7 +108,7 @@ namespace A5.Controller
         /// <response code="400">If the item is null</response> 
         /// <param name="organisation">String</param>
         /// <returns>
-        ///Return "Organisation Added Successfully" when the Organisation is added in the database otherwise return "Sorry internal error occured".
+        ///Return true when the Organisation is added in the database otherwise return "Sorry internal error occured".
         /// </returns>
 
         [HttpPost("Create")]
@@ -134,7 +134,7 @@ namespace A5.Controller
         }
 
         /// <summary>
-        ///  This Method is used to view single Organisation by id
+        ///  This Method is used to update single Organisation by id
         /// </summary>
         /// <remarks>
         /// Sample request:
@@ -142,6 +142,7 @@ namespace A5.Controller
         ///     GET / ViewSingleOrganisation
         ///     {
         ///        "OrganisationId" = "1",
+        ///        "OrganisationName" = "Software Development"
         ///     }
         ///
         /// </remarks>
@@ -149,7 +150,7 @@ namespace A5.Controller
         /// <response code="400">If the item is null</response> 
         /// <param name="organisation">String</param>
         /// <returns>
-        ///Returns signle organisation by id
+        ///Returns the updated name of signle organisation by id
         /// </returns>
 
         [HttpPut("Update")]
@@ -189,7 +190,7 @@ namespace A5.Controller
         /// <response code="400">If the item is null</response> 
         /// <param name="id">String</param>
         /// <returns>
-        ///Return "Organisation Disabled Successfully" message when the isactive filed is set to 0 otherwise return "Sorry internal error occured".
+        ///Return true message when the isactive filed is set to 0 in the database otherwise return "Sorry internal error occured".
         /// </returns>
 
         [HttpPut("Disable")]

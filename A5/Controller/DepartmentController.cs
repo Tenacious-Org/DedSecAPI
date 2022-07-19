@@ -60,9 +60,7 @@ namespace A5.Controller
         ///
         ///     GET / ViewDepartmentsByOrganisationId
         ///     {
-        ///        "OrganisationId" = "1",    
-        ///        "DepartmentId" = "3",
-        ///        "DepartmentId" = "4",
+        ///        "OrganisationId" = "1",   
         ///     }
         ///
         /// </remarks>
@@ -141,7 +139,7 @@ namespace A5.Controller
         ///
         ///     POST / CreateDepartment
         ///     {
-        ///        "OrganisationName" = "Development",
+        ///        "OrganisationId" = "2",
         ///        "DepartmentName" = "Dotnet",
         ///     }
         ///
@@ -150,7 +148,7 @@ namespace A5.Controller
         /// <response code="400">If the item is null</response> 
         /// <param name="department">String</param>
         /// <returns>
-        ///Return "Department Added Successfully" when the Department is added in the database otherwise return "Sorry internal error occured".
+        ///Return true when the Department is added in the database otherwise return "Sorry internal error occured".
         /// </returns>
 
         [HttpPost("Create")]
@@ -180,7 +178,7 @@ namespace A5.Controller
         /// <remarks>
         /// Sample request:
         ///
-        ///     GET / ViewSingleOrganisation
+        ///     GET / Update
         ///     {
         ///        "OrganisationId" = "1",
         ///     }
@@ -230,7 +228,7 @@ namespace A5.Controller
         /// <response code="400">If the item is null</response> 
         /// <param name="id">String</param>
         /// <returns>
-        ///Return "Department Disabled Successfully" message when the isactive filed is set to 0 otherwise return "Sorry internal error occured".
+        ///Return true message when the isactive filed is set to 0 in the database otherwise return "Sorry internal error occured".
         /// </returns>
 
         [HttpPut("Disable")]

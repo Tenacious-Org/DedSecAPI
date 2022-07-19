@@ -64,10 +64,8 @@ namespace A5.Controller
         /// Sample request:
         ///
         ///     GET / ViewDesignationsByDepartmentId
-        ///     {
-        ///        "DepartmentId" = "1",    
+        ///     { 
         ///        "DesignationId" = "3",
-        ///        "DesignationId" = "4",
         ///     }
         ///
         /// </remarks>
@@ -147,8 +145,9 @@ namespace A5.Controller
         ///
         ///     POST / CreateDesignation
         ///     {
-        ///        "DepartmentName" = "Dotnet",
-        ///        "DesignationName" = "SSE",
+        ///       "designationName": "Manager",
+        ///       "roleId": 3,
+        ///       "departmentId": 2,
         ///     }
         ///
         /// </remarks>
@@ -156,7 +155,7 @@ namespace A5.Controller
         /// <response code="400">If the item is null</response> 
         /// <param name="designation">String</param>
         /// <returns>
-        ///Return "Designation Added Successfully" when the Designation is added in the database otherwise return "Sorry internal error occured".
+        ///Return true when the Designation is added in the database otherwise return "Sorry internal error occured".
         /// </returns>
 
         [HttpPost("Create")]
@@ -182,14 +181,14 @@ namespace A5.Controller
         }
 
         /// <summary>
-        ///  This Method is used to view single Organisation by id
+        ///  This Method is used to update single Designation by id
         /// </summary>
         /// <remarks>
         /// Sample request:
         ///
-        ///     GET / ViewSingleOrganisation
+        ///     GET / Update
         ///     {
-        ///        "OrganisationId" = "1",
+        ///        "DesignationId" = "1",
         ///     }
         ///
         /// </remarks>
@@ -197,7 +196,7 @@ namespace A5.Controller
         /// <response code="400">If the item is null</response> 
         /// <param name="designation">String</param>
         /// <returns>
-        ///Returns signle organisation by id
+        ///Returns the updated signle Designation by id
         /// </returns>
 
         [HttpPut("Update")]
