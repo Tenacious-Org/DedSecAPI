@@ -15,6 +15,7 @@ namespace A5.Service.Interfaces
         public object GetAwardById(int id);
         public IEnumerable<object> GetAwardsList(int? pageId, int? employeeId);
         public IEnumerable<object> GetComments(int awardId);
+        public IEnumerable<object> GetDashboardDetails(int? organisationId, int? departmentId, int? awardId, DateTime? start, DateTime? end);
         public object ErrorMessage(string ValidationMessage);
     }
 }
