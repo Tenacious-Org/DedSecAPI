@@ -221,12 +221,12 @@ namespace A5.Data.Repository
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllAwardsList() : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardRepository : GetAllAwardsList(int? pageId, int? employeeId) : (Error:{Message}", exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("AwardRepository : GetAllAwardsList() : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardRepository : GetAllAwardsList(int? pageId, int? employeeId) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
@@ -311,12 +311,12 @@ namespace A5.Data.Repository
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int awardId) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardRepository : GetAllAwardWise(int awardId) : (Error:{Message}", exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int awardId) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardRepository : GetAllAwardWise(int awardId) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
@@ -552,7 +552,7 @@ namespace A5.Data.Repository
         }
 
         //Gets list of awards filtered by organisation and from date using organisation id and from date
-        public IEnumerable<Award> GetAllFilteredOrganisationandFromDateWise(int organisationId, DateTime start)
+        public IEnumerable<Award> GetAllFilteredOrganisationAndFromDateWise(int organisationId, DateTime start)
         {
             try
             {
@@ -574,11 +574,11 @@ namespace A5.Data.Repository
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("AwardRepository :GetAllFilteredOrganisationandFromDateWise(int organisationId, DateTime start) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardRepository :GetAllFilteredOrganisationAndFromDateWise(int organisationId, DateTime start) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch (Exception exception){
-              _logger.LogError("AwardRepository :GetAllFilteredOrganisationandFromDateWise(int organisationId, DateTime start) : (Error:{Message}",exception.Message);
+              _logger.LogError("AwardRepository :GetAllFilteredOrganisationAndFromDateWise(int organisationId, DateTime start) : (Error:{Message}",exception.Message);
               throw;
             }
         }
@@ -741,12 +741,12 @@ namespace A5.Data.Repository
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardRepository :GetAllDateWise(DateTime start, DateTime end) : (Error:{Message}", exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                _logger.LogError("AwardRepository :GetAllDateWise(DateTime start, DateTime end) : (Error:{Message}", exception.Message);
                 throw;
             }
         }

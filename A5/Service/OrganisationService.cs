@@ -16,6 +16,7 @@ namespace A5.Service
                 _organisationRepository=organisationRepository;
          } 
          
+         //Create an Oraganisation using organisation object
         public bool CreateOrganisation(Organisation organisation)
         {
             OrganisationServiceValidations.CreateValidation(organisation);
@@ -33,6 +34,8 @@ namespace A5.Service
                 throw;
             }
         }
+
+        //Updating the Organisation using organisation object
         public bool UpdateOrganisation(Organisation organisation)
         {
             OrganisationServiceValidations.UpdateValidation(organisation);
@@ -50,18 +53,22 @@ namespace A5.Service
                 throw;
             }
         }
-        public Organisation? GetOrganisationById(int id)
+
+        //Gets organisation by using organisation id
+        public Organisation? GetOrganisationById(int organisationId)
         {
-            if(id<=0) throw new ValidationException("organisationId must be greater than zero");
+            if(organisationId<=0) throw new ValidationException("organisationId must be greater than zero");
             try{
-                return _organisationRepository.GetOrganisationById(id);
+                return _organisationRepository.GetOrganisationById(organisationId);
             }
             catch(Exception exception)
             {
-               _logger.LogError("OrganisationService: GetByOrganisation(int id) : (Error:{Message}",exception.Message);
+               _logger.LogError("OrganisationService: GetByOrganisation(int organisationId) : (Error:{Message}",exception.Message);
                 throw;
             }
         }
+         
+         //returns list of all organisation
          public IEnumerable<Organisation> GetAllOrganisation()
         {
             
@@ -74,22 +81,26 @@ namespace A5.Service
                 throw;
             }
         }
-        public bool DisableOrganisation(int id,int employeeId)
+        
+        //disables organisation using organisation id and current user id
+        public bool DisableOrganisation(int organisationId,int employeeId)
         {            
             try
             {
-                return _organisationRepository.DisableOrganisation(id,employeeId);
+                return _organisationRepository.DisableOrganisation(organisationId,employeeId);
 
             }
             catch(Exception exception)
             {
-                _logger.LogError("OrganisationService: DisableOrganisation(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("OrganisationService: DisableOrganisation(int organisationId) : (Error:{Message}",exception.Message);
                 throw;
             }
         }
-        public int GetCount(int id)
+        
+        //Gets count of organisation using organisation id
+        public int GetCount(int organisationId)
         {
-             return _organisationRepository.GetCount(id);
+             return _organisationRepository.GetCount(organisationId);
         }
         public object ErrorMessage(string ValidationMessage)
         {

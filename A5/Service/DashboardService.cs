@@ -89,12 +89,12 @@ namespace A5.Service
             }
            catch(ValidationException exception)
             {
-                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                _logger.LogError("DashboardService: GetAllAwards()  : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
             {
-                 _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                 _logger.LogError("DashboardService: GetAllAwards(): (Error:{Message}",exception.Message);
                 throw;
             }
         }
@@ -116,13 +116,13 @@ namespace A5.Service
             }
            catch(ValidationException exception)
             {
-                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                _logger.LogError("DashboardService: GetAllOrganisationAndAward(int organisationId, int awardId) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
             {
                
-                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                _logger.LogError("DashboardService: GetAllOrganisationAndAward(int organisationId, int awardId) : (Error:{Message}",exception.Message);
                 throw;
             }
         }
@@ -144,12 +144,12 @@ namespace A5.Service
             }
            catch(ValidationException exception)
             {
-                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                _logger.LogError("DashboardService: GetAllOrganisationAndDepartment(int organisationId, int departmentId) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
             {
-               _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+               _logger.LogError("DashboardService: GetAllOrganisationAndDepartment(int organisationId, int departmentId) : (Error:{Message}",exception.Message);
                 throw;
             }
         }
@@ -171,13 +171,13 @@ namespace A5.Service
             }
            catch(ValidationException exception)
             {
-                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                _logger.LogError("DashboardService:  GetAllOrganisationDepartmentAndAwardwise(int organisationId, int departmentId, int awardId) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
             {
                 
-                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                _logger.LogError("DashboardService:  GetAllOrganisationDepartmentAndAwardwise(int organisationId, int departmentId, int awardId) : (Error:{Message}",exception.Message);
                 throw;
             }
         }
@@ -202,12 +202,12 @@ namespace A5.Service
             }
            catch(ValidationException exception)
             {
-                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                _logger.LogError("DashboardService: GetAllFilteredDateWise(int organisationId, int departemrntId, int awdid, DateTime start, DateTime end) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+               _logger.LogError("DashboardService: GetAllFilteredDateWise(int organisationId, int departemrntId, int awdid, DateTime start, DateTime end) : (Error:{Message}",exception.Message);
                 throw;
             }
         }
@@ -218,7 +218,7 @@ namespace A5.Service
         {
             try
             {
-                var winners = _award.GetAllFilteredOrganisationandFromDateWise(organisationId, start);
+                var winners = _award. GetAllFilteredOrganisationAndFromDateWise(organisationId, start);
                 return winners.Select(Award => new{
                     
                     organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
@@ -232,12 +232,12 @@ namespace A5.Service
             }
            catch(ValidationException exception)
             {
-                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                _logger.LogError("DashboardService: GetAllFilteredOrganisationandFromDate(int organisationId, DateTime start) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("DashboardService: GetAllFilteredOrganisationandFromDate(int organisationId, DateTime start) : (Error:{Message}",exception.Message);
                 throw;
             }
         }
@@ -261,12 +261,12 @@ namespace A5.Service
             }
            catch(ValidationException exception)
             {
-                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                _logger.LogError("DashboardService: GetAllFilteredOrganisationDepartmentAndFromDate(int organisationId, int departmentId, DateTime start) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
             {
-                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                _logger.LogError("DashboardService: GetAllFilteredOrganisationDepartmentAndFromDate(int organisationId, int departmentId, DateTime start) : (Error:{Message}",exception.Message);
                 throw;
             }
         }
@@ -289,12 +289,12 @@ namespace A5.Service
             }
            catch(ValidationException exception)
             {
-                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                _logger.LogError("DashboardService: GetAllOrganisationDepartmentAndFromDateWise(int organisationId, int awardId, DateTime start) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
             {
-               _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+               _logger.LogError("DashboardService: GetAllOrganisationDepartmentAndFromDateWise(int organisationId, int awardId, DateTime start) : (Error:{Message}",exception.Message);
                 throw;
             }
         }
@@ -318,12 +318,12 @@ namespace A5.Service
             }
            catch(ValidationException exception)
             {
-                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                _logger.LogError("DashboardService: GetAllFilteredOrganisationDepartmentAndToDate(int organisationId, int departmentId, DateTime end) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
             {
-                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                _logger.LogError("DashboardService: GetAllFilteredOrganisationDepartmentAndToDate(int organisationId, int departmentId, DateTime end) : (Error:{Message}",exception.Message);
                 throw;
             }
         }
@@ -347,13 +347,13 @@ namespace A5.Service
             }
            catch(ValidationException exception)
             {
-                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                _logger.LogError("DashboardService: GetAllFilteredOrganisationAwarddAndToDate(int organisationId, int awardId, DateTime end) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
             {
                 
-                 _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                 _logger.LogError("DashboardService: GetAllFilteredOrganisationAwarddAndToDate(int organisationId, int awardId, DateTime end) : (Error:{Message}",exception.Message);
                 throw;
             }
         }
@@ -377,12 +377,12 @@ namespace A5.Service
             }
            catch(ValidationException exception)
             {
-                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                _logger.LogError("DashboardService: GetAllFilteredOrganisationAndToDate(int organisationId, DateTime end): (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
             {
-                 _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                 _logger.LogError("DashboardService: GetAllFilteredOrganisationAndToDate(int organisationId, DateTime end) : (Error:{Message}",exception.Message);
                 throw;
             }
         }
@@ -406,12 +406,12 @@ namespace A5.Service
             }
            catch(ValidationException exception)
             {
-                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                _logger.LogError("DashboardService: GetAllFilteredFromDate(DateTime start) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
             {
-                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                _logger.LogError("DashboardService: GetAllFilteredFromDate(DateTime start) : (Error:{Message}",exception.Message);
                 throw;
             }
         }
@@ -435,13 +435,13 @@ namespace A5.Service
             }
            catch(ValidationException exception)
             {
-                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                _logger.LogError("DashboardService: GetAllFilteredToDate(DateTime end) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
             {
                
-                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                _logger.LogError("DashboardService: GetAllFilteredToDate(DateTime end) : (Error:{Message}",exception.Message);
                 throw;
             }
         }
@@ -465,12 +465,12 @@ namespace A5.Service
             }
            catch(ValidationException exception)
             {
-                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                _logger.LogError("DashboardService: GetAllOrgDeptDateWise(int organisationId, int departmentId, DateTime start, DateTime end)  : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
             {
-                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                _logger.LogError("DashboardService: GetAllOrgDeptDateWise(int organisationId, int departmentId, DateTime start, DateTime end) : (Error:{Message}",exception.Message);
                 throw;
             }
         }
@@ -493,12 +493,12 @@ namespace A5.Service
             }
            catch(ValidationException exception)
             {
-                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                _logger.LogError("DashboardService: GetAllDateWise(DateTime start, DateTime end)() : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                _logger.LogError("DashboardService: GetAllDateWise(DateTime start, DateTime end)() : (Error:{Message}",exception.Message);
                 throw;
             }
         }
@@ -522,12 +522,13 @@ namespace A5.Service
             }
            catch(ValidationException exception)
             {
-                _logger.LogError("DashboardService: GetAllWinners() : (Error:{Message}",exception.Message);
+                _logger.LogError("DashboardService: GetAllOrganisationAwardAndDateWise(int organisationId, int awardId, DateTime start, DateTime end) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch(Exception exception)
             {
-                _logger.LogError("Error: {Message}",exception.Message);
+                
+                _logger.LogError("DashboardService: GetAllOrganisationAwardAndDateWise(int organisationId, int awardId, DateTime start, DateTime end):(Error:{Message}",exception.Message);
                 throw;
             }
         }

@@ -59,7 +59,7 @@ namespace A5.Data.Repository
             }
             catch (Exception exception)
             {
-                _logger.LogError("OrganisationRepository: GetByOrganisation(int organisationId) : (Error:{Message}", exception.Message);
+                _logger.LogError("OrganisationRepository: GetOrganisationById(int organisationId) : (Error:{Message}", exception.Message);
                 throw;
             }
         }

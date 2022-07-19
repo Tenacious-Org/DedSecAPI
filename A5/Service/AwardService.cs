@@ -15,6 +15,8 @@ namespace A5.Service
             _award = awardRepository;
             _logger = logger;
         }
+        
+        //to raise award request using award obejct and employee id
         public bool RaiseRequest(Award award,int employeeId)
         {
             AwardServiceValidations.RequestValidation(award);
@@ -35,6 +37,7 @@ namespace A5.Service
             }
         }
 
+        //approves the request raised
         public bool Approval(Award award)
         {
             try
@@ -52,24 +55,28 @@ namespace A5.Service
                 throw;
             }
         }
-        public object GetAwardById(int id)
+        
+        //gets award id by using award id
+        public object GetAwardById(int awardId)
         {
             try
             {
-                var award = _award.GetAwardById(id);
+                var award = _award.GetAwardById(awardId);
                 return GetAwardObject(award!);
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardService: GetAwardById(int id) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardService: GetAwardById(int awardId) : (Error:{Message}", exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                _logger.LogError("AwardService: GetAwardById(int awardId) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
+        
+        //adds new comment using comment object and employee id
         public bool AddComment(Comment comment, int employeeId)
         {
             AwardServiceValidations.ValidateAddComment(comment);
@@ -79,15 +86,17 @@ namespace A5.Service
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardService: AddComment(Comment comment) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardService: AddComment(Comment comment,int employeeId) : (Error:{Message}", exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                _logger.LogError("AwardService: AddComment(Comment comment,int employeeId) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
+       
+       //Gets award list using page id and employee id
         public IEnumerable<object> GetAwardsList(int? pageId, int? employeeId)
         {
             try
@@ -102,10 +111,12 @@ namespace A5.Service
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+               _logger.LogError("AwardService: GetAwardsList(int ? pageId,int ? employeeId) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
+        
+        //gets comment using award id
         public IEnumerable<object> GetComments(int awardId)
         {
             AwardServiceValidations.ValidateGetComments(awardId);
@@ -129,10 +140,12 @@ namespace A5.Service
             }
             catch (Exception exception)
             {
-                _logger.LogError("Error: {Message}", exception.Message);
+                _logger.LogError("AwardService: GetComments(int awardId) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
+        
+        //Get Award Table Details To With their respective Names.
         private object GetAwardObject(Award award)
         {
             return new
