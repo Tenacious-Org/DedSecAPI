@@ -262,6 +262,17 @@ namespace A5.Data.Repository
         {
             try
             {
+                var fdate = new DateTime(0001,04,15).ToString();
+                var tdate = new DateTime(0001,04,29).ToString();
+
+                if(organisationId != 0 && departmentId != 0 && awardId != 0 && start.ToString() != fdate && end.ToString() != tdate){
+                    Console.WriteLine("Condition Satisfied.");
+                    Console.WriteLine(Convert.ToDateTime(start));
+                    Console.WriteLine(Convert.ToDateTime(end));
+                }
+
+
+            
                 var award = _context.Set<Award>()
                     .Include("Awardee")
                     .Include("Awardee.Designation")
@@ -274,143 +285,143 @@ namespace A5.Data.Repository
                     .Include("Status") 
 
                     //Applying All Filter Values and Retrieve the Data Using Organisation ID, Department ID, Award ID, Start Date and End Date
-                    .WhereIf(organisationId != 0 && departmentId != 0 && awardId != 0 && start != new DateTime(0001-04-15) && end != new DateTime(0001-04-29),
+                    .WhereIf(organisationId != 0 && departmentId != 0 && awardId != 0 && start.ToString() != fdate && end.ToString() != tdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
                                   && nameof.Awardee.Designation.Department.Id == departmentId 
                                   && nameof.AwardTypeId == awardId
                                   && nameof.StatusId == 4
-                                  && (nameof.UpdatedOn >= start && nameof.UpdatedOn <= end))
+                                  && (nameof.UpdatedOn >= Convert.ToDateTime(start).Date && nameof.UpdatedOn <= Convert.ToDateTime(end).Date))
                     
                     //Applying All Filter Values and Retrieve the Data Using Organisation ID, Department ID, Award ID, Start Date
-                    .WhereIf(organisationId != 0 && departmentId != 0 && awardId != 0 && start != new DateTime(0001-04-15) && end == new DateTime(0001-04-29),
+                    .WhereIf(organisationId != 0 && departmentId != 0 && awardId != 0 && start.ToString() != fdate && end.ToString() == tdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
                                   && nameof.Awardee.Designation.Department.Id == departmentId 
                                   && nameof.AwardTypeId == awardId
                                   && nameof.StatusId == 4
-                                  && nameof.UpdatedOn >= start)
+                                  && nameof.UpdatedOn >= Convert.ToDateTime(start).Date)
                     
                     //Applying All Filter Values and Retrieve the Data Using Organisation ID, Department ID, Award ID, End Date
-                    .WhereIf(organisationId != 0 && departmentId != 0 && awardId != 0 && start == new DateTime(0001-04-15) && end != new DateTime(0001-04-29),
+                    .WhereIf(organisationId != 0 && departmentId != 0 && awardId != 0 && start.ToString() == fdate && end.ToString() != tdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
                                   && nameof.Awardee.Designation.Department.Id == departmentId 
                                   && nameof.AwardTypeId == awardId
                                   && nameof.StatusId == 4
-                                  && nameof.UpdatedOn <= end)
+                                  && nameof.UpdatedOn <= Convert.ToDateTime(end).Date)
                     
                     //Applying All Filter Values and Retrieve the Data Using Start Date
-                    .WhereIf(organisationId == 0 && departmentId == 0 && awardId == 0 && start != new DateTime(0001-04-15) && end == new DateTime(0001-04-29),
+                    .WhereIf(organisationId == 0 && departmentId == 0 && awardId == 0 && start.ToString() != fdate && end.ToString() == tdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
                                   && nameof.Awardee.Designation.Department.Id == departmentId 
                                   && nameof.AwardTypeId == awardId
                                   && nameof.StatusId == 4
-                                  && nameof.UpdatedOn >= start)
+                                  && nameof.UpdatedOn >= Convert.ToDateTime(start).Date)
                     
                     //Applying All Filter Values and Retrieve the Data Using End Date
-                    .WhereIf(organisationId == 0 && departmentId == 0 && awardId == 0 && start == new DateTime(0001-04-15) && end != new DateTime(0001-04-29),
+                    .WhereIf(organisationId == 0 && departmentId == 0 && awardId == 0 && start.ToString() == fdate && end.ToString() != fdate,
                            nameof => nameof.StatusId == 4
-                                  && nameof.UpdatedOn <= end)
+                                  && nameof.UpdatedOn <= Convert.ToDateTime(end).Date)
                     
                     //Applying All Filter Values and Retrieve the Data Using Start Date and End Date
-                    .WhereIf(organisationId != 0 && departmentId != 0 && awardId != 0 && start != new DateTime(0001-04-15) && end != new DateTime(0001-04-29),
+                    .WhereIf(organisationId != 0 && departmentId != 0 && awardId != 0 && start.ToString() != fdate && end.ToString() != fdate,
                            nameof => nameof.StatusId == 4
-                                  && (nameof.UpdatedOn >= start && nameof.UpdatedOn <= end))
+                                  && (nameof.UpdatedOn >= Convert.ToDateTime(start).Date && nameof.UpdatedOn <= Convert.ToDateTime(end).Date))
 
                     //Applying All Filter Values and Retrieve the Data Using Organisation ID
-                    .WhereIf(organisationId != 0 && departmentId == 0 && awardId == 0 && start == new DateTime(0001-04-15) && end == new DateTime(0001-04-29),
+                    .WhereIf(organisationId != 0 && departmentId == 0 && awardId == 0 && start.ToString() == fdate && end.ToString() == fdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId && nameof.StatusId == 4)
                     
                     //Applying All Filter Values and Retrieve the Data Using Organisation ID, Start Date
-                    .WhereIf(organisationId != 0 && departmentId == 0 && awardId == 0 && start != new DateTime(0001-04-15) && end == new DateTime(0001-04-29),
+                    .WhereIf(organisationId != 0 && departmentId == 0 && awardId == 0 && start.ToString() != fdate && end.ToString() == fdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
                                   && nameof.StatusId == 4
-                                  && nameof.UpdatedOn >= start)
+                                  && nameof.UpdatedOn >= Convert.ToDateTime(start).Date)
                     
                     //Applying All Filter Values and Retrieve the Data Using Organisation ID, End Date
-                    .WhereIf(organisationId != 0 && departmentId == 0 && awardId == 0 && start == new DateTime(0001-04-15) && end != new DateTime(0001-04-29),
+                    .WhereIf(organisationId != 0 && departmentId == 0 && awardId == 0 && start.ToString() == fdate && end.ToString() != fdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
                                   && nameof.StatusId == 4
-                                  && nameof.UpdatedOn <= end)
+                                  && nameof.UpdatedOn <= Convert.ToDateTime(end).Date)
                     
                     //Applying All Filter Values and Retrieve the Data Using Organisation ID, Start Date and End Date
-                    .WhereIf(organisationId != 0 && departmentId == 0 && awardId == 0 && start != new DateTime(0001-04-15) && end != new DateTime(0001-04-29),
+                    .WhereIf(organisationId != 0 && departmentId == 0 && awardId == 0 && start.ToString() != fdate && end.ToString() != fdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
                                   && nameof.StatusId == 4
-                                  && (nameof.UpdatedOn >= start && nameof.UpdatedOn <= end))
+                                  && (nameof.UpdatedOn >= Convert.ToDateTime(start).Date && nameof.UpdatedOn <= Convert.ToDateTime(end).Date))
                     
                     //Applying All Filter Values and Retrieve the Data Using Award ID
-                    .WhereIf(organisationId == 0 && departmentId == 0 && awardId != 0 && start == new DateTime(0001-04-15) && end == new DateTime(0001-04-29),
+                    .WhereIf(organisationId == 0 && departmentId == 0 && awardId != 0 && start.ToString() == fdate && end.ToString() == fdate,
                            nameof => nameof.AwardTypeId == awardId && nameof.StatusId == 4)
                     
                     //Applying All Filter Values and Retrieve the Data Using Award ID, Start Date
-                    .WhereIf(organisationId == 0 && departmentId == 0 && awardId != 0 && start != new DateTime(0001-04-15) && end == new DateTime(0001-04-29),
+                    .WhereIf(organisationId == 0 && departmentId == 0 && awardId != 0 && start.ToString() != fdate && end.ToString() == fdate,
                            nameof => nameof.AwardTypeId == awardId
                                   && nameof.StatusId == 4
-                                  && nameof.UpdatedOn >= start)
+                                  && nameof.UpdatedOn >= Convert.ToDateTime(start).Date)
                     
                     //Applying All Filter Values and Retrieve the Data Using Award ID End Date
-                    .WhereIf(organisationId == 0 && departmentId == 0 && awardId != 0 && start == new DateTime(0001-04-15) && end != new DateTime(0001-04-29),
+                    .WhereIf(organisationId == 0 && departmentId == 0 && awardId != 0 && start.ToString() == fdate && end.ToString() != fdate,
                            nameof => nameof.AwardTypeId == awardId
                                   && nameof.StatusId == 4
-                                  && nameof.UpdatedOn <= end)
+                                  && nameof.UpdatedOn <= Convert.ToDateTime(end).Date)
                     
                     //Applying All Filter Values and Retrieve the Data Using Award ID, Start Date and End Date
-                    .WhereIf(organisationId == 0 && departmentId == 0 && awardId != 0 && start != new DateTime(0001-04-15) && end != new DateTime(0001-04-29),
+                    .WhereIf(organisationId == 0 && departmentId == 0 && awardId != 0 && start.ToString() != fdate && end.ToString() != fdate,
                            nameof => nameof.AwardTypeId == awardId
                                   && nameof.StatusId == 4
-                                  && (nameof.UpdatedOn >= start && nameof.UpdatedOn <= end))
+                                  && (nameof.UpdatedOn >= Convert.ToDateTime(start).Date && nameof.UpdatedOn <= Convert.ToDateTime(end).Date))
 
                     //Applying Filter Values and Retrieve the Data Using Organisation ID, Department ID.
-                    .WhereIf(organisationId != 0 && departmentId != 0 && awardId == 0 && start == new DateTime(0001-04-15) && end == new DateTime(0001-04-29),
+                    .WhereIf(organisationId != 0 && departmentId != 0 && awardId == 0 && start.ToString() == fdate && end.ToString() == fdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
                                   && nameof.Awardee.Designation.Department.Id == departmentId
                                   && nameof.StatusId == 4)
                     //Applying Filter Values and Retrieve the Data Using Organisation ID, Department ID, Start Date.
-                    .WhereIf(organisationId != 0 && departmentId != 0 && awardId == 0 && start != new DateTime(0001-04-15) && end == new DateTime(0001-04-29),
+                    .WhereIf(organisationId != 0 && departmentId != 0 && awardId == 0 && start.ToString() != fdate && end.ToString() == fdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
                                   && nameof.Awardee.Designation.Department.Id == departmentId   
                                   && nameof.StatusId == 4
-                                  && nameof.UpdatedOn >= start)
+                                  && nameof.UpdatedOn >= Convert.ToDateTime(start).Date)
 
                     //Applying Filter Values and Retrieve the Data Using Organisation ID, Department ID, End Date
-                    .WhereIf(organisationId != 0 && departmentId != 0 && awardId == 0 && start == new DateTime(0001-04-15) && end != new DateTime(0001-04-29),
+                    .WhereIf(organisationId != 0 && departmentId != 0 && awardId == 0 && start.ToString() == fdate && end.ToString() != fdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
                                   && nameof.Awardee.Designation.Department.Id == departmentId 
                                   && nameof.StatusId == 4
-                                  && nameof.UpdatedOn <= end)
+                                  && nameof.UpdatedOn <= Convert.ToDateTime(end).Date)
 
                     //Applying Filter Values and Retrieve the Data Using Organisation ID, Department ID, Start Date and End Date
-                    .WhereIf(organisationId != 0 && departmentId != 0 && awardId == 0 && start != new DateTime(0001-04-15) && end != new DateTime(0001-04-29),
+                    .WhereIf(organisationId != 0 && departmentId != 0 && awardId == 0 && start.ToString() != fdate && end.ToString() != fdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
                                   && nameof.Awardee.Designation.Department.Id ==departmentId 
                                   && nameof.StatusId == 4
-                                  && (nameof.UpdatedOn >= start && nameof.UpdatedOn <= end))
+                                  && (nameof.UpdatedOn >= Convert.ToDateTime(start).Date && nameof.UpdatedOn <= Convert.ToDateTime(end).Date))
 
                     //Applying Filter Values and Retrieve the Data Using Organisation ID, Award ID
-                    .WhereIf(organisationId != 0 && departmentId == 0 && awardId != 0 && start == new DateTime(0001-04-15) && end == new DateTime(0001-04-29),
+                    .WhereIf(organisationId != 0 && departmentId == 0 && awardId != 0 && start.ToString() == fdate && end.ToString() == fdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
                                   && nameof.AwardTypeId == awardId
                                   && nameof.StatusId == 4)
 
                     //Applying Filter Values and Retrieve the Data Using Organisation ID, Award ID, Start Date
-                    .WhereIf(organisationId != 0 && departmentId == 0 && awardId != 0 && start != new DateTime(0001-04-15) && end == new DateTime(0001-04-29),
+                    .WhereIf(organisationId != 0 && departmentId == 0 && awardId != 0 && start.ToString() != fdate && end.ToString() == fdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
                                   && nameof.AwardTypeId == awardId
                                   && nameof.StatusId == 4
-                                  && nameof.UpdatedOn >= start)
+                                  && nameof.UpdatedOn >= Convert.ToDateTime(start).Date)
 
                     //Applying Filter Values and Retrieve the Data Using Organisation ID, Award ID, End Date
-                    .WhereIf(organisationId != 0 && departmentId == 0 && awardId != 0 && start == new DateTime(0001-04-15) && end != new DateTime(0001-04-29),
+                    .WhereIf(organisationId != 0 && departmentId == 0 && awardId != 0 && start.ToString() == fdate && end.ToString() != fdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
                                   && nameof.AwardTypeId == awardId
                                   && nameof.StatusId == 4
-                                  && nameof.UpdatedOn <= end)
+                                  && nameof.UpdatedOn <= Convert.ToDateTime(end).Date)
 
                     //Applying Filter Values and Retrieve the Data Using Organisation ID, Award ID, Start Date and End Date
-                    .WhereIf(organisationId != 0 && departmentId == 0 && awardId != 0 && start != new DateTime(0001-04-15) && end != new DateTime(0001-04-29),
+                    .WhereIf(organisationId != 0 && departmentId == 0 && awardId != 0 && start.ToString() != fdate && end.ToString() != fdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
                                   && nameof.AwardTypeId == awardId
                                   && nameof.StatusId == 4
-                                  && (nameof.UpdatedOn >= start && nameof.UpdatedOn <= end))
+                                  && (nameof.UpdatedOn >= Convert.ToDateTime(start).Date && nameof.UpdatedOn <= Convert.ToDateTime(end).Date))
 
                     .ToList();
                 return award;
