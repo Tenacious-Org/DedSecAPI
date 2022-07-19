@@ -171,7 +171,7 @@ namespace A5.Controller
         [AllowAnonymous]
         public ActionResult GetAwardsList(int pageId = 0)
         {
-            if (pageId <= 0)return BadRequest("pageId must be greater than zero");
+            if (pageId <0)return BadRequest("pageId must be greater than zero");
             try
             {
                 var data = _awardService.GetAwardsList(pageId, GetCurrentUserId());
