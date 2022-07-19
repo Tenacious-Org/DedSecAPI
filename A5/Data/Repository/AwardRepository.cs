@@ -209,7 +209,7 @@ namespace A5.Data.Repository
                     .Include("AwardType")
                     .Include("Status")
                     .ToList();
-                if (pageId == 0 && employeeId == 0)
+                if (pageId == 0 || employeeId == 0)
                     award = award.Where(nameof => nameof.StatusId == 4).ToList();
                 else if (pageId == 1 && employeeId != 0)
                     award = award.Where(nameof => nameof.StatusId == 4 && nameof.AwardeeId == employeeId).ToList();
