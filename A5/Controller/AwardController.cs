@@ -275,6 +275,29 @@ namespace A5.Controller
 
         }
 
+        [HttpGet("GetDashboard")]
+        [AllowAnonymous]
+        public ActionResult GetDashboard(int? organisationId, int? departmentId, int? awardId, DateTime? start, DateTime? end)
+        {
+            
+            try
+            {
+                var data = _awardService.GetDashboardDetails(organisationId, departmentId, awardId, start, end);
+                return Ok(data);
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("AwardController : GetComments(int id) : (Error:{Message}", exception.Message);
+                return BadRequest(exception.Message);
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError("AwardController : GetComments(int id) : (Error:{Message}", exception.Message);
+                return Problem(exception.Message);
+            }
+
+        }
+
         private int GetCurrentUserId()
         {
             try
