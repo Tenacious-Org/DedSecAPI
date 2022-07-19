@@ -7,7 +7,7 @@ using A5.Models;
 using Microsoft.EntityFrameworkCore;
 using A5.Service.Interfaces;
 using A5.Data.Repository.Interface;
-using A5.Service.Validations;
+using A5.Data.Validations;
 using A5.Service;
 using A5.Utilities;
 
@@ -57,7 +57,7 @@ namespace A5.Data.Repository
             catch (ValidationException exception)
             {
                 _logger.LogError("AwardRepository : RaiseAwardRequest(Award award,int employeeId) : (Error:{Message}", exception.Message);
-                throw;
+                return false;
             }
             catch (Exception exception)
             {

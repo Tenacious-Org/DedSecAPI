@@ -3,7 +3,7 @@ using A5.Models;
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 
-namespace A5.Service.Validations
+namespace A5.Data.Validations
 {
     public static class DesignationServiceValidations
     {

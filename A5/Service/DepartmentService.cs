@@ -3,7 +3,7 @@ using System.Linq;
 using A5.Models;
 using A5.Data.Repository;
 using A5.Service.Interfaces;
-using A5.Service.Validations;
+using A5.Data.Validations;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using A5.Data;

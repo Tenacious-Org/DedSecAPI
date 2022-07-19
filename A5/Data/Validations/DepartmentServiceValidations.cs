@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using A5.Data;
 
-namespace A5.Service.Validations
+namespace A5.Data.Validations
 {
     public static class DepartmentServiceValidations
     {

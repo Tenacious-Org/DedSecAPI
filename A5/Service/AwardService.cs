@@ -1,7 +1,7 @@
 using A5.Data.Repository;
 using A5.Service.Interfaces;
 using A5.Models;
-using A5.Service.Validations;
+using A5.Data.Validations;
 using System.ComponentModel.DataAnnotations;
 
 namespace A5.Service

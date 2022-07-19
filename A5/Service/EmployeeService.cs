@@ -1,6 +1,6 @@
 using A5.Models;
 using A5.Data.Repository.Interface;
-using A5.Service.Validations;
+using A5.Data.Validations;
 using System.ComponentModel.DataAnnotations;
 using A5.Data.Service.Interfaces;
 using A5.Hasher;
