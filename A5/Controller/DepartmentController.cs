@@ -139,8 +139,8 @@ namespace A5.Controller
         ///
         ///     POST / CreateDepartment
         ///     {
-        ///        "OrganisationId" = "2",
-        ///        "DepartmentName" = "Dotnet",
+        ///        "departmentName" = "Dotnet",
+        ///        "organisationId" = "2",
         ///     }
         ///
         /// </remarks>
