@@ -283,6 +283,26 @@ namespace A5.Controller
                 return Problem(exception.Message);
             }
         }
+
+        /// <summary>
+        ///  This Method is used to get all reporting persons under an department.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET / GetReportingPersonByDepartment
+        ///     {
+        ///        "DepartmentId" = "1",    
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response> 
+        /// <param name="id">String</param>
+        /// <returns>
+        ///Returns List of Reporting persons from DepartmentId
+        /// </returns>
+
         [HttpGet("GetReportingPersonByDepartment")]
         public ActionResult GetReportingPersonByDepartment(int id)
         {
@@ -303,6 +323,26 @@ namespace A5.Controller
                 return Problem(exception.Message);
             }
         }
+
+        /// <summary>
+        ///  This Method is used to get all HR under an department.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET / GetHrByDepartment
+        ///     {
+        ///        "DepartmentId" = "1",    
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response> 
+        /// <param name="id">String</param>
+        /// <returns>
+        ///Returns List of HR persons from DepartmentId
+        /// </returns>
+
         [HttpGet("GetHrByDepartment")]
         public ActionResult GetHrByDepartment(int id)
         {
@@ -332,9 +372,7 @@ namespace A5.Controller
         ///
         ///     GET / ViewEmployeeByOrganisationId
         ///     {
-        ///        "OrganisationId" = "1",    
-        ///        "EmployeeId" = "3",
-        ///        "EmployeeId" = "4",
+        ///        "OrganisationId" = "2",   
         ///     }
         ///
         /// </remarks>
@@ -374,9 +412,7 @@ namespace A5.Controller
         ///
         ///     GET / ViewEmployeeByRequesterId
         ///     {
-        ///        "OrganisationId" = "1",    
-        ///        "EmployeeId" = "3",
-        ///        "EmployeeId" = "4",
+        ///        "RequesterId" = "2",  
         ///     }
         ///
         /// </remarks>

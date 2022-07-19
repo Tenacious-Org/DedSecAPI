@@ -181,7 +181,7 @@ namespace A5.Data.Repository
                     .Include("ReportingPerson")
                     .Include("HR")
                     .Where(nameof => nameof.IsActive == true && nameof.ReportingPersonId != null && nameof.HRId != null)
-                    .ToList();
+                    .OrderByDescending(x => x.Id).ToList();
                 return employee;
             }
             catch (Exception exception)

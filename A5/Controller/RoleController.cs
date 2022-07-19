@@ -19,6 +19,25 @@ namespace A5.Controller
             _roleService = roleService;
         } 
 
+        /// <summary>
+        ///  This Method is used to view role by Id.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET / GetById
+        ///     {
+        ///        "Id" = "2",  
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response> 
+        /// <param name="id">String</param>
+        /// <returns>
+        ///Returns Role from Id
+        /// </returns>
+
         [HttpGet("GetById")]
         public ActionResult GetByRoleId( int id)
         {
@@ -38,6 +57,22 @@ namespace A5.Controller
                 return Problem(exception.Message);
             }            
         }
+
+        /// <summary>
+        ///  This Method is used to view all role.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET / GetAll
+        ///
+        /// </remarks>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response> 
+        /// <param >String</param>
+        /// <returns>
+        ///Returns List of Role
+        /// </returns>
 
         [HttpGet("GetAll")]
         public ActionResult GetAll()
