@@ -42,14 +42,14 @@ namespace A5.Controller
             }
         }
 
-       [HttpGet("GetDashboard")]
+       [HttpGet("GetDashboardDetailsByFilters")]
         [AllowAnonymous]
-        public ActionResult GetDashboard(int? organisationId, int? departmentId, int? awardId, DateTime? start, DateTime? end)
+        public ActionResult GetDashboardDetailsByFilters(int? organisationId, int? departmentId, int? awardId, DateTime? start, DateTime? end)
         {
             
             try
             {
-                var data = _dashboardService.GetDashboardDetails(organisationId, departmentId, awardId, start, end);
+                var data = _dashboardService.GetDashboardDetailsByFilters(organisationId, departmentId, awardId, start, end);
                 return Ok(data);
             }
             catch (ValidationException exception)

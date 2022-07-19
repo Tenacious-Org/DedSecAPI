@@ -41,11 +41,11 @@ namespace A5.Service
         }
 
         
-        public IEnumerable<object> GetDashboardDetails(int? organisationId, int? departmentId, int? awardId, DateTime? start, DateTime? end)
+        public IEnumerable<object> GetDashboardDetailsByFilters(int? organisationId, int? departmentId, int? awardId, DateTime? start, DateTime? end)
         {
             try
             {
-                var winners = _award.GetDashboardDetails(organisationId, departmentId, awardId, start, end);
+                var winners = _award.GetDashboardDetailsByFilters(organisationId, departmentId, awardId, start, end);
                 return winners.Select(Award => new{
                     
                     organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
