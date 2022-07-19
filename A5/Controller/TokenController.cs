@@ -21,7 +21,26 @@ namespace A5.Controller
             _logger=logger;
         }
 
-       
+        /// <summary>
+        ///  This Method is used to Generate Authtoken.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST / AuthToken
+        ///     {
+        ///        "email": "admin@tenacious.com",
+        ///        "password": "Admin@123"
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response> 
+        /// <param >String</param>
+        /// <returns>
+        ///Returns token to authorize the Swagger to make run all methods 
+        /// </returns>
+
 
         [HttpPost]
         public IActionResult AuthToken(Login Crendentials)

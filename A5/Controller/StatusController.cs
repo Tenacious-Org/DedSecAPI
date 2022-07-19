@@ -18,6 +18,26 @@ namespace A5.Controller
             _logger = logger;
             _statusService = statusService;
         }
+
+        /// <summary>
+        ///  This Method is used to view status by Id.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET / GetById
+        ///     {
+        ///        "Id" = "2",  
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response> 
+        /// <param name="id">String</param>
+        /// <returns>
+        ///Returns status from Id
+        /// </returns>
+
         [HttpGet("GetById")]
         public ActionResult GetByStatusId([FromQuery] int id)
         {
@@ -38,6 +58,24 @@ namespace A5.Controller
             }
 
         }
+
+        /// <summary>
+        ///  This Method is used to view all status.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET / GetAll
+        ///
+        /// </remarks>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response> 
+        /// <param >String</param>
+        /// <returns>
+        ///Returns List of Status
+        /// </returns>
+
+
         [HttpGet("GetAll")]
         public ActionResult GetAllStatus()
         {
