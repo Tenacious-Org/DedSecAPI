@@ -48,7 +48,7 @@ namespace A5.Controller
             try
             {
                 var data = _awardService.RaiseRequest(award, GetCurrentUserId());
-                return data ? Ok("Request raised successfully"):BadRequest();
+                return data ? Ok(data):BadRequest("Invalid data");
             }
             catch (ValidationException exception)
             {
@@ -94,7 +94,7 @@ namespace A5.Controller
             {
                 award.UpdatedBy = GetCurrentUserId();
                 var data = _awardService.Approval(award);
-                return data ? Ok("Request approved succesfully"):BadRequest();
+                return data ? Ok(data):BadRequest("Can't approve reuqest");
             }
             catch (ValidationException exception)
             {
@@ -217,7 +217,7 @@ namespace A5.Controller
             try
             {
                 var data = _awardService.AddComment(comment, GetCurrentUserId());
-                return data ? Ok("Comments added succesfully"):BadRequest();
+                return data ? Ok(data):BadRequest("new comments cannot be added");
 
             }
             catch (ValidationException exception)

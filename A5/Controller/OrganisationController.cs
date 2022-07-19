@@ -119,7 +119,7 @@ namespace A5.Controller
             {   
                 organisation.AddedBy=GetCurrentUserId();
                 var data=_organisationService.CreateOrganisation(organisation);
-                return data ? Ok("Organisation created successfully"):BadRequest();
+                return data ? Ok(data):BadRequest();
             }
             catch(ValidationException exception)
             {
@@ -160,7 +160,7 @@ namespace A5.Controller
             try{
                 organisation.UpdatedBy=GetCurrentUserId();
                 var data=_organisationService.UpdateOrganisation(organisation);
-                return data ? Ok("Organisation updated successfully"):BadRequest();
+                return data ? Ok(data):BadRequest("failed to update organisation");
             }        
             catch(ValidationException exception)
             {
@@ -208,7 +208,7 @@ namespace A5.Controller
                 else
                 {
                     var data = _organisationService.DisableOrganisation(id,GetCurrentUserId());
-                    return data ? Ok("Organisation disabled successfully"):BadRequest();
+                    return data ? Ok(data):BadRequest("Failed to disable organisation");
                 }
             }
             catch(ValidationException exception)

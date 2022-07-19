@@ -137,7 +137,7 @@ namespace A5.Controller
             {
                 employee.AddedBy=GetCurrentUserId();
                 var data = _employeeService.CreateEmployee(employee);
-                return data ? Ok("Successfully created a new employee") : BadRequest("Failed to create a new employee");
+                return data ? Ok(data): BadRequest("Failed to create a new employee");
             }
             catch (ValidationException exception)
             {
@@ -150,6 +150,7 @@ namespace A5.Controller
                 return Problem(exception.Message);
             }
         }
+
 
         /// <summary>
         ///  This Method is used to Update single Employee by id
@@ -178,7 +179,7 @@ namespace A5.Controller
             {
                 employee.UpdatedBy=GetCurrentUserId();
                 var data = _employeeService.UpdateEmployee(employee);
-                return data ? Ok("Successfully updated employee") : BadRequest("Failed to update an employee");
+                return data ? Ok(data) : BadRequest("Failed to update an employee");
 
             }
             catch (ValidationException exception)
@@ -227,7 +228,7 @@ namespace A5.Controller
                 else
                 {
                     var data = _employeeService.DisableEmployee(id, GetCurrentUserId());
-                    return data ? Ok("successfully disabled") : BadRequest("Failed to disable employee");
+                    return data ? Ok(data) : BadRequest("Failed to disable employee");
                 }
             }
             catch (ValidationException exception)

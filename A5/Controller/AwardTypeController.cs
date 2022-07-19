@@ -131,7 +131,7 @@ namespace A5.Controller
             {
                 awardType.AddedBy = GetCurrentUserId();
                 var data = _awardTypeService.CreateAwardType(awardType);
-                return data ? Ok("Award Type successfully created") : BadRequest("Failed to create new Award Type.");
+                return data ? Ok(data) : BadRequest("Failed to create new Award Type.");
             }
             catch (ValidationException exception)
             {
@@ -175,7 +175,7 @@ namespace A5.Controller
             {
                 awardType.UpdatedBy = GetCurrentUserId();
                 var data = _awardTypeService.UpdateAwardType(awardType);
-                return data ? Ok("Award type successfully updated") : BadRequest("Failed to update award type");
+                return data ? Ok(data) : BadRequest("Failed to update award type");
             }
             catch (ValidationException exception)
             {

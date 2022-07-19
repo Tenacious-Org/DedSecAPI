@@ -166,7 +166,7 @@ namespace A5.Controller
             {
                 designation.AddedBy=GetCurrentUserId();
                 var data = _designationService.CreateDesignation(designation);
-                return data ? Ok("Designation created successfully"):BadRequest();
+                return data ? Ok(data):BadRequest("Failed to craete new designation");
             }
             catch (ValidationException exception)
             {
@@ -207,7 +207,7 @@ namespace A5.Controller
             {
                 designation.UpdatedBy=GetCurrentUserId();
                 var data = _designationService.UpdateDesignation(designation);
-                return data ? Ok("Designation updated successfully"):BadRequest();
+                return data ? Ok(data):BadRequest("Failed to update designation");
             }
             catch (ValidationException exception)
             {
@@ -255,7 +255,7 @@ namespace A5.Controller
                 else
                 {
                     var data = _designationService.DisableDesignation(id,GetCurrentUserId());
-                   return data ? Ok("Designation disabled successfully"):BadRequest();
+                   return data ? Ok(data):BadRequest("Failed to disbale designation");
                 }
 
             }

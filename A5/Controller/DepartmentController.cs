@@ -158,7 +158,7 @@ namespace A5.Controller
             try{
                 department.AddedBy=GetCurrentUserId();
                 var data=_departmentService.CreateDepartment(department);
-                return data ? Ok("Department created successfully"):BadRequest(); 
+                return data ? Ok(data):BadRequest("Failed to create new department"); 
             }           
             catch(ValidationException exception)
             {
@@ -198,7 +198,7 @@ namespace A5.Controller
             try{
                 department.UpdatedBy=GetCurrentUserId();
                 var data=_departmentService.UpdateDepartment(department);
-                return data ? Ok("Department updated succesfully"):BadRequest();
+                return data ? Ok(data):BadRequest("Failed to update department");
             }
             catch(ValidationException exception)
             {
@@ -241,7 +241,7 @@ namespace A5.Controller
                     return Ok(checkEmployee);
                 }else{
                     var data = _departmentService.DisableDepartment(id,GetCurrentUserId());
-                    return data ? Ok("Department disabled succesfully"):BadRequest();
+                    return data ? Ok(data):BadRequest();
                 }
                 
             }           

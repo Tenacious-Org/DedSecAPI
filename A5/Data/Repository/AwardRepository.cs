@@ -67,11 +67,11 @@ namespace A5.Data.Repository
         }
         
         //Gets HR id by using awardee id
-        public int GetHRID(int awardeeId)
+        public int? GetHRID(int awardeeId)
         {
-            var list = _context.Set<Employee>().FirstOrDefault(nameof => nameof.Id == awardeeId)!.HRId;
+            var  list = _context?.Set<Employee>()?.FirstOrDefault(nameof => nameof.Id == awardeeId)?.HRId;
             
-            return (int)list; 
+            return (int?)list; 
         }
         
         //approves the request raised by using award object
