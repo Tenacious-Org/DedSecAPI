@@ -183,6 +183,37 @@ namespace A5.Service
                 organisationId = award?.Awardee?.Designation?.Department?.Organisation?.Id
             };
         }
+
+
+        public IEnumerable<object> GetDashboardDetails(int? organisationId, int? departmentId, int? awardId, DateTime? start, DateTime? end)
+        {
+            try
+            {
+                var winners = _award.GetDashboardDetails(organisationId, departmentId, awardId, start, end);
+                return winners.Select(Award => new{
+                    
+                    organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,
+                    
+                    department = Award?.Awardee?.Designation?.Department?.DepartmentName,
+                    
+                    awardName = Award?.AwardType?.AwardName,
+
+                    publishedDate = Award?.UpdatedOn
+                });
+            }
+           catch(ValidationException exception)
+            {
+                _logger.LogError("AwardService: GetAllDateWise(DateTime start, DateTime end)() : (Error:{Message}",exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                _logger.LogError("AwardService: GetAllDateWise(DateTime start, DateTime end)() : (Error:{Message}",exception.Message);
+                throw;
+            }
+        }
+
+
         public object ErrorMessage(string ValidationMessage)
         {
             return new { message = ValidationMessage };
