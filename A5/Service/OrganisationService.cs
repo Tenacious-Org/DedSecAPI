@@ -61,9 +61,14 @@ namespace A5.Service
             try{
                 return _organisationRepository.GetOrganisationById(organisationId);
             }
+            catch(ValidationException exception)
+            {
+                _logger.LogError("OrganisationController : GetByOrganisationId(int id) : (Error : {Message})",exception.Message);
+                throw;
+            }
             catch(Exception exception)
             {
-               _logger.LogError("OrganisationService: GetByOrganisation(int organisationId) : (Error:{Message}",exception.Message);
+               _logger.LogError("OrganisationService:  GetByOrganisationId(int organisationId) : (Error:{Message}",exception.Message);
                 throw;
             }
         }

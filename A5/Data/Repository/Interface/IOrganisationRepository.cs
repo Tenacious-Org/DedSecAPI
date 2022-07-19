@@ -5,9 +5,9 @@ namespace A5.Data.Repository.Interface
     {
          bool CreateOrganisation(Organisation organisation);
         bool UpdateOrganisation(Organisation organisation);
-        Organisation? GetOrganisationById(int id);
-        bool DisableOrganisation(int id,int employeeId);
-        int GetCount(int id);
+        Organisation? GetOrganisationById(int organisationId);
+        bool DisableOrganisation(int organisationId,int employeeId);
+        int GetCount(int organisationId);
         public IEnumerable<Organisation> GetAllOrganisation();
 
         public  object ErrorMessage(string ValidationMessage);

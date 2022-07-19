@@ -22,7 +22,6 @@ namespace A5.Service.Validations
 
         public static bool ValidateAddComment(Comment comment)
         {
-            if(comment==null) throw new ValidationException("Comment hshould not be null");
             if(string.IsNullOrEmpty(comment.Comments)) throw new ValidationException("Comments should not be null");
             else return true;
         }
@@ -31,6 +30,16 @@ namespace A5.Service.Validations
             if(awardId<=0) throw new ValidationException ("No such awards!!");
             else return true;
         }
+
+        public static bool ApprovalValidation(Award award)
+        {
+            if(award.ApproverId==null)throw new ValidationException("Approver Id should not be null");
+            if(award == null)throw new ValidationException("Award should not be null");
+            if(award.StatusId==3)throw new ValidationException("Rejection Reason should not be null");
+            else return true;
+
+        }
+
         
     }
 }

@@ -31,6 +31,7 @@ namespace A5.Data.Repository
         //raises award request by using award object and employee
         public bool RaiseAwardRequest(Award award, int employeeId)
         {
+            AwardServiceValidations.RequestValidation(award);
             try
             {
                 var employee = _employeeRepository.GetEmployeeById(employeeId);
@@ -75,6 +76,7 @@ namespace A5.Data.Repository
         //approves the request raised by using award object
         public bool ApproveRequest(Award award)
         {
+            AwardServiceValidations.ApprovalValidation(award);
             try
             {
                 if (award.StatusId == 4)

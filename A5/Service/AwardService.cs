@@ -40,6 +40,7 @@ namespace A5.Service
         //approves the request raised
         public bool Approval(Award award)
         {
+            AwardServiceValidations.ApprovalValidation(award);
             try
             {
                 return _award.ApproveRequest(award);
@@ -99,6 +100,7 @@ namespace A5.Service
        //Gets award list using page id and employee id
         public IEnumerable<object> GetAwardsList(int? pageId, int? employeeId)
         {
+            
             try
             {
                 var awards = _award.GetAllAwardsList(pageId,employeeId );

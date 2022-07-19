@@ -26,6 +26,7 @@ namespace A5.Data.Repository
                 
                 return Create(organisation);
             }
+
             catch (Exception exception)
             {
                 _logger.LogError("OrganisationRepository: CreateOrganisation(Organisation organisation) : (Error:{Message}", exception.Message);
@@ -50,16 +51,16 @@ namespace A5.Data.Repository
         }
         
         //gets organisation by using organisation id
-        public Organisation? GetOrganisationById(int organisationId)
+        public Organisation?GetOrganisationById(int organisationId)
         {
-            
+            if(organisationId<=0) throw new ValidationException("organisationId must be greater than zero");
             try
             {
                 return GetById(organisationId);
             }
             catch (Exception exception)
             {
-                _logger.LogError("OrganisationRepository: GetOrganisationById(int organisationId) : (Error:{Message}", exception.Message);
+                _logger.LogError("OrganisationRepository:  GetByOrganisationId(int organisationId) : (Error:{Message}", exception.Message);
                 throw;
             }
         }

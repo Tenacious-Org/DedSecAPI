@@ -67,12 +67,12 @@ namespace A5.Service
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("DepartmentService: GetByDepartment({id}) : (Error:{Message}",departmentId,exception.Message);
+                _logger.LogError("DepartmentService: GetDepartmentById{id}) : (Error:{Message}",departmentId,exception.Message);
                 throw;
             }
             catch(Exception exception)
             {
-                _logger.LogError("DepartmentService: GetByDepartment({id}) : (Error:{Message}",departmentId,exception.Message);
+                _logger.LogError("DepartmentService: GetDepartmentById({id}) : (Error:{Message}",departmentId,exception.Message);
                 throw;
             }
         }
@@ -105,21 +105,21 @@ namespace A5.Service
              return _departmentRepository.GetCount(departmentid);
         }
         //Gets Department by organisation Id.
-        public IEnumerable<Department> GetDepartmentsByOrganisationId(int departmentId)
+        public IEnumerable<Department> GetDepartmentsByOrganisationId(int organisationId)
          { 
-           if(departmentId<=0) throw new ValidationException("organisation Id should not be null or negative");
+           if(organisationId<=0) throw new ValidationException("organisation Id must be greater than zero");
             try
             {
-               return _departmentRepository.GetDepartmentsByOrganisationId(departmentId);
+               return _departmentRepository.GetDepartmentsByOrganisationId(organisationId);
             }
             catch(ValidationException exception)
             {
-                _logger.LogError("DepartmentService: GetDepartmentsByOrganisationId({departmentId}) : (Error:{Message}",departmentId,exception.Message);
+                _logger.LogError("DepartmentService: GetDepartmentsByOrganisationId({organisationId}) : (Error:{Message}",organisationId,exception.Message);
                 throw;
             }
             catch(Exception exception)
             {
-                _logger.LogError("DepartmentService: GetDepartmentsByOrganisationId({departmentId}) : (Error:{Message}",departmentId,exception.Message);
+                _logger.LogError("DepartmentService: GetDepartmentsByOrganisationId({organisationId}) : (Error:{Message}",organisationId,exception.Message);
                 throw;
             }
              

@@ -71,7 +71,7 @@ namespace A5.Controller
         /// </returns>
 
          [HttpGet("GetById")]
-        public ActionResult GetByOrganisationId( int id)
+        public ActionResult GetOrganisationById( int id)
         {
            if(id<=0) return BadRequest("Organisation Id must be greater than zero");
             try{
@@ -164,12 +164,12 @@ namespace A5.Controller
             }        
             catch(ValidationException exception)
             {
-                  _logger.LogError("OrganisationController : Update(Organisation organisation,int id) : (Error: {Message})",exception.Message);
+                  _logger.LogError("OrganisationController : Update(Organisation organisation) : (Error: {Message})",exception.Message);
                 return BadRequest(_organisationService.ErrorMessage(exception.Message));
             }
             catch(Exception exception)
             {
-                 _logger.LogError("OrganisationController : Update(Organisation organisation,int id) : (Error: {Message})",exception.Message);
+                 _logger.LogError("OrganisationController : Update(Organisation organisation) : (Error: {Message})",exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -219,7 +219,7 @@ namespace A5.Controller
             catch(Exception exception)
             {
                  _logger.LogError("OrganisationController : Disable(int id) : (Error : {Message})",exception.Message);
-                return BadRequest(exception.Message);
+                return Problem(exception.Message);
             }
         }
         private int GetCurrentUserId()

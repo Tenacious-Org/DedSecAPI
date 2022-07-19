@@ -100,7 +100,7 @@ namespace A5.Data.Repository
         //Gets Department by organisation Id.
         public IEnumerable<Department> GetDepartmentsByOrganisationId(int organisationId)
         {
-            if(organisationId<=0) throw new ValidationException("Organisation Id should not be null or negative");
+            if(organisationId<=0) throw new ValidationException("Organisation Id must be greater than zero");
             try
             {
                 var organisationDetails = _context.Set<Department>().Where(nameof => nameof.OrganisationId == organisationId && nameof.IsActive == true).ToList();

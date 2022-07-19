@@ -117,7 +117,7 @@ namespace A5.Controller
         /// </returns>
 
         [HttpGet("GetById")]
-        public ActionResult GetByDesignationId( int id)
+        public ActionResult GetDesignationById( int id)
         {
             if (id <= 0) return BadRequest("Designation Id must be greater than zero ");
             try
@@ -127,12 +127,12 @@ namespace A5.Controller
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("DesignationController : GetByDesignationId(int id) : (Error : {Message})", exception.Message);
+                _logger.LogError("DesignationController : GetDesignationById(int id) : (Error : {Message})", exception.Message);
                 return BadRequest(_designationService.ErrorMessage(exception.Message));
             }
             catch (Exception exception)
             {
-                _logger.LogError("DesignationController : GetByDesignationId(int id) : (Error : {Message})", exception.Message);
+                _logger.LogError("DesignationController : GetDesignationById(int id) : (Error : {Message})", exception.Message);
                 return Problem(exception.Message);
             }
         }

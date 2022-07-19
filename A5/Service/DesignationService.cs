@@ -135,6 +135,11 @@ namespace A5.Service
              try{
                 return _desginationRepository.GetDesignationById(designationId);
             }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("DesignationController : GetDesignationById(int id) : (Error : {Message})", exception.Message);
+                throw;
+            }
             catch(Exception exception)
             {
                  _logger.LogError("DesginationService: GetDesignationById(int designationId) : (Error:{Message}",exception.Message);
