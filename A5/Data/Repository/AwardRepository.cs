@@ -209,16 +209,16 @@ namespace A5.Data.Repository
                     .Include("AwardType")
                     .Include("Status")
                     .ToList();
-                if (pageId == 0 || employeeId == 0)
-                    award = award.Where(nameof => nameof.StatusId == 4).ToList();
+                if (pageId == 0 )
+                    award = award.Where(nameof => nameof.StatusId == 4).OrderByDescending(nameof => nameof.UpdatedOn).ToList();
                 else if (pageId == 1 && employeeId != 0)
-                    award = award.Where(nameof => nameof.StatusId == 4 && nameof.AwardeeId == employeeId).ToList();
+                    award = award.Where(nameof => nameof.StatusId == 4 && nameof.AwardeeId == employeeId).OrderByDescending(nameof => nameof.UpdatedOn).ToList();
                 else if (pageId == 2 && employeeId != 0)
-                    award = award.Where(nameof => nameof.RequesterId == employeeId).OrderBy(nameof => nameof.StatusId ).OrderByDescending(nameof=>nameof.AddedOn).ToList();
+                    award = award.Where(nameof => nameof.RequesterId == employeeId).OrderByDescending(nameof=>nameof.AddedOn).OrderBy(nameof => nameof.StatusId ).ToList();
                 else if (pageId == 3 && employeeId != 0)
-                    award = award.Where(nameof => nameof.ApproverId == employeeId).OrderBy(nameof => nameof.StatusId).OrderByDescending(nameof=>nameof.AddedOn).ToList();
+                    award = award.Where(nameof => nameof.ApproverId == employeeId).OrderByDescending(nameof=>nameof.AddedOn).OrderBy(nameof => nameof.StatusId).ToList();
                 else if (pageId == 4 && employeeId != 0)
-                    award = award.Where(nameof => nameof.HRId == employeeId && (nameof.StatusId == 2 || nameof.StatusId == 4)).OrderByDescending(nameof => nameof.UpdatedOn).ToList();         
+                    award = award.Where(nameof => nameof.HRId == employeeId && (nameof.StatusId == 2 || nameof.StatusId == 4)).OrderByDescending(nameof => nameof.UpdatedOn).OrderBy(nameof => nameof.StatusId).ToList();         
                 return award;
             }
             catch (Exception exception)
