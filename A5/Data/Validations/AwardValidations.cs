@@ -4,15 +4,21 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace A5.Data.Validations
 {
-    public static class AwardValidations
+    public  class AwardValidations
     {
-        public static bool RequestValidation(Award award)
+        private readonly AppDbContext _context;
+        public AwardValidations(AppDbContext context)
         {
-            if(award.AwardeeId==0) throw new ValidationException("Awardee not found");
-            if(award.AwardTypeId==0) throw new ValidationException("Award Type Should not be null");
+            _context=context;
+        }
+        public bool RequestValidation(Award award,int employeeId)
+        {
+            if(award.AwardeeId==0) throw new ValidationException("Awardee Id not found");
+            if(award.AwardTypeId==0) throw new ValidationException("Award Id Should not be zero");
             if(string.IsNullOrWhiteSpace(award.Reason)) throw new ValidationException("Reason for award should not be null");
+            if (!(_context.Awards!.Any(nameof=>nameof.Awardee.ReportingPersonId == employeeId))) throw new ValidationException("Reporting Person Id not found");         
             else return true;
-           
+
         }
         public static bool ValidateRequestedAward(int employeeId)
         {
