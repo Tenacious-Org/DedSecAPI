@@ -296,6 +296,10 @@ namespace A5.Data.Repository
                 if(organisationId != 0 && departmentId == 0 && awardId == 0 && start == fdate && end == tdate){
                     Console.WriteLine("Satisfied.");
                 }
+                if(organisationId != 0 && departmentId == 0 && awardId == 0 && start == fdate && end == tdate){
+                    Console.WriteLine("Satisfied.");
+                }
+                
                 
 
 
