@@ -11,7 +11,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace A5.Controller
 {
+    
     [Route("[controller]")]
+    [Authorize]
     [ApiController]
     public class DashboardController : ControllerBase
     {
@@ -42,7 +44,7 @@ namespace A5.Controller
             }
         }
 
-       [HttpGet("GetDashboardDetailsByFilters")]
+        [HttpGet("GetDashboardDetailsByFilters")]
         [AllowAnonymous]
         public ActionResult GetDashboardDetailsByFilters(int organisationId, int departmentId, int awardId, DateTime start, DateTime end)
         {
