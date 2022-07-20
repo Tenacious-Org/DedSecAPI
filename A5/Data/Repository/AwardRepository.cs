@@ -446,13 +446,17 @@ namespace A5.Data.Repository
                                   && nameof.AwardTypeId == awardId
                                   && nameof.StatusId == 4
                                   && (nameof.UpdatedOn >= Convert.ToDateTime(start).Date && nameof.UpdatedOn <= Convert.ToDateTime(end).Date))
+                    
+                    //Neither All Conditions Failed Default Value Displayed
+                    .WhereIf(organisationId == 0 && departmentId == 0 && awardId == 0 && start == fdate && end == tdate,
+                            nameof => nameof.UpdatedOn >= DateTime.Now.AddDays(-365) && nameof.UpdatedOn <= DateTime.Now)
 
                     .ToList();
                 return award;
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAllbyOrgwise(int id) : (Error:{Message}",exception.Message);
+                _logger.LogError("AwardRepository : GetAllDetailsByDashboardFilters(int organisationId, int departmentId, int awardId, DateTime start, DateTime end) : (Error:{Message}",exception.Message);
                 throw;
             }
             catch (Exception exception){
