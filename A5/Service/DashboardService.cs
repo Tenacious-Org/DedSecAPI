@@ -54,6 +54,8 @@ namespace A5.Service
                     
                     awardName = Award?.AwardType?.AwardName,
 
+                    awardeeName = Award?.Awardee?.FirstName,
+
                     publishedDate = Award?.UpdatedOn
                 });
             }
