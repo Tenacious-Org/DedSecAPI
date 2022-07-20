@@ -5,7 +5,7 @@ namespace A5.Data.Repository.Interface
 {
     public interface IAwardRepository
     {
-        public bool RaiseAwardRequest(Award award, int employeeId);
+        public bool RaiseAwardRequest(Award award);
         public bool ApproveRequest(Award award);
         public Award? GetAwardById(int awardId);
         public bool AddComments(Comment comment, int employeeId);

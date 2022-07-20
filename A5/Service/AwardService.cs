@@ -3,6 +3,7 @@ using A5.Service.Interfaces;
 using A5.Models;
 using A5.Data.Validations;
 using System.ComponentModel.DataAnnotations;
+using A5.Data.Repository.Interface;
 
 namespace A5.Service
 {
@@ -10,19 +11,32 @@ namespace A5.Service
     {
         private readonly AwardRepository _award;
         private readonly ILogger<IAwardService> _logger;
-        public AwardService(AwardRepository awardRepository,ILogger<IAwardService> logger)
+        private readonly AwardValidations _awardValidations;
+        private readonly IEmployeeRepository _employeeRepository;
+        public AwardService(AwardRepository awardRepository,ILogger<IAwardService> logger,AwardValidations awardValidations,IEmployeeRepository employeeRepository)
         {
             _award = awardRepository;
             _logger = logger;
+            _awardValidations=awardValidations;
+            _employeeRepository=employeeRepository;
         }
         
         //to raise award request using award obejct and employee id
         public bool RaiseRequest(Award award,int employeeId)
         {
-            AwardValidations.RequestValidation(award);
+           _awardValidations.RequestValidation(award,employeeId);
             try
             {
-                return _award.RaiseAwardRequest(award,employeeId);
+                 var employee = _employeeRepository.GetEmployeeById(employeeId);
+                if (employee == null) throw new ValidationException("Requester Details Not Found"); 
+                 var AwardeeId = award.AwardeeId;
+                award.RequesterId = employee!.Id;
+                award.ApproverId = employee.ReportingPersonId;
+                award.HRId = _award.GetHRID(AwardeeId);
+                award.StatusId = 1;
+                award.AddedBy = employeeId;
+                award.AddedOn = DateTime.Now;
+                return _award.RaiseAwardRequest(award);
             }
             catch (ValidationException exception)
             {
@@ -40,7 +54,7 @@ namespace A5.Service
         //approves the request raised
         public bool Approval(Award award)
         {
-            AwardValidations.ApprovalValidation(award);
+            _awardValidations.ApprovalValidation(award);
             try
             {
                 return _award.ApproveRequest(award);
@@ -80,7 +94,7 @@ namespace A5.Service
         //adds new comment using comment object and employee id
         public bool AddComment(Comment comment, int employeeId)
         {
-            AwardValidations.ValidateAddComment(comment);
+            _awardValidations.ValidateAddComment(comment,employeeId);
             try
             {
                 return _award.AddComments(comment, employeeId);

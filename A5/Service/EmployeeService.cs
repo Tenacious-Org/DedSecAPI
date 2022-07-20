@@ -10,11 +10,13 @@ namespace A5.Service
     public class EmployeeService : IEmployeeService
     {
         private readonly IEmployeeRepository _employeeRepository;
+        private readonly EmployeeValidations _employeeValidations;
         private readonly ILogger<IEmployeeRepository> _logger;
-        public EmployeeService(IEmployeeRepository employeeRepository, ILogger<IEmployeeRepository> logger)
+        public EmployeeService(IEmployeeRepository employeeRepository,EmployeeValidations employeeValidations, ILogger<IEmployeeRepository> logger)
         {
             _employeeRepository = employeeRepository;
             _logger = logger;
+            _employeeValidations=employeeValidations;
         }
         
         //Gets reporting Person of particular department by using department id.
@@ -181,7 +183,7 @@ namespace A5.Service
         public bool CreateEmployee(Employee employee)
         {
             if(employee==null) throw new ValidationException("Employee should not be null");
-            EmployeeValidations.CreateValidation(employee);
+            _employeeValidations.CreateValidation(employee);
             try
             {
                 employee.Image = System.Convert.FromBase64String(employee.ImageString!);
@@ -203,7 +205,7 @@ namespace A5.Service
         public bool UpdateEmployee(Employee employee)
         {
             if(employee==null) throw new ValidationException("Employee should not be null");
-            EmployeeValidations.UpdateValidation(employee);
+            _employeeValidations.UpdateValidation(employee);
             try
             {
                 employee.Image = System.Convert.FromBase64String(employee.ImageString!);
@@ -223,7 +225,7 @@ namespace A5.Service
         //Disable employee by using employee id and current user id.
         public bool DisableEmployee(int id, int employeeId)
         {
-            EmployeeValidations.DisableValidation(id);
+            _employeeValidations.DisableValidation(id);
             if(id<=0) throw new ValidationException("Id should not be null or negative");
             if(employeeId<=0) throw new ValidationException("Current user Id should not be null or negative");
             try

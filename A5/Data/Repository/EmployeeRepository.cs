@@ -11,12 +11,14 @@ namespace A5.Data.Repository
     public class EmployeeRepository : EntityBaseRepository<Employee>, IEmployeeRepository
     {
         private readonly AppDbContext _context;
+        private readonly EmployeeValidations _employeeValidations;
         private readonly ILogger<EntityBaseRepository<Employee>> _logger;
 
-        public EmployeeRepository(AppDbContext context, ILogger<EntityBaseRepository<Employee>> logger) : base(context, logger)
+        public EmployeeRepository(AppDbContext context, ILogger<EntityBaseRepository<Employee>> logger, EmployeeValidations employeeValidations) : base(context, logger)
         {
             _context = context;
             _logger = logger;
+            _employeeValidations=employeeValidations;
         }
       
         //Gets reporting Person of particular department using department id.
@@ -205,11 +207,7 @@ namespace A5.Data.Repository
         public bool CreateEmployee(Employee employee)
         {
             if(employee==null) throw new ValidationException("Employee should not be null");
-            EmployeeValidations.CreateValidation(employee);
-            bool IsIdAlreadyExists=_context.Employees!.Any(nameof=>nameof.ACEID==employee.ACEID);
-            if(IsIdAlreadyExists) throw new ValidationException("Employee Id already exists");
-            bool IsEmailAlreadyExists=_context.Employees!.Any(nameof=>nameof.Email==employee.Email);
-            if(IsEmailAlreadyExists) throw new ValidationException("Email Id already exists");
+            _employeeValidations.CreateValidation(employee);
             try
             {
                 return Create(employee);
@@ -225,7 +223,7 @@ namespace A5.Data.Repository
         public bool UpdateEmployee(Employee employee)
         {
             if(employee==null) throw new ValidationException("Employee should not be null");
-            EmployeeValidations.UpdateValidation(employee);
+            _employeeValidations.UpdateValidation(employee);
             try
             {
                 return Update(employee);
@@ -240,7 +238,7 @@ namespace A5.Data.Repository
         //Disable employee using employee id and current user id.
         public bool DisableEmployee(int id,int employeeId)
         {
-            EmployeeValidations.DisableValidation(id);
+            _employeeValidations.DisableValidation(id);
             if(id<=0) throw new ValidationException("Id should not be null or negative");
             if(employeeId<=0) throw new ValidationException("Employee id should not be null or negative");
             try
