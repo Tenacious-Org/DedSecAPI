@@ -258,7 +258,7 @@ namespace A5.Data.Repository
 
         
 
-        public IEnumerable<Award> GetDashboardDetailsByFilters(int? organisationId, int? departmentId, int? awardId, DateTime? start, DateTime? end)
+        public IEnumerable<Award> GetDashboardDetailsByFilters(int organisationId, int departmentId, int awardId, DateTime start, DateTime end)
         {
             try
             {
@@ -293,12 +293,7 @@ namespace A5.Data.Repository
                 Console.WriteLine("start: ", start.ToString());
                 Console.WriteLine("end: ", end.ToString());
 
-                if(organisationId != 0 && departmentId == 0 && awardId == 0 && start == fdate && end == tdate){
-                    Console.WriteLine("Satisfied.");
-                }
-                if(organisationId != 0 && departmentId == 0 && awardId == 0 && start == fdate && end == tdate){
-                    Console.WriteLine("Satisfied.");
-                }
+                
                 
                 
 
@@ -356,7 +351,7 @@ namespace A5.Data.Repository
                                   && (nameof.UpdatedOn >= Convert.ToDateTime(start).Date && nameof.UpdatedOn <= Convert.ToDateTime(end).Date))
 
                     // Applying All Filter Values and Retrieve the Data Using Organisation ID
-                    .WhereIf(organisationId != 0 && departmentId == 0 && awardId == 0,
+                    .WhereIf(organisationId != 0 && departmentId == 0 && awardId == 0 && start == fdate && end == tdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId && nameof.StatusId == 4)
                     
                     //Applying All Filter Values and Retrieve the Data Using Organisation ID, Start Date
@@ -387,7 +382,7 @@ namespace A5.Data.Repository
                                   && nameof.StatusId == 4
                                   && nameof.UpdatedOn >= Convert.ToDateTime(start).Date)
                     
-                    //Applying All Filter Values and Retrieve the Data Using Award ID End Date
+                    //Applying All Filter Values and Retrieve the Data Using Award ID, End Date
                     .WhereIf(organisationId == 0 && departmentId == 0 && awardId != 0 && start == fdate && end != tdate,
                            nameof => nameof.AwardTypeId == awardId
                                   && nameof.StatusId == 4
@@ -421,7 +416,7 @@ namespace A5.Data.Repository
                     //Applying Filter Values and Retrieve the Data Using Organisation ID, Department ID, Start Date and End Date
                     .WhereIf(organisationId != 0 && departmentId != 0 && awardId == 0 && start != fdate && end != tdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
-                                  && nameof.Awardee.Designation.Department.Id ==departmentId 
+                                  && nameof.Awardee.Designation.Department.Id == departmentId 
                                   && nameof.StatusId == 4
                                   && (nameof.UpdatedOn >= Convert.ToDateTime(start).Date && nameof.UpdatedOn <= Convert.ToDateTime(end).Date))
 
