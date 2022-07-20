@@ -36,7 +36,7 @@ namespace A5.Data.Repository
             try
             {
                 var employee = _employeeRepository.GetEmployeeById(employeeId);
-                if (employee == null) throw new ValidationException("Requester Details Not Found");
+                if (employee == null) throw new ValidationException("Requester Details Not Found"); //
                 _context.Set<Award>().Add(award);
                 var aid = award.AwardeeId;
                 award.RequesterId = employee!.Id;
@@ -72,7 +72,7 @@ namespace A5.Data.Repository
             var list = _context.Set<Employee>().FirstOrDefault(nameof => nameof.Id == awardeeId)!.HRId;
             
             return list; 
-        }
+        } //
         
         //approves the request raised by using award object
         public bool ApproveRequest(Award award)
