@@ -41,7 +41,7 @@ namespace A5.Service
         }
 
         
-        public IEnumerable<object> GetDashboardDetailsByFilters(int? organisationId, int? departmentId, int? awardId, DateTime? start, DateTime? end)
+        public IEnumerable<object> GetDashboardDetailsByFilters(int organisationId, int departmentId, int awardId, DateTime start, DateTime end)
         {
             try
             {
