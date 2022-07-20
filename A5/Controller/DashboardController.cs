@@ -44,7 +44,7 @@ namespace A5.Controller
 
        [HttpGet("GetDashboardDetailsByFilters")]
         [AllowAnonymous]
-        public ActionResult GetDashboardDetailsByFilters(int? organisationId, int? departmentId, int? awardId, DateTime? start, DateTime? end)
+        public ActionResult GetDashboardDetailsByFilters(int organisationId, int departmentId, int awardId, DateTime start, DateTime end)
         {
             
             try
