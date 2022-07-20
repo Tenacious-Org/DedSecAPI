@@ -10,7 +10,7 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using A5.Service;
 using A5.Service.Interfaces;
-
+using A5.Data.Validations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,7 +44,7 @@ builder.Services.AddTransient<IOrganisationRepository,OrganisationRepository>();
 builder.Services.AddTransient<IDepartmentRepository,DepartmentRepository>();
 builder.Services.AddTransient<IDesignationRepository,DesignationRepository>();
 builder.Services.AddTransient<IStatusRepository,StatusRepository>();
-
+builder.Services.AddTransient<AwardValidations>();
 
 
 

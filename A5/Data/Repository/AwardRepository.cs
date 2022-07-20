@@ -18,38 +18,30 @@ namespace A5.Data.Repository
         private readonly AppDbContext _context;
         private readonly IEmployeeRepository _employeeRepository;
         private readonly ILogger<IAwardService> _logger;
+        private readonly AwardValidations _awardValidations;
         private readonly MailService _mail;
 
-        public AwardRepository(AppDbContext context, IEmployeeRepository employeeRepository, ILogger<IAwardService> logger, MailService mail)
+        public AwardRepository(AppDbContext context, IEmployeeRepository employeeRepository, ILogger<IAwardService> logger, MailService mail,AwardValidations awardValidations)
         {
             _context = context;
             _employeeRepository = employeeRepository;
             _logger = logger;
             _mail = mail;
+            _awardValidations=awardValidations;
 
         }
         
         //raises award request by using award object and employee
-        public bool RaiseAwardRequest(Award award, int employeeId)
+        public bool RaiseAwardRequest(Award award)
         {
-            AwardValidations.RequestValidation(award);
             try
             {
-                var employee = _employeeRepository.GetEmployeeById(employeeId);
-                if (employee == null) throw new ValidationException("Requester Details Not Found"); //
+               
                 _context.Set<Award>().Add(award);
-                var aid = award.AwardeeId;
-                award.RequesterId = employee!.Id;
-                award.ApproverId = employee.ReportingPersonId;
-                award.HRId = GetHRID(aid);
-                award.StatusId = 1;
-                award.AddedBy = employeeId;
-                award.AddedOn = DateTime.Now;
                 _context.SaveChanges();
                 if (award.StatusId == 1)
                 {
-                    var awardee = GetAwardById(award.Id);
-                    _mail?.RequesterAsync(awardee);
+                    _mail?.RequesterAsync(award);
                 }
                 return true;
 
@@ -77,34 +69,27 @@ namespace A5.Data.Repository
         //approves the request raised by using award object
         public bool ApproveRequest(Award award)
         {
-            AwardValidations.ApprovalValidation(award);
+            _awardValidations.ApprovalValidation(award);
             try
             {
-                if (award.StatusId == 4)
-                {
-                    bool IsIdAlreadyExists = _context.Awards!.Any(nameof => nameof.CouponCode == award.CouponCode);
-                    if (IsIdAlreadyExists) throw new ValidationException("CouponCode already redeemed");
-                }
                 _context.Set<Award>().Update(award);
                 award.UpdatedOn = DateTime.Now;
                 _context.SaveChanges();
                 if (award.StatusId == 4)
                 {
-                    var awardee = GetAwardById(award.Id);
-                    _mail?.ExampleAsync(awardee);
+                    _mail?.ExampleAsync(award);
 
                 }
                 else if (award.StatusId == 3)
                 {
-                    var awardee = GetAwardById(award.Id);
-                    _mail?.RejectedAsync(awardee!);
+                    _mail?.RejectedAsync(award!);
                 }
                 return true;
             }
             catch (ValidationException exception)
             {
                 _logger.LogError("AwardRepository : ApproveRequest(Award award) : (Error:{Message}", exception.Message);
-                throw;
+                return false;
             }
             catch (Exception exception)
             {
@@ -147,7 +132,7 @@ namespace A5.Data.Repository
         //Adds the comment by using comment object and employee id
         public bool AddComments(Comment comment, int employeeId)
         {
-            AwardValidations.ValidateAddComment(comment);
+            _awardValidations.ValidateAddComment(comment,employeeId);
             try
             {
                 _context.Set<Comment>().Add(comment);
