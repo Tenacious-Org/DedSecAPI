@@ -180,7 +180,8 @@ namespace A5.Controller
         ///
         ///     GET / Update
         ///     {
-        ///        "OrganisationId" = "1",
+        ///        "Id" = "1",
+        ///        "departmentName" = "Software Development",
         ///     }
         ///
         /// </remarks>
