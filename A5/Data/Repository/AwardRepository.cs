@@ -185,10 +185,7 @@ namespace A5.Data.Repository
             {
                 var award = _context.Set<Award>()
                     .Include("Awardee")
-                    .Include("Awardee.Designation")
-                    .Include("Awardee.Designation.Department")
                     .Include("Awardee.Designation.Department.Organisation")
-                    .Include("Awardee.ReportingPerson")
                     .Include("Awardee.ReportingPerson.ReportingPerson")
                     .Include("Awardee.HR")
                     .Include("AwardType")
@@ -220,15 +217,12 @@ namespace A5.Data.Repository
             {
                 var award = _context.Set<Award>()
                     .Include("Awardee")
-                    .Include("Awardee.Designation")
-                    .Include("Awardee.Designation.Department")
                     .Include("Awardee.Designation.Department.Organisation")
-                    .Include("Awardee.ReportingPerson")
                     .Include("Awardee.ReportingPerson.ReportingPerson")
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-                    .Where(nameof => nameof.StatusId == 4)
+                    .Where(nameof => nameof.StatusId == 4 && (nameof.UpdatedOn >= DateTime.Now.AddDays(-365) && nameof.UpdatedOn <= DateTime.Now))
                     .ToList();
 
 
@@ -241,8 +235,9 @@ namespace A5.Data.Repository
             }
         }
 
-        
 
+
+        // Dashboard Filter Combinations
         public IEnumerable<Award> GetDashboardDetailsByFilters(int organisationId, int departmentId, int awardId, DateTime start, DateTime end)
         {
             try
@@ -251,45 +246,10 @@ namespace A5.Data.Repository
                 var tdate = new DateTime(0001,04,29);
 
 
-
-                // if(organisationId != 0 && departmentId != 0 && awardId != 0 && start.ToString() != fdate && end.ToString() != tdate)
-                // {
-                //     Console.WriteLine("Condition Satisfied. All Filters Applied.");
-                // }
-                // if(organisationId != 0 && departmentId != 0 && awardId != 0 && start.ToString() != fdate && end.ToString() == tdate)
-                // {
-                //      Console.WriteLine("Condition Satisfied. ODAS Filters Applied.");
-                //      var Update = _context.Set<Award>().FirstOrDefault(nameof => nameof.Id == 1)!.UpdatedOn;
-                //      Console.WriteLine("2022-07-15 21:59:57.6137714");
-                //      Update = Convert.ToDateTime(Update);
-                //      Console.WriteLine("Update: ", Update.GetType());
-                     
-                //      Console.WriteLine("Mass: ",Convert.ToDateTime(start).GetType());
-                //      if(Update == start)
-                //      {
-                //         Console.WriteLine("Satisfied.");
-                //      }
-                // }
-
-                Console.WriteLine(start == fdate);
-
-                Console.WriteLine("fdate: ", fdate);
-                Console.WriteLine("tdate: ", tdate);
-                Console.WriteLine("start: ", start.ToString());
-                Console.WriteLine("end: ", end.ToString());
-
-                
-                
-                
-
-
             
                 var award = _context.Set<Award>()
                     .Include("Awardee")
-                    .Include("Awardee.Designation")
-                    .Include("Awardee.Designation.Department")
                     .Include("Awardee.Designation.Department.Organisation")
-                    .Include("Awardee.ReportingPerson")
                     .Include("Awardee.ReportingPerson.ReportingPerson")
                     .Include("Awardee.HR")
                     .Include("AwardType")
