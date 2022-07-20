@@ -205,7 +205,7 @@ namespace A5.Data.Repository
         public bool CreateEmployee(Employee employee)
         {
             if(employee==null) throw new ValidationException("Employee should not be null");
-            EmployeeServiceValidations.CreateValidation(employee);
+            EmployeeValidations.CreateValidation(employee);
             bool IsIdAlreadyExists=_context.Employees!.Any(nameof=>nameof.ACEID==employee.ACEID);
             if(IsIdAlreadyExists) throw new ValidationException("Employee Id already exists");
             bool IsEmailAlreadyExists=_context.Employees!.Any(nameof=>nameof.Email==employee.Email);
@@ -225,7 +225,7 @@ namespace A5.Data.Repository
         public bool UpdateEmployee(Employee employee)
         {
             if(employee==null) throw new ValidationException("Employee should not be null");
-            EmployeeServiceValidations.UpdateValidation(employee);
+            EmployeeValidations.UpdateValidation(employee);
             try
             {
                 return Update(employee);
@@ -240,7 +240,7 @@ namespace A5.Data.Repository
         //Disable employee using employee id and current user id.
         public bool DisableEmployee(int id,int employeeId)
         {
-            EmployeeServiceValidations.DisableValidation(id);
+            EmployeeValidations.DisableValidation(id);
             if(id<=0) throw new ValidationException("Id should not be null or negative");
             if(employeeId<=0) throw new ValidationException("Employee id should not be null or negative");
             try

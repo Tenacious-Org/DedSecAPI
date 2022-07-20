@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace A5.Service.Validations
 {
-    public static class StatusServiceValidations
+    public static class StatusValidations
     {
         public static void ValdiateGetById(int id)
         {

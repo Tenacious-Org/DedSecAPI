@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 namespace A5.Data.Validations
 {
-    public static class OrganisationServiceValidations
+    public static class OrganisationValidations
     {
 
        public static bool CreateValidation(Organisation organisation)

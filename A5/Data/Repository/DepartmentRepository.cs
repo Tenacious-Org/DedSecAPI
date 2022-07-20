@@ -19,7 +19,7 @@ namespace A5.Data.Repository
 
         public bool CreateDepartment(Department department)
         {
-            DepartmentServiceValidations.CreateValidation(department);
+            DepartmentValidations.CreateValidation(department);
             bool NameExists = _context.Departments!.Any(nameof => nameof.DepartmentName == department.DepartmentName && nameof.OrganisationId == department.OrganisationId);
             if (NameExists) throw new ValidationException("Department Name already exists");
             try
@@ -36,7 +36,7 @@ namespace A5.Data.Repository
         //updates department using department object.
         public bool UpdateDepartment(Department department)
         {
-            DepartmentServiceValidations.UpdateValidation(department);
+            DepartmentValidations.UpdateValidation(department);
             
             try
             {

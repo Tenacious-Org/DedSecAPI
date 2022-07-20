@@ -37,7 +37,7 @@ namespace A5.Data.Repository
         //Updates organisation using organisation object
         public bool UpdateOrganisation(Organisation organisation)
         {
-            OrganisationServiceValidations.UpdateValidation(organisation);
+            OrganisationValidations.UpdateValidation(organisation);
 
             try
             {
@@ -51,7 +51,7 @@ namespace A5.Data.Repository
         }
         
         //gets organisation by using organisation id
-        public Organisation?GetOrganisationById(int organisationId)
+        public Organisation? GetOrganisationById(int organisationId)
         {
             if(organisationId<=0) throw new ValidationException("organisationId must be greater than zero");
             try

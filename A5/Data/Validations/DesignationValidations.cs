@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace A5.Data.Validations
 {
-    public static class DesignationServiceValidations
+    public static class DesignationValidations
     {
         
 

@@ -4,7 +4,7 @@ using A5.Data;
 using System.Text.RegularExpressions;
 namespace A5.Data.Validations
 {
-    public static class EmployeeServiceValidations
+    public static class EmployeeValidations
     {
         
          public static bool CreateValidation(Employee employee)

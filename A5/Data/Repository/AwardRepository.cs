@@ -32,7 +32,7 @@ namespace A5.Data.Repository
         //raises award request by using award object and employee
         public bool RaiseAwardRequest(Award award, int employeeId)
         {
-            AwardServiceValidations.RequestValidation(award);
+            AwardValidations.RequestValidation(award);
             try
             {
                 var employee = _employeeRepository.GetEmployeeById(employeeId);
@@ -77,7 +77,7 @@ namespace A5.Data.Repository
         //approves the request raised by using award object
         public bool ApproveRequest(Award award)
         {
-            AwardServiceValidations.ApprovalValidation(award);
+            AwardValidations.ApprovalValidation(award);
             try
             {
                 if (award.StatusId == 4)
@@ -147,7 +147,7 @@ namespace A5.Data.Repository
         //Adds the comment by using comment object and employee id
         public bool AddComments(Comment comment, int employeeId)
         {
-            AwardServiceValidations.ValidateAddComment(comment);
+            AwardValidations.ValidateAddComment(comment);
             try
             {
                 _context.Set<Comment>().Add(comment);
@@ -171,7 +171,7 @@ namespace A5.Data.Repository
         //returns the comments by using award id
         public IEnumerable<Comment> GetComments(int awardId)
         {
-            AwardServiceValidations.ValidateGetComments(awardId);
+            AwardValidations.ValidateGetComments(awardId);
             try
             {
                 var comments = _context.Set<Comment>()

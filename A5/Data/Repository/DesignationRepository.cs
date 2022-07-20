@@ -20,7 +20,7 @@ namespace A5.Data.Repository
         //to get designations by departmentId
          public IEnumerable<Designation> GetDesignationsByDepartmentId(int departmentId)
          {
-             DesignationServiceValidations.ValidateGetByDepartment(departmentId);
+             DesignationValidations.ValidateGetByDepartment(departmentId);
             try
             {
                 var data =  _context.Set<Designation>().Where(nameof =>nameof.DepartmentId == departmentId && nameof.IsActive == true).ToList();
@@ -74,7 +74,7 @@ namespace A5.Data.Repository
         //creates designation using designation object
           public bool CreateDesignation(Designation designation)
         {
-            DesignationServiceValidations.CreateValidation(designation);
+            DesignationValidations.CreateValidation(designation);
             bool NameExists=_context.Designations!.Any(nameof=>nameof.DesignationName==designation.DesignationName && nameof.DepartmentId==designation.DepartmentId);
             if(NameExists) throw new ValidationException("Designation Name already exists");
             try{
@@ -106,7 +106,7 @@ namespace A5.Data.Repository
         // to update designation using designation object
         public bool UpdateDesignation(Designation designation)
         {
-            DesignationServiceValidations.UpdateValidation(designation);
+            DesignationValidations.UpdateValidation(designation);
             
             try{
                 return Update(designation);

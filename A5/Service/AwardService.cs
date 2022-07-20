@@ -19,7 +19,7 @@ namespace A5.Service
         //to raise award request using award obejct and employee id
         public bool RaiseRequest(Award award,int employeeId)
         {
-            AwardServiceValidations.RequestValidation(award);
+            AwardValidations.RequestValidation(award);
             try
             {
                 return _award.RaiseAwardRequest(award,employeeId);
@@ -40,7 +40,7 @@ namespace A5.Service
         //approves the request raised
         public bool Approval(Award award)
         {
-            AwardServiceValidations.ApprovalValidation(award);
+            AwardValidations.ApprovalValidation(award);
             try
             {
                 return _award.ApproveRequest(award);
@@ -80,7 +80,7 @@ namespace A5.Service
         //adds new comment using comment object and employee id
         public bool AddComment(Comment comment, int employeeId)
         {
-            AwardServiceValidations.ValidateAddComment(comment);
+            AwardValidations.ValidateAddComment(comment);
             try
             {
                 return _award.AddComments(comment, employeeId);
@@ -121,7 +121,7 @@ namespace A5.Service
         //gets comment using award id
         public IEnumerable<object> GetComments(int awardId)
         {
-            AwardServiceValidations.ValidateGetComments(awardId);
+            AwardValidations.ValidateGetComments(awardId);
             try
             {
                 var comments = _award.GetComments(awardId);

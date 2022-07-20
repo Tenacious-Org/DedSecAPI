@@ -8,7 +8,7 @@ using A5.Data;
 
 namespace A5.Data.Validations
 {
-    public static class DepartmentServiceValidations
+    public static class DepartmentValidations
     {
 
         public  static bool CreateValidation(Department department)

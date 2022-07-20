@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace A5.Data.Validations
 {
-    public static class AwardServiceValidations
+    public static class AwardValidations
     {
         public static bool RequestValidation(Award award)
         {

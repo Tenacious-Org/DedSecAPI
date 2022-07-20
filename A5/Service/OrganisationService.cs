@@ -19,7 +19,7 @@ namespace A5.Service
          //Create an Oraganisation using organisation object
         public bool CreateOrganisation(Organisation organisation)
         {
-            OrganisationServiceValidations.CreateValidation(organisation);
+            OrganisationValidations.CreateValidation(organisation);
             try{
                 return _organisationRepository.CreateOrganisation(organisation);
             }
@@ -38,7 +38,7 @@ namespace A5.Service
         //Updating the Organisation using organisation object
         public bool UpdateOrganisation(Organisation organisation)
         {
-            OrganisationServiceValidations.UpdateValidation(organisation);
+            OrganisationValidations.UpdateValidation(organisation);
             try{
                 return _organisationRepository.UpdateOrganisation(organisation);
             }

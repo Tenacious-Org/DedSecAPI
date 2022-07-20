@@ -180,7 +180,7 @@ namespace A5.Service
         public bool CreateEmployee(Employee employee)
         {
             if(employee==null) throw new ValidationException("Employee should not be null");
-            EmployeeServiceValidations.CreateValidation(employee);
+            EmployeeValidations.CreateValidation(employee);
             try
             {
                 employee.Image = System.Convert.FromBase64String(employee.ImageString!);
@@ -202,7 +202,7 @@ namespace A5.Service
         public bool UpdateEmployee(Employee employee)
         {
             if(employee==null) throw new ValidationException("Employee should not be null");
-            EmployeeServiceValidations.UpdateValidation(employee);
+            EmployeeValidations.UpdateValidation(employee);
             try
             {
                 employee.Image = System.Convert.FromBase64String(employee.ImageString!);
@@ -222,7 +222,7 @@ namespace A5.Service
         //Disable employee by using employee id and current user id.
         public bool DisableEmployee(int id, int employeeId)
         {
-            EmployeeServiceValidations.DisableValidation(id);
+            EmployeeValidations.DisableValidation(id);
             if(id<=0) throw new ValidationException("Id should not be null or negative");
             if(employeeId<=0) throw new ValidationException("Current user Id should not be null or negative");
             try

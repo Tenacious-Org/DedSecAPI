@@ -25,7 +25,7 @@ namespace A5.Service
          //creates department using department object.
         public bool CreateDepartment(Department department)
         {
-            DepartmentServiceValidations.CreateValidation(department);
+            DepartmentValidations.CreateValidation(department);
             try{
                 return _departmentRepository.CreateDepartment(department);
             }
@@ -43,7 +43,7 @@ namespace A5.Service
         //updates department using department object.
         public bool UpdateDepartment(Department department)
         {
-            DepartmentServiceValidations.UpdateValidation(department);
+            DepartmentValidations.UpdateValidation(department);
             try{
                 return _departmentRepository.UpdateDepartment(department);
             }

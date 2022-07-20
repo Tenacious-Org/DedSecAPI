@@ -23,7 +23,7 @@ namespace A5.Service
          //returns list of designation by department id
          public IEnumerable<Designation> GetDesignationsByDepartmentId(int departmentId)
          {
-            DesignationServiceValidations.ValidateGetByDepartment(departmentId);
+            DesignationValidations.ValidateGetByDepartment(departmentId);
             try
             {
                 return _desginationRepository.GetDesignationsByDepartmentId(departmentId);
@@ -69,7 +69,7 @@ namespace A5.Service
          //creates the designation using designation object
           public bool CreateDesignation(Designation designation)
         {
-            DesignationServiceValidations.CreateValidation(designation);
+            DesignationValidations.CreateValidation(designation);
             try{
                 return _desginationRepository.CreateDesignation(designation);
             }
@@ -99,7 +99,7 @@ namespace A5.Service
         //updates the designation using designation object
         public bool UpdateDesignation(Designation designation)
         {
-            DesignationServiceValidations.UpdateValidation(designation); 
+            DesignationValidations.UpdateValidation(designation); 
             try{
                 return _desginationRepository.UpdateDesignation(designation);
             }
@@ -131,7 +131,7 @@ namespace A5.Service
         //Returns designation by designation Id
         public Designation? GetDesignationById(int designationId)
         {
-            DesignationServiceValidations.ValidateGetById(designationId);
+            DesignationValidations.ValidateGetById(designationId);
              try{
                 return _desginationRepository.GetDesignationById(designationId);
             }
