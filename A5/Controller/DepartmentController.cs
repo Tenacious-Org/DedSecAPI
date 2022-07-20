@@ -173,15 +173,17 @@ namespace A5.Controller
         }
 
         /// <summary>
-        ///  This Method is used to view single Organisation by id
+        ///  This Method is used to Edit Department name by organisationid
         /// </summary>
         /// <remarks>
         /// Sample request:
         ///
         ///     GET / Update
         ///     {
-        ///        "Id" = "1",
-        ///        "departmentName" = "Software Development",
+        ///        "id": 7,
+        ///        "departmentName": "End Testing",
+        ///        "organisationId": 3,
+        ///        "addedBy": 1,
         ///     }
         ///
         /// </remarks>
@@ -189,7 +191,7 @@ namespace A5.Controller
         /// <response code="400">If the item is null</response> 
         /// <param name="department">String</param>
         /// <returns>
-        ///Returns signle organisation by id
+        ///Returns updated name of department
         /// </returns>
 
         [HttpPut("Update")]
