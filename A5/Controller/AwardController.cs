@@ -254,12 +254,12 @@ namespace A5.Controller
 
         [HttpGet("GetComments")]
         [AllowAnonymous]
-        public ActionResult GetComments(int id)
+        public ActionResult GetComments(int awardId)
         {
-            if (id <= 0) return BadRequest("Award Id must be greater than zero");
+            if (awardId <= 0) return BadRequest("Award Id must be greater than zero");
             try
             {
-                var data = _awardService.GetComments(id);
+                var data = _awardService.GetComments(awardId);
                 return Ok(data);
             }
             catch (ValidationException exception)
