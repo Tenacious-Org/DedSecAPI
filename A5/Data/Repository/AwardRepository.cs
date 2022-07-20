@@ -19,29 +19,27 @@ namespace A5.Data.Repository
         private readonly IEmployeeRepository _employeeRepository;
         private readonly ILogger<IAwardService> _logger;
         private readonly MailService _mail;
-        private readonly AwardValidations _awardValidations;
 
-        public AwardRepository(AppDbContext context, IEmployeeRepository employeeRepository, ILogger<IAwardService> logger, MailService mail,AwardValidations awardValidations)
+        public AwardRepository(AppDbContext context, IEmployeeRepository employeeRepository, ILogger<IAwardService> logger, MailService mail)
         {
             _context = context;
             _employeeRepository = employeeRepository;
             _logger = logger;
             _mail = mail;
-            _awardValidations=awardValidations;
 
         }
         
         //raises award request by using award object and employee
         public bool RaiseAwardRequest(Award award, int employeeId)
         {
-            _awardValidations.RequestValidation(award,employeeId);
+            AwardValidations.RequestValidation(award);
             try
             {
                 var employee = _employeeRepository.GetEmployeeById(employeeId);
                 if (employee == null) throw new ValidationException("Requester Details Not Found");
                 _context.Set<Award>().Add(award);
                 var aid = award.AwardeeId;
-                award.RequesterId = employee.Id;
+                award.RequesterId = employee!.Id;
                 award.ApproverId = employee.ReportingPersonId;
                 award.HRId = GetHRID(aid);
                 award.StatusId = 1;

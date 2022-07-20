@@ -48,7 +48,7 @@ namespace A5.Controller
             try
             {
                 var data = _awardService.RaiseRequest(award, GetCurrentUserId());
-                return data ? Ok(data):BadRequest("Failed to raise request");
+                return data ? Ok(data):BadRequest("Invalid data");
             }
             catch (ValidationException exception)
             {

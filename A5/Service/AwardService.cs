@@ -10,24 +10,18 @@ namespace A5.Service
     {
         private readonly AwardRepository _award;
         private readonly ILogger<IAwardService> _logger;
-        private readonly AwardValidations _awardValidations;
-        private readonly EmployeeRepository _employeeRepository;
-        public AwardService(AwardRepository awardRepository,ILogger<IAwardService> logger,AwardValidations awardValidations,EmployeeRepository employeeRepository)
+        public AwardService(AwardRepository awardRepository,ILogger<IAwardService> logger)
         {
             _award = awardRepository;
             _logger = logger;
-            _awardValidations=awardValidations;
-            _employeeRepository=employeeRepository;
         }
         
         //to raise award request using award obejct and employee id
         public bool RaiseRequest(Award award,int employeeId)
         {
-            _awardValidations.RequestValidation(award,employeeId);
+            AwardValidations.RequestValidation(award);
             try
             {
-                var employee = _employeeRepository.GetEmployeeById(employeeId);
-                if (employee == null) throw new ValidationException("Requester Details Not Found");
                 return _award.RaiseAwardRequest(award,employeeId);
             }
             catch (ValidationException exception)
