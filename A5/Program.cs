@@ -45,7 +45,7 @@ builder.Services.AddTransient<IDepartmentRepository,DepartmentRepository>();
 builder.Services.AddTransient<IDesignationRepository,DesignationRepository>();
 builder.Services.AddTransient<IStatusRepository,StatusRepository>();
 builder.Services.AddTransient<AwardValidations>();
-
+builder.Services.AddTransient<DesignationValidations>();
 
 
 

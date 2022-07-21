@@ -74,6 +74,7 @@ namespace A5.Service
         //gets award id by using award id
         public object GetAwardById(int awardId)
         {
+            if(awardId==0) throw new ValidationException("Award Id should not be null");
             try
             {
                 var award = _award.GetAwardById(awardId);
@@ -135,6 +136,7 @@ namespace A5.Service
         //gets comment using award id
         public IEnumerable<object> GetComments(int awardId)
         {
+            if(awardId==0) throw new ValidationException("Award is should not be null");
             try
             {
                 var comments = _award.GetComments(awardId);

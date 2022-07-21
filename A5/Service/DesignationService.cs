@@ -14,10 +14,12 @@ namespace A5.Service
     {
         private readonly IDesignationRepository _desginationRepository;
          private readonly ILogger<IDesignationRepository> _logger;
-        public DesignationService(IDesignationRepository desginationRepository, ILogger<IDesignationRepository> logger) 
+         private readonly DesignationValidations _designationValidations;
+        public DesignationService(IDesignationRepository desginationRepository, ILogger<IDesignationRepository> logger,DesignationValidations designationValidations) 
         {
             _desginationRepository = desginationRepository;
             _logger=logger;
+            _designationValidations=designationValidations;
         }
 
          //returns list of designation by department id
@@ -30,12 +32,12 @@ namespace A5.Service
             }
              catch(ValidationException exception)
             {
-                _logger.LogError("DesignationService : GetDesignationsByDepartmentId(int departmentId) : (Error:{Message}",exception.Message);
+                _logger.LogError("DesignationService : GetDesignationsByDepartmentId(departmentId : {departmentId}) : (Error:{Message}",departmentId,exception.Message);
                throw;
             }
             catch(Exception exception)
             {
-               _logger.LogError("DesignationService : GetDesignationsByDepartmentId(int departmentId) : (Error:{Message}",exception.Message);
+               _logger.LogError("DesignationService : GetDesignationsByDepartmentId(departmentId : {departmentId}) : (Error:{Message}",departmentId,exception.Message);
                throw;
             }
          }
@@ -69,7 +71,7 @@ namespace A5.Service
          //creates the designation using designation object
           public bool CreateDesignation(Designation designation)
         {
-            DesignationValidations.CreateValidation(designation);
+            _designationValidations.CreateValidation(designation);
             try{
                 return _desginationRepository.CreateDesignation(designation);
             }

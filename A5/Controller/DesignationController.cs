@@ -71,28 +71,28 @@ namespace A5.Controller
         /// </remarks>
         /// <response code="201">Returns the newly created item</response>
         /// <response code="400">If the item is null</response> 
-        /// <param name="id">String</param>
+        /// <param name="departmentId">String</param>
         /// <returns>
         ///Returns List of Designations from DepartmentId
         /// </returns>
 
         [HttpGet("GetDesignationsByDepartmentId")]
-        public ActionResult GetDesignationsByDepartmentId(int id)
+        public ActionResult GetDesignationsByDepartmentId(int departmentId)
         {
-            if (id <= 0) return BadRequest("Designation Id muts be greaer than zero");
+            if (departmentId <= 0) return BadRequest("Designation Id must be greaer than zero");
             try
             {
-                var data = _designationService.GetDesignationsByDepartmentId(id);
+                var data = _designationService.GetDesignationsByDepartmentId(departmentId);
                 return Ok(data);
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("DesignationController : GetDesignationsByDepartmentId(int id) : (Error : Message})", exception.Message);
+                _logger.LogError("DesignationController : GetDesignationsByDepartmentId(id:{id}) : (Error : Message})",departmentId ,exception.Message);
                 return BadRequest(_designationService.ErrorMessage(exception.Message));
             }
             catch (Exception exception)
             {
-                _logger.LogError("DesignationController : GetDesignationsByDepartmentId(int id) : (Error : Message})", exception.Message);
+                _logger.LogError("DesignationController : GetDesignationsByDepartmentId(int id) : (Error : Message})",departmentId ,exception.Message);
                 return Problem(exception.Message);
             }
         }

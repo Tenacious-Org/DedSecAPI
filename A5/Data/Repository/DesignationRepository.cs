@@ -10,10 +10,12 @@ namespace A5.Data.Repository
     {
         private readonly AppDbContext _context;
          private readonly ILogger<EntityBaseRepository<Designation>> _logger;
-        public DesignationRepository(AppDbContext context,ILogger<EntityBaseRepository<Designation>> logger) : base(context,logger)
+         private readonly DesignationValidations _designationValidations;
+        public DesignationRepository(AppDbContext context,ILogger<EntityBaseRepository<Designation>> logger,DesignationValidations designationValidations) : base(context,logger)
         {
             _context = context;
             _logger=logger;
+            _designationValidations=designationValidations;
         }
 
     
@@ -36,7 +38,7 @@ namespace A5.Data.Repository
             }
             catch(Exception exception)
             {
-                _logger.LogError("DesignationRespository : GetDesignationsByDepartmentId(int departmentId) : (Error:{Message}",exception.Message);
+                _logger.LogError("DesignationRespository : GetDesignationsByDepartmentId(departmentId : {departmentId}) : (Error:{Message}",departmentId,exception.Message);
                throw;
             }
          }
@@ -74,9 +76,7 @@ namespace A5.Data.Repository
         //creates designation using designation object
           public bool CreateDesignation(Designation designation)
         {
-            DesignationValidations.CreateValidation(designation);
-            bool NameExists=_context.Designations!.Any(nameof=>nameof.DesignationName==designation.DesignationName && nameof.DepartmentId==designation.DepartmentId);
-            if(NameExists) throw new ValidationException("Designation Name already exists");
+            _designationValidations.CreateValidation(designation);
             try{
                 return Create(designation);
             }

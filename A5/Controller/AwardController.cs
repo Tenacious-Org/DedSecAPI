@@ -247,7 +247,7 @@ namespace A5.Controller
         /// </remarks>
         /// <response code="201">Returns the newly created item</response>
         /// <response code="400">If the item is null</response> 
-        /// <param name="id">String</param>
+        /// <param name="awardId">String</param>
         /// <returns>
         ///Return the comments and some details of awardee 
         /// </returns>

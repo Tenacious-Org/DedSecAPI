@@ -1,20 +1,28 @@
 using A5.Data;
 using A5.Models;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 
 namespace A5.Data.Validations
 {
-    public static class DesignationValidations
+    public  class DesignationValidations
     {
-        
+        private readonly AppDbContext _context;
+        public DesignationValidations(AppDbContext context)
+        {
+            _context=context;
+        }
 
-        public static bool CreateValidation(Designation designation)
-        {           
+        public bool CreateValidation(Designation designation)
+        {  
+            if(designation.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            var Admin=_context.Set<Employee>().Include("Designation").FirstOrDefault(nameof=>nameof.Id==designation.AddedBy);
+            if(Admin.Designation!.RoleId!=5)  throw new ValidationException("This user doesn't has access to create new Designation");
             if(String.IsNullOrWhiteSpace(designation.DesignationName)) throw new ValidationException("Designation Name should not be null or Empty.");
             if(!( Regex.IsMatch(designation.DesignationName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("Designation Name should have only alphabets.No special Characters or numbers are allowed");
+            if(_context.Designations!.Any(nameof=>nameof.DesignationName==designation.DesignationName && nameof.DepartmentId==designation.DepartmentId)) throw new ValidationException("Designation Name already exists");
             if(designation.IsActive == false) throw new ValidationException("Designation should be Active when it is created.");
-            if(designation.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             else return true;
         }
         public static bool UpdateValidation(Designation designation)

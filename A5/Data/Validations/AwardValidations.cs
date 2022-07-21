@@ -2,6 +2,8 @@ using A5.Service;
 using A5.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+
 namespace A5.Data.Validations
 {
     public  class AwardValidations
@@ -13,11 +15,13 @@ namespace A5.Data.Validations
         }
         public bool RequestValidation(Award award,int employeeId)
         {
+            var awardee=_context.Set<Employee>().FirstOrDefault(nameof=>nameof.Id==award.AwardeeId);
             if(award.AwardeeId==0) throw new ValidationException("Awardee not found");
             // if(!award.Awardee.IsActive) throw new ValidationException("This Awardee is not active in this organisation");
             if(award.AwardTypeId==0) throw new ValidationException("Award Type Should not be null");
             if(string.IsNullOrWhiteSpace(award.Reason)) throw new ValidationException("Reason for award should not be null");
-            if(!(_context.Awards!.Any(nameof=>nameof.Awardee!.ReportingPersonId==employeeId))) throw new ValidationException("Reporting Person Id not found");
+            if(awardee.ReportingPersonId!=employeeId) throw new ValidationException("Reporting person Id not found");        
+            // if(!(_context.Set<Award>().Include("Awardee").Any(nameof=>nameof.Awardee!.ReportingPersonId==employeeId))) throw new ValidationException("Reporting Person Id not found");
             else return true;
            
         }
