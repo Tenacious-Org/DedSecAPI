@@ -14,7 +14,7 @@ namespace A5.Data.Validations
         public bool RequestValidation(Award award,int employeeId)
         {
             if(award.AwardeeId==0) throw new ValidationException("Awardee not found");
-            if(!award.Awardee.IsActive) throw new ValidationException("This Awardee is not active in this organisation");
+            //if(!award.Awardee.IsActive) throw new ValidationException("This Awardee is not active in this organisation");
             if(award.AwardTypeId==0) throw new ValidationException("Award Type Should not be null");
             if(string.IsNullOrWhiteSpace(award.Reason)) throw new ValidationException("Reason for award should not be null");
             if(!(_context.Awards!.Any(nameof=>nameof.Awardee.ReportingPersonId==employeeId))) throw new ValidationException("Reporting Person Id not found");
@@ -30,7 +30,7 @@ namespace A5.Data.Validations
         public  bool ValidateAddComment(Comment comment,int employeeId)
         {
             if(string.IsNullOrWhiteSpace(comment.Comments)) throw new ValidationException("Comments should not be null");
-            if(_context.Comments.Any(nameof=>nameof.Employees.Id==employeeId)) throw new ValidationException("Login to add comments");
+           // if(_context.Comments.Any(nameof=>nameof.Employees.Id==employeeId)) throw new ValidationException("Login to add comments");
             else return true;
         }
         public static bool ValidateGetComments(int awardId)
