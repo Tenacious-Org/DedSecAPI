@@ -61,10 +61,9 @@ namespace A5.Data.Repository
         //Gets HR id by using awardee id
         public int? GetHRID(int awardeeId)
         {
-            var list = _context.Set<Employee>().FirstOrDefault(nameof => nameof.Id == awardeeId)!.HRId;
-            
-            return list; 
-        } //
+            var publisherId = _context.Set<Employee>().FirstOrDefault(nameof => nameof.Id == awardeeId)!.HRId;
+            return publisherId;
+        } 
         
         //approves the request raised by using award object
         public bool ApproveRequest(Award award)
@@ -102,6 +101,7 @@ namespace A5.Data.Repository
         //Gets award by using award id
         public Award? GetAwardById(int awardId)
         {
+            if(awardId==0) throw new ValidationException("Award Id should not be zero to fetch award records.");
             try
             {
                 var award = _context.Set<Award>()
@@ -119,12 +119,12 @@ namespace A5.Data.Repository
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetAwardById(int awardId) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardRepository : GetAwardById(awardId : {awardId}) : (Error:{Message}",awardId, exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-               _logger.LogError("AwardRepository : GetAwardById(int awardId) : (Error:{Message}", exception.Message);
+               _logger.LogError("AwardRepository : GetAwardById(awardId : {awardId}) : (Error:{Message}",awardId, exception.Message);
                 throw;
             }
         }
@@ -143,12 +143,12 @@ namespace A5.Data.Repository
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : AddComments(Comment comment, int employeeId) : (Error:{Message}", exception.Message);
-                throw;
+                _logger.LogError("AwardRepository : AddComments(Comment comment,employeeId : {employeeId}) : (Error:{Message}",employeeId, exception.Message);
+                return false;
             }
             catch (Exception exception)
             {
-                _logger.LogError("AwardRepository : AddComments(Comment comment, int employeeId) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardRepository : AddComments(Comment comment,employeeId : {employeeId}) : (Error:{Message}",employeeId, exception.Message);
                 return false;
             }
         }
@@ -156,7 +156,7 @@ namespace A5.Data.Repository
         //returns the comments by using award id
         public IEnumerable<Comment> GetComments(int awardId)
         {
-            AwardValidations.ValidateGetComments(awardId);
+            if(awardId==0) throw new ValidationException("Award id should not be null");
             try
             {
                 var comments = _context.Set<Comment>()
@@ -168,12 +168,12 @@ namespace A5.Data.Repository
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : GetComments(int awardId) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardRepository : GetComments(awardId : {awardId}) : (Error:{Message}",awardId, exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("AwardRepository : GetComments(int awardId) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardRepository : GetComments(awardId : {awardId}) : (Error:{Message}",awardId, exception.Message);
                 throw;
             }
         }

@@ -135,7 +135,6 @@ namespace A5.Service
         //gets comment using award id
         public IEnumerable<object> GetComments(int awardId)
         {
-            AwardValidations.ValidateGetComments(awardId);
             try
             {
                 var comments = _award.GetComments(awardId);
