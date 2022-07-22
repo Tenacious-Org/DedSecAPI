@@ -20,8 +20,8 @@ namespace A5.Service
             _awardValidations=awardValidations;
             _employeeRepository=employeeRepository;
         }
-        
-        //to raise award request using award obejct and employee id
+
+        //to raise award request using award object and employee id(requester)
         public bool RaiseRequest(Award award,int userId)
         {
             if(award==null) throw new ValidationException("award should not be null");
@@ -30,7 +30,7 @@ namespace A5.Service
             try
             {
                  var employee = _employeeRepository.GetEmployeeById(userId);
-                if (employee == null) throw new ValidationException("Requester Details Not Found"); 
+                if (employee == null) throw new ValidationException("Requester Details Not Found");
                  var AwardeeId = award.AwardeeId;
                 award.RequesterId = employee!.Id;
                 award.ApproverId = employee.ReportingPersonId;
@@ -47,13 +47,13 @@ namespace A5.Service
             }
             catch (Exception exception)
             {
-                
+
                 _logger.LogError("AwardService: RaiseRequest(Award award,int employeeId) : (Error:{Message}", exception.Message);
                 throw;
             }
         }
 
-        //approves the request raised
+        //to approve or reject the request raised by the requester
         public bool Approval(Award award)
         {
             if(award==null) throw new ValidationException("award should not be null");
@@ -73,7 +73,7 @@ namespace A5.Service
                 throw;
             }
         }
-        
+
         //gets award id by using award id
         public object GetAwardById(int awardId)
         {
@@ -94,8 +94,8 @@ namespace A5.Service
                 throw;
             }
         }
-        
-        //adds new comment using comment object and employee id
+
+        //to add new comment by the user using comment object and employee id
         public bool AddComment(Comment comment, int employeeId)
         {
             _awardValidations.ValidateAddComment(comment,employeeId);
@@ -114,11 +114,11 @@ namespace A5.Service
                 throw;
             }
         }
-       
-       //Gets award list using page id and employee id
+
+       //Gets all awards list using page id and employee id
         public IEnumerable<object> GetAwardsList(int? pageId, int? employeeId)
         {
-            
+
             try
             {
                 var awards = _award.GetAllAwardsList(pageId,employeeId );
@@ -135,8 +135,8 @@ namespace A5.Service
                 throw;
             }
         }
-        
-        //gets comment using award id
+
+        //gets(view) comment using award id
         public IEnumerable<object> GetComments(int awardId)
         {
             if(awardId==0) throw new ValidationException("Award is should not be null");
@@ -164,8 +164,8 @@ namespace A5.Service
                 throw;
             }
         }
-        
-        //Get Award Table Details To With their respective Names.
+
+        //Get Award table details with their respective Names.
         private object GetAwardObject(Award award)
         {
             return new

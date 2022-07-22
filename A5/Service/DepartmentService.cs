@@ -65,7 +65,7 @@ namespace A5.Service
                 throw;
             }
         }
-        //Get department using Department Id
+        //Gets department using Department Id
         public Department? GetDepartmentById(int departmentId)
         {
             if (departmentId <= 0) throw new ValidationException("Department Id must be greater than zero");

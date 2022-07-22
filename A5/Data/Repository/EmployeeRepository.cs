@@ -24,7 +24,7 @@ namespace A5.Data.Repository
             _employeeValidations=employeeValidations;
             _mail=mail;
         }
-      
+
         //Gets reporting Person of particular department using department id.
         public IEnumerable<Employee> GetReportingPersonByDepartmentId(int departmentId)
         {
@@ -70,7 +70,7 @@ namespace A5.Data.Repository
         }
         //Gets Employee details of particular requester using Requester Id.
         public IEnumerable<Employee> GetEmployeeByRequesterId(int requesterId)
-        {          
+        {
            if(requesterId<=0) throw new ValidationException("Requester id should not be null or negative");
             try
             {
@@ -133,10 +133,7 @@ namespace A5.Data.Repository
             }
 
         }
-        
-
-        //Gets Details of Particular employee using employee id.
-
+         //Gets Details of Particular employee using employee id.
         public Employee? GetEmployeeById(int employeeId)
         {
            if(employeeId<=0) throw new ValidationException("Id should not be null or negative");
@@ -170,7 +167,7 @@ namespace A5.Data.Repository
             if (Email == null || Password == null) throw new ValidationException("Email or Password cannot be null");
             try
             {
-                
+
                 var User = _context.Set<Employee>().Include("Designation").FirstOrDefault(user => user.Email == Email && user.Password == Password);
                 if (User == null) throw new ValidationException("Invalid user");
                 return User;
@@ -186,10 +183,10 @@ namespace A5.Data.Repository
                 throw;
             }
         }
-        
+
         public bool ForgotPassword(string aceId,string emailId){
             try
-            { 
+            {
                 var User = _context.Set<Employee>().FirstOrDefault(user => user.ACEID == aceId && user.Email == emailId);
                 if (User == null) throw new ValidationException("User details not found");
                 _mail.ForgotAsync(User);
@@ -257,20 +254,23 @@ namespace A5.Data.Repository
             }
 
         }
-        //Gets employee count using employee id.
 
-        public int HRID(int id)
+
+        //Gets count using employee id.
+         public int HRID(int id)
         {
-            
+
             foreach(var q in _context.Set<Employee>().Where(nameof => nameof.Id == id)){
                 var answer = q.HRId;
             }
 
             var hr = 0;
-            
+
             return hr;
-            
+
         }
+
+        //gets employee count using employee Id
         public int GetEmployeeCount(int employeeId)
         {
             if(employeeId<=0) throw new ValidationException("Employee Id should not be zero or negative");

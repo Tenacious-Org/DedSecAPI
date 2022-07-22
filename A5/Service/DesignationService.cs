@@ -22,7 +22,7 @@ namespace A5.Service
             _designationValidations = designationValidations;
         }
 
-        //returns list of designation by department id
+        //gets the list of designation by department id
         public IEnumerable<Designation> GetDesignationsByDepartmentId(int departmentId)
         {
             if (departmentId <= 0) throw new ValidationException("Department Id must be greater than zero");
@@ -155,7 +155,7 @@ namespace A5.Service
             }
         }
 
-        //Returns designation by designation Id
+        //gets the designation by designation Id
         public Designation? GetDesignationById(int designationId)
         {
              if (designationId <= 0) throw new ValidationException("Designation Id must be greater than zero");   

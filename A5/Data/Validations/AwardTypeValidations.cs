@@ -8,7 +8,6 @@ namespace A5.Data.Validations
     {
         private readonly AppDbContext _context;
         private readonly UserValidations _userValidations;
-
         public AwardTypeValidations(AppDbContext context, UserValidations userValidations)
         {
             _context = context;

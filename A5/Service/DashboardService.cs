@@ -40,7 +40,7 @@ namespace A5.Service
             }
         }
 
-        
+        //filters all organisation,department,award,from date and to date
         public IEnumerable<object> GetDashboardDetailsByFilters(int organisationId, int departmentId, int awardId, DateTime start, DateTime end)
         {
             try

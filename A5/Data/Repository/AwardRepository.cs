@@ -30,14 +30,14 @@ namespace A5.Data.Repository
             _awardValidations=awardValidations;
 
         }
-        
+
         //raises award request by using award object and employee
         public bool RaiseAwardRequest(Award award)
         {
-            
+
             try
             {
-               
+
                 _context.Set<Award>().Add(award);
                 _context.SaveChanges();
                 if (award.StatusId == 1)
@@ -58,15 +58,15 @@ namespace A5.Data.Repository
                 return false;
             }
         }
-        
+
         //Gets HR id by using awardee id
         public int? GetHRID(int awardeeId)
         {
             var publisherId = _context.Set<Employee>().FirstOrDefault(nameof => nameof.Id == awardeeId)!.HRId;
             return publisherId;
-        } 
-        
-        //approves the request raised by using award object
+        }
+
+        //approves or rejects the request raised by requester using award object
         public bool ApproveRequest(Award award)
         {
             _awardValidations.ApprovalValidation(award);
@@ -78,6 +78,7 @@ namespace A5.Data.Repository
                 if (award.StatusId == 4)
                 {
                     _mail?.PublishedAsync(award);
+                    // _mail?.ExampleAsync(award);
 
                 }
                 else if (award.StatusId == 3)
@@ -93,13 +94,13 @@ namespace A5.Data.Repository
             }
             catch (Exception exception)
             {
-                
+
                 _logger.LogError("AwardRepository : ApproveRequest(Award award) : (Error:{Message}", exception.Message);
                 return false;
             }
         }
 
-        //Gets award by using award id
+        //Gets particular award by using award id
         public Award? GetAwardById(int awardId)
         {
             if(awardId==0) throw new ValidationException("Award Id should not be zero to fetch award records.");
@@ -129,7 +130,7 @@ namespace A5.Data.Repository
                 throw;
             }
         }
-        
+
         //Adds the comment by using comment object and employee id
         public bool AddComments(Comment comment, int employeeId)
         {
@@ -178,7 +179,7 @@ namespace A5.Data.Repository
                 throw;
             }
         }
-        
+
         //returns list of all awards by using page id and employee id
         public IEnumerable<Award> GetAllAwardsList(int? pageId, int? employeeId)
         {
@@ -201,7 +202,7 @@ namespace A5.Data.Repository
                 else if (pageId == 3 && employeeId != 0)
                     award = award.Where(nameof => nameof.ApproverId == employeeId).OrderByDescending(nameof=>nameof.AddedOn).OrderBy(nameof => nameof.StatusId).ToList();
                 else if (pageId == 4 && employeeId != 0)
-                    award = award.Where(nameof => nameof.HRId == employeeId && (nameof.StatusId == 2 || nameof.StatusId == 4)).OrderByDescending(nameof => nameof.UpdatedOn).OrderBy(nameof => nameof.StatusId).ToList();         
+                    award = award.Where(nameof => nameof.HRId == employeeId && (nameof.StatusId == 2 || nameof.StatusId == 4)).OrderByDescending(nameof => nameof.UpdatedOn).OrderBy(nameof => nameof.StatusId).ToList();
                 return award;
             }
             catch (Exception exception)
@@ -210,7 +211,7 @@ namespace A5.Data.Repository
                 throw;
             }
         }
-        
+
         //returns the list of all awards
         public IEnumerable<Award> GetAllAwardees()
         {
@@ -247,50 +248,50 @@ namespace A5.Data.Repository
                 var tdate = new DateTime(0001,04,29);
 
 
-            
+
                 var award = _context.Set<Award>()
                     .Include("Awardee")
                     .Include("Awardee.Designation.Department.Organisation")
                     .Include("Awardee.ReportingPerson.ReportingPerson")
                     .Include("Awardee.HR")
                     .Include("AwardType")
-                    .Include("Status") 
+                    .Include("Status")
 
                     //Applying All Filter Values and Retrieve the Data Using Organisation ID, Department ID, Award ID, Start Date and End Date  //
                     .WhereIf(organisationId != 0 && departmentId != 0 && awardId != 0 && start != fdate && end != tdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
-                                  && nameof.Awardee.Designation.Department.Id == departmentId 
+                                  && nameof.Awardee.Designation.Department.Id == departmentId
                                   && nameof.AwardTypeId == awardId
                                   && nameof.StatusId == 4
                                   && (nameof.UpdatedOn >= Convert.ToDateTime(start).Date && nameof.UpdatedOn <= Convert.ToDateTime(end).Date))
-                    
+
                     //Applying Filter Values and Retrieve the Data Using Organisation ID, Department ID, Award ID, Start Date   //
                     .WhereIf(organisationId != 0 && departmentId != 0 && awardId != 0 && start != fdate && end == tdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
-                                  && nameof.Awardee.Designation.Department.Id == departmentId 
+                                  && nameof.Awardee.Designation.Department.Id == departmentId
                                   && nameof.AwardTypeId == awardId
                                   && nameof.StatusId == 4
                                   && (nameof.UpdatedOn >= Convert.ToDateTime(start).Date))
-                    
+
                     //Applying Filter Values and Retrieve the Data Using Organisation ID, Department ID, Award ID, End Date     //
                     .WhereIf(organisationId != 0 && departmentId != 0 && awardId != 0 && start == fdate && end != tdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
-                                  && nameof.Awardee.Designation.Department.Id == departmentId 
+                                  && nameof.Awardee.Designation.Department.Id == departmentId
                                   && nameof.AwardTypeId == awardId
                                   && nameof.StatusId == 4
                                   && nameof.UpdatedOn <= Convert.ToDateTime(end).Date)
-           
+
                     //Applying Filter Values and Retrieve the Data Using Start Date  //
                     .WhereIf(organisationId == 0 && departmentId == 0 && awardId == 0 && start != fdate && end == tdate,
                            nameof => nameof.StatusId == 4
                                   && nameof.UpdatedOn >= Convert.ToDateTime(start).Date)
-                    
-                    
+
+
                     //Applying All Filter Values and Retrieve the Data Using End Date   //
                     .WhereIf(organisationId == 0 && departmentId == 0 && awardId == 0 && start == fdate && end != tdate,
                            nameof => nameof.StatusId == 4
                                   && nameof.UpdatedOn <= Convert.ToDateTime(end).Date)
-                    
+
                     //Applying All Filter Values and Retrieve the Data Using Start Date and End Date    //
                     .WhereIf(organisationId == 0 && departmentId == 0 && awardId == 0 && start != fdate && end != tdate,
                            nameof => nameof.StatusId == 4
@@ -299,41 +300,41 @@ namespace A5.Data.Repository
                     // Applying All Filter Values and Retrieve the Data Using Organisation ID
                     .WhereIf(organisationId != 0 && departmentId == 0 && awardId == 0 && start == fdate && end == tdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId && nameof.StatusId == 4)
-                    
+
                     //Applying All Filter Values and Retrieve the Data Using Organisation ID, Start Date
                     .WhereIf(organisationId != 0 && departmentId == 0 && awardId == 0 && start != fdate && end == tdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
                                   && nameof.StatusId == 4
                                   && nameof.UpdatedOn >= Convert.ToDateTime(start).Date)
-                    
+
                     //Applying All Filter Values and Retrieve the Data Using Organisation ID, End Date
                     .WhereIf(organisationId != 0 && departmentId == 0 && awardId == 0 && start == fdate && end != tdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
                                   && nameof.StatusId == 4
                                   && nameof.UpdatedOn <= Convert.ToDateTime(end).Date)
-                    
+
                     //Applying All Filter Values and Retrieve the Data Using Organisation ID, Start Date and End Date
                     .WhereIf(organisationId != 0 && departmentId == 0 && awardId == 0 && start != fdate && end != tdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
                                   && nameof.StatusId == 4
                                   && (nameof.UpdatedOn >= Convert.ToDateTime(start).Date && nameof.UpdatedOn <= Convert.ToDateTime(end).Date))
-                    
+
                     //Applying All Filter Values and Retrieve the Data Using Award ID
                     .WhereIf(organisationId == 0 && departmentId == 0 && awardId != 0 && start == fdate && end == tdate,
                            nameof => nameof.AwardTypeId == awardId && nameof.StatusId == 4)
-                    
+
                     //Applying All Filter Values and Retrieve the Data Using Award ID, Start Date
                     .WhereIf(organisationId == 0 && departmentId == 0 && awardId != 0 && start != fdate && end == tdate,
                            nameof => nameof.AwardTypeId == awardId
                                   && nameof.StatusId == 4
                                   && nameof.UpdatedOn >= Convert.ToDateTime(start).Date)
-                    
+
                     //Applying All Filter Values and Retrieve the Data Using Award ID, End Date
                     .WhereIf(organisationId == 0 && departmentId == 0 && awardId != 0 && start == fdate && end != tdate,
                            nameof => nameof.AwardTypeId == awardId
                                   && nameof.StatusId == 4
                                   && nameof.UpdatedOn <= Convert.ToDateTime(end).Date)
-                    
+
                     //Applying All Filter Values and Retrieve the Data Using Award ID, Start Date and End Date
                     .WhereIf(organisationId == 0 && departmentId == 0 && awardId != 0 && start != fdate && end != tdate,
                            nameof => nameof.AwardTypeId == awardId
@@ -348,21 +349,21 @@ namespace A5.Data.Repository
                     //Applying Filter Values and Retrieve the Data Using Organisation ID, Department ID, Start Date.
                     .WhereIf(organisationId != 0 && departmentId != 0 && awardId == 0 && start != fdate && end == tdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
-                                  && nameof.Awardee.Designation.Department.Id == departmentId   
+                                  && nameof.Awardee.Designation.Department.Id == departmentId
                                   && nameof.StatusId == 4
                                   && nameof.UpdatedOn >= Convert.ToDateTime(start).Date)
 
                     //Applying Filter Values and Retrieve the Data Using Organisation ID, Department ID, End Date
                     .WhereIf(organisationId != 0 && departmentId != 0 && awardId == 0 && start == fdate && end != tdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
-                                  && nameof.Awardee.Designation.Department.Id == departmentId 
+                                  && nameof.Awardee.Designation.Department.Id == departmentId
                                   && nameof.StatusId == 4
                                   && nameof.UpdatedOn <= Convert.ToDateTime(end).Date)
 
                     //Applying Filter Values and Retrieve the Data Using Organisation ID, Department ID, Start Date and End Date
                     .WhereIf(organisationId != 0 && departmentId != 0 && awardId == 0 && start != fdate && end != tdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
-                                  && nameof.Awardee.Designation.Department.Id == departmentId 
+                                  && nameof.Awardee.Designation.Department.Id == departmentId
                                   && nameof.StatusId == 4
                                   && (nameof.UpdatedOn >= Convert.ToDateTime(start).Date && nameof.UpdatedOn <= Convert.ToDateTime(end).Date))
 
@@ -392,7 +393,7 @@ namespace A5.Data.Repository
                                   && nameof.AwardTypeId == awardId
                                   && nameof.StatusId == 4
                                   && (nameof.UpdatedOn >= Convert.ToDateTime(start).Date && nameof.UpdatedOn <= Convert.ToDateTime(end).Date))
-                    
+
                     //Neither All Conditions Failed Default Value Displayed
                     .WhereIf(organisationId == 0 && departmentId == 0 && awardId == 0 && start == fdate && end == tdate,
                             nameof => nameof.UpdatedOn >= DateTime.Now.AddDays(-365) && nameof.UpdatedOn <= DateTime.Now)
@@ -410,7 +411,7 @@ namespace A5.Data.Repository
               throw;
             }
         }
-        
-       
+
+
    }
 }

@@ -29,6 +29,7 @@ namespace A5.Service
             _awardTypeValidations.CreateValidation(awardType);
             try
             {
+                //converts the image type to Base64
                 awardType.Image = System.Convert.FromBase64String(awardType.ImageString!);
                 return _awardTypeRepository.CreateAwardType(awardType);
             }
@@ -51,6 +52,7 @@ namespace A5.Service
             _awardTypeValidations.UpdateValidation(awardType);
             try
             {
+                //converts the image type to Base64
                 awardType.Image = System.Convert.FromBase64String(awardType.ImageString!);
                 return _awardTypeRepository.UpdateAwardType(awardType);
             }

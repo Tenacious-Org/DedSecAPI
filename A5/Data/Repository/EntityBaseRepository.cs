@@ -11,8 +11,6 @@ namespace A5.Data.Repository
     {
         private readonly AppDbContext _context;
         private readonly ILogger<EntityBaseRepository<T>> _logger;
-
-       
         public EntityBaseRepository( AppDbContext context,ILogger<EntityBaseRepository<T>> logger)
         {
             _context = context;
@@ -20,8 +18,6 @@ namespace A5.Data.Repository
         }
 
         //Methods
-
-        
         public bool Create(T entity)
         {
            try

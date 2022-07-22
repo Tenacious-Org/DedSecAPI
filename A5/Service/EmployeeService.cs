@@ -57,7 +57,7 @@ namespace A5.Service
                 throw;
             }
         }
-        //Get Employee by using Requester Id.
+        //Gets list of Employees by using Requester Id.
         public IEnumerable<Employee> GetEmployeeByRequesterId(int requesterId)
         {
             if (requesterId <= 0) throw new ValidationException("Requester Id must be greater than zero");
@@ -76,7 +76,7 @@ namespace A5.Service
                 throw;
             }
         }
-        //Get employees of particular organisation by using organisation id.
+        //Get list of employees of a particular organisation by using organisation id.
         public IEnumerable<Employee> GetEmployeeByOrganisation(int organisationId)
         {
             if (organisationId <= 0) throw new ValidationException("Organisation Id must be greater than zero");
@@ -95,7 +95,7 @@ namespace A5.Service
                 throw;
             }
         }
-        //Gets all employees.
+        //Gets list of all employees.
         public IEnumerable<object> GetAllEmployees()
         {
             try
@@ -270,7 +270,7 @@ namespace A5.Service
         {
             return new { message = ValidationMessage };
         }
-        //gets employee using employee object
+        //gets(view) employee using employee object
         private object GetEmployeeObject(Employee employee)
         {
             return new
@@ -322,6 +322,7 @@ namespace A5.Service
                 throw;
             }
         }
+        //generates default password for employees
         private string GeneratePassword(Employee employee)
         {
 
