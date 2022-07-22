@@ -22,19 +22,21 @@ namespace A5.Service
         }
         
         //to raise award request using award obejct and employee id
-        public bool RaiseRequest(Award award,int employeeId)
+        public bool RaiseRequest(Award award,int userId)
         {
-           _awardValidations.RequestValidation(award,employeeId);
+            if(award==null) throw new ValidationException("award should not be null");
+            if(userId<=0) throw new ValidationException("user id must be greater than zero");
+           _awardValidations.RequestValidation(award,userId);
             try
             {
-                 var employee = _employeeRepository.GetEmployeeById(employeeId);
+                 var employee = _employeeRepository.GetEmployeeById(userId);
                 if (employee == null) throw new ValidationException("Requester Details Not Found"); 
                  var AwardeeId = award.AwardeeId;
                 award.RequesterId = employee!.Id;
                 award.ApproverId = employee.ReportingPersonId;
                 award.HRId = _award.GetHRID(AwardeeId);
                 award.StatusId = 1;
-                award.AddedBy = employeeId;
+                award.AddedBy = userId;
                 award.AddedOn = DateTime.Now;
                 return _award.RaiseAwardRequest(award);
             }
@@ -54,6 +56,7 @@ namespace A5.Service
         //approves the request raised
         public bool Approval(Award award)
         {
+            if(award==null) throw new ValidationException("award should not be null");
             _awardValidations.ApprovalValidation(award);
             try
             {

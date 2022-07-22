@@ -77,7 +77,7 @@ namespace A5.Data.Repository
                 _context.SaveChanges();
                 if (award.StatusId == 4)
                 {
-                    _mail?.ExampleAsync(award);
+                    _mail?.PublishedAsync(award);
 
                 }
                 else if (award.StatusId == 3)

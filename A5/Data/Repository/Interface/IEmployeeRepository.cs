@@ -9,6 +9,7 @@ namespace A5.Data.Repository.Interface
         public bool UpdateEmployee(Employee employee);
         public Employee? GetEmployeeById(int employeeId);
         public IEnumerable<Employee> GetAllEmployees();
+        public bool ForgotPassword(string aceId,string emailId);
         public IEnumerable<Employee> GetReportingPersonByDepartmentId(int departmentId);
         public IEnumerable<Employee> GetHrByDepartmentId(int departmentId);
         public IEnumerable<Employee> GetEmployeeByRequesterId(int requesterId);

@@ -499,7 +499,7 @@ public async Task RejectedAsync(Award awardee)
 
 
 
-public async Task ForgotAsync(Award awardee)
+public async Task ForgotAsync(Employee user)
     {
         string text4 =
             $@"<body>
@@ -598,7 +598,7 @@ public async Task ForgotAsync(Award awardee)
               <tbody>
                 <tr>
                 <td align='center' bgcolor='#D53B3E' class='inner-td' style='border-radius:6px; font-size:16px; text-align:center; background-color:inherit;'>
-                 <div style='background-color:#D53B3E; border:0px solid #333333; border-color:#333333; border-radius:0px; border-width:0px; display:inline-block; font-size:16px; font-weight:700; letter-spacing:2px; line-height:normal; padding:15px 50px 15px 50px; text-align:center; text-decoration:none; border-style:solid; font-family:lucida sans unicode,lucida grande,sans-serif; color:#ffffff;'>Password{}</span></div>
+                 <div style='background-color:#D53B3E; border:0px solid #333333; border-color:#333333; border-radius:0px; border-width:0px; display:inline-block; font-size:16px; font-weight:700; letter-spacing:2px; line-height:normal; padding:15px 50px 15px 50px; text-align:center; text-decoration:none; border-style:solid; font-family:lucida sans unicode,lucida grande,sans-serif; color:#ffffff;'>Password{user.Password}</span></div>
                 </td>
                 </tr>
               </tbody>

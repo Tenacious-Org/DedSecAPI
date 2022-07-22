@@ -5,6 +5,7 @@ using A5.Data.Repository.Interface;
 using A5.Models;
 using A5.Data.Validations;
 using Microsoft.EntityFrameworkCore;
+using A5.Service;
 
 namespace A5.Data.Repository
 {
@@ -13,6 +14,8 @@ namespace A5.Data.Repository
         private readonly AppDbContext _context;
         private readonly ILogger<EntityBaseRepository<Employee>> _logger;
         private readonly EmployeeValidations _employeeValidations;
+        private readonly MailService _mail;
+
 
         public EmployeeRepository(AppDbContext context, ILogger<EntityBaseRepository<Employee>> logger,EmployeeValidations employeeValidations) : base(context, logger)
         {
@@ -129,27 +132,7 @@ namespace A5.Data.Repository
             }
 
         }
-        //Get all employees 
-        public IEnumerable<Employee> GetUserDetails()
-        {
-            try
-            {
-                var employee = _context.Set<Employee>()
-                    .Include("Designation.Department.Organisation")
-                    .Include("Designation.Department")
-                    .Include("Designation")
-                    .Include("ReportingPerson")
-                    .Include("HR")
-                    .Where(nameof => nameof.IsActive == true)
-                    .ToList();
-                return employee;
-            }
-            catch (Exception exception)
-            {
-                 _logger.LogError("EmployeeRepository: GetUserDetails() : (Error:{Message})", exception.Message);
-                throw;
-            }
-        }
+        
 
         //Gets Details of Particular employee using employee id.
 
@@ -187,10 +170,9 @@ namespace A5.Data.Repository
             try
             {
                 
-                var User = GetUserDetails().FirstOrDefault(user => user.Email == Email && user.Password == Password);
+                var User = _context.Set<Employee>().Include("Designation").FirstOrDefault(user => user.Email == Email && user.Password == Password);
                 if (User == null) throw new ValidationException("Invalid user");
                 return User;
-
             }
             catch (ValidationException exception)
             {
@@ -203,6 +185,28 @@ namespace A5.Data.Repository
                 throw;
             }
         }
+        
+        public bool ForgotPassword(string aceId,string emailId){
+            try
+            { 
+                var User = _context.Set<Employee>().FirstOrDefault(user => user.ACEID == aceId && user.Email == emailId);
+                if (User == null) throw new ValidationException("User details not found");
+                _mail.ForgotAsync(User);
+                return true;
+
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("EmployeeRepository: ForgotPassword(AceID : {aceId},Email : {emailId}) : (Error:{Message})",aceId,emailId, exception.Message);
+                throw;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError("EmployeeRepository: ForgotPassword(AceID : {aceId},Email : {emailId}) : (Error:{Message})", aceId,emailId, exception.Message);
+                throw;
+            }
+        }
+
         //Creates employee by using employee object.
         public bool CreateEmployee(Employee employee)
         {

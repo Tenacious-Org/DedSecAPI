@@ -179,6 +179,29 @@ namespace A5.Service
                 throw;
             }
         }
+
+        public bool ForgotPassword(string aceId, string emailId)
+        {
+            if (String.IsNullOrWhiteSpace(aceId)) throw new ValidationException("AceId should not be null");
+            if (String.IsNullOrWhiteSpace(emailId)) throw new ValidationException("Email ID should not be null");
+            try
+            {
+                return _employeeRepository.ForgotPassword(aceId, emailId);
+            }
+             catch (ValidationException exception)
+            {
+                _logger.LogError("EmployeeService: ForgotPassword(AceID : {ACEID},Email : {Email}) : (Error:{Message})",aceId,emailId, exception.Message);
+                throw;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError("EmployeeService: ForgotPassword(AceID : {ACEID},Email : {Email}) : (Error:{Message})", aceId,emailId, exception.Message);
+                throw;
+            }
+
+
+        }
+
         //Creates Employee using employee object.
         public bool CreateEmployee(Employee employee)
         {
