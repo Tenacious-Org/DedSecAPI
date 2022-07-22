@@ -16,7 +16,7 @@ namespace A5.Data.Validations
         public bool RequestValidation(Award award, int userId)
         {
             var awardee = _context.Set<Employee>().FirstOrDefault(nameof => nameof.Id == award.AwardeeId);
-            if (awardee.ReportingPersonId != userId) throw new ValidationException("Reporting person Id not found");
+            if (awardee?.ReportingPersonId != userId) throw new ValidationException("Reporting person Id not found");
             if (award.AwardeeId <= 0) throw new ValidationException("Awardee Id must be greater than zero");
             if (awardee.IsActive == false) throw new ValidationException("This Awardee is inactive. So unable to raise request ");
             if (award.AwardTypeId <= 0) throw new ValidationException("Award Type Id must be greater than zero");
@@ -28,7 +28,7 @@ namespace A5.Data.Validations
         public bool ValidateAddComment(Comment comment, int employeeId)
         {
             if (string.IsNullOrWhiteSpace(comment.Comments)) throw new ValidationException("Comments should not be null");
-            if (_context.Employees.Any(nameof => nameof.Id != employeeId)) throw new ValidationException("Invalid User , no access to comment");
+            if (_context.Employees!.Any(nameof => nameof.Id != employeeId)) throw new ValidationException("Invalid User , no access to comment");
             return true;
         }
         public bool ApprovalValidation(Award award)

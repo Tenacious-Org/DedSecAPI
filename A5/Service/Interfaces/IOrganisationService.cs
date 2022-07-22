@@ -10,7 +10,7 @@ namespace A5.Service.Interfaces
         bool CreateOrganisation(Organisation organisation);
         bool UpdateOrganisation(Organisation organisation);
         Organisation? GetOrganisationById(int organisationId);
-        bool DisableOrganisation(int organisationId,int employeeId);
+        bool DisableOrganisation(int organisationId,int userId);
         int GetCount(int organisationId);
         public IEnumerable<Organisation> GetAllOrganisation();
 

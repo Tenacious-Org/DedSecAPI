@@ -87,12 +87,12 @@ namespace A5.Controller
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("DesignationController : GetDesignationsByDepartmentId(id:{id}) : (Error : Message})",id ,exception.Message);
+                _logger.LogError("DesignationController : GetDesignationsByDepartmentId(id:{id}) : (Error : {Message})",id ,exception.Message);
                 return BadRequest(_designationService.ErrorMessage(exception.Message));
             }
             catch (Exception exception)
             {
-                _logger.LogError("DesignationController : GetDesignationsByDepartmentId(int id) : (Error : Message})",id ,exception.Message);
+                _logger.LogError("DesignationController : GetDesignationsByDepartmentId(id:{id}) : (Error : {Message})",id ,exception.Message);
                 return Problem(exception.Message);
             }
         }

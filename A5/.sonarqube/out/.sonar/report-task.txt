@@ -1,6 +1,6 @@
-projectKey=Award-management
+projectKey=Awards
 serverUrl=http://localhost:9000
 serverVersion=9.5.0.56709
-dashboardUrl=http://localhost:9000/dashboard?id=Award-management
-ceTaskId=AYIVvOqFI4tiVTuQ6Pi5
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYIVvOqFI4tiVTuQ6Pi5
+dashboardUrl=http://localhost:9000/dashboard?id=Awards
+ceTaskId=AYIlXnDQam3UwAjqQ7cz
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYIlXnDQam3UwAjqQ7cz

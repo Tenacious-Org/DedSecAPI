@@ -9,11 +9,9 @@ namespace A5.Data.Repository
 {
      public class AwardTypeRepository : EntityBaseRepository<AwardType>,IAwardTypeRepository
     {
-        private readonly AppDbContext _context;
          private readonly ILogger<EntityBaseRepository<AwardType>> _logger;
          private readonly AwardTypeValidations _awardTypeValidations;
         public AwardTypeRepository(AppDbContext context,ILogger<EntityBaseRepository<AwardType>> logger,AwardTypeValidations awardTypeValidations) : base(context,logger) { 
-            _context=context;
             _logger=logger;
             _awardTypeValidations=awardTypeValidations;
         }

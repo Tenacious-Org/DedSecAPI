@@ -189,7 +189,7 @@ namespace A5.Data.Repository
             {
                 var User = _context.Set<Employee>().FirstOrDefault(user => user.ACEID == aceId && user.Email == emailId);
                 if (User == null) throw new ValidationException("User details not found");
-                _mail.ForgotAsync(User);
+                _mail?.ForgotAsync(User);
                 return true;
 
             }

@@ -16,15 +16,13 @@ namespace A5.Data.Repository
     public class AwardRepository : IAwardRepository
     {
         private readonly AppDbContext _context;
-        private readonly IEmployeeRepository _employeeRepository;
         private readonly ILogger<IAwardService> _logger;
         private readonly AwardValidations _awardValidations;
         private readonly MailService _mail;
 
-        public AwardRepository(AppDbContext context, IEmployeeRepository employeeRepository, ILogger<IAwardService> logger, MailService mail,AwardValidations awardValidations)
+        public AwardRepository(AppDbContext context, ILogger<IAwardService> logger, MailService mail,AwardValidations awardValidations)
         {
             _context = context;
-            _employeeRepository = employeeRepository;
             _logger = logger;
             _mail = mail;
             _awardValidations=awardValidations;
@@ -77,8 +75,8 @@ namespace A5.Data.Repository
                 _context.SaveChanges();
                 if (award.StatusId == 4)
                 {
-                    _mail?.PublishedAsync(award);
-                    // _mail?.ExampleAsync(award);
+                    _mail?.PublishedAsync(award); 
+
 
                 }
                 else if (award.StatusId == 3)

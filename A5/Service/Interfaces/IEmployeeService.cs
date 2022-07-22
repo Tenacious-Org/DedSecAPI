@@ -8,9 +8,9 @@ namespace A5.Data.Service.Interfaces
     public interface IEmployeeService
     {
         public bool CreateEmployee(Employee employee);
-        public bool DisableEmployee(int id,int employeeId);
+        public bool DisableEmployee(int employeeId,int userId);
         public bool UpdateEmployee(Employee employee);
-        public object? GetEmployeeById(int id);
+        public object? GetEmployeeById(int employeeId);
         public IEnumerable<object> GetAllEmployees();
         public IEnumerable<Employee> GetReportingPersonByDepartmentId(int departmentId);
         public IEnumerable<Employee> GetHrByDepartmentId(int departmentId);

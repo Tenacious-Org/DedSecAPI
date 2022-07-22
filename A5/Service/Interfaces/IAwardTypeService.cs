@@ -6,7 +6,7 @@ namespace A5.Service.Interfaces
     public interface IAwardTypeService
     {
         public bool CreateAwardType(AwardType awardType);
-        public bool DisableAwardType(int id,int employeeId);
+        public bool DisableAwardType(int awardTypeId,int userId);
         public bool UpdateAwardType(AwardType awardType);
         public AwardType? GetAwardTypeById(int awardTypeId);
         public IEnumerable<AwardType> GetAllAwardType();
