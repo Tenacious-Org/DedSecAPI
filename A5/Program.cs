@@ -45,8 +45,12 @@ builder.Services.AddTransient<IDepartmentRepository,DepartmentRepository>();
 builder.Services.AddTransient<IDesignationRepository,DesignationRepository>();
 builder.Services.AddTransient<IStatusRepository,StatusRepository>();
 builder.Services.AddTransient<AwardValidations>();
+builder.Services.AddTransient<AwardTypeValidations>();
+builder.Services.AddTransient<OrganisationValidations>();
 builder.Services.AddTransient<DesignationValidations>();
-
+builder.Services.AddTransient<EmployeeValidations>();
+builder.Services.AddTransient<UserValidations>();
+builder.Services.AddTransient<DepartmentValidations>();
 
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>

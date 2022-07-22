@@ -8,29 +8,50 @@ using A5.Data;
 
 namespace A5.Data.Validations
 {
-    public static class DepartmentValidations
+    public class DepartmentValidations
     {
+        private readonly AppDbContext _context;
+        private readonly UserValidations _userValidations;
 
-        public  static bool CreateValidation(Department department)
+        public DepartmentValidations(AppDbContext context, UserValidations userValidations)
         {
-            if(string.IsNullOrWhiteSpace(department.DepartmentName)) throw new ValidationException("Department Name should not be null or Empty.");
-            if(!( Regex.IsMatch(department.DepartmentName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("Department Name should have only alphabets.No special Characters or numbers are allowed");
-            if(department.IsActive == false) throw new ValidationException("Department should be Active when it is created.");
-            if(department.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            _context = context;
+            _userValidations = userValidations;
+        }
+
+        public bool CreateValidation(Department department)
+        {
+            if (department.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            _userValidations.AdminValidation(department.AddedBy);
+            CommonValidations(department);
+            return true;
+        }
+
+        public bool UpdateValidation(Department department)
+        {
+            if (department.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
+            _userValidations.AdminValidation(department.UpdatedBy);
+            CommonValidations(department);
+            return true;
+        }
+
+        public bool DisableValidation(int userId)
+        {
+            if (userId <= 0) throw new ValidationException("User Id must be greater than zero");
+            _userValidations.AdminValidation(userId);
+            return true;
+        }
+
+        public bool CommonValidations(Department department)
+        {
+            if (string.IsNullOrWhiteSpace(department.DepartmentName)) throw new ValidationException("Department Name should not be null or Empty.");
+            if (!(Regex.IsMatch(department.DepartmentName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("Department Name should have only alphabets.No special Characters or numbers are allowed");
+            if (department.OrganisationId <= 0) throw new ValidationException("Organisation Id Should not be Zero or less than zero.");
+            if (department.IsActive == false) throw new ValidationException("Department should be Active when it is created.");
             else return true;
         }
 
-         public static bool UpdateValidation(Department department)
-        {
-             if(string.IsNullOrWhiteSpace(department.DepartmentName)) throw new ValidationException("Department name should not be null or empty");
-             if(!( Regex.IsMatch(department.DepartmentName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("Department Name should have only alphabets.No special Characters or numbers are allowed");
-             if(department.IsActive == false) throw new ValidationException("To Update department it should be active");
-             if(department.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
-             if(department.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
-             else return true;
-        }
 
-        
-    
+
     }
 }

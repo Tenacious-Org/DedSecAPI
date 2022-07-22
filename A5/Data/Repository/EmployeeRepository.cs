@@ -205,7 +205,7 @@ namespace A5.Data.Repository
         public bool CreateEmployee(Employee employee)
         {
             if(employee==null) throw new ValidationException("Employee should not be null");
-            EmployeeValidations.CreateValidation(employee);
+           // EmployeeValidations.CreateValidation(employee);
             
             try
             {
@@ -222,7 +222,7 @@ namespace A5.Data.Repository
         public bool UpdateEmployee(Employee employee)
         {
             if(employee==null) throw new ValidationException("Employee should not be null");
-            EmployeeValidations.UpdateValidation(employee);
+            //EmployeeValidations.UpdateValidation(employee);
             try
             {
                 return Update(employee);
@@ -237,7 +237,7 @@ namespace A5.Data.Repository
         //Disable employee using employee id and current user id.
         public bool DisableEmployee(int id,int employeeId)
         {
-            EmployeeValidations.DisableValidation(id);
+           // EmployeeValidations.DisableValidation(id);
             if(id<=0) throw new ValidationException("Id should not be null or negative");
             if(employeeId<=0) throw new ValidationException("Employee id should not be null or negative");
             try

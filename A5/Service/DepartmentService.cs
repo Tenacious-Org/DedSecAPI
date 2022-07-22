@@ -15,17 +15,19 @@ namespace A5.Service
     {
          private readonly ILogger<EntityBaseRepository<Department>> _logger; 
          private readonly IDepartmentRepository _departmentRepository;
+         private readonly DepartmentValidations _departmentValidations;
         
-        public DepartmentService( ILogger<EntityBaseRepository<Department>> logger,IDepartmentRepository departmentRepository){
+        public DepartmentService( ILogger<EntityBaseRepository<Department>> logger,IDepartmentRepository departmentRepository,DepartmentValidations departmentValidations){
                
                 _logger=logger;
                 _departmentRepository=departmentRepository;
+                _departmentValidations=departmentValidations;
          } 
          
          //creates department using department object.
         public bool CreateDepartment(Department department)
         {
-            DepartmentValidations.CreateValidation(department);
+            _departmentValidations.CreateValidation(department);
             try{
                 return _departmentRepository.CreateDepartment(department);
             }
@@ -43,7 +45,7 @@ namespace A5.Service
         //updates department using department object.
         public bool UpdateDepartment(Department department)
         {
-            DepartmentValidations.UpdateValidation(department);
+            _departmentValidations.UpdateValidation(department);
             try{
                 return _departmentRepository.UpdateDepartment(department);
             }
@@ -80,7 +82,8 @@ namespace A5.Service
         public bool DisableDepartment(int id,int employeeId)
         {   
             if(id<=0) throw new ValidationException("Department Id should not be null or negative");
-            if(employeeId<=0 )throw new ValidationException("Employee Id should not be null or negative");       
+            if(employeeId<=0 )throw new ValidationException("Employee Id should not be null or negative");   
+            _departmentValidations.DisableValidation(employeeId);
             try
             {
                 return _departmentRepository.DisableDepartment(id,employeeId);

@@ -9,17 +9,19 @@ namespace A5.Service
     public class OrganisationService :  IOrganisationService
     {
         private readonly IOrganisationRepository _organisationRepository;
-       private readonly ILogger<OrganisationService> _logger;
+        private readonly ILogger<OrganisationService> _logger;
+        private readonly OrganisationValidations _organisationValidations;
 
-        public OrganisationService(ILogger<OrganisationService> logger,IOrganisationRepository organisationRepository)  {
+        public OrganisationService(ILogger<OrganisationService> logger,IOrganisationRepository organisationRepository,OrganisationValidations organisationValidations)  {
                 _logger=logger;
                 _organisationRepository=organisationRepository;
+                _organisationValidations=organisationValidations;
          } 
          
          //Create an Oraganisation using organisation object
         public bool CreateOrganisation(Organisation organisation)
         {
-            OrganisationValidations.CreateValidation(organisation);
+            _organisationValidations.CreateValidation(organisation);
             try{
                 return _organisationRepository.CreateOrganisation(organisation);
             }
@@ -38,7 +40,7 @@ namespace A5.Service
         //Updating the Organisation using organisation object
         public bool UpdateOrganisation(Organisation organisation)
         {
-            OrganisationValidations.UpdateValidation(organisation);
+            _organisationValidations.UpdateValidation(organisation);
             try{
                 return _organisationRepository.UpdateOrganisation(organisation);
             }
@@ -89,7 +91,8 @@ namespace A5.Service
         
         //disables organisation using organisation id and current user id
         public bool DisableOrganisation(int organisationId,int employeeId)
-        {            
+        {        
+            _organisationValidations.DisableValidation(employeeId)  ;  
             try
             {
                 return _organisationRepository.DisableOrganisation(organisationId,employeeId);

@@ -13,9 +13,11 @@ namespace A5.Service
     {
         private readonly IAwardTypeRepository _awardTypeRepository;
         private readonly ILogger<AwardTypeService> _logger;
-        public AwardTypeService(IAwardTypeRepository awardTypeRepository,ILogger<AwardTypeService> logger )  { 
+        private readonly AwardTypeValidations _awardTypeValidations;
+        public AwardTypeService(IAwardTypeRepository awardTypeRepository,ILogger<AwardTypeService> logger,AwardTypeValidations awardTypeValidations )  { 
             _awardTypeRepository=awardTypeRepository;
             _logger=logger;
+            _awardTypeValidations=awardTypeValidations;
         }
          
          
@@ -23,7 +25,7 @@ namespace A5.Service
           public bool CreateAwardType(AwardType awardType)
         {
            
-            AwardTypeValidations.CreateValidation(awardType);
+            _awardTypeValidations.CreateValidation(awardType);
             try{
                 awardType.Image = System.Convert.FromBase64String(awardType.ImageString!);
                 return _awardTypeRepository.CreateAwardType(awardType);
@@ -44,7 +46,7 @@ namespace A5.Service
          public bool UpdateAwardType(AwardType awardType)
         {
           
-            AwardTypeValidations.UpdateValidation(awardType);
+            _awardTypeValidations.UpdateValidation(awardType);
             try{
                 awardType.Image = System.Convert.FromBase64String(awardType.ImageString!);
                 return _awardTypeRepository.UpdateAwardType(awardType);
@@ -66,6 +68,7 @@ namespace A5.Service
         {
             if (employeeId<=0) throw new ValidationException("current user id must be greater than 0");
             if(id<=0) throw new ValidationException("Award type id should not be zero or negative");
+            _awardTypeValidations.DisableValidation(employeeId);
             try{
                 return _awardTypeRepository.DisableAwardType(id,employeeId);
             }

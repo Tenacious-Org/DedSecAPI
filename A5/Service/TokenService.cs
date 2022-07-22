@@ -3,7 +3,7 @@ using System.Security.Claims;
 using System.Text;
 using A5.Service;
 using A5.Service.Interfaces;
-
+using A5.Data.Validations;
 using A5.Models;
 using Microsoft.IdentityModel.Tokens;
 using System.ComponentModel.DataAnnotations;
@@ -16,10 +16,12 @@ namespace A5.Service
         private readonly IConfiguration _configuration;
         private readonly EmployeeService _employeeService;
         private readonly ILogger<TokenService> _logger;
-        public TokenService(IConfiguration configuration, EmployeeService employeeService, ILogger<TokenService> logger)
+        private readonly EmployeeValidations _employeeValidations;
+        public TokenService(IConfiguration configuration, EmployeeService employeeService, ILogger<TokenService> logger,EmployeeValidations employeeValidations)
         {
             _configuration = configuration;
             _employeeService = employeeService;
+            _employeeValidations=employeeValidations;
             _logger = logger;
 
         }
@@ -27,6 +29,7 @@ namespace A5.Service
 
         public object GenerateToken(Login Credentials)
         {
+            _employeeValidations.CredentialsValidation(Credentials);
             var user = _employeeService.GetEmployee(Credentials!.Email!, Credentials!.Password!);
             if (user == null) throw new ValidationException("User should not be null");
             try

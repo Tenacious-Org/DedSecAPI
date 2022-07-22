@@ -106,7 +106,7 @@ namespace A5.Data.Repository
         // to update designation using designation object
         public bool UpdateDesignation(Designation designation)
         {
-            DesignationValidations.UpdateValidation(designation);
+            _designationValidations.UpdateValidation(designation);
             
             try{
                 return Update(designation);
