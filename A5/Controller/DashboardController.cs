@@ -12,8 +12,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace A5.Controller
 {
     
-    [Route("[controller]/[action]")]
-    [Authorize]
+    [Route("[controller]")]
+    
     [ApiController]
     public class DashboardController : ControllerBase
     {

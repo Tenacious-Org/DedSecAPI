@@ -8,7 +8,7 @@ using A5.Service.Interfaces;
 
 namespace A5.Controller
 {
-    [Route("[controller]/[action]")]
+    [Route("[controller]")]
     [Authorize]
     [ApiController]
     public class AwardTypeController : ControllerBase
