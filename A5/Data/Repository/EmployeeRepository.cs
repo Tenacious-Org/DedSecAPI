@@ -168,7 +168,7 @@ namespace A5.Data.Repository
             try
             {
 
-                var User = _context.Set<Employee>().Include("Designation").FirstOrDefault(user => user.Email == Email && user.Password == Password);
+                var User = _context.Set<Employee>().Include("Designation.Department.Organisation").Where(nameof => nameof.IsActive == true).FirstOrDefault(user => user.Email == Email && user.Password == Password);
                 if (User == null) throw new ValidationException("Invalid user");
                 return User;
             }
