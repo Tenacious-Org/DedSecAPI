@@ -52,7 +52,7 @@ namespace A5.Service
 
 
 
-    public async Task ExampleAsync(Award? awardee)
+    public async Task PublishedAsync(Award? awardee)
     {
         
         string text1 =
@@ -164,7 +164,7 @@ namespace A5.Service
     </body>
   </html>";
 
-        await File.WriteAllTextAsync(@"C:\Users\aakaash.mani\Desktop\Published_Request.html", text1);
+        await File.WriteAllTextAsync(@"C:\Users\aakaash.mani\Desktop\Published.html", text1);
     }
 
 
@@ -329,13 +329,14 @@ namespace A5.Service
 ";
 
         await File.WriteAllTextAsync(@"C:\Users\aakaash.mani\Desktop\Request_Raised.html", text2);
+        
     }
 
 
 public async Task RejectedAsync(Award awardee)
     {
         
-        string text2 =
+        string text3 =
             $@"    <body>
       <center class='wrapper' data-link-color='#1188E6' data-body-style='font-size:14px; font-family:inherit; color:#000000; background-color:#FFFFFF;'>
         <div class='webkit'>
@@ -492,9 +493,150 @@ public async Task RejectedAsync(Award awardee)
   </html>
 ";
 
-        await File.WriteAllTextAsync(@"C:\Users\aakaash.mani\Desktop\Request_Rejected.html", text2);
+        await File.WriteAllTextAsync(@"C:\Users\aakaash.mani\Desktop\Request_Rejected.html", text3);
     }
 
 
+
+
+public async Task ForgotAsync(Award awardee)
+    {
+        string text4 =
+            $@"<body>
+      <center class='wrapper' data-link-color='#1188E6' data-body-style='font-size:14px; font-family:arial,helvetica,sans-serif; color:#000000; background-color:#ffb349;'>
+        <div class='webkit'>
+          <table cellpadding='0' cellspacing='0' border='0' width='100%' class='wrapper' bgcolor='#ffb349'>
+            <tr>
+              <td valign='top' bgcolor='#ffb349' width='100%'>
+                <table width='100%' role='content-container' class='outer' align='center' cellpadding='0' cellspacing='0' border='0'>
+                  <tr>
+                    <td width='100%'>
+                      <table width='100%' cellpadding='0' cellspacing='0' border='0'>
+                        <tr>
+                          <td>
+                                    <table width='100%' cellpadding='0' cellspacing='0' border='0' style='width:100%; max-width:700px;' align='center'>
+                                      <tr>
+                                        <td role='modules-container' style='padding:0px 0px 0px 0px; color:#000000; text-align:left;' bgcolor='#F3F6FF' width='100%' align='left'><table class='module preheader preheader-hide' role='module' data-type='preheader' border='0' cellpadding='0' cellspacing='0' width='100%' style='display: none !important; mso-hide: all; visibility: hidden; opacity: 0; color: transparent; height: 0; width: 0;'>
+    <tr>
+      <td role='module-content'>
+        <p>Forgot Password</p>
+      </td>
+    </tr>
+  </table><table class='module' role='module' data-type='text' border='0' cellpadding='0' cellspacing='0' width='100%' style='table-layout: fixed;' data-muid='17761d99-860c-4f1f-aeb0-be55796d7adf' data-mc-module-version='2019-10-22'>
+    <tbody>
+      <tr>
+        <td style='padding:15px 60px 10px 60px; line-height:12px; text-align:inherit; background-color:#ffb349;' height='100%' valign='top' bgcolor='#ffb349' role='module-content'><div><div style='font-family: inherit; text-align: center'></div><div></div></div></td>
+      </tr>
+    </tbody>
+  </table><table border='0' cellpadding='0' cellspacing='0' align='center' width='100%' role='module' data-type='columns' style='padding:30px 30px 20px 30px;' bgcolor='#e2f1ff' data-distribution='1'>
+    <tbody>
+      <tr role='module-content'>
+        <td height='100%' valign='top'><table width='280' style='width:280px; border-spacing:0; border-collapse:collapse; margin:0px 180px 0px 180px;' cellpadding='0' cellspacing='0' align='left' border='0' bgcolor='' class='column column-0'>
+      <tbody>
+        <tr>
+          <td style='padding:0px;margin:0px;border-spacing:0;'><table class='wrapper' role='module' data-type='image' border='0' cellpadding='0' cellspacing='0' width='100%' style='table-layout: fixed;' data-muid='8710905a-e942-4b46-a460-0799e4faf5c2'>
+  </table></td>
+        </tr>
+      </tbody>
+    </table></td>
+      </tr>
+    </tbody>
+  </table><table class='wrapper' role='module' data-type='image' border='0' cellpadding='0' cellspacing='0' width='100%' style='table-layout: fixed;' data-muid='6e0d4f99-4ac1-47a7-8681-b39ea8ee64e3'>
+    <tbody>
+      <tr>
+        <td style='font-size:6px; line-height:10px; padding:0px 0px 0px 0px;' valign='top' align='center'>
+          <img class='max-width' border='0' style='display:block; color:#000000; text-decoration:none; font-family:Helvetica, arial, sans-serif; font-size:16px; max-width:100% !important; width:100%; height:auto !important;' width='700' alt='' data-proportionally-constrained='true' data-responsive='true' src='http://cdn.mcauto-images-production.sendgrid.net/b841a9c8d79766a3/fbf4a65b-ebd9-4e08-a1b4-993cc67751d7/1748x1240.png'>
+        </td>
+      </tr>
+    </tbody>
+  </table><table border='0' cellpadding='0' cellspacing='0' align='center' width='100%' role='module' data-type='columns' style='padding:0px 5px 15px 5px;' bgcolor='' data-distribution='1'>
+    <tbody>
+      <tr role='module-content'>
+        <td height='100%' valign='top'><table width='690' style='width:690px; border-spacing:0; border-collapse:collapse; margin:0px 0px 0px 0px;' cellpadding='0' cellspacing='0' align='left' border='0' bgcolor='' class='column column-0'>
+      <tbody>
+        <tr>
+          <td style='padding:0px;margin:0px;border-spacing:0;'><table class='module' role='module' data-type='text' border='0' cellpadding='0' cellspacing='0' width='100%' style='table-layout: fixed;' data-muid='a5ee1b9d-aacf-476c-ad72-fa1f2d816f12' data-mc-module-version='2019-10-22'>
+    <tbody>
+      <tr>
+        <td style='padding:30px 0px 0px 0px; line-height:50px; text-align:inherit;' height='100%' valign='top' bgcolor='' role='module-content'><div><h1 style='text-align: center; font-family: inherit'><span style='font-family: &quot;lucida sans unicode&quot;, &quot;lucida grande&quot;, sans-serif; font-size: 60px; color: #1c2c7b'><strong>Have you forgot your Password ?</strong></span></h1><div></div></div></td>
+      </tr>
+    </tbody>
+  </table><table class='module' role='module' data-type='text' border='0' cellpadding='0' cellspacing='0' width='100%' style='table-layout: fixed;' data-muid='a5ee1b9d-aacf-476c-ad72-fa1f2d816f12.2' data-mc-module-version='2019-10-22'>
+
+  </table></td>
+        </tr>
+      </tbody>
+    </table></td>
+      </tr>
+    </tbody>
+  </table><table class='module' role='module' data-type='spacer' border='0' cellpadding='0' cellspacing='0' width='100%' style='table-layout: fixed;' data-muid='9fad6950-fb2c-4904-8bf1-426398c84a27'>
+    <tbody>
+      <tr>
+        <td style='padding:0px 0px 15px 0px;' role='module-content' bgcolor=''>
+        </td>
+      </tr>
+    </tbody>
+  </table><table border='0' cellpadding='0' cellspacing='0' align='center' width='100%' role='module' data-type='columns' style='padding:0px 20px 20px 20px;' bgcolor='#F3F6FF' data-distribution='1'>
+    <tbody>
+      <tr role='module-content'>
+        <td height='100%' valign='top'><table width='460' style='width:460px; border-spacing:0; border-collapse:collapse; margin:0px 100px 0px 100px;' cellpadding='0' cellspacing='0' align='left' border='0' bgcolor='' class='column column-0'>
+      <tbody>
+        <tr>
+          <td style='padding:0px;margin:0px;border-spacing:0;'><table class='module' role='module' data-type='text' border='0' cellpadding='0' cellspacing='0' width='100%' style='table-layout: fixed;' data-muid='a5ee1b9d-aacf-476c-ad72-fa1f2d816f12.1' data-mc-module-version='2019-10-22'>
+    <tbody>
+      <tr>
+        <td style='padding:30px 30px 30px 30px; line-height:30px; text-align:inherit; background-color:#75c6fb;' height='100%' valign='top' bgcolor='#75c6fb' role='module-content'><div><div style='font-family: inherit; text-align: center'><span style='font-family: &quot;lucida sans unicode&quot;, &quot;lucida grande&quot;, sans-serif; font-size: 22px; color: #1c2c7b'></span></div>
+<div style='font-family: inherit; text-align: center'><span style='font-family: &quot;lucida sans unicode&quot;, &quot;lucida grande&quot;, sans-serif; font-size: 22px; color: #1c2c7b'>Your Password is mentioned below</span></div>
+<div style='font-family: inherit; text-align: center'></div><div></div></div></td>
+      </tr>
+    </tbody>
+  </table><table border='0' cellpadding='0' cellspacing='0' class='module' data-role='module-button' data-type='button' role='module' style='table-layout:fixed;' width='100%' data-muid='71d66b9a-f3bc-4b7a-97f3-479258b379cf'>
+      <tbody>
+        <tr>
+          <td align='center' bgcolor='#F3F6FF' class='outer-td' style='padding:25px 0px 25px 0px; background-color:#F3F6FF;'>
+            <table border='0' cellpadding='0' cellspacing='0' class='wrapper-mobile' style='text-align:center;'>
+              <tbody>
+                <tr>
+                <td align='center' bgcolor='#D53B3E' class='inner-td' style='border-radius:6px; font-size:16px; text-align:center; background-color:inherit;'>
+                 <div style='background-color:#D53B3E; border:0px solid #333333; border-color:#333333; border-radius:0px; border-width:0px; display:inline-block; font-size:16px; font-weight:700; letter-spacing:2px; line-height:normal; padding:15px 50px 15px 50px; text-align:center; text-decoration:none; border-style:solid; font-family:lucida sans unicode,lucida grande,sans-serif; color:#ffffff;'>Password{}</span></div>
+                </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table></td>
+        </tr>
+      </tbody>
+    </table></td>
+      </tr>
+    </tbody>
+  </table><table class='module' role='module' data-type='social' align='center' border='0' cellpadding='0' cellspacing='0' width='100%' style='table-layout: fixed;' data-muid='00228565-20cc-44a6-8867-4f1a277e9588'>
+
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table><div data-role='module-unsubscribe' class='module' role='module' data-type='unsubscribe' style='background-color:#FFB349; color:#404D8C; font-size:12px; line-height:20px; padding:16px 16px 5px 16px; text-align:Center;' data-muid='4e838cf3-9892-4a6d-94d6-170e474d21e5'><p style='font-family:lucida sans unicode,lucida grande,sans-serif; font-size:12px; line-height:20px;'><a class='Unsubscribe--unsubscribeLink' target='_blank' style='color:#F3F6FF;'>Tenacious.</a></p></div><table border='0' cellpadding='0' cellspacing='0' class='module' data-role='module-button' data-type='button' role='module' style='table-layout:fixed;' width='100%' data-muid='0acf1c9a-9616-4586-aa54-a24c223ed970'>
+    </table></td>
+                                      </tr>
+                                    </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </center>
+    </body>
+  </html>";
+
+        await File.WriteAllTextAsync(@"C:\Users\aakaash.mani\Desktop\Forgot_Password.html", text4);
+    }
 }
 }
