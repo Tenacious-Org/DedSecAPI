@@ -13,7 +13,7 @@ namespace A5.Controller
 {
     
     [Route("[controller]/[action]")]
-    
+    [Authorize]
     [ApiController]
     public class DashboardController : ControllerBase
     {
