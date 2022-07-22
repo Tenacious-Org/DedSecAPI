@@ -12,8 +12,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace A5.Controller
 {
     
-    [Route("[controller]")]
-    [Authorize]
+    [Route("[controller]/[action]")]
+    
     [ApiController]
     public class DashboardController : ControllerBase
     {
@@ -31,6 +31,7 @@ namespace A5.Controller
         //Get Method - To Retrieve All Awardees.
 
         [HttpGet("GetAllAwardees")]
+        [AllowAnonymous]
         public ActionResult GetAllAwardeeDashboard()
         {
             try

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace A5.Controller
 {
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     [Authorize]
     [ApiController]
     public class OrganisationController : ControllerBase

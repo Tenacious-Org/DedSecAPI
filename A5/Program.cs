@@ -118,10 +118,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"); 
-    });
+    app.UseSwaggerUI();
 }
 
 
@@ -143,7 +140,7 @@ app.UseCors(builder =>
     .AllowAnyHeader();
 });
 
-AppDbInitializer.Seed(app);
+//AppDbInitializer.Seed(app);
 
 
 app.Run();

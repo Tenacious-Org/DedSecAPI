@@ -7,7 +7,7 @@ using A5.Service.Interfaces;
 namespace A5.Controller
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
 
     public class TokenController : ControllerBase
     {
