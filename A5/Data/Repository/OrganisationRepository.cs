@@ -9,19 +9,18 @@ namespace A5.Data.Repository
     {
         private readonly AppDbContext _context;
         private readonly ILogger<EntityBaseRepository<Organisation>> _logger;
-        private readonly OrganisationValidations _organisationValidations;
-        public OrganisationRepository(AppDbContext context, ILogger<EntityBaseRepository<Organisation>> logger,OrganisationValidations organisationValidations) : base(context, logger)
+        private readonly OrganisationValidations _organisationvalidations;
+        public OrganisationRepository(AppDbContext context, ILogger<EntityBaseRepository<Organisation>> logger,OrganisationValidations organisationvalidations) : base(context, logger)
         {
             _context = context;
             _logger = logger;
-            _organisationValidations=organisationValidations;
+            _organisationvalidations=organisationvalidations;
         }
         
         //Creates organisation using organisation object
         public bool CreateOrganisation(Organisation organisation)
         {
-            bool NameExists = _context.Organisations!.Any(nameof => nameof.OrganisationName == organisation.OrganisationName);
-            if (NameExists) throw new ValidationException("Organisation Name already exists");
+            _organisationvalidations.CreateValidation(organisation);
 
             try
             {
@@ -39,7 +38,7 @@ namespace A5.Data.Repository
         //Updates organisation using organisation object
         public bool UpdateOrganisation(Organisation organisation)
         {
-            _organisationValidations.UpdateValidation(organisation);
+             _organisationvalidations.UpdateValidation(organisation);
 
             try
             {

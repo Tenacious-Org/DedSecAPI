@@ -10,20 +10,20 @@ namespace A5.Data.Repository
     {
         private readonly AppDbContext _context;
         private readonly ILogger<EntityBaseRepository<Department>> _logger;
-        private readonly DepartmentValidations _departmentValidations;
-        public DepartmentRepository(AppDbContext context, ILogger<EntityBaseRepository<Department>> logger,DepartmentValidations departmnentValidations) : base(context, logger)
+        private readonly DepartmentValidations _departmentvalidations;
+        public DepartmentRepository(AppDbContext context, ILogger<EntityBaseRepository<Department>> logger,DepartmentValidations departmentvalidations) : base(context, logger)
         {
             _context = context;
             _logger = logger;
-            _departmentValidations=departmnentValidations;
+            _departmentvalidations=departmentvalidations;
         }
           //creates department using department object.
 
         public bool CreateDepartment(Department department)
         {
-            _departmentValidations.CreateValidation(department);
-            bool NameExists = _context.Departments!.Any(nameof => nameof.DepartmentName == department.DepartmentName && nameof.OrganisationId == department.OrganisationId);
-            if (NameExists) throw new ValidationException("Department Name already exists");
+            _departmentvalidations.CreateValidation(department);
+           
+            
             try
             {
                 return Create(department);
@@ -38,7 +38,7 @@ namespace A5.Data.Repository
         //updates department using department object.
         public bool UpdateDepartment(Department department)
         {
-            _departmentValidations.UpdateValidation(department);
+            _departmentvalidations.UpdateValidation(department);
             
             try
             {
