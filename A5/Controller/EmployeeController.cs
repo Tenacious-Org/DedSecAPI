@@ -403,7 +403,7 @@ namespace A5.Controller
                 return Problem(exception.Message);
             }
         }
-        [HttpGet("ForgotPassword")]
+        [HttpGet("ForgotPassword")][AllowAnonymous]
         public ActionResult ForgotPassword(string aceId, string emailId)
         {
             if (aceId==null) return BadRequest("aceid cannot be null");

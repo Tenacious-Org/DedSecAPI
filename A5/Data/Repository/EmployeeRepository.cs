@@ -17,11 +17,12 @@ namespace A5.Data.Repository
         private readonly MailService _mail;
 
 
-        public EmployeeRepository(AppDbContext context, ILogger<EntityBaseRepository<Employee>> logger,EmployeeValidations employeeValidations) : base(context, logger)
+        public EmployeeRepository(AppDbContext context, ILogger<EntityBaseRepository<Employee>> logger,EmployeeValidations employeeValidations,MailService mail) : base(context, logger)
         {
             _context = context;
             _logger = logger;
             _employeeValidations=employeeValidations;
+            _mail=mail;
         }
       
         //Gets reporting Person of particular department using department id.

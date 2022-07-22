@@ -11,7 +11,6 @@ namespace A5.Data
             {
                 var context = serviceScope.ServiceProvider.GetService<AppDbContext>()!;
                 context.Database.EnsureCreated();
-                
                 if(!context.Organisations?.Any()==true)
                 {
                     context?.Organisations?.AddRange(new List<Organisation>() {

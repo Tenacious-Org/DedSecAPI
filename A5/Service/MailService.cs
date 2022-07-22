@@ -10,40 +10,42 @@ namespace A5.Service
 {
 
     public class MailService : IEmailService
-{
-    private readonly MailSettings _mailSettings;
-    public MailService(IOptions<MailSettings> mailSettings)
     {
-        _mailSettings = mailSettings.Value;
-    }
+        private readonly MailSettings _mailSettings;
+        public MailService(IOptions<MailSettings> mailSettings)
+        {
+            _mailSettings = mailSettings.Value;
+        }
 
-    public async Task SendEmailAsync(MailRequest mailRequest)
-{
-    var email = new MimeMessage();
-    email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
-    email.To.Add(MailboxAddress.Parse(mailRequest.ToEmail));
-    email.Subject = mailRequest.Subject;
-    var builder = new BodyBuilder();
-    var filepath = $"template.txt";
-    builder.TextBody = mailRequest.Body;
-    email.Body = builder.ToMessageBody();
-    using var smtp = new SmtpClient();
-    smtp.Connect(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
-    smtp.Authenticate(_mailSettings.Mail, _mailSettings.Password);
-    await smtp.SendAsync(email);
-    smtp.Disconnect(true);
-}
+        public async Task SendEmailAsync(MailRequest mailRequest)
+        {
+            var email = new MimeMessage();
+            email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
+            email.To.Add(MailboxAddress.Parse(mailRequest.ToEmail));
+            email.Subject = mailRequest.Subject;
+            var builder = new BodyBuilder();
+            var filepath = $"template.txt";
+            builder.TextBody = mailRequest.Body;
+            email.Body = builder.ToMessageBody();
+            using var smtp = new SmtpClient();
+            smtp.Connect(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
+            smtp.Authenticate(_mailSettings.Mail, _mailSettings.Password);
+            await smtp.SendAsync(email);
+            smtp.Disconnect(true);
+        }
 
- public static MailRequest AwardMail(string RecieverEmail,string AwardTitle,string Subject,int AwardStatusId)
-    {
-            var mail=new MailRequest();
-            mail.ToEmail=RecieverEmail;
-            mail.Subject=Subject;
-            switch(AwardStatusId){
+        public static MailRequest AwardMail(string RecieverEmail, string AwardTitle, string Subject, int AwardStatusId)
+        {
+            var mail = new MailRequest();
+            mail.ToEmail = RecieverEmail;
+            mail.Subject = Subject;
+            switch (AwardStatusId)
+            {
                 // case 1: mail.Body=StringWriter.;
                 //         return mail;
-                case 4: mail.Body=$"Hello Aspirian,\n\nGreetings,\n\n Your Article - \"{AwardTitle}\" have been published successfully.\n\n Thanks and Regards,\nAspireOverflow.\n";
-                        return mail;
+                case 4:
+                    mail.Body = $"Hello Aspirian,\n\nGreetings,\n\n Your Article - \"{AwardTitle}\" have been published successfully.\n\n Thanks and Regards,\nAspireOverflow.\n";
+                    return mail;
                 default: return mail;
             }
         }
@@ -52,11 +54,11 @@ namespace A5.Service
 
 
 
-    public async Task PublishedAsync(Award? awardee)
-    {
-        
-        string text1 =
-            $@"<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+        public async Task PublishedAsync(Award? awardee)
+        {
+
+            string text1 =
+                $@"<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
 <html data-editor-version='2' class='sg-campaigns' xmlns='http://www.w3.org/1999/xhtml'>
     <head>
       <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
@@ -164,15 +166,15 @@ namespace A5.Service
     </body>
   </html>";
 
-        await File.WriteAllTextAsync(@"C:\Users\aakaash.mani\Desktop\Published.html", text1);
-    }
+            await File.WriteAllTextAsync(@"C:\Users\aakaash.mani\Desktop\Published.html", text1);
+        }
 
 
-    public async Task RequesterAsync(Award? awardee)
-    {
-        
-        string text2 =
-            $@"    <body>
+        public async Task RequesterAsync(Award? awardee)
+        {
+
+            string text2 =
+                $@"    <body>
       <center class='wrapper' data-link-color='#1188E6' data-body-style='font-size:14px; font-family:inherit; color:#000000; background-color:#FFFFFF;'>
         <div class='webkit'>
           <table cellpadding='0' cellspacing='0' border='0' width='100%' class='wrapper' bgcolor='#FFFFFF'>
@@ -328,16 +330,16 @@ namespace A5.Service
   </html>
 ";
 
-        await File.WriteAllTextAsync(@"C:\Users\aakaash.mani\Desktop\Request_Raised.html", text2);
-        
-    }
+            await File.WriteAllTextAsync(@"C:\Users\aakaash.mani\Desktop\Request_Raised.html", text2);
+
+        }
 
 
-public async Task RejectedAsync(Award awardee)
-    {
-        
-        string text3 =
-            $@"    <body>
+        public async Task RejectedAsync(Award awardee)
+        {
+
+            string text3 =
+                $@"    <body>
       <center class='wrapper' data-link-color='#1188E6' data-body-style='font-size:14px; font-family:inherit; color:#000000; background-color:#FFFFFF;'>
         <div class='webkit'>
           <table cellpadding='0' cellspacing='0' border='0' width='100%' class='wrapper' bgcolor='#FFFFFF'>
@@ -493,16 +495,16 @@ public async Task RejectedAsync(Award awardee)
   </html>
 ";
 
-        await File.WriteAllTextAsync(@"C:\Users\aakaash.mani\Desktop\Request_Rejected.html", text3);
-    }
+            await File.WriteAllTextAsync(@"C:\Users\aakaash.mani\Desktop\Request_Rejected.html", text3);
+        }
 
 
 
 
-public async Task ForgotAsync(Employee user)
-    {
-        string text4 =
-            $@"<body>
+        public async Task ForgotAsync(Employee user)
+        {
+            string text4 =
+                $@"<body>
       <center class='wrapper' data-link-color='#1188E6' data-body-style='font-size:14px; font-family:arial,helvetica,sans-serif; color:#000000; background-color:#ffb349;'>
         <div class='webkit'>
           <table cellpadding='0' cellspacing='0' border='0' width='100%' class='wrapper' bgcolor='#ffb349'>
@@ -636,7 +638,7 @@ public async Task ForgotAsync(Employee user)
     </body>
   </html>";
 
-        await File.WriteAllTextAsync(@"C:\Users\aakaash.mani\Desktop\Forgot_Password.html", text4);
+            await File.WriteAllTextAsync(@"C:\Users\aakaash.mani\Desktop\Forgot_Password.html", text4);
+        }
     }
-}
 }
