@@ -21,14 +21,19 @@ namespace A5.Data.Validations
         {
             if (designation.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             _userValidations.AdminValidation(designation.AddedBy);
-            CommonValidations(designation);
             if (_context.Designations!.Any(nameof => nameof.DesignationName == designation.DesignationName && nameof.DepartmentId == designation.DepartmentId)) throw new ValidationException("Designation Name already exists");
+            CommonValidations(designation);
             return true;
         }
         public bool UpdateValidation(Designation designation)
         {
             if (designation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             _userValidations.AdminValidation(designation.UpdatedBy);
+            Designation ExistingDesignation = _context.Set<Designation>().FirstOrDefault(nameof => nameof.Id == designation.Id);
+            if (ExistingDesignation.DesignationName != designation.DesignationName)
+            {
+                if (_context.Designations!.Any(nameof => nameof.DesignationName == designation.DesignationName && nameof.DepartmentId == designation.DepartmentId)) throw new ValidationException("Designation Name already exists");
+            }
             CommonValidations(designation);
             return true;
         }

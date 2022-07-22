@@ -105,7 +105,7 @@ namespace A5.Data.Repository
             }
 
         }
-        //Gets all the employees.
+        //Gets all the employees except reporting person and hr is null .
         public IEnumerable<Employee> GetAllEmployees()
         {
             try
@@ -127,7 +127,7 @@ namespace A5.Data.Repository
             }
 
         }
-        //Get employee details of first 3 designations.
+        //Get all employees 
         public IEnumerable<Employee> GetUserDetails()
         {
             try
