@@ -17,7 +17,7 @@ namespace A5.Data.Validations
         {
             var awardee=_context.Set<Employee>().FirstOrDefault(nameof=>nameof.Id==award.AwardeeId);
             if(award.AwardeeId==0) throw new ValidationException("Awardee not found");
-            // if(!award.Awardee.IsActive) throw new ValidationException("This Awardee is not active in this organisation");
+            if(!(_context.Awards!.Any(nameof=>nameof.Awardee!.IsActive==true))) throw new ValidationException("This Awardee is inactive.So ");
             if(award.AwardTypeId==0) throw new ValidationException("Award Type Should not be null");
             if(string.IsNullOrWhiteSpace(award.Reason)) throw new ValidationException("Reason for award should not be null");
             if(awardee.ReportingPersonId!=employeeId) throw new ValidationException("Reporting person Id not found");        

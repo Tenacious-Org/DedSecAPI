@@ -206,10 +206,7 @@ namespace A5.Data.Repository
         {
             if(employee==null) throw new ValidationException("Employee should not be null");
             EmployeeValidations.CreateValidation(employee);
-            bool IsIdAlreadyExists=_context.Employees!.Any(nameof=>nameof.ACEID==employee.ACEID);
-            if(IsIdAlreadyExists) throw new ValidationException("Employee Id already exists");
-            bool IsEmailAlreadyExists=_context.Employees!.Any(nameof=>nameof.Email==employee.Email);
-            if(IsEmailAlreadyExists) throw new ValidationException("Email Id already exists");
+            
             try
             {
                 return Create(employee);
