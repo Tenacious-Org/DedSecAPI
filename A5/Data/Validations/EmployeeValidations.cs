@@ -20,7 +20,7 @@ namespace A5.Data.Validations
             _userValidations.AdminValidation(employee.AddedBy);
             bool IsAceIdAlreadyExists = _context.Employees!.Any(nameof => nameof.ACEID == employee.ACEID);
             bool IsEmailAlreadyExists = _context.Employees!.Any(nameof => nameof.Email == employee.Email);
-            if (IsAceIdAlreadyExists) throw new ValidationException("Employee Id already exists");
+            if (IsAceIdAlreadyExists) throw new ValidationException("ACE Id already exists");
             if (IsEmailAlreadyExists) throw new ValidationException("Email Id already exists"); if (string.IsNullOrWhiteSpace(employee.FirstName)) throw new ValidationException("Employee's first name should not be null or empty");
             CommonValidations(employee);
             return true;
@@ -33,7 +33,7 @@ namespace A5.Data.Validations
             if (ExistingEmployee.ACEID != employee.ACEID)
             {
                 bool IsAceIdAlreadyExists = _context.Employees!.Any(nameof => nameof.ACEID == employee.ACEID);
-                if (IsAceIdAlreadyExists) throw new ValidationException("Ace Id already exists");
+                if (IsAceIdAlreadyExists) throw new ValidationException("ACE Id already exists");
             }
             if (ExistingEmployee.Email != employee.Email)
             {
@@ -61,12 +61,13 @@ namespace A5.Data.Validations
 
         public bool CommonValidations(Employee employee)
         {
+            if (string.IsNullOrWhiteSpace(employee.FirstName)) throw new ValidationException("Employee's first name should not be null or empty");
             if (string.IsNullOrWhiteSpace(employee.LastName)) throw new ValidationException("Employee's last name should not be null or empty");
-            if (!(Regex.IsMatch(employee.FirstName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("First Name should have only alphabets.No special Characters or numbers are allowed");
-            if (!(Regex.IsMatch(employee.LastName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("Last Name should have only alphabets.No special Characters or numbers are allowed");
+            if (!(Regex.IsMatch(employee.FirstName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("First name should have only alphabets.No special Characters or numbers are allowed");
+            if (!(Regex.IsMatch(employee.LastName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("Last name should have only alphabets.No special Characters or numbers are allowed");
             ValidateDOB(employee.DOB);
             if (string.IsNullOrWhiteSpace(employee.Email)) throw new ValidationException("Email should not be null or empty");
-            if(!(Regex.IsMatch(employee.Email,@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))) throw new ValidationException("Email id is not valid to enter into database");
+            if(!(Regex.IsMatch(employee.Email, @"^[^@\s]+@[^@\s]+\.(com|net|org|gov|in)$"))) throw new ValidationException("Email id is not valid.");
             if (string.IsNullOrWhiteSpace(employee.Gender)) throw new ValidationException("Gender should not be null or empty");
             if (string.IsNullOrWhiteSpace(employee.ImageString)) throw new ValidationException("Image is required");
             if (employee.OrganisationId <= 0) throw new ValidationException("Organisation Id Should not be Zero or less than zero.");
@@ -84,8 +85,8 @@ namespace A5.Data.Validations
         int Current_year=DateTime.Today.Year;
         age = Current_year-year;
         if(DOB>=DateTime.Now) throw new ValidationException("Date of birth cannot be a future date");      
-        else if(age<=18) throw new ValidationException("Employee is too small to join in this organisation");
-        else if(age>=60) throw new ValidationException("Employee got the retirement age already" );
+        else if(age<=18) throw new ValidationException("Age must be greater than 18");
+        else if(age>=60) throw new ValidationException("Age must be les than 60" );
         else return true;
       }
     }
