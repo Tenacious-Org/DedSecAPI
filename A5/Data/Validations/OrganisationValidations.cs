@@ -17,17 +17,21 @@ namespace A5.Data.Validations
 
         public bool CreateValidation(Organisation organisation)
         {
-            if (organisation == null) throw new ValidationException("Organisation should not be null");
             if (organisation.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             _userValidations.AdminValidation(organisation.AddedBy);
+            if (_context.Organisations!.Any(nameof => nameof.OrganisationName == organisation.OrganisationName)) throw new ValidationException("Organisation Name already exists");
             CommonValidations(organisation);
             return true;
         }
         public bool UpdateValidation(Organisation organisation)
         {
-            if (organisation == null) throw new ValidationException("Organisation should not be null");
             if (organisation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             _userValidations.AdminValidation(organisation.UpdatedBy);
+            Organisation ExistingOrganisation = _context.Set<Organisation>().FirstOrDefault(nameof => nameof.Id == organisation.Id);
+            if (ExistingOrganisation.OrganisationName != organisation.OrganisationName)
+            {
+                if (_context.Organisations!.Any(nameof => nameof.OrganisationName == organisation.OrganisationName)) throw new ValidationException("Organisation Name already exists");
+            }
             CommonValidations(organisation);
             return true;
         }

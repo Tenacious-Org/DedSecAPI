@@ -23,6 +23,7 @@ namespace A5.Data.Validations
         {
             if (department.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             _userValidations.AdminValidation(department.AddedBy);
+            if (_context.Departments!.Any(nameof => nameof.DepartmentName == department.DepartmentName && nameof.OrganisationId == department.OrganisationId)) throw new ValidationException("Department Name already exists");
             CommonValidations(department);
             return true;
         }
@@ -31,6 +32,11 @@ namespace A5.Data.Validations
         {
             if (department.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             _userValidations.AdminValidation(department.UpdatedBy);
+            Department ExistingDepartment = _context.Set<Department>().FirstOrDefault(nameof => nameof.Id == department.Id);
+            if (ExistingDepartment.DepartmentName != department.DepartmentName)
+            {
+                if (_context.Departments!.Any(nameof => nameof.DepartmentName == department.DepartmentName && nameof.OrganisationId == department.OrganisationId)) throw new ValidationException("Department Name already exists");
+            }
             CommonValidations(department);
             return true;
         }
