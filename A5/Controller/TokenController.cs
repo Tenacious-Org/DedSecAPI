@@ -29,8 +29,8 @@ namespace A5.Controller
         ///
         ///     POST / AuthToken
         ///     {
-        ///        "email": "admin@tenacious.com",
-        ///        "password": "Admin@123"
+        ///        "email": "",
+        ///        "password": ""
         ///     }
         ///
         /// </remarks>
