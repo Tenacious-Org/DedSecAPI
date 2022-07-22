@@ -12,8 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace A5.Controller
 {
     
-    [Route("[controller]")]
-    
+    [Route("[controller]")]    
     [ApiController]
     public class DashboardController : ControllerBase
     {
