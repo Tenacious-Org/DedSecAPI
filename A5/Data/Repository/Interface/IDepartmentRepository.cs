@@ -7,7 +7,7 @@ namespace A5.Data.Repository.Interface
         bool CreateDepartment(Department department);
         bool UpdateDepartment(Department department);
         public Department ? GetDepartmentById(int departmentId);
-        bool DisableDepartment(int departmentId,int employeeId);
+        bool DisableDepartment(int departmentId,int userId);
         int GetCount(int departmentId);
         public IEnumerable<Department> GetAllDepartment();
         public IEnumerable<Department> GetDepartmentsByOrganisationId(int organisationId);

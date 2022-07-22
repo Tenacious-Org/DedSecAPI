@@ -96,7 +96,20 @@ namespace A5.Service
         public int GetCount(int designationId)
         {
             if (designationId <= 0) throw new ValidationException("Designation Id must be greater than zero");
-            return _desginationRepository.GetCount(designationId);
+            try{
+                 return _desginationRepository.GetCount(designationId);
+            }
+            catch(ValidationException exception)
+            {
+                 _logger.LogError("DesignationService: GetCount(designationId : {designationId}) : (Error:{Message}", designationId,exception.Message);
+                throw;
+            }
+            catch(Exception exception)
+            {
+                 _logger.LogError("DesignationService: GetCount(designationId : {designationId}) : (Error:{Message}", designationId,exception.Message);
+                throw;
+            }
+           
         }
         public object ErrorMessage(string ValidationMessage)
         {

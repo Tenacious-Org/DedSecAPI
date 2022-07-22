@@ -281,21 +281,21 @@ namespace A5.Service
         }
 
         //gets employee count by using employee id
-        public int GetEmployeeCount(int employeeid)
+        public int GetEmployeeCount(int employeeId)
         {
-            if (employeeid <= 0) throw new ValidationException("Employee Id must be greater than zero");
+            if (employeeId <= 0) throw new ValidationException("Employee Id must be greater than zero");
             try
             {
-                return _employeeRepository.GetEmployeeCount(employeeid);
+                return _employeeRepository.GetEmployeeCount(employeeId);
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeService: GetEmployeeCount(id:{id}) : (Error:{Message}", employeeid, exception.Message);
+                _logger.LogError("EmployeeService: GetEmployeeCount(id:{id}) : (Error:{Message}", employeeId, exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("EmployeeService: GetEmployeeCount(id:{id}) : (Error:{Message}", employeeid, exception.Message);
+                _logger.LogError("EmployeeService: GetEmployeeCount(id:{id}) : (Error:{Message}", employeeId, exception.Message);
                 throw;
             }
         }

@@ -112,7 +112,15 @@ namespace A5.Service
         public int GetCount(int departmentId)
         {
             if (departmentId <= 0) throw new ValidationException("Department Id must be greater than zero");
-            return _departmentRepository.GetCount(departmentId);
+            try{
+                 return _departmentRepository.GetCount(departmentId);
+            }
+            catch(ValidationException exception)
+            {
+                 _logger.LogError("DepartmentService: DisableDepartment(departmentId:{departmentId}) : (Error:{Message}", departmentId,exception.Message);
+                throw;
+            }
+           
         }
         //Gets Department by organisation Id.
         public IEnumerable<Department> GetDepartmentsByOrganisationId(int organisationId)

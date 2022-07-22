@@ -21,9 +21,8 @@ namespace A5.Data.Repository
 
         public bool CreateDepartment(Department department)
         {
+           if (department == null) throw new ValidationException("Department should not be null");
             _departmentvalidations.CreateValidation(department);
-           
-            
             try
             {
                 return Create(department);
@@ -38,8 +37,8 @@ namespace A5.Data.Repository
         //updates department using department object.
         public bool UpdateDepartment(Department department)
         {
-            _departmentvalidations.UpdateValidation(department);
-            
+            if (department == null) throw new ValidationException("Department should not be null");
+            _departmentvalidations.UpdateValidation(department);  
             try
             {
                 return Update(department);
@@ -65,17 +64,18 @@ namespace A5.Data.Repository
             }
         }
          //Disables department using department id and current user id.
-        public bool DisableDepartment(int departmentId, int employeeId)
+        public bool DisableDepartment(int departmentId, int userId)
         {
-            if(departmentId<=0) throw new ValidationException("Department Id should not be null or negative");
-            if(employeeId<=0) throw new ValidationException("Employee Id should not be null or negative");
+              if (departmentId <= 0) throw new ValidationException("Department Id must be greater than zero");
+            if (userId <= 0) throw new ValidationException("User Id must be greater than zero");
+            _departmentvalidations.DisableValidation(userId);
             try
             {
-                return Disable(departmentId, employeeId);
+                return Disable(departmentId, userId);
             }
             catch (Exception exception)
             {
-                _logger.LogError("DepartmentRepository: DisableDepartment(departmentId:{departmentId},EmployeeId:{employeeId}) : (Error:{Message}", departmentId,employeeId,exception.Message);
+                _logger.LogError("DepartmentRepository: DisableDepartment(departmentId:{departmentId},EmployeeId:{employeeId}) : (Error:{Message}", departmentId,userId,exception.Message);
                 throw;
             }
         }
@@ -96,6 +96,7 @@ namespace A5.Data.Repository
         //Gets the count of employees under department.
         public int GetCount(int departmentId)
         {
+            if (departmentId <= 0) throw new ValidationException("Department Id must be greater than zero");
             var checkEmployee = _context.Set<Employee>().Where(nameof => nameof.IsActive == true && nameof.DepartmentId == departmentId).Count();
             return checkEmployee;
         }

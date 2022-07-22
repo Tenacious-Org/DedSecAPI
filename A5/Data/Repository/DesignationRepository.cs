@@ -76,6 +76,7 @@ namespace A5.Data.Repository
         //creates designation using designation object
           public bool CreateDesignation(Designation designation)
         {
+             if (designation == null) throw new ValidationException("Designation should not be null");
             _designationValidations.CreateValidation(designation);
             try{
                 return Create(designation);
@@ -95,6 +96,7 @@ namespace A5.Data.Repository
         // to get designation count by using designation id
         public int GetCount(int designationId)
         {
+            if (designationId <= 0) throw new ValidationException("Designation Id must be greater than zero");
              var checkEmployee = _context.Set<Employee>().Where(nameof => nameof.IsActive == true && nameof.DesignationId == designationId).Count();
              return checkEmployee;
         }
@@ -106,8 +108,8 @@ namespace A5.Data.Repository
         // to update designation using designation object
         public bool UpdateDesignation(Designation designation)
         {
-            _designationValidations.UpdateValidation(designation);
-            
+            if (designation == null) throw new ValidationException("Designation should not be null");
+            _designationValidations.UpdateValidation(designation);       
             try{
                 return Update(designation);
             }
@@ -124,15 +126,17 @@ namespace A5.Data.Repository
         }
 
         //to disable designation using designation id and current user id
-        public bool DisableDesignation(int designationId,int employeeId)
+        public bool DisableDesignation(int designationId,int userId)
         {
-           
+           if (designationId <= 0) throw new ValidationException("Designation Id must be greater than zero");
+            if (userId <= 0) throw new ValidationException("User Id must be greater than zero");
+            _designationValidations.DisableValidation(userId);
             try{
-                return Disable(designationId,employeeId);
+                return Disable(designationId,userId);
             }
             catch(Exception exception)
             {
-                _logger.LogError("DesignationRespository: DisableDesignation(int designationId,int employeeId) : (Error:{Message}",exception.Message);
+                _logger.LogError("DesignationRespository: DisableDesignation(designationId : {designationId},usereId : {userId}) : (Error:{Message}",designationId,userId,exception.Message);
                 throw;
             }
         }

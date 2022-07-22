@@ -17,7 +17,7 @@ namespace A5.Data.Service.Interfaces
         public IEnumerable<Employee> GetEmployeeByRequesterId(int requesterId);
         public IEnumerable<Employee> GetEmployeeByOrganisation(int organisationId);
         public Employee GetEmployee(string Email, string Password);
-        public int GetEmployeeCount(int id);
+        public int GetEmployeeCount(int employeeId);
 
 
     }

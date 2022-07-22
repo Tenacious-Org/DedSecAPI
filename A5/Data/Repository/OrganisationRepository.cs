@@ -20,8 +20,8 @@ namespace A5.Data.Repository
         //Creates organisation using organisation object
         public bool CreateOrganisation(Organisation organisation)
         {
+            if (organisation == null) throw new ValidationException("Organisation should not be null");
             _organisationvalidations.CreateValidation(organisation);
-
             try
             {
                 
@@ -38,8 +38,8 @@ namespace A5.Data.Repository
         //Updates organisation using organisation object
         public bool UpdateOrganisation(Organisation organisation)
         {
-             _organisationvalidations.UpdateValidation(organisation);
-
+           if (organisation == null) throw new ValidationException("Organisation should not be null");
+            _organisationvalidations.UpdateValidation(organisation);
             try
             {
                 return Update(organisation);
@@ -67,12 +67,14 @@ namespace A5.Data.Repository
         }
         
         //disables organisation using organisation id and current user id
-        public bool DisableOrganisation(int organisationId, int employeeId)
+        public bool DisableOrganisation(int organisationId, int userId)
         {
-
+            if (organisationId <= 0) throw new ValidationException("Organisation Id must be greater than zero");
+            if (userId <= 0) throw new ValidationException("User Id must be greater than zero");
+            _organisationvalidations.DisableValidation(userId);
             try
             {
-                return Disable( organisationId, employeeId);
+                return Disable( organisationId, userId);
 
             }
             catch (Exception exception)
@@ -85,6 +87,7 @@ namespace A5.Data.Repository
         //gets all organisatiob count by using organisation id
         public int GetCount(int organisationId)
         {
+            if (organisationId <= 0) throw new ValidationException("Organisation Id must be greater than zero");
             var checkEmployee = _context.Set<Employee>().Where(nameof => nameof.IsActive && nameof.OrganisationId == organisationId).Count();
             return checkEmployee;
         }

@@ -22,9 +22,8 @@ namespace A5.Data.Repository
           public bool CreateAwardType(AwardType awardType)
         {
            
+              if (awardType == null) throw new ValidationException("AwardType should not be null");
             _awardTypeValidations.CreateValidation(awardType);
-            bool NameExists=_context.AwardTypes!.Any(nameof=>nameof.AwardName==awardType.AwardName);
-            if(NameExists) throw new ValidationException("Award Name already exists");
             try{
                 return Create(awardType);
             }
@@ -38,7 +37,8 @@ namespace A5.Data.Repository
         //to update an awardtype using awardtype object
          public bool UpdateAwardType(AwardType awardType)
         {
-            _awardTypeValidations.UpdateValidation(awardType);          
+            if (awardType == null) throw new ValidationException("AwardType should not be null");
+            _awardTypeValidations.UpdateValidation(awardType);       
             try{
                 return Update(awardType);
             }
@@ -50,16 +50,17 @@ namespace A5.Data.Repository
         }
 
         //to disable an awardtype using awardtype id and current user id
-        public bool DisableAwardType(int id,int employeeId)
+        public bool DisableAwardType(int awardTypeId,int userId)
         {
-             if (employeeId<=0) throw new ValidationException("currents user id must be greater than 0");
-             if(id<=0) throw new ValidationException("Award type id should not be zero or negative");
+             if (userId <= 0) throw new ValidationException("User id must be greater than Zero");
+            if (awardTypeId <= 0) throw new ValidationException("Award type id  must be greater than Zero");
+            _awardTypeValidations.DisableValidation(userId);
             try{
-                return Disable(id,employeeId);
+                return Disable(awardTypeId,userId);
             }
             catch(Exception exception)
             {
-                _logger.LogError("AwardTypeRepository: DisableAwardType(awardTypeId : {awardTypeId},employeeId : {employeeId}) : (Error:{Message}",id,employeeId,exception.Message);
+                _logger.LogError("AwardTypeRepository: DisableAwardType(awardTypeId : {awardTypeId},employeeId : {employeeId}) : (Error:{Message}",awardTypeId,userId,exception.Message);
                 throw;
             }
         }
@@ -90,10 +91,6 @@ namespace A5.Data.Repository
                 _logger.LogError("AwardTypeRepository: GetAwardTypeById(id :{id}) : (Error:{Message}",id,exception.Message);
                 throw;
             }
-        }  
-          public object ErrorMessage(string ValidationMessage)
-        {
-            return new { message = ValidationMessage };
         }    
     }
 }
