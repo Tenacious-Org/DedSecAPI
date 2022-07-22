@@ -11,16 +11,18 @@ namespace A5.Data.Repository
     {
         private readonly AppDbContext _context;
          private readonly ILogger<EntityBaseRepository<AwardType>> _logger;
-        public AwardTypeRepository(AppDbContext context,ILogger<EntityBaseRepository<AwardType>> logger ) : base(context,logger) { 
+         private readonly AwardTypeValidations _awardTypeValidations;
+        public AwardTypeRepository(AppDbContext context,ILogger<EntityBaseRepository<AwardType>> logger,AwardTypeValidations awardTypeValidations) : base(context,logger) { 
             _context=context;
             _logger=logger;
+            _awardTypeValidations=awardTypeValidations;
         }
           
           //to create an awardtype using awardtype object
           public bool CreateAwardType(AwardType awardType)
         {
            
-            AwardTypeValidations.CreateValidation(awardType);
+            _awardTypeValidations.CreateValidation(awardType);
             bool NameExists=_context.AwardTypes!.Any(nameof=>nameof.AwardName==awardType.AwardName);
             if(NameExists) throw new ValidationException("Award Name already exists");
             try{
@@ -36,7 +38,7 @@ namespace A5.Data.Repository
         //to update an awardtype using awardtype object
          public bool UpdateAwardType(AwardType awardType)
         {
-            AwardTypeValidations.UpdateValidation(awardType);          
+            _awardTypeValidations.UpdateValidation(awardType);          
             try{
                 return Update(awardType);
             }

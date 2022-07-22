@@ -9,10 +9,12 @@ namespace A5.Data.Repository
     {
         private readonly AppDbContext _context;
         private readonly ILogger<EntityBaseRepository<Organisation>> _logger;
-        public OrganisationRepository(AppDbContext context, ILogger<EntityBaseRepository<Organisation>> logger) : base(context, logger)
+        private readonly OrganisationValidations _organisationValidations;
+        public OrganisationRepository(AppDbContext context, ILogger<EntityBaseRepository<Organisation>> logger,OrganisationValidations organisationValidations) : base(context, logger)
         {
             _context = context;
             _logger = logger;
+            _organisationValidations=organisationValidations;
         }
         
         //Creates organisation using organisation object
@@ -37,7 +39,7 @@ namespace A5.Data.Repository
         //Updates organisation using organisation object
         public bool UpdateOrganisation(Organisation organisation)
         {
-            OrganisationValidations.UpdateValidation(organisation);
+            _organisationValidations.UpdateValidation(organisation);
 
             try
             {

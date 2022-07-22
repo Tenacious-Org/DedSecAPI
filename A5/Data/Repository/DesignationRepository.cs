@@ -22,7 +22,7 @@ namespace A5.Data.Repository
         //to get designations by departmentId
          public IEnumerable<Designation> GetDesignationsByDepartmentId(int departmentId)
          {
-             DesignationValidations.ValidateGetByDepartment(departmentId);
+            if(departmentId==0) throw new ValidationException("Department Id should not be zero");
             try
             {
                 var data =  _context.Set<Designation>().Where(nameof =>nameof.DepartmentId == departmentId && nameof.IsActive == true).ToList();
