@@ -64,7 +64,9 @@ namespace A5.Data.Validations
             if (string.IsNullOrWhiteSpace(employee.LastName)) throw new ValidationException("Employee's last name should not be null or empty");
             if (!(Regex.IsMatch(employee.FirstName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("First Name should have only alphabets.No special Characters or numbers are allowed");
             if (!(Regex.IsMatch(employee.LastName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("Last Name should have only alphabets.No special Characters or numbers are allowed");
+            ValidateDOB(employee.DOB);
             if (string.IsNullOrWhiteSpace(employee.Email)) throw new ValidationException("Email should not be null or empty");
+            if(!(Regex.IsMatch(employee.Email,@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))) throw new ValidationException("Email id is not valid to enter into database");
             if (string.IsNullOrWhiteSpace(employee.Gender)) throw new ValidationException("Gender should not be null or empty");
             if (string.IsNullOrWhiteSpace(employee.ImageString)) throw new ValidationException("Image is required");
             if (employee.OrganisationId <= 0) throw new ValidationException("Organisation Id Should not be Zero or less than zero.");
@@ -75,6 +77,16 @@ namespace A5.Data.Validations
             if (employee.IsActive == false) throw new ValidationException("Employee should be active when it is created");
             return true;
         }
-
+       public bool ValidateDOB(DateTime DOB)
+      {
+        int age = 0;  
+        int year=DOB.Year;
+        int Current_year=DateTime.Today.Year;
+        age = Current_year-year;
+        if(DOB>=DateTime.Now) throw new ValidationException("Date of birth cannot be a future date");      
+        else if(age<=18) throw new ValidationException("Employee is too small to join in this organisation");
+        else if(age>=60) throw new ValidationException("Employee got the retirement age already" );
+        else return true;
+      }
     }
 }
