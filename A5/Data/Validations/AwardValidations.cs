@@ -39,7 +39,13 @@ namespace A5.Data.Validations
         }
         public  bool ApprovalValidation(Award award)
         {
+           
             if(award.ApproverId==0)throw new ValidationException("Approver Id should not be zero");
+            if(award.StatusId==2 || award.StatusId==3) 
+            {
+                var requester=_context.Set<Employee>().FirstOrDefault(nameof=>nameof.Id==award.RequesterId);
+                if(requester.ReportingPersonId!=award.UpdatedBy) throw new ValidationException("Approver Id not found");
+            }
             if(award.StatusId==3 && String.IsNullOrWhiteSpace(award.RejectedReason))throw new ValidationException("Rejection reason cannot be null");
             if(award.StatusId==4 && String.IsNullOrWhiteSpace(award.CouponCode))throw new ValidationException("Coupon code should not be null");
             if(award.StatusId==4 && (_context.Awards!.Any(nameof=>nameof.CouponCode==award.CouponCode)))throw new ValidationException("Coupon code already exists");
