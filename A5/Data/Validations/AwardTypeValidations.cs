@@ -39,7 +39,7 @@ namespace A5.Data.Validations
         {
             if (String.IsNullOrWhiteSpace(awardType.AwardName)) throw new ValidationException("Award Name should not be null or Empty.");
             if (!(Regex.IsMatch(awardType.AwardName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("Award Name should have only alphabets.No special Characters or numbers are allowed");
-            if(_context.AwardTypes.Any(nameof=>nameof.AwardName==awardType.AwardName)) throw new ValidationException("Award Name already exists");
+            if(_context.AwardTypes.Any(nameof=>nameof.AwardName==awardType.AwardName && nameof.Id != awardType.Id)) throw new ValidationException("Award Name already exists");
             if (String.IsNullOrWhiteSpace(awardType.AwardDescription)) throw new ValidationException("Award Description should not be null or Empty.");
             if (awardType.IsActive == false) throw new ValidationException("Award should be Active when it is created.");
             return true;
