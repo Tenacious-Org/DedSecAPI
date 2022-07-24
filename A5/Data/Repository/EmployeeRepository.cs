@@ -68,6 +68,26 @@ namespace A5.Data.Repository
                 throw;
             }
         }
+        //Gets Employee by VP designation.
+        public IEnumerable<Employee> GetEmployeeByVpDesignation()
+        {
+            try
+            {
+                var result= _context.Set<Employee>().Where(nameof =>  nameof.Designation!.DesignationName == "vp" && nameof.IsActive==true).ToList();
+                if(result==null) throw new ValidationException("No records found");
+                return result;
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("EmployeeRepository: GetEmployeeByVpDesignation : Error:{Message}",exception.Message);
+                throw;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError("EmployeeRepository: GetEmployeeByVpDesignation : Error:{Message}",exception.Message);
+                throw;
+            }
+        }
         //Gets Employee details of particular requester using Requester Id.
         public IEnumerable<Employee> GetEmployeeByRequesterId(int requesterId)
         {

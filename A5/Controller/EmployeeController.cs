@@ -325,6 +325,43 @@ namespace A5.Controller
         }
 
         /// <summary>
+        ///  This Method is used to view  employee by VP designation  
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET / ViewEmployeeByVpDesignation
+        ///
+        /// </remarks>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response> 
+        /// <param>String</param>
+        /// <returns>
+        ///Return List of Employee.
+        /// </returns>
+
+        [HttpGet("GetEmployeeByVpDesignation")]
+        public ActionResult GetEmployeeByVpDesignation()
+        {
+            try
+            {
+                var data = _employeeService.GetEmployeeByVpDesignation();
+                return Ok(data);
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("EmployeeController : GetEmployeeByVpDesignation() : (Error: {Message})", exception.Message);
+                return BadRequest(_employeeService.ErrorMessage(exception.Message));
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError("EmployeeController : GetEmployeeByVpDesignation() : (Error: {Message})", exception.Message);
+                return Problem(exception.Message);
+            }
+        }
+
+
+        /// <summary>
         ///  This Method is used to view All Employees whose comes under one Organisation.
         /// </summary>
         /// <remarks>

@@ -57,6 +57,25 @@ namespace A5.Service
                 throw;
             }
         }
+
+        //Gets Employee by VP designation.
+        public IEnumerable<Employee> GetEmployeeByVpDesignation()
+        {
+            try
+            {
+                return _employeeRepository.GetEmployeeByVpDesignation();
+            }
+            catch (ValidationException exception)
+            {
+                _logger.LogError("EmployeeService: GetEmployeeByVpDesignation :Error:{Message}", exception.Message);
+                throw;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError("EmployeeService: GetEmployeeByVpDesignation: Error:{Message}", exception.Message);
+                throw;
+            }
+        }
         //Gets list of Employees by using Requester Id.
         public IEnumerable<Employee> GetEmployeeByRequesterId(int requesterId)
         {
