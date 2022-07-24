@@ -20,10 +20,10 @@ namespace A5.Data.Validations
             if (string.IsNullOrWhiteSpace(award.Reason)) throw new ValidationException("Reason for award should not be null");
             return true;
         }
-        public bool ValidateAddComment(Comment comment, int employeeId)
+        public bool ValidateAddComment(Comment comment)
         {
             if (string.IsNullOrWhiteSpace(comment.Comments)) throw new ValidationException("Comments should not be null");
-            if (_context.Employees!.Any(nameof => nameof.Id != employeeId)) throw new ValidationException("Invalid User , no access to comment");
+            if (_context.Employees!.Any(nameof => nameof.Id != comment.EmployeeId)) throw new ValidationException("Invalid User , no access to comment");
             return true;
         }
         public bool ApprovalValidation(Award award)

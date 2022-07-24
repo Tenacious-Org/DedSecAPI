@@ -96,21 +96,21 @@ namespace A5.Service
         }
 
         //to add new comment by the user using comment object and employee id
-        public bool AddComment(Comment comment, int employeeId)
+        public bool AddComment(Comment comment)
         {
-            _awardValidations.ValidateAddComment(comment,employeeId);
+            _awardValidations.ValidateAddComment(comment);
             try
             {
-                return _award.AddComments(comment, employeeId);
+                return _award.AddComments(comment);
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardService: AddComment(Comment comment,int employeeId) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardService: AddComment(Comment comment) : (Error:{Message}", exception.Message);
                 throw;
             }
             catch (Exception exception)
             {
-                _logger.LogError("AwardService: AddComment(Comment comment,int employeeId) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardService: AddComment(Comment comment) : (Error:{Message}", exception.Message);
                 throw;
             }
         }

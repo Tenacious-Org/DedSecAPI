@@ -44,6 +44,14 @@ namespace A5.Data.Validations
             if (!Regex.IsMatch(credentials.Password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$")) throw new ValidationException("Password must be between 8 and 15 characters and atleast contain one uppercase letter, one lowercase letter, one digit and one special character.");
             return true;
         }
+        public bool ForgotPasswordValidation( string aceId, string emailId)
+        {
+            if (string.IsNullOrEmpty(emailId)) throw new ValidationException("Password should not be null");
+            if (string.IsNullOrEmpty(aceId)) throw new ValidationException("Aceid should not be null");
+            if (!(Regex.IsMatch(emailId, @"^[^@\s]+@[^@\s]+\.(com|org|in)$"))) throw new ValidationException("Email id is not valid.");
+            if (!Regex.IsMatch(aceId, @"ACE\d{3,5}$")) throw new ValidationException("AceId Should start with ACE and shouldn't exceed 8 Characters!.");
+            return true;
+        }
 
         public bool CommonValidations(Employee employee)
         {
@@ -53,6 +61,7 @@ namespace A5.Data.Validations
             if (!(Regex.IsMatch(employee.LastName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("Last name should have only alphabets.No special Characters or numbers are allowed");
             ValidateDOB(employee.DOB);
             if (string.IsNullOrWhiteSpace(employee.Email)) throw new ValidationException("Email should not be null or empty");
+            if (!Regex.IsMatch(employee.ACEID, @"ACE\d{3,5}$")) throw new ValidationException("AceId Should start with ACE and shouldn't exceed 8 Characters!.");
             if (!(Regex.IsMatch(employee.Email, @"^[^@\s]+@[^@\s]+\.(com|org|in)$"))) throw new ValidationException("Email id is not valid.");
             if (_context.Employees!.Any(nameof => nameof.ACEID == employee.ACEID && nameof.Id != employee.Id)) throw new ValidationException("ACE Id already exists");
             if (_context.Employees!.Any(nameof => nameof.Email == employee.Email && nameof.Id != employee.Id)) throw new ValidationException("Email Id already exists");

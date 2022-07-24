@@ -94,7 +94,7 @@ namespace A5.Controller
             {
                 award.UpdatedBy = GetCurrentUserId();
                 var data = _awardService.Approval(award);
-                return data ? Ok(data):BadRequest("Can't approve reuqest");
+                return data ? Ok(data) : BadRequest("Can't approve reuqest");
             }
             catch (ValidationException exception)
             {
@@ -103,7 +103,7 @@ namespace A5.Controller
             }
             catch (Exception exception)
             {
-                 _logger.LogError("AwardController : Approval(Award award) : (Error:{Message}", exception.Message);
+                _logger.LogError("AwardController : Approval(Award award) : (Error:{Message}", exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -131,7 +131,7 @@ namespace A5.Controller
         [AllowAnonymous]
         public ActionResult GetAwardById(int id)
         {
-            if (id <= 0)return BadRequest("Award Id must be greater than zero");
+            if (id <= 0) return BadRequest("Award Id must be greater than zero");
 
             try
             {
@@ -171,7 +171,7 @@ namespace A5.Controller
         [AllowAnonymous]
         public ActionResult GetAwardsList(int pageId = 0)
         {
-            if (pageId<0)return BadRequest("pageId must be greater than zero");
+            if (pageId < 0) return BadRequest("pageId must be greater than zero");
             try
             {
                 var data = _awardService.GetAwardsList(pageId, GetCurrentUserId());
@@ -184,7 +184,7 @@ namespace A5.Controller
             }
             catch (Exception exception)
             {
-                 _logger.LogError("AwardController : GetAwardsList(int pageId) : (Error:{Message})", exception.Message);
+                _logger.LogError("AwardController : GetAwardsList(int pageId) : (Error:{Message})", exception.Message);
                 return Problem(exception.Message);
             }
         }
@@ -216,8 +216,9 @@ namespace A5.Controller
             if (comment == null) return BadRequest("comment should not be null");
             try
             {
-                var data = _awardService.AddComment(comment, GetCurrentUserId());
-                return data ? Ok(data):BadRequest("new comments cannot be added");
+                comment.EmployeeId = GetCurrentUserId();
+                var data = _awardService.AddComment(comment);
+                return data ? Ok(data) : BadRequest("new comments cannot be added");
 
             }
             catch (ValidationException exception)
@@ -275,7 +276,7 @@ namespace A5.Controller
 
         }
 
-        
+
 
         private int GetCurrentUserId()
         {

@@ -130,25 +130,24 @@ namespace A5.Data.Repository
         }
 
         //Adds the comment by using comment object and employee id
-        public bool AddComments(Comment comment, int employeeId)
+        public bool AddComments(Comment comment)
         {
-            _awardValidations.ValidateAddComment(comment,employeeId);
+            _awardValidations.ValidateAddComment(comment);
             try
             {
                 _context.Set<Comment>().Add(comment);
-                comment.EmployeeId = employeeId;
                 comment.CommentedOn = DateTime.Now;
                 _context.SaveChanges();
                 return true;
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("AwardRepository : AddComments(Comment comment,employeeId : {employeeId}) : (Error:{Message}",employeeId, exception.Message);
+                _logger.LogError("AwardRepository : AddComments(Comment comment) : (Error:{Message}", exception.Message);
                 return false;
             }
             catch (Exception exception)
             {
-                _logger.LogError("AwardRepository : AddComments(Comment comment,employeeId : {employeeId}) : (Error:{Message}",employeeId, exception.Message);
+                _logger.LogError("AwardRepository : AddComments(Comment comment) : (Error:{Message}", exception.Message);
                 return false;
             }
         }

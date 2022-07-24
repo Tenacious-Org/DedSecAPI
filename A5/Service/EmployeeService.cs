@@ -203,6 +203,7 @@ namespace A5.Service
         {
             if (String.IsNullOrWhiteSpace(aceId)) throw new ValidationException("AceId should not be null");
             if (String.IsNullOrWhiteSpace(emailId)) throw new ValidationException("Email ID should not be null");
+            _employeeValidations.ForgotPasswordValidation(aceId,emailId);
             try
             {
                 return _employeeRepository.ForgotPassword(aceId, emailId);
