@@ -142,5 +142,4 @@ app.UseCors(builder =>
 
 AppDbInitializer.Seed(app);
 
-
 app.Run();

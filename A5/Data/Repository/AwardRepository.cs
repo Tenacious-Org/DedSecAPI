@@ -200,7 +200,7 @@ namespace A5.Data.Repository
                 else if (pageId == 3 && employeeId != 0)
                     award = award.Where(nameof => nameof.ApproverId == employeeId).OrderByDescending(nameof=>nameof.AddedOn).OrderBy(nameof => nameof.StatusId).ToList();
                 else if (pageId == 4 && employeeId != 0)
-                    award = award.Where(nameof => nameof.HRId == employeeId && (nameof.StatusId == 2 || nameof.StatusId == 4)).OrderByDescending(nameof => nameof.UpdatedOn).OrderBy(nameof => nameof.StatusId).ToList();
+                    award = award.Where(nameof => nameof.PublisherId == employeeId && (nameof.StatusId == 2 || nameof.StatusId == 4)).OrderByDescending(nameof => nameof.UpdatedOn).OrderBy(nameof => nameof.StatusId).ToList();
                 return award;
             }
             catch (Exception exception)

@@ -34,7 +34,7 @@ namespace A5.Service
                  var AwardeeId = award.AwardeeId;
                 award.RequesterId = employee!.Id;
                 award.ApproverId = employee.ReportingPersonId;
-                award.HRId = _award.GetHRID(AwardeeId);
+                award.PublisherId = _award.GetHRID(AwardeeId);
                 award.StatusId = 1;
                 award.AddedBy = userId;
                 award.AddedOn = DateTime.Now;
@@ -175,7 +175,7 @@ namespace A5.Service
                 awardeeId = award?.AwardeeId,
                 awardTypeId = award?.AwardTypeId,
                 approverId = award?.ApproverId,
-                hRId = award?.HRId,
+                publisherId = award?.PublisherId,
                 reason = award?.Reason,
                 rejectedReason = award?.RejectedReason,
                 couponCode = award?.CouponCode,

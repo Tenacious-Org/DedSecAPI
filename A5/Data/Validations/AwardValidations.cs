@@ -45,9 +45,9 @@ namespace A5.Data.Validations
             }
             if (award.StatusId == 4)
             {
-                if (award.HRId != award.UpdatedBy) throw new ValidationException("Publisher Id not matched");
+                if (award.PublisherId != award.UpdatedBy) throw new ValidationException("Publisher Id not matched");
                 var awardee = _context.Set<Employee>().FirstOrDefault(nameof => nameof.Id == award.AwardeeId);
-                if (awardee.HRId != award.UpdatedBy) throw new ValidationException("Publisher Id not found");
+                if (awardee.HRId != award.UpdatedBy) throw new ValidationException("Publisher Id not matched");
                 if (String.IsNullOrWhiteSpace(award.CouponCode)) throw new ValidationException("Coupon code should not be null");
                 if ((_context.Awards!.Any(nameof => nameof.CouponCode == award.CouponCode))) throw new ValidationException("Coupon code already exists");
             }
