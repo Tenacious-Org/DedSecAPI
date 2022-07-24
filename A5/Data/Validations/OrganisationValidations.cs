@@ -19,7 +19,6 @@ namespace A5.Data.Validations
         {
             if (organisation.AddedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             _userValidations.AdminValidation(organisation.AddedBy);
-            if (_context.Organisations!.Any(nameof => nameof.OrganisationName == organisation.OrganisationName)) throw new ValidationException("Organisation Name already exists");
             CommonValidations(organisation);
             return true;
         }
@@ -27,11 +26,6 @@ namespace A5.Data.Validations
         {
             if (organisation.UpdatedBy <= 0) throw new ValidationException("User Id Should not be Zero or less than zero.");
             _userValidations.AdminValidation(organisation.UpdatedBy);
-            Organisation ExistingOrganisation = _context.Set<Organisation>().FirstOrDefault(nameof => nameof.Id == organisation.Id);
-            if (ExistingOrganisation.OrganisationName != organisation.OrganisationName)
-            {
-                if (_context.Organisations!.Any(nameof => nameof.OrganisationName == organisation.OrganisationName)) throw new ValidationException("Organisation Name already exists");
-            }
             CommonValidations(organisation);
             return true;
         }
@@ -47,6 +41,7 @@ namespace A5.Data.Validations
         {
             if (String.IsNullOrWhiteSpace(organisation.OrganisationName)) throw new ValidationException("Organisation Name should not be null or Empty.");
             if (!(Regex.IsMatch(organisation.OrganisationName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("Organisation Name should have only alphabets.No special Characters or numbers are allowed");
+            if (_context.Organisations!.Any(nameof => nameof.OrganisationName == organisation.OrganisationName && nameof.Id != organisation.Id)) throw new ValidationException("Organisation Name already exists");
             if (organisation.IsActive == false) throw new ValidationException("Organisation should be Active when it is created.");
             return true;
         }
