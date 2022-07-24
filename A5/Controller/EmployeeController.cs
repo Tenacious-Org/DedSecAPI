@@ -446,7 +446,7 @@ namespace A5.Controller
           if ( UserDetails == null ) return BadRequest("User Details cannot be null");
             try
             {
-                var data = _employeeService.ForgotPassword(UserDetails.ACEID,UserDetails.Email);
+                var data = _employeeService.ForgotPassword(UserDetails.ACEID!,UserDetails.Email!);
                 return data ? Ok(data) : BadRequest("Failed to Send Mail ");
             }
             catch (ValidationException exception)

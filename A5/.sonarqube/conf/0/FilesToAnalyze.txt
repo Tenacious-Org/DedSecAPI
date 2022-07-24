@@ -84,4 +84,5 @@ C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\logs\webapi-20220722_001.log
 C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\logs\webapi-20220722_002.log
 C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\logs\webapi-20220722_003.log
 C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\logs\webapi-20220722_004.log
+C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\logs\webapi-20220724.log
 C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Properties\launchSettings.json

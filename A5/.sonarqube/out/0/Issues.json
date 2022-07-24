@@ -12,279 +12,6 @@
       },
       "results": [
         {
-          "ruleId": "CS8602",
-          "level": "warning",
-          "message": "Dereference of a possibly null reference.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/UserValidations.cs",
-                "region": {
-                  "startLine": 17,
-                  "startColumn": 16,
-                  "endLine": 17,
-                  "endColumn": 21
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS8600",
-          "level": "warning",
-          "message": "Converting null literal or possible null value to non-nullable type.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/OrganisationValidations.cs",
-                "region": {
-                  "startLine": 30,
-                  "startColumn": 49,
-                  "endLine": 30,
-                  "endColumn": 132
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS8602",
-          "level": "warning",
-          "message": "Dereference of a possibly null reference.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/OrganisationValidations.cs",
-                "region": {
-                  "startLine": 31,
-                  "startColumn": 17,
-                  "endLine": 31,
-                  "endColumn": 37
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS8600",
-          "level": "warning",
-          "message": "Converting null literal or possible null value to non-nullable type.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/EmployeeValidations.cs",
-                "region": {
-                  "startLine": 32,
-                  "startColumn": 41,
-                  "endLine": 32,
-                  "endColumn": 116
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS8602",
-          "level": "warning",
-          "message": "Dereference of a possibly null reference.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/EmployeeValidations.cs",
-                "region": {
-                  "startLine": 33,
-                  "startColumn": 17,
-                  "endLine": 33,
-                  "endColumn": 33
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS8604",
-          "level": "warning",
-          "message": "Possible null reference argument for parameter 'input' in 'bool Regex.IsMatch(string input, string pattern)'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/EmployeeValidations.cs",
-                "region": {
-                  "startLine": 58,
-                  "startColumn": 32,
-                  "endLine": 58,
-                  "endColumn": 49
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS8600",
-          "level": "warning",
-          "message": "Converting null literal or possible null value to non-nullable type.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/DesignationValidations.cs",
-                "region": {
-                  "startLine": 32,
-                  "startColumn": 47,
-                  "endLine": 32,
-                  "endColumn": 128
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS8602",
-          "level": "warning",
-          "message": "Dereference of a possibly null reference.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/DesignationValidations.cs",
-                "region": {
-                  "startLine": 33,
-                  "startColumn": 17,
-                  "endLine": 33,
-                  "endColumn": 36
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS8600",
-          "level": "warning",
-          "message": "Converting null literal or possible null value to non-nullable type.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/DepartmentValidations.cs",
-                "region": {
-                  "startLine": 35,
-                  "startColumn": 45,
-                  "endLine": 35,
-                  "endColumn": 124
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS8602",
-          "level": "warning",
-          "message": "Dereference of a possibly null reference.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/DepartmentValidations.cs",
-                "region": {
-                  "startLine": 36,
-                  "startColumn": 17,
-                  "endLine": 36,
-                  "endColumn": 35
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS8602",
-          "level": "warning",
-          "message": "Dereference of a possibly null reference.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
-                "region": {
-                  "startLine": 42,
-                  "startColumn": 21,
-                  "endLine": 42,
-                  "endColumn": 30
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS8602",
-          "level": "warning",
-          "message": "Dereference of a possibly null reference.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
-                "region": {
-                  "startLine": 50,
-                  "startColumn": 21,
-                  "endLine": 50,
-                  "endColumn": 28
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS8604",
-          "level": "warning",
-          "message": "Possible null reference argument for parameter 'source' in 'bool Queryable.Any<AwardType>(IQueryable<AwardType> source, Expression<Func<AwardType, bool>> predicate)'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardTypeValidations.cs",
-                "region": {
-                  "startLine": 42,
-                  "startColumn": 16,
-                  "endLine": 42,
-                  "endColumn": 35
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
           "ruleId": "CS8618",
           "level": "warning",
           "message": "Non-nullable property 'ACEID' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.",
@@ -529,12 +256,33 @@
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Program.cs",
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
                 "region": {
-                  "startLine": 143,
-                  "startColumn": 1,
-                  "endLine": 143,
-                  "endColumn": 30
+                  "startLine": 187,
+                  "startColumn": 17,
+                  "endLine": 187,
+                  "endColumn": 69
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
+                "region": {
+                  "startLine": 233,
+                  "startColumn": 17,
+                  "endLine": 233,
+                  "endColumn": 66
                 }
               }
             }
@@ -565,39 +313,18 @@
           }
         },
         {
-          "ruleId": "S4792",
+          "ruleId": "S1144",
           "level": "warning",
-          "message": "Make sure that this logger's configuration is safe.",
+          "message": "Remove the unused private method 'GeneratePassword'.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Program.cs",
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
                 "region": {
-                  "startLine": 18,
-                  "startColumn": 14,
-                  "endLine": 18,
-                  "endColumn": 39
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S5122",
-          "level": "warning",
-          "message": "Make sure this permissive CORS policy is safe here.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Program.cs",
-                "region": {
-                  "startLine": 137,
-                  "startColumn": 5,
-                  "endLine": 138,
-                  "endColumn": 22
+                  "startLine": 346,
+                  "startColumn": 9,
+                  "endLine": 352,
+                  "endColumn": 10
                 }
               }
             }
@@ -691,82 +418,6 @@
           }
         },
         {
-          "ruleId": "CA1825",
-          "level": "note",
-          "message": "Avoid unnecessary zero-length array allocations.  Use Array.Empty<string>() instead.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Program.cs",
-                "region": {
-                  "startLine": 89,
-                  "startColumn": 13,
-                  "endLine": 89,
-                  "endColumn": 28
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1066",
-          "level": "warning",
-          "message": "Merge this if statement with the enclosing one.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/OrganisationValidations.cs",
-                "region": {
-                  "startLine": 33,
-                  "startColumn": 17,
-                  "endLine": 33,
-                  "endColumn": 19
-                }
-              }
-            }
-          ],
-          "relatedLocations": [
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/OrganisationValidations.cs",
-                "region": {
-                  "startLine": 31,
-                  "startColumn": 13,
-                  "endLine": 31,
-                  "endColumn": 15
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1125",
-          "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/OrganisationValidations.cs",
-                "region": {
-                  "startLine": 50,
-                  "startColumn": 42,
-                  "endLine": 50,
-                  "endColumn": 47
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
           "ruleId": "S2737",
           "level": "warning",
           "message": "Add logic to this catch clause or eliminate it and rethrow the exception automatically.",
@@ -788,18 +439,18 @@
           }
         },
         {
-          "ruleId": "S1125",
+          "ruleId": "S4792",
           "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
+          "message": "Make sure that this logger's configuration is safe.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/EmployeeValidations.cs",
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Program.cs",
                 "region": {
-                  "startLine": 79,
-                  "startColumn": 38,
-                  "endLine": 79,
-                  "endColumn": 43
+                  "startLine": 18,
+                  "startColumn": 14,
+                  "endLine": 18,
+                  "endColumn": 39
                 }
               }
             }
@@ -809,31 +460,60 @@
           }
         },
         {
-          "ruleId": "S1066",
+          "ruleId": "S5122",
           "level": "warning",
-          "message": "Merge this if statement with the enclosing one.",
+          "message": "Make sure this permissive CORS policy is safe here.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/DesignationValidations.cs",
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Program.cs",
                 "region": {
-                  "startLine": 35,
-                  "startColumn": 17,
-                  "endLine": 35,
-                  "endColumn": 19
+                  "startLine": 137,
+                  "startColumn": 5,
+                  "endLine": 138,
+                  "endColumn": 22
                 }
               }
             }
           ],
-          "relatedLocations": [
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1825",
+          "level": "note",
+          "message": "Avoid unnecessary zero-length array allocations.  Use Array.Empty<string>() instead.",
+          "locations": [
             {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/DesignationValidations.cs",
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Program.cs",
                 "region": {
-                  "startLine": 33,
+                  "startLine": 89,
                   "startColumn": 13,
-                  "endLine": 33,
-                  "endColumn": 15
+                  "endLine": 89,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2737",
+          "level": "warning",
+          "message": "Add logic to this catch clause or eliminate it and rethrow the exception automatically.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Controller/AwardController.cs",
+                "region": {
+                  "startLine": 287,
+                  "startColumn": 13,
+                  "endLine": 290,
+                  "endColumn": 14
                 }
               }
             }
@@ -864,27 +544,6 @@
           }
         },
         {
-          "ruleId": "S1125",
-          "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/DesignationValidations.cs",
-                "region": {
-                  "startLine": 53,
-                  "startColumn": 41,
-                  "endLine": 53,
-                  "endColumn": 46
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
           "ruleId": "S2737",
           "level": "warning",
           "message": "Add logic to this catch clause or eliminate it and rethrow the exception automatically.",
@@ -893,393 +552,10 @@
               "resultFile": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Controller/EmployeeController.cs",
                 "region": {
-                  "startLine": 433,
+                  "startLine": 469,
                   "startColumn": 13,
-                  "endLine": 436,
+                  "endLine": 472,
                   "endColumn": 14
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1066",
-          "level": "warning",
-          "message": "Merge this if statement with the enclosing one.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/DepartmentValidations.cs",
-                "region": {
-                  "startLine": 38,
-                  "startColumn": 17,
-                  "endLine": 38,
-                  "endColumn": 19
-                }
-              }
-            }
-          ],
-          "relatedLocations": [
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/DepartmentValidations.cs",
-                "region": {
-                  "startLine": 36,
-                  "startColumn": 13,
-                  "endLine": 36,
-                  "endColumn": 15
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1125",
-          "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/DepartmentValidations.cs",
-                "region": {
-                  "startLine": 56,
-                  "startColumn": 40,
-                  "endLine": 56,
-                  "endColumn": 45
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1125",
-          "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
-                "region": {
-                  "startLine": 21,
-                  "startColumn": 37,
-                  "endLine": 21,
-                  "endColumn": 42
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2737",
-          "level": "warning",
-          "message": "Add logic to this catch clause or eliminate it and rethrow the exception automatically.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Controller/DesignationController.cs",
-                "region": {
-                  "startLine": 274,
-                  "startColumn": 13,
-                  "endLine": 277,
-                  "endColumn": 14
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S3776",
-          "level": "warning",
-          "message": "Refactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
-                "region": {
-                  "startLine": 34,
-                  "startColumn": 21,
-                  "endLine": 34,
-                  "endColumn": 39
-                }
-              }
-            }
-          ],
-          "relatedLocations": [
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
-                "region": {
-                  "startLine": 36,
-                  "startColumn": 13,
-                  "endLine": 36,
-                  "endColumn": 15
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
-                "region": {
-                  "startLine": 37,
-                  "startColumn": 13,
-                  "endLine": 37,
-                  "endColumn": 15
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
-                "region": {
-                  "startLine": 38,
-                  "startColumn": 13,
-                  "endLine": 38,
-                  "endColumn": 15
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
-                "region": {
-                  "startLine": 38,
-                  "startColumn": 37,
-                  "endLine": 38,
-                  "endColumn": 39
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
-                "region": {
-                  "startLine": 40,
-                  "startColumn": 17,
-                  "endLine": 40,
-                  "endColumn": 19
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
-                "region": {
-                  "startLine": 42,
-                  "startColumn": 17,
-                  "endLine": 42,
-                  "endColumn": 19
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
-                "region": {
-                  "startLine": 43,
-                  "startColumn": 17,
-                  "endLine": 43,
-                  "endColumn": 19
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
-                "region": {
-                  "startLine": 43,
-                  "startColumn": 41,
-                  "endLine": 43,
-                  "endColumn": 43
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
-                "region": {
-                  "startLine": 46,
-                  "startColumn": 13,
-                  "endLine": 46,
-                  "endColumn": 15
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
-                "region": {
-                  "startLine": 48,
-                  "startColumn": 17,
-                  "endLine": 48,
-                  "endColumn": 19
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
-                "region": {
-                  "startLine": 50,
-                  "startColumn": 17,
-                  "endLine": 50,
-                  "endColumn": 19
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
-                "region": {
-                  "startLine": 51,
-                  "startColumn": 17,
-                  "endLine": 51,
-                  "endColumn": 19
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
-                "region": {
-                  "startLine": 52,
-                  "startColumn": 17,
-                  "endLine": 52,
-                  "endColumn": 19
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "0": "+1",
-              "1": "+1",
-              "10": "+2 (incl 1 for nesting)",
-              "11": "+2 (incl 1 for nesting)",
-              "12": "+2 (incl 1 for nesting)",
-              "2": "+1",
-              "3": "+1",
-              "4": "+2 (incl 1 for nesting)",
-              "5": "+2 (incl 1 for nesting)",
-              "6": "+2 (incl 1 for nesting)",
-              "7": "+1",
-              "8": "+1",
-              "9": "+2 (incl 1 for nesting)"
-            }
-          }
-        },
-        {
-          "ruleId": "S2737",
-          "level": "warning",
-          "message": "Add logic to this catch clause or eliminate it and rethrow the exception automatically.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Controller/DepartmentController.cs",
-                "region": {
-                  "startLine": 268,
-                  "startColumn": 13,
-                  "endLine": 271,
-                  "endColumn": 14
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1125",
-          "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardTypeValidations.cs",
-                "region": {
-                  "startLine": 44,
-                  "startColumn": 39,
-                  "endLine": 44,
-                  "endColumn": 44
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2737",
-          "level": "warning",
-          "message": "Add logic to this catch clause or eliminate it and rethrow the exception automatically.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Controller/AwardTypeController.cs",
-                "region": {
-                  "startLine": 237,
-                  "startColumn": 13,
-                  "endLine": 240,
-                  "endColumn": 14
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2737",
-          "level": "warning",
-          "message": "Add logic to this catch clause or eliminate it and rethrow the exception automatically.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Controller/AwardController.cs",
-                "region": {
-                  "startLine": 286,
-                  "startColumn": 13,
-                  "endLine": 289,
-                  "endColumn": 14
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1125",
-          "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EntityBaseRepository.cs",
-                "region": {
-                  "startLine": 98,
-                  "startColumn": 73,
-                  "endLine": 98,
-                  "endColumn": 80
                 }
               }
             }
@@ -1301,6 +577,27 @@
                   "startColumn": 42,
                   "endLine": 169,
                   "endColumn": 89
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/OrganisationValidations.cs",
+                "region": {
+                  "startLine": 45,
+                  "startColumn": 42,
+                  "endLine": 45,
+                  "endColumn": 47
                 }
               }
             }
@@ -1373,18 +670,725 @@
           }
         },
         {
+          "ruleId": "S2737",
+          "level": "warning",
+          "message": "Add logic to this catch clause or eliminate it and rethrow the exception automatically.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Controller/DesignationController.cs",
+                "region": {
+                  "startLine": 274,
+                  "startColumn": 13,
+                  "endLine": 277,
+                  "endColumn": 14
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
           "ruleId": "S1125",
           "level": "warning",
           "message": "Remove the unnecessary Boolean literal(s).",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/EmployeeValidations.cs",
                 "region": {
-                  "startLine": 77,
-                  "startColumn": 129,
-                  "endLine": 77,
-                  "endColumn": 136
+                  "startLine": 75,
+                  "startColumn": 38,
+                  "endLine": 75,
+                  "endColumn": 43
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3776",
+          "level": "warning",
+          "message": "Refactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/EmployeeValidations.cs",
+                "region": {
+                  "startLine": 56,
+                  "startColumn": 21,
+                  "endLine": 56,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/EmployeeValidations.cs",
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 13,
+                  "endLine": 58,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/EmployeeValidations.cs",
+                "region": {
+                  "startLine": 59,
+                  "startColumn": 13,
+                  "endLine": 59,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/EmployeeValidations.cs",
+                "region": {
+                  "startLine": 60,
+                  "startColumn": 13,
+                  "endLine": 60,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/EmployeeValidations.cs",
+                "region": {
+                  "startLine": 61,
+                  "startColumn": 13,
+                  "endLine": 61,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/EmployeeValidations.cs",
+                "region": {
+                  "startLine": 63,
+                  "startColumn": 13,
+                  "endLine": 63,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/EmployeeValidations.cs",
+                "region": {
+                  "startLine": 64,
+                  "startColumn": 13,
+                  "endLine": 64,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/EmployeeValidations.cs",
+                "region": {
+                  "startLine": 65,
+                  "startColumn": 13,
+                  "endLine": 65,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/EmployeeValidations.cs",
+                "region": {
+                  "startLine": 66,
+                  "startColumn": 13,
+                  "endLine": 66,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/EmployeeValidations.cs",
+                "region": {
+                  "startLine": 66,
+                  "startColumn": 82,
+                  "endLine": 66,
+                  "endColumn": 84
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/EmployeeValidations.cs",
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 13,
+                  "endLine": 67,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/EmployeeValidations.cs",
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 82,
+                  "endLine": 67,
+                  "endColumn": 84
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/EmployeeValidations.cs",
+                "region": {
+                  "startLine": 68,
+                  "startColumn": 13,
+                  "endLine": 68,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/EmployeeValidations.cs",
+                "region": {
+                  "startLine": 69,
+                  "startColumn": 13,
+                  "endLine": 69,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/EmployeeValidations.cs",
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 13,
+                  "endLine": 70,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/EmployeeValidations.cs",
+                "region": {
+                  "startLine": 71,
+                  "startColumn": 13,
+                  "endLine": 71,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/EmployeeValidations.cs",
+                "region": {
+                  "startLine": 72,
+                  "startColumn": 13,
+                  "endLine": 72,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/EmployeeValidations.cs",
+                "region": {
+                  "startLine": 73,
+                  "startColumn": 13,
+                  "endLine": 73,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/EmployeeValidations.cs",
+                "region": {
+                  "startLine": 74,
+                  "startColumn": 13,
+                  "endLine": 74,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/EmployeeValidations.cs",
+                "region": {
+                  "startLine": 75,
+                  "startColumn": 13,
+                  "endLine": 75,
+                  "endColumn": 15
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": "+1",
+              "1": "+1",
+              "10": "+1",
+              "11": "+1",
+              "12": "+1",
+              "13": "+1",
+              "14": "+1",
+              "15": "+1",
+              "16": "+1",
+              "17": "+1",
+              "18": "+1",
+              "2": "+1",
+              "3": "+1",
+              "4": "+1",
+              "5": "+1",
+              "6": "+1",
+              "7": "+1",
+              "8": "+1",
+              "9": "+1"
+            }
+          }
+        },
+        {
+          "ruleId": "S2737",
+          "level": "warning",
+          "message": "Add logic to this catch clause or eliminate it and rethrow the exception automatically.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Controller/DepartmentController.cs",
+                "region": {
+                  "startLine": 268,
+                  "startColumn": 13,
+                  "endLine": 271,
+                  "endColumn": 14
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/DesignationValidations.cs",
+                "region": {
+                  "startLine": 48,
+                  "startColumn": 41,
+                  "endLine": 48,
+                  "endColumn": 46
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2068",
+          "level": "warning",
+          "message": "\"password\" detected here, make sure this is not a hard-coded credential.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
+                "region": {
+                  "startLine": 192,
+                  "startColumn": 34,
+                  "endLine": 192,
+                  "endColumn": 123
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2068",
+          "level": "warning",
+          "message": "\"password\" detected here, make sure this is not a hard-coded credential.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
+                "region": {
+                  "startLine": 197,
+                  "startColumn": 34,
+                  "endLine": 197,
+                  "endColumn": 123
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/DepartmentValidations.cs",
+                "region": {
+                  "startLine": 51,
+                  "startColumn": 40,
+                  "endLine": 51,
+                  "endColumn": 45
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2737",
+          "level": "warning",
+          "message": "Add logic to this catch clause or eliminate it and rethrow the exception automatically.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Controller/AwardTypeController.cs",
+                "region": {
+                  "startLine": 237,
+                  "startColumn": 13,
+                  "endLine": 240,
+                  "endColumn": 14
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 37,
+                  "endLine": 18,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1116",
+          "level": "warning",
+          "message": "Remove this empty statement.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
+                "region": {
+                  "startLine": 349,
+                  "startColumn": 71,
+                  "endLine": 349,
+                  "endColumn": 72
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1822",
+          "level": "note",
+          "message": "Member 'GetEmployeeObject' does not access instance data and can be marked as static",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
+                "region": {
+                  "startLine": 294,
+                  "startColumn": 24,
+                  "endLine": 294,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1822",
+          "level": "note",
+          "message": "Member 'GeneratePassword' does not access instance data and can be marked as static",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
+                "region": {
+                  "startLine": 346,
+                  "startColumn": 24,
+                  "endLine": 346,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3776",
+          "level": "warning",
+          "message": "Refactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 21,
+                  "endLine": 29,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
+                "region": {
+                  "startLine": 31,
+                  "startColumn": 13,
+                  "endLine": 31,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
+                "region": {
+                  "startLine": 32,
+                  "startColumn": 13,
+                  "endLine": 32,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
+                "region": {
+                  "startLine": 33,
+                  "startColumn": 13,
+                  "endLine": 33,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
+                "region": {
+                  "startLine": 33,
+                  "startColumn": 37,
+                  "endLine": 33,
+                  "endColumn": 39
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
+                "region": {
+                  "startLine": 35,
+                  "startColumn": 17,
+                  "endLine": 35,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
+                "region": {
+                  "startLine": 37,
+                  "startColumn": 17,
+                  "endLine": 37,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
+                "region": {
+                  "startLine": 38,
+                  "startColumn": 17,
+                  "endLine": 38,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
+                "region": {
+                  "startLine": 38,
+                  "startColumn": 41,
+                  "endLine": 38,
+                  "endColumn": 43
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
+                "region": {
+                  "startLine": 40,
+                  "startColumn": 13,
+                  "endLine": 40,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
+                "region": {
+                  "startLine": 42,
+                  "startColumn": 17,
+                  "endLine": 42,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
+                "region": {
+                  "startLine": 44,
+                  "startColumn": 17,
+                  "endLine": 44,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
+                "region": {
+                  "startLine": 45,
+                  "startColumn": 17,
+                  "endLine": 45,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardValidations.cs",
+                "region": {
+                  "startLine": 46,
+                  "startColumn": 17,
+                  "endLine": 46,
+                  "endColumn": 19
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": "+1",
+              "1": "+1",
+              "10": "+2 (incl 1 for nesting)",
+              "11": "+2 (incl 1 for nesting)",
+              "12": "+2 (incl 1 for nesting)",
+              "2": "+1",
+              "3": "+1",
+              "4": "+2 (incl 1 for nesting)",
+              "5": "+2 (incl 1 for nesting)",
+              "6": "+2 (incl 1 for nesting)",
+              "7": "+1",
+              "8": "+1",
+              "9": "+2 (incl 1 for nesting)"
+            }
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Validations/AwardTypeValidations.cs",
+                "region": {
+                  "startLine": 44,
+                  "startColumn": 39,
+                  "endLine": 44,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EntityBaseRepository.cs",
+                "region": {
+                  "startLine": 98,
+                  "startColumn": 73,
+                  "endLine": 98,
+                  "endColumn": 80
                 }
               }
             }
@@ -1402,9 +1406,72 @@
               "resultFile": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
                 "region": {
-                  "startLine": 98,
+                  "startLine": 76,
+                  "startColumn": 134,
+                  "endLine": 76,
+                  "endColumn": 141
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
+                "region": {
+                  "startLine": 97,
+                  "startColumn": 130,
+                  "endLine": 97,
+                  "endColumn": 137
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1822",
+          "level": "note",
+          "message": "Member 'GetAwardObject' does not access instance data and can be marked as static",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/AwardService.cs",
+                "region": {
+                  "startLine": 169,
+                  "startColumn": 24,
+                  "endLine": 169,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
+                "region": {
+                  "startLine": 118,
                   "startColumn": 87,
-                  "endLine": 98,
+                  "endLine": 118,
                   "endColumn": 94
                 }
               }
@@ -1423,9 +1490,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
                 "region": {
-                  "startLine": 125,
+                  "startLine": 145,
                   "startColumn": 54,
-                  "endLine": 125,
+                  "endLine": 145,
                   "endColumn": 61
                 }
               }
@@ -1444,9 +1511,30 @@
               "resultFile": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
                 "region": {
-                  "startLine": 148,
+                  "startLine": 191,
+                  "startColumn": 132,
+                  "endLine": 191,
+                  "endColumn": 139
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
+                "region": {
+                  "startLine": 168,
                   "startColumn": 54,
-                  "endLine": 148,
+                  "endLine": 168,
                   "endColumn": 61
                 }
               }
@@ -1463,53 +1551,11 @@
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
-                "region": {
-                  "startLine": 173,
-                  "startColumn": 34,
-                  "endLine": 173,
-                  "endColumn": 123
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2068",
-          "level": "warning",
-          "message": "\"password\" detected here, make sure this is not a hard-coded credential.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
-                "region": {
-                  "startLine": 178,
-                  "startColumn": 34,
-                  "endLine": 178,
-                  "endColumn": 123
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2068",
-          "level": "warning",
-          "message": "\"password\" detected here, make sure this is not a hard-coded credential.",
-          "locations": [
-            {
-              "resultFile": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
                 "region": {
-                  "startLine": 177,
+                  "startLine": 197,
                   "startColumn": 34,
-                  "endLine": 177,
+                  "endLine": 197,
                   "endColumn": 126
                 }
               }
@@ -1528,9 +1574,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
                 "region": {
-                  "startLine": 182,
+                  "startLine": 202,
                   "startColumn": 34,
-                  "endLine": 182,
+                  "endLine": 202,
                   "endColumn": 126
                 }
               }
@@ -1541,18 +1587,18 @@
           }
         },
         {
-          "ruleId": "S1116",
+          "ruleId": "S1125",
           "level": "warning",
-          "message": "Remove this empty statement.",
+          "message": "Remove the unnecessary Boolean literal(s).",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
                 "region": {
-                  "startLine": 329,
-                  "startColumn": 71,
-                  "endLine": 329,
-                  "endColumn": 72
+                  "startLine": 305,
+                  "startColumn": 94,
+                  "endLine": 305,
+                  "endColumn": 101
                 }
               }
             }
@@ -1570,73 +1616,10 @@
               "resultFile": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
                 "region": {
-                  "startLine": 263,
-                  "startColumn": 30,
-                  "endLine": 263,
-                  "endColumn": 87
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1125",
-          "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
-                "region": {
-                  "startLine": 280,
-                  "startColumn": 94,
-                  "endLine": 280,
-                  "endColumn": 101
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CA1822",
-          "level": "note",
-          "message": "Member 'GeneratePassword' does not access instance data and can be marked as static",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
-                "region": {
-                  "startLine": 326,
-                  "startColumn": 24,
-                  "endLine": 326,
-                  "endColumn": 40
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CA1822",
-          "level": "note",
-          "message": "Member 'GetEmployeeObject' does not access instance data and can be marked as static",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
-                "region": {
-                  "startLine": 274,
-                  "startColumn": 24,
-                  "endLine": 274,
-                  "endColumn": 41
+                  "startLine": 287,
+                  "startColumn": 31,
+                  "endLine": 287,
+                  "endColumn": 88
                 }
               }
             }
@@ -1654,9 +1637,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
                 "region": {
-                  "startLine": 264,
+                  "startLine": 289,
                   "startColumn": 21,
-                  "endLine": 264,
+                  "endLine": 289,
                   "endColumn": 27
                 }
               }
@@ -1751,27 +1734,6 @@
           }
         },
         {
-          "ruleId": "CA1822",
-          "level": "note",
-          "message": "Member 'GetAwardObject' does not access instance data and can be marked as static",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/AwardService.cs",
-                "region": {
-                  "startLine": 169,
-                  "startColumn": 24,
-                  "endLine": 169,
-                  "endColumn": 38
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
           "ruleId": "S1125",
           "level": "warning",
           "message": "Remove the unnecessary Boolean literal(s).",
@@ -1801,9 +1763,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 241,
+                  "startLine": 240,
                   "startColumn": 35,
-                  "endLine": 241,
+                  "endLine": 240,
                   "endColumn": 63
                 }
               }
@@ -1814,9 +1776,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 259,
+                  "startLine": 258,
                   "startColumn": 50,
-                  "endLine": 259,
+                  "endLine": 258,
                   "endColumn": 52
                 }
               }
@@ -1825,9 +1787,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 261,
+                  "startLine": 260,
                   "startColumn": 35,
-                  "endLine": 261,
+                  "endLine": 260,
                   "endColumn": 37
                 }
               }
@@ -1836,9 +1798,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 267,
+                  "startLine": 266,
                   "startColumn": 50,
-                  "endLine": 267,
+                  "endLine": 266,
                   "endColumn": 52
                 }
               }
@@ -1847,9 +1809,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 269,
+                  "startLine": 268,
                   "startColumn": 35,
-                  "endLine": 269,
+                  "endLine": 268,
                   "endColumn": 37
                 }
               }
@@ -1858,9 +1820,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 275,
+                  "startLine": 274,
                   "startColumn": 50,
-                  "endLine": 275,
+                  "endLine": 274,
                   "endColumn": 52
                 }
               }
@@ -1869,9 +1831,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 277,
+                  "startLine": 276,
                   "startColumn": 35,
-                  "endLine": 277,
+                  "endLine": 276,
                   "endColumn": 37
                 }
               }
@@ -1880,9 +1842,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 283,
+                  "startLine": 282,
                   "startColumn": 50,
-                  "endLine": 283,
+                  "endLine": 282,
                   "endColumn": 52
                 }
               }
@@ -1891,9 +1853,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 285,
+                  "startLine": 284,
                   "startColumn": 35,
-                  "endLine": 285,
+                  "endLine": 284,
                   "endColumn": 37
                 }
               }
@@ -1902,9 +1864,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 289,
+                  "startLine": 288,
                   "startColumn": 50,
-                  "endLine": 289,
+                  "endLine": 288,
                   "endColumn": 52
                 }
               }
@@ -1913,9 +1875,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 291,
+                  "startLine": 290,
                   "startColumn": 35,
-                  "endLine": 291,
+                  "endLine": 290,
                   "endColumn": 37
                 }
               }
@@ -1924,9 +1886,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 294,
+                  "startLine": 293,
                   "startColumn": 50,
-                  "endLine": 294,
+                  "endLine": 293,
                   "endColumn": 52
                 }
               }
@@ -1935,10 +1897,21 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 296,
+                  "startLine": 295,
                   "startColumn": 35,
-                  "endLine": 296,
+                  "endLine": 295,
                   "endColumn": 37
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
+                "region": {
+                  "startLine": 298,
+                  "startColumn": 50,
+                  "endLine": 298,
+                  "endColumn": 52
                 }
               }
             },
@@ -1947,19 +1920,8 @@
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
                   "startLine": 299,
-                  "startColumn": 50,
-                  "endLine": 299,
-                  "endColumn": 52
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
-                "region": {
-                  "startLine": 300,
                   "startColumn": 114,
-                  "endLine": 300,
+                  "endLine": 299,
                   "endColumn": 116
                 }
               }
@@ -1968,9 +1930,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 303,
+                  "startLine": 302,
                   "startColumn": 50,
-                  "endLine": 303,
+                  "endLine": 302,
                   "endColumn": 52
                 }
               }
@@ -1979,9 +1941,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 305,
+                  "startLine": 304,
                   "startColumn": 35,
-                  "endLine": 305,
+                  "endLine": 304,
                   "endColumn": 37
                 }
               }
@@ -1990,9 +1952,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 309,
+                  "startLine": 308,
                   "startColumn": 50,
-                  "endLine": 309,
+                  "endLine": 308,
                   "endColumn": 52
                 }
               }
@@ -2001,9 +1963,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 311,
+                  "startLine": 310,
                   "startColumn": 35,
-                  "endLine": 311,
+                  "endLine": 310,
                   "endColumn": 37
                 }
               }
@@ -2012,9 +1974,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 315,
+                  "startLine": 314,
                   "startColumn": 50,
-                  "endLine": 315,
+                  "endLine": 314,
                   "endColumn": 52
                 }
               }
@@ -2023,10 +1985,21 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 317,
+                  "startLine": 316,
                   "startColumn": 35,
-                  "endLine": 317,
+                  "endLine": 316,
                   "endColumn": 37
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
+                "region": {
+                  "startLine": 320,
+                  "startColumn": 50,
+                  "endLine": 320,
+                  "endColumn": 52
                 }
               }
             },
@@ -2035,19 +2008,8 @@
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
                   "startLine": 321,
-                  "startColumn": 50,
-                  "endLine": 321,
-                  "endColumn": 52
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
-                "region": {
-                  "startLine": 322,
                   "startColumn": 68,
-                  "endLine": 322,
+                  "endLine": 321,
                   "endColumn": 70
                 }
               }
@@ -2056,9 +2018,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 325,
+                  "startLine": 324,
                   "startColumn": 50,
-                  "endLine": 325,
+                  "endLine": 324,
                   "endColumn": 52
                 }
               }
@@ -2067,9 +2029,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 327,
+                  "startLine": 326,
                   "startColumn": 35,
-                  "endLine": 327,
+                  "endLine": 326,
                   "endColumn": 37
                 }
               }
@@ -2078,9 +2040,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 331,
+                  "startLine": 330,
                   "startColumn": 50,
-                  "endLine": 331,
+                  "endLine": 330,
                   "endColumn": 52
                 }
               }
@@ -2089,9 +2051,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 333,
+                  "startLine": 332,
                   "startColumn": 35,
-                  "endLine": 333,
+                  "endLine": 332,
                   "endColumn": 37
                 }
               }
@@ -2100,9 +2062,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 337,
+                  "startLine": 336,
                   "startColumn": 50,
-                  "endLine": 337,
+                  "endLine": 336,
                   "endColumn": 52
                 }
               }
@@ -2111,9 +2073,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 339,
+                  "startLine": 338,
                   "startColumn": 35,
-                  "endLine": 339,
+                  "endLine": 338,
                   "endColumn": 37
                 }
               }
@@ -2122,9 +2084,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 343,
+                  "startLine": 342,
                   "startColumn": 50,
-                  "endLine": 343,
+                  "endLine": 342,
                   "endColumn": 52
                 }
               }
@@ -2133,9 +2095,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 345,
+                  "startLine": 344,
                   "startColumn": 35,
-                  "endLine": 345,
+                  "endLine": 344,
                   "endColumn": 37
                 }
               }
@@ -2144,9 +2106,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 348,
+                  "startLine": 347,
                   "startColumn": 50,
-                  "endLine": 348,
+                  "endLine": 347,
                   "endColumn": 52
                 }
               }
@@ -2155,9 +2117,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 350,
+                  "startLine": 349,
                   "startColumn": 35,
-                  "endLine": 350,
+                  "endLine": 349,
                   "endColumn": 37
                 }
               }
@@ -2166,9 +2128,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 355,
+                  "startLine": 354,
                   "startColumn": 50,
-                  "endLine": 355,
+                  "endLine": 354,
                   "endColumn": 52
                 }
               }
@@ -2177,9 +2139,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 357,
+                  "startLine": 356,
                   "startColumn": 35,
-                  "endLine": 357,
+                  "endLine": 356,
                   "endColumn": 37
                 }
               }
@@ -2188,9 +2150,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 362,
+                  "startLine": 361,
                   "startColumn": 50,
-                  "endLine": 362,
+                  "endLine": 361,
                   "endColumn": 52
                 }
               }
@@ -2199,9 +2161,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 364,
+                  "startLine": 363,
                   "startColumn": 35,
-                  "endLine": 364,
+                  "endLine": 363,
                   "endColumn": 37
                 }
               }
@@ -2210,9 +2172,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 369,
+                  "startLine": 368,
                   "startColumn": 50,
-                  "endLine": 369,
+                  "endLine": 368,
                   "endColumn": 52
                 }
               }
@@ -2221,9 +2183,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 371,
+                  "startLine": 370,
                   "startColumn": 35,
-                  "endLine": 371,
+                  "endLine": 370,
                   "endColumn": 37
                 }
               }
@@ -2232,9 +2194,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 375,
+                  "startLine": 374,
                   "startColumn": 50,
-                  "endLine": 375,
+                  "endLine": 374,
                   "endColumn": 52
                 }
               }
@@ -2243,9 +2205,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 377,
+                  "startLine": 376,
                   "startColumn": 35,
-                  "endLine": 377,
+                  "endLine": 376,
                   "endColumn": 37
                 }
               }
@@ -2254,9 +2216,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 382,
+                  "startLine": 381,
                   "startColumn": 50,
-                  "endLine": 382,
+                  "endLine": 381,
                   "endColumn": 52
                 }
               }
@@ -2265,9 +2227,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 384,
+                  "startLine": 383,
                   "startColumn": 35,
-                  "endLine": 384,
+                  "endLine": 383,
                   "endColumn": 37
                 }
               }
@@ -2276,9 +2238,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 389,
+                  "startLine": 388,
                   "startColumn": 50,
-                  "endLine": 389,
+                  "endLine": 388,
                   "endColumn": 52
                 }
               }
@@ -2287,10 +2249,21 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 391,
+                  "startLine": 390,
                   "startColumn": 35,
-                  "endLine": 391,
+                  "endLine": 390,
                   "endColumn": 37
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
+                "region": {
+                  "startLine": 395,
+                  "startColumn": 50,
+                  "endLine": 395,
+                  "endColumn": 52
                 }
               }
             },
@@ -2299,19 +2272,8 @@
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
                   "startLine": 396,
-                  "startColumn": 50,
-                  "endLine": 396,
-                  "endColumn": 52
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
-                "region": {
-                  "startLine": 397,
                   "startColumn": 86,
-                  "endLine": 397,
+                  "endLine": 396,
                   "endColumn": 88
                 }
               }
@@ -2320,9 +2282,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 402,
+                  "startLine": 401,
                   "startColumn": 14,
-                  "endLine": 402,
+                  "endLine": 401,
                   "endColumn": 19
                 }
               }
@@ -2331,9 +2293,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/AwardRepository.cs",
                 "region": {
-                  "startLine": 407,
+                  "startLine": 406,
                   "startColumn": 13,
-                  "endLine": 407,
+                  "endLine": 406,
                   "endColumn": 18
                 }
               }
@@ -3076,48 +3038,6 @@
             ]
           }
         },
-        "CS8600": {
-          "id": "CS8600",
-          "shortDescription": "Converting null literal or possible null value to non-nullable type.",
-          "defaultLevel": "warning",
-          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8600)",
-          "properties": {
-            "category": "Compiler",
-            "isEnabledByDefault": true,
-            "tags": [
-              "Compiler",
-              "Telemetry"
-            ]
-          }
-        },
-        "CS8602": {
-          "id": "CS8602",
-          "shortDescription": "Dereference of a possibly null reference.",
-          "defaultLevel": "warning",
-          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8602)",
-          "properties": {
-            "category": "Compiler",
-            "isEnabledByDefault": true,
-            "tags": [
-              "Compiler",
-              "Telemetry"
-            ]
-          }
-        },
-        "CS8604": {
-          "id": "CS8604",
-          "shortDescription": "Possible null reference argument.",
-          "defaultLevel": "warning",
-          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8604)",
-          "properties": {
-            "category": "Compiler",
-            "isEnabledByDefault": true,
-            "tags": [
-              "Compiler",
-              "Telemetry"
-            ]
-          }
-        },
         "CS8618": {
           "id": "CS8618",
           "shortDescription": "Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.",
@@ -3129,23 +3049,6 @@
             "tags": [
               "Compiler",
               "Telemetry"
-            ]
-          }
-        },
-        "S1066": {
-          "id": "S1066",
-          "shortDescription": "Collapsible \"if\" statements should be merged",
-          "fullDescription": "Merging collapsible if statements increases the code’s readability.",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1066",
-          "properties": {
-            "category": "Major Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "SonarWay",
-              "MainSourceScope",
-              "TestSourceScope"
             ]
           }
         },
@@ -3196,6 +3099,24 @@
               "SonarWay",
               "MainSourceScope",
               "TestSourceScope"
+            ]
+          }
+        },
+        "S1144": {
+          "id": "S1144",
+          "shortDescription": "Unused private types or members should be removed",
+          "fullDescription": "private or internal types or private members that are never executed or referenced are dead code: unnecessary, inoperative code that should be removed. Cleaning out dead code decreases the size of the maintained codebase, making it easier to understand the program and preventing bugs from being introduced.",
+          "defaultLevel": "note",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1144",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope",
+              "TestSourceScope",
+              "Unnecessary"
             ]
           }
         },

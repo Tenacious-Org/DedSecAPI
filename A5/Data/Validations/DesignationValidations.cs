@@ -40,12 +40,12 @@ namespace A5.Data.Validations
         }
         public bool CommonValidations(Designation designation)
         {
-            if (String.IsNullOrWhiteSpace(designation.DesignationName)) throw new ValidationException("Designation Name should not be null or Empty.");
-            if (!(Regex.IsMatch(designation.DesignationName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("Designation Name should have only alphabets.No special Characters or numbers are allowed");
+            if (String.IsNullOrWhiteSpace(designation.DesignationName)) throw new ValidationException("Designation name should not be Empty.");
+            if (!(Regex.IsMatch(designation.DesignationName, @"^[a-zA-Z\s]+$"))) throw new ValidationException("Designation name should have only alphabets.No special Characters or numbers are allowed");
             if (_context.Designations!.Any(nameof => nameof.DesignationName == designation.DesignationName && nameof.DepartmentId == designation.DepartmentId && nameof.Id != designation.Id)) throw new ValidationException("Designation Name already exists");
             if (designation.DepartmentId <= 0) throw new ValidationException("Department Id must be greater than zero");
             if (designation.RoleId <= 0) throw new ValidationException("Role Id must be greater than zero");
-            if (designation.IsActive == false) throw new ValidationException("To update designation it should be active");
+            if (designation.IsActive == false) throw new ValidationException("To update Designation it should be active");
             else return true;
         }
 

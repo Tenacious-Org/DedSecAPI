@@ -14,7 +14,7 @@ namespace A5.Data.Validations
         }
         public bool AdminValidation(int? userId){
             var Admin=_context.Set<Employee>().Include("Designation").FirstOrDefault(nameof=>nameof.Id==userId);
-            if(Admin.Designation!.RoleId!=5)  throw new ValidationException("This user doesn't have access");
+            if(Admin?.Designation!.RoleId!=5)  throw new ValidationException("This user doesn't have access");
             else return true;
         }
     }

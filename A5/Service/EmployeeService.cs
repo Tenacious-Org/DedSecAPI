@@ -184,7 +184,7 @@ namespace A5.Service
             if (Email == null || Password == null) throw new ValidationException("Email or Password cannot be null");
             try
             {
-                //Password=PasswordHasher.EncryptPassword(Password);
+                Password=PasswordHasher.EncryptPassword(Password);
                 return _employeeRepository.GetEmployee(Email, Password);
             }
             catch (ValidationException exception)
@@ -230,7 +230,7 @@ namespace A5.Service
             try
             {
                 employee.Image = System.Convert.FromBase64String(employee.ImageString!);
-                //employee.Password = GeneratePassword(employee);
+                employee.Password = GeneratePassword(employee);
                 return _employeeRepository.CreateEmployee(employee);
             }
             catch (ValidationException exception)
