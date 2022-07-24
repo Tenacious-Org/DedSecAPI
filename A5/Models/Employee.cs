@@ -53,4 +53,9 @@ namespace A5.Models
         public string ?  Email { get; set; }
         public string ? Password { get; set; }
     }
+
+    public class ForgotPassword{
+        public string ?  ACEID { get; set; }
+        public string ? Email { get; set; }
+    }
 }

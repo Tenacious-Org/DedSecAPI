@@ -440,24 +440,23 @@ namespace A5.Controller
                 return Problem(exception.Message);
             }
         }
-        [HttpGet("ForgotPassword")][AllowAnonymous]
-        public ActionResult ForgotPassword(string aceId, string emailId)
+        [HttpPost("ForgotPassword")][AllowAnonymous]
+        public ActionResult ForgotPassword(ForgotPassword UserDetails)
         {
-            if (aceId==null) return BadRequest("aceid cannot be null");
-            if (emailId==null) return BadRequest("emailid cannot be null");
+          if ( UserDetails == null ) return BadRequest("User Details cannot be null");
             try
             {
-                var data = _employeeService.ForgotPassword(aceId,emailId);
-                return Ok(data);
+                var data = _employeeService.ForgotPassword(UserDetails.ACEID,UserDetails.Email);
+                return data ? Ok(data) : BadRequest("Failed to Send Mail ");
             }
             catch (ValidationException exception)
             {
-                _logger.LogError("EmployeeController : ForgotPassword(aceId : {aceId}),Email : {emailId}) : (Error: {Message})", aceId,emailId ,exception.Message);
+                _logger.LogError("EmployeeController : ForgotPassword(User Details : (Error: {Message})" ,exception.Message);
                 return BadRequest(_employeeService.ErrorMessage(exception.Message));
             }
             catch (Exception exception)
             {
-                _logger.LogError("EmployeeController : ForgotPassword(aceId : {aceId}),Email : {emailId}) : (Error: {Message})", aceId,emailId ,exception.Message);
+                _logger.LogError("EmployeeController : ForgotPassword(User Details : (Error: {Message})",exception.Message);
                 return Problem(exception.Message);
             }
         }

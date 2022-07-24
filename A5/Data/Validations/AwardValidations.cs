@@ -1,9 +1,6 @@
 using A5.Service;
 using A5.Models;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
-
 namespace A5.Data.Validations
 {
     public class AwardValidations
@@ -22,9 +19,7 @@ namespace A5.Data.Validations
             if (award.AwardTypeId <= 0) throw new ValidationException("Award Type Id must be greater than zero");
             if (string.IsNullOrWhiteSpace(award.Reason)) throw new ValidationException("Reason for award should not be null");
             return true;
-
         }
-
         public bool ValidateAddComment(Comment comment, int employeeId)
         {
             if (string.IsNullOrWhiteSpace(comment.Comments)) throw new ValidationException("Comments should not be null");
@@ -41,7 +36,6 @@ namespace A5.Data.Validations
                 var requester = _context.Set<Employee>().FirstOrDefault(nameof => nameof.Id == award.RequesterId);
                 if (requester.ReportingPersonId != award.UpdatedBy) throw new ValidationException("Approver Id not found");
                 if (award.StatusId == 3 && String.IsNullOrWhiteSpace(award.RejectedReason)) throw new ValidationException("Rejection reason cannot be null");
-
             }
             if (award.StatusId == 4)
             {
