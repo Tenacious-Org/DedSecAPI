@@ -139,7 +139,7 @@ namespace A5.Service
         //gets(view) comment using award id
         public IEnumerable<object> GetComments(int awardId)
         {
-            if(awardId==0) throw new ValidationException("Award is should not be null");
+            if(awardId==0) throw new ValidationException("Award id should not be null");
             try
             {
                 var comments = _award.GetComments(awardId);

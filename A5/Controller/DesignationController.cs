@@ -79,7 +79,7 @@ namespace A5.Controller
         [HttpGet("GetDesignationsByDepartmentId")]
         public ActionResult GetDesignationsByDepartmentId(int id)
         {
-            if (id <= 0) return BadRequest("Designation Id must be greaer than zero");
+            if (id <= 0) return BadRequest("Department Id must be greaer than zero");
             try
             {
                 var data = _designationService.GetDesignationsByDepartmentId(id);
