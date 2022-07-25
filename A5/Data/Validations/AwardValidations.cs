@@ -23,7 +23,7 @@ namespace A5.Data.Validations
         public bool ValidateAddComment(Comment comment)
         {
             if (string.IsNullOrWhiteSpace(comment.Comments)) throw new ValidationException("Comments should not be null");
-            if (_context.Employees!.Any(nameof => nameof.Id != comment.EmployeeId)) throw new ValidationException("Invalid User , no access to comment");
+            //if (_context.Employees!.Any(nameof => nameof.Id != comment.EmployeeId)) throw new ValidationException("Invalid User , no access to comment");
             return true;
         }
         public bool ApprovalValidation(Award award)
