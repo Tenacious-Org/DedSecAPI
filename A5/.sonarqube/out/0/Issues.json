@@ -256,48 +256,6 @@
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
-                "region": {
-                  "startLine": 187,
-                  "startColumn": 17,
-                  "endLine": 187,
-                  "endColumn": 69
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S125",
-          "level": "warning",
-          "message": "Remove this commented out code.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
-                "region": {
-                  "startLine": 233,
-                  "startColumn": 17,
-                  "endLine": 233,
-                  "endColumn": 66
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S125",
-          "level": "warning",
-          "message": "Remove this commented out code.",
-          "locations": [
-            {
-              "resultFile": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/MailService.cs",
                 "region": {
                   "startLine": 44,
@@ -313,18 +271,18 @@
           }
         },
         {
-          "ruleId": "S1144",
+          "ruleId": "S4792",
           "level": "warning",
-          "message": "Remove the unused private method 'GeneratePassword'.",
+          "message": "Make sure that this logger's configuration is safe.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Program.cs",
                 "region": {
-                  "startLine": 346,
-                  "startColumn": 9,
-                  "endLine": 352,
-                  "endColumn": 10
+                  "startLine": 18,
+                  "startColumn": 14,
+                  "endLine": 18,
+                  "endColumn": 39
                 }
               }
             }
@@ -418,48 +376,6 @@
           }
         },
         {
-          "ruleId": "S2737",
-          "level": "warning",
-          "message": "Add logic to this catch clause or eliminate it and rethrow the exception automatically.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Controller/OrganisationController.cs",
-                "region": {
-                  "startLine": 231,
-                  "startColumn": 13,
-                  "endLine": 234,
-                  "endColumn": 14
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S4792",
-          "level": "warning",
-          "message": "Make sure that this logger's configuration is safe.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Program.cs",
-                "region": {
-                  "startLine": 18,
-                  "startColumn": 14,
-                  "endLine": 18,
-                  "endColumn": 39
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
           "ruleId": "S5122",
           "level": "warning",
           "message": "Make sure this permissive CORS policy is safe here.",
@@ -508,6 +424,27 @@
           "locations": [
             {
               "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Controller/AwardTypeController.cs",
+                "region": {
+                  "startLine": 237,
+                  "startColumn": 13,
+                  "endLine": 240,
+                  "endColumn": 14
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2737",
+          "level": "warning",
+          "message": "Add logic to this catch clause or eliminate it and rethrow the exception automatically.",
+          "locations": [
+            {
+              "resultFile": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Controller/AwardController.cs",
                 "region": {
                   "startLine": 287,
@@ -523,18 +460,18 @@
           }
         },
         {
-          "ruleId": "S1481",
+          "ruleId": "S2737",
           "level": "warning",
-          "message": "Remove the unused local variable 'filepath'.",
+          "message": "Add logic to this catch clause or eliminate it and rethrow the exception automatically.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/MailService.cs",
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Controller/OrganisationController.cs",
                 "region": {
-                  "startLine": 27,
-                  "startColumn": 17,
-                  "endLine": 27,
-                  "endColumn": 25
+                  "startLine": 231,
+                  "startColumn": 13,
+                  "endLine": 234,
+                  "endColumn": 14
                 }
               }
             }
@@ -565,18 +502,39 @@
           }
         },
         {
-          "ruleId": "S1075",
+          "ruleId": "S2737",
           "level": "warning",
-          "message": "Refactor your code not to use hardcoded absolute paths or URIs.",
+          "message": "Add logic to this catch clause or eliminate it and rethrow the exception automatically.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/MailService.cs",
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Controller/DesignationController.cs",
                 "region": {
-                  "startLine": 169,
-                  "startColumn": 42,
-                  "endLine": 169,
-                  "endColumn": 89
+                  "startLine": 274,
+                  "startColumn": 13,
+                  "endLine": 277,
+                  "endColumn": 14
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2737",
+          "level": "warning",
+          "message": "Add logic to this catch clause or eliminate it and rethrow the exception automatically.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Controller/DepartmentController.cs",
+                "region": {
+                  "startLine": 268,
+                  "startColumn": 13,
+                  "endLine": 271,
+                  "endColumn": 14
                 }
               }
             }
@@ -607,81 +565,18 @@
           }
         },
         {
-          "ruleId": "S1075",
+          "ruleId": "S1481",
           "level": "warning",
-          "message": "Refactor your code not to use hardcoded absolute paths or URIs.",
+          "message": "Remove the unused local variable 'filepath'.",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/MailService.cs",
                 "region": {
-                  "startLine": 333,
-                  "startColumn": 42,
-                  "endLine": 333,
-                  "endColumn": 94
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1075",
-          "level": "warning",
-          "message": "Refactor your code not to use hardcoded absolute paths or URIs.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/MailService.cs",
-                "region": {
-                  "startLine": 498,
-                  "startColumn": 42,
-                  "endLine": 498,
-                  "endColumn": 96
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1075",
-          "level": "warning",
-          "message": "Refactor your code not to use hardcoded absolute paths or URIs.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/MailService.cs",
-                "region": {
-                  "startLine": 641,
-                  "startColumn": 42,
-                  "endLine": 641,
-                  "endColumn": 95
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2737",
-          "level": "warning",
-          "message": "Add logic to this catch clause or eliminate it and rethrow the exception automatically.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Controller/DesignationController.cs",
-                "region": {
-                  "startLine": 274,
-                  "startColumn": 13,
-                  "endLine": 277,
-                  "endColumn": 14
+                  "startLine": 27,
+                  "startColumn": 17,
+                  "endLine": 27,
+                  "endColumn": 25
                 }
               }
             }
@@ -965,27 +860,6 @@
           }
         },
         {
-          "ruleId": "S2737",
-          "level": "warning",
-          "message": "Add logic to this catch clause or eliminate it and rethrow the exception automatically.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Controller/DepartmentController.cs",
-                "region": {
-                  "startLine": 268,
-                  "startColumn": 13,
-                  "endLine": 271,
-                  "endColumn": 14
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
           "ruleId": "S1125",
           "level": "warning",
           "message": "Remove the unnecessary Boolean literal(s).",
@@ -998,48 +872,6 @@
                   "startColumn": 41,
                   "endLine": 48,
                   "endColumn": 46
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2068",
-          "level": "warning",
-          "message": "\"password\" detected here, make sure this is not a hard-coded credential.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
-                "region": {
-                  "startLine": 192,
-                  "startColumn": 34,
-                  "endLine": 192,
-                  "endColumn": 123
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2068",
-          "level": "warning",
-          "message": "\"password\" detected here, make sure this is not a hard-coded credential.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
-                "region": {
-                  "startLine": 197,
-                  "startColumn": 34,
-                  "endLine": 197,
-                  "endColumn": 123
                 }
               }
             }
@@ -1070,27 +902,6 @@
           }
         },
         {
-          "ruleId": "S2737",
-          "level": "warning",
-          "message": "Add logic to this catch clause or eliminate it and rethrow the exception automatically.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Controller/AwardTypeController.cs",
-                "region": {
-                  "startLine": 237,
-                  "startColumn": 13,
-                  "endLine": 240,
-                  "endColumn": 14
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
           "ruleId": "S1125",
           "level": "warning",
           "message": "Remove the unnecessary Boolean literal(s).",
@@ -1103,69 +914,6 @@
                   "startColumn": 37,
                   "endLine": 18,
                   "endColumn": 42
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1116",
-          "level": "warning",
-          "message": "Remove this empty statement.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
-                "region": {
-                  "startLine": 349,
-                  "startColumn": 71,
-                  "endLine": 349,
-                  "endColumn": 72
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CA1822",
-          "level": "note",
-          "message": "Member 'GetEmployeeObject' does not access instance data and can be marked as static",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
-                "region": {
-                  "startLine": 294,
-                  "startColumn": 24,
-                  "endLine": 294,
-                  "endColumn": 41
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CA1822",
-          "level": "note",
-          "message": "Member 'GeneratePassword' does not access instance data and can be marked as static",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
-                "region": {
-                  "startLine": 346,
-                  "startColumn": 24,
-                  "endLine": 346,
-                  "endColumn": 40
                 }
               }
             }
@@ -1377,6 +1125,90 @@
           }
         },
         {
+          "ruleId": "S1075",
+          "level": "warning",
+          "message": "Refactor your code not to use hardcoded absolute paths or URIs.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/MailService.cs",
+                "region": {
+                  "startLine": 169,
+                  "startColumn": 42,
+                  "endLine": 169,
+                  "endColumn": 89
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1075",
+          "level": "warning",
+          "message": "Refactor your code not to use hardcoded absolute paths or URIs.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/MailService.cs",
+                "region": {
+                  "startLine": 333,
+                  "startColumn": 42,
+                  "endLine": 333,
+                  "endColumn": 94
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1075",
+          "level": "warning",
+          "message": "Refactor your code not to use hardcoded absolute paths or URIs.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/MailService.cs",
+                "region": {
+                  "startLine": 498,
+                  "startColumn": 42,
+                  "endLine": 498,
+                  "endColumn": 96
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1075",
+          "level": "warning",
+          "message": "Refactor your code not to use hardcoded absolute paths or URIs.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/MailService.cs",
+                "region": {
+                  "startLine": 641,
+                  "startColumn": 42,
+                  "endLine": 641,
+                  "endColumn": 95
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
           "ruleId": "S1125",
           "level": "warning",
           "message": "Remove the unnecessary Boolean literal(s).",
@@ -1389,6 +1221,48 @@
                   "startColumn": 73,
                   "endLine": 98,
                   "endColumn": 80
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2068",
+          "level": "warning",
+          "message": "\"password\" detected here, make sure this is not a hard-coded credential.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
+                "region": {
+                  "startLine": 192,
+                  "startColumn": 34,
+                  "endLine": 192,
+                  "endColumn": 123
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2068",
+          "level": "warning",
+          "message": "\"password\" detected here, make sure this is not a hard-coded credential.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
+                "region": {
+                  "startLine": 197,
+                  "startColumn": 34,
+                  "endLine": 197,
+                  "endColumn": 123
                 }
               }
             }
@@ -1440,18 +1314,60 @@
           }
         },
         {
-          "ruleId": "CA1822",
-          "level": "note",
-          "message": "Member 'GetAwardObject' does not access instance data and can be marked as static",
+          "ruleId": "S1116",
+          "level": "warning",
+          "message": "Remove this empty statement.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/AwardService.cs",
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
                 "region": {
-                  "startLine": 169,
+                  "startLine": 349,
+                  "startColumn": 71,
+                  "endLine": 349,
+                  "endColumn": 72
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1822",
+          "level": "note",
+          "message": "Member 'GeneratePassword' does not access instance data and can be marked as static",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
+                "region": {
+                  "startLine": 346,
                   "startColumn": 24,
-                  "endLine": 169,
-                  "endColumn": 38
+                  "endLine": 346,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1822",
+          "level": "note",
+          "message": "Member 'GetEmployeeObject' does not access instance data and can be marked as static",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/EmployeeService.cs",
+                "region": {
+                  "startLine": 294,
+                  "startColumn": 24,
+                  "endLine": 294,
+                  "endColumn": 41
                 }
               }
             }
@@ -1511,10 +1427,10 @@
               "resultFile": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
                 "region": {
-                  "startLine": 191,
-                  "startColumn": 132,
-                  "endLine": 191,
-                  "endColumn": 139
+                  "startLine": 168,
+                  "startColumn": 54,
+                  "endLine": 168,
+                  "endColumn": 61
                 }
               }
             }
@@ -1532,10 +1448,10 @@
               "resultFile": {
                 "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
                 "region": {
-                  "startLine": 168,
-                  "startColumn": 54,
-                  "endLine": 168,
-                  "endColumn": 61
+                  "startLine": 191,
+                  "startColumn": 132,
+                  "endLine": 191,
+                  "endColumn": 139
                 }
               }
             }
@@ -1587,27 +1503,6 @@
           }
         },
         {
-          "ruleId": "S1125",
-          "level": "warning",
-          "message": "Remove the unnecessary Boolean literal(s).",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
-                "region": {
-                  "startLine": 305,
-                  "startColumn": 94,
-                  "endLine": 305,
-                  "endColumn": 101
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
           "ruleId": "S3267",
           "level": "warning",
           "message": "Loop should be simplified by calling Select(q => q.HRId))",
@@ -1620,6 +1515,27 @@
                   "startColumn": 31,
                   "endLine": 287,
                   "endColumn": 88
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Data/Repository/EmployeeRepository.cs",
+                "region": {
+                  "startLine": 305,
+                  "startColumn": 94,
+                  "endLine": 305,
+                  "endColumn": 101
                 }
               }
             }
@@ -1662,6 +1578,27 @@
                   "startColumn": 127,
                   "endLine": 28,
                   "endColumn": 134
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1822",
+          "level": "note",
+          "message": "Member 'GetAwardObject' does not access instance data and can be marked as static",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/atsaya.arivu/Documents/GitHub/DedSecAPI/A5/Service/AwardService.cs",
+                "region": {
+                  "startLine": 169,
+                  "startColumn": 24,
+                  "endLine": 169,
+                  "endColumn": 38
                 }
               }
             }
@@ -3099,24 +3036,6 @@
               "SonarWay",
               "MainSourceScope",
               "TestSourceScope"
-            ]
-          }
-        },
-        "S1144": {
-          "id": "S1144",
-          "shortDescription": "Unused private types or members should be removed",
-          "fullDescription": "private or internal types or private members that are never executed or referenced are dead code: unnecessary, inoperative code that should be removed. Cleaning out dead code decreases the size of the maintained codebase, making it easier to understand the program and preventing bugs from being introduced.",
-          "defaultLevel": "note",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1144",
-          "properties": {
-            "category": "Major Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "SonarWay",
-              "MainSourceScope",
-              "TestSourceScope",
-              "Unnecessary"
             ]
           }
         },

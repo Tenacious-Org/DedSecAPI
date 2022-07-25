@@ -54921,7 +54921,7 @@ Department772 <
 °° 	
 }
 ²² 
-}´´ ³û
+}´´ ²þ
 NC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Service\EmployeeService.cs
 	namespace 	
 A5
@@ -56064,7 +56064,25 @@ employeeId
 try
 ¹¹ 
 {
-ºº 
+ºº 
+Password
+»» 
+=
+»» 
+PasswordHasher
+»» '
+.
+»»' (
+EncryptPassword
+»»( 7
+(
+»»7 8
+Password
+»»8 @
+)
+»»@ A
+;
+»»A B
 return
 ¼¼ !
 _employeeRepository
@@ -56472,7 +56490,25 @@ employeeId
 )
 èèV W
 ;
-èèW X
+èèW X
+employee
+éé 
+.
+éé 
+Password
+éé !
+=
+éé" #
+GeneratePassword
+éé$ 4
+(
+éé4 5
+employee
+éé5 =
+)
+éé= >
+;
+éé> ?
 return
 êê !
 _employeeRepository
