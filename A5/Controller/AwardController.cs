@@ -94,7 +94,7 @@ namespace A5.Controller
             {
                 award.UpdatedBy = GetCurrentUserId();
                 var data = _awardService.Approval(award);
-                return data ? Ok(data) : BadRequest("Can't approve reuqest");
+                return data ? Ok(data) : BadRequest("Can't approve request");
             }
             catch (ValidationException exception)
             {
