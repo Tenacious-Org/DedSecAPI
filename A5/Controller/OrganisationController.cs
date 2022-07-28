@@ -225,10 +225,14 @@ namespace A5.Controller
         private int GetCurrentUserId()
         {
             try
-            {
+            {   
                 return Convert.ToInt32(User.FindFirst("UserId")?.Value);
             }
-            catch (Exception)
+            catch(NullReferenceException nullReferenceException)
+            {
+                return 0;
+            }
+            catch (Exception exception)
             {
                 throw;
             }

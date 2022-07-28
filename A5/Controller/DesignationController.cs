@@ -265,7 +265,7 @@ namespace A5.Controller
                 return Problem(exception.Message);
             }
         }
-        private int GetCurrentUserId()
+        public  int GetCurrentUserId()
         {
             try
             {
