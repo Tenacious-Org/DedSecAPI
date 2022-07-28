@@ -391,6 +391,13 @@ namespace A5.Data.Repository
                                   && nameof.StatusId == 4
                                   && (nameof.UpdatedOn >= Convert.ToDateTime(start).Date && nameof.UpdatedOn <= Convert.ToDateTime(end).Date))
 
+                    //Applying Filter Values and Retrieve the Data Using Organisation ID, Department ID, Award ID
+                    .WhereIf(organisationId != 0 && departmentId != 0 && awardId != 0 && start == fdate && end == tdate,
+                           nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId
+                                  && nameof.Awardee!.Designation!.Department!.Id == departmentId
+                                  && nameof.AwardTypeId == awardId
+                                  && nameof.StatusId == 4)
+                                  
                     //Neither All Conditions Failed Default Value Displayed
                     .WhereIf(organisationId == 0 && departmentId == 0 && awardId == 0 && start == fdate && end == tdate,
                             nameof => nameof.UpdatedOn >= DateTime.Now.AddDays(-365) && nameof.UpdatedOn <= DateTime.Now)
