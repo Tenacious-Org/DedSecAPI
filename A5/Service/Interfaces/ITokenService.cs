@@ -4,7 +4,7 @@ namespace A5.Service.Interfaces
 {
     public interface ITokenService
     {
-        public object GenerateToken(Login Credentials);
+         object GenerateToken(Login Credentials);
 
     }
 

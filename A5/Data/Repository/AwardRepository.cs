@@ -35,7 +35,6 @@ namespace A5.Data.Repository
 
             try
             {
-
                 _context.Set<Award>().Add(award);
                 _context.SaveChanges();
                 if (award.StatusId == 1)
@@ -43,7 +42,6 @@ namespace A5.Data.Repository
                     _mail?.RequesterAsync(award);
                 }
                 return true;
-
             }
             catch (ValidationException exception)
             {
@@ -243,9 +241,6 @@ namespace A5.Data.Repository
             {
                 var fdate = new DateTime(0001,04,15);
                 var tdate = new DateTime(0001,04,29);
-
-
-
                 var award = _context.Set<Award>()
                     .Include("Awardee")
                     .Include("Awardee.Designation.Department.Organisation")
@@ -253,7 +248,7 @@ namespace A5.Data.Repository
                     .Include("Awardee.HR")
                     .Include("AwardType")
                     .Include("Status")
-
+                    
                     //Applying All Filter Values and Retrieve the Data Using Organisation ID, Department ID, Award ID, Start Date and End Date  //
                     .WhereIf(organisationId != 0 && departmentId != 0 && awardId != 0 && start != fdate && end != tdate,
                            nameof => nameof.Awardee!.Designation!.Department!.Organisation!.Id == organisationId

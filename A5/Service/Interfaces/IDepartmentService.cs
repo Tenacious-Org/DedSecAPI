@@ -12,8 +12,8 @@ namespace A5.Service.Interfaces
         Department? GetDepartmentById(int departmentId);
         bool DisableDepartment(int departmentId,int userId);
         int GetCount(int departmentId);
-        public IEnumerable<object> GetAllDepartments();
-        public IEnumerable<Department> GetDepartmentsByOrganisationId(int organisationId);
-        public object ErrorMessage(string ValidationMessage);
+         IEnumerable<object> GetAllDepartments();
+         IEnumerable<Department> GetDepartmentsByOrganisationId(int organisationId);
+         object ErrorMessage(string ValidationMessage);
     }
 }

@@ -7,14 +7,14 @@ namespace A5.Service.Interfaces
 {
     public interface IDesignationService
     {
-        public IEnumerable<Designation> GetDesignationsByDepartmentId(int departmentId);
-        public IEnumerable<object> GetAllDesignations();
-        public bool CreateDesignation(Designation designation);
-        public int GetCount(int designationId);
-        public bool UpdateDesignation(Designation designation);
-        public bool DisableDesignation(int designationId,int userId);
-        public Designation? GetDesignationById(int designationId);
-        public object ErrorMessage(string ValidationMessage);
+         IEnumerable<Designation> GetDesignationsByDepartmentId(int departmentId);
+         IEnumerable<object> GetAllDesignations();
+         bool CreateDesignation(Designation designation);
+         int GetCount(int designationId);
+         bool UpdateDesignation(Designation designation);
+         bool DisableDesignation(int designationId,int userId);
+         Designation? GetDesignationById(int designationId);
+         object ErrorMessage(string ValidationMessage);
 
     }
 }

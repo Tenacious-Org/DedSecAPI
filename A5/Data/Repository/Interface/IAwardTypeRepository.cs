@@ -4,12 +4,12 @@ using A5.Data;
 namespace A5.Data.Repository.Interface
 {
     public interface IAwardTypeRepository
-        {
-        public bool CreateAwardType(AwardType awardType);
-        public bool DisableAwardType(int awardTypeId,int userId);
-        public bool UpdateAwardType(AwardType awardType);
-        public AwardType? GetAwardTypeById(int id);
-        public IEnumerable<AwardType> GetAllAwardTypes();
+    {
+        bool CreateAwardType(AwardType awardType);
+        bool DisableAwardType(int awardTypeId, int userId);
+        bool UpdateAwardType(AwardType awardType);
+        AwardType? GetAwardTypeById(int id);
+        IEnumerable<AwardType> GetAllAwardTypes();
 
     }
 }

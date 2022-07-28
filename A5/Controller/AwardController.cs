@@ -219,7 +219,6 @@ namespace A5.Controller
                 comment.EmployeeId = GetCurrentUserId();
                 var data = _awardService.AddComment(comment);
                 return data ? Ok(data) : BadRequest("new comments cannot be added");
-
             }
             catch (ValidationException exception)
             {

@@ -6,7 +6,6 @@ namespace A5.Models
 {
     public class Employee : IEntityBase, IAudit
     {
-    
         public int Id { get; set; }
         public string   ACEID { get; set; }
         public string  FirstName { get; set; }
@@ -45,8 +44,6 @@ namespace A5.Models
         
         public virtual ICollection<Employee> ? Reportingpersons { get; set; }
         public virtual ICollection<Employee> ? Hrs { get; set; }
-   
-       
     }
 
     public class Login{

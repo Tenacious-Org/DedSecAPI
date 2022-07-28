@@ -4,14 +4,14 @@ namespace A5.Data.Repository.Interface
 {
     public interface IDesignationRepository
     {
-        public IEnumerable<Designation> GetDesignationsByDepartmentId(int departmentId);
-        public IEnumerable<Designation> GetAllDesignation();
-        public bool CreateDesignation(Designation designation);
-        public int GetCount(int designationId);
-        public bool UpdateDesignation(Designation designation);
-        public bool DisableDesignation(int designationId,int userId);
-        public Designation? GetDesignationById(int designationId);
-        public  object ErrorMessage(string ValidationMessage);
+        IEnumerable<Designation> GetDesignationsByDepartmentId(int departmentId);
+        IEnumerable<Designation> GetAllDesignation();
+        bool CreateDesignation(Designation designation);
+        int GetCount(int designationId);
+        bool UpdateDesignation(Designation designation);
+        bool DisableDesignation(int designationId, int userId);
+        Designation? GetDesignationById(int designationId);
+        object ErrorMessage(string ValidationMessage);
 
     }
 }

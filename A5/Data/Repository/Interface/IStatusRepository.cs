@@ -3,10 +3,8 @@ namespace A5.Data.Repository.Interface
 {
     public interface IStatusRepository
     {
-        public Status? GetStatusById(int statusId);
-        public IEnumerable<Status> GetAllStatus();
-
-
+        Status? GetStatusById(int statusId);
+        IEnumerable<Status> GetAllStatus();
     }
-    
+
 }

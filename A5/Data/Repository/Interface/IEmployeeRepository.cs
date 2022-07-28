@@ -4,19 +4,19 @@ namespace A5.Data.Repository.Interface
 {
     public interface IEmployeeRepository
     {
-        public bool CreateEmployee(Employee employee);
-        public bool DisableEmployee(int employeeId, int userId);
-        public bool UpdateEmployee(Employee employee);
-        public Employee? GetEmployeeById(int employeeId);
-        public IEnumerable<Employee> GetAllEmployees();
-        public bool ForgotPassword(string aceId, string emailId);
-        public IEnumerable<Employee> GetReportingPersonByDepartmentId(int departmentId);
-        public IEnumerable<Employee> GetHrByDepartmentId(int departmentId);
-        public IEnumerable<Employee> GetEmployeeByVpDesignation();
-        public IEnumerable<Employee> GetEmployeeByRequesterId(int requesterId);
-        public IEnumerable<Employee> GetEmployeeByOrganisation(int organisationId);
-        public Employee GetEmployee(string Email, string Password);
-        public int GetEmployeeCount(int employeeId);
+        bool CreateEmployee(Employee employee);
+        bool DisableEmployee(int employeeId, int userId);
+        bool UpdateEmployee(Employee employee);
+        Employee? GetEmployeeById(int employeeId);
+        IEnumerable<Employee> GetAllEmployees();
+        bool ForgotPassword(string aceId, string emailId);
+        IEnumerable<Employee> GetReportingPersonByDepartmentId(int departmentId);
+        IEnumerable<Employee> GetHrByDepartmentId(int departmentId);
+        IEnumerable<Employee> GetEmployeeByVpDesignation();
+        IEnumerable<Employee> GetEmployeeByRequesterId(int requesterId);
+        IEnumerable<Employee> GetEmployeeByOrganisation(int organisationId);
+        Employee GetEmployee(string Email, string Password);
+        int GetEmployeeCount(int employeeId);
 
 
 

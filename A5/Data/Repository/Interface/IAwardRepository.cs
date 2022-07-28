@@ -5,12 +5,12 @@ namespace A5.Data.Repository.Interface
 {
     public interface IAwardRepository
     {
-        public bool RaiseAwardRequest(Award award);
-        public bool ApproveRequest(Award award);
-        public Award? GetAwardById(int awardId);
-        public bool AddComments(Comment comment);
-        public IEnumerable<Comment> GetComments(int awardId);
-        public IEnumerable<Award> GetAllAwardsList(int? pageId, int? employeeId);
+        bool RaiseAwardRequest(Award award);
+        bool ApproveRequest(Award award);
+        Award? GetAwardById(int awardId);
+        bool AddComments(Comment comment);
+        IEnumerable<Comment> GetComments(int awardId);
+        IEnumerable<Award> GetAllAwardsList(int? pageId, int? employeeId);
 
     }
 }

@@ -5,12 +5,12 @@ namespace A5.Service.Interfaces
 {
     public interface IAwardTypeService
     {
-        public bool CreateAwardType(AwardType awardType);
-        public bool DisableAwardType(int awardTypeId,int userId);
-        public bool UpdateAwardType(AwardType awardType);
-        public AwardType? GetAwardTypeById(int awardTypeId);
-        public IEnumerable<AwardType> GetAllAwardType();
-        public object ErrorMessage(string ValidationMessage);
+        bool CreateAwardType(AwardType awardType);
+        bool DisableAwardType(int awardTypeId, int userId);
+        bool UpdateAwardType(AwardType awardType);
+        AwardType? GetAwardTypeById(int awardTypeId);
+        IEnumerable<AwardType> GetAllAwardType();
+        object ErrorMessage(string ValidationMessage);
 
 
     }

@@ -9,12 +9,12 @@ namespace A5.Service.Interfaces
 {
     public interface IAwardService
     {
-        public bool RaiseRequest(Award award,int userId);
-        public bool Approval(Award award);
-        public bool AddComment(Comment comment);
-        public object GetAwardById(int awardId);
-        public IEnumerable<object> GetAwardsList(int? pageId, int? employeeId);
-        public IEnumerable<object> GetComments(int awardId);
-        public object ErrorMessage(string ValidationMessage);
+         bool RaiseRequest(Award award,int userId);
+         bool Approval(Award award);
+         bool AddComment(Comment comment);
+         object GetAwardById(int awardId);
+         IEnumerable<object> GetAwardsList(int? pageId, int? employeeId);
+         IEnumerable<object> GetComments(int awardId);
+         object ErrorMessage(string ValidationMessage);
     }
 }
