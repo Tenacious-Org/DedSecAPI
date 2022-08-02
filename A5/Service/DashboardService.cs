@@ -1,13 +1,15 @@
 using System.ComponentModel.DataAnnotations;
 using A5.Data.Repository;
+using A5.Data.Repository.Interface;
+using A5.Service.Interfaces;
 
 namespace A5.Service
 {
-    public class DashboardService
+    public class DashboardService : IDashboardService
     {
-        private readonly AwardRepository _award;
-        private readonly ILogger<DashboardService> _logger;
-        public DashboardService(AwardRepository awardRepository,ILogger<DashboardService> logger)
+        private readonly IAwardRepository _award;
+        private readonly ILogger<IDashboardService> _logger;
+        public DashboardService(IAwardRepository awardRepository,ILogger<IDashboardService> logger)
         {
             _award=awardRepository;
             _logger=logger;

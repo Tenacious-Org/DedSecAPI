@@ -9,11 +9,11 @@ namespace A5.Service
 {
     public class AwardService : IAwardService
     {
-        private readonly AwardRepository _award;
+        private readonly IAwardRepository _award;
         private readonly ILogger<IAwardService> _logger;
         private readonly AwardValidations _awardValidations;
         private readonly IEmployeeRepository _employeeRepository;
-        public AwardService(AwardRepository awardRepository,ILogger<IAwardService> logger,AwardValidations awardValidations,IEmployeeRepository employeeRepository)
+        public AwardService(IAwardRepository awardRepository,ILogger<IAwardService> logger,AwardValidations awardValidations,IEmployeeRepository employeeRepository)
         {
             _award = awardRepository;
             _logger = logger;

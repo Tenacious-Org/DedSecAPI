@@ -16,11 +16,11 @@ namespace A5.Data.Repository
     public class AwardRepository : IAwardRepository
     {
         private readonly AppDbContext _context;
-        private readonly ILogger<IAwardService> _logger;
+        private readonly ILogger<IAwardRepository> _logger;
         private readonly AwardValidations _awardValidations;
         private readonly MailService _mail;
 
-        public AwardRepository(AppDbContext context, ILogger<IAwardService> logger, MailService mail,AwardValidations awardValidations)
+        public AwardRepository(AppDbContext context, ILogger<IAwardRepository> logger, MailService mail,AwardValidations awardValidations)
         {
             _context = context;
             _logger = logger;
