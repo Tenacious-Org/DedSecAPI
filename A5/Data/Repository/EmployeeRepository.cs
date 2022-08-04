@@ -1,6 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using A5.Data;
-using A5.Data.Repository;
 using A5.Data.Repository.Interface;
 using A5.Models;
 using A5.Data.Validations;
@@ -161,7 +159,6 @@ namespace A5.Data.Repository
             {
                 var employee = _context.Set<Employee>()
                     .Include("Designation.Department.Organisation")
-                    .Include("Designation.Department")
                     .Include("Designation")
                     .Include("ReportingPerson")
                     .Include("HR")

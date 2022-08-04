@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using A5.Data.Repository.Interface;
 
 namespace A5.Models
 {

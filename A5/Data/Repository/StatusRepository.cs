@@ -15,7 +15,7 @@ namespace A5.Data.Repository
         }
 
         
-        //gets all status by using status id
+        //gets status by using status id
         public Status? GetStatusById(int statusId)
         {
             if(statusId<=0) throw new ValidationException("Id should not be zero or negative");

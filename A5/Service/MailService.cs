@@ -166,7 +166,7 @@ namespace A5.Service
     </body>
   </html>";
 
-            await File.WriteAllTextAsync(@"C:\Users\aakaash.mani\Desktop\Published.html", text1);
+            await File.WriteAllTextAsync(@"C:\Users\jeeva.nagaraj\Desktop\Published.html", text1);
         }
 
 
@@ -330,7 +330,7 @@ namespace A5.Service
   </html>
 ";
 
-            await File.WriteAllTextAsync(@"C:\Users\aakaash.mani\Desktop\Request_Raised.html", text2);
+            await File.WriteAllTextAsync(@"C:\Users\jeeva.nagaraj\Desktop\Request_Raised.html", text2);
 
         }
 
@@ -495,7 +495,7 @@ namespace A5.Service
   </html>
 ";
 
-            await File.WriteAllTextAsync(@"C:\Users\aakaash.mani\Desktop\Request_Rejected.html", text3);
+            await File.WriteAllTextAsync(@"C:\Users\jeeva.nagaraj\Desktop\Request_Rejected.html", text3);
         }
 
 
@@ -638,7 +638,7 @@ namespace A5.Service
     </body>
   </html>";
 
-            await File.WriteAllTextAsync(@"C:\Users\aakaash.mani\Desktop\Forgot_Password.html", text4);
+            await File.WriteAllTextAsync(@"C:\Users\jeeva.nagaraj\Desktop\Forgot_Password.html", text4);
         }
     }
 }

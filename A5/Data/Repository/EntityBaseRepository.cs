@@ -1,9 +1,3 @@
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using A5.Models;
-using Microsoft.EntityFrameworkCore;
 using A5.Data.Repository.Interface;
 namespace A5.Data.Repository
 {
