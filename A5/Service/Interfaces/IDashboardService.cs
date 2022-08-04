@@ -9,7 +9,7 @@ namespace A5.Service.Interfaces
 {
     public interface IDashboardService
     {
-        public IEnumerable<object> GetAllAwards();
+        public IEnumerable<object> GetAllAwardsLast1Year();
         public IEnumerable<object> GetDashboardDetailsByFilters(int organisationId, int departmentId, int awardId, DateTime start, DateTime end);
     }
 }

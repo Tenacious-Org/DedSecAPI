@@ -29,13 +29,13 @@ namespace A5.Controller
 
         //Get Method - To Retrieve All Awardees.
 
-        [HttpGet("GetAllAwardees")]
+        [HttpGet("GetAllAwardsLast1Year")]
         [AllowAnonymous]
-        public ActionResult GetAllAwardeeDashboard()
+        public ActionResult GetAllAwardsLast1Year()
         {
             try
             {
-                var data = _dashboardService.GetAllAwards();
+                var data = _dashboardService.GetAllAwardsLast1Year();
                 return Ok(data);
             }
             catch (Exception exception)

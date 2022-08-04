@@ -16,11 +16,11 @@ namespace A5.Service
         }
 
         //filters all organisation,department and awardname
-        public IEnumerable<object> GetAllAwards()
+        public IEnumerable<object> GetAllAwardsLast1Year()
         {
             try
             {
-                var winners = _award.GetAllAwardees();
+                var winners = _award.GetAllAwardsLast1Year();
                 return winners.Select(Award => new{
                     
                     organisation = Award?.Awardee?.Designation?.Department?.Organisation?.OrganisationName,

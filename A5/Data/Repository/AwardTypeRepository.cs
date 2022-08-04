@@ -1,13 +1,11 @@
 using System.ComponentModel.DataAnnotations;
-using A5.Data;
-using A5.Data.Repository;
 using A5.Data.Repository.Interface;
 using A5.Models;
 using A5.Data.Validations;
 
 namespace A5.Data.Repository
 {
-     public class AwardTypeRepository : EntityBaseRepository<AwardType>,IAwardTypeRepository
+    public class AwardTypeRepository : EntityBaseRepository<AwardType>,IAwardTypeRepository
     {
          private readonly ILogger<EntityBaseRepository<AwardType>> _logger;
          private readonly AwardTypeValidations _awardTypeValidations;
