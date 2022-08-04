@@ -12,7 +12,7 @@ namespace A5.Data.Repository.Interface
         public int? GetHRID(int awardeeId);
         IEnumerable<Comment> GetComments(int awardId);
         IEnumerable<Award> GetAllAwardsList(int? pageId, int? employeeId);
-        public IEnumerable<Award> GetAllAwardees();
+        public IEnumerable<Award> GetAllAwardsLast1Year();
         public IEnumerable<Award> GetDashboardDetailsByFilters(int organisationId, int departmentId, int awardId, DateTime start, DateTime end);
 
 
