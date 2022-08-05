@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "kiy784jP/E+flbQ1L8LPUsMwW9UUf0lt6vLWL+dKYXMyMpEtSqLSUlmmED9aqaoMr3QxbiHULsgGP11/OUBFvA==",
+  "dgSpecHash": "Y/GoPaaVNiGmbOYnOzDi7Gbh8k7XQPrNH5ThFaroBMYwy22LiSo6HDCS/j3/66JQBDZkB4DFFw48Ksnou2KpcQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\atsaya.arivu\\Documents\\GitHub\\DedSecAPI\\UnitTesting\\UnitTesting.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\atsaya.arivu\\.nuget\\packages\\bcrypt.net-next\\4.0.2\\bcrypt.net-next.4.0.2.nupkg.sha512",
     "C:\\Users\\atsaya.arivu\\.nuget\\packages\\castle.core\\5.0.0\\castle.core.5.0.0.nupkg.sha512",
     "C:\\Users\\atsaya.arivu\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
+    "C:\\Users\\atsaya.arivu\\.nuget\\packages\\fluentassertions\\6.7.0\\fluentassertions.6.7.0.nupkg.sha512",
     "C:\\Users\\atsaya.arivu\\.nuget\\packages\\mailkit\\3.3.0\\mailkit.3.3.0.nupkg.sha512",
     "C:\\Users\\atsaya.arivu\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.6\\microsoft.aspnetcore.authentication.jwtbearer.6.0.6.nupkg.sha512",
     "C:\\Users\\atsaya.arivu\\.nuget\\packages\\microsoft.aspnetcore.cors\\2.2.0\\microsoft.aspnetcore.cors.2.2.0.nupkg.sha512",

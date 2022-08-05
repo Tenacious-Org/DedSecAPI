@@ -342,3 +342,4 @@ C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\UnitTesting\obj\Debug\net6.0\re
 C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\UnitTesting\obj\Debug\net6.0\UnitTesting.pdb
 C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\UnitTesting\obj\Debug\net6.0\UnitTesting.genruntimeconfig.cache
 C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\UnitTesting\obj\Debug\net6.0\ref\UnitTesting.dll
+c:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\UnitTesting\bin\Debug\net6.0\FluentAssertions.dll

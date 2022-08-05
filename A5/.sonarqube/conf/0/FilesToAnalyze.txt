@@ -36,8 +36,8 @@ C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Validations\EmployeeVal
 C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Validations\OrganisationValidations.cs
 C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Validations\UserValidations.cs
 C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Hasher\PasswordHasher.cs
-C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Migrations\20220722043048_Initial.cs
-C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Migrations\20220722043048_Initial.Designer.cs
+C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Migrations\20220803115302_Initial.cs
+C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Migrations\20220803115302_Initial.Designer.cs
 C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Migrations\AppDbContextModelSnapshot.cs
 C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Models\Award.cs
 C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Models\AwardType.cs
@@ -85,4 +85,7 @@ C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\logs\webapi-20220722_002.log
 C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\logs\webapi-20220722_003.log
 C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\logs\webapi-20220722_004.log
 C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\logs\webapi-20220724.log
+C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\logs\webapi-20220729.log
+C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\logs\webapi-20220803.log
+C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\logs\webapi-20220803_001.log
 C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Properties\launchSettings.json

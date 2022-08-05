@@ -37,8 +37,8 @@ XC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Validations\AwardValid
 _C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Validations\OrganisationValidations.csutf-8`
 WC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Data\Validations\UserValidations.csutf-8U
 LC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Hasher\PasswordHasher.csutf-8a
-XC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Migrations\20220722043048_Initial.csutf-8l
-aC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Migrations\20220722043048_Initial.Designer.csutf-8f
+XC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Migrations\20220803115302_Initial.csutf-8l
+aC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Migrations\20220803115302_Initial.Designer.csutf-8f
 [C:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Migrations\AppDbContextModelSnapshot.csutf-8L
 CC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Models\Award.csutf-8P
 GC:\Users\atsaya.arivu\Documents\GitHub\DedSecAPI\A5\Models\AwardType.csutf-8N
