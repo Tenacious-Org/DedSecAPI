@@ -6,21 +6,22 @@ using System.Threading.Tasks;
 using A5.Data;
 using A5.Data.Repository;
 using A5.Service;
+using A5.Service.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace A5.Controller
 {
-    
-    [Route("[controller]")]    
+
+    [Route("[controller]")]
     [ApiController]
     public class DashboardController : ControllerBase
     {
 
-        private readonly DashboardService _dashboardService;
-        private readonly ILogger<DashboardService> _logger;
+        private readonly IDashboardService _dashboardService;
+        private readonly ILogger<IDashboardService> _logger;
 
-        public DashboardController(ILogger<DashboardService> logger, DashboardService dashboard)
+        public DashboardController(ILogger<IDashboardService> logger, IDashboardService dashboard)
         {
             _dashboardService = dashboard;
             _logger = logger;
@@ -48,7 +49,7 @@ namespace A5.Controller
         [AllowAnonymous]
         public ActionResult GetDashboardDetailsByFilters(int organisationId, int departmentId, int awardId, DateTime start, DateTime end)
         {
-            
+
             try
             {
                 var data = _dashboardService.GetDashboardDetailsByFilters(organisationId, departmentId, awardId, start, end);
@@ -67,6 +68,6 @@ namespace A5.Controller
 
         }
 
-        
+
     }
 }
